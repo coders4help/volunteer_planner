@@ -1,0 +1,41 @@
+{% extends "registration_base.html" %}
+{% load i18n %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    {% url 'auth_password_reset' as auth_pwd_reset_url %}
+    {% url 'registration_register' as register_url %}
+    <div class="col-md-1"></div>
+    <div class="col-md-3  form-container">
+        <h1 class="text-right">volunteer-planner.org</h1>
+
+        <h2 class="text-right">Login</h2>
+    </div>
+    <div class="col-md-3 form-container border-left">
+        {% if form.errors %}
+            <p>{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
+        {% endif %}
+
+        <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Benutzername</label>
+                <input class="form-control" id="Username" placeholder="Benutzername" name="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                       name="password">
+            </div>
+
+
+
+            <input type="submit" class="btn btn-primary align-left" value="login"/>
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <div class="row">
+            <div class="col-md-12">
+            <p><a href="{% url 'password_reset' %}">Passwort vergessen?</a><br>
+                <a href="{% url 'registation' %}">neu registrieren und helfen?</a></p>
+                </div>
+                </div>
+        </form>
+    </div>
+{% endblock %}

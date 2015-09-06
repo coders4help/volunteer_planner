@@ -1,0 +1,37 @@
+{% extends "home.html" %}
+{% block title %}Helpdesk für {{ location.name }} {% endblock %}
+{% block body_class%}helpdesk{% endblock %}
+{% block navbar %}
+{% include 'navbar.html' %}
+
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12" style="margin-top:50px;">
+    <h2>Dienstpläne für "{{ needs.0.location.name }}" am {{ needs.0.time_period_to.date_time|date:"d. M. Y"  }}</h2>
+
+{% for need in needs %}
+     {% ifchanged need.topic.title %}
+        <h3>{{ need.topic.title }}</h3>
+         <div class="help-text-wrapper" style="margin:10px 0px 10px 0"><span aria-hidden="true" class="glyphicon glyphicon-info-sign"></span>  {{ need.topic.description }}</div>
+     {% endifchanged %}
+     <p class="need" data-need-id="{{ need.pk }}"><strong>von {{ need.time_period_from.date_time|date:"H" }} -
+         {{ need.time_period_to.date_time|date:"H" }} Uhr</strong> (benötigt: {{ need.slots }}/angemeldet:
+         {{ need.get_volunteer_total }})| Freiwillige:{% for volunteer in need.get_volunteers %}
+             {{ volunteer.user.username }},{% endfor %}| {% if need.slots > need.get_volunteer_total  %}
+             <span style="color:red">Wird gebraucht </span><span aria-hidden="true" class="glyphicon glyphicon-exclamation-sign">
+
+             </span>
+             <button style="margin-left:10px;" aria-expanded="false" aria-haspopup="true"
+                            data-toggle="dropdown" class="btn btn-info add-button" type="button">mitmachen!
+                 <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+         {% else %}<span style="color:green">ist abgedeckt</span></button>{% endif %}
+         {% for volunteer in need.get_volunteers %} {% if volunteer.user.username == user.username %} <button type="button" class="btn btn-danger delete-button">austragen</button>{% endif %}{% endfor %}</p>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block additional_js %}
+    <script src="/static/js/scheudler.js" type="text/javascript"></script>
+{% endblock %}
