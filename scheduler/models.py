@@ -2,6 +2,7 @@
 from django.db import models
 import locale
 from django.contrib.auth.models import User
+from django.template.defaultfilters import date as _date
 import datetime
 
 
@@ -79,20 +80,12 @@ class Location(models.Model):
     def get_dates_of_needs(self):
         needs_dates=[]
         for i in self.need_set.all().filter(time_period_to__date_time__gt=datetime.datetime.now()).order_by('time_period_to__date_time'):
-            date_name = i.time_period_from.date_time.strftime("%A, %d.%m.%Y")
-            locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
+            date_name = _date(i.time_period_from.date_time)
             if not date_name in needs_dates:
-                needs_dates.append(i.time_period_from.date_time.strftime("%A, %d.%m.%Y"))
+                needs_dates.append(date_name)
         return needs_dates
 
     class Meta:
         permissions = (
             ("can_view", "User can view location"),
         )
-
-
-
-
-
-
-
