@@ -11,7 +11,7 @@ This repro hosts the code for volunteer-planner.org. A platform to schedule shif
 5. Enter the volunteer_planner dir.
 6. Copy man.py to manlocal.py.
 7. Create a mysql database with the name volunteer_planner with access for user [USERNAME] with password [PASSWORD], by entering mysql: `mysql -u root -p[ROOT_PASSWORD]`
-8. Tyep the followign commands within the MySQL session
+8. Type the following commands within the MySQL session:
   1. `create database volunteer_planner;`
   2. `grant all privileges on volunteer_planner to [USERNAME] identified by '[PASSWORD]';`
   3. `\q`
