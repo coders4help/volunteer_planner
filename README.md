@@ -21,5 +21,5 @@ mysql -u root -p[ROOT_PASSWORD]
 > \q
 ```
 
-8. Copy man.py to manlocal.py and fill in [USERNAME], [PASSWORD]  as well as an email address (has to be gmail) the corresponding gmail password in the appropriate places in that file.
+8. Open manlocal.py and fill in [USERNAME], [PASSWORD] for MySQL connection as well as an email address (has to be gmail) plus the corresponding gmail password in the appropriate places in that file.
 9. Run the server by running `./manlocal.py runserver`
