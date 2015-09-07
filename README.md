@@ -8,7 +8,7 @@ This repro hosts the code for volunteer-planner.org. A platform to schedule shif
 2. Clone the repository: `git clone https://github.com/volunteer-planner/volunteer_planner.git`. An instance of the volunteer_planner will be created in the folder `volunteer_planner`
 3. Navigate to that folder `cd volunteer_planner`
 2. Create a virtual environment by running `virtualenv --no-site-packages volunteer_planner-venv`
-3. Enable the virtual environment by running `source volunteer_planner-venv/bin/activate`
+4. Enable the virtual environment by running `source volunteer_planner-venv/bin/activate` (for bash) or `. volunteer_planner-venv/bin/activate.fish` (for fish)
 4. Install all requirements by running `pip install -r requirements/dev.txt`
 5. Enter the volunteer_planner dir.
 6. Copy man.py to manlocal.py.
