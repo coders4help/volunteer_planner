@@ -10,8 +10,8 @@ This repro hosts the code for volunteer-planner.org. A platform to schedule shif
 2. Create a virtual environment by running `virtualenv --no-site-packages volunteer_planner-venv`
 4. Enable the virtual environment by running `source volunteer_planner-venv/bin/activate` (for bash) or `. volunteer_planner-venv/bin/activate.fish` (for fish)
 4. Install all requirements by running `pip install -r requirements/dev.txt`
-5. Enter the volunteer_planner dir.
-6. Copy man.py to manlocal.py.
+5. Enter the volunteer_planner dir (`cd volunteer_planner`).
+6. Copy man.py to manlocal.py (`cp man.py manlocal.py`).
 7. Create a mysql database with the name volunteer_planner with access for user [USERNAME] with password [PASSWORD], by entering mysql (using the password from step 1):
 
 ```
