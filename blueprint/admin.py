@@ -17,16 +17,13 @@ class BluePrintCreatorAdminForm(forms.ModelForm):
         except:
             return self.cleaned_data
 
+
 class BluePrintCreatorAdmin(admin.ModelAdmin):
     form = BluePrintCreatorAdminForm
 
 
-
 class NeedBluePrintAdmin(admin.ModelAdmin):
-    list_display = ['topic','get_location']
-
-
-
+    list_display = ['topic', 'get_location']
 
 
 admin.site.register(BluePrintCreator, BluePrintCreatorAdmin)

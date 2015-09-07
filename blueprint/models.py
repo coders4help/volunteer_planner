@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+
 # Create your models here.
 class BluePrintCreator(models.Model):
     class Meta:
@@ -32,8 +33,5 @@ class NeedBluePrint(models.Model):
         try:
             location_name = self.blueprintcreator_set.all().get().location.name
         except:
-            location_name=""
-        return self.topic.title +" von "+self.from_time + " bis "+ self.to_time + " "+location_name
-
-
-
+            location_name = ""
+        return self.topic.title + " von " + self.from_time + " bis " + self.to_time + " " + location_name

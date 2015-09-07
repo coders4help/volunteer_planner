@@ -68,9 +68,4 @@ urlpatterns = patterns('',
                            reg_complete, name="registration_complete"),
                        url(r'^registration_activation_complete/$',
                            reg_act_complete, name="registration_activation_complete"),
-
-
-)
-from django.contrib.auth import views as auth_views
-
-
+                       )

@@ -19,7 +19,6 @@ class Command(BaseCommand):
         # Positional arguments
         parser.add_argument('date', nargs='+', type=int)
 
-
     def handle(self, *args, **options):
         if options['days_to_add'] and options['location_id']:
             print options['days_to_add']
@@ -42,8 +41,8 @@ class Command(BaseCommand):
                     date_new_from = parse(from_time)
 
                     for i in range(int(options['days_to_add'][0])):
-                        newtime_to = date_new_to +datetime.timedelta(days=i)
-                        newtime_from = date_new_from +datetime.timedelta(days=i)
+                        newtime_to = date_new_to + datetime.timedelta(days=i)
+                        newtime_from = date_new_from + datetime.timedelta(days=i)
                         from_the_time = TimePeriods(date_time=newtime_from)
                         from_the_time.save()
                         to_the_time = TimePeriods(date_time=newtime_to)
@@ -55,17 +54,11 @@ class Command(BaseCommand):
                         new_row.time_period_to = to_the_time
                         new_row.time_period_from = from_the_time
                         new_row.save()
-                        #ipdb.set_trace()
+                        # ipdb.set_trace()
 
-
-
-
-                    #newtime = date_new +datetime.timedelta(days=1)
-                    #ipdb.set_trace()
-                    #print newtime
-                    #print date.today() + timedelta(days=1)
-                #Need(location=location, topic=topic)
-            #ipdb.set_trace()
-
-
-
+                    # newtime = date_new +datetime.timedelta(days=1)
+                    # ipdb.set_trace()
+                    # print newtime
+                    # print date.today() + timedelta(days=1)
+                # Need(location=location, topic=topic)
+            # ipdb.set_trace()

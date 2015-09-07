@@ -44,6 +44,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='need',
             name='topic',
-            field=models.ForeignKey(verbose_name=b'Hilfetyp', to='scheduler.Topics', help_text='Jeder Hilfetyp hat so viele Planelemente wie es Arbeitsschichten geben soll. Dies ist EINE Arbeitsschicht f\xfcr einen bestimmten Tag'),
+            field=models.ForeignKey(verbose_name=b'Hilfetyp', to='scheduler.Topics',
+                                    help_text='Jeder Hilfetyp hat so viele Planelemente wie es Arbeitsschichten geben '
+                                              'soll. Dies ist EINE Arbeitsschicht f\xfcr einen bestimmten Tag'),
         ),
     ]

@@ -6,17 +6,17 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.mysql',
-        'NAME':'volunteer_planner',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'volunteer_planner',
         'PASSWORD': os.environ['DATABASE_PW'],
-        'USER':os.environ['DB_USER']
+        'USER': os.environ['DB_USER']
     }
 }
 
 INSTALLED_APPS += ('debug_toolbar',
                    )
 
-########## CACHE CONFIGURATION
+# CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
 CACHES = {
     'default': {
@@ -24,7 +24,7 @@ CACHES = {
         # 'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
-########## END CACHE CONFIGURATION
+# END CACHE CONFIGURATION
 
 MIDDLEWARE_CLASSES += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',

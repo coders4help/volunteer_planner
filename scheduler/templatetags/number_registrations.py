@@ -5,6 +5,7 @@ from registration.models import RegistrationProfile
 
 register = template.Library()
 
+
 @register.simple_tag
 def get_volunteer_number():
     volunteers = RegistrationProfile.objects.all().count()
