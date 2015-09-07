@@ -32,7 +32,8 @@ class RegistrationForm(forms.Form):
     username = forms.RegexField(regex=r'^[\w.@+-]+$',
                                 max_length=30,
                                 label=_("Username"),
-                                error_messages={'invalid': _("This value may contain only letters, numbers and @/./+/-/_ characters.")})
+                                error_messages={'invalid': _("This value may contain only letters, numbers and "
+                                                             "@/./+/-/_ characters.")})
     email = forms.EmailField(label=_("E-mail"))
     password1 = forms.CharField(widget=forms.PasswordInput,
                                 label=_("Password"))
@@ -89,7 +90,8 @@ class RegistrationFormUniqueEmail(RegistrationForm):
 
         """
         if User.objects.filter(email__iexact=self.cleaned_data['email']):
-            raise forms.ValidationError(_("This email address is already in use. Please supply a different email address."))
+            raise forms.ValidationError(_("This email address is already in use. "
+                                          "Please supply a different email address."))
         return self.cleaned_data['email']
 
 
@@ -113,5 +115,6 @@ class RegistrationFormNoFreeEmail(RegistrationForm):
         """
         email_domain = self.cleaned_data['email'].split('@')[1]
         if email_domain in self.bad_domains:
-            raise forms.ValidationError(_("Registration using free email addresses is prohibited. Please supply a different email address."))
+            raise forms.ValidationError(_("Registration using free email addresses is prohibited. "
+                                          "Please supply a different email address."))
         return self.cleaned_data['email']

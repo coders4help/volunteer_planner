@@ -13,9 +13,6 @@ import codecs
 from shiftmailer.excelexport import GenerateExcelSheet
 
 
-
-
-
 class Command(BaseCommand):
     help = 'sends emails taken from addresses (.models.mailer) with a list of shifts for this day' \
            'run my cronjob'
@@ -34,14 +31,3 @@ class Command(BaseCommand):
 
             message = render_to_string('shifts_today.html', locals())
             iua = GenerateExcelSheet(needs=needs, mailer=mail)
-
-
-
-
-
-
-
-
-
-
-

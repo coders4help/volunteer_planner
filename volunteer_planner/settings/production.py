@@ -6,7 +6,6 @@ TEMPLATE_DEBUG = False
 
 STATIC_ROOT = '/var/www/volunteer/static'
 
-
 TEMPLATE_LOADERS = (
     (
         'django.template.loaders.cached.Loader', (
@@ -21,18 +20,17 @@ ADMINS = (
     ('Dorian Cantzen', 'cantzen@googlemail.com'),
 )
 
-
-
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.mysql',
-        'NAME':'volunteer',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'volunteer',
         'PASSWORD': 'website2govolunteer',
-        'USER':'volunteer'
+        'USER': 'volunteer'
     }
 }
+
 ALLOWED_HOSTS = ['volunteer-planner.org', 'www.volunteer-planner.org']
-SECRET_KEY="lsdklfjskdksdjfkshdjlhsdjlkfhdlskfhlksd"
+SECRET_KEY = "lsdklfjskdksdjfkshdjlhsdjlkfhdlskfhlksd"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 COMMUNICATION_SENDER_MAIL = 'noreply@volunteer-planner.org'
 DEFAULT_FROM_EMAIL = 'noreply@volunteer-planner.org'
@@ -49,4 +47,4 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
-#ssd
+# ssd

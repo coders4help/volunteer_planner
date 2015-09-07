@@ -47,7 +47,7 @@ class RegistrationView(BaseRegistrationView):
     an instance of ``registration.models.RegistrationProfile``. See
     that model and its custom manager for full documentation of its
     fields and supported operations.
-    
+
     """
     def register(self, request, **cleaned_data):
         """
@@ -96,7 +96,7 @@ class RegistrationView(BaseRegistrationView):
 
         * If ``REGISTRATION_OPEN`` is both specified and set to
           ``False``, registration is not permitted.
-        
+
         """
         return getattr(settings, 'REGISTRATION_OPEN', True)
 
@@ -104,7 +104,7 @@ class RegistrationView(BaseRegistrationView):
         """
         Return the name of the URL to redirect to after successful
         user registration.
-        
+
         """
         return ('registration_complete', (), {})
 
@@ -119,7 +119,7 @@ class ActivationView(BaseActivationView):
         ``registration.signals.user_activated`` will be sent, with the
         newly activated ``User`` as the keyword argument ``user`` and
         the class of this backend as the sender.
-        
+
         """
         activation_key = request.GET.get('activation_key')
         activated_user = RegistrationProfile.objects.activate_user(activation_key)
@@ -133,9 +133,9 @@ class ActivationView(BaseActivationView):
         return ('registration_activation_complete', (), {})
 
 
-
 def reg_complete(request):
     return render_to_response('registration_complete.html', context_instance=RequestContext(request, locals()))
+
 
 def reg_act_complete(request):
     return render_to_response('activation_complete.html', context_instance=RequestContext(request, locals()))
