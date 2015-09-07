@@ -25,3 +25,4 @@ mysql -u root -p[ROOT_PASSWORD]
 9. Add a superuser `./manlocal.py createsuperuser`. Save username and password.
 9. Run the server by running `./manlocal.py runserver`
 10. Log in with the superuser's credentials
+11. To add new organizations and shifts, you have to access the backend at `127.0.0.1:8000/admin` (you are logged in as superuser)
