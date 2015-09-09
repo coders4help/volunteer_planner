@@ -1,6 +1,8 @@
 # volunteer_planner
 This repro hosts the code for volunteer-planner.org. A platform to schedule shifts of volunteers.
 
+## Please do pull request against the development branch.
+If you have questions concerning our workflow please look here https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
 ## Setup (Ubuntu 14.04)
 
@@ -17,3 +19,13 @@ This repro hosts the code for volunteer-planner.org. A platform to schedule shif
   3. `\q`
 9. Copy man.py to manlocal.py and fill in [USERNAME], [PASSWORD]  as well as an email address (has to be gmail) the corresponding gmail password in the appropriate places in that file.
 10. Run the server by running `./manlocal.py runserver`
+
+## The Project
+
+We use less for precompiling css. the less files you will find in scheduler/static/bootstrap/less/project.less
+
+To make this work you can just initialize the folder with "npm install -g" and then let grunt watch for changes
+
+
+
+
