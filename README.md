@@ -1,6 +1,8 @@
 # volunteer_planner
 This repro hosts the code for volunteer-planner.org. A platform to schedule shifts of volunteers.
 
+## Please do pull request against the development branch.
+If you have questions concerning our workflow please look here https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
 ## Setup (Ubuntu 14.04)
 
@@ -33,3 +35,9 @@ This repro hosts the code for volunteer-planner.org. A platform to schedule shif
 13. Log in with the superuser's credentials
 14. To add new organizations and shifts, you have to access the backend at `127.0.0.1:8000/admin`
     (you are logged in as superuser)
+
+## The Project
+
+We use less for precompiling css. The less file you will find in scheduler/static/bootstrap/less/project.less
+
+To make this work you can just initialize the folder with "npm install -g" and then let grunt watch for changes.
