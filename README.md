@@ -2,7 +2,8 @@
 This repro hosts the code for volunteer-planner.org. A platform to schedule shifts of volunteers.
 
 ## Please do pull request against the development branch.
-If you have questions concerning our workflow please look here https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
+If you have questions concerning our workflow please look here
+https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
 ## Setup (Ubuntu 14.04)
 
