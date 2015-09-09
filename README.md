@@ -4,7 +4,7 @@ This repro hosts the code for volunteer-planner.org. A platform to schedule shif
 
 ## Setup (Ubuntu 14.04)
 
-1.  Install all required Ubuntu packages `apt-get install libmysqlclient-dev mysql-client mysql-server python-dev python-pip git`. This will install MySQL server, Python libraries and Git. It will ask you to set a root password [ROOT_PASSWORD] for the mysql server. Remember the password.
+1.  Install all required Ubuntu packages `apt-get install libmysqlclient-dev mysql-client mysql-server python-dev python-pip git`. This will install MySQL server, Python libraries and Git. It will ask you to set a root password [ROOT_PASSWORD] for the mysql server, if you haven't already set up MySQL in the past. Remember the password.
 2.  Clone the repository: `git clone https://github.com/volunteer-planner/volunteer_planner.git`. An instance of the volunteer_planner will be created in the folder `volunteer_planner`
 3.  Navigate to that folder `cd volunteer_planner`
 4.  Create a virtual environment by running `virtualenv --no-site-packages volunteer_planner-venv`
