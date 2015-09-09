@@ -22,9 +22,9 @@ If you have questions concerning our workflow please look here https://github.co
 
 ## The Project
 
-We use less for precompiling css. the less files you will find in scheduler/static/bootstrap/less/project.less
+We use less for precompiling css. The less file you will find in scheduler/static/bootstrap/less/project.less
 
-To make this work you can just initialize the folder with "npm install -g" and then let grunt watch for changes
+To make this work you can just initialize the folder with "npm install -g" and then let grunt watch for changes.
 
 
 
