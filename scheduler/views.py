@@ -59,29 +59,6 @@ def helpdesk(request):
         response['can_checkin'] = False
     return render(request, 'helpdesk.html', response)
 
-#
-# Not sure what the "need_dates_by_location" was doing. It doesn't look like it was used anywhere
-#
-
-# class HelpDesk(LoginRequiredMixin, TemplateView):
-#     template_name = "helpdesk.html"
-#
-#     def get_context_data(self, **kwargs):
-#         if 'locations' not in kwargs:
-#             kwargs['locations'] = Location.objects.all()
-#
-#         if 'need_dates_by_location' not in kwargs:
-#             locations = Location.objects.all()
-#             the_dates = []
-#             for loc in locations:
-#                 dates = {loc:loc.get_dates_of_needs()}
-#                 the_dates.append(dates)
-#             kwargs['need_dates_by_location'] = the_dates
-#
-#         if 'notifications' not in kwargs:
-#             kwargs['notifications'] = Notification.objects.all()
-#
-#         return kwargs
 
 class ProfileView(UpdateView):
     model = User

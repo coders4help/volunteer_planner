@@ -191,8 +191,6 @@ class RegistrationProfile(models.Model):
     activation_key = models.CharField(_('activation key'), max_length=40)
 
     interests = models.ManyToManyField("scheduler.Topics")
-    # We need to get rid of 'needs' and replace it with 'shifts', but unfortunately django's migration model doesn't let us do that
-    needs = models.ManyToManyField('scheduler.Need', related_name='the_reg_pro')
     shifts = models.ManyToManyField('scheduler.Need', through='scheduler.scheduledRegPro', verbose_name="registrierte Schichten")
 
     objects = RegistrationManager()
