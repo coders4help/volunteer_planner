@@ -48,11 +48,15 @@
     markersGroup = createMarkersGroup();
     map.addObject(markersGroup);
     if (markersGroup.getObjects().length == 0) {
+        // no location is given: just show the map of Berlin without any markers
         centerMapInBerlin(map);
     } else {
+        // expand the map in a way that all markers are shown on the map
         map.setViewBounds(group.getBounds());
 
         if (markersGroup.getObjects().length == 1) {
+            // reset the zoom level in case there's only one marker
+            // otherwise, the zoom level would be too high
             map.setZoom(15);
         }
     }
