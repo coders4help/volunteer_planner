@@ -6,15 +6,14 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'volunteer_planner',
-        'PASSWORD': os.environ['DATABASE_PW'],
-        'USER': os.environ['DB_USER']
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(SITE_ROOT, 'db.sqlite3'),
     }
 }
 
-INSTALLED_APPS += ('debug_toolbar',
-                   )
+INSTALLED_APPS += (
+    'debug_toolbar',
+)
 
 # CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
@@ -29,15 +28,21 @@ CACHES = {
 MIDDLEWARE_CLASSES += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-COMMUNICATION_SENDER_MAIL = 'noreply@noreply.de'
-DEFAULT_FROM_EMAIL = 'cantzen@googlemail.com'
 
-CONTACT_MAIL = os.environ['EMAIL_ADDRESS']
-SERVER_EMAIL = os.environ['EMAIL_ADDRESS']
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ['EMAIL_ADDRESS']
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-SECRET_KEY = os.environ['SECRET_KEY']
+
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+EMAIL_HOST_USER = os.environ.get('EMAIL_ADDRESS', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+
+if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    COMMUNICATION_SENDER_MAIL = 'noreply@noreply.de'
+    DEFAULT_FROM_EMAIL = 'cantzen@googlemail.com'
+    CONTACT_MAIL = os.environ['EMAIL_ADDRESS']
+    SERVER_EMAIL = os.environ['EMAIL_ADDRESS']
+
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'local')
