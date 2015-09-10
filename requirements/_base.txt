@@ -1,5 +1,4 @@
 Django==1.8.4
-MySQL-python==1.2.5
 argparse==1.2.1
 decorator==4.0.2
 django-appconf==0.6
@@ -18,4 +17,4 @@ sqlparse==0.1.16
 traitlets==4.0.0
 wsgiref==0.1.2
 xlwt==1.0.0
-python-memcached
+python-memcached==1.57
