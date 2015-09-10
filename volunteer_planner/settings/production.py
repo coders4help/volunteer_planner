@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = False if not 'BETA' in os.environ else True
 
 TEMPLATE_DEBUG = False
 
@@ -14,7 +14,7 @@ TEMPLATE_LOADERS = (
         )
     ),
 )
-PREPEND_WWW = True
+PREPEND_WWW = True if not 'BETA' in os.environ else False
 
 ADMINS = (
     ('Dorian Cantzen', 'cantzen@googlemail.com'),
