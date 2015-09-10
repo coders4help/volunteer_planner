@@ -31,10 +31,11 @@ https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
     Enter [ROOT_PASSWORD] from step 1, when asked.
 10. Open manlocal.py and fill in [USERNAME], [PASSWORD] for MySQL connection as well as an email address
     (has to be gmail) plus the corresponding gmail password in the appropriate places in that file.
-11. Add a superuser `./manlocal.py createsuperuser`. Save username and password.
-12. Run the server by running `./manlocal.py runserver`
-13. Log in with the superuser's credentials
-14. To add new organizations and shifts, you have to access the backend at `127.0.0.1:8000/admin`
+11. Create the database schema by running `./manlocal.py migrate`
+12. Add a superuser `./manlocal.py createsuperuser`. Save username and password.
+13. Run the server by running `./manlocal.py runserver`
+14. Log in with the superuser's credentials
+15. To add new organizations and shifts, you have to access the backend at `127.0.0.1:8000/admin`
     (you are logged in as superuser)
 
 ## The Project
