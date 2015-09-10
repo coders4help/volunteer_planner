@@ -5,7 +5,9 @@
     function createMarkersGroup() {
         markers = new Array();
         {% for location in locations %}
-            markers.push(new H.map.Marker({lat: {{ location.latitude }}, lng: {{location.longitude}} }));
+            {% if location.latitude and location.longitude %}
+                markers.push(new H.map.Marker({lat: {{ location.latitude }}, lng: {{location.longitude}} }));
+            {% endif %}
         {% endfor %}
 
         group = new H.map.Group();
