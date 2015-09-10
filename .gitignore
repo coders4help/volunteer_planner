@@ -6,3 +6,4 @@ settings/production.py
 *.gz
 fabfile.py
 manlocal.py
+db.sqlite3
