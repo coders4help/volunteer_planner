@@ -47,6 +47,7 @@ class HomeView(TemplateView):
 
         return kwargs
 
+
 @login_required
 def helpdesk(request):
     response = {}
@@ -60,12 +61,12 @@ def helpdesk(request):
     return render(request, 'helpdesk.html', response)
 
 
+
 class ProfileView(UpdateView):
     model = User
-    fields = ['first_name','last_name','email']
+    fields = ['first_name', 'last_name', 'email']
     template_name = "profile_edit.html"
     success_url = reverse_lazy('profile_edit')
-
 
     def get_object(self, queryset=None):
         """
@@ -93,18 +94,15 @@ class ProfileView(UpdateView):
         return obj
 
 
-
-
-
-
-
 class PlannerView(LoginRequiredMixin, TemplateView):
     template_name = "helpdesk_single.html"
 
     def get_context_data(self, **kwargs):
         if 'needs' not in kwargs:
-            kwargs['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']).\
-                filter(time_period_to__date_time__year=self.kwargs['year'], time_period_to__date_time__month=self.kwargs['month'], time_period_to__date_time__day=self.kwargs['day'])\
+            kwargs['needs'] = Need.objects.filter(location__pk=self.kwargs['pk'])\
+                .filter(time_period_to__date_time__year=self.kwargs['year'],
+                        time_period_to__date_time__month=self.kwargs['month'],
+                        time_period_to__date_time__day=self.kwargs['day'])\
                 .order_by('topic', 'time_period_to__date_time')
         return kwargs
 
@@ -125,6 +123,7 @@ def register_for_need(request):
     else:
         pass
 
+
 @login_required
 def de_register_for_need(request):
     if request.method == "POST" and request.is_ajax:
@@ -140,6 +139,7 @@ def de_register_for_need(request):
         return HttpResponse(json.dumps({"data": "ok"}), content_type="application/json")
     else:
         pass
+
 
 @login_required(login_url='/auth/login/')
 @permission_required('location.can_view')

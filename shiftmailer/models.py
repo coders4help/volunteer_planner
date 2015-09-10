@@ -10,4 +10,4 @@ class Mailer(models.Model):
     email = models.EmailField(verbose_name='Email')
 
     def __unicode__(self):
-        return self.organization +"("+self.location.name+")"
+        return self.organization + "(" + self.location.name + ")"

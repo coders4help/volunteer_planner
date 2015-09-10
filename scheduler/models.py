@@ -33,7 +33,7 @@ class Need(models.Model):
     get_volunteers.short_description = "Freiwillige"
 
     def __unicode__(self):
-        return self.topic.title +" "+self.location.name
+        return self.topic.title + " " + self.location.name
 
 
 class scheduledRegPro(models.Model):
@@ -93,9 +93,11 @@ class Location(models.Model):
         return self.name
 
     def get_dates_of_needs(self):
-        needs_dates=[]
-        for i in self.need_set.all().filter(time_period_to__date_time__gt=datetime.datetime.now()).order_by('time_period_to__date_time'):
-            date_name = _date(i.time_period_from.date_time)
-            if not date_name in needs_dates:
-                needs_dates.append(date_name)
+        needs_dates = []
+        for i in self.need_set.all().filter(time_period_to__date_time__gt=datetime.datetime.now())\
+                .order_by('time_period_to__date_time'):
+            date_name = i.time_period_from.date_time.strftime("%A, %d.%m.%Y")
+            locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
+            if date_name not in needs_dates:
+                needs_dates.append(i.time_period_from.date_time.strftime("%A, %d.%m.%Y"))
         return needs_dates

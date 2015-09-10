@@ -18,7 +18,7 @@ try:
 except Exception as e:
     traceback.format_exc()
     print e
-    #from django.contrib.auth.models import User
+    # from django.contrib.auth.models import User
 
 try:
     from django.utils.timezone import now as datetime_now
@@ -96,7 +96,7 @@ class RegistrationManager(models.Manager):
             registration_profile.send_activation_email(site)
 
         return new_user
-    #create_inactive_user = transaction.commit(create_inactive_user)
+    # create_inactive_user = transaction.commit(create_inactive_user)
 
     def create_profile(self, user):
         """
@@ -166,6 +166,7 @@ class RegistrationManager(models.Manager):
             except User.DoesNotExist:
                 profile.delete()
 
+
 class RegistrationProfile(models.Model):
     class Meta:
         verbose_name = "Freiwillige"
@@ -225,7 +226,7 @@ class RegistrationProfile(models.Model):
         """
         expiration_date = datetime.timedelta(days=settings.ACCOUNT_ACTIVATION_DAYS)
         return self.activation_key == self.ACTIVATED or \
-               (self.user.date_joined + expiration_date <= datetime_now())
+            (self.user.date_joined + expiration_date <= datetime_now())
     activation_key_expired.boolean = True
 
     def send_activation_email(self, site):
@@ -270,7 +271,7 @@ class RegistrationProfile(models.Model):
         ctx_dict = {'activation_key': self.activation_key,
                     'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS,
                     'site': site,
-                    'user':self.user.get_username()}
+                    'user': self.user.get_username()}
         subject = render_to_string(SafeString('activation_email_subject.txt'),
                                    ctx_dict)
         # Email subject *must not* contain newlines

@@ -10,21 +10,20 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import os
 import sys
 
-
 DEBUG = False
-########### PROJECT DIRECTORY AND GENERAL SETTINGS
+# PROJECT DIRECTORY AND GENERAL SETTINGS
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
 SITE_ROOT = os.path.dirname(PROJECT_ROOT)
 SITE_ID = 1
 sys.path.append(PROJECT_ROOT)
 SITE_NAME = os.path.basename(PROJECT_ROOT)
 ROOT_URLCONF = '%s.urls' % SITE_NAME
-########### END PROJECT DIRECTORY AND GENERAL SETTINGS
+# END PROJECT DIRECTORY AND GENERAL SETTINGS
 
 
-###########SECURITY
+# SECURITY
 ACCOUNT_ACTIVATION_DAYS = 3
-########## APP CONFIGURATION
+# APP CONFIGURATION
 DJANGO_APPS = (
     # Default Django apps:
     'django.contrib.auth',
@@ -52,7 +51,6 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
-
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,7 +70,6 @@ STATIC_ROOT = os.path.normpath(os.path.join(PROJECT_ROOT, 'static'))
 
 STATIC_URL = '/static/'
 
-
 MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = [
@@ -80,8 +77,8 @@ TEMPLATE_DIRS = [
 ]
 
 TEMPLATE_LOADERS = (
-'django.template.loaders.filesystem.Loader',
-'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -124,11 +121,10 @@ TIME_ZONE = 'Europe/Berlin'
 
 LANGUAGE_CODE = 'de-de'
 
-
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 
 FIXTURE_DIRS = (
-     os.path.join(PROJECT_ROOT, 'fixtures'),
+    os.path.join(PROJECT_ROOT, 'fixtures'),
 )
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = "uploads/"

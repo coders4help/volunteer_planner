@@ -24,7 +24,8 @@ class Migration(migrations.Migration):
             name='NeedCreator',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('time_from', models.CharField(help_text=b'Format: 07:30', max_length=5, verbose_name=b'Uhrzeit Anfang')),
+                ('time_from', models.CharField(help_text=b'Format: 07:30', max_length=5,
+                                               verbose_name=b'Uhrzeit Anfang')),
                 ('time_to', models.CharField(help_text=b'Format: 07:30', max_length=5, verbose_name=b'Uhrzeit Ende')),
                 ('slots', models.IntegerField(verbose_name=b'Anz. benoetigter Freiwillige', blank=True)),
                 ('apply_from', models.DateField(verbose_name=b'anwenden ab dem Tag')),
