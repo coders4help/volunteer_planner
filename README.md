@@ -43,3 +43,9 @@ https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 We use less for precompiling css. The less file you will find in scheduler/static/bootstrap/less/project.less
 
 To make this work you can just initialize the folder with "npm install -g" and then let grunt watch for changes.
+
+# Dummy-Data:
+
+To load dummydata:
+
+with virtualenv activated:  python manage.py loaddata vp_dumpdata_2015-09-08T08_37_28.266529_ANYNOMIZED.json
