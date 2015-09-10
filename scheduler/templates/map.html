@@ -1,0 +1,57 @@
+<div class="row">
+    <div id="map" style="width: 100%; height: 400px; background: white"></div>
+</div>
+<script type="text/javascript" charset="UTF-8" >
+    function createMarkersGroup() {
+        markers = new Array();
+        {% for location in locations %}
+            markers.push(new H.map.Marker({lat: {{ location.latitude }}, lng: {{location.longitude}} }));
+        {% endfor %}
+
+        group = new H.map.Group();
+        group.addObjects(markers);
+        return group;
+    }
+
+    function centerMapInBerlin(map) {
+        map.setCenter({lat:52.5159, lng:13.3777});
+        map.setZoom(14);
+    }
+
+    /**
+    * Boilerplate map initialization code starts below:
+     */
+
+    //Step 1: initialize communication with the platform
+    var platform = new H.service.Platform({
+        app_id: 'mZIEtVjJGeugdntBBM7B',
+        app_code: 'QyYAEUpGd0Nt0DDfh94YAA',
+        useCIT: true,
+        useHTTPS: true
+    });
+    var defaultLayers = platform.createDefaultLayers();
+
+    //Step 2: initialize a map
+    var map = new H.Map(document.getElementById('map'), defaultLayers.normal.map);
+
+    //Step 3: make the map interactive
+    // MapEvents enables the event system
+    // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+    // Create the default UI components
+    var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+    // Now use the map as required...
+    markersGroup = createMarkersGroup();
+    map.addObject(markersGroup);
+    if (markersGroup.getObjects().length == 0) {
+        centerMapInBerlin(map);
+    } else {
+        map.setViewBounds(group.getBounds());
+
+        if (markersGroup.getObjects().length == 1) {
+            map.setZoom(15);
+        }
+    }
+</script>
