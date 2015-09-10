@@ -25,7 +25,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ['DATABASE_NAME'],
         'PASSWORD': os.environ['DATABASE_PW'],
-        'USER': os.environ['DATABASE_NAME']
+        'USER': os.environ['DATABASE_USER']
     }
 }
 
