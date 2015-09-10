@@ -12,7 +12,6 @@
         <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
 
 
-
             {% for location in locations %}
                 <div class="row">
                 <div class="col-md-5">
@@ -24,6 +23,9 @@
                 <p><span aria-hidden="true" class="glyphicon glyphicon-flag"></span>{{  location.additional_info|safe }}</p>
                 </div>
                 <div class="col-md-4">
+                    {% if can_checkin %}
+                      <a href="/helpdesk/{{location.id}}/volunteer_checkin_list/">[CHECKIN]</a>
+                    {% endif %}
                     <p>{% for date_single in location.get_dates_of_needs %}
                         <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
                         <a href="{% url 'planner_by_location' pk=location.pk year=date_single|slice:'-4:' month=date_single|slice:'-7:-5' day=date_single|slice:'-10:-8' %}">{{ date_single }}
