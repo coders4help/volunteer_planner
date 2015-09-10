@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+
+{% block title %} Volunteer Checkin list {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2" id="bloodhound">
+        <h1>Volunteer Checkin list</h1>
+        <p>Checkin volunteers for <strong>{{ location }}</strong> for today {{ today }}.</p>
+
+        {% for shift in shifts %}
+
+        <h2>Shift {{shift.shift.time_period_from}}-{{shift.shift.time_period_to}}</h2>
+
+        {% for volunteer in shift.volunteers %}
+        <p>
+
+          {{volunteer.registration_profile.user.first_name}} {{volunteer.registration_profile.user.last_name}} ({{volunteer.registration_profile.user.email}})
+
+          {% if volunteer.did_show_up %}
+
+            CHECKED IN
+
+          {% else %}
+
+            <button class='checkin' data-regpro='{{volunteer.registration_profile.id}}' data-shift = '{{shift.shift.id}}'>CHECK IN</button>
+
+          {% endif %}
+        <p>
+        {% endfor %}
+
+        {% endfor %}
+
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block additional_js %}
+    <script>
+      jQuery('.checkin').on('click',function() {
+        var data = {
+            regpro: jQuery(this).attr('data-regpro'),
+            shift: jQuery(this).attr('data-shift')
+        };
+
+        jQuery.post(
+          '/helpdesk/checkin_volunteer/',
+          data,
+          function () {
+            location.reload();
+          }
+        );
+
+      });
+    </script>
+{% endblock %}
