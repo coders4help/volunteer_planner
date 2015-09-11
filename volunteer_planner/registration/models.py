@@ -116,7 +116,7 @@ class RegistrationManager(models.Manager):
         return self.create(user=user,
                            activation_key=activation_key)
 
-    def delete_expired_users(self):
+    def delete_expired_users(self, dry_run=False):
         """
         Remove expired instances of ``RegistrationProfile`` and their
         associated ``User``s.
@@ -156,15 +156,34 @@ class RegistrationManager(models.Manager):
         be deleted.
 
         """
+        count = 0
+        users = 0
+        profiles = 0
+        errors = 0
         for profile in self.all():
+            ++count
             try:
-                if profile.activation_key_expired():
-                    user = profile.user
-                    if not user.is_active:
-                        user.delete()
-                        profile.delete()
+                with transaction.atomic():
+                    if profile.activation_key_expired():
+                        user = profile.user
+                        if not user.is_active:
+                            if not dry_run:
+                                user.delete()
+                                profile.delete()
+                            else:
+                                print('Would delete ' + profile.user.username +
+                                      ', activation key ' + profile.activation_key)
+                            users += 1
+                            profiles += 1
             except User.DoesNotExist:
-                profile.delete()
+                if not dry_run:
+                    profile.delete()
+                profiles += 1
+                errors += 1
+
+        # FIXME make this logging, instead of plain 'print'
+        print('Deleted {} users and {} profiles with {} errors from a total of {} entries'
+              .format(users, profiles, errors, count))
 
 
 class RegistrationProfile(models.Model):
