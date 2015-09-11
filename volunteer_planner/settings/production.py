@@ -1,10 +1,10 @@
 from .base import *
 
-DEBUG = False if not 'BETA' in os.environ else True
+DEBUG = os.environ.get('BETA', False)
 
 TEMPLATE_DEBUG = False
 
-STATIC_ROOT = '/var/www/volunteer/static'
+STATIC_ROOT = os.environ['STATIC_ROOT']
 
 TEMPLATE_LOADERS = (
     (
@@ -14,7 +14,7 @@ TEMPLATE_LOADERS = (
         )
     ),
 )
-PREPEND_WWW = True if 'BETA' not in os.environ else False
+PREPEND_WWW = os.environ.get('BETA', True)
 
 ADMINS = (
     ('Dorian Cantzen', 'cantzen@googlemail.com'),
