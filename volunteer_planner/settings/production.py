@@ -4,7 +4,7 @@ DEBUG = os.environ.get('BETA', False)
 
 TEMPLATE_DEBUG = False
 
-STATIC_ROOT = '/var/www/volunteer/static'
+STATIC_ROOT = os.environ['STATIC_ROOT']
 
 TEMPLATE_LOADERS = (
     (
