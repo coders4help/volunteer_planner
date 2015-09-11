@@ -15,8 +15,8 @@
         <h3>{{ need.topic.title }}</h3>
          <div class="help-text-wrapper" style="margin:10px 0px 10px 0"><span aria-hidden="true" class="glyphicon glyphicon-info-sign"></span>  {{ need.topic.description }}</div>
      {% endifchanged %}
-     <p class="need" data-need-id="{{ need.pk }}"><strong>von {{ need.time_period_from.date_time|date:"H" }} -
-         {{ need.time_period_to.date_time|date:"H" }} Uhr</strong> (benötigt: {{ need.slots }}/angemeldet:
+     <p class="need" data-need-id="{{ need.pk }}"><strong>von {{ need.time_period_from.date_time|date:"H:i" }} -
+         {{ need.time_period_to.date_time|date:"H:i" }} Uhr</strong> (benötigt: {{ need.slots }}/angemeldet:
          {{ need.get_volunteer_total }})| Freiwillige:{% for volunteer in need.get_volunteers %}
              {{ volunteer.user.username }},{% endfor %}| {% if need.slots > need.get_volunteer_total  %}
              <span style="color:red">Wird gebraucht </span><span aria-hidden="true" class="glyphicon glyphicon-exclamation-sign">
