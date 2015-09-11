@@ -14,7 +14,7 @@ TEMPLATE_LOADERS = (
         )
     ),
 )
-PREPEND_WWW = True if not 'BETA' in os.environ else False
+PREPEND_WWW = True if 'BETA' not in os.environ else False
 
 ADMINS = (
     ('Dorian Cantzen', 'cantzen@googlemail.com'),
