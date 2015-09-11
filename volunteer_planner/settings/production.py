@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False if not 'BETA' in os.environ else True
+DEBUG = os.environ.get('BETA', False)
 
 TEMPLATE_DEBUG = False
 
@@ -14,7 +14,7 @@ TEMPLATE_LOADERS = (
         )
     ),
 )
-PREPEND_WWW = True if 'BETA' not in os.environ else False
+PREPEND_WWW = os.environ.get('BETA', True)
 
 ADMINS = (
     ('Dorian Cantzen', 'cantzen@googlemail.com'),
