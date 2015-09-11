@@ -12,11 +12,11 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from django.db.models import F
+from django.views.decorators.csrf import csrf_exempt
 
-from .models import Location, Need, Topics
+from .models import Location, Need, Topics, scheduledRegPro
 from notifications.models import Notification
 from registration.models import RegistrationProfile
-
 
 class LoginRequiredMixin(object):
 
@@ -48,25 +48,18 @@ class HomeView(TemplateView):
         return kwargs
 
 
-class HelpDesk(LoginRequiredMixin, TemplateView):
-    template_name = "helpdesk.html"
+@login_required
+def helpdesk(request):
+    response = {}
+    response['locations'] = Location.objects.all()
+    response['notifications'] = Notification.objects.all()
+    if request.user.has_perm('scheduler.can_checkin'):
+        response['can_checkin'] = True
+        print 'hello'
+    else:
+        response['can_checkin'] = False
+    return render(request, 'helpdesk.html', response)
 
-    def get_context_data(self, **kwargs):
-        if 'locations' not in kwargs:
-            kwargs['locations'] = Location.objects.all()
-
-        if 'need_dates_by_location' not in kwargs:
-            locations = Location.objects.all()
-            the_dates = []
-            for loc in locations:
-                dates = {loc: loc.get_dates_of_needs()}
-                the_dates.append(dates)
-            kwargs['need_dates_by_location'] = the_dates
-
-        if 'notifications' not in kwargs:
-            kwargs['notifications'] = Notification.objects.all()
-
-        return kwargs
 
 
 class ProfileView(UpdateView):
@@ -118,10 +111,14 @@ class PlannerView(LoginRequiredMixin, TemplateView):
 def register_for_need(request):
     if request.method == "POST" and request.is_ajax:
         need_id = int(request.POST['id_need'])
-        reg_profile = RegistrationProfile.objects.get(user=request.user.pk)
+        registration_profile = RegistrationProfile.objects.get(user=request.user.pk)
         need = Need.objects.get(id=need_id)
-        reg_profile.needs.add(need)
-        reg_profile.save()
+        scheduled_reg_profile = scheduledRegPro(
+            registration_profile = registration_profile,
+            need = need
+        )
+        scheduled_reg_profile.save()
+
         return HttpResponse(json.dumps({"data": "ok"}), content_type="application/json")
     else:
         pass
@@ -131,10 +128,14 @@ def register_for_need(request):
 def de_register_for_need(request):
     if request.method == "POST" and request.is_ajax:
         need_id = int(request.POST['id_need'])
-        reg_profile = RegistrationProfile.objects.get(user=request.user.pk)
+        registration_profile = RegistrationProfile.objects.get(user=request.user.pk)
         need = Need.objects.get(id=need_id)
-        reg_profile.needs.remove(need)
-        reg_profile.save()
+        scheduled_reg_profile = scheduledRegPro.objects.get(
+            registration_profile = registration_profile,
+            need = need
+        )
+        scheduled_reg_profile.delete()
+
         return HttpResponse(json.dumps({"data": "ok"}), content_type="application/json")
     else:
         pass
@@ -154,3 +155,41 @@ def volunteer_list(request, **kwargs):
     if request.GET.get('type') == 'json':
         return JsonResponse(data, safe=False)
     return render(request, 'volunteer_list.html', {'data': json.dumps(data), 'location': loc, 'today': today})
+
+@login_required(login_url='/auth/login/')
+@permission_required('scheduler.can_checkin')
+def volunteer_checkin_list(request, **kwargs):
+    """
+    Show checkin list of volunteers for current shift
+    """
+    today = datetime.date.today()
+    loc = get_object_or_404(Location, id=kwargs.get('loc_pk'))
+    needs = Need.objects.filter(location=loc, time_period_to__date_time__contains=today)
+
+    shifts = []
+
+    for need in needs:
+        shift = {
+            'shift': need,
+            'volunteers': [],
+        }
+
+        for srp in scheduledRegPro.objects.filter(need=need):
+            shift['volunteers'].append(srp)
+
+        shifts.append(shift)
+
+    return render(request, 'volunteer_checkin_list.html', {'shifts': shifts, 'location': loc, 'today': today})
+
+
+@login_required(login_url='/auth/login/')
+@permission_required('scheduler.can_checkin')
+@csrf_exempt
+def checkin_volunteer(request):
+    shift_id = int(request.POST.get('shift'))
+    regpro_id = int(request.POST.get('regpro'))
+    srp = scheduledRegPro.objects.get(need_id=shift_id,registration_profile_id=regpro_id)
+    srp.did_show_up = True
+    srp.save()
+
+    return JsonResponse({},status=200)

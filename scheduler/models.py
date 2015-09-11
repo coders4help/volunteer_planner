@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import date as _date
 import datetime
 
+from registration.models import RegistrationProfile
+
 
 class Need(models.Model):
     """
@@ -32,6 +34,15 @@ class Need(models.Model):
 
     def __unicode__(self):
         return self.topic.title + " " + self.location.name
+
+
+class scheduledRegPro(models.Model):
+    """
+    This is the connection between a user and the shift to which he/she has signed up
+    """
+    registration_profile = models.ForeignKey(RegistrationProfile, on_delete=models.CASCADE)
+    need = models.ForeignKey(Need, on_delete=models.CASCADE)
+    did_show_up = models.BooleanField(default=False)
 
 
 class Topics(models.Model):
@@ -65,6 +76,10 @@ class Location(models.Model):
     class Meta:
         verbose_name = "Ort"
         verbose_name_plural = "Orte"
+        permissions = (
+            ("can_view", "User can view location"),
+            ("can_checkin", "Can checkin volunteers"),
+        )
 
     name = models.CharField(max_length=255, blank=True)
     street = models.CharField(max_length=255, blank=True)
@@ -86,8 +101,3 @@ class Location(models.Model):
             if date_name not in needs_dates:
                 needs_dates.append(i.time_period_from.date_time.strftime("%A, %d.%m.%Y"))
         return needs_dates
-
-    class Meta:
-        permissions = (
-            ("can_view", "User can view location"),
-        )
