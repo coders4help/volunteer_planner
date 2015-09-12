@@ -32,10 +32,11 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    # A prettier theme
+    'djangocms_admin_style',
     # Admin panel and documentation:
     'django.contrib.admin',
     # 'django.contrib.admindocs',
-    'djangocms_admin_style',
 )
 
 LOCAL_APPS = (
