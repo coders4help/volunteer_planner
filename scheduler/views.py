@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, FormView
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.decorators import login_required, permission_required
+from django.utils.translation import ugettext_lazy as _
 
 from .models import Location, Need
 from notifications.models import Notification
@@ -33,17 +34,10 @@ class HomeView(TemplateView):
         return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):
-
-        if 'locations' not in kwargs:
-            kwargs['locations'] = Location.objects.all()
-
-        if 'notifications' not in kwargs:
-            kwargs['notifications'] = Notification.objects.all()
-
-        if 'statistics' not in kwargs:
-            kwargs['statistics'] = Location.objects.all()
-
-        return kwargs
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['locations'] = Location.objects.all()
+        context['notifications'] = Notification.objects.all()
+        return context
 
 
 class HelpDesk(LoginRequiredMixin, TemplateView):
@@ -94,14 +88,22 @@ class PlannerView(LoginRequiredMixin, FormView):
         return context
 
     def form_invalid(self, form):
-        messages.error(self.request, 'The submitted data was invalid.')
+        messages.warning(self.request, 'The submitted data was invalid.')
         return super(PlannerView, self).form_invalid(form)
 
     def form_valid(self, form):
         reg_profile = self.request.user.registrationprofile
         need = form.cleaned_data['need']
         if form.cleaned_data['action'] == RegisterForNeedForm.ADD:
-            reg_profile.needs.add(need)
+            conflicts = need.get_conflicting_needs(reg_profile.needs.all())
+            if conflicts:
+                msg = _("We can't add you to this shift because "
+                        "you've already agreed to other shifts at the same time: %s")
+                # Casting the list of conflicts to a string is lazy.
+                messages.warning(self.request, msg % conflicts)
+            else:
+                messages.success(self.request, _("You were successfully added to this shift."))
+                reg_profile.needs.add(need)
         elif form.cleaned_data['action'] == RegisterForNeedForm.REMOVE:
             reg_profile.needs.remove(need)
         reg_profile.save()

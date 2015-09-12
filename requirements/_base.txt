@@ -18,3 +18,4 @@ traitlets==4.0.0
 wsgiref==0.1.2
 xlwt==1.0.0
 python-memcached==1.57
+djangocms-admin-style==0.2.8
