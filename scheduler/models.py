@@ -71,7 +71,7 @@ class Location(models.Model):
     city = models.CharField(max_length=255, blank=True)
     postal_code = models.CharField(max_length=5, blank=True)
     longitude = models.CharField(max_length=30, blank=True)
-    altitude = models.CharField(max_length=30, blank=True)
+    latitude = models.CharField(max_length=30, blank=True)
     additional_info = models.TextField(max_length=300000, blank=True)
 
     def __unicode__(self):

@@ -8,6 +8,7 @@
     <link href="/static/bootstrap/dist/css/bootstrap.css?" rel="stylesheet" type="text/css">
     <meta name="google-site-verification" content="-BN1vuSIqe1vJNe8hS5_6iLvtpJrefGpMIAA1ogCoLQ" />
     <meta name="description" property="og:description" content="Volunteer-Planner.org ist ein kostenloses und werbungsfreies Tool, um Dienstpläne für Freiwillige in Flüchtlingsunterkünfte zu organisieren">
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -18,6 +19,11 @@
       ga('send', 'pageview');
 
     </script>
+
+    {% block javascript %}{% endblock %}
+    {% block meta %}{% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
 
     <link href='http://fonts.googleapis.com/css?family=Hind|Shadows+Into+Light' rel='stylesheet' type='text/css'>
 </head>
