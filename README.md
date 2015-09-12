@@ -13,7 +13,7 @@ https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
 If you are going to use a local mysql server, additionally install 
 
-    sudo apt-get libmysqlclient-dev mysql-client mysql-server
+    sudo apt-get install libmysqlclient-dev mysql-client mysql-server
 
 This will install MySQL server, Python libraries and Git. It will ask you to set a root password [ROOT_PASSWORD] for 
 the mysql server, if you haven't already set up MySQL in the past. Remember the password.
