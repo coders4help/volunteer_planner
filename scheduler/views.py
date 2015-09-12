@@ -105,13 +105,13 @@ class PlannerView(LoginRequiredMixin, TemplateView):
     template_name = "helpdesk_single.html"
 
     def get_context_data(self, **kwargs):
-        if 'needs' not in kwargs:
-            kwargs['needs'] = Need.objects.filter(location__pk=self.kwargs['pk'])\
+        context = super(PlannerView, self).get_context_data(**kwargs)
+        context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk'])\
                 .filter(time_period_to__date_time__year=self.kwargs['year'],
                         time_period_to__date_time__month=self.kwargs['month'],
                         time_period_to__date_time__day=self.kwargs['day'])\
                 .order_by('topic', 'time_period_to__date_time')
-        return kwargs
+        return context
 
 
 @login_required

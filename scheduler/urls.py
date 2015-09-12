@@ -1,5 +1,4 @@
-from django.conf.urls import include, url
-from django.views.generic import TemplateView
+from django.conf.urls import url
 from .views import HomeView, HelpDesk, PlannerView, ProfileView, register_for_need, de_register_for_need, volunteer_list
 
 urlpatterns = [
