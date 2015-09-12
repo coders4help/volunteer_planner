@@ -8,14 +8,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import os
-import sys
 
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
 SITE_ROOT = os.path.dirname(PROJECT_ROOT)
 SITE_ID = 1
-sys.path.append(PROJECT_ROOT)
 SITE_NAME = os.path.basename(PROJECT_ROOT)
 ROOT_URLCONF = '%s.urls' % SITE_NAME
 # END PROJECT DIRECTORY AND GENERAL SETTINGS
@@ -37,6 +35,7 @@ DJANGO_APPS = (
     # Admin panel and documentation:
     'django.contrib.admin',
     # 'django.contrib.admindocs',
+    'djangocms_admin_style',
 )
 
 LOCAL_APPS = (
