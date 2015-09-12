@@ -3,14 +3,12 @@ import datetime
 
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib import messages
-from django.http.response import HttpResponseRedirect, JsonResponse, Http404
+from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, FormView
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.auth.models import User
-from django.utils.translation import ugettext as _
 
 from .models import Location, Need
 from notifications.models import Notification
@@ -49,24 +47,18 @@ class HomeView(TemplateView):
 
 
 class HelpDesk(LoginRequiredMixin, TemplateView):
+    """
+    Location overview. First view that a volunteer gets redirected to when they log in.
+    """
     template_name = "helpdesk.html"
 
     def get_context_data(self, **kwargs):
-        if 'locations' not in kwargs:
-            kwargs['locations'] = Location.objects.all()
-
-        if 'need_dates_by_location' not in kwargs:
-            locations = Location.objects.all()
-            the_dates = []
-            for loc in locations:
-                dates = {loc: loc.get_dates_of_needs()}
-                the_dates.append(dates)
-            kwargs['need_dates_by_location'] = the_dates
-
-        if 'notifications' not in kwargs:
-            kwargs['notifications'] = Notification.objects.all()
-
-        return kwargs
+        context = super(HelpDesk, self).get_context_data(**kwargs)
+        locations = context['locations'] = Location.objects.all()
+        the_dates = [{loc: loc.get_dates_of_needs()} for loc in locations]
+        context['need_dates_by_location'] = the_dates
+        context['notifications'] = Notification.objects.all()
+        return context
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):
