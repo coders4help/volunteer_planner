@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-12 15:37+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: scheduler/views.py:99
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: volunteer_planner/registration/admin.py:23
+msgid "Activate users"
+msgstr ""
+
+#: volunteer_planner/registration/admin.py:43
+msgid "Re-send activation emails"
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:34
+msgid "Username"
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:35
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:37
+msgid "E-mail"
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:39
+msgid "Password"
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:41
+msgid "Password (again)"
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:51
+msgid "A user with that username already exists."
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:76
+msgid "I have read and agree to the Terms of Service"
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:77
+msgid "You must agree to the terms to register"
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:93
+msgid ""
+"This email address is already in use. Please supply a different email "
+"address."
+msgstr ""
+
+#: volunteer_planner/registration/forms.py:118
+msgid ""
+"Registration using free email addresses is prohibited. Please supply a "
+"different email address."
+msgstr ""
+
+#: volunteer_planner/registration/models.py:210
+msgid "user"
+msgstr ""
+
+#: volunteer_planner/registration/models.py:211
+msgid "activation key"
+msgstr ""
+
+#: volunteer_planner/registration/templates/activate.html:7
+#, python-format
+msgid ""
+"\n"
+"Thanks %(account)s, activation complete!\n"
+"You may now <a href='%(auth_login_url)s'>login</a> using the username and "
+"password you set at registration.\n"
+msgstr ""
+
+#: volunteer_planner/registration/templates/activate.html:12
+msgid ""
+"Oops &ndash; it seems that your activation key is invalid.  Please check the "
+"url again."
+msgstr ""
+
+#: volunteer_planner/registration/templates/login.html:15
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: volunteer_planner/settings/base.py:127
+msgid "German"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:128
+msgid "English"
+msgstr ""
+
+#: volunteer_planner/templates/registration/password_change_form.html:10
+msgid "Change password"
+msgstr ""
+
+#: volunteer_planner/templates/registration/password_reset_complete.html:4
+#, python-format
+msgid ""
+"\n"
+"Your password has been reset!  You may now <a href=\"%(login_url)s\">log in</"
+"a>.\n"
+msgstr ""
+
+#: volunteer_planner/templates/registration/password_reset_done.html:6
+msgid ""
+"We have sent you an email with a link to reset your password.\n"
+"Please check your email and click the link to continue."
+msgstr ""
+
+#: volunteer_planner/templates/registration/password_reset_email.html:3
+#, python-format
+msgid ""
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site.  If you do "
+"not\n"
+"wish to reset your password, please ignore this message.\n"
+"\n"
+"To reset your password, please click the following link, or copy and paste "
+"it\n"
+"into your web browser:"
+msgstr ""
+
+#: volunteer_planner/templates/registration/password_reset_email.html:12
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+"\n"
+"Best regards,\n"
+"%(site_name)s Management\n"
+msgstr ""
+
+#: volunteer_planner/templates/registration/password_reset_form.html:16
+msgid "Passwort zurücksetzen"
+msgstr ""

@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import os
 import sys
 
+from django.utils.translation import ugettext_lazy as _
+
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
@@ -120,6 +122,11 @@ LOGIN_URL = '/auth/login/'
 TIME_ZONE = 'Europe/Berlin'
 
 LANGUAGE_CODE = 'de-de'
+
+LANGUAGES = (
+    ('de', _('German')),
+    ('en', _('English')),
+)
 
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 
