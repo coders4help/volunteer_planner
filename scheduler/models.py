@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.utils.formats import localize
 import locale
 import datetime
 
@@ -72,7 +73,9 @@ class Need(models.Model):
         ]
 
     def __unicode__(self):
-        return self.topic.title + " " + self.location.name
+        return "{title} - {location} ({start} - {end})".format(
+            title=self.topic.title, location=self.location.name,
+            start=localize(self.start), end=localize(self.end))
 
 
 class Topics(models.Model):
