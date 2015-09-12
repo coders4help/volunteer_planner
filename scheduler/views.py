@@ -33,17 +33,10 @@ class HomeView(TemplateView):
         return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):
-
-        if 'locations' not in kwargs:
-            kwargs['locations'] = Location.objects.all()
-
-        if 'notifications' not in kwargs:
-            kwargs['notifications'] = Notification.objects.all()
-
-        if 'statistics' not in kwargs:
-            kwargs['statistics'] = Location.objects.all()
-
-        return kwargs
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['locations'] = Location.objects.all()
+        context['notifications'] = Notification.objects.all()
+        return context
 
 
 class HelpDesk(LoginRequiredMixin, TemplateView):
