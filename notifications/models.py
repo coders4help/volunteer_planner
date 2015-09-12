@@ -5,6 +5,9 @@ from django.template.defaultfilters import slugify
 
 
 class Notification(models.Model):
+    """
+    News updates/"Aufrufe" from locations. Displayed where relevant.
+    """
     creation_date = models.DateField(auto_now=True)
     title = models.CharField(max_length=255, verbose_name="Titel")
     subtitle = models.CharField(max_length=255, verbose_name="Untertitel", null=True, blank=True)
