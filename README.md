@@ -9,7 +9,7 @@ https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
 ### 1.Install all required Ubuntu packages
 
-    sudo apt-get install python-dev python-pip git
+    sudo apt-get install python-dev python-pip git npm
 
 If you are going to use a local mysql server, additionally install 
 
