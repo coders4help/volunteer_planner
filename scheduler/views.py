@@ -95,7 +95,7 @@ class PlannerView(LoginRequiredMixin, FormView):
         return context
 
     def form_invalid(self, form):
-        messages.error(self.request, 'The submitted data was invalid.')
+        messages.warning(self.request, 'The submitted data was invalid.')
         return super(PlannerView, self).form_invalid(form)
 
     def form_valid(self, form):
@@ -107,7 +107,7 @@ class PlannerView(LoginRequiredMixin, FormView):
                 msg = _("We can't add you to this shift because "
                         "you've already agreed to other shifts at the same time: %s")
                 # Casting the list of conflicts to a string is lazy.
-                messages.error(self.request, msg % conflicts)
+                messages.warning(self.request, msg % conflicts)
             else:
                 messages.success(self.request, _("You were successfully added to this shift."))
                 reg_profile.needs.add(need)

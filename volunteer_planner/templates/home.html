@@ -23,6 +23,7 @@
 </head>
 <body class="{% block body_class%} {% endblock %}">
 {% block navbar %}{% endblock %}
+{% include "partials/alert_messages.html" %}
 
 <div id="text-outer-container">
     <div id="content">
@@ -30,8 +31,6 @@
         <div class="col-md-1"></div>
 
         <div class="col-md-3 border-right" style="padding-left: 38px;">
-
-
 
             <div class="svg-frame">
                 <svg width="100%" height="120px">
