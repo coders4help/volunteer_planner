@@ -9,4 +9,4 @@
 - Simplify views, remove statistics app, move registration app.
 - Subscribe button is hidden when already subscribed to shift.
 - Add a basic i18n workflow and mark some strings.
-- Will do: Email notifications for deleted shifts.
+- Email notifications for deleted shifts.
