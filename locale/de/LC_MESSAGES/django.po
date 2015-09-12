@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-12 20:52+0200\n"
+"POT-Creation-Date: 2015-09-12 21:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,89 @@ msgstr "Untertitel"
 msgid "articletext"
 msgstr "Artikeltext"
 
+#: registration/admin.py:23
+msgid "Activate users"
+msgstr "Benutzer aktivieren"
+
+#: registration/admin.py:43
+msgid "Re-send activation emails"
+msgstr "Aktivierungsmail erneut versenden"
+
+#: registration/forms.py:34
+msgid "Username"
+msgstr "Benutzername"
+
+#: registration/forms.py:35
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+"Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ "
+"enthalten"
+
+#: registration/forms.py:37
+msgid "E-mail"
+msgstr "E-Mail Adresse"
+
+#: registration/forms.py:39
+msgid "Password"
+msgstr "Passwort"
+
+#: registration/forms.py:41
+msgid "Password (again)"
+msgstr "Passwort (noch einmal)"
+
+#: registration/forms.py:51
+msgid "A user with that username already exists."
+msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
+
+#: registration/forms.py:76
+msgid "I have read and agree to the Terms of Service"
+msgstr "Ich habe die Nutzungsbedingungen gelesen und stimme ihnen zu"
+
+#: registration/forms.py:77
+msgid "You must agree to the terms to register"
+msgstr "Sie müssen den Nutzungsbedingungen zustimmen"
+
+#: registration/forms.py:93
+msgid ""
+"This email address is already in use. Please supply a different email "
+"address."
+msgstr ""
+"Diese E-Mail Adresse ist bereits registriert. Bitte verwenden Sie eine "
+"andere E-Mail Adresse"
+
+#: registration/forms.py:118
+msgid ""
+"Registration using free email addresses is prohibited. Please supply a "
+"different email address."
+msgstr ""
+
+#: registration/models.py:210
+msgid "user"
+msgstr ""
+
+#: registration/models.py:211
+msgid "activation key"
+msgstr ""
+
+#: registration/templates/activate.html:7
+#, python-format
+msgid ""
+"\n"
+"Thanks %(account)s, activation complete!\n"
+"You may now <a href='%(auth_login_url)s'>login</a> using the username and "
+"password you set at registration.\n"
+msgstr ""
+
+#: registration/templates/activate.html:12
+msgid ""
+"Oops &ndash; it seems that your activation key is invalid.  Please check the "
+"url again."
+msgstr ""
+
+#: registration/templates/login.html:15
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
 #: scheduler/models.py:13
 msgid "shift"
 msgstr "Schicht"
@@ -38,7 +121,7 @@ msgstr "Schicht"
 msgid "shifts"
 msgstr "Schichten"
 
-#: scheduler/models.py:15 scheduler/models.py:35
+#: scheduler/models.py:15 scheduler/models.py:79
 msgid "helptype"
 msgstr "Hilfebereich"
 
@@ -48,47 +131,52 @@ msgstr ""
 "Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben "
 "soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
 
-#: scheduler/models.py:16 scheduler/models.py:70
+#: scheduler/models.py:16 scheduler/models.py:114
 msgid "location"
 msgstr "Ort"
 
 #: scheduler/models.py:17
-msgid "time_from"
+msgid "time from"
 msgstr "Anfangszeit"
 
-#: scheduler/models.py:19
-msgid "num_volunteers"
+#: scheduler/models.py:22
+msgid "number of needed volunteers"
 msgstr "Anz. benoetigter Freiwillige"
 
-#: scheduler/models.py:23
-#, fuzzy
-#| msgid "num_volunteers"
-msgid "assigned_volunteers"
+#: scheduler/models.py:26
+msgid "assigned volunteers"
 msgstr "Reg. Freiwillige"
 
-#: scheduler/models.py:27
-#, fuzzy
-#| msgid "num_volunteers"
+#: scheduler/models.py:30
 msgid "volunteers"
 msgstr "Freiwillige"
 
-#: scheduler/models.py:36
+#: scheduler/models.py:80
 msgid "helptypes"
 msgstr "Hilfebereiche"
 
-#: scheduler/models.py:50
+#: scheduler/models.py:94
 msgid "timeperiod"
 msgstr "Zeitspanne"
 
-#: scheduler/models.py:51
+#: scheduler/models.py:95
 msgid "timeperiods"
 msgstr "Zeitspannen"
 
-#: scheduler/models.py:71
-#, fuzzy
-#| msgid "location"
+#: scheduler/models.py:115
 msgid "locations"
-msgstr "Ort"
+msgstr "Orte"
+
+#: scheduler/views.py:100
+#, python-format
+msgid ""
+"We can't add you to this shift because you've already agreed to other shifts "
+"at the same time: %s"
+msgstr ""
+
+#: scheduler/views.py:105
+msgid "You were successfully added to this shift."
+msgstr ""
 
 #: shiftmailer/models.py:7
 msgid "given_name"
@@ -109,89 +197,6 @@ msgstr "Organisation"
 #: shiftmailer/models.py:11
 msgid "email"
 msgstr "E-Mail"
-
-#: volunteer_planner/registration/admin.py:23
-msgid "Activate users"
-msgstr "Benutzer aktivieren"
-
-#: volunteer_planner/registration/admin.py:43
-msgid "Re-send activation emails"
-msgstr "Aktivierungsmail erneut versenden"
-
-#: volunteer_planner/registration/forms.py:34
-msgid "Username"
-msgstr "Benutzername"
-
-#: volunteer_planner/registration/forms.py:35
-msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr ""
-"Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ "
-"enthalten"
-
-#: volunteer_planner/registration/forms.py:37
-msgid "E-mail"
-msgstr "E-Mail Adresse"
-
-#: volunteer_planner/registration/forms.py:39
-msgid "Password"
-msgstr "Passwort"
-
-#: volunteer_planner/registration/forms.py:41
-msgid "Password (again)"
-msgstr "Passwort (noch einmal)"
-
-#: volunteer_planner/registration/forms.py:51
-msgid "A user with that username already exists."
-msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
-
-#: volunteer_planner/registration/forms.py:76
-msgid "I have read and agree to the Terms of Service"
-msgstr "Ich habe die Nutzungsbedingungen gelesen und stimme ihnen zu"
-
-#: volunteer_planner/registration/forms.py:77
-msgid "You must agree to the terms to register"
-msgstr "Sie müssen den Nutzungsbedingungen zustimmen"
-
-#: volunteer_planner/registration/forms.py:93
-msgid ""
-"This email address is already in use. Please supply a different email "
-"address."
-msgstr ""
-"Diese E-Mail Adresse ist bereits registriert. Bitte verwenden Sie eine "
-"andere E-Mail Adresse"
-
-#: volunteer_planner/registration/forms.py:118
-msgid ""
-"Registration using free email addresses is prohibited. Please supply a "
-"different email address."
-msgstr ""
-
-#: volunteer_planner/registration/models.py:210
-msgid "user"
-msgstr ""
-
-#: volunteer_planner/registration/models.py:211
-msgid "activation key"
-msgstr ""
-
-#: volunteer_planner/registration/templates/activate.html:7
-#, python-format
-msgid ""
-"\n"
-"Thanks %(account)s, activation complete!\n"
-"You may now <a href='%(auth_login_url)s'>login</a> using the username and "
-"password you set at registration.\n"
-msgstr ""
-
-#: volunteer_planner/registration/templates/activate.html:12
-msgid ""
-"Oops &ndash; it seems that your activation key is invalid.  Please check the "
-"url again."
-msgstr ""
-
-#: volunteer_planner/registration/templates/login.html:15
-msgid "Your username and password didn't match. Please try again."
-msgstr ""
 
 #: volunteer_planner/settings/base.py:128
 msgid "German"

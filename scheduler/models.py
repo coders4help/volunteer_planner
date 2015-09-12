@@ -14,16 +14,16 @@ class Need(models.Model):
         verbose_name_plural = _("shifts")
     topic = models.ForeignKey("Topics", verbose_name=_("helptype"), help_text=_("helptype_text"))
     location = models.ForeignKey('Location', verbose_name=_("location"))
-    time_period_from = models.ForeignKey("TimePeriods", related_name="time_from", verbose_name=_("time_from"))
+    time_period_from = models.ForeignKey("TimePeriods", related_name="time_from", verbose_name=_("time from"))
     time_period_to = models.ForeignKey("TimePeriods", related_name="time_to")
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
-    slots = models.IntegerField(verbose_name="Anz. benoetigter Freiwillige")
+    slots = models.IntegerField(verbose_name=_("number of needed volunteers"))
 
     def get_volunteer_total(self):
         return self.registrationprofile_set.all().count()
-    get_volunteer_total.short_description = _("assigned_volunteers")
+    get_volunteer_total.short_description = _("assigned volunteers")
 
     def get_volunteers(self):
         return self.registrationprofile_set.all()
