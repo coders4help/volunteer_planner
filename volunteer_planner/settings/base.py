@@ -129,13 +129,9 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
-LOCALE_PATH = (
-    PROJECT_ROOT + '/locale'
+LOCALE_PATHS = (
+    SITE_ROOT + '/locale',
 )
-
-USE_L10N = True
-USE_I18N = True
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'de'
 
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 

@@ -47,8 +47,8 @@ class Topics(models.Model):
 
 class TimePeriods(models.Model):
     class Meta:
-        verbose_name = "Zeitspanne"
-        verbose_name_plural = "Zeitspannen"
+        verbose_name = _("timeperiod")
+        verbose_name_plural = _("timeperiods")
 
     date_time = models.DateTimeField()
 
@@ -67,8 +67,8 @@ class Location(models.Model):
     additional_info = models.TextField(max_length=300000, blank=True)
 
     class Meta:
-        verbose_name = "Ort"
-        verbose_name_plural = "Orte"
+        verbose_name = _("location")
+        verbose_name_plural = _("locations")
         permissions = (
             ("can_view", "User can view location"),
         )
