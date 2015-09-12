@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 import locale
-from django.contrib.auth.models import User
-from django.template.defaultfilters import date as _date
 import datetime
 
 
@@ -20,7 +18,6 @@ class Need(models.Model):
     time_period_from = models.ForeignKey("TimePeriods", related_name="time_from", verbose_name="Anfangszeit")
     time_period_to = models.ForeignKey("TimePeriods", related_name="time_to")
     slots = models.IntegerField(blank=True, verbose_name="Anz. benoetigter Freiwillige")
-    achivated = models.BooleanField(default=False)
 
     def get_volunteer_total(self):
         return self.registrationprofile_set.all().count()
