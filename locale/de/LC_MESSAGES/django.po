@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-12 15:37+0200\n"
+"POT-Creation-Date: 2015-09-12 18:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: scheduler/views.py:99
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
+#: scheduler/models.py:13
+msgid "shift"
+msgstr "Schicht"
+
+#: scheduler/models.py:14
+msgid "shifts"
+msgstr "Schichten"
+
+#: scheduler/models.py:15 scheduler/models.py:35
+msgid "helptype"
+msgstr "Hilfebereich"
+
+#: scheduler/models.py:15
+#, fuzzy
+#| msgid "helptype"
+msgid "helptype_text"
 msgstr ""
+"Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben "
+"soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
+
+#: scheduler/models.py:16
+msgid "location"
+msgstr "Ort"
+
+#: scheduler/models.py:17
+msgid "time_from"
+msgstr "Anfangszeit"
+
+#: scheduler/models.py:19
+msgid "num_volunteers"
+msgstr "Anz. benoetigter Freiwillige"
+
+#: scheduler/models.py:23
+#, fuzzy
+#| msgid "num_volunteers"
+msgid "assigned_volunteers"
+msgstr "Reg. Freiwillige"
+
+#: scheduler/models.py:27
+#, fuzzy
+#| msgid "num_volunteers"
+msgid "volunteers"
+msgstr "Freiwillige"
+
+#: scheduler/models.py:36
+#, fuzzy
+#| msgid "helptype"
+msgid "helptypes"
+msgstr "Hilfebereiche"
 
 #: volunteer_planner/registration/admin.py:23
 msgid "Activate users"
@@ -104,11 +149,11 @@ msgstr ""
 
 #: volunteer_planner/settings/base.py:127
 msgid "German"
-msgstr ""
+msgstr "Deutsch"
 
 #: volunteer_planner/settings/base.py:128
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
 #: volunteer_planner/templates/registration/password_change_form.html:10
 msgid "Change password"

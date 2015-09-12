@@ -55,6 +55,7 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,12 +122,20 @@ LOGIN_URL = '/auth/login/'
 
 TIME_ZONE = 'Europe/Berlin'
 
-LANGUAGE_CODE = 'de-de'
+LANGUAGE_CODE = 'de'
 
 LANGUAGES = (
     ('de', _('German')),
     ('en', _('English')),
 )
+
+LOCALE_PATH = (
+    PROJECT_ROOT + '/locale'
+)
+
+USE_L10N = True
+USE_I18N = True
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'de'
 
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 

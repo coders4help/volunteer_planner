@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 import locale
 import datetime
 
@@ -9,23 +10,21 @@ class Need(models.Model):
     This is the primary instance to create shifts
     """
     class Meta:
-        verbose_name = "Schicht"
-        verbose_name_plural = "Schichten"
-    topic = models.ForeignKey("Topics", verbose_name="Hilfetyp", help_text=u"Jeder Hilfetyp hat so viele Planelemente "
-                                                                           u"wie es Arbeitsschichten geben soll. Dies ist "
-                                                                           u"EINE Arbeitsschicht für einen bestimmten Tag")
-    location = models.ForeignKey('Location', verbose_name="Ort")
-    time_period_from = models.ForeignKey("TimePeriods", related_name="time_from", verbose_name="Anfangszeit")
+        verbose_name = _("shift")
+        verbose_name_plural = _("shifts")
+    topic = models.ForeignKey("Topics", verbose_name=_("helptype"), help_text=_("helptype_text"))
+    location = models.ForeignKey('Location', verbose_name=_("location"))
+    time_period_from = models.ForeignKey("TimePeriods", related_name="time_from", verbose_name=_("time_from"))
     time_period_to = models.ForeignKey("TimePeriods", related_name="time_to")
-    slots = models.IntegerField(blank=True, verbose_name="Anz. benoetigter Freiwillige")
+    slots = models.IntegerField(blank=True, verbose_name=_("num_volunteers"))
 
     def get_volunteer_total(self):
         return self.registrationprofile_set.all().count()
-    get_volunteer_total.short_description = "Reg. Freiwillige"
+    get_volunteer_total.short_description = _("assigned_volunteers")
 
     def get_volunteers(self):
         return self.registrationprofile_set.all()
-    get_volunteers.short_description = "Freiwillige"
+    get_volunteers.short_description = _("volunteers")
 
     def __unicode__(self):
         return self.topic.title + " " + self.location.name
@@ -33,8 +32,8 @@ class Need(models.Model):
 
 class Topics(models.Model):
     class Meta:
-        verbose_name = "Hilfebereich"
-        verbose_name_plural = "Hilfebereiche"
+        verbose_name = _("helptype")
+        verbose_name_plural = _("helptypes")
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
