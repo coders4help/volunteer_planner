@@ -88,10 +88,6 @@ If prompted, login with the username/password of the superuser you created earli
 
     http://localhost:8000/admin`
 
-### 10. Importing dummy data
-
-    ./manage.py loaddata demo_data.json  --settings=volunteer_planner.settings.local[_mysql]
-
 ## The Project
 
 We use less for precompiling css. The less file you will find in scheduler/static/bootstrap/less/project.less
