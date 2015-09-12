@@ -32,9 +32,11 @@
                 {% if need.slots > need.get_volunteer_total %}
                     <span style="color:red">Wird gebraucht</span>
                     <span aria-hidden="true" class="glyphicon glyphicon-exclamation-sign"></span>
-                    <button style="margin-left:10px;" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-info add-button" type="button">
-                        mitmachen! <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
-                    </button>
+                    {% if user.registrationprofile not in need.get_volunteers %}
+                        <button style="margin-left:10px;" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-info add-button" type="button">
+                            mitmachen! <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    {% endif %}
                 {% else %}
                     <span style="color:green">ist abgedeckt</span>
                 {% endif %}
