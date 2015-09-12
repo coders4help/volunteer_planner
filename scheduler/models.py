@@ -30,6 +30,47 @@ class Need(models.Model):
         return self.registrationprofile_set.all()
     get_volunteers.short_description = "Freiwillige"
 
+    # Two properties to make accessing the timestamps slightly saner.
+    # TODO: Just remove the ForeignKey relationship and replace with datetime fields, and give
+    #       it the fields the names of the properties. But don't mess up the necessary
+    #       data migration. ;)
+    @property
+    def start(self):
+        return self.time_period_from.date_time
+
+    @property
+    def end(self):
+        return self.time_period_to.date_time
+
+    def get_conflicting_needs(self, needs, grace=datetime.timedelta(hours=1)):
+        """
+        Given a list of other needs, this function returns needs that overlap by time.
+        A grace period of overlap is allowed:
+
+               Event A: 10 till 14
+               Event B: 13 till 15
+
+        would not conflict if a grace period of 1 hour or more is allowed, but would conflict if
+        the grace period is less.
+
+        This is not the most efficient implementation, but one of the more obvious. Optimize
+        only if needed. Nicked from:
+        http://stackoverflow.com/questions/3721249/python-date-interval-intersection
+
+        :param needs: A Django queryset of Need instances.
+        """
+        latest_start_time = self.start + grace
+        earliest_end_time = self.end - grace
+        if earliest_end_time <= latest_start_time:
+            # Event is shorter than 2 * grace time, can't have overlaps.
+            return []
+
+        return [
+            need for need in needs
+            if (need.start < latest_start_time < need.end) or
+               (latest_start_time < need.start < earliest_end_time)
+        ]
+
     def __unicode__(self):
         return self.topic.title + " " + self.location.name
 
