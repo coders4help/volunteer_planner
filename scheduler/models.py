@@ -62,17 +62,20 @@ class TimePeriods(models.Model):
 
 class Location(models.Model):
 
-    class Meta:
-        verbose_name = "Ort"
-        verbose_name_plural = "Orte"
-
     name = models.CharField(max_length=255, blank=True)
     street = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255, blank=True)
     postal_code = models.CharField(max_length=5, blank=True)
+    latitude = models.CharField(max_length=30, blank=True)
     longitude = models.CharField(max_length=30, blank=True)
-    altitude = models.CharField(max_length=30, blank=True)
     additional_info = models.TextField(max_length=300000, blank=True)
+
+    class Meta:
+        verbose_name = "Ort"
+        verbose_name_plural = "Orte"
+        permissions = (
+            ("can_view", "User can view location"),
+        )
 
     def __unicode__(self):
         return self.name
@@ -86,8 +89,3 @@ class Location(models.Model):
             if date_name not in needs_dates:
                 needs_dates.append(i.time_period_from.date_time.strftime("%A, %d.%m.%Y"))
         return needs_dates
-
-    class Meta:
-        permissions = (
-            ("can_view", "User can view location"),
-        )
