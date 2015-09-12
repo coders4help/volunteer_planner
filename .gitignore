@@ -7,3 +7,4 @@ settings/production.py
 fabfile.py
 manlocal.py
 db.sqlite3
+.DS_Store

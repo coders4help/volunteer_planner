@@ -1,0 +1,12 @@
+12. September 2015
+------------------
+- Add pretty admin theme
+- Prevent volunteers from subscribing to shifts if their time is conflicting with already
+  subscribed-to shifts.
+- Add py.test, factory-boy and basic factories.
+- Add Travis CI integration for pull requests.
+- Add django-extensions for dev, for ./manage.py shell_plus and graphing models.
+- Simplify views, remove statistics app, move registration app.
+- Subscribe button is hidden when already subscribed to shift.
+- Add a basic i18n workflow and mark some strings.
+- Email notifications for deleted shifts.

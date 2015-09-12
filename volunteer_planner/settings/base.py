@@ -8,14 +8,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import os
-import sys
+
+from django.utils.translation import ugettext_lazy as _
 
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
 SITE_ROOT = os.path.dirname(PROJECT_ROOT)
 SITE_ID = 1
-sys.path.append(PROJECT_ROOT)
 SITE_NAME = os.path.basename(PROJECT_ROOT)
 ROOT_URLCONF = '%s.urls' % SITE_NAME
 # END PROJECT DIRECTORY AND GENERAL SETTINGS
@@ -34,25 +34,28 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    # A prettier theme
+    'djangocms_admin_style',
     # Admin panel and documentation:
     'django.contrib.admin',
     # 'django.contrib.admindocs',
 )
 
 LOCAL_APPS = (
+    'common',
     'registration',
     'scheduler',
     'blueprint',
     'notifications',
     'ckeditor',
     'shiftmailer',
-    'statistics'
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -119,7 +122,16 @@ LOGIN_URL = '/auth/login/'
 
 TIME_ZONE = 'Europe/Berlin'
 
-LANGUAGE_CODE = 'de-de'
+LANGUAGE_CODE = 'de'
+
+LANGUAGES = (
+    ('de', _('German')),
+    ('en', _('English')),
+)
+
+LOCALE_PATHS = (
+    SITE_ROOT + '/locale',
+)
 
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 

@@ -1,14 +1,18 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 from django.template.defaultfilters import slugify
 
 
 class Notification(models.Model):
+    """
+    News updates/"Aufrufe" from locations. Displayed where relevant.
+    """
     creation_date = models.DateField(auto_now=True)
-    title = models.CharField(max_length=255, verbose_name="Titel")
-    subtitle = models.CharField(max_length=255, verbose_name="Untertitel", null=True, blank=True)
-    text = models.TextField(max_length=20055, verbose_name="Artikeltext")
+    title = models.CharField(max_length=255, verbose_name=_("title"))
+    subtitle = models.CharField(max_length=255, verbose_name=_("subtitle"), null=True, blank=True)
+    text = models.TextField(max_length=20055, verbose_name=_("articletext"))
     slug = models.SlugField(auto_created=True, max_length=255)
     location = models.ForeignKey('scheduler.Location')
 

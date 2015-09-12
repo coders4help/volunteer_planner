@@ -13,6 +13,7 @@ DATABASES = {
 
 INSTALLED_APPS += (
     'debug_toolbar',
+    'django_extensions'
 )
 
 # CACHE CONFIGURATION
@@ -30,7 +31,7 @@ MIDDLEWARE_CLASSES += (
 )
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = os.environ.get('EMAIL_ADDRESS', None)
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
 
