@@ -2,20 +2,20 @@ import json
 import datetime
 
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.db.models.aggregates import Sum
-from django.http.response import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
+from django.contrib import messages
+from django.http.response import HttpResponseRedirect, JsonResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
-from django.db.models import F
 
-from .models import Location, Need, Topics
+from .models import Location, Need
 from notifications.models import Notification
 from registration.models import RegistrationProfile
+from .forms import RegisterForNeedForm
 
 
 class LoginRequiredMixin(object):
@@ -101,8 +101,14 @@ class ProfileView(UpdateView):
         return obj
 
 
-class PlannerView(LoginRequiredMixin, TemplateView):
+class PlannerView(LoginRequiredMixin, FormView):
+    """
+    View that gets shown to volunteers when they browse a specific day.
+    It'll show all the available needs, and they can add and remove
+    themselves from needs.
+    """
     template_name = "helpdesk_single.html"
+    form_class = RegisterForNeedForm
 
     def get_context_data(self, **kwargs):
         context = super(PlannerView, self).get_context_data(**kwargs)
@@ -113,37 +119,25 @@ class PlannerView(LoginRequiredMixin, TemplateView):
                 .order_by('topic', 'time_period_to__date_time')
         return context
 
+    def form_invalid(self, form):
+        messages.error(self.request, 'The submitted data was invalid.')
+        return super(PlannerView, self).form_invalid(form)
 
-@login_required
-def register_for_need(request):
-    """
-    AJAX view that signs up a volunteer for a need/"Schicht".
-    """
-    if request.method == "POST" and request.is_ajax:
-        need_id = int(request.POST['id_need'])
-        reg_profile = RegistrationProfile.objects.get(user=request.user)
-        need = Need.objects.get(id=need_id)
-        reg_profile.needs.add(need)
+    def form_valid(self, form):
+        reg_profile = self.request.user.registrationprofile
+        need = form.cleaned_data['need']
+        if form.cleaned_data['action'] == RegisterForNeedForm.ADD:
+            reg_profile.needs.add(need)
+        elif form.cleaned_data['action'] == RegisterForNeedForm.REMOVE:
+            reg_profile.needs.remove(need)
         reg_profile.save()
-        return HttpResponse(json.dumps({"data": "ok"}), content_type="application/json")
-    else:
-        pass
+        return super(PlannerView, self).form_valid(form)
 
-
-@login_required
-def de_register_for_need(request):
-    """
-    AJAX view that removes a volunteer from a need/"Schicht".
-    """
-    if request.method == "POST" and request.is_ajax:
-        need_id = int(request.POST['id_need'])
-        reg_profile = RegistrationProfile.objects.get(user=request.user)
-        need = Need.objects.get(id=need_id)
-        reg_profile.needs.remove(need)
-        reg_profile.save()
-        return HttpResponse(json.dumps({"data": "ok"}), content_type="application/json")
-    else:
-        pass
+    def get_success_url(self):
+        """
+        Redirect to the same page.
+        """
+        return reverse('planner_by_location', kwargs=self.kwargs)
 
 
 @login_required(login_url='/auth/login/')
