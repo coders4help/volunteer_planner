@@ -116,9 +116,12 @@ class PlannerView(LoginRequiredMixin, TemplateView):
 
 @login_required
 def register_for_need(request):
+    """
+    AJAX view that signs up a volunteer for a need/"Schicht".
+    """
     if request.method == "POST" and request.is_ajax:
         need_id = int(request.POST['id_need'])
-        reg_profile = RegistrationProfile.objects.get(user=request.user.pk)
+        reg_profile = RegistrationProfile.objects.get(user=request.user)
         need = Need.objects.get(id=need_id)
         reg_profile.needs.add(need)
         reg_profile.save()
@@ -129,9 +132,12 @@ def register_for_need(request):
 
 @login_required
 def de_register_for_need(request):
+    """
+    AJAX view that removes a volunteer from a need/"Schicht".
+    """
     if request.method == "POST" and request.is_ajax:
         need_id = int(request.POST['id_need'])
-        reg_profile = RegistrationProfile.objects.get(user=request.user.pk)
+        reg_profile = RegistrationProfile.objects.get(user=request.user)
         need = Need.objects.get(id=need_id)
         reg_profile.needs.remove(need)
         reg_profile.save()
