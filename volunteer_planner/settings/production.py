@@ -17,7 +17,7 @@ TEMPLATE_LOADERS = (
 PREPEND_WWW = os.environ.get('BETA', True)
 
 ADMINS = (
-    ('Dorian Cantzen', 'cantzen@googlemail.com'),
+    ('VP Admin', 'vp-admin@volunteer-planner.org'),
 )
 
 DATABASES = {
