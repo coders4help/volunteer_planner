@@ -8,6 +8,8 @@
 
 {% block content %}
     <div class="col-md-12" style="margin-top:50px;">
+        {% include "partials/alert_messages.html" %}
+
         <h2>
             Dienstpläne für "{{ needs.0.location.name }}"
             am {{ needs.0.time_period_to.date_time|date:"d. M. Y" }}
