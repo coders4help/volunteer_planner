@@ -23,11 +23,12 @@
 </head>
 <body class="{% block body_class%} {% endblock %}">
 {% block navbar %}{% endblock %}
-{% include "partials/alert_messages.html" %}
+
 
 <div id="text-outer-container">
     <div id="content">
     {% block content %}
+        {% include "partials/alert_messages.html" %}
         <div class="col-md-1"></div>
 
         <div class="col-md-3 border-right" style="padding-left: 38px;">
