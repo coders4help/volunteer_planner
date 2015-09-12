@@ -17,7 +17,10 @@ class Need(models.Model):
     location = models.ForeignKey('Location', verbose_name="Ort")
     time_period_from = models.ForeignKey("TimePeriods", related_name="time_from", verbose_name="Anfangszeit")
     time_period_to = models.ForeignKey("TimePeriods", related_name="time_to")
-    slots = models.IntegerField(blank=True, verbose_name="Anz. benoetigter Freiwillige")
+
+    # Currently required. If you want to allow not setting this, make sure to update
+    # associated logic where slots is used.
+    slots = models.IntegerField(verbose_name="Anz. benoetigter Freiwillige")
 
     def get_volunteer_total(self):
         return self.registrationprofile_set.all().count()
