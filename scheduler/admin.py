@@ -9,7 +9,7 @@ class NeedAdmin(admin.ModelAdmin):
         'id', 'topic', 'time_period_from', 'time_period_to', 'slots', 'get_volunteer_total', 'get_volunteers'
     )
 
-    search_fields = ('topic',)
+    search_fields = ('id', 'topic__title',)
     list_filter = ('location',)
 
 
