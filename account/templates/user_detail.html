@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-8 col-md-offset-2">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">{% trans 'Username' %}: {{ user.username }}</li>
+            <li class="list-group-item list-group-item-info">{% trans 'First name' %}: {{ user.first_name }}</li>
+            <li class="list-group-item list-group-item-info">{% trans 'Last name' %}: {{ user.last_name }}</li>
+            <li class="list-group-item list-group-item-info">{% trans 'Email' %}: {{ user.email }}</li>
+        </ul>
+        <div><a href="{% url 'account_edit' %}" class="btn btn-default">{% trans 'Edit Account' %}</a></div>
+    </div>
+{% endblock %}

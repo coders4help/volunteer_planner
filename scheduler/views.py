@@ -1,14 +1,17 @@
+# coding: utf-8
+
 import json
 import datetime
 
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
-from django.utils.decorators import method_decorator
+
 from django.views.generic import TemplateView, FormView
-from django.views.generic.edit import UpdateView
+
 from django.contrib.auth.decorators import login_required, permission_required
+
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Location, Need
@@ -16,13 +19,7 @@ from notifications.models import Notification
 from registration.models import RegistrationProfile
 from stats.models import ValueStore
 from .forms import RegisterForNeedForm
-
-
-class LoginRequiredMixin(object):
-
-    @method_decorator(login_required())
-    def dispatch(self, *args, **kwargs):
-        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+from volunteer_planner.utils import LoginRequiredMixin
 
 
 class HomeView(TemplateView):
@@ -60,20 +57,6 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         return context
 
 
-class ProfileView(LoginRequiredMixin, UpdateView):
-    """
-    Allows a user to update their profile.
-
-    Maik isn't sure if this is linked to from anywhere. The template looks nasty.
-    """
-    fields = ['first_name', 'last_name', 'email']
-    template_name = "profile_edit.html"
-    success_url = reverse_lazy('helpdesk')
-
-    def get_object(self, queryset=None):
-        return self.request.user
-
-
 class PlannerView(LoginRequiredMixin, FormView):
     """
     View that gets shown to volunteers when they browse a specific day.
@@ -85,15 +68,15 @@ class PlannerView(LoginRequiredMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super(PlannerView, self).get_context_data(**kwargs)
-        context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk'])\
-                .filter(time_period_to__date_time__year=self.kwargs['year'],
-                        time_period_to__date_time__month=self.kwargs['month'],
-                        time_period_to__date_time__day=self.kwargs['day'])\
-                .order_by('topic', 'time_period_to__date_time')
+        context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']) \
+            .filter(time_period_to__date_time__year=self.kwargs['year'],
+                    time_period_to__date_time__month=self.kwargs['month'],
+                    time_period_to__date_time__day=self.kwargs['day']) \
+            .order_by('topic', 'time_period_to__date_time')
         return context
 
     def form_invalid(self, form):
-        messages.warning(self.request, 'The submitted data was invalid.')
+        messages.warning(self.request, _(u'The submitted data was invalid.'))
         return super(PlannerView, self).form_invalid(form)
 
     def form_valid(self, form):
@@ -102,12 +85,12 @@ class PlannerView(LoginRequiredMixin, FormView):
         if form.cleaned_data['action'] == RegisterForNeedForm.ADD:
             conflicts = need.get_conflicting_needs(reg_profile.needs.all())
             if conflicts:
-                msg = _("We can't add you to this shift because "
-                        "you've already agreed to other shifts at the same time: %s")
-                # Casting the list of conflicts to a string is lazy.
-                messages.warning(self.request, msg % conflicts)
+                conflicts_string = u", ".join(u'{}'.format(conflict) for conflict in conflicts)
+                messages.warning(self.request,
+                                 _(u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time: {conflicts}'.format(conflicts=
+                                     conflicts_string)))
             else:
-                messages.success(self.request, _("You were successfully added to this shift."))
+                messages.success(self.request, _(u'You were successfully added to this shift.'))
                 reg_profile.needs.add(need)
         elif form.cleaned_data['action'] == RegisterForNeedForm.REMOVE:
             reg_profile.needs.remove(need)

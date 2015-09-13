@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+{% block content %}
+    <div class="col-md-8 col-md-offset-2 update_form">
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="button" type="submit" value="{% trans 'Save' %}">
+        </form>
+    </div>
+{% endblock %}
