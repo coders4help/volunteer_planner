@@ -22,7 +22,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">eingeloggt als {{ user.username }}  <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'auth_logout' %}">logout <span aria-hidden="true" class="glyphicon glyphicon-off"></span></a></li>
+            <li><a href="{% url 'account_detail' %}">Account <span aria-hidden="true"></span></a></li>
+            <li><a href="{% url 'auth_logout' %}">Logout <span aria-hidden="true" class="glyphicon glyphicon-off"></span></a></li>
           </ul>
         </li>
       </ul>

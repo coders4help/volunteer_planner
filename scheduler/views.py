@@ -3,14 +3,12 @@
 import json
 import datetime
 
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
-from django.utils.decorators import method_decorator
 from django.db.models import Count
 from django.views.generic import TemplateView, FormView
-from django.views.generic.edit import UpdateView
 
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -19,13 +17,9 @@ from django.utils.translation import ugettext_lazy as _
 from scheduler.models import Location, Need
 from notifications.models import Notification
 from registration.models import RegistrationProfile
-from scheduler.forms import RegisterForNeedForm
-
-
-class LoginRequiredMixin(object):
-    @method_decorator(login_required())
-    def dispatch(self, *args, **kwargs):
-        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+from stats.models import ValueStore
+from .forms import RegisterForNeedForm
+from volunteer_planner.utils import LoginRequiredMixin
 
 
 class HomeView(TemplateView):
@@ -41,6 +35,10 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['locations'] = Location.objects.all()
         context['notifications'] = Notification.objects.all()
+        try:
+            context['working_hours'] = ValueStore.objects.get(name="total-volunteer-hours")
+        except ValueStore.DoesNotExist:
+            context['working_hours'] = ""
         return context
 
 
@@ -57,20 +55,6 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         context['need_dates_by_location'] = the_dates
         context['notifications'] = Notification.objects.all()
         return context
-
-
-class ProfileView(LoginRequiredMixin, UpdateView):
-    """
-    Allows a user to update their profile.
-
-    Maik isn't sure if this is linked to from anywhere. The template looks nasty.
-    """
-    fields = ['first_name', 'last_name', 'email']
-    template_name = "profile_edit.html"
-    success_url = reverse_lazy('helpdesk')
-
-    def get_object(self, queryset=None):
-        return self.request.user
 
 
 class PlannerView(LoginRequiredMixin, FormView):
