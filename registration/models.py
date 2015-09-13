@@ -1,9 +1,12 @@
+# coding: utf-8
+
 import datetime
 from exceptions import Exception
 import hashlib
 import random
 import re
 import traceback
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
@@ -14,6 +17,7 @@ from django.utils.safestring import SafeString
 
 try:
     from django.contrib.auth import get_user_model
+
     User = get_user_model()
 except Exception as e:
     traceback.format_exc()
@@ -25,7 +29,6 @@ try:
 except Exception as e:
     traceback.format_exc()
     print e
-
 
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
@@ -39,6 +42,7 @@ class RegistrationManager(models.Manager):
     keys), and for cleaning out expired inactive accounts.
 
     """
+
     def activate_user(self, activation_key):
         """
         Validate an activation key and activate the corresponding
@@ -96,6 +100,7 @@ class RegistrationManager(models.Manager):
             registration_profile.send_activation_email(site)
 
         return new_user
+
     # create_inactive_user = transaction.commit(create_inactive_user)
 
     def create_profile(self, user):
@@ -112,7 +117,7 @@ class RegistrationManager(models.Manager):
         username = user.username
         if isinstance(username, unicode):
             username = username.encode('utf-8')
-        activation_key = hashlib.sha1(salt+username).hexdigest()
+        activation_key = hashlib.sha1(salt + username).hexdigest()
         return self.create(user=user,
                            activation_key=activation_key)
 
@@ -171,6 +176,7 @@ class RegistrationManager(models.Manager):
                                 user.delete()
                                 profile.delete()
                             else:
+                                # FIXME: remove
                                 print('Would delete ' + profile.user.username +
                                       ', activation key ' + profile.activation_key)
                             users += 1
@@ -187,9 +193,12 @@ class RegistrationManager(models.Manager):
 
 
 class RegistrationProfile(models.Model):
+
+    # FIXME: i18n
     class Meta:
         verbose_name = "Freiwillige"
         verbose_name_plural = "Freiwillige"
+
     """
     A simple profile which stores an activation key for use during
     user account registration.
@@ -216,7 +225,7 @@ class RegistrationProfile(models.Model):
     objects = RegistrationManager()
 
     def __unicode__(self):
-        return u"Username:%s Email:%s " % (self.user, self.user.email)
+        return u"Username: {} Email: {}".format(self.user, self.user.email)
 
     def get_user_email(self):
         return self.user.email
@@ -245,7 +254,8 @@ class RegistrationProfile(models.Model):
         """
         expiration_date = datetime.timedelta(days=settings.ACCOUNT_ACTIVATION_DAYS)
         return self.activation_key == self.ACTIVATED or \
-            (self.user.date_joined + expiration_date <= datetime_now())
+               (self.user.date_joined + expiration_date <= datetime_now())
+
     activation_key_expired.boolean = True
 
     def send_activation_email(self, site):

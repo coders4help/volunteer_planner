@@ -1,8 +1,8 @@
+# coding: utf-8
+
 from django.db import models
-from django.core.exceptions import ValidationError
 
 
-# Create your models here.
 class BluePrintCreator(models.Model):
     class Meta:
         verbose_name = "Vorlage"
@@ -13,7 +13,7 @@ class BluePrintCreator(models.Model):
     needs = models.ManyToManyField('NeedBluePrint', verbose_name="Schichten")
 
     def __unicode__(self):
-        return self.title
+        return u'{}'.format(self.title)
 
 
 class NeedBluePrint(models.Model):
@@ -31,7 +31,8 @@ class NeedBluePrint(models.Model):
 
     def __unicode__(self):
         try:
-            location_name = self.blueprintcreator_set.all().get().location.name
+            location_name = u' ({})'.format(self.blueprintcreator_set.all().get().location.name)
         except:
-            location_name = ""
-        return self.topic.title + " von " + self.from_time + " bis " + self.to_time + " " + location_name
+            location_name = u''
+
+        return u'{} von {} bis {}{}'.format(self.topic.title, self.from_time, self.to_time, location_name)
