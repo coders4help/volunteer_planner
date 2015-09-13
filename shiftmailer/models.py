@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,4 +13,4 @@ class Mailer(models.Model):
     email = models.EmailField(verbose_name=_("email"))
 
     def __unicode__(self):
-        return self.organization + "(" + self.location.name + ")"
+        return u'{} ({})'.format(self.organization, self.location.name)

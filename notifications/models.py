@@ -1,7 +1,7 @@
+# coding: utf-8
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
-# Create your models here.
 from django.template.defaultfilters import slugify
 
 
@@ -24,4 +24,4 @@ class Notification(models.Model):
         super(Notification, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.title
+        return u'{}'.format(self.title)

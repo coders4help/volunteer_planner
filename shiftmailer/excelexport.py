@@ -1,9 +1,9 @@
-from django.core.mail.message import EmailMessage
-from xlwt import *
-from datetime import datetime, date
+# coding: utf-8
+
 import time
 
-import StringIO
+from django.core.mail.message import EmailMessage
+from xlwt import *
 
 
 class GenerateExcelSheet:
@@ -24,8 +24,8 @@ class GenerateExcelSheet:
                     "Anz",
                     "Freiwillige",
                     ]
-        ws.write(0, 2, "Listenuebersicht der Freiwilligen in der Unterkunft "+self.needs[0].location.name, style_bold)
-        ws.write(1, 2, "Erstellt fuer "+self.mailer.organization)
+        ws.write(0, 2, "Listenuebersicht der Freiwilligen in der Unterkunft " + self.needs[0].location.name, style_bold)
+        ws.write(1, 2, "Erstellt fuer " + self.mailer.organization)
         ws.write(2, 2, "Jedwede Weitergabe der Daten an Dritte ist verboten!")
 
         for colindex, columname in enumerate(colnames):
@@ -41,7 +41,7 @@ class GenerateExcelSheet:
             for volunteers in row_data.get_volunteers():
                 volunteers_string += volunteers.user.email + ", "
             ws.write(row_idx, 4, volunteers_string)
-        filename = "Dienstplan"+str(time.time())+".xls"
+        filename = "Dienstplan" + str(time.time()) + ".xls"
         wb.save(filename)
         return filename
 
@@ -55,6 +55,4 @@ class GenerateExcelSheet:
         mail.to = [str(self.mailer.email)]
         attachment = self.generate_excel()
         mail.attach_file(path=attachment, mimetype='application/octet-stream')
-        # import ipdb
-        # ipdb.set_trace()
         mail.send()
