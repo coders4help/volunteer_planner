@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
+
+import datetime
+import locale
+
 from django.db import models
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
-import locale
-import datetime
 
 
 class Need(models.Model):
@@ -72,7 +74,7 @@ class Need(models.Model):
         ]
 
     def __unicode__(self):
-        return "{title} - {location} ({start} - {end})".format(
+        return u"{title} - {location} ({start} - {end})".format(
             title=self.topic.title, location=self.location.name,
             start=localize(self.start), end=localize(self.end))
 
@@ -100,7 +102,7 @@ class TimePeriods(models.Model):
     date_time = models.DateTimeField()
 
     def __unicode__(self):
-        return str(self.date_time)
+        return u'{}'.format(self.date_time)
 
 
 class Location(models.Model):
@@ -121,7 +123,7 @@ class Location(models.Model):
         )
 
     def __unicode__(self):
-        return self.name
+        return u'{}'.format(self.name)
 
     def get_dates_of_needs(self):
         needs_dates = []
