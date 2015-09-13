@@ -3,20 +3,23 @@
 import time
 
 from django.core.mail.message import EmailMessage
-from xlwt import *
+import xlwt
+from django.db.models import Count
 
 
 class GenerateExcelSheet:
     def __init__(self, needs, mailer):
-        self.needs = needs
+        self.needs = needs.annotate(volunteer_count=Count('registrationprofile')) \
+                          .select_related('topic', 'location', 'time_period_from', 'time_period_to') \
+                          .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
         self.mailer = mailer
         self.send_file()
 
     def generate_excel(self):
 
-        wb = Workbook()
+        wb = xlwt.Workbook()
         ws = wb.add_sheet('Registrierungen')
-        style_bold = easyxf('font: bold 1')
+        style_bold = xlwt.easyxf('font: bold 1')
 
         colnames = ["Zeit von",
                     "Zeit bis",
@@ -31,14 +34,14 @@ class GenerateExcelSheet:
         for colindex, columname in enumerate(colnames):
             ws.write(3, colindex, columname, style_bold)
 
-        for row_idx, row_data in enumerate(self.needs, start=4):
+        for row_idx, need in enumerate(self.needs, start=4):
 
-            ws.write(row_idx, 0, row_data.time_period_from.date_time.strftime("%d.%m.%Y %H:%M:00"))
-            ws.write(row_idx, 1, row_data.time_period_to.date_time.strftime("%d.%m.%Y %H:%M:00"))
-            ws.write(row_idx, 2, row_data.topic.title)
-            ws.write(row_idx, 3, row_data.get_volunteer_total())
+            ws.write(row_idx, 0, need.time_period_from.date_time.strftime("%d.%m.%Y %H:%M:00"))
+            ws.write(row_idx, 1, need.time_period_to.date_time.strftime("%d.%m.%Y %H:%M:00"))
+            ws.write(row_idx, 2, need.topic.title)
+            ws.write(row_idx, 3, need.volunteer_count)
             volunteers_string = ""
-            for volunteers in row_data.get_volunteers():
+            for volunteers in need.registrationprofile_set.all():
                 volunteers_string += volunteers.user.email + ", "
             ws.write(row_idx, 4, volunteers_string)
         filename = "Dienstplan" + str(time.time()) + ".xls"
