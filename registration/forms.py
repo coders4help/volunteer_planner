@@ -56,7 +56,7 @@ class RegistrationForm(forms.Form):
         existing = User.objects.filter(email__iexact=self.cleaned_data['email'])
         if existing.exists():
             raise forms.ValidationError(_("A user with that email already exists. Please login instead."))
-        return self.clened_data['email']
+        return self.cleaned_data['email']
 
     def clean(self):
         """
