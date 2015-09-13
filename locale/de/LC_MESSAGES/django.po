@@ -44,9 +44,7 @@ msgstr "Benutzername"
 
 #: registration/forms.py:35
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr ""
-"Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ "
-"enthalten"
+msgstr "Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ enthalten"
 
 #: registration/forms.py:37
 msgid "E-mail"
@@ -93,102 +91,97 @@ msgstr ""
 
 #: registration/models.py:219
 msgid "user"
-msgstr ""
+msgstr "Benutzer"
 
 #: registration/models.py:220
 msgid "activation key"
-msgstr ""
+msgstr "Aktivierungsschlüssel"
 
 #: registration/templates/activate.html:7
 #, python-format
 msgid ""
 "\n"
 "Thanks %(account)s, activation complete!\n"
-"You may now <a href='%(auth_login_url)s'>login</a> using the username and "
-"password you set at registration.\n"
+"You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration.\n"
 msgstr ""
 
 #: registration/templates/activate.html:12
-msgid ""
-"Oops &ndash; it seems that your activation key is invalid.  Please check the "
-"url again."
+msgid "Oops &ndash; it seems that your activation key is invalid. Please check the url again."
 msgstr ""
 
 #: registration/templates/login.html:15
 msgid "Your username and password didn't match. Please try again."
-msgstr ""
-"Dein Benutzername oder Passwort war nicht gültig. Bitte versuche es erneut."
+msgstr "Benutzername und Passort ungültig. Bitte versuchen Sie es erneut."
 
 #: scheduler/apps.py:7
 msgid "Scheduler"
-msgstr "Zeitplaner"
+msgstr "Schichtplaner"
 
-#: scheduler/models.py:16
+#: scheduler/models.py:17
 msgid "shift"
 msgstr "Schicht"
 
-#: scheduler/models.py:17
+#: scheduler/models.py:18
 msgid "shifts"
 msgstr "Schichten"
 
-#: scheduler/models.py:18 scheduler/models.py:84
+#: scheduler/models.py:20 scheduler/models.py:90
 msgid "helptype"
 msgstr "Hilfebereich"
 
-#: scheduler/models.py:18
+#: scheduler/models.py:20
 msgid "helptype_text"
-msgstr ""
-"Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben "
-"soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
+msgstr "Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
 
-#: scheduler/models.py:19 scheduler/models.py:119
+#: scheduler/models.py:21 scheduler/models.py:125
 msgid "location"
 msgstr "Ort"
 
-#: scheduler/models.py:20
+#: scheduler/models.py:24
 msgid "time from"
 msgstr "Anfangszeit"
 
-#: scheduler/models.py:25
-msgid "number of needed volunteers"
-msgstr "Anz. benoetigter Freiwillige"
-
 #: scheduler/models.py:29
+msgid "number of needed volunteers"
+msgstr "Anz. benötigter Freiwillige"
+
+#: scheduler/models.py:34
 msgid "assigned volunteers"
 msgstr "Reg. Freiwillige"
 
-#: scheduler/models.py:33
+#: scheduler/models.py:39
 msgid "volunteers"
 msgstr "Freiwillige"
 
-#: scheduler/models.py:85
+#: scheduler/models.py:91
 msgid "helptypes"
 msgstr "Hilfebereiche"
 
-#: scheduler/models.py:99
+#: scheduler/models.py:106
 msgid "timeperiod"
 msgstr "Zeitspanne"
 
-#: scheduler/models.py:100
+#: scheduler/models.py:107
 msgid "timeperiods"
 msgstr "Zeitspannen"
 
-#: scheduler/models.py:120
+#: scheduler/models.py:126
+#| msgid "location"
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/views.py:100
-#, python-format
-msgid ""
-"We can't add you to this shift because you've already agreed to other shifts "
-"at the same time: %s"
-msgstr ""
-"Du konntest dieser Schicht nicht hinzugefügt werden, weil du bereits zur "
-"selben Zeit eine andere Schicht übernommen hast: %s"
+#: scheduler/views.py:96
+msgid "The submitted data was invalid."
+msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:105
+#: scheduler/views.py:107
+#, python-brace-format
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+msgstr "Sie können der Schicht nicht beitreten, da Sie bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
+
+#: scheduler/views.py:110
 msgid "You were successfully added to this shift."
-msgstr "Du wurdest dieser Schicht erfolgreich hinzugefügt"
+msgstr "Sie haben sich erfolgreich für die Schicht angemeldet."
 
 #: shiftmailer/models.py:9
 msgid "given_name"
@@ -224,11 +217,8 @@ msgstr ""
 
 #: volunteer_planner/templates/registration/password_reset_complete.html:4
 #, python-format
-msgid ""
-"\n"
-"Your password has been reset!  You may now <a href=\"%(login_url)s\">log in</"
-"a>.\n"
-msgstr ""
+msgid "Your password has been reset! You may now <a href=\"%(login_url)s\">log in</a>."
+msgstr "Ihr Passwort wurde geändert. Sie können sich jetzt <a href=\"%(login_url)s\">erneut anmelden</a>."
 
 #: volunteer_planner/templates/registration/password_reset_done.html:6
 msgid ""
@@ -240,12 +230,10 @@ msgstr ""
 #, python-format
 msgid ""
 "You are receiving this email because you (or someone pretending to be you)\n"
-"requested that your password be reset on the %(domain)s site.  If you do "
-"not\n"
+"requested that your password be reset on the %(domain)s site.  If you do not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
-"To reset your password, please click the following link, or copy and paste "
-"it\n"
+"To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
 msgstr ""
 
@@ -260,5 +248,5 @@ msgid ""
 msgstr ""
 
 #: volunteer_planner/templates/registration/password_reset_form.html:16
-msgid "Passwort zurücksetzen"
-msgstr ""
+msgid "Reset password"
+msgstr "Passwort zurücksetzen"
