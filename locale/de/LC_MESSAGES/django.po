@@ -183,7 +183,7 @@ msgstr ""
 
 #: scheduler/views.py:105
 msgid "You were successfully added to this shift."
-msgstr "Du wurstest dieser Schicht erfolgreich hinzugefügt"
+msgstr "Du wurdest dieser Schicht erfolgreich hinzugefügt"
 
 #: shiftmailer/models.py:9
 msgid "given_name"
