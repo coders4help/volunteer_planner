@@ -41,15 +41,16 @@
                     {% if need.slots > need.get_volunteer_total %}
                         <span style="color:red">Wird gebraucht</span>
                         <span aria-hidden="true" class="glyphicon glyphicon-exclamation-sign"></span>
-                        {% if user.registrationprofile in need.get_volunteers %}
-                            <button type="submit" name="action" value="remove" class="btn btn-danger delete-button">austragen</button>
-                        {% else %}
+                        {% if user.registrationprofile not in need.get_volunteers %}
                             <button type="submit" name="action" value="add" style="margin-left:10px;" aria-expanded="false" aria-haspopup="true" class="btn btn-info add-button">
                                 mitmachen! <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
                             </button>
                         {% endif %}
                     {% else %}
                         <span style="color:green">ist abgedeckt</span>
+                    {% endif %}
+                    {% if user.registrationprofile in need.get_volunteers %}
+                        <button type="submit" name="action" value="remove" class="btn btn-danger delete-button">austragen</button>
                     {% endif %}
                 </p>
             </form>
