@@ -8,7 +8,9 @@ from django.contrib import messages
 from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator
+
 from django.views.generic import TemplateView, FormView
+
 from django.views.generic.edit import UpdateView
 
 from django.contrib.auth.decorators import login_required, permission_required
@@ -100,10 +102,10 @@ class PlannerView(LoginRequiredMixin, FormView):
         if form.cleaned_data['action'] == RegisterForNeedForm.ADD:
             conflicts = need.get_conflicting_needs(reg_profile.needs.all())
             if conflicts:
-                # Casting the list of conflicts to a string is lazy.
+                conflicts_string = u", ".join(u'{}'.format(conflict) for conflict in conflicts)
                 messages.warning(self.request,
-                                 _(u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time: {conflicts}'.format(
-                                     conflicts=conflicts)))
+                                 _(u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time: {conflicts}'.format(conflicts=
+                                     conflicts_string)))
             else:
                 messages.success(self.request, _(u'You were successfully added to this shift.'))
                 reg_profile.needs.add(need)
