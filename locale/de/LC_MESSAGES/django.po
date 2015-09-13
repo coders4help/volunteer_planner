@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-13 17:24+0200\n"
+"POT-Creation-Date: 2015-09-13 16:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,20 +62,31 @@ msgstr "Passwort (noch einmal)"
 msgid "A user with that username already exists."
 msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
 
-#: registration/forms.py:76
+#: registration/forms.py:58
+#| msgid "A user with that username already exists."
+msgid "A user with that email already exists. Please login instead."
+msgstr "Die Emailadresse ist bereits bekannt. Bitte logge Dich ein mit Deinem Benutzername und Password."
+
+#: registration/forms.py:82
 msgid "I have read and agree to the Terms of Service"
 msgstr "Ich habe die Nutzungsbedingungen gelesen und stimme ihnen zu"
 
-#: registration/forms.py:77
+#: registration/forms.py:83
 msgid "You must agree to the terms to register"
 msgstr "Sie müssen den Nutzungsbedingungen zustimmen"
 
-#: registration/forms.py:93
-msgid "This email address is already in use. Please supply a different email address."
-msgstr "Diese E-Mail Adresse ist bereits registriert. Bitte verwenden Sie eine andere E-Mail Adresse"
+#: registration/forms.py:99
+msgid ""
+"This email address is already in use. Please supply a different email "
+"address."
+msgstr ""
+"Diese E-Mail Adresse ist bereits registriert. Bitte verwenden Sie eine "
+"andere E-Mail Adresse"
 
-#: registration/forms.py:118
-msgid "Registration using free email addresses is prohibited. Please supply a different email address."
+#: registration/forms.py:124
+msgid ""
+"Registration using free email addresses is prohibited. Please supply a "
+"different email address."
 msgstr ""
 
 #: registration/models.py:219
