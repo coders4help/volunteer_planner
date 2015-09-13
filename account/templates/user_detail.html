@@ -2,11 +2,7 @@
 {% load i18n %}
 
 {% block title %}{{ user.username }}{% endblock %}
-
-{% block navbar %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
+{% block body_class %}helpdesk{% endblock %}
 {% block content %}
     <div class="col-md-8 col-md-offset-2">
         <ul class="list-group">

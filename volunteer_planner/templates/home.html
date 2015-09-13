@@ -22,10 +22,14 @@
     <link href='http://fonts.googleapis.com/css?family=Hind|Shadows+Into+Light' rel='stylesheet' type='text/css'>
 </head>
 <body class="{% block body_class%} {% endblock %}">
-{% block navbar %}{% endblock %}
 
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
 
 <div id="text-outer-container">
+
+
     <div id="content">
     {% block content %}
         {% include "partials/alert_messages.html" %}
