@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-12 21:31+0200\n"
+"POT-Creation-Date: 2015-09-13 14:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,11 +86,11 @@ msgid ""
 "different email address."
 msgstr ""
 
-#: registration/models.py:210
+#: registration/models.py:219
 msgid "user"
 msgstr ""
 
-#: registration/models.py:211
+#: registration/models.py:220
 msgid "activation key"
 msgstr ""
 
@@ -112,58 +112,63 @@ msgstr ""
 #: registration/templates/login.html:15
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
+"Dein Benutzername oder Passwort war nicht gültig. Bitte versuche es erneut."
 
-#: scheduler/models.py:13
+#: scheduler/apps.py:7
+msgid "Scheduler"
+msgstr "Zeitplaner"
+
+#: scheduler/models.py:16
 msgid "shift"
 msgstr "Schicht"
 
-#: scheduler/models.py:14
+#: scheduler/models.py:17
 msgid "shifts"
 msgstr "Schichten"
 
-#: scheduler/models.py:15 scheduler/models.py:79
+#: scheduler/models.py:18 scheduler/models.py:84
 msgid "helptype"
 msgstr "Hilfebereich"
 
-#: scheduler/models.py:15
+#: scheduler/models.py:18
 msgid "helptype_text"
 msgstr ""
 "Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben "
 "soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
 
-#: scheduler/models.py:16 scheduler/models.py:114
+#: scheduler/models.py:19 scheduler/models.py:119
 msgid "location"
 msgstr "Ort"
 
-#: scheduler/models.py:17
+#: scheduler/models.py:20
 msgid "time from"
 msgstr "Anfangszeit"
 
-#: scheduler/models.py:22
+#: scheduler/models.py:25
 msgid "number of needed volunteers"
 msgstr "Anz. benoetigter Freiwillige"
 
-#: scheduler/models.py:26
+#: scheduler/models.py:29
 msgid "assigned volunteers"
 msgstr "Reg. Freiwillige"
 
-#: scheduler/models.py:30
+#: scheduler/models.py:33
 msgid "volunteers"
 msgstr "Freiwillige"
 
-#: scheduler/models.py:80
+#: scheduler/models.py:85
 msgid "helptypes"
 msgstr "Hilfebereiche"
 
-#: scheduler/models.py:94
+#: scheduler/models.py:99
 msgid "timeperiod"
 msgstr "Zeitspanne"
 
-#: scheduler/models.py:95
+#: scheduler/models.py:100
 msgid "timeperiods"
 msgstr "Zeitspannen"
 
-#: scheduler/models.py:115
+#: scheduler/models.py:120
 msgid "locations"
 msgstr "Orte"
 
@@ -173,28 +178,30 @@ msgid ""
 "We can't add you to this shift because you've already agreed to other shifts "
 "at the same time: %s"
 msgstr ""
+"Du konntest dieser Schicht nicht hinzugefügt werden, weil du bereits zur "
+"selben Zeit eine andere Schicht übernommen hast: %s"
 
 #: scheduler/views.py:105
 msgid "You were successfully added to this shift."
-msgstr ""
+msgstr "Du wurdest dieser Schicht erfolgreich hinzugefügt"
 
-#: shiftmailer/models.py:7
+#: shiftmailer/models.py:9
 msgid "given_name"
 msgstr "Vorname"
 
-#: shiftmailer/models.py:8
+#: shiftmailer/models.py:10
 msgid "name"
 msgstr "Nachname"
 
-#: shiftmailer/models.py:9
+#: shiftmailer/models.py:11
 msgid "position"
 msgstr "Position"
 
-#: shiftmailer/models.py:10
+#: shiftmailer/models.py:12
 msgid "organisation"
 msgstr "Organisation"
 
-#: shiftmailer/models.py:11
+#: shiftmailer/models.py:13
 msgid "email"
 msgstr "E-Mail"
 
