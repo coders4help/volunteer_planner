@@ -11,7 +11,7 @@ Alle Daten sind vertraulich und nicht zur Weitergabe an Dritte bestimmt!
      {% endifchanged %}
      von {{ need.time_period_from.date_time|date:"H" }} - {{ need.time_period_to.date_time|date:"H" }} Uhr angemeldet sind {{ need.volunteer_count }}) Freiwillige:
 
-    {% for volunteer in need.registrationprofile_set %}
+    {% for volunteer in need.registrationprofile_set.all %}
              {{ volunteer.user.username }} ({{ volunteer.user.email }})
     {% endfor %}
     {% endif %}
