@@ -14,6 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 from .models import Location, Need
 from notifications.models import Notification
 from registration.models import RegistrationProfile
+from stats.models import ValueStore
 from .forms import RegisterForNeedForm
 
 
@@ -37,6 +38,10 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['locations'] = Location.objects.all()
         context['notifications'] = Notification.objects.all()
+        try:
+            context['working_hours'] = ValueStore.objects.get(name="total-volunteer-hours")
+        except ValueStore.DoesNotExist:
+            context['working_hours'] = ""
         return context
 
 

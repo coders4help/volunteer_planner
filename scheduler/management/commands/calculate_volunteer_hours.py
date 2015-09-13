@@ -5,6 +5,8 @@ from django.core.management.base import BaseCommand
 import datetime
 from registration.models import RegistrationProfile
 
+from stats.models import ValueStore
+
 
 class Command(BaseCommand):
     help = 'creates bulk shifts from existing data'
@@ -21,4 +23,15 @@ class Command(BaseCommand):
             for single_shift in theshift:
                 deelta = single_shift.time_period_to.date_time - single_shift.time_period_from.date_time
                 seconds += deelta.total_seconds()
-        print int(((seconds/60)/60))
+        total_hours = int(((seconds/60)/60))
+        try:
+            key = ValueStore.objects.get(name="total-volunteer-hours")
+            key.value = total_hours
+            key.save()
+        except ValueStore.DoesNotExist:
+            ValueStore.objects.create(name="total-volunteer-hours", value=total_hours)
+
+
+
+
+
