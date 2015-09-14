@@ -34,7 +34,7 @@ def send_email_notifications(sender, instance, **kwargs):
     addresses = instance.registrationprofile_set.values_list('user__email', flat=True)
 
     mail = EmailMessage(subject=subject, body=message,
-                        to='support@volunteer-planner.org',
+                        to=['support@volunteer-planner.org'],
                         from_email=from_email,
                         bcc=addresses)
     mail.send()
