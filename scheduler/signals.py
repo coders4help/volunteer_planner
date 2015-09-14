@@ -28,8 +28,9 @@ def send_email_notifications(sender, instance, **kwargs):
     Liebe Grüße vom Volunteer Planner.
     '''.format(need=instance)
 
-    from_email = "Volunteer-Planner.org <no-reply@volunteer-planner.org>"
+    from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
 
     addresses = instance.registrationprofile_set.all().values_list('user__email', flat=True)
 
-    send_mail(subject, message, from_email, addresses, fail_silently=True)
+    for address in addresses:
+        send_mail(subject, message, from_email, [address], fail_silently=True)
