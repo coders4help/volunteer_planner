@@ -1,4 +1,14 @@
 {% extends "home.html" %}
+{% load staticfiles %}
+{% block javascript %}
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+{% endblock %}
+{% block meta %}
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+{% endblock %}
 {% block title %}Helpdesk{% endblock %}
 {% block body_class %}helpdesk{% endblock %}
 {% block navbar %}
@@ -8,9 +18,8 @@
 {% block content %}
 
     <div class="col-md-7">
+        {% include 'map.html' %}
         <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
-
-
 
             {% for location in locations %}
                 <div class="row">
