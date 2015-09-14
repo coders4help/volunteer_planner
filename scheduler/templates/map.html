@@ -2,15 +2,39 @@
     <div id="map" style="width: 100%; height: 400px; background: white"></div>
 </div>
 <script type="text/javascript" charset="UTF-8" >
+    function createInfoText(name, street, city, postalCode) {
+        var html = "<div class='map-marker-info'>";
+        html = html + "<h3>" + name + "</h3>";
+        html = html + "<p>" + street + "<br/>" + postalCode + " " + city + "</p>"
+        html = html + "</div>";
+
+        return html;
+    }
+
     function createMarkersGroup() {
         markers = new Array();
         {% for location in locations %}
             {% if location.latitude and location.longitude %}
-                markers.push(new H.map.Marker({lat: {{ location.latitude }}, lng: {{location.longitude}} }));
+                var marker = new H.map.Marker({lat: {{ location.latitude }}, lng: {{location.longitude}} });
+                marker.setData(createInfoText("{{ location.name }}", "{{ location.street }}", "{{ location.postal_code }}", "{{ location.city }}"));
+                markers.push(marker);
             {% endif %}
         {% endfor %}
 
         group = new H.map.Group();
+
+        // add 'tap' event listener, that opens info bubble, to the group
+        group.addEventListener('tap', function (evt) {
+            // event target is the marker itself, group is a parent event target
+            // for all objects that it contains
+            var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
+                // read custom data
+                content: evt.target.getData()
+            });
+            // show info bubble
+            ui.addBubble(bubble);
+        }, false);
+
         group.addObjects(markers);
         return group;
     }
