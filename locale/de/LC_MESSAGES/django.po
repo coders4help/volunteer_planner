@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-13 19:22+0200\n"
+"POT-Creation-Date: 2015-09-14 10:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/templates/user_account_edit.html:14
+msgid "Save"
+msgstr "Speichern"
+
+#: account/templates/user_detail.html:14 registration/forms.py:34
+msgid "Username"
+msgstr "Benutzername"
+
+#: account/templates/user_detail.html:15
+msgid "First name"
+msgstr "Vorname"
+
+#: account/templates/user_detail.html:16
+msgid "Last name"
+msgstr "Nachname"
+
+#: account/templates/user_detail.html:17 registration/forms.py:37
+msgid "Email"
+msgstr "E-Mail Adresse"
+
+#: account/templates/user_detail.html:19
+msgid "Edit Account"
+msgstr "Account bearbeiten"
 
 #: notifications/models.py:13
 msgid "title"
@@ -38,17 +62,9 @@ msgstr "Benutzer aktivieren"
 msgid "Re-send activation emails"
 msgstr "Aktivierungsmail erneut versenden"
 
-#: registration/forms.py:34
-msgid "Username"
-msgstr "Benutzername"
-
 #: registration/forms.py:35
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ enthalten"
-
-#: registration/forms.py:37
-msgid "E-mail"
-msgstr "E-Mail Adresse"
 
 #: registration/forms.py:39
 msgid "Password"
@@ -80,7 +96,7 @@ msgstr "Diese E-Mail Adresse ist bereits registriert. Bitte verwenden Sie eine a
 
 #: registration/forms.py:124
 msgid "Registration using free email addresses is prohibited. Please supply a different email address."
-msgstr ""
+msgstr "Die Registrierung mit einer E-Mail-Adresses dieses Anbieters ist leider verboten. Bitte verwende eine andere E-Mail-Adresse."
 
 #: registration/models.py:219
 msgid "user"
@@ -92,15 +108,12 @@ msgstr "Aktivierungsschlüssel"
 
 #: registration/templates/activate.html:7
 #, python-format
-msgid ""
-"\n"
-"Thanks %(account)s, activation complete!\n"
-"You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration.\n"
-msgstr ""
+msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
+msgstr "Danke %(account)s, die Aktivierung ist abgeschlossen! Du kannst dich jetzt mit deinem Benutzernamen und Passwort, welche du bei der Registrierung gewählt hast <a href='%(auth_login_url)s'>einloggen</a>."
 
 #: registration/templates/activate.html:12
-msgid "Oops &ndash; it seems that your activation key is invalid. Please check the url again."
-msgstr ""
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgstr "Uuppss &ndash; Entweder dein Account wurde bereits aktiviert oder der Aktivierungschlüssel ist ungültig oder abgelaufen."
 
 #: registration/templates/login.html:15
 msgid "Your username and password didn't match. Please try again."
@@ -162,16 +175,16 @@ msgstr "Zeitspannen"
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/views.py:96
+#: scheduler/views.py:79
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:107
+#: scheduler/views.py:90
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Sie können der Schicht nicht beitreten, da Sie bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
-#: scheduler/views.py:110
+#: scheduler/views.py:93
 msgid "You were successfully added to this shift."
 msgstr "Sie haben sich erfolgreich für die Schicht angemeldet."
 
@@ -195,11 +208,11 @@ msgstr "Organisation"
 msgid "email"
 msgstr "E-Mail"
 
-#: volunteer_planner/settings/base.py:128
+#: volunteer_planner/settings/base.py:130
 msgid "German"
 msgstr "Deutsch"
 
-#: volunteer_planner/settings/base.py:129
+#: volunteer_planner/settings/base.py:131
 msgid "English"
 msgstr "Englisch"
 

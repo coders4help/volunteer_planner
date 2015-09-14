@@ -4,7 +4,7 @@
 {% block content %}
     {% url 'auth_login' as auth_login_url %}
     {% if account %}
-        {% blocktrans %}
+        {% blocktrans trimmed %}
             Thanks {{ account }}, activation complete!
             You may now <a href='{{ auth_login_url}}'>login</a> using the username and password you set at registration.
         {% endblocktrans %}
