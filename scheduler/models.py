@@ -28,16 +28,6 @@ class Need(models.Model):
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
-    def get_volunteer_total(self):
-        return self.registrationprofile_set.all().count()
-
-    get_volunteer_total.short_description = _(u'assigned volunteers')
-
-    def get_volunteers(self):
-        return self.registrationprofile_set.all()
-
-    get_volunteers.short_description = _(u'volunteers')
-
     # Two properties to make accessing the timestamps slightly saner.
     # TODO: Just remove the ForeignKey relationship and replace with datetime fields, and give
     #       it the fields the names of the properties. But don't mess up the necessary

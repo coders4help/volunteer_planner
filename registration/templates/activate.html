@@ -2,13 +2,13 @@
 {% load i18n %}
 {% block title %}{% if account %} Activation complete {% else %}Activation problem{% endif %}{% endblock %}
 {% block content %}
-{% url 'auth_login' as auth_login_url %}
-{% if account %}
-{% blocktrans %}
-Thanks {{ account }}, activation complete!
-You may now <a href='{{ auth_login_url}}'>login</a> using the username and password you set at registration.
-{% endblocktrans %}
-{% else %}
-{% blocktrans trimmed %}Oops &ndash; it seems that your activation key is invalid. Please check the url again.{% endblocktrans %}
-{% endif %}
+    {% url 'auth_login' as auth_login_url %}
+    {% if account %}
+        {% blocktrans trimmed %}
+            Thanks {{ account }}, activation complete!
+            You may now <a href='{{ auth_login_url}}'>login</a> using the username and password you set at registration.
+        {% endblocktrans %}
+    {% else %}
+        {% blocktrans %}Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired.{% endblocktrans %}
+    {% endif %}
 {% endblock %}

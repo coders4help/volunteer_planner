@@ -37,7 +37,7 @@ class Command(BaseCommand):
                 for needy in needs_needs:
                     to_time = str(needy.time_period_to)
                     from_time = str(needy.time_period_from)
-                    date = parse(to_time)
+                    date_new_to = parse(to_time)
                     date_new_from = parse(from_time)
 
                     for i in range(int(options['days_to_add'][0])):

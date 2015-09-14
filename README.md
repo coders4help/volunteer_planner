@@ -9,7 +9,7 @@ https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
 ### 1.Install all required Ubuntu packages
 
-    sudo apt-get install python-dev python-pip git
+    sudo apt-get install python-dev python-pip git npm
 
 If you are going to use a local mysql server, additionally install 
 
@@ -59,33 +59,34 @@ or, if you intend to use mysql locally, install
 *Note*: For the local environment, the DB username is assumed to be 'vp' 
 and their password is assumed to be 'volunteer_planner'.
 
-### 6. Initialize the database
+### 6. Create local runner
 
-    ./manage.py migrate --settings=volunteer_planner.settings.local[_mysql]
+    cp man.py manlocal.py
 
-### 7. Add a superuser 
+Edit the file and update values for db credentials, settings file (volunteer_planner.settings.local[_mysql]) and the rest with your preferred settings.
 
-    ./manlocal.py createsuperuser --settings=volunteer_planner.settings.local[_mysql]
+### 7. Initialize the database
+
+    ./manlocal.py migrate
+
+### 8. Add a superuser
+
+    ./manlocal.py createsuperuser
     
 You will be asked for username, email and password (twice). Remember that username and password.
 
-### 8. Try running the server 
+### 9. Try running the server
 
-    ./manlocal.py runserver --settings=volunteer_planner.settings.local[_mysql]
+    ./manlocal.py runserver
 
 Try opening http://localhost:8000/ in your browser.
-
 
 ### 9. Adding content
 
 To add new organizations and shifts, you have to access the backend at `http://localhost:8000/admin`. 
-If prompted, login with the username/password you created in step 7 (in case you don't see an error page here).
+If prompted, login with the username/password of the superuser you created earlier (in case you don't see an error page here).
 
     http://localhost:8000/admin`
-
-### 10. Importing dummy data
-
-    ./manage.py loaddata demo_data.json  --settings=volunteer_planner.settings.local[_mysql]
 
 ## The Project
 

@@ -14,7 +14,9 @@ TEMPLATE_LOADERS = (
         )
     ),
 )
-PREPEND_WWW = os.environ.get('BETA', True)
+
+# Let this be done by frontend reverse proxy, if required!
+PREPEND_WWW = False
 
 ADMINS = (
     ('VP Admin', 'vp-admin@volunteer-planner.org'),

@@ -166,7 +166,7 @@ class RegistrationManager(models.Manager):
         profiles = 0
         errors = 0
         for profile in self.all():
-            ++count
+            count += 1
             try:
                 with transaction.atomic():
                     if profile.activation_key_expired():

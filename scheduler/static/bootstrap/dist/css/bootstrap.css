@@ -6941,4 +6941,6 @@ Notification main site
   width: 100%;
   height: auto;
 }
-/*# sourceMappingURL=bootstrap.css.map */
+.update_form input {
+  color: black;
+}

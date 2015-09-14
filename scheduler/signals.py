@@ -1,12 +1,13 @@
 # coding=utf-8
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 
+from scheduler.models import Need
 
-from . import models
 
-@receiver(pre_delete, sender=models.Need)
+@receiver(pre_delete, sender=Need)
 def send_email_notifications(sender, instance, **kwargs):
     """
     HACK ALERT
@@ -28,8 +29,12 @@ def send_email_notifications(sender, instance, **kwargs):
     Liebe Grüße vom Volunteer Planner.
     '''.format(need=instance)
 
-    from_email = "Volunteer-Planner.org <no-reply@volunteer-planner.org>"
+    from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
 
-    addresses = instance.get_volunteers().values_list('user__email', flat=True)
+    addresses = instance.registrationprofile_set.values_list('user__email', flat=True)
 
-    send_mail(subject, message, from_email, addresses, fail_silently=True)
+    mail = EmailMessage(subject=subject, body=message,
+                        to=['support@volunteer-planner.org'],
+                        from_email=from_email,
+                        bcc=addresses)
+    mail.send()
