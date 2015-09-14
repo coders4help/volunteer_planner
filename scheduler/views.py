@@ -4,15 +4,22 @@ import json
 import datetime
 
 from django.core.urlresolvers import reverse
+
 from django.contrib import messages
+
 from django.http.response import HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, get_object_or_404
+
+from django.shortcuts import render
+
 from django.db.models import Count
+
 from django.views.generic import TemplateView, FormView
 
 from django.contrib.auth.decorators import login_required, permission_required
 
 from django.utils.translation import ugettext_lazy as _
+
+from django.shortcuts import get_object_or_404
 
 from scheduler.models import Location, Need
 from notifications.models import Notification
@@ -68,7 +75,9 @@ class PlannerView(LoginRequiredMixin, FormView):
     form_class = RegisterForNeedForm
 
     def get_context_data(self, **kwargs):
+
         context = super(PlannerView, self).get_context_data(**kwargs)
+
         context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']) \
             .annotate(volunteer_count=Count('registrationprofile')) \
             .filter(time_period_to__date_time__year=self.kwargs['year'],
@@ -79,6 +88,11 @@ class PlannerView(LoginRequiredMixin, FormView):
                             'time_period_to') \
             .prefetch_related('registrationprofile_set',
                               'registrationprofile_set__user')
+
+        context['location'] = get_object_or_404(Location, pk=self.kwargs['pk'])
+        context['schedule_date'] = datetime.date(int(self.kwargs['year']),
+                                                 int(self.kwargs['month']),
+                                                 int(self.kwargs['day']))
         return context
 
     def form_invalid(self, form):
@@ -86,10 +100,20 @@ class PlannerView(LoginRequiredMixin, FormView):
         return super(PlannerView, self).form_invalid(form)
 
     def form_valid(self, form):
-        reg_profile = self.request.user.registrationprofile
-        need = form.cleaned_data['need']
-        if form.cleaned_data['action'] == RegisterForNeedForm.ADD:
-            conflicts = need.get_conflicting_needs(reg_profile.needs.all())
+        try:
+            reg_profile = self.request.user.registrationprofile
+        except RegistrationProfile.DoesNotExist:
+            messages.warning(self.request, _(u'User profile does not exist.'))
+            return super(PlannerView, self).form_valid(form)
+
+        join_shift = form.cleaned_data.get("join_shift")
+        leave_shift = form.cleaned_data.get("leave_shift")
+
+        print(form.cleaned_data)
+
+        if join_shift:
+            conflicts = join_shift.get_conflicting_needs(
+                reg_profile.needs.all())
             if conflicts:
                 conflicts_string = u", ".join(
                     u'{}'.format(conflict) for conflict in conflicts)
@@ -101,9 +125,11 @@ class PlannerView(LoginRequiredMixin, FormView):
             else:
                 messages.success(self.request, _(
                     u'You were successfully added to this shift.'))
-                reg_profile.needs.add(need)
-        elif form.cleaned_data['action'] == RegisterForNeedForm.REMOVE:
-            reg_profile.needs.remove(need)
+                reg_profile.needs.add(join_shift)
+        elif leave_shift:
+            messages.success(self.request, _(
+                u'You successfully left this shift.'))
+            reg_profile.needs.remove(leave_shift)
         reg_profile.save()
         return super(PlannerView, self).form_valid(form)
 

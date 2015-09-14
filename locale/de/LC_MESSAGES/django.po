@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-14 10:29+0200\n"
+"POT-Creation-Date: 2015-09-15 00:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,15 +131,15 @@ msgstr "Schicht"
 msgid "shifts"
 msgstr "Schichten"
 
-#: scheduler/models.py:20 scheduler/models.py:90
-msgid "helptype"
+#: scheduler/models.py:20 scheduler/models.py:80
+msgid "help type"
 msgstr "Hilfebereich"
 
 #: scheduler/models.py:20
-msgid "helptype_text"
+msgid "HELP_TYPE_HELP"
 msgstr "Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
 
-#: scheduler/models.py:21 scheduler/models.py:125
+#: scheduler/models.py:21 scheduler/models.py:115
 msgid "location"
 msgstr "Ort"
 
@@ -151,42 +151,102 @@ msgstr "Anfangszeit"
 msgid "number of needed volunteers"
 msgstr "Anz. benötigter Freiwillige"
 
-#: scheduler/models.py:34
-msgid "assigned volunteers"
-msgstr "Reg. Freiwillige"
-
-#: scheduler/models.py:39
-msgid "volunteers"
-msgstr "Freiwillige"
-
-#: scheduler/models.py:91
-msgid "helptypes"
+#: scheduler/models.py:81
+msgid "help types"
 msgstr "Hilfebereiche"
 
-#: scheduler/models.py:106
+#: scheduler/models.py:96
 msgid "timeperiod"
 msgstr "Zeitspanne"
 
-#: scheduler/models.py:107
+#: scheduler/models.py:97
 msgid "timeperiods"
 msgstr "Zeitspannen"
 
-#: scheduler/models.py:126
+#: scheduler/models.py:116
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/views.py:79
+#: scheduler/templates/helpdesk_single.html:9
+#, python-format
+msgid "Schedule for %(schedule_date_short)s"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:33
+#, python-format
+msgid "Schedule for %(schedule_date)s"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:59
+msgid "Time"
+msgstr "Zeit"
+
+#: scheduler/templates/helpdesk_single.html:61
+msgid "Helpers"
+msgstr "Helfer"
+
+#: scheduler/templates/helpdesk_single.html:65
+msgid "Start"
+msgstr "Start"
+
+#: scheduler/templates/helpdesk_single.html:66
+msgid "End"
+msgstr "Ende"
+
+#: scheduler/templates/helpdesk_single.html:68
+msgid "Required"
+msgstr "Benötigt"
+
+#: scheduler/templates/helpdesk_single.html:69
+msgid "Status"
+msgstr "Status"
+
+#: scheduler/templates/helpdesk_single.html:70
+#| msgid "Username"
+msgid "Users"
+msgstr "Benutzer"
+
+#: scheduler/templates/helpdesk_single.html:71
+msgid "You"
+msgstr "Sie"
+
+#: scheduler/templates/helpdesk_single.html:96
+#, python-format
+msgid "%(slots_left)s more"
+msgstr "%(slots_left)s weitere"
+
+#: scheduler/templates/helpdesk_single.html:101
+msgid "Covered"
+msgstr "Abgedeckt"
+
+#: scheduler/templates/helpdesk_single.html:141
+msgid "Drop out"
+msgstr "Absagen"
+
+#: scheduler/templates/helpdesk_single.html:148
+msgid "Sign up"
+msgstr "Mitmachen"
+
+#: scheduler/views.py:99
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:90
+#: scheduler/views.py:106
+msgid "User profile does not exist."
+msgstr "Benutzerprofil existiert nicht."
+
+#: scheduler/views.py:122
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Sie können der Schicht nicht beitreten, da Sie bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
-#: scheduler/views.py:93
+#: scheduler/views.py:127
 msgid "You were successfully added to this shift."
 msgstr "Sie haben sich erfolgreich für die Schicht angemeldet."
+
+#: scheduler/views.py:131
+msgid "You successfully left this shift."
+msgstr "Sie haben sich von der Schicht abgemeldet."
 
 #: shiftmailer/models.py:9
 msgid "given_name"
@@ -218,7 +278,7 @@ msgstr "Englisch"
 
 #: volunteer_planner/templates/registration/password_change_form.html:10
 msgid "Change password"
-msgstr ""
+msgstr "Passwort ändern"
 
 #: volunteer_planner/templates/registration/password_reset_complete.html:4
 #, python-format

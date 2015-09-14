@@ -17,7 +17,7 @@ class Need(models.Model):
         verbose_name = _(u'shift')
         verbose_name_plural = _(u'shifts')
 
-    topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
+    topic = models.ForeignKey("Topics", verbose_name=_(u'help type'), help_text=_(u'HELP_TYPE_HELP'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
     # FIXME: this is crazy!
@@ -77,8 +77,8 @@ class Need(models.Model):
 
 class Topics(models.Model):
     class Meta:
-        verbose_name = _(u'helptype')
-        verbose_name_plural = _(u'helptypes')
+        verbose_name = _(u'help type')
+        verbose_name_plural = _(u'help types')
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
