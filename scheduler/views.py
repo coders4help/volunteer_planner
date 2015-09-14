@@ -36,7 +36,8 @@ class HomeView(TemplateView):
         context['locations'] = Location.objects.all()
         context['notifications'] = Notification.objects.all()
         try:
-            context['working_hours'] = ValueStore.objects.get(name="total-volunteer-hours")
+            context['working_hours'] = ValueStore.objects.get(
+                name="total-volunteer-hours")
         except ValueStore.DoesNotExist:
             context['working_hours'] = ""
         return context
@@ -74,42 +75,43 @@ class PlannerView(LoginRequiredMixin, FormView):
                     time_period_to__date_time__month=self.kwargs['month'],
                     time_period_to__date_time__day=self.kwargs['day']) \
             .order_by('topic', 'time_period_to__date_time') \
-            .select_related('topic', 'location', 'time_period_from', 'time_period_to') \
-            .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
+            .select_related('topic', 'location', 'time_period_from',
+                            'time_period_to') \
+            .prefetch_related('registrationprofile_set',
+                              'registrationprofile_set__user')
         return context
 
+    def form_invalid(self, form):
+        messages.warning(self.request, _(u'The submitted data was invalid.'))
+        return super(PlannerView, self).form_invalid(form)
 
-def form_invalid(self, form):
-    messages.warning(self.request, _(u'The submitted data was invalid.'))
-    return super(PlannerView, self).form_invalid(form)
+    def form_valid(self, form):
+        reg_profile = self.request.user.registrationprofile
+        need = form.cleaned_data['need']
+        if form.cleaned_data['action'] == RegisterForNeedForm.ADD:
+            conflicts = need.get_conflicting_needs(reg_profile.needs.all())
+            if conflicts:
+                conflicts_string = u", ".join(
+                    u'{}'.format(conflict) for conflict in conflicts)
+                messages.warning(self.request,
+                                 _(
+                                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time: {conflicts}'.format(
+                                         conflicts=
+                                         conflicts_string)))
+            else:
+                messages.success(self.request, _(
+                    u'You were successfully added to this shift.'))
+                reg_profile.needs.add(need)
+        elif form.cleaned_data['action'] == RegisterForNeedForm.REMOVE:
+            reg_profile.needs.remove(need)
+        reg_profile.save()
+        return super(PlannerView, self).form_valid(form)
 
-
-def form_valid(self, form):
-    reg_profile = self.request.user.registrationprofile
-    need = form.cleaned_data['need']
-    if form.cleaned_data['action'] == RegisterForNeedForm.ADD:
-        conflicts = need.get_conflicting_needs(reg_profile.needs.all())
-        if conflicts:
-            conflicts_string = u", ".join(u'{}'.format(conflict) for conflict in conflicts)
-            messages.warning(self.request,
-                             _(
-                                 u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time: {conflicts}'.format(
-                                     conflicts=
-                                     conflicts_string)))
-        else:
-            messages.success(self.request, _(u'You were successfully added to this shift.'))
-            reg_profile.needs.add(need)
-    elif form.cleaned_data['action'] == RegisterForNeedForm.REMOVE:
-        reg_profile.needs.remove(need)
-    reg_profile.save()
-    return super(PlannerView, self).form_valid(form)
-
-
-def get_success_url(self):
-    """
-    Redirect to the same page.
-    """
-    return reverse('planner_by_location', kwargs=self.kwargs)
+    def get_success_url(self):
+        """
+        Redirect to the same page.
+        """
+        return reverse('planner_by_location', kwargs=self.kwargs)
 
 
 @login_required(login_url='/auth/login/')
@@ -120,9 +122,12 @@ def volunteer_list(request, **kwargs):
     """
     today = datetime.date.today()
     loc = get_object_or_404(Location, id=kwargs.get('loc_pk'))
-    needs = Need.objects.filter(location=loc, time_period_to__date_time__contains=today)
-    data = list(RegistrationProfile.objects.filter(needs__in=needs).distinct().values_list('user__email', flat=True))
+    needs = Need.objects.filter(location=loc,
+                                time_period_to__date_time__contains=today)
+    data = list(RegistrationProfile.objects.filter(
+        needs__in=needs).distinct().values_list('user__email', flat=True))
     # add param ?type=json in url to get JSON data
     if request.GET.get('type') == 'json':
         return JsonResponse(data, safe=False)
-    return render(request, 'volunteer_list.html', {'data': json.dumps(data), 'location': loc, 'today': today})
+    return render(request, 'volunteer_list.html',
+                  {'data': json.dumps(data), 'location': loc, 'today': today})
