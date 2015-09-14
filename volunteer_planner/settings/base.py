@@ -124,8 +124,8 @@ LOGIN_URL = '/auth/login/'
 
 TIME_ZONE = 'Europe/Berlin'
 
-LANGUAGE_CODE = 'de'
-
+LANGUAGE_CODE = 'de-de'
+USE_L10N = True
 LANGUAGES = (
     ('de', _('German')),
     ('en', _('English')),
