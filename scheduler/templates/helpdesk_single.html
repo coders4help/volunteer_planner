@@ -32,16 +32,16 @@
                         von {{ need.time_period_from.date_time|date:"H:i" }} -
                         {{ need.time_period_to.date_time|date:"H:i" }} Uhr
                     </strong>
-                    (benötigt: {{ need.slots }}/angemeldet: {{ need.get_volunteer_total }})
+                    (benötigt: {{ need.slots }}/angemeldet: {{ need.volunteer_count }})
                     | Freiwillige:
-                    {% for volunteer in need.get_volunteers %}
+                    {% for volunteer in need.registrationprofile_set.all %}
                         {{ volunteer.user.username }},
                     {% endfor %}
                     |
-                    {% if need.slots > need.get_volunteer_total %}
+                    {% if need.slots > need.volunteer_count %}
                         <span style="color:red">Wird gebraucht</span>
                         <span aria-hidden="true" class="glyphicon glyphicon-exclamation-sign"></span>
-                        {% if user.registrationprofile not in need.get_volunteers %}
+                        {% if user.registrationprofile not in need.registrationprofile_set.all %}
                             <button type="submit" name="action" value="add" style="margin-left:10px;" aria-expanded="false" aria-haspopup="true" class="btn btn-info add-button">
                                 mitmachen! <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
                             </button>
@@ -49,7 +49,7 @@
                     {% else %}
                         <span style="color:green">ist abgedeckt</span>
                     {% endif %}
-                    {% if user.registrationprofile in need.get_volunteers %}
+                    {% if user.registrationprofile in need.registrationprofile_set.all %}
                         <button type="submit" name="action" value="remove" class="btn btn-danger delete-button">austragen</button>
                     {% endif %}
                 </p>

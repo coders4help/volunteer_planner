@@ -1,12 +1,30 @@
 # coding: utf-8
 
 from django.contrib import admin
-from .models import *
+from django.db.models import Count
+
+from scheduler.models import Need, Topics, TimePeriods, Location
 
 
 class NeedAdmin(admin.ModelAdmin):
+    def get_queryset(self, request):
+        return super(NeedAdmin, self).get_queryset(request)\
+            .annotate(volunteer_count=Count('registrationprofile'))\
+            .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
+
+    def get_volunteer_count(self, obj):
+        return obj.volunteer_count
+
+    def get_volunteer_names(self, obj):
+        def _format_username(user):
+            full_name = user.get_full_name()
+            if full_name:
+                return u'{} ("{}")'.format(full_name, user.username)
+            return u'"{}"'.format(user.username)
+        return u", ".join(_format_username(volunteer.user) for volunteer in obj.registrationprofile_set.all())
+
     list_display = (
-        'id', 'topic', 'time_period_from', 'time_period_to', 'slots', 'get_volunteer_total', 'get_volunteers'
+        'id', 'topic', 'time_period_from', 'time_period_to', 'slots', 'get_volunteer_count', 'get_volunteer_names'
     )
 
     search_fields = ('id', 'topic__title',)

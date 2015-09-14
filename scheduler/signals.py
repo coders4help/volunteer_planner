@@ -30,6 +30,6 @@ def send_email_notifications(sender, instance, **kwargs):
 
     from_email = "Volunteer-Planner.org <no-reply@volunteer-planner.org>"
 
-    addresses = instance.get_volunteers().values_list('user__email', flat=True)
+    addresses = instance.registrationprofile_set.all().values_list('user__email', flat=True)
 
     send_mail(subject, message, from_email, addresses, fail_silently=True)
