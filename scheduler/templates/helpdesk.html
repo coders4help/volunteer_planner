@@ -9,6 +9,11 @@
 {% block meta %}
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/map.css" />
+    {{ block.super }}
+{% endblock %}
 {% block title %}Helpdesk{% endblock %}
 {% block body_class %}helpdesk{% endblock %}
 {% block navbar %}

@@ -7,7 +7,6 @@
 
     <title>{% block title %} Volunteer Planner {% endblock %}</title>
 
-    <link href="/static/bootstrap/dist/css/bootstrap.css?" rel="stylesheet" type="text/css">
     <meta name="google-site-verification" content="-BN1vuSIqe1vJNe8hS5_6iLvtpJrefGpMIAA1ogCoLQ"/>
     <meta name="description" property="og:description"
           content="Volunteer-Planner.org ist ein kostenloses und werbungsfreies Tool, um Dienstpläne für Freiwillige in Flüchtlingsunterkünfte zu organisieren">
@@ -30,7 +29,9 @@
     </script>
     {% block javascript %}{% endblock %}
     {% block meta %}{% endblock %}
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+    {% block css %}
+        <link href="/static/bootstrap/dist/css/bootstrap.css?" rel="stylesheet" type="text/css">
+    {% endblock %}
 
 
     <link href='http://fonts.googleapis.com/css?family=Hind|Shadows+Into+Light' rel='stylesheet' type='text/css'>
