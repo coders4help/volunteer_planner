@@ -20,25 +20,12 @@ class Need(models.Model):
     topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
-    # FIXME: this is crazy!
-    time_period_from = models.ForeignKey("TimePeriods", related_name="time_from", verbose_name=_(u'time from'))
-    time_period_to = models.ForeignKey("TimePeriods", related_name="time_to")
+    starting_time = models.DateTimeField(verbose_name=_('starting time'))
+    ending_time = models.DateTimeField(verbose_name=_('ending time'))
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
-
-    # Two properties to make accessing the timestamps slightly saner.
-    # TODO: Just remove the ForeignKey relationship and replace with datetime fields, and give
-    #       it the fields the names of the properties. But don't mess up the necessary
-    #       data migration. ;)
-    @property
-    def start(self):
-        return self.time_period_from.date_time
-
-    @property
-    def end(self):
-        return self.time_period_to.date_time
 
     def get_conflicting_needs(self, needs, grace=datetime.timedelta(hours=1)):
         """
@@ -57,22 +44,22 @@ class Need(models.Model):
 
         :param needs: A Django queryset of Need instances.
         """
-        latest_start_time = self.start + grace
-        earliest_end_time = self.end - grace
+        latest_start_time = self.starting_time + grace
+        earliest_end_time = self.ending_time - grace
         if earliest_end_time <= latest_start_time:
             # Event is shorter than 2 * grace time, can't have overlaps.
             return []
 
         return [
             need for need in needs
-            if (need.start < latest_start_time < need.end) or
-            (latest_start_time < need.start < earliest_end_time)
+            if (need.starting_time < latest_start_time < need.ending_time) or
+            (latest_start_time < need.starting_time < earliest_end_time)
             ]
 
     def __unicode__(self):
         return u"{title} - {location} ({start} - {end})".format(
             title=self.topic.title, location=self.location.name,
-            start=localize(self.start), end=localize(self.end))
+            start=localize(self.starting_time), end=localize(self.ending_time))
 
 
 class Topics(models.Model):
@@ -88,18 +75,6 @@ class Topics(models.Model):
 
     def get_current_needs_py_topic(self):
         return self.need_set.all()
-
-
-# FIXME: this is crazy!
-class TimePeriods(models.Model):
-    class Meta:
-        verbose_name = _(u'timeperiod')
-        verbose_name_plural = _(u'timeperiods')
-
-    date_time = models.DateTimeField()
-
-    def __unicode__(self):
-        return u'{}'.format(self.date_time)
 
 
 class Location(models.Model):
@@ -123,10 +98,10 @@ class Location(models.Model):
 
     def get_dates_of_needs(self):
         needs_dates = []
-        for i in self.need_set.all().filter(time_period_to__date_time__gt=datetime.datetime.now()) \
-                .order_by('time_period_to__date_time'):
-            date_name = i.time_period_from.date_time.strftime("%A, %d.%m.%Y")
+        for i in self.need_set.all().filter(ending_time__gt=datetime.datetime.now()) \
+                .order_by('ending_time'):
+            date_name = i.starting_time.strftime("%A, %d.%m.%Y")
             locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
             if date_name not in needs_dates:
-                needs_dates.append(i.time_period_from.date_time.strftime("%A, %d.%m.%Y"))
+                needs_dates.append(i.starting_time.strftime("%A, %d.%m.%Y"))
         return needs_dates

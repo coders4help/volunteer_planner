@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
 Django settings for a boilerplate project.
 
@@ -13,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
+PROJECT_ROOT = os.path.abspath(os.path.join(__file__, '..', '..'))
 SITE_ROOT = os.path.dirname(PROJECT_ROOT)
 SITE_ID = 1
 SITE_NAME = os.path.basename(PROJECT_ROOT)
@@ -42,6 +44,7 @@ DJANGO_APPS = (
 )
 
 LOCAL_APPS = (
+    'google_tools',
     'account',
     'common',
     'registration',
@@ -77,24 +80,24 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-TEMPLATE_DIRS = [
-    os.path.join(PROJECT_ROOT, "templates"),
+
+print(os.path.join(SITE_ROOT, 'templates'))
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(SITE_ROOT, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'google_tools.context_processors.google_tools_config'
+            ],
+        },
+    },
 ]
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
-)
 
 LOGGING = {
     'version': 1,
@@ -124,8 +127,8 @@ LOGIN_URL = '/auth/login/'
 
 TIME_ZONE = 'Europe/Berlin'
 
-LANGUAGE_CODE = 'de'
-
+LANGUAGE_CODE = 'de-de'
+USE_L10N = True
 LANGUAGES = (
     ('de', _('German')),
     ('en', _('English')),

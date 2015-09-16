@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-12" style="margin-top:50px;">
+    <div class="col-md-12">
         {% include "partials/alert_messages.html" %}
 
         <h2>
             Dienstpläne für "{{ needs.0.location.name }}"
-            am {{ needs.0.time_period_to.date_time|date:"d. M. Y" }}
+            am {{ needs.0.ending_time|date:"d. M. Y" }}
         </h2>
 
         {% for need in needs %}
@@ -29,8 +29,8 @@
 
                 <p class="need" data-need-id="{{ need.pk }}">
                     <strong>
-                        von {{ need.time_period_from.date_time|date:"H:i" }} -
-                        {{ need.time_period_to.date_time|date:"H:i" }} Uhr
+                        von {{ need.starting_time|date:"H:i" }} -
+                        {{ need.ending_time|date:"H:i" }} Uhr
                     </strong>
                     (benötigt: {{ need.slots }}/angemeldet: {{ need.volunteer_count }})
                     | Freiwillige:

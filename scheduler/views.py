@@ -71,12 +71,11 @@ class PlannerView(LoginRequiredMixin, FormView):
         context = super(PlannerView, self).get_context_data(**kwargs)
         context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']) \
             .annotate(volunteer_count=Count('registrationprofile')) \
-            .filter(time_period_to__date_time__year=self.kwargs['year'],
-                    time_period_to__date_time__month=self.kwargs['month'],
-                    time_period_to__date_time__day=self.kwargs['day']) \
-            .order_by('topic', 'time_period_to__date_time') \
-            .select_related('topic', 'location', 'time_period_from',
-                            'time_period_to') \
+            .filter(ending_time__year=self.kwargs['year'],
+                    ending_time__month=self.kwargs['month'],
+                    ending_time__day=self.kwargs['day']) \
+            .order_by('topic', 'ending_time') \
+            .select_related('topic', 'location') \
             .prefetch_related('registrationprofile_set',
                               'registrationprofile_set__user')
         return context
@@ -113,21 +112,3 @@ class PlannerView(LoginRequiredMixin, FormView):
         """
         return reverse('planner_by_location', kwargs=self.kwargs)
 
-
-@login_required(login_url='/auth/login/')
-@permission_required('location.can_view')
-def volunteer_list(request, **kwargs):
-    """
-    Show list of volunteers for current shift
-    """
-    today = datetime.date.today()
-    loc = get_object_or_404(Location, id=kwargs.get('loc_pk'))
-    needs = Need.objects.filter(location=loc,
-                                time_period_to__date_time__contains=today)
-    data = list(RegistrationProfile.objects.filter(
-        needs__in=needs).distinct().values_list('user__email', flat=True))
-    # add param ?type=json in url to get JSON data
-    if request.GET.get('type') == 'json':
-        return JsonResponse(data, safe=False)
-    return render(request, 'volunteer_list.html',
-                  {'data': json.dumps(data), 'location': loc, 'today': today})
