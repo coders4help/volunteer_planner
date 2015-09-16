@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django import forms
+
 from .models import BluePrintCreator, NeedBluePrint
 
 
@@ -19,6 +20,16 @@ class BluePrintCreatorAdminForm(forms.ModelForm):
 class BluePrintCreatorAdmin(admin.ModelAdmin):
     form = BluePrintCreatorAdminForm
     filter_horizontal = ('needs',)
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'location')
+        }),
+        (None, {
+            'classes': ('needs_in_blueprint',),
+            'fields': ('needs',)
+        }),
+    )
 
 
 class NeedBluePrintAdmin(admin.ModelAdmin):
