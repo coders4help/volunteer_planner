@@ -2,18 +2,8 @@ from .base import *
 
 DEBUG = os.environ.get('BETA', False)
 
-TEMPLATE_DEBUG = False
-
 STATIC_ROOT = os.environ['STATIC_ROOT']
 
-TEMPLATE_LOADERS = (
-    (
-        'django.template.loaders.cached.Loader', (
-            'django.template.loaders.filesystem.Loader',
-            'django.template.loaders.app_directories.Loader',
-        )
-    ),
-)
 
 # Let this be done by frontend reverse proxy, if required!
 PREPEND_WWW = False
@@ -48,4 +38,6 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
-# ssd
+
+GOOGLE_SITE_VERIFICATION = '-BN1vuSIqe1vJNe8hS5_6iLvtpJrefGpMIAA1ogCoLQ'
+GOOGLE_ANALYTICS_TRACKING_ID = 'UA-66642441-1'

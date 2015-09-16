@@ -11,18 +11,22 @@ https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
     sudo apt-get install python-dev python-pip git npm
 
+This will install Python libraries and Git.
+
 If you are going to use a local mysql server, additionally install 
 
     sudo apt-get install libmysqlclient-dev mysql-client mysql-server
 
-This will install MySQL server, Python libraries and Git. It will ask you to set a root password [ROOT_PASSWORD] for 
-the mysql server, if you haven't already set up MySQL in the past. Remember the password.
+This will install MySQL server, it will ask you to set a root password 
+[ROOT_PASSWORD] for the mysql server, if you haven't already set up MySQL in the
+past. Remember the password.
 
 ### 2. Clone the repository
 
     git clone https://github.com/volunteer-planner/volunteer_planner.git
     
-An instance of the volunteer_planner will be created in the folder `volunteer_planner`.
+An instance of the volunteer_planner will be created in the folder 
+`volunteer_planner`.
 
 ### 3. Create a virtual environment
 
@@ -34,7 +38,9 @@ bash
     
     source volunteer_planner-venv/bin/activate (for bash) or
 
-fish . volunteer_planner-venv/bin/activate.fish
+fish 
+
+    . volunteer_planner-venv/bin/activate.fish
 
 ### 4. Install all requirements by running 
 
@@ -59,11 +65,10 @@ or, if you intend to use mysql locally, install
 *Note*: For the local environment, the DB username is assumed to be 'vp' 
 and their password is assumed to be 'volunteer_planner'.
 
-### 6. Create local runner
+### 6. Setup your local environment (optional)
 
-    cp man.py manlocal.py
-
-Edit the file and update values for db credentials, settings file (volunteer_planner.settings.local[_mysql]) and the rest with your preferred settings.
+If you need to use non-default settings values, setup the environment variables
+in your virtualenv's (post-)activation hooks or your IDE's project settings.
 
 ### 7. Initialize the database
 
@@ -73,7 +78,8 @@ Edit the file and update values for db credentials, settings file (volunteer_pla
 
     ./manlocal.py createsuperuser
     
-You will be asked for username, email and password (twice). Remember that username and password.
+You will be asked for username, email and password (twice). Remember that 
+username and password.
 
 ### 9. Try running the server
 
@@ -83,13 +89,15 @@ Try opening http://localhost:8000/ in your browser.
 
 ### 9. Adding content
 
-To add new organizations and shifts, you have to access the backend at `http://localhost:8000/admin`. 
-If prompted, login with the username/password of the superuser you created earlier (in case you don't see an error page here).
+To add new organizations and shifts, you have to access the backend at 
+`http://localhost:8000/admin`. If prompted, login with the username/password of 
+the superuser you created earlier (in case you don't see an error page here).
 
     http://localhost:8000/admin`
 
 ## The Project
 
-We use less for precompiling css. The less file you will find in scheduler/static/bootstrap/less/project.less
-
-To make this work you can just initialize the folder with "npm install -g" and then let grunt watch for changes.
+We use less for precompiling css. The less file you will find in 
+`scheduler/static/bootstrap/less/project.less` To make this work you can just 
+initialize the folder with "npm install -g" and then let grunt watch for 
+changes.
