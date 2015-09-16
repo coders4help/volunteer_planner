@@ -113,21 +113,3 @@ class PlannerView(LoginRequiredMixin, FormView):
         """
         return reverse('planner_by_location', kwargs=self.kwargs)
 
-
-@login_required(login_url='/auth/login/')
-@permission_required('location.can_view')
-def volunteer_list(request, **kwargs):
-    """
-    Show list of volunteers for current shift
-    """
-    today = datetime.date.today()
-    loc = get_object_or_404(Location, id=kwargs.get('loc_pk'))
-    needs = Need.objects.filter(location=loc,
-                                time_period_to__date_time__contains=today)
-    data = list(RegistrationProfile.objects.filter(
-        needs__in=needs).distinct().values_list('user__email', flat=True))
-    # add param ?type=json in url to get JSON data
-    if request.GET.get('type') == 'json':
-        return JsonResponse(data, safe=False)
-    return render(request, 'volunteer_list.html',
-                  {'data': json.dumps(data), 'location': loc, 'today': today})
