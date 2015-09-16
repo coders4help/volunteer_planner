@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-14 10:29+0200\n"
+"POT-Creation-Date: 2015-09-16 12:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,7 +131,7 @@ msgstr "Schicht"
 msgid "shifts"
 msgstr "Schichten"
 
-#: scheduler/models.py:20 scheduler/models.py:90
+#: scheduler/models.py:20 scheduler/models.py:67
 msgid "helptype"
 msgstr "Hilfebereich"
 
@@ -139,52 +139,40 @@ msgstr "Hilfebereich"
 msgid "helptype_text"
 msgstr "Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
 
-#: scheduler/models.py:21 scheduler/models.py:125
+#: scheduler/models.py:21 scheduler/models.py:90
 msgid "location"
 msgstr "Ort"
 
-#: scheduler/models.py:24
-msgid "time from"
-msgstr "Anfangszeit"
+#: scheduler/models.py:23
+msgid "starting time"
+msgstr "Beginn"
 
-#: scheduler/models.py:29
+#: scheduler/models.py:24
+msgid "ending time"
+msgstr "Ende"
+
+#: scheduler/models.py:28
 msgid "number of needed volunteers"
 msgstr "Anz. benötigter Freiwillige"
 
-#: scheduler/models.py:34
-msgid "assigned volunteers"
-msgstr "Reg. Freiwillige"
-
-#: scheduler/models.py:39
-msgid "volunteers"
-msgstr "Freiwillige"
-
-#: scheduler/models.py:91
+#: scheduler/models.py:68
 msgid "helptypes"
 msgstr "Hilfebereiche"
 
-#: scheduler/models.py:106
-msgid "timeperiod"
-msgstr "Zeitspanne"
-
-#: scheduler/models.py:107
-msgid "timeperiods"
-msgstr "Zeitspannen"
-
-#: scheduler/models.py:126
+#: scheduler/models.py:91
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/views.py:79
+#: scheduler/views.py:84
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:90
+#: scheduler/views.py:97
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Sie können der Schicht nicht beitreten, da Sie bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
-#: scheduler/views.py:93
+#: scheduler/views.py:102
 msgid "You were successfully added to this shift."
 msgstr "Sie haben sich erfolgreich für die Schicht angemeldet."
 
@@ -208,11 +196,11 @@ msgstr "Organisation"
 msgid "email"
 msgstr "E-Mail"
 
-#: volunteer_planner/settings/base.py:130
+#: volunteer_planner/settings/base.py:131
 msgid "German"
 msgstr "Deutsch"
 
-#: volunteer_planner/settings/base.py:131
+#: volunteer_planner/settings/base.py:132
 msgid "English"
 msgstr "Englisch"
 

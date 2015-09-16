@@ -71,12 +71,11 @@ class PlannerView(LoginRequiredMixin, FormView):
         context = super(PlannerView, self).get_context_data(**kwargs)
         context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']) \
             .annotate(volunteer_count=Count('registrationprofile')) \
-            .filter(time_period_to__date_time__year=self.kwargs['year'],
-                    time_period_to__date_time__month=self.kwargs['month'],
-                    time_period_to__date_time__day=self.kwargs['day']) \
-            .order_by('topic', 'time_period_to__date_time') \
-            .select_related('topic', 'location', 'time_period_from',
-                            'time_period_to') \
+            .filter(ending_time__year=self.kwargs['year'],
+                    ending_time__month=self.kwargs['month'],
+                    ending_time__day=self.kwargs['day']) \
+            .order_by('topic', 'ending_time') \
+            .select_related('topic', 'location') \
             .prefetch_related('registrationprofile_set',
                               'registrationprofile_set__user')
         return context
