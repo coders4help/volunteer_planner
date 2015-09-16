@@ -45,7 +45,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'google_tools',
-    'account',
+    'accounts',
     'common',
     'registration',
     'scheduler',
