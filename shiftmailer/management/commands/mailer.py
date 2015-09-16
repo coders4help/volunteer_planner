@@ -22,12 +22,12 @@ class Command(BaseCommand):
         for mail in mailer:
             now = datetime.datetime.now()
             needs = Need.objects.filter(location=mail.location).filter(
-                time_period_to__date_time__year=now.strftime("%Y"),
-                time_period_to__date_time__month=now.strftime("%m"),
-                time_period_to__date_time__day=now.strftime("%d")) \
-                .order_by('topic', 'time_period_to__date_time') \
+                ending_time__year=now.strftime("%Y"),
+                ending_time__month=now.strftime("%m"),
+                ending_time__day=now.strftime("%d")) \
+                .order_by('topic', 'ending_time') \
                 .annotate(volunteer_count=Count('registrationprofile')) \
-                .select_related('topic', 'location', 'time_period_from', 'time_period_to') \
+                .select_related('topic', 'location') \
                 .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
 
             message = render_to_string('shifts_today.html', locals())

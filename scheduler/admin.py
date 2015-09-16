@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django.db.models import Count
 
-from scheduler.models import Need, Topics, TimePeriods, Location
+from scheduler.models import Need, Topics, Location
 
 
 class NeedAdmin(admin.ModelAdmin):
@@ -24,7 +24,7 @@ class NeedAdmin(admin.ModelAdmin):
         return u", ".join(_format_username(volunteer.user) for volunteer in obj.registrationprofile_set.all())
 
     list_display = (
-        'id', 'topic', 'time_period_from', 'time_period_to', 'slots', 'get_volunteer_count', 'get_volunteer_names'
+        'id', 'topic', 'starting_time', 'ending_time', 'slots', 'get_volunteer_count', 'get_volunteer_names'
     )
 
     search_fields = ('id', 'topic__title',)
@@ -40,5 +40,4 @@ class TopicsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Topics, TopicsAdmin)
-admin.site.register(TimePeriods)
 admin.site.register(Location)
