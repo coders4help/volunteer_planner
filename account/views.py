@@ -16,7 +16,7 @@ class AccountUpdateView(LoginRequiredMixin, UpdateView):
     """
     Allows a user to update their profile.
     """
-    fields = ['first_name', 'last_name', 'email']
+    fields = ['first_name', 'last_name']
     template_name = "user_account_edit.html"
     success_url = reverse_lazy('account_detail')
 
