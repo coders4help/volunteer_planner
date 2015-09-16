@@ -16,9 +16,7 @@ class RegistrationAdmin(admin.ModelAdmin):
     def get_field_queryset(self, db, db_field, request):  #
         if db_field.name == 'needs' \
                 and db_field.model._meta.object_name == 'RegistrationProfile':
-            return Need.objects.select_related('time_period_from',
-                                               'time_period_to',
-                                               'topic',
+            return Need.objects.select_related('topic',
                                                'location')
 
         return super(RegistrationAdmin, self).get_field_queryset(db,
