@@ -1,3 +1,12 @@
+16. September 2015
+- fix database time_period table and remove foreign key in scheudler.need
+- fix UI issue in Admin Blueprint
+
+14. September 2015
+- fix email privacy in email notification
+- fix UI problems
+
+
 12. September 2015
 ------------------
 - Add pretty admin theme
