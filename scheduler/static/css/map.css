@@ -12,11 +12,11 @@ div.marker-info p {
 .H_ib {
   position: absolute;
   left: .91em;
-  background: #000;
+  background: #1F262A;
   color: #fff;
   font-size: 2em;
   line-height: 1em;
-  fill: #000;
+  fill: #1F262A;
   left: -100%;
   -moz-user-select: initial;
   -khtml-user-select: initial;
@@ -36,7 +36,7 @@ div.marker-info p {
   display: none;
 }
 .H_ib_body {
-  background: #000;
+  background: #1F262A;
   position: absolute;
   bottom: .5em;
   padding: 0 1.2em 0 0;
