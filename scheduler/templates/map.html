@@ -3,9 +3,10 @@
 </div>
 <script type="text/javascript" charset="UTF-8" >
     function createInfoText(name, street, city, postalCode) {
-        var html = "<div class='map-marker-info'>";
+        var html = "<div class=\"marker-info\">";
         html = html + "<h3>" + name + "</h3>";
-        html = html + "<p>" + street + "<br/>" + postalCode + " " + city + "</p>"
+        html = html + "<p>" + street + "<br/>";
+        html = html + postalCode + " " + city + "</p>";
         html = html + "</div>";
 
         return html;

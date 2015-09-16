@@ -11,8 +11,7 @@
 {% endblock %}
 {% block css %}
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/map.css" />
-    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}" />
 {% endblock %}
 {% block title %}Helpdesk{% endblock %}
 {% block body_class %}helpdesk{% endblock %}

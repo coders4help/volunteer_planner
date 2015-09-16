@@ -4,6 +4,7 @@
 <html>
 <head lang="de">
     <meta charset="UTF-8">
+    {% block meta %} {% endblock %}
 
     <title>{% block title %} Volunteer Planner {% endblock %}</title>
 
@@ -13,7 +14,8 @@
           content="Volunteer-Planner.org ist ein kostenloses und werbungsfreies Tool, um Dienstpläne für Freiwillige in Flüchtlingsunterkünfte zu organisieren">
 
     {% include 'google_headers.html' %}
-
+    {% block javascript %}{% endblock %}
+    {% block css %} {% endblock %}
     <link href='http://fonts.googleapis.com/css?family=Hind|Shadows+Into+Light' rel='stylesheet' type='text/css'>
 </head>
 <body class="{% block body_class%} {% endblock %}">
