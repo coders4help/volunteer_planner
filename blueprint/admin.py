@@ -33,7 +33,7 @@ class BluePrintCreatorAdmin(admin.ModelAdmin):
 
 
 class NeedBluePrintAdmin(admin.ModelAdmin):
-    list_display = ['topic', 'get_location']
+    list_display = ['topic', 'get_location', 'from_time', 'to_time']
 
 
 admin.site.register(BluePrintCreator, BluePrintCreatorAdmin)
