@@ -72,28 +72,28 @@ in your virtualenv's (post-)activation hooks or your IDE's project settings.
 
 ### 7. Initialize the database
 
-    ./manlocal.py migrate
+    ./manage.py migrate
 
 ### 8. Add a superuser
 
-    ./manlocal.py createsuperuser
+    ./manage.py createsuperuser
     
 You will be asked for username, email and password (twice). Remember that 
 username and password.
 
 ### 9. Try running the server
 
-    ./manlocal.py runserver
+    ./manage.py runserver
 
 Try opening http://localhost:8000/ in your browser.
 
-### 9. Adding content
+### 10. Adding content
 
 To add new organizations and shifts, you have to access the backend at 
 `http://localhost:8000/admin`. If prompted, login with the username/password of 
 the superuser you created earlier (in case you don't see an error page here).
 
-    http://localhost:8000/admin`
+    http://localhost:8000/admin
 
 ## The Project
 
