@@ -44,9 +44,7 @@
                 var date_pick = $("#datepicker").datepicker( "getDate" )
                 var locations = $('#tokenize').val()
                 if( date_pick == null || locations == null) {
-        alert('Mindestens eines der Answahlfelder ist leer')
-
-
+                    alert('Mindestens eines der Answahlfelder ist leer')
                 }
                 else{
                      $.ajax({
@@ -81,7 +79,6 @@
                     {% endfor %}
                 </select></p>
             <p class="text-center">Date: <input type="text" id="datepicker"></p>
-
 
             <p>
                 <button class="btn btn-primary btn-lg" href="#" role="button">anwenden</button>

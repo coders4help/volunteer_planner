@@ -7,49 +7,46 @@
 
 {% block content %}
 
-    <div class="col-md-7">
-        <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
+<div class="col-md-7">
+    <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
 
-
-
-            {% for location in locations %}
-                <div class="row">
-                <div class="col-md-5">
-                    <h3 style="padding:0; margin:0;">{{ location }} </h3>
-
-                    <p>{{ location.street }} <br>
-                        {{ location.postal_code }} {{ location.city }}
-                    </p>
-                <p><span aria-hidden="true" class="glyphicon glyphicon-flag"></span>{{  location.additional_info|safe }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>{% for date_single in location.get_dates_of_needs %}
+    {% for location in locations %}
+        <div class="row">
+            <div class="col-md-5">
+                <h3 style="padding:0; margin:0;">{{ location }} </h3>
+                <p>
+                    {{ location.street }}<br>
+                    {{ location.postal_code }} {{ location.city }}
+                </p>
+                <p>
+                    <span aria-hidden="true" class="glyphicon glyphicon-flag"></span>{{  location.additional_info|safe }}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    {% for date_single in location.get_dates_of_needs %}
                         <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-                        <a href="{% url 'planner_by_location' pk=location.pk year=date_single|slice:'-4:' month=date_single|slice:'-7:-5' day=date_single|slice:'-10:-8' %}">{{ date_single }}
-                            [ansehen]</a>
-                        <br> {% endfor %}</p>
-
-                </div>
-</div>
-                    <hr>
-            {% endfor %}
-
-
-    </div>
-    {% if notifications %}
-        <div class="col-md-3 notification-container">
-
-            {% for notification in notifications %}
-                <h2>Aufrufe von "{{ notification.location.name }}"</h2>
-
-                {{ notification.creation_date }}
-                <h3>{{ notification.title }}</h3>
-                {{ notification.subtitle }}
-                {{ notification.text|safe }}
-
-            {% endfor %}
+                        <a href="{% url 'planner_by_location' pk=location.pk year=date_single|slice:'-4:' month=date_single|slice:'-7:-5' day=date_single|slice:'-10:-8' %}">
+                            {{ date_single }} [ansehen]
+                        </a>
+                    {% endfor %}
+                </p>
+            </div>
         </div>
-    {% endif %}
+        <hr>
+    {% endfor %}
+</div>
 
+{% if notifications %}
+    <div class="col-md-3 notification-container">
+        {% for notification in notifications %}
+            <h2>Aufrufe von "{{ notification.location.name }}"</h2>
+            {{ notification.creation_date }}
+            <h3>{{ notification.title }}</h3>
+            {{ notification.subtitle }}
+            {{ notification.text|safe }}
+        {% endfor %}
+    </div>
+{% endif %}
 
 {% endblock %}
