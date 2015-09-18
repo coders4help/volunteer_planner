@@ -2,9 +2,11 @@
 
 import json
 import datetime
+import logging
 
 from django.core.urlresolvers import reverse
 from django.contrib import messages
+from django.db import ProgrammingError
 from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
@@ -14,7 +16,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 from django.utils.translation import ugettext_lazy as _
 
-from scheduler.models import Location, Need
+from scheduler.models import Location, Need, WorkDone
 from notifications.models import Notification
 from registration.models import RegistrationProfile
 from stats.models import ValueStore
@@ -35,10 +37,15 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['locations'] = Location.objects.all()
         context['notifications'] = Notification.objects.all()
+        log = logging.getLogger(__name__)
         try:
-            context['working_hours'] = ValueStore.objects.get(
-                name="total-volunteer-hours")
-        except ValueStore.DoesNotExist:
+            context['working_hours'] = WorkDone.objects.get(id=1)
+            log.debug(u'Working hours: %s', context['working_hours'])
+        except WorkDone.DoesNotExist:
+            context['working_hours'] = ""
+        # In case the unmanaged model ain't created correctly there's not point in spitting out errors.
+        # This information is auxiliarry and if we don't have it yet, don't harras the user.
+        except ProgrammingError:
             context['working_hours'] = ""
         return context
 
