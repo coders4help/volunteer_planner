@@ -23,7 +23,6 @@
 
 <div id="text-outer-container">
 
-
     <div id="content">
         {% block content %}
             {% include "partials/alert_messages.html" %}
@@ -46,8 +45,7 @@
                 </a>
                 <br>
                 <a href="{% url 'faq' %}">
-                    <button type="button" class="btn btn-primary transparent btn-lg active">Häufig gestellte Fragen
-                    </button>
+                    <button type="button" class="btn btn-primary transparent btn-lg active">Häufig gestellte Fragen</button>
                 </a>
             </div>
 
@@ -66,22 +64,20 @@
             </div>
 
             <div class="col-md-3">
-
-
-                        <h2>{% get_volunteer_number %} Freiwillige sind bereits registriert
+                <h2>
+                    {% get_volunteer_number %} Freiwillige sind bereits registriert
                     {% if working_hours %}
-                        und haben {{ working_hours.value|intcomma }} Stunden geholfen </h2>
+                        und haben {{ working_hours.value|intcomma }} Stunden geholfen
                     {% endif %}
-
-
-
-
-
+                </h2>
             </div>
-            <div class="disclaimer"><p>Für Kritik, Anregungen oder Support: <a
-                    href="mailto:support@volunteer-planner.org">support@volunteer-planner.org</a></p></div>
+            <div class="disclaimer">
+                <p>
+                    Für Kritik, Anregungen oder Support: <a href="mailto:support@volunteer-planner.org">support@volunteer-planner.org</a>
+                </p>
             </div>
         {% endblock %}
+    </div>
 </div>
 {% block js %}
     <script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
