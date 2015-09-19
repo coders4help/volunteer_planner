@@ -20,8 +20,8 @@ class Need(models.Model):
     topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
-    starting_time = models.DateTimeField(verbose_name=_('starting time'))
-    ending_time = models.DateTimeField(verbose_name=_('ending time'))
+    starting_time = models.DateTimeField(verbose_name=_('starting time'), db_index=True)
+    ending_time = models.DateTimeField(verbose_name=_('ending time'), db_index=True)
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
@@ -105,3 +105,15 @@ class Location(models.Model):
             if date_name not in needs_dates:
                 needs_dates.append(i.starting_time.strftime("%A, %d.%m.%Y"))
         return needs_dates
+
+
+class WorkDone(models.Model):
+    id = models.IntegerField(primary_key=True)
+    hours = models.IntegerField(name=u'hours', verbose_name=_('working hours'))
+
+    class Meta:
+        managed = False
+        db_table = 'work_done'
+
+    def __unicode__(self):
+        return u'{}'.format(self.hours)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-16 12:32+0200\n"
+"POT-Creation-Date: 2015-09-19 11:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: account/templates/user_account_edit.html:14
+#: accounts/templates/user_account_edit.html:16
 msgid "Save"
 msgstr "Speichern"
 
-#: account/templates/user_detail.html:14 registration/forms.py:34
+#: accounts/templates/user_detail.html:14 registration/forms.py:34
 msgid "Username"
 msgstr "Benutzername"
 
-#: account/templates/user_detail.html:15
+#: accounts/templates/user_detail.html:15
 msgid "First name"
 msgstr "Vorname"
 
-#: account/templates/user_detail.html:16
+#: accounts/templates/user_detail.html:16
 msgid "Last name"
 msgstr "Nachname"
 
-#: account/templates/user_detail.html:17 registration/forms.py:37
+#: accounts/templates/user_detail.html:17 registration/forms.py:37
 msgid "Email"
 msgstr "E-Mail Adresse"
 
-#: account/templates/user_detail.html:19
+#: accounts/templates/user_detail.html:20
 msgid "Edit Account"
 msgstr "Account bearbeiten"
 
@@ -54,11 +54,11 @@ msgstr "Untertitel"
 msgid "articletext"
 msgstr "Artikeltext"
 
-#: registration/admin.py:23
+#: registration/admin.py:35
 msgid "Activate users"
 msgstr "Benutzer aktivieren"
 
-#: registration/admin.py:43
+#: registration/admin.py:56
 msgid "Re-send activation emails"
 msgstr "Aktivierungsmail erneut versenden"
 
@@ -163,16 +163,20 @@ msgstr "Hilfebereiche"
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/views.py:84
+#: scheduler/models.py:112
+msgid "working hours"
+msgstr "Arbeitsstunden"
+
+#: scheduler/views.py:91
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:97
+#: scheduler/views.py:104
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Sie können der Schicht nicht beitreten, da Sie bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
-#: scheduler/views.py:102
+#: scheduler/views.py:109
 msgid "You were successfully added to this shift."
 msgstr "Sie haben sich erfolgreich für die Schicht angemeldet."
 
@@ -196,30 +200,22 @@ msgstr "Organisation"
 msgid "email"
 msgstr "E-Mail"
 
-#: volunteer_planner/settings/base.py:131
-msgid "German"
-msgstr "Deutsch"
-
-#: volunteer_planner/settings/base.py:132
-msgid "English"
-msgstr "Englisch"
-
-#: volunteer_planner/templates/registration/password_change_form.html:10
+#: templates/registration/password_change_form.html:10
 msgid "Change password"
 msgstr ""
 
-#: volunteer_planner/templates/registration/password_reset_complete.html:4
+#: templates/registration/password_reset_complete.html:4
 #, python-format
 msgid "Your password has been reset! You may now <a href=\"%(login_url)s\">log in</a>."
 msgstr "Ihr Passwort wurde geändert. Sie können sich jetzt <a href=\"%(login_url)s\">erneut anmelden</a>."
 
-#: volunteer_planner/templates/registration/password_reset_done.html:6
+#: templates/registration/password_reset_done.html:6
 msgid ""
 "We have sent you an email with a link to reset your password.\n"
 "Please check your email and click the link to continue."
 msgstr ""
 
-#: volunteer_planner/templates/registration/password_reset_email.html:3
+#: templates/registration/password_reset_email.html:3
 #, python-format
 msgid ""
 "You are receiving this email because you (or someone pretending to be you)\n"
@@ -230,7 +226,7 @@ msgid ""
 "into your web browser:"
 msgstr ""
 
-#: volunteer_planner/templates/registration/password_reset_email.html:12
+#: templates/registration/password_reset_email.html:12
 #, python-format
 msgid ""
 "\n"
@@ -240,6 +236,14 @@ msgid ""
 "%(site_name)s Management\n"
 msgstr ""
 
-#: volunteer_planner/templates/registration/password_reset_form.html:16
+#: templates/registration/password_reset_form.html:17
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
+
+#: volunteer_planner/settings/base.py:131
+msgid "German"
+msgstr "Deutsch"
+
+#: volunteer_planner/settings/base.py:132
+msgid "English"
+msgstr "Englisch"
