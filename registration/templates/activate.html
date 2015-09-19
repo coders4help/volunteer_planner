@@ -16,7 +16,7 @@
             You may now <a href='{{ auth_login_url}}'>login</a> using the username and password you set at registration.
         {% endblocktrans %}
     {% else %}
-        {% blocktrans %}
+        {% blocktrans trimmed %}
           Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired.
         {% endblocktrans %}
     {% endif %}
