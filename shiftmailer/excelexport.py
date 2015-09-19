@@ -10,7 +10,7 @@ from django.db.models import Count
 class GenerateExcelSheet:
     def __init__(self, needs, mailer):
         self.needs = needs.annotate(volunteer_count=Count('registrationprofile')) \
-                          .select_related('topic', 'location', 'time_period_from', 'time_period_to') \
+                          .select_related('topic', 'location') \
                           .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
         self.mailer = mailer
         self.send_file()
@@ -36,8 +36,8 @@ class GenerateExcelSheet:
 
         for row_idx, need in enumerate(self.needs, start=4):
 
-            ws.write(row_idx, 0, need.time_period_from.date_time.strftime("%d.%m.%Y %H:%M:00"))
-            ws.write(row_idx, 1, need.time_period_to.date_time.strftime("%d.%m.%Y %H:%M:00"))
+            ws.write(row_idx, 0, need.starting_time.strftime("%d.%m.%Y %H:%M:00"))
+            ws.write(row_idx, 1, need.ending_time.strftime("%d.%m.%Y %H:%M:00"))
             ws.write(row_idx, 2, need.topic.title)
             ws.write(row_idx, 3, need.volunteer_count)
             volunteers_string = ""
@@ -52,7 +52,7 @@ class GenerateExcelSheet:
         mail = EmailMessage()
         mail.body = "Hallo " + self.mailer.first_name + " " + self.mailer.last_name + \
                     " Anbei die Liste zum Dienstplan der Freiwilligen. Dies ist ein Service von volunteer-planner.org"
-        mail.subject = "Dienstplan fuer den " + self.needs[0].time_period_from.date_time.strftime("%d.%m.%Y") + \
+        mail.subject = "Dienstplan fuer den " + self.needs[0].starting_time.strftime("%d.%m.%Y") + \
                        " der Freiwilligen in der Unterkunft " + self.needs[0].location.name
         mail.from_email = "Volunteer-Planner.org <no-reply@volunteer-planner.org>"
         mail.to = [str(self.mailer.email)]

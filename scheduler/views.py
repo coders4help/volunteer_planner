@@ -1,30 +1,22 @@
 # coding: utf-8
 
-import json
 import datetime
+import logging
 
 from django.core.urlresolvers import reverse
-
 from django.contrib import messages
-
-from django.http.response import HttpResponseRedirect, JsonResponse
-
-from django.shortcuts import render
-
+from django.db import ProgrammingError
+from django.http.response import HttpResponseRedirect
 from django.db.models import Count
-
 from django.views.generic import TemplateView, FormView
-
-from django.contrib.auth.decorators import login_required, permission_required
 
 from django.utils.translation import ugettext_lazy as _
 
 from django.shortcuts import get_object_or_404
 
-from scheduler.models import Location, Need
+from scheduler.models import Location, Need, WorkDone
 from notifications.models import Notification
 from registration.models import RegistrationProfile
-from stats.models import ValueStore
 from .forms import RegisterForNeedForm
 from volunteer_planner.utils import LoginRequiredMixin
 
@@ -42,10 +34,15 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['locations'] = Location.objects.all()
         context['notifications'] = Notification.objects.all()
+        log = logging.getLogger(__name__)
         try:
-            context['working_hours'] = ValueStore.objects.get(
-                name="total-volunteer-hours")
-        except ValueStore.DoesNotExist:
+            context['working_hours'] = WorkDone.objects.get(id=1)
+            log.debug(u'Working hours: %s', context['working_hours'])
+        except WorkDone.DoesNotExist:
+            context['working_hours'] = ""
+        # In case the unmanaged model ain't created correctly there's not point in spitting out errors.
+        # This information is auxiliarry and if we don't have it yet, don't harras the user.
+        except ProgrammingError:
             context['working_hours'] = ""
         return context
 
@@ -58,10 +55,8 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        shifts = Need.objects.filter(
-            time_period_to__date_time__gt=datetime.datetime.now())
-        shifts = shifts.order_by('location', 'time_period_to__date_time')
-        shifts = shifts.select_related('location', 'time_period_to')
+        shifts = Need.objects.filter(ending_time__gt=datetime.datetime.now()) \
+            .order_by('location').select_related('location')
         context['shifts'] = shifts
         context['notifications'] = Notification.objects.all().select_related(
             'location')
@@ -83,12 +78,11 @@ class PlannerView(LoginRequiredMixin, FormView):
 
         context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']) \
             .annotate(volunteer_count=Count('registrationprofile')) \
-            .filter(time_period_to__date_time__year=self.kwargs['year'],
-                    time_period_to__date_time__month=self.kwargs['month'],
-                    time_period_to__date_time__day=self.kwargs['day']) \
-            .order_by('topic', 'time_period_to__date_time') \
-            .select_related('topic', 'location', 'time_period_from',
-                            'time_period_to') \
+            .filter(ending_time__year=self.kwargs['year'],
+                    ending_time__month=self.kwargs['month'],
+                    ending_time__day=self.kwargs['day']) \
+            .order_by('topic', 'ending_time') \
+            .select_related('topic', 'location') \
             .prefetch_related('registrationprofile_set',
                               'registrationprofile_set__user')
 

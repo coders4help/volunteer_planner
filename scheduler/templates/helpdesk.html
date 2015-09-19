@@ -5,8 +5,6 @@
     {% include 'navbar.html' %}
 {% endblock %}
 
-
-
 {% block content %}
 
     {% if notifications %}
@@ -49,7 +47,7 @@
                         <p>{{ location.additional_info|safe }}</p>
                     </div>
 
-                    {% regroup location_shifts.list by time_period_to.date_time.date as shifts_by_time %}
+                    {% regroup location_shifts.list by ending_time.date as shifts_by_time %}
 
                     <div class="pull-right">
                         <h3>{% trans "dates" %}</h3>
@@ -62,7 +60,6 @@
                                     </a>
                                     <br/>
                                 {% endwith %}
-
                             {% endfor %}
                         </p>
                     </div>

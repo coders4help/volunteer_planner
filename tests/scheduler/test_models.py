@@ -10,7 +10,7 @@ def create_need(start_hour, end_hour):
     """
     start = datetime.datetime(2015, 1, 1, start_hour)
     end = datetime.datetime(2015, 1, 1, end_hour)
-    return NeedFactory.create(time_period_from__date_time=start, time_period_to__date_time=end)
+    return NeedFactory.create(starting_time=start, ending_time=end)
 
 
 class NeedTestCase(TestCase):

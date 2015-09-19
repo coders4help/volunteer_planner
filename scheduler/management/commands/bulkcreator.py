@@ -1,12 +1,11 @@
-import os
+# coding: utf-8
 
-from django.conf import settings
+from datetime import timedelta
+
 from django.core.management.base import BaseCommand
-import datetime
-from datetime import date, timedelta
-from scheduler.models import Need, Location, Topics, TimePeriods
-from dateutil.parser import *
-import ipdb
+from dateutil.parser import parse
+
+from scheduler.models import Need, Location, Topics
 
 
 class Command(BaseCommand):
@@ -25,40 +24,27 @@ class Command(BaseCommand):
             print options['location_id']
 
             location = Location.objects.get(id=options['location_id'][0])
-            needs = location.need_set.all()
+            location_needs = location.need_set.all()
             topic_titles = []
-            for need in needs:
+            for need in location_needs:
                 if need.topic.title not in topic_titles:
                     topic_titles.append(need.topic.title)
 
-            for item in topic_titles:
-                topic = Topics.objects.filter(title=item)[:1]
-                needs_needs = Need.objects.filter(topic__title=item)
-                for needy in needs_needs:
-                    to_time = str(needy.time_period_to)
-                    from_time = str(needy.time_period_from)
-                    date_new_to = parse(to_time)
-                    date_new_from = parse(from_time)
+            for topic_title in topic_titles:
+                topic = Topics.objects.filter(title=topic_title)[:1]
+                topic_needs = Need.objects.filter(topic__title=topic_title)
+
+                for need in topic_needs:
+                    date_new_to = parse(str(need.ending_time))
+                    date_new_from = parse(str(need.starting_time))
 
                     for i in range(int(options['days_to_add'][0])):
-                        newtime_to = date_new_to + datetime.timedelta(days=i)
-                        newtime_from = date_new_from + datetime.timedelta(days=i)
-                        from_the_time = TimePeriods(date_time=newtime_from)
-                        from_the_time.save()
-                        to_the_time = TimePeriods(date_time=newtime_to)
-                        to_the_time.save()
-                        new_row = Need(topic=topic[0])
-                        new_row.location = location
-                        new_row.slots = needy.slots
+                        ending_time = date_new_to + timedelta(days=i)
+                        starting_time = date_new_from + timedelta(days=i)
 
-                        new_row.time_period_to = to_the_time
-                        new_row.time_period_from = from_the_time
-                        new_row.save()
-                        # ipdb.set_trace()
+                        Need.objects.create(topic=topic[0],
+                                            location=location,
+                                            slots=need.slots,
+                                            starting_time=starting_time,
+                                            ending_time=ending_time)
 
-                    # newtime = date_new +datetime.timedelta(days=1)
-                    # ipdb.set_trace()
-                    # print newtime
-                    # print date.today() + timedelta(days=1)
-                # Need(location=location, topic=topic)
-            # ipdb.set_trace()
