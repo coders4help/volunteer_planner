@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-17 08:43+0200\n"
+"POT-Creation-Date: 2015-09-19 11:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: account/templates/user_account_edit.html:14
+#: accounts/templates/user_account_edit.html:16
 msgid "Save"
 msgstr "Speichern"
 
-#: account/templates/user_detail.html:14 registration/forms.py:34
+#: accounts/templates/user_detail.html:14 registration/forms.py:34
 msgid "Username"
 msgstr "Benutzername"
 
-#: account/templates/user_detail.html:15
+#: accounts/templates/user_detail.html:15
 msgid "First name"
 msgstr "Vorname"
 
-#: account/templates/user_detail.html:16
+#: accounts/templates/user_detail.html:16
 msgid "Last name"
 msgstr "Nachname"
 
-#: account/templates/user_detail.html:17 registration/forms.py:37
+#: accounts/templates/user_detail.html:17 registration/forms.py:37
 msgid "Email"
 msgstr "E-Mail Adresse"
 
-#: account/templates/user_detail.html:19
+#: accounts/templates/user_detail.html:20
 msgid "Edit Account"
 msgstr "Account bearbeiten"
 
@@ -163,16 +163,20 @@ msgstr "Hilfebereiche"
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/views.py:84
+#: scheduler/models.py:112
+msgid "working hours"
+msgstr "Arbeitsstunden"
+
+#: scheduler/views.py:91
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:97
+#: scheduler/views.py:104
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Sie können der Schicht nicht beitreten, da Sie bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
-#: scheduler/views.py:102
+#: scheduler/views.py:109
 msgid "You were successfully added to this shift."
 msgstr "Sie haben sich erfolgreich für die Schicht angemeldet."
 
@@ -232,7 +236,7 @@ msgid ""
 "%(site_name)s Management\n"
 msgstr ""
 
-#: templates/registration/password_reset_form.html:16
+#: templates/registration/password_reset_form.html:17
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
