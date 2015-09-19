@@ -45,7 +45,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'google_tools',
-    'account',
+    'accounts',
     'common',
     'registration',
     'scheduler',
@@ -80,8 +80,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-
-print(os.path.join(SITE_ROOT, 'templates'))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
