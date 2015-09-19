@@ -58,10 +58,13 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        locations = context['locations'] = Location.objects.all()
-        the_dates = [{loc: loc.get_dates_of_needs()} for loc in locations]
-        context['need_dates_by_location'] = the_dates
-        context['notifications'] = Notification.objects.all()
+        shifts = Need.objects.filter(
+            time_period_to__date_time__gt=datetime.datetime.now())
+        shifts = shifts.order_by('location', 'time_period_to__date_time')
+        shifts = shifts.select_related('location', 'time_period_to')
+        context['shifts'] = shifts
+        context['notifications'] = Notification.objects.all().select_related(
+            'location')
         return context
 
 
@@ -138,22 +141,3 @@ class PlannerView(LoginRequiredMixin, FormView):
         Redirect to the same page.
         """
         return reverse('planner_by_location', kwargs=self.kwargs)
-
-
-@login_required(login_url='/auth/login/')
-@permission_required('location.can_view')
-def volunteer_list(request, **kwargs):
-    """
-    Show list of volunteers for current shift
-    """
-    today = datetime.date.today()
-    loc = get_object_or_404(Location, id=kwargs.get('loc_pk'))
-    needs = Need.objects.filter(location=loc,
-                                time_period_to__date_time__contains=today)
-    data = list(RegistrationProfile.objects.filter(
-        needs__in=needs).distinct().values_list('user__email', flat=True))
-    # add param ?type=json in url to get JSON data
-    if request.GET.get('type') == 'json':
-        return JsonResponse(data, safe=False)
-    return render(request, 'volunteer_list.html',
-                  {'data': json.dumps(data), 'location': loc, 'today': today})

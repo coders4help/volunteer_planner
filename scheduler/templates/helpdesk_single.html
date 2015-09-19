@@ -1,4 +1,4 @@
-{% extends "home.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 {% load vpfilters %}
@@ -15,11 +15,11 @@
 {% block body_class %}helpdesk{% endblock %}
 
 {% block navbar %}
-    {% include 'navbar.html' %}
+    {% include 'scheduler/navbar.html' %}
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-12">
+
         {% include "partials/alert_messages.html" %}
 
         {% regroup needs by topic as needs_by_topic %}
@@ -99,18 +99,18 @@
                                             {% else %}
                                                 {% trans "Covered" %}
                                             {% endif %}
-                                        {% comment %}
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success"
-                                                     role="progressbar"
-                                                     aria-valuenow="{{ need.volunteer_count }}"
-                                                     aria-valuemin="0"
-                                                     aria-valuemax="{{ need.slots }}"
-                                                     style="width:{{ slots_percent }}%;">
-                                                    <span class="sr-only">40% Complete (success)</span>
+                                            {% comment %}
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         role="progressbar"
+                                                         aria-valuenow="{{ need.volunteer_count }}"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="{{ need.slots }}"
+                                                         style="width:{{ slots_percent }}%;">
+                                                        <span class="sr-only">40% Complete (success)</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endcomment %}
+                                            {% endcomment %}
                                         </span>
                                             </td>
 
@@ -158,7 +158,6 @@
 
             {% endfor %}
         </form>
-    </div>
 {% endblock %}
 
 
