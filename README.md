@@ -97,6 +97,29 @@ the superuser you created earlier (in case you don't see an error page here).
 
 ## The Project
 
+### Translations
+
+Can create/update the translations file with
+
+```
+./manage.py makemessages --no-obsolete --no-wrap
+```
+
+The options are intended to make the output more git-friendly.
+
+Compile the messages file with
+
+```
+./manage.py compilemessages
+```
+
+Your local installation should be translated then.
+The .mo file created by compilemessages is gitignored,
+you'll need to (re-)generate it locally every time the .po file changes.
+
+
+### CSS / Less
+
 We use less for precompiling css. The less file you will find in
 `scheduler/static/bootstrap/less/project.less` To make this work you can just
 initialize the folder with "npm install -g" and then let grunt watch for
