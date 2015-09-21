@@ -13,24 +13,26 @@
     {% for location in locations %}
         <div class="row">
             <div class="col-md-5">
-                <h3 style="padding:0; margin:0;">{{ location }} </h3>
+                <h3>{{ location }}</h3>
                 <p>
                     {{ location.street }}<br>
                     {{ location.postal_code }} {{ location.city }}
                 </p>
                 <p>
-                    <span aria-hidden="true" class="glyphicon glyphicon-flag"></span>{{  location.additional_info|safe }}
+                    {{  location.additional_info|safe }}
                 </p>
             </div>
             <div class="col-md-4">
-                <p>
-                    {% for date_single in location.get_dates_of_needs %}
-                        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-                        <a href="{% url 'planner_by_location' pk=location.pk year=date_single|slice:'-4:' month=date_single|slice:'-7:-5' day=date_single|slice:'-10:-8' %}">
-                            {{ date_single }} [ansehen]
-                        </a>
+                <ul class="list-unstyled">
+                    {% for date, date_name in location.get_days_with_needs %}
+                        <li>
+                            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                            <a href="{% url 'planner_by_location' pk=location.pk year=date.year month=date.month day=date.day %}">
+                                {{ date_name }}
+                            </a>
+                        </li>
                     {% endfor %}
-                </p>
+                </ul>
             </div>
         </div>
         <hr>
