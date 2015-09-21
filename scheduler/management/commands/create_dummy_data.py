@@ -72,24 +72,3 @@ class Command(BaseCommand):
                 reg_user = RegistrationProfileFactory.create()
                 reg_user.needs.add(need)
                 reg_user.save()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

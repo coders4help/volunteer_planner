@@ -9,6 +9,8 @@ from registration import models as registration_models
 
 
 class TopicFactory(factory.DjangoModelFactory):
+    title = "Sample topic"
+
     class Meta:
         model = scheduler_models.Topics
         django_get_or_create = ['title']
@@ -17,11 +19,11 @@ class TopicFactory(factory.DjangoModelFactory):
 
 
 class LocationFactory(factory.DjangoModelFactory):
+    name = "Rathaus W"
+
     class Meta:
         model = scheduler_models.Location
         django_get_or_create = ['name']
-
-
 
 
 class NeedFactory(factory.DjangoModelFactory):
@@ -52,5 +54,3 @@ class RegistrationProfileFactory(factory.DjangoModelFactory):
 
     user = factory.SubFactory(UserFactory)
     activation_key = "ACTIVATION_KEY"
-
-
