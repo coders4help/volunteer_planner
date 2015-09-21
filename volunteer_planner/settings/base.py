@@ -45,7 +45,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'google_tools',
-    'account',
+    'accounts',
     'common',
     'registration',
     'scheduler',
@@ -83,7 +83,7 @@ MEDIA_URL = '/media/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_ROOT, 'templates')],
+        'DIRS': [os.path.join(SITE_ROOT, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

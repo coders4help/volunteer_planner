@@ -13,56 +13,56 @@ https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules
 
 This will install Python libraries and Git.
 
-If you are going to use a local mysql server, additionally install 
+If you are going to use a local mysql server, additionally install
 
     sudo apt-get install libmysqlclient-dev mysql-client mysql-server
 
-This will install MySQL server, it will ask you to set a root password 
+This will install MySQL server, it will ask you to set a root password
 [ROOT_PASSWORD] for the mysql server, if you haven't already set up MySQL in the
 past. Remember the password.
 
 ### 2. Clone the repository
 
     git clone https://github.com/volunteer-planner/volunteer_planner.git
-    
-An instance of the volunteer_planner will be created in the folder 
+
+An instance of the volunteer_planner will be created in the folder
 `volunteer_planner`.
 
 ### 3. Create a virtual environment
 
     virtualenv --no-site-packages volunteer_planner-venv
-    
-Enable the virtual environment by running 
+
+Enable the virtual environment by running
 
 bash
-    
+
     source volunteer_planner-venv/bin/activate (for bash) or
 
-fish 
+fish
 
     . volunteer_planner-venv/bin/activate.fish
 
-### 4. Install all requirements by running 
+### 4. Install all requirements by running
 
     cd volunteer_planner
-    
-For a local sqlite DB install 
+
+For a local sqlite DB install
 
     pip install -r requirements/dev.txt
 
-or, if you intend to use mysql locally, install 
+or, if you intend to use mysql locally, install
 
     pip install -r requirements/dev_mysql.txt
 
 ### 5. Create a local mysql database and user
-    
+
     mysql -u root -p
 
     CREATE DATABASE volunteer_planner;
     GRANT ALL PRIVILEGES ON volunteer_planner.* to vp identified by 'volunteer_planner';
     \q
 
-*Note*: For the local environment, the DB username is assumed to be 'vp' 
+*Note*: For the local environment, the DB username is assumed to be 'vp'
 and their password is assumed to be 'volunteer_planner'.
 
 ### 6. Setup your local environment (optional)
@@ -72,32 +72,62 @@ in your virtualenv's (post-)activation hooks or your IDE's project settings.
 
 ### 7. Initialize the database
 
-    ./manlocal.py migrate
+    ./manage.py migrate
 
 ### 8. Add a superuser
 
-    ./manlocal.py createsuperuser
-    
-You will be asked for username, email and password (twice). Remember that 
+    ./manage.py createsuperuser
+
+You will be asked for username, email and password (twice). Remember that
 username and password.
 
 ### 9. Try running the server
 
-    ./manlocal.py runserver
+    ./manage.py runserver
 
 Try opening http://localhost:8000/ in your browser.
 
-### 9. Adding content
+### 10. Adding content
 
-To add new organizations and shifts, you have to access the backend at 
-`http://localhost:8000/admin`. If prompted, login with the username/password of 
+To add new organizations and shifts, you have to access the backend at
+`http://localhost:8000/admin`. If prompted, login with the username/password of
 the superuser you created earlier (in case you don't see an error page here).
 
-    http://localhost:8000/admin`
+    http://localhost:8000/admin
 
 ## The Project
 
-We use less for precompiling css. The less file you will find in 
-`scheduler/static/bootstrap/less/project.less` To make this work you can just 
-initialize the folder with "npm install -g" and then let grunt watch for 
+### Create Dummy Data
+
+run management command " python manage.py create_dummy_data 5 --flush True " with activated virtualenv to get 5 days of dummy data and delete tables in advance.
+
+The number (5 in the above example) creates 5 days dummy data count from today.
+If you just use "python manage.py create_dummy_data 5" without --flush it is NOT deleting data before putting new data in.
+
+### Translations
+
+Can create/update the translations file with
+
+```
+./manage.py makemessages --no-obsolete --no-wrap
+```
+
+The options are intended to make the output more git-friendly.
+
+Compile the messages file with
+
+```
+./manage.py compilemessages
+```
+
+Your local installation should be translated then.
+The .mo file created by compilemessages is gitignored,
+you'll need to (re-)generate it locally every time the .po file changes.
+
+
+### CSS / Less
+
+We use less for precompiling css. The less file you will find in
+`scheduler/static/bootstrap/less/project.less` To make this work you can just
+initialize the folder with "npm install -g" and then let grunt watch for
 changes.

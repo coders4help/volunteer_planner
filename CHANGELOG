@@ -1,3 +1,18 @@
+16. September 2015
+------------------
+- Bug fix: creating new volunteer resulted in too long action and HTTP 502 error
+- Some UI cleanup (navigation bar and admin area).
+- Localization
+- Data model clean up
+- Facebook integration (preview image) improved
+
+
+14. September 2015
+------------------
+- fix email privacy in email notification
+- fix UI problems
+
+
 12. September 2015
 ------------------
 - Add pretty admin theme

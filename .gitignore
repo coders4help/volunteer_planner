@@ -9,3 +9,4 @@ manlocal.py
 db.sqlite3
 .DS_Store
 *.mo
+*.log
