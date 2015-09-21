@@ -2,7 +2,7 @@
     <div id="map" style="width: 100%; height: 400px; background: white"></div>
 </div>
 <script type="text/javascript" charset="UTF-8" >
-    function createInfoText(name, street, city, postalCode) {
+    function createInfoText(name, street, postalCode, city) {
         var html = "<div class=\"marker-info\">";
         html = html + "<h3>" + name + "</h3>";
         html = html + "<p>" + street + "<br/>";
@@ -17,7 +17,13 @@
         {% for location in locations %}
             {% if location.latitude and location.longitude %}
                 var marker = new H.map.Marker({lat: {{ location.latitude }}, lng: {{location.longitude}} });
-                marker.setData(createInfoText("{{ location.name }}", "{{ location.street }}", "{{ location.postal_code }}", "{{ location.city }}"));
+                var record = [];
+                record['id'] = {{ location.pk }};
+                record['name'] = "{{ location.name }}";
+                record['street'] = "{{ location.street }}";
+                record['postal_code'] = "{{ location.postal_code }}";
+                record['city'] = "{{ location.city }}";
+                marker.setData(record);
                 markers.push(marker);
             {% endif %}
         {% endfor %}
@@ -28,9 +34,15 @@
         group.addEventListener('tap', function (evt) {
             // event target is the marker itself, group is a parent event target
             // for all objects that it contains
+            var data = evt.target.getData();
             var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
                 // read custom data
-                content: evt.target.getData()
+                content: createInfoText(data.name, data.street, data.postal_code, data.city)
+            });
+            // this is a little bit hacky to get the JavaScript value into the Django URL
+            var jsonUrl = "{% url 'location_json' 12345 %}".replace(/12345/, evt.target.getData().id.toString())
+            $.getJSON( jsonUrl, function( data ) {
+                $( '#clicked-location').html( "<h3>" + data.name + "</h3><p>" + data.street + "<br/>" + data.postal_code + ", " + data.city + "</p>" );
             });
             // show info bubble
             ui.addBubble(bubble);
