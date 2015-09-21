@@ -1,6 +1,4 @@
-<div class="row">
-    <div id="map" style="width: 100%; height: 400px; background: white"></div>
-</div>
+<div id="map" style="width: 100%; height: 400px; background: white"></div>
 <script type="text/javascript" charset="UTF-8" >
     function createInfoText(name, street, postalCode, city) {
         var html = "<div class=\"marker-info\">";
@@ -12,11 +10,42 @@
         return html;
     }
 
+    function createSVGMarker(lat, lon, color) {
+        var nrIcon = createSVGIcon(color);
+        return new H.map.Marker({ lat: lat, lng: lon }, {icon: nrIcon});
+    }
+
+    function createSVGIcon(color) {
+        // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
+        var fillColor;
+        switch (color) {
+            case "dark-blue":
+                fillColor = "#0B4680";
+                break;
+            case "light-blue":
+            default:
+                fillColor = "#168CFF";
+        }
+        var svgMarkup =
+            '<svg width="28" height="35" xmlns="http://www.w3.org/2000/svg">' +
+                '<g>' +
+                    '<ellipse cx="15" cy="32" rx="6.5" ry="3" fill="#BBBBBB" style="fill-opacity:0.7"/>' +
+                    '<path d="M 15 30 l -8 -8 a 12 12 0 1 1 16 0 z" stroke="white" stroke-width="2" fill="' + fillColor + '" />' +
+                '</g>' +
+            '</svg>';
+
+        return new H.map.Icon(svgMarkup);
+    }
+
+    function updateColor(marker, color) {
+        marker.setIcon(createSVGIcon(color));
+    }
+
     function createMarkersGroup() {
         markers = new Array();
         {% for location in locations %}
             {% if location.latitude and location.longitude %}
-                var marker = new H.map.Marker({lat: {{ location.latitude }}, lng: {{location.longitude}} });
+                var marker = createSVGMarker({{ location.latitude }}, {{location.longitude}}, '', 'light-blue');
                 var record = [];
                 record['id'] = {{ location.pk }};
                 record['name'] = "{{ location.name }}";
@@ -31,7 +60,7 @@
         group = new H.map.Group();
 
         // add 'tap' event listener
-        group.addEventListener('tap', showInfoBubble, false);
+        group.addEventListener('tap', changeColor, false);
         group.addEventListener('tap', showAdditionalInfo, false);
 
         group.addObjects(markers);
@@ -46,6 +75,10 @@
         });
         // show info bubble
         ui.addBubble(bubble);
+    }
+
+    function changeColor(evt) {
+        updateColor(evt.target, 'dark-blue');
     }
 
     function showAdditionalInfo(evt) {
