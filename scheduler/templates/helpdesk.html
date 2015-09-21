@@ -22,10 +22,11 @@
 {% block content %}
 
 <div class="col-md-7">
+    <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
     {% include 'map.html' %}
     <div id="clicked-location"></div>
-    <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
 
+    <!--
     {% for location in locations %}
         <div class="row">
             <div class="col-md-5">
@@ -52,7 +53,7 @@
             </div>
         </div>
         <hr>
-    {% endfor %}
+    {% endfor %} -->
 </div>
 
 {% if notifications %}
