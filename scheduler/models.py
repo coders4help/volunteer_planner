@@ -96,15 +96,23 @@ class Location(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.name)
 
-    def get_dates_of_needs(self):
-        needs_dates = []
-        for i in self.need_set.all().filter(ending_time__gt=datetime.datetime.now()) \
-                .order_by('ending_time'):
-            date_name = i.starting_time.strftime("%A, %d.%m.%Y")
-            locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
-            if date_name not in needs_dates:
-                needs_dates.append(i.starting_time.strftime("%A, %d.%m.%Y"))
-        return needs_dates
+    def get_days_with_needs(self):
+        """
+        Returns a list of tuples, representing days that this location has
+        needs. The tuple contains a datetime object, and a date formatted
+        in German format.
+        """
+        dates = self.need_set.filter(ending_time__gt=datetime.datetime.now()
+            ).order_by('ending_time').values_list('starting_time', flat=True)
+        dates_and_date_strings = []
+        seen_date_strings = []
+        locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')  # FIXME
+        for date in dates:
+            date_string = date.strftime("%A, %d.%m.%Y")
+            if date_string not in seen_date_strings:
+                seen_date_strings.append(date_string)
+                dates_and_date_strings.append((date, date_string))
+        return dates_and_date_strings
 
 
 class WorkDone(models.Model):

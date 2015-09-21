@@ -59,7 +59,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
         locations = context['locations'] = Location.objects.all()
-        the_dates = [{loc: loc.get_dates_of_needs()} for loc in locations]
+        the_dates = [{loc: loc.get_days_with_needs()} for loc in locations]
         context['need_dates_by_location'] = the_dates
         context['notifications'] = Notification.objects.all()
         return context
