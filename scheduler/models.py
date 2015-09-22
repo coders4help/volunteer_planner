@@ -17,11 +17,18 @@ class Need(models.Model):
         verbose_name = _(u'shift')
         verbose_name_plural = _(u'shifts')
 
-    topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
+    topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'),
+                              help_text=_(u'helptype_text'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
-    starting_time = models.DateTimeField(verbose_name=_('starting time'), db_index=True)
-    ending_time = models.DateTimeField(verbose_name=_('ending time'), db_index=True)
+    starting_time = models.DateTimeField(verbose_name=_('starting time'),
+                                         db_index=True)
+    ending_time = models.DateTimeField(verbose_name=_('ending time'),
+                                       db_index=True)
+
+    helpers = models.ManyToManyField('accounts.UserAccount',
+                                     through='ShiftHelper',
+                                     related_name='needs')
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
@@ -60,6 +67,17 @@ class Need(models.Model):
         return u"{title} - {location} ({start} - {end})".format(
             title=self.topic.title, location=self.location.name,
             start=localize(self.starting_time), end=localize(self.ending_time))
+
+
+class ShiftHelper(models.Model):
+    user_account = models.ForeignKey('accounts.UserAccount',
+                                     related_name='shift_helpers')
+    need = models.ForeignKey('scheduler.Need', related_name='shift_helpers')
+    joined_shift_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _('shift helper')
+        verbose_name_plural = _('shift helpers')
 
 
 class Topics(models.Model):
@@ -103,7 +121,8 @@ class Location(models.Model):
         in German format.
         """
         dates = self.need_set.filter(ending_time__gt=datetime.datetime.now()
-            ).order_by('ending_time').values_list('starting_time', flat=True)
+                                     ).order_by('ending_time').values_list(
+            'starting_time', flat=True)
         dates_and_date_strings = []
         seen_date_strings = []
         locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')  # FIXME

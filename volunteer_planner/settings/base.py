@@ -44,6 +44,7 @@ DJANGO_APPS = (
 )
 
 LOCAL_APPS = (
+    'registration_history',
     'google_tools',
     'accounts',
     'common',
