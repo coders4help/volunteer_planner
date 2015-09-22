@@ -1,53 +1,63 @@
 # volunteer_planner
-This repro hosts the code for volunteer-planner.org. A platform to schedule shifts of volunteers.
 
-## Setup (Ubuntu 14.04)
+A platform to schedule shifts of volunteers. 
 
-### 1.Install all required Ubuntu packages
+## Project Setup
+
+### 0. Prerequisites (Ubuntu 14.04 example) 
+
+If your machine is setup to work on Django projects, you might skip this step.
+
+#### 0.1 Installing required OS packages
 
     sudo apt-get install python-dev python-pip git npm
 
 This will install Python libraries and Git.
 
-#### 1.2 Using MySQL locally (Optional)
+#### 0.2 Using MySQL locally (optional)
 
 Using MySQL locally for development is optional.
 
-#### 1.2.1 Installing MySQL (Optional) 
+#### 0.2.1 Installing MySQL (optional) 
 
-If you are going to use a local mysql server, additionally install
+If you are going to use a local MySQL server, additionally install
 
     sudo apt-get install libmysqlclient-dev mysql-client mysql-server
 
 This will install MySQL server, it will ask you to set a root password
-[ROOT_PASSWORD] for the mysql server, if you haven't already set up MySQL in the
+[ROOT_PASSWORD] for the MySQL server, if you haven't already set up MySQL in the
 past. Remember the password.
 
-#### 1.2.2 Create a local mysql database and user (Optional)
+#### 0.2.2 Creating a local MySQL database and user (optional)
 
+Open the MySQL shell
+ 
     mysql -u root -p
+
+and execute following queries to setup the DB 
 
     CREATE DATABASE volunteer_planner;
     GRANT ALL PRIVILEGES ON volunteer_planner.* to vp identified by 'volunteer_planner';
-    \q
 
 *Note*: For the local environment, the DB username is assumed to be 'vp'
 and their password is assumed to be 'volunteer_planner'.
 
-### 2. Fork us on GitHub and clone the repository
+### 1. Fork us on GitHub
+
+Please fork us on GitHub and clone your fork
 
     git clone https://github.com/YOUR_GITHUB_ACCOUNT/volunteer_planner.git
 
-### 2.1 Pull Requests
+### 1.1 Creating Pull Requests
 
-Please do pull request against the [`develop` branch](https://github.com/volunteer-planner/volunteer_planner/tree/develop).
+Please do Pull Requests against the [`develop` branch](https://github.com/volunteer-planner/volunteer_planner/tree/develop).
 
 If you have questions concerning our workflow please read the 
 [Development Rules wiki page](https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules).
 
-### 3. Setup your virtual environment
+### 2. Setup your virtual environment
 
-#### 3.1. Create a virtual env
+#### 2.1. Create a virtual env
 
 Create an virtualenv (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/)):
     
@@ -61,22 +71,24 @@ activate the virtual env using
 
     $ workon vp
 
-*Note*: `/path/to/volunteer_planner.git` means the path of your local clone of the 
-GitHub project, created in step 2. Replace it accordingly with the actual path.
+#### 2.2 Installing required python packages
 
-#### 3.2 Installing required packages
-
-    cd /path/to/volunteer_planner.git/
+Update pip
+ 
+    pip install -U pip
 
 For a local sqlite DB install
 
-    pip install -r requirements/dev.txt
+    pip install -r /path/to/volunteer_planner.git/requirements/dev.txt
 
-or, if you intend to use mysql locally, install
+or, if you intend to use MySQL locally, install
 
-    pip install -r requirements/dev_mysql.txt
+    pip install -r /path/to/volunteer_planner.git/requirements/dev_mysql.txt
 
-#### 3.3 Setup your virtualenv `postactivate` hook (optional)
+*Note*: `/path/to/volunteer_planner.git` means the path of your local clone of the 
+GitHub project. Replace it accordingly with the actual path.
+
+#### 2.3 Setup your virtualenv `postactivate` hook (optional)
 
 This step is optional but recommended. 
 
@@ -97,31 +109,38 @@ You might consider to use this example `postactivate` script
     git fetch --all
     git status
 
-#### 3.3.1 Setup your local environment (optional)
+#### 2.3.1 Setup your local environment (optional)
 
 Also, if you need to use non-default settings values, setting (exporting) the 
 environment variables in your virtualenvs' `postactivate` hook is a good place 
 if you're not using an IDE to configure your environment variables. 
 
 
-### 4. Initialize the database
+### 3. Initialize the database with Django
 
+Activate your env and change dir to your local forks' git repository (if not done yet).
+ 
+    workon vp
+    cd /path/to/volunteer_planner.git
+
+#### 3.1 Run migrate management command to setup non-existing tables 
+    
     ./manage.py migrate
 
-### 5. Add a superuser
-
+### 3.2 Add a superuser
+    
     ./manage.py createsuperuser
 
 You will be asked for username, email and password (twice). Remember that
 username and password.
 
-### 6. Try running the server
+### 4. Try running the server
 
     ./manage.py runserver
 
 Try opening http://localhost:8000/ in your browser.
 
-### 7. Adding content
+### 5. Adding content
 
 To add new organizations and shifts, you have to access the backend at
 `http://localhost:8000/admin`. If prompted, login with the username/password of
