@@ -40,22 +40,25 @@ def send_email_notifications(sender, instance, **kwargs):
 @receiver(pre_save, sender=Need)
 def notify_users_shift_change(sender, instance, **kwargs):
     shift = instance
-    old = Need.objects.get(pk=shift.pk)
-    diff_start = (old.starting_time - shift.starting_time).seconds
-    diff_end = (old.ending_time - shift.ending_time).seconds
-    if grace < diff_start or grace < diff_end:
-        subject = u'Schicht am {} wurde verändert'.format(shift.starting_time.strftime('%d.%m.%y'))
+    try:
+        old = Need.objects.get(pk=shift.pk)
+        diff_start = (old.starting_time - shift.starting_time).seconds
+        diff_end = (old.ending_time - shift.ending_time).seconds
+        if grace < diff_start or grace < diff_end:
+            subject = u'Schicht am {} wurde verändert'.format(shift.starting_time.strftime('%d.%m.%y'))
 
-        message = render_to_string('shift_modification_notification.html', dict(old=old, shift=shift))
+            message = render_to_string('shift_modification_notification.html', dict(old=old, shift=shift))
 
-        from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
+            from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
 
-        addresses = shift.registrationprofile_set.values_list('user__email', flat=True)
-        if 0 < len(addresses):
-            mail = EmailMessage(subject=subject, body=message, to=['support@volunteer-planner.org'], from_email=from_email,
-                                bcc=addresses)
-            logger.info(u'Shift %s at %s changed: (%s-%s -> %s->%s). Sending email notification to %d affected user(s).',
-                        shift.topic.title, shift.location.name,
-                        old.starting_time, old.ending_time, shift.starting_time, shift.ending_time,
-                        len(addresses))
-            mail.send()
+            addresses = shift.registrationprofile_set.values_list('user__email', flat=True)
+            if 0 < len(addresses):
+                mail = EmailMessage(subject=subject, body=message, to=['support@volunteer-planner.org'], from_email=from_email,
+                                    bcc=addresses)
+                logger.info(u'Shift %s at %s changed: (%s-%s -> %s->%s). Sending email notification to %d affected user(s).',
+                            shift.topic.title, shift.location.name,
+                            old.starting_time, old.ending_time, shift.starting_time, shift.ending_time,
+                            len(addresses))
+                mail.send()
+    except Need.DoesNotExist:
+        logger.error(u'What\'s wrong with %s?', shift)
