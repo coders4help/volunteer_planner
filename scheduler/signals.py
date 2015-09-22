@@ -16,7 +16,7 @@ def send_email_notifications(sender, instance, **kwargs):
     add some error handling, some sane max recipient handling, tests, etc.
     """
     shift = instance
-    subject = u'Schicht am {} wurde abgesagt'.format()
+    subject = u'Schicht am {} wurde abgesagt'.format(shift.starting_time.strftime('%d.%m.%y'))
 
     message = render_to_string('shift_cancellation_notification.html', dict(shift=shift))
 
