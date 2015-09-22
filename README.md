@@ -50,7 +50,7 @@ With your virtual env activated, install the requirements:
 *Note*: `/path/to/volunteer_planner.git` means the path of your local clone of the 
 GitHub project, created in step 2. Replace it accordingly with the actual path.
 
-#### 3.1 Setup your virtualenv `postactvated` hook (optional)
+#### 3.1 Setup your virtualenv `postactivate` hook (optional)
 
 Every time, an virtualenv is activated with virtualenvwrappers `workon` command, 
 a `postactivate` script is executed. This comes in handy to autmatically setup 
