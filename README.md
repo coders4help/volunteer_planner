@@ -28,19 +28,44 @@ past. Remember the password.
 An instance of the volunteer_planner will be created in the folder
 `volunteer_planner`.
 
-### 3. Create a virtual environment
+### 3. Create a virtual environment using virtualenvwrapper
 
-    virtualenv --no-site-packages volunteer_planner-venv
+Create an virtualenv:
+    
+    $ mkvirtualenv vp
 
-Enable the virtual environment by running
+*Note*: using `vp` as your virtualenv's name is a recommendation, not a requirement. For more details on how to use virtualenvwapper, see [virtualenvwrapper docs](https://virtualenvwrapper.readthedocs.org/).
 
-bash
+The virtual environment should be enabled afterwards. When you are working on the project,
+activate the virtual env using
 
-    source volunteer_planner-venv/bin/activate (for bash) or
+    $ workon vp
 
-fish
+With your virtual env activated, install the requirements:
 
-    . volunteer_planner-venv/bin/activate.fish
+    $ pip install -U pip
+     
+    $ pip install /path/to/volunteer_planner.git/requirements/dev.txt
+
+*Note*: `/path/to/volunteer_planner.git` means the path of your local clone of the 
+GitHub project, created in step 2. Replace it accordingly with the actual path.
+
+#### 3.1 Setup your virtualenv `postactvated` hook (optional)
+
+Every time, an virtualenv is activated with virtualenvwrappers `workon` command, 
+a `postactivate` script is executed. This comes in handy to autmatically setup 
+a projects' environment variables and automate some reoccuring tasks.
+
+A recommended `postactivate` script (found at `$VIRTUAL_ENV/bin/postactivate`)
+
+    #!/bin/bash
+    # This hook is run after this virtualenv is activated.
+    ​
+    export DJANGO_SETTINGS_MODULE="volunteer_planner.settings.local"
+    cd /path/to/volunteer_planner.git/
+    ​
+    git fetch --all
+    git status
 
 ### 4. Install all requirements by running
 
@@ -103,6 +128,18 @@ run management command " python manage.py create_dummy_data 5 --flush True " wit
 
 The number (5 in the above example) creates 5 days dummy data count from today.
 If you just use "python manage.py create_dummy_data 5" without --flush it is NOT deleting data before putting new data in.
+
+### Running Tests
+
+*Note*: we're committed to testing and hope, the next paragraph will not be a lie any longer soon :-) 
+
+We are using test driven development (TDD) with [py.test](http://pytest.org/). 
+
+A good read on TDD is the free o'Reilly eBook ["Test-Driven Development with Python"](http://chimera.labs.oreilly.com/books/1234000000754/index.html)
+
+To run the tests, run the following command (with your virtual env activated, see 3.)
+
+    $ py.test [/path/to/volunteer_planner.git/]
 
 ### Translations
 
