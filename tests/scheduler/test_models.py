@@ -54,11 +54,12 @@ class LocationTestCase(TestCase):
         needs = [NeedFactory.create(starting_time=yesterday_start, ending_time=yesterday_end),
                     NeedFactory.create(starting_time=tomorrow_start, ending_time=tomorrow_end)]
 
-        #TODO change implicit assumption that the needs have been created for the same location (as the NeedFactory indeed currently does)
-
         locations = set()
         for n in needs:
             locations.add(n.location)
+
+        assert len(locations) == 1, "test case assumes that needs have been created for the same location, as the NeedFactory indeed does at the time of writing of this test case"
+        #TODO change this assumption by explicitly creating needs for the same location
 
         for l in locations:
             for day in l.get_days_with_needs():
@@ -74,11 +75,12 @@ class LocationTestCase(TestCase):
         needs = [NeedFactory.create(starting_time=start, ending_time=end),
                     NeedFactory.create(starting_time=start, ending_time=end)]
 
-        #TODO change implicit assumption that the needs have been created for the same location (as the NeedFactory indeed currently does)
-
         locations = set()
         for n in needs:
             locations.add(n.location)
+
+        assert len(locations) == 1, "test case assumes that needs have been created for the same location, as the NeedFactory indeed does at the time of writing of this test case"
+        #TODO change this assumption by explicitly creating needs for the same location
 
         for l in locations:
             dates = set()
