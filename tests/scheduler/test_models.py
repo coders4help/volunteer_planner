@@ -85,5 +85,5 @@ class LocationTestCase(TestCase):
         for l in locations:
             dates = set()
             for d in l.get_days_with_needs():
-                assert d not in dates
-                dates.add(d)
+                assert d[0] not in dates
+                dates.add(d[0])
