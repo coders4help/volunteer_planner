@@ -38,9 +38,13 @@ class NeedTestCase(TestCase):
         need = create_need(11, 14)
         assert need.get_conflicting_needs(self.needs, grace=datetime.timedelta(hours=0))
 
-class LocationTestCase(TestCase):
 
-    def setUp(self):
+class LocationTestCase(TestCase):      
+
+    def test_get_days_with_needs_at_locations_end_later_than_now(self):
+        """
+            checks that get_days_with_needs() returns only dates later than datetime.now()
+        """
         now = datetime.datetime.now()
         yesterday_start = now - datetime.timedelta(1)
         yesterday_end = yesterday_start+datetime.timedelta(hours=1)
@@ -50,15 +54,34 @@ class LocationTestCase(TestCase):
         needs = [NeedFactory.create(starting_time=yesterday_start, ending_time=yesterday_end),
                     NeedFactory.create(starting_time=tomorrow_start, ending_time=tomorrow_end)]
 
-        self.locations = []
-        for need in needs:
-            self.locations.append(need.location)
+        #TODO change implicit assumption that the needs have been created for the same location (as the NeedFactory indeed currently does)
 
-    def test_get_days_with_needs_at_locations_end_later_than_now(self):
-        """
-            checks that get_days_with_needs() returns only dates later than datetime.now()
-        """
-        for location in self.locations:
-            for day in location.get_days_with_needs():
+        locations = set()
+        for n in needs:
+            locations.add(n.location)
+
+        for l in locations:
+            for day in l.get_days_with_needs():
                 assert isinstance(day[0], datetime.datetime)
                 assert day[0] > datetime.datetime.now()
+
+    def test_get_days_with_needs_at_locations_no_duplicates(self):
+        """
+        checks that get_days_with_needs() does not return any duplicate dates
+        """
+        start = datetime.datetime.now()
+        end = start + datetime.timedelta(hours=1)
+        needs = [NeedFactory.create(starting_time=start, ending_time=end),
+                    NeedFactory.create(starting_time=start, ending_time=end)]
+
+        #TODO change implicit assumption that the needs have been created for the same location (as the NeedFactory indeed currently does)
+
+        locations = set()
+        for n in needs:
+            locations.add(n.location)
+
+        for l in locations:
+            dates = set()
+            for d in l.get_days_with_needs():
+                assert d not in dates
+                dates.add(d)
