@@ -100,6 +100,12 @@ class Location(models.Model):
 
 
 class WorkDone(models.Model):
+    """
+    A SQL view is used to calculate total volunteer hours. This unmanaged model is used to
+    let us access that data via Django.
+
+    Note that this won't work with a local SQLite backend.
+    """
     id = models.IntegerField(primary_key=True)
     hours = models.IntegerField(name=u'hours', verbose_name=_('working hours'))
 
