@@ -30,7 +30,9 @@ logger = logging.getLogger(__name__)
 
 class GetLocationData(Endpoint):
     def get(self, request, pk):
-        return serialize(Location.objects.get(pk=pk))
+        return serialize(Location.objects.get(pk=pk), include=[
+            ('dates', lambda l: [v[1] for v in l.get_days_with_needs()])
+        ])
 
 class HomeView(TemplateView):
     template_name = "home.html"
