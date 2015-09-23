@@ -19,3 +19,5 @@ wsgiref==0.1.2
 xlwt==1.0.0
 python-memcached==1.57
 djangocms-admin-style==0.2.8
+DjangoRestless==0.0.10
+py==1.4.30
