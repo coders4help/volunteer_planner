@@ -87,3 +87,8 @@ class LocationTestCase(TestCase):
             for d in l.get_days_with_needs():
                 assert d[0] not in dates
                 dates.add(d[0])
+
+    def test_get_days_with_needs_have_german_formatting(self):
+        need = create_need(15,16)
+        for d in need.location.get_days_with_needs():
+            assert d[0].strftime("%A, %d.%m.%Y") == d[1]
