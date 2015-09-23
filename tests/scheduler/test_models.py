@@ -41,7 +41,7 @@ class NeedTestCase(TestCase):
 
 class LocationTestCase(TestCase):      
 
-    def test_get_days_with_needs_at_locations_end_later_than_now(self):
+    def test_get_days_with_needs_at_location_end_later_than_now(self):
         """
             checks that get_days_with_needs() returns only dates later than datetime.now()
         """
@@ -66,7 +66,7 @@ class LocationTestCase(TestCase):
                 assert isinstance(day[0], datetime.datetime)
                 assert day[0] > datetime.datetime.now()
 
-    def test_get_days_with_needs_at_locations_no_duplicates(self):
+    def test_get_days_with_needs_at_location_no_duplicates(self):
         """
         checks that get_days_with_needs() does not return any duplicate dates
         """
