@@ -23,18 +23,14 @@ from stats.models import ValueStore
 from .forms import RegisterForNeedForm
 from volunteer_planner.utils import LoginRequiredMixin
 
+from restless.models import serialize
+from restless.views import Endpoint
 
 logger = logging.getLogger(__name__)
 
-def get_location_as_json(self, pk):
-    location = Location.objects.get(pk=pk)
-    location_record = dict()
-    location_record['name'] = location.name
-    location_record['street'] = location.street
-    location_record['postal_code'] = location.postal_code
-    location_record['city'] = location.city
-
-    return JsonResponse(location_record, safe=False)
+class GetLocationData(Endpoint):
+    def get(self, request, pk):
+        return serialize(Location.objects.get(pk=pk))
 
 class HomeView(TemplateView):
     template_name = "home.html"
