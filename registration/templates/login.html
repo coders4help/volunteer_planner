@@ -26,16 +26,16 @@
                        name="password">
             </div>
 
-
-
             <input type="submit" class="btn btn-primary align-left" value="login"/>
             <input type="hidden" name="next" value="{{ next }}"/>
             <div class="row">
-            <div class="col-md-12">
-            <p><a href="{% url 'password_reset' %}">Passwort vergessen?</a><br>
-                <a href="{% url 'registation' %}">neu registrieren und helfen?</a></p>
+                <div class="col-md-12">
+                    <p>
+                        <a href="{% url 'password_reset' %}">Passwort vergessen?</a><br>
+                        <a href="{% url 'registation' %}">neu registrieren und helfen?</a>
+                    </p>
                 </div>
-                </div>
+            </div>
         </form>
     </div>
 {% endblock %}

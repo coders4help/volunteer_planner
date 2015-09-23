@@ -219,7 +219,6 @@ class RegistrationProfile(models.Model):
     user = models.OneToOneField(User, verbose_name=_('user'))
     activation_key = models.CharField(_('activation key'), max_length=40)
 
-    interests = models.ManyToManyField("scheduler.Topics")
     needs = models.ManyToManyField('scheduler.Need', verbose_name="registrierte Schichten")
 
     objects = RegistrationManager()

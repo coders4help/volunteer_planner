@@ -20,8 +20,8 @@ class Need(models.Model):
     topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
-    starting_time = models.DateTimeField(verbose_name=_('starting time'))
-    ending_time = models.DateTimeField(verbose_name=_('ending time'))
+    starting_time = models.DateTimeField(verbose_name=_('starting time'), db_index=True)
+    ending_time = models.DateTimeField(verbose_name=_('ending time'), db_index=True)
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
@@ -96,12 +96,38 @@ class Location(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.name)
 
-    def get_dates_of_needs(self):
-        needs_dates = []
-        for i in self.need_set.all().filter(ending_time__gt=datetime.datetime.now()) \
-                .order_by('ending_time'):
-            date_name = i.starting_time.strftime("%A, %d.%m.%Y")
-            locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
-            if date_name not in needs_dates:
-                needs_dates.append(i.starting_time.strftime("%A, %d.%m.%Y"))
-        return needs_dates
+    def get_days_with_needs(self):
+        """
+        Returns a list of tuples, representing days that this location has
+        needs. The tuple contains a datetime object, and a date formatted
+        in German format.
+        """
+        dates = self.need_set.filter(ending_time__gt=datetime.datetime.now()
+            ).order_by('ending_time').values_list('starting_time', flat=True)
+        dates_and_date_strings = []
+        seen_date_strings = []
+        locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')  # FIXME
+        for date in dates:
+            date_string = date.strftime("%A, %d.%m.%Y")
+            if date_string not in seen_date_strings:
+                seen_date_strings.append(date_string)
+                dates_and_date_strings.append((date, date_string))
+        return dates_and_date_strings
+
+
+class WorkDone(models.Model):
+    """
+    A SQL view is used to calculate total volunteer hours. This unmanaged model is used to
+    let us access that data via Django.
+
+    Note that this won't work with a local SQLite backend.
+    """
+    id = models.IntegerField(primary_key=True)
+    hours = models.IntegerField(name=u'hours', verbose_name=_('working hours'))
+
+    class Meta:
+        managed = False
+        db_table = 'work_done'
+
+    def __unicode__(self):
+        return u'{}'.format(self.hours)

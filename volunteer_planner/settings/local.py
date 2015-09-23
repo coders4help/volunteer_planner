@@ -29,6 +29,43 @@ MIDDLEWARE_CLASSES += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(message)s',
+        },
+        'verbose': {
+            'format': '%(asctime)s - %(name)s (%(filename)s:%(lineno)d) [%(levelname)s] '
+                      '(%(process)d/%(thread)d): %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'level': 'INFO',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'local.log',
+            'mode': 'a',
+            'encoding': 'utf8',
+            'formatter': 'verbose',
+            'level': 'DEBUG',
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+        },
+        'django.db': {
+            'level': 'INFO',
+        },
+    }
+}
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = os.environ.get('EMAIL_ADDRESS', None)

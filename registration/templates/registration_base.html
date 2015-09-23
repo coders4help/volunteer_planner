@@ -1,2 +1,11 @@
 {% extends "home.html" %}
 {% load i18n %}
+
+{% block content %}
+    <div class="col-md-3 form-container ">
+        <h1 class="text-center">volunteer-planner.org</h1>
+    </div>
+    <div class="col-md-3 border-left">
+      {% block registration_content %}{% endblock %}
+    </div>
+{% endblock %}
