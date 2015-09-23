@@ -81,7 +81,7 @@
                     {% get_volunteer_number %} Freiwillige sind bereits
                     registriert
                     {% if working_hours %}
-                        und haben {{ working_hours.value|intcomma }} Stunden
+                        und haben {{ working_hours.hours|intcomma }} Stunden
                         geholfen
                     {% endif %}
                 </h2>
