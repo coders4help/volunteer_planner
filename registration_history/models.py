@@ -3,19 +3,21 @@ from django.db import models
 
 from django.utils.translation import ugettext_lazy as _
 
+MANAGED = False
+
 
 class OldRegistrationProfileNeed(models.Model):
     registrationprofile = models.ForeignKey('OldRegistrationProfile')
     need = models.ForeignKey('scheduler.Need')
 
     class Meta:
-        managed = False
+        managed = MANAGED
         db_table = 'registration_registrationprofile_needs'
 
 
 class OldRegistrationProfile(models.Model):
     class Meta:
-        managed = False
+        managed = MANAGED
         db_table = 'registration_registrationprofile'
 
     ACTIVATED = u"ALREADY_ACTIVATED"
