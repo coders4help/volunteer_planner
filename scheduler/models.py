@@ -87,13 +87,19 @@ class Location(models.Model):
     latitude = models.CharField(max_length=30, blank=True)
     longitude = models.CharField(max_length=30, blank=True)
     additional_info = models.TextField(max_length=300000, blank=True)
-    #organization = models.ForeignKey("Organization", null=False, related_name='facilities',
-                                     #verbose_name=_('organization'))
-    area = models.ForeignKey("Area", null=True, related_name='facilities', verbose_name=_('area'))
+
+    municipality = models.ForeignKey("places.Municipality",
+                                     null=False,
+                                     related_name='locations',
+                                     verbose_name=_('municipality'))
 
     class Meta:
         verbose_name = _(u'location')
         verbose_name_plural = _(u'locations')
+        ordering = (
+            'municipality',
+            'name',
+        )
         permissions = (
             ("can_view", u"User can view location"),
         )
@@ -102,38 +108,6 @@ class Location(models.Model):
         return u'{}'.format(self.name)
 
 
-class Region(models.Model):
-    '''
-    A region is a geographical region for grouping areas (and facilities within areas).
-    '''
-    name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
-    slug = models.SlugField(verbose_name=_(u'slug'))
-
-    class Meta:
-        verbose_name = _('region')
-        verbose_name_plural = _('regions')
-        ordering = ('name',)
-
-    def __str__(self):
-        return '{}'.format(self.name)
-
-
-class Area(models.Model):
-    '''
-    An area is a subdevision of a region, such as cities, neighbourhoods, etc.
-    Each area belongs to a region.
-    '''
-    region = models.ForeignKey(Region, related_name='areas', verbose_name=_('region'))
-    name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
-    slug = models.SlugField(verbose_name=_(u'slug'))
-
-    class Meta:
-        verbose_name = _('area')
-        verbose_name_plural = _('areas')
-        ordering = ('name',)
-
-    def __str__(self):
-        return '{}'.format(self.name)
 
 
 # class Organization(models.Model):

@@ -3,19 +3,7 @@
 from django.contrib import admin
 from django.db.models import Count
 
-from scheduler.models import Need, Topics, Location, Region, Area
-
-
-@admin.register(Region)
-class RegionAdmin(admin.ModelAdmin):
-    search_fields = ('name', )
-
-
-@admin.register(Area)
-class AreaAdmin(admin.ModelAdmin):
-    list_display = ('name', 'region')
-    search_fields = ('name', 'region__name')
-    list_filter = ('region', )
+from scheduler.models import Need, Topics, Location
 
 
 # @admin.register(Organization)
@@ -26,9 +14,10 @@ class AreaAdmin(admin.ModelAdmin):
 
 class NeedAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
-        return super(NeedAdmin, self).get_queryset(request)\
-            .annotate(volunteer_count=Count('registrationprofile'))\
-            .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
+        return super(NeedAdmin, self).get_queryset(request) \
+            .annotate(volunteer_count=Count('registrationprofile')) \
+            .prefetch_related('registrationprofile_set',
+                              'registrationprofile_set__user')
 
     def get_volunteer_count(self, obj):
         return obj.volunteer_count
@@ -39,10 +28,13 @@ class NeedAdmin(admin.ModelAdmin):
             if full_name:
                 return u'{} ("{}")'.format(full_name, user.username)
             return u'"{}"'.format(user.username)
-        return u", ".join(_format_username(volunteer.user) for volunteer in obj.registrationprofile_set.all())
+
+        return u", ".join(_format_username(volunteer.user) for volunteer in
+                          obj.registrationprofile_set.all())
 
     list_display = (
-        'id', 'topic', 'starting_time', 'ending_time', 'slots', 'get_volunteer_count', 'get_volunteer_names'
+        'id', 'topic', 'starting_time', 'ending_time', 'slots',
+        'get_volunteer_count', 'get_volunteer_names'
     )
 
     search_fields = ('id', 'topic__title',)
@@ -59,4 +51,3 @@ class TopicsAdmin(admin.ModelAdmin):
 
 admin.site.register(Topics, TopicsAdmin)
 admin.site.register(Location)
-

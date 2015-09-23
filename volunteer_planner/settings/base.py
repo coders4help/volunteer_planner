@@ -53,7 +53,8 @@ LOCAL_APPS = (
     'notifications',
     'ckeditor',
     'shiftmailer',
-    'stats'
+    'stats',
+    'places'
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
