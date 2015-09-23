@@ -41,6 +41,7 @@ DJANGO_APPS = (
     # Admin panel and documentation:
     'django.contrib.admin',
     # 'django.contrib.admindocs',
+    'restless',
 )
 
 LOCAL_APPS = (
