@@ -1,7 +1,7 @@
 from django.test import TestCase
 import datetime
 
-from tests.factories import NeedFactory 
+from tests.factories import NeedFactory
 
 
 def create_need(start_hour, end_hour):
