@@ -87,6 +87,9 @@ class Location(models.Model):
     latitude = models.CharField(max_length=30, blank=True)
     longitude = models.CharField(max_length=30, blank=True)
     additional_info = models.TextField(max_length=300000, blank=True)
+    #organization = models.ForeignKey("Organization", null=False, related_name='facilities',
+                                     #verbose_name=_('organization'))
+    area = models.ForeignKey("Area", null=True, related_name='facilities', verbose_name=_('area'))
 
     class Meta:
         verbose_name = _(u'location')
@@ -97,6 +100,57 @@ class Location(models.Model):
 
     def __unicode__(self):
         return u'{}'.format(self.name)
+
+
+class Region(models.Model):
+    '''
+    A region is a geographical region for grouping areas (and facilities within areas).
+    '''
+    name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    class Meta:
+        verbose_name = _('region')
+        verbose_name_plural = _('regions')
+        ordering = ('name',)
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+
+class Area(models.Model):
+    '''
+    An area is a subdevision of a region, such as cities, neighbourhoods, etc.
+    Each area belongs to a region.
+    '''
+    region = models.ForeignKey(Region, related_name='areas', verbose_name=_('region'))
+    name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    class Meta:
+        verbose_name = _('area')
+        verbose_name_plural = _('areas')
+        ordering = ('name',)
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+
+# class Organization(models.Model):
+#     '''
+#     An organization is a NGO or a group of people managing one or more facilities.
+#     '''
+#     name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
+#     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
+#     slug = models.SlugField(verbose_name=_(u'slug'))
+#
+#     class Meta:
+#         verbose_name = _('organization')
+#         verbose_name_plural = _('organizations')
+#         ordering = ('name',)
+#
+#     def __str__(self):
+#         return '{}'.format(self.name)
 
 
 class WorkDone(models.Model):

@@ -3,7 +3,25 @@
 from django.contrib import admin
 from django.db.models import Count
 
-from scheduler.models import Need, Topics, Location
+from scheduler.models import Need, Topics, Location, Region, Area
+
+
+@admin.register(Region)
+class RegionAdmin(admin.ModelAdmin):
+    search_fields = ('name', )
+
+
+@admin.register(Area)
+class AreaAdmin(admin.ModelAdmin):
+    list_display = ('name', 'region')
+    search_fields = ('name', 'region__name')
+    list_filter = ('region', )
+
+
+# @admin.register(Organization)
+# class OrganizationAdmin(admin.ModelAdmin):
+#     list_display = ('name', )
+#     search_fields = ('name', 'description')
 
 
 class NeedAdmin(admin.ModelAdmin):
@@ -41,3 +59,4 @@ class TopicsAdmin(admin.ModelAdmin):
 
 admin.site.register(Topics, TopicsAdmin)
 admin.site.register(Location)
+
