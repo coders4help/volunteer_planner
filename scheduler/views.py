@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 class GetLocationData(Endpoint):
     def get(self, request, pk):
         return serialize(Location.objects.get(pk=pk), include=[
-            ('dates', lambda l: [v[1] for v in l.get_days_with_needs()])
+            ('dates', lambda l: [{'year': v[0].year, 'month': v[0].month, 'day': v[0].day, 'date_str': v[1]} for v in l.get_days_with_needs()])
         ])
 
 class HomeView(TemplateView):

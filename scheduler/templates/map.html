@@ -122,7 +122,18 @@
         $.getJSON( jsonUrl, function( data ) {
             var html = "<h3>" + data.name + "</h3><p>" + data.street + "<br/>" + data.postal_code + ", " + data.city + "</p><ul>";
             for (var i = 0; i < data.dates.length; i++) {
-                html = html + "<li>" + data.dates[i] + "</li>";
+                // generate URL with placeholders
+                var url = "{% url 'planner_by_location' pk="12345" year="9999" month="13" day="99" %}"
+                // replace location ID
+                url = url.replace("12345", data.id);
+                // replace year
+                url = url.replace("9999", data.dates[i].year);
+                // replace month
+                url = url.replace("13", data.dates[i].month);
+                // replace day
+                url = url.replace("99", data.dates[i].day);
+
+                html = html + "<li><a href=\"" + url + "\">" + data.dates[i].date_str + "</a></li>";
             }
             html = html + "</ul>";
             $( '#clicked-location').html( html );
