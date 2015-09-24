@@ -58,3 +58,30 @@ class RegistrationTestCase(TestCase):
         new_user = RegistrationProfile.objects.first()
         assert new_user is not None
         assert new_user.user.username == "somename"
+
+    def test_username_exists_already(self):
+        # TODO: fix typo in url name in urls.py
+        registration_url = reverse('registation')
+
+        user_data = {'username': 'somename',
+                     'email': 'somename@example.de',
+                     'password1': 'somepassword',
+                     'password2': 'somepassword'}
+
+        # register first user
+        self.client.post(registration_url, user_data)
+
+        # try to register user again (=same username)
+        response = self.client.post(registration_url,
+                                    user_data)
+
+        assert RegistrationProfile.objects.count() == 1
+
+        form = response.context['form']
+        assert form is not None, 'We expect the form to be displayed again if the submission failed'
+
+        self.assertFormError(
+            response,
+            'form',
+            'username',
+            'Dieser Benutzername ist bereits vergeben.')
