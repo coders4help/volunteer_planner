@@ -82,3 +82,25 @@ class RegistrationTestCase(TestCase):
             'form',
             'username',
             'Dieser Benutzername ist bereits vergeben.')
+
+    def test_passwords_dont_match(self):
+        # TODO: fix typo in url name in urls.py
+        registration_url = reverse('registation')
+
+        user_data = {'username': 'somename',
+                     'email': 'somename@example.de',
+                     'password1': 'somepassword',
+                     'password2': 'differentpassword'}
+
+        response = self.client.post(registration_url, user_data)
+
+        assert RegistrationProfile.objects.count() == 0
+
+        form = response.context['form']
+        assert form is not None, 'We expect the form to be displayed again if the submission failed'
+
+        self.assertFormError(
+            response,
+            'form',
+            None,
+            'Die zwei Passwoerter sind nicht gleich!')
