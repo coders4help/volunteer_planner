@@ -105,3 +105,37 @@ class RegistrationTestCase(TestCase):
             'form',
             None,
             'Die zwei Passwoerter sind nicht gleich!')
+
+    def try_invalid_username(self, invalid_username):
+        """
+        helper method for the next couple of tests checking invalid usernames
+        """
+        # TODO: fix typo in url name in urls.py
+        registration_url = reverse('registation')
+
+        user_data = {'username': invalid_username,
+                     'email': 'somename@example.de',
+                     'password1': 'somepassword',
+                     'password2': 'somepassword'}
+
+        response = self.client.post(registration_url, user_data)
+
+        assert RegistrationProfile.objects.count() == 0
+
+        form = response.context['form']
+        assert form is not None, 'We expect the form to be displayed again if the submission failed'
+
+        self.assertFormError(
+            response,
+            'form',
+            'username',
+            'This value may contain only letters, numbers and @/./+/-/_ characters.')
+
+    def test_username_with_whitespaces(self):
+        self.try_invalid_username('some invalid name')
+
+    def test_username_with_special_chars(self):
+        self.try_invalid_username('someinvalidname$')
+
+    def test_username_with_umlauts(self):
+        self.try_invalid_username(unicode('somename\xc3', errors='replace'))
