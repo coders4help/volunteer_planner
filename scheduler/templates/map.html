@@ -101,7 +101,8 @@
         // this is a little bit hacky to get the JavaScript value into the Django URL
         var jsonUrl = "{% url 'location_json' 12345 %}".replace(/12345/, evt.target.getData().id.toString())
         $.getJSON( jsonUrl, function( data ) {
-            var html = "<h3>" + data.name + "</h3><p>" + data.street + "<br/>" + data.postal_code + ", " + data.city + "</p><ul>";
+            var html = "<h3>" + data.name + "</h3><p>" + data.street + "<br/>" + data.postal_code + ", " + data.city + "</p>";
+            html = html + "<p>" + data.additional_info + "</p><ul>";
             for (var i = 0; i < data.dates.length; i++) {
                 // generate URL with placeholders
                 var url = "{% url 'planner_by_location' pk="12345" year="9999" month="13" day="99" %}"
