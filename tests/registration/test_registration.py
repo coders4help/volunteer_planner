@@ -58,6 +58,22 @@ class RegistrationTestCase(TestCase):
         assert new_user is not None
         assert new_user.user.username == "somename"
 
+    def test_invalid_email(self):
+        user_data = {'username': 'somename',
+                     'email': 'invalid-address',
+                     'password1': 'somepassword',
+                     'password2': 'differentpassword'}
+
+        response = self.client.post(self.registration_url, user_data)
+
+        form = response.context['form']
+        assert form is not None, 'We expect the form to be displayed again if the submission failed'
+
+        # TODO: implement form error and then assertFormError
+        # see for example test_username_exists_already
+
+        assert RegistrationProfile.objects.count() == 0
+
     def test_username_exists_already(self):
         # register first user
         self.client.post(self.registration_url, self.valid_user_data)
