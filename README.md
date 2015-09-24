@@ -173,6 +173,10 @@ If you want to generate a coverage report as well, run
 
     $ py.test --cov=. --cov-report html --cov-report term-missing --no-cov-on-fail -v
 
+This generates a nice HTML coverage page, to poke around which can be found at `/path/to/volunteer_planner.git/htmlcov/index.html`. 
+
+*Note*: The directory `htmlcov` is git-ignored.
+
 ### Translations
 
 Can create/update the translations file with
