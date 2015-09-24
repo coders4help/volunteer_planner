@@ -7,6 +7,11 @@ from registration.models import RegistrationProfile
 
 class RegistrationTestCase(TestCase):
 
+    valid_user_data = {'username': 'somename',
+                       'email': 'somename@example.de',
+                       'password1': 'somepassword',
+                       'password2': 'somepassword'}
+
     def test_get_displays_empty_form(self):
         # TODO: fix typo in url name in urls.py
         registration_url = reverse('registation')
@@ -30,7 +35,7 @@ class RegistrationTestCase(TestCase):
         assert RegistrationProfile.objects.count() == 0
 
         form = response.context['form']
-        assert form is not None, "We expect the form to be displayed again if the submission failed"
+        assert form is not None, 'We expect the form to be displayed again if the submission failed'
 
         self.assertFormError(
             response,
@@ -43,10 +48,7 @@ class RegistrationTestCase(TestCase):
         registration_url = reverse('registation')
 
         response = self.client.post(registration_url,
-                                    {'username': 'somename',
-                                     'email': 'myaddress@example.com',
-                                     'password1': 'somepassword',
-                                     'password2': 'somepassword'},
+                                    self.valid_user_data,
                                     follow=True)
 
         registration_complete_url = reverse('registration_complete')
@@ -63,17 +65,12 @@ class RegistrationTestCase(TestCase):
         # TODO: fix typo in url name in urls.py
         registration_url = reverse('registation')
 
-        user_data = {'username': 'somename',
-                     'email': 'somename@example.de',
-                     'password1': 'somepassword',
-                     'password2': 'somepassword'}
-
         # register first user
-        self.client.post(registration_url, user_data)
+        self.client.post(registration_url, self.valid_user_data)
 
         # try to register user again (=same username)
         response = self.client.post(registration_url,
-                                    user_data)
+                                    self.valid_user_data)
 
         assert RegistrationProfile.objects.count() == 1
 
