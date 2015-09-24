@@ -43,11 +43,9 @@ a {
   display: block;
   width: 100%;
   /*text-align: center;*/
-  background: url("../images/placeholder-stage.jpg") no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
+  background: url("../images/helpers.jpg") no-repeat center center scroll;
+  background-position: center;
   background-size: cover;
-  -o-background-size: cover;
 }
 
 .headline {
@@ -108,15 +106,16 @@ hr {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  min-height: 500px;
+  min-height: 400px;
   padding: 130px 30px 30px 30px;
   color: #fff;
 }
 
 #stage h1 {
-  font-weight: 200;
+  font-weight: 400;
   font-size: 3.5em;
   margin: 30px 0;
+  text-shadow: 0px 0px 7px rgba(150, 150, 150, 1);
 }
 
 .facts {
@@ -261,6 +260,9 @@ hr {
   border-radius: 3px;
   margin: 0 5px 5px 0;
   text-decoration: none;
+}
+
+.form-container{
 }
 
 /* ######################################################################################################### */

@@ -1,4 +1,4 @@
-{% load cache humanize number_registrations %}
+{% load humanize number_registrations %}
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -49,9 +49,13 @@
       </div>
     </nav>
 
+    {% block stage %}
 
+    {% endblock %}
+    <div class="container">
     {% block content %}
     {% endblock %}
+    </div>
 
     <div class="spacer"></div>
 
