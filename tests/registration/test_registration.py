@@ -27,6 +27,8 @@ class RegistrationTestCase(TestCase):
         # shall not raise an exception
         response = self.client.post(registration_url, {})
 
+        assert RegistrationProfile.objects.count() == 0
+
         form = response.context['form']
         assert form is not None, "We expect the form to be displayed again if the submission failed"
 
@@ -43,7 +45,9 @@ class RegistrationTestCase(TestCase):
                                      'password2': 'somepassword'},
                                     follow=True)
 
-        assert response.status_code == 200
+        registration_complete_url = reverse('registration_complete')
+
+        self.assertRedirects(response, registration_complete_url)
         self.assertContains(
             response, 'Eine Aktivierungsmail wurde Dir soeben zugesendet.')
 
