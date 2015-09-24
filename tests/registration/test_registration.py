@@ -141,3 +141,33 @@ class RegistrationTestCase(TestCase):
 
     def test_username_with_umlauts(self):
         self.try_invalid_username(unicode('somename\xc3', errors='replace'))
+
+    def test_registered_user_is_inactive(self):
+        # TODO: fix typo in url name in urls.py
+        registration_url = reverse('registation')
+
+        self.client.post(registration_url, self.valid_user_data)
+
+        new_user = RegistrationProfile.objects.first()
+        assert not new_user.user.is_active
+
+    def test_activate_registered_user(self):
+        # TODO: fix typo in url name in urls.py
+        registration_url = reverse('registation')
+
+        self.client.post(registration_url, self.valid_user_data)
+
+        new_user = RegistrationProfile.objects.first()
+
+        assert not new_user.user.is_active
+
+        activation_url = reverse('user_activate')
+        activation_key = new_user.activation_key
+
+        response = self.client.get(activation_url, data={'activation_key': activation_key}, follow=True)
+
+        activation_complete_url = reverse('registration_activation_complete')
+
+        self.assertRedirects(response, activation_complete_url)
+
+        assert RegistrationProfile.objects.first().user.is_active
