@@ -20,10 +20,12 @@ class TopicFactory(factory.DjangoModelFactory):
 
 class LocationFactory(factory.DjangoModelFactory):
     name = "Rathaus W"
+    latitude = 52.489882
+    longitude = 13.313825
 
     class Meta:
         model = scheduler_models.Location
-        django_get_or_create = ['name']
+        django_get_or_create = ['name', 'latitude', 'longitude']
 
 
 class NeedFactory(factory.DjangoModelFactory):

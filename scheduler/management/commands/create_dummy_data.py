@@ -61,7 +61,12 @@ class Command(BaseCommand):
         for day in range(0, options['days'][0]):
             for i in range(2, 23):
                 topic = TopicFactory.create(title=random.choice(HELPTOPICS))
-                location = LocationFactory.create(name="Shelter" + str(random.randint(0,9)), additional_info=LOREM)
+                location = LocationFactory.create(
+                    name="Shelter" + str(random.randint(0,9)),
+                    latitude=random.uniform(47.0, 55.0),
+                    longitude=random.uniform(5.0, 16.0),
+                    additional_info=LOREM
+                )
                 need = NeedFactory.create(
                     starting_time=self.gen_date(hour=i-1, day=day),
                     ending_time=self.gen_date(hour=i, day=day),
