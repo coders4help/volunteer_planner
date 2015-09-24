@@ -100,6 +100,8 @@ class RegistrationTestCase(TestCase):
         form = response.context['form']
         assert form is not None, 'We expect the form to be displayed again if the submission failed'
 
+        # TODO: why is this a non-field error? Shouldn't it be a error on the
+        # second password field?
         self.assertFormError(
             response,
             'form',
