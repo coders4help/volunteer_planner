@@ -24,15 +24,6 @@
 
     // Create the default UI components
     var ui = H.ui.UI.createDefault(map, defaultLayers);
-    function createInfoText(name, street, postalCode, city) {
-        var html = "<div class=\"marker-info\">";
-        html = html + "<h3>" + name + "</h3>";
-        html = html + "<p>" + street + "<br/>";
-        html = html + postalCode + " " + city + "</p>";
-        html = html + "</div>";
-
-        return html;
-    }
 
     function createSVGMarker(lat, lon, color) {
         var nrIcon = createSVGIcon(color);
@@ -99,16 +90,6 @@
         for (var i = 0; i < markersGroup.getObjects().length; i++) {
             updateColor(markersGroup.getObjects()[i], 'light-blue');
         };
-    }
-
-    function showInfoBubble(evt) {
-        var data = evt.target.getData();
-        var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
-            // read custom data
-            content: createInfoText(data.name, data.street, data.postal_code, data.city)
-        });
-        // show info bubble
-        ui.addBubble(bubble);
     }
 
     function changeColor(evt) {
