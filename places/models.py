@@ -64,7 +64,7 @@ class Municipality(models.Model):
     or a 'district' like  Wilmersdorf in Berlin - Berlin.
     '''
     area = models.ForeignKey(Area, related_name='municipalities',
-                             verbose_name=_('municipality'))
+                             verbose_name=_('area'))
     name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
     slug = models.SlugField(verbose_name=_(u'slug'))
 
