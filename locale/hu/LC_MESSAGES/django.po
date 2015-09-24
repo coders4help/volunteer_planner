@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 16:57+0200\n"
-"PO-Revision-Date: 2015-09-25 09:03+0000\n"
+"POT-Creation-Date: 2015-09-25 16:59+0200\n"
+"PO-Revision-Date: 2015-09-25 14:58+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "Language: hu\n"
@@ -53,7 +53,7 @@ msgid "subtitle"
 msgstr "alcím"
 
 #: notifications/models.py:15
-msgid "articletext"
+msgid "text"
 msgstr ""
 
 #: registration/admin.py:35
