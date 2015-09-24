@@ -167,7 +167,15 @@ A good read on TDD is the free o'Reilly eBook ["Test-Driven Development with Pyt
 
 To run the tests, run the following command (with your virtual env activated, see 3.)
 
-    $ py.test [/path/to/volunteer_planner.git/]
+    $ py.test -v [/path/to/volunteer_planner.git/]
+
+If you want to generate a coverage report as well, run
+
+    $ py.test --cov=. --cov-report html --cov-report term-missing --no-cov-on-fail -v
+
+This generates a nice HTML coverage page, to poke around which can be found at `/path/to/volunteer_planner.git/htmlcov/index.html`. 
+
+*Note*: The directory `htmlcov` is git-ignored.
 
 ### Translations
 
