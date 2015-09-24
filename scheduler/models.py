@@ -13,10 +13,6 @@ class Need(models.Model):
     This is the primary instance to create shifts
     """
 
-    class Meta:
-        verbose_name = _(u'shift')
-        verbose_name_plural = _(u'shifts')
-
     topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
@@ -26,6 +22,11 @@ class Need(models.Model):
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+
+    class Meta:
+        verbose_name = _(u'shift')
+        verbose_name_plural = _(u'shifts')
+        ordering = ['starting_time', 'ending_time']
 
     def get_conflicting_needs(self, needs, grace=datetime.timedelta(hours=1)):
         """
@@ -113,21 +114,3 @@ class Location(models.Model):
                 seen_date_strings.append(date_string)
                 dates_and_date_strings.append((date, date_string))
         return dates_and_date_strings
-
-
-class WorkDone(models.Model):
-    """
-    A SQL view is used to calculate total volunteer hours. This unmanaged model is used to
-    let us access that data via Django.
-
-    Note that this won't work with a local SQLite backend.
-    """
-    id = models.IntegerField(primary_key=True)
-    hours = models.IntegerField(name=u'hours', verbose_name=_('working hours'))
-
-    class Meta:
-        managed = False
-        db_table = 'work_done'
-
-    def __unicode__(self):
-        return u'{}'.format(self.hours)
