@@ -42,22 +42,6 @@ class RegistrationTestCase(TestCase):
 
         assert RegistrationProfile.objects.count() == 0
 
-    def test_submit_valid_form(self):
-        response = self.client.post(self.registration_url,
-                                    self.valid_user_data,
-                                    follow=True)
-
-        registration_complete_url = reverse('registration_complete')
-
-        self.assertRedirects(response, registration_complete_url)
-        self.assertContains(
-            response, 'Eine Aktivierungsmail wurde Dir soeben zugesendet.')
-
-        assert RegistrationProfile.objects.count() == 1
-        new_user = RegistrationProfile.objects.first()
-        assert new_user is not None
-        assert new_user.user.username == "somename"
-
     def test_invalid_email(self):
         user_data = {'username': 'somename',
                      'email': 'invalid-address',
@@ -73,6 +57,37 @@ class RegistrationTestCase(TestCase):
         # see for example test_username_exists_already
 
         assert RegistrationProfile.objects.count() == 0
+
+    def try_invalid_username(self, invalid_username):
+        """
+        helper method for the next couple of tests checking invalid usernames
+        """
+        user_data = {'username': invalid_username,
+                     'email': 'somename@example.de',
+                     'password1': 'somepassword',
+                     'password2': 'somepassword'}
+
+        response = self.client.post(self.registration_url, user_data)
+
+        form = response.context['form']
+        assert form is not None, 'We expect the form to be displayed again if the submission failed'
+
+        self.assertFormError(
+            response,
+            'form',
+            'username',
+            'This value may contain only letters, numbers and @/./+/-/_ characters.')
+
+        assert RegistrationProfile.objects.count() == 0
+
+    def test_username_with_whitespaces(self):
+        self.try_invalid_username('some invalid name')
+
+    def test_username_with_special_chars(self):
+        self.try_invalid_username('someinvalidname$')
+
+    def test_username_with_umlauts(self):
+        self.try_invalid_username(unicode('somename\xc3', errors='replace'))
 
     def test_username_exists_already(self):
         # register first user
@@ -114,36 +129,21 @@ class RegistrationTestCase(TestCase):
 
         assert RegistrationProfile.objects.count() == 0
 
-    def try_invalid_username(self, invalid_username):
-        """
-        helper method for the next couple of tests checking invalid usernames
-        """
-        user_data = {'username': invalid_username,
-                     'email': 'somename@example.de',
-                     'password1': 'somepassword',
-                     'password2': 'somepassword'}
+    def test_submit_valid_form(self):
+        response = self.client.post(self.registration_url,
+                                    self.valid_user_data,
+                                    follow=True)
 
-        response = self.client.post(self.registration_url, user_data)
+        registration_complete_url = reverse('registration_complete')
 
-        form = response.context['form']
-        assert form is not None, 'We expect the form to be displayed again if the submission failed'
+        self.assertRedirects(response, registration_complete_url)
+        self.assertContains(
+            response, 'Eine Aktivierungsmail wurde Dir soeben zugesendet.')
 
-        self.assertFormError(
-            response,
-            'form',
-            'username',
-            'This value may contain only letters, numbers and @/./+/-/_ characters.')
-
-        assert RegistrationProfile.objects.count() == 0
-
-    def test_username_with_whitespaces(self):
-        self.try_invalid_username('some invalid name')
-
-    def test_username_with_special_chars(self):
-        self.try_invalid_username('someinvalidname$')
-
-    def test_username_with_umlauts(self):
-        self.try_invalid_username(unicode('somename\xc3', errors='replace'))
+        assert RegistrationProfile.objects.count() == 1
+        new_user = RegistrationProfile.objects.first()
+        assert new_user is not None
+        assert new_user.user.username == "somename"
 
     def test_registered_user_is_inactive(self):
         self.client.post(self.registration_url, self.valid_user_data)
