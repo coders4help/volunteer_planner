@@ -33,8 +33,6 @@ class RegistrationTestCase(TestCase):
         # shall not raise an exception
         response = self.client.post(registration_url, {})
 
-        assert RegistrationProfile.objects.count() == 0
-
         form = response.context['form']
         assert form is not None, 'We expect the form to be displayed again if the submission failed'
 
@@ -43,6 +41,8 @@ class RegistrationTestCase(TestCase):
             'form',
             'email',
             'Dieses Feld ist zwingend erforderlich.')
+
+        assert RegistrationProfile.objects.count() == 0
 
     def test_submit_valid_form(self):
         # TODO: fix typo in url name in urls.py
@@ -58,6 +58,7 @@ class RegistrationTestCase(TestCase):
         self.assertContains(
             response, 'Eine Aktivierungsmail wurde Dir soeben zugesendet.')
 
+        assert RegistrationProfile.objects.count() == 1
         new_user = RegistrationProfile.objects.first()
         assert new_user is not None
         assert new_user.user.username == "somename"
@@ -73,8 +74,6 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(registration_url,
                                     self.valid_user_data)
 
-        assert RegistrationProfile.objects.count() == 1
-
         form = response.context['form']
         assert form is not None, 'We expect the form to be displayed again if the submission failed'
 
@@ -83,6 +82,8 @@ class RegistrationTestCase(TestCase):
             'form',
             'username',
             'Dieser Benutzername ist bereits vergeben.')
+
+        assert RegistrationProfile.objects.count() == 1
 
     def test_passwords_dont_match(self):
         # TODO: fix typo in url name in urls.py
@@ -95,8 +96,6 @@ class RegistrationTestCase(TestCase):
 
         response = self.client.post(registration_url, user_data)
 
-        assert RegistrationProfile.objects.count() == 0
-
         form = response.context['form']
         assert form is not None, 'We expect the form to be displayed again if the submission failed'
 
@@ -107,6 +106,8 @@ class RegistrationTestCase(TestCase):
             'form',
             None,
             'Die zwei Passwoerter sind nicht gleich!')
+
+        assert RegistrationProfile.objects.count() == 0
 
     def try_invalid_username(self, invalid_username):
         """
@@ -122,8 +123,6 @@ class RegistrationTestCase(TestCase):
 
         response = self.client.post(registration_url, user_data)
 
-        assert RegistrationProfile.objects.count() == 0
-
         form = response.context['form']
         assert form is not None, 'We expect the form to be displayed again if the submission failed'
 
@@ -132,6 +131,8 @@ class RegistrationTestCase(TestCase):
             'form',
             'username',
             'This value may contain only letters, numbers and @/./+/-/_ characters.')
+
+        assert RegistrationProfile.objects.count() == 0
 
     def test_username_with_whitespaces(self):
         self.try_invalid_username('some invalid name')
