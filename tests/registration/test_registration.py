@@ -32,7 +32,7 @@ class RegistrationTestCase(TestCase):
         form = response.context['form']
         assert form is not None, "We expect the form to be displayed again if the submission failed"
 
-        self.assertContains(response, 'Dieses Feld ist zwingend erforderlich.')
+        self.assertFormError(response, 'form', 'email', 'Dieses Feld ist zwingend erforderlich.')
 
     def test_submit_valid_form(self):
         # TODO: fix typo in url name in urls.py
