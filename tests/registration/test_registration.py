@@ -18,6 +18,7 @@ class RegistrationTestCase(TestCase):
 
         response = self.client.get(registration_url)
         assert response.status_code == 200
+        self.assertTemplateUsed(response, 'registration_form.html')
 
         form = response.context['form']
         assert form is not None
