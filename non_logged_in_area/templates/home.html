@@ -1,0 +1,100 @@
+{% extends "base_non_logged_in.html" %}
+{% block content %}
+    <!-- Page Content -->
+    <!-- Full Width Image Header -->
+    <header class="header-image">
+        <div id="stage">
+            <div class="container">
+{#                <h1>Primary Headline</h1>#}
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <!-- /. row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="spacer"></div>
+            </div>
+
+            <div class="col-md-4">
+                <a id="help-cta">
+                    <h2>Ich möchte helfen!</h2>
+                    <hr/>
+                    <p>Registriere dich und schaue nach wo du helfen kannst.</p>
+                </a><!-- // #about -->
+            </div>
+            <div class="col-md-4">
+                <a id="need-cta">
+                    <h2>Wir benötigen Hilfe!</h2>
+                    <hr/>
+                    <p>Registriere eine Unterkunft und finde Leute die helfen wollen.</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <div class="facts">
+                    <span class="fact-amount">134.093</span><br/>
+                    registrierte Freiwillige
+                    <hr/>
+                    <span class="fact-amount">26.000</span><br/>
+                    ehrenamtliche Arbeitsstunden
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="spacer"></div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-8">
+                <h2>Worum es geht</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat, tortor sed accumsan
+                    pretium, felis arcu lobortis elit, at accumsan nisi nulla eu diam. Suspendisse suscipit metus a nunc
+                    congue auctor. Mauris suscipit ligula ut ultrices egestas. Nunc mollis justo quis blandit
+                    condimentum.</p>
+
+                <p>Integer at libero justo. Aliquam bibendum odio vitae eros tincidunt tempus. Aenean at massa
+                    efficitur, ullamcorper dolor vel, tristique enim. Duis pulvinar tristique tellus, in malesuada odio
+                    rhoncus sit amet. Sed facilisis sed nulla in sollicitudin. Quisque eu purus vitae nunc bibendum
+                    molestie. Sed sodales metus non lacus fermentum, sit amet commodo tellus sollicitudin. Donec vitae
+                    erat non elit porta accumsan. Fusce viverra enim sit amet lacus cursus varius.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="facts facts-less-padding">
+                    <h2>Du kannst bereits in diesen Städten helfen!</h2>
+                     <div class="spacer"></div>
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            {% for region in regions %}
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       aria-expanded="true" aria-controls="collapseOne">
+                                        {{ region }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                                <ul>
+                                    {% for location in region.areas__municipalities__locations %}
+                                    <li>{{ location }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="spacer"></div>
+
+
+    </div> <!-- container -->
+
+{% endblock %}

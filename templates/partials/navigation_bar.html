@@ -1,0 +1,70 @@
+{% load i18n %}
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">{% trans "Toggle navigation" %}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">volunteer-planner.org</a>
+        </div>
+
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <li>
+                    {% url 'helpdesk' as helpdesk_url %}
+                    <a href="{{ helpdesk_url }}" {% if helpdesk_url in reqeust.path %}class="active"{% endif %}>Helpdesk</a>
+                </li>
+
+                <li>
+                    {% url 'faq' as faq_url %}
+                    <a href="{{ faq_url }}" {% if faq_url in reqeust.path %}class="active"{% endif %}>
+                        FAQ
+                    </a>
+                </li>
+
+                <li>
+                    <a href="mailto:support@volunteer-planner.org">
+                        Bei Fragen: support@volunteer-planner.org
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        {{ user.get_full_name|default:user.username }}
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{% url 'account_detail' %}">
+                                Account
+                            </a>
+                        </li>
+
+                        <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+
+                        {% if user.is_staff or user.is_superuser %}
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                        {% endif %}
+                    </ul>
+
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'auth_login'  %}">Login</a>
+                </li>
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -6,11 +6,18 @@ from django.db.models import Count
 from scheduler.models import Need, Topics, Location
 
 
+# @admin.register(Organization)
+# class OrganizationAdmin(admin.ModelAdmin):
+#     list_display = ('name', )
+#     search_fields = ('name', 'description')
+
+
 class NeedAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
-        return super(NeedAdmin, self).get_queryset(request)\
-            .annotate(volunteer_count=Count('registrationprofile'))\
-            .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
+        return super(NeedAdmin, self).get_queryset(request) \
+            .annotate(volunteer_count=Count('registrationprofile')) \
+            .prefetch_related('registrationprofile_set',
+                              'registrationprofile_set__user')
 
     def get_volunteer_count(self, obj):
         return obj.volunteer_count
@@ -21,10 +28,13 @@ class NeedAdmin(admin.ModelAdmin):
             if full_name:
                 return u'{} ("{}")'.format(full_name, user.username)
             return u'"{}"'.format(user.username)
-        return u", ".join(_format_username(volunteer.user) for volunteer in obj.registrationprofile_set.all())
+
+        return u", ".join(_format_username(volunteer.user) for volunteer in
+                          obj.registrationprofile_set.all())
 
     list_display = (
-        'id', 'topic', 'starting_time', 'ending_time', 'slots', 'get_volunteer_count', 'get_volunteer_names'
+        'id', 'topic', 'starting_time', 'ending_time', 'slots',
+        'get_volunteer_count', 'get_volunteer_names'
     )
 
     search_fields = ('id', 'topic__title',)

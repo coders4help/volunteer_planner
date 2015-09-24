@@ -1,7 +1,6 @@
 # coding: utf-8
 
 import datetime
-import locale
 
 from django.db import models
 from django.utils.formats import localize
@@ -17,11 +16,14 @@ class Need(models.Model):
         verbose_name = _(u'shift')
         verbose_name_plural = _(u'shifts')
 
-    topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
+    topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
+                              help_text=_(u'HELP_TYPE_HELP'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
-    starting_time = models.DateTimeField(verbose_name=_('starting time'), db_index=True)
-    ending_time = models.DateTimeField(verbose_name=_('ending time'), db_index=True)
+    starting_time = models.DateTimeField(verbose_name=_('starting time'),
+                                         db_index=True)
+    ending_time = models.DateTimeField(verbose_name=_('ending time'),
+                                       db_index=True)
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
@@ -64,8 +66,8 @@ class Need(models.Model):
 
 class Topics(models.Model):
     class Meta:
-        verbose_name = _(u'helptype')
-        verbose_name_plural = _(u'helptypes')
+        verbose_name = _(u'help type')
+        verbose_name_plural = _(u'help types')
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
@@ -86,9 +88,18 @@ class Location(models.Model):
     longitude = models.CharField(max_length=30, blank=True)
     additional_info = models.TextField(max_length=300000, blank=True)
 
+    municipality = models.ForeignKey("places.Municipality",
+                                     null=False,
+                                     related_name='locations',
+                                     verbose_name=_('municipality'))
+
     class Meta:
         verbose_name = _(u'location')
         verbose_name_plural = _(u'locations')
+        ordering = (
+            'municipality',
+            'name',
+        )
         permissions = (
             ("can_view", u"User can view location"),
         )
@@ -96,23 +107,24 @@ class Location(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.name)
 
-    def get_days_with_needs(self):
-        """
-        Returns a list of tuples, representing days that this location has
-        needs. The tuple contains a datetime object, and a date formatted
-        in German format.
-        """
-        dates = self.need_set.filter(ending_time__gt=datetime.datetime.now()
-            ).order_by('ending_time').values_list('starting_time', flat=True)
-        dates_and_date_strings = []
-        seen_date_strings = []
-        locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')  # FIXME
-        for date in dates:
-            date_string = date.strftime("%A, %d.%m.%Y")
-            if date_string not in seen_date_strings:
-                seen_date_strings.append(date_string)
-                dates_and_date_strings.append((date, date_string))
-        return dates_and_date_strings
+
+
+
+# class Organization(models.Model):
+#     '''
+#     An organization is a NGO or a group of people managing one or more facilities.
+#     '''
+#     name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
+#     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
+#     slug = models.SlugField(verbose_name=_(u'slug'))
+#
+#     class Meta:
+#         verbose_name = _('organization')
+#         verbose_name_plural = _('organizations')
+#         ordering = ('name',)
+#
+#     def __str__(self):
+#         return '{}'.format(self.name)
 
 
 class WorkDone(models.Model):
