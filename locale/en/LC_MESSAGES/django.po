@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-24 12:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: accounts/templates/user_account_edit.html:16
+msgid "Save"
+msgstr ""
+
+#: accounts/templates/user_detail.html:14 registration/forms.py:34
+msgid "Username"
+msgstr ""
+
+#: accounts/templates/user_detail.html:15
+msgid "First name"
+msgstr ""
+
+#: accounts/templates/user_detail.html:16
+msgid "Last name"
+msgstr ""
+
+#: accounts/templates/user_detail.html:17 registration/forms.py:37
+msgid "Email"
+msgstr ""
+
+#: accounts/templates/user_detail.html:20
+msgid "Edit Account"
+msgstr ""
+
+#: notifications/models.py:13
+msgid "title"
+msgstr ""
+
+#: notifications/models.py:14
+msgid "subtitle"
+msgstr ""
+
+#: notifications/models.py:15
+msgid "articletext"
+msgstr ""
+
+#: registration/admin.py:35
+msgid "Activate users"
+msgstr ""
+
+#: registration/admin.py:56
+msgid "Re-send activation emails"
+msgstr ""
+
+#: registration/forms.py:35
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: registration/forms.py:39
+msgid "Password"
+msgstr ""
+
+#: registration/forms.py:41
+msgid "Password (again)"
+msgstr ""
+
+#: registration/forms.py:51
+msgid "A user with that username already exists."
+msgstr ""
+
+#: registration/forms.py:58
+msgid "A user with that email already exists. Please login instead."
+msgstr ""
+
+#: registration/forms.py:82
+msgid "I have read and agree to the Terms of Service"
+msgstr ""
+
+#: registration/forms.py:83
+msgid "You must agree to the terms to register"
+msgstr ""
+
+#: registration/forms.py:99
+msgid "This email address is already in use. Please supply a different email address."
+msgstr ""
+
+#: registration/forms.py:124
+msgid "Registration using free email addresses is prohibited. Please supply a different email address."
+msgstr ""
+
+#: registration/models.py:219
+msgid "user"
+msgstr ""
+
+#: registration/models.py:220
+msgid "activation key"
+msgstr ""
+
+#: registration/templates/activate.html:5
+msgid "Activation complete"
+msgstr ""
+
+#: registration/templates/activate.html:7
+msgid "Activation problem"
+msgstr ""
+
+#: registration/templates/activate.html:14
+#, python-format
+msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
+msgstr ""
+
+#: registration/templates/activate.html:19
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgstr ""
+
+#: registration/templates/login.html:15
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: scheduler/apps.py:7
+msgid "Scheduler"
+msgstr ""
+
+#: scheduler/models.py:17
+msgid "shift"
+msgstr ""
+
+#: scheduler/models.py:18
+msgid "shifts"
+msgstr ""
+
+#: scheduler/models.py:20 scheduler/models.py:67
+msgid "helptype"
+msgstr ""
+
+#: scheduler/models.py:20
+msgid "helptype_text"
+msgstr ""
+
+#: scheduler/models.py:21 scheduler/models.py:90
+msgid "location"
+msgstr ""
+
+#: scheduler/models.py:23
+msgid "starting time"
+msgstr ""
+
+#: scheduler/models.py:24
+msgid "ending time"
+msgstr ""
+
+#: scheduler/models.py:28
+msgid "number of needed volunteers"
+msgstr ""
+
+#: scheduler/models.py:68
+msgid "helptypes"
+msgstr ""
+
+#: scheduler/models.py:91
+msgid "locations"
+msgstr ""
+
+#: scheduler/models.py:126
+msgid "working hours"
+msgstr ""
+
+#: scheduler/views.py:94
+msgid "The submitted data was invalid."
+msgstr ""
+
+#: scheduler/views.py:107
+#, python-brace-format
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+msgstr ""
+
+#: scheduler/views.py:112
+msgid "You were successfully added to this shift."
+msgstr ""
+
+#: shiftmailer/models.py:9
+msgid "given_name"
+msgstr ""
+
+#: shiftmailer/models.py:10
+msgid "name"
+msgstr ""
+
+#: shiftmailer/models.py:11
+msgid "position"
+msgstr ""
+
+#: shiftmailer/models.py:12
+msgid "organisation"
+msgstr ""
+
+#: shiftmailer/models.py:13
+msgid "email"
+msgstr ""
+
+#: templates/registration/password_change_done.html:3
+msgid "Password changed"
+msgstr ""
+
+#: templates/registration/password_change_done.html:7
+msgid "Password successfully changed!"
+msgstr ""
+
+#: templates/registration/password_change_form.html:3
+#: templates/registration/password_change_form.html:6
+msgid "Change Password"
+msgstr ""
+
+#: templates/registration/password_change_form.html:11
+#: templates/registration/password_change_form.html:13
+#: templates/registration/password_reset_form.html:12
+#: templates/registration/password_reset_form.html:14
+msgid "Email address"
+msgstr ""
+
+#: templates/registration/password_change_form.html:15
+#: templates/registration/password_reset_confirm.html:13
+msgid "Change password"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:3
+msgid "Password reset complete"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:7
+#, python-format
+msgid "Your password has been reset! You may now <a href=\"%(login_url)s\">log in</a>."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:3
+msgid "Enter new password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:6
+msgid "Enter your new password below to reset your password"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:3
+msgid "Password reset"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:6
+msgid "We sent you an email with a link to reset your password."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:7
+msgid "Please check your email and click the link to continue."
+msgstr ""
+
+#: templates/registration/password_reset_email.html:3
+#, python-format
+msgid ""
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site.  If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+"\n"
+"To reset your password, please click the following link, or copy and paste it\n"
+"into your web browser:"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:12
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+"\n"
+"Best regards,\n"
+"%(site_name)s Management\n"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:3
+#: templates/registration/password_reset_form.html:16
+msgid "Reset password"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:6
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:7
+msgid "No Problem! We'll send you instructions on how to reset your password."
+msgstr ""
+
+#: volunteer_planner/settings/base.py:131
+msgid "German"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:132
+msgid "English"
+msgstr ""
