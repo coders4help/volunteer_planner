@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 01:07+0200\n"
+"POT-Creation-Date: 2015-09-25 01:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -297,4 +297,8 @@ msgstr ""
 
 #: volunteer_planner/settings/base.py:132
 msgid "English"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:133
+msgid "Hungarian"
 msgstr ""

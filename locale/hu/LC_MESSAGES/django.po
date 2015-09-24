@@ -4,119 +4,120 @@
 # 
 # Translators:
 # Christoph Meißner <post@christophmeissner.de>, 2015
+# Nagy László <aznagylaci@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-25 01:13+0200\n"
-"PO-Revision-Date: 2015-09-24 23:14+0000\n"
+"PO-Revision-Date: 2015-09-24 23:15+0000\n"
 "Last-Translator: Christoph Meißner <post@christophmeissner.de>\n"
-"Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accounts/templates/user_account_edit.html:16
 msgid "Save"
-msgstr "Speichern"
+msgstr "Mentés"
 
 #: accounts/templates/user_detail.html:14 registration/forms.py:34
 msgid "Username"
-msgstr "Benutzername"
+msgstr "Felhasználónév"
 
 #: accounts/templates/user_detail.html:15
 msgid "First name"
-msgstr "Vorname"
+msgstr "Keresztnév"
 
 #: accounts/templates/user_detail.html:16
 msgid "Last name"
-msgstr "Nachname"
+msgstr "Vezetéknév"
 
 #: accounts/templates/user_detail.html:17 registration/forms.py:37
 msgid "Email"
-msgstr "E-Mail Adresse"
+msgstr "E-mail"
 
 #: accounts/templates/user_detail.html:20
 msgid "Edit Account"
-msgstr "Account bearbeiten"
+msgstr "Fiók szerkesztése"
 
 #: notifications/models.py:13
 msgid "title"
-msgstr "Titel"
+msgstr "cím"
 
 #: notifications/models.py:14
 msgid "subtitle"
-msgstr "Untertitel"
+msgstr "alcím"
 
 #: notifications/models.py:15
 msgid "articletext"
-msgstr "Artikeltext"
+msgstr "cikk címe"
 
 #: registration/admin.py:35
 msgid "Activate users"
-msgstr "Benutzer aktivieren"
+msgstr "Felhasználók aktiválása"
 
 #: registration/admin.py:56
 msgid "Re-send activation emails"
-msgstr "Aktivierungsmail erneut versenden"
+msgstr "Aktiváló e-mail újraküldése"
 
 #: registration/forms.py:35
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ enthalten"
+msgstr "Ez az érték csak betűt, számot és a @ . + - _ karaktereket tartalmazhatja"
 
 #: registration/forms.py:39
 msgid "Password"
-msgstr "Passwort"
+msgstr "Jelszó"
 
 #: registration/forms.py:41
 msgid "Password (again)"
-msgstr "Passwort (noch einmal)"
+msgstr "Jelszó (újra)"
 
 #: registration/forms.py:51
 msgid "A user with that username already exists."
-msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
+msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
 
 #: registration/forms.py:58
 msgid "A user with that email already exists. Please login instead."
-msgstr "Die Emailadresse ist bereits bekannt. Bitte logge Dich ein mit Deinem Benutzername und Password."
+msgstr "Már létezik ellel az e-mail címmel felhasználó. Inkább jelentkezzen be!"
 
 #: registration/forms.py:82
 msgid "I have read and agree to the Terms of Service"
-msgstr "Ich habe die Nutzungsbedingungen gelesen und stimme ihnen zu"
+msgstr "Elolvastam a használati feltételeket és beleegyezem."
 
 #: registration/forms.py:83
 msgid "You must agree to the terms to register"
-msgstr "Du musst den Nutzungsbedingungen zustimmen"
+msgstr "Bele kell egyeznie a feltételekbe, hogy regisztrálhasson."
 
 #: registration/forms.py:99
 msgid ""
 "This email address is already in use. Please supply a different email "
 "address."
-msgstr "Diese E-Mail Adresse ist bereits registriert. Bitte verwende eine andere E-Mailadresse."
+msgstr "Ezt az e-mail címet már használják. Kérem, adjon meg másik e-mail címet."
 
 #: registration/forms.py:124
 msgid ""
 "Registration using free email addresses is prohibited. Please supply a "
 "different email address."
-msgstr "Die Registrierung mit einer E-Mail-Adresses dieses Anbieters ist leider verboten. Bitte verwende eine andere E-Mailadresse."
+msgstr "Ingyenes e-mail címmel nem engedélyezett a regisztráció. Kérem, adjon meg másik e-mail címet."
 
 #: registration/models.py:219
 msgid "user"
-msgstr "Benutzer"
+msgstr "felhasználó"
 
 #: registration/models.py:220
 msgid "activation key"
-msgstr "Aktivierungsschlüssel"
+msgstr "aktivációs kulcs"
 
 #: registration/templates/activate.html:5
 msgid "Activation complete"
-msgstr "Benutzeraccout aktiviert"
+msgstr "Az aktiváció kész."
 
 #: registration/templates/activate.html:7
 msgid "Activation problem"
-msgstr "Benutzeraccount konnte nicht aktiviert werden"
+msgstr "Probléma van az aktivációval."
 
 #: registration/templates/activate.html:14
 #, python-format
@@ -124,152 +125,152 @@ msgid ""
 "Thanks %(account)s, activation complete! You may now <a "
 "href='%(auth_login_url)s'>login</a> using the username and password you set "
 "at registration."
-msgstr "Danke %(account)s, die Aktivierung ist abgeschlossen! Du kannst dich jetzt mit deinem Benutzernamen und Passwort, welche du bei der Registrierung gewählt hast <a href='%(auth_login_url)s'>einloggen</a>."
+msgstr "Köszönjük, %(account)s. Az aktiváció elkészült. Mostmár <a href='%(auth_login_url)s'>bejelentkezhet</a> a regisztrációkor megadott felhasználónévvel és jelszóval."
 
 #: registration/templates/activate.html:19
 msgid ""
 "Oops &ndash; Either you activated your account already, or the activation "
 "key is invalid or has expired."
-msgstr "Uuppss &ndash; Entweder dein Account wurde bereits aktiviert oder der Aktivierungschlüssel ist ungültig oder abgelaufen."
+msgstr "Hoppá &ndash; Ön már vagy előzőleg aktiválta a felhasználói fiókját, vagy az aktivációs kulcs érvénytelen, vagy lejárt."
 
 #: registration/templates/login.html:15
 msgid "Your username and password didn't match. Please try again."
-msgstr "Benutzername und Passort ungültig. Bitte versuche es erneut."
+msgstr "A felhasználónév és a jelszó nem megfelelő. Próbálja újra."
 
 #: scheduler/apps.py:7
 msgid "Scheduler"
-msgstr "Schichtplaner"
+msgstr "Ütemező"
 
 #: scheduler/models.py:16 scheduler/models.py:68
 msgid "helptype"
-msgstr "Hilfebereich"
+msgstr "segítség típusa"
 
 #: scheduler/models.py:16
 msgid "helptype_text"
-msgstr "Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
+msgstr "segítségtípus_szövege"
 
 #: scheduler/models.py:17 scheduler/models.py:91
 msgid "location"
-msgstr "Ort"
+msgstr "helyszín"
 
 #: scheduler/models.py:19
 msgid "starting time"
-msgstr "Beginn"
+msgstr "kezdés ideje"
 
 #: scheduler/models.py:20
 msgid "ending time"
-msgstr "Ende"
+msgstr "befejezés ideje"
 
 #: scheduler/models.py:24
 msgid "number of needed volunteers"
-msgstr "Anz. benötigter Freiwillige"
+msgstr "a szükséges önkéntesek száma"
 
 #: scheduler/models.py:27
 msgid "shift"
-msgstr "Schicht"
+msgstr "műszak"
 
 #: scheduler/models.py:28
 msgid "shifts"
-msgstr "Schichten"
+msgstr "műszakok"
 
 #: scheduler/models.py:69
 msgid "helptypes"
-msgstr "Hilfebereiche"
+msgstr "segítségtípusok"
 
 #: scheduler/models.py:92
 msgid "locations"
-msgstr "Orte"
+msgstr "helyszínek"
 
 #: scheduler/views.py:76
 msgid "The submitted data was invalid."
-msgstr "Die eingegebenen Daten sind ungültig."
+msgstr "A megadott adat érvénytelen volt."
 
 #: scheduler/views.py:89
 #, python-brace-format
 msgid ""
 "We can't add you to this shift because you've already agreed to other shifts"
 " at the same time: {conflicts}"
-msgstr "Du kannst der Schicht nicht beitreten, da Du bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
+msgstr "Nem adhatunk hozzá ehhez a műszakhoz, mert már beleegyeztél másik műszakokhoz ugyanebben az időben: {conflicts}"
 
 #: scheduler/views.py:94
 msgid "You were successfully added to this shift."
-msgstr "Du hast sich erfolgreich für die Schicht angemeldet."
+msgstr "Sikeresen hozzáadtunk ehhez a műszakhoz."
 
 #: shiftmailer/models.py:9
 msgid "given_name"
-msgstr "Vorname"
+msgstr "keresztnév"
 
 #: shiftmailer/models.py:10
 msgid "name"
-msgstr "Nachname"
+msgstr "név"
 
 #: shiftmailer/models.py:11
 msgid "position"
-msgstr "Position"
+msgstr "pozíció"
 
 #: shiftmailer/models.py:12
 msgid "organisation"
-msgstr "Organisation"
+msgstr "szervezet"
 
 #: shiftmailer/models.py:13
 msgid "email"
-msgstr "E-Mail"
+msgstr "e-mail"
 
 #: templates/registration/password_change_done.html:3
 msgid "Password changed"
-msgstr "Passwort geändert"
+msgstr "A jelszó megváltozott"
 
 #: templates/registration/password_change_done.html:7
 msgid "Password successfully changed!"
-msgstr "Passwurd wurde erfolgreich geändert!"
+msgstr "A jelszót sikeresen megváltoztatta!"
 
 #: templates/registration/password_change_form.html:3
 #: templates/registration/password_change_form.html:6
 msgid "Change Password"
-msgstr "Passwort ändern"
+msgstr "Jelszó megváltoztatása"
 
 #: templates/registration/password_change_form.html:11
 #: templates/registration/password_change_form.html:13
 #: templates/registration/password_reset_form.html:12
 #: templates/registration/password_reset_form.html:14
 msgid "Email address"
-msgstr "E-Mailadresse"
+msgstr "E-mail cím"
 
 #: templates/registration/password_change_form.html:15
 #: templates/registration/password_reset_confirm.html:13
 msgid "Change password"
-msgstr "Passwort ändern"
+msgstr "Jelszó megváltoztatása"
 
 #: templates/registration/password_reset_complete.html:3
 msgid "Password reset complete"
-msgstr "Passwort wurde geändert"
+msgstr "A jelszó-visszaállítás kész."
 
 #: templates/registration/password_reset_complete.html:7
 #, python-format
 msgid ""
 "Your password has been reset! You may now <a href=\"%(login_url)s\">log "
 "in</a>."
-msgstr "Dein Passwort wurde geändert. Du kannst dich jetzt <a href=\"%(login_url)s\">erneut anmelden</a>."
+msgstr "A jelszavát visszaállítottuk. Mostmár <a href=\"%(login_url)s\">bejelentkezhet</a>."
 
 #: templates/registration/password_reset_confirm.html:3
 msgid "Enter new password"
-msgstr "Neues Passwort festlegen"
+msgstr "Adjon meg új jelszót"
 
 #: templates/registration/password_reset_confirm.html:6
 msgid "Enter your new password below to reset your password"
-msgstr "Bitte gib dein neues Passwort ein"
+msgstr "Írja be az új jelszavát alább, hogy visszaállítsa a jelszavát."
 
 #: templates/registration/password_reset_done.html:3
 msgid "Password reset"
-msgstr "Passwort zurückgesetzt"
+msgstr "Jelszó visszaállítás"
 
 #: templates/registration/password_reset_done.html:6
 msgid "We sent you an email with a link to reset your password."
-msgstr "Wir haben Dir eine E-Mail mit der Anleitung zum Ändern des Passwortes geschickt."
+msgstr "Elküldtünk önnek egy e-mailt egy hivatkozással, amivel visszaállíthatja a jelszavát."
 
 #: templates/registration/password_reset_done.html:7
 msgid "Please check your email and click the link to continue."
-msgstr "Bitte prüfe Deine E-Mails und folge der Anleitung um fortzufahren."
+msgstr "Kérem, ellenőrizze az e-mailjét és kattintson a hivatkozásra a folytatáshoz."
 
 #: templates/registration/password_reset_email.html:3
 #, python-format
@@ -280,7 +281,7 @@ msgid ""
 "\n"
 "To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
-msgstr "Du bekommst diese E-Mail, weil jemand (wahrscheinlich Du selbst)\nDein Passwort für %(domain)s ändern möchte. Wenn Du Dein Passwort nicht\nändern möchtest, kannst Du diese E-Mail einfach ignorieren und es passiert nichts.\n\nUm Dein Passwort zu ändern, klicke bitte folgenden Link:"
+msgstr "Ezt az e-mailt azért kapta, mert ön (vagy valaki az ön nevében)\n\nazt ön jelszavának a visszaállítását kérte a %(domain)s weboldalon. Ha nem szeretné\n\nvisszaállítani a jelszavát, kérem hagyja figyelmen kívül ezt az üzenetet.\n\n\n\nA jelszava visszaállításához kattintson a következő hivatkozásra, vagy másolja ki és illessze be\na böngészőjébe:"
 
 #: templates/registration/password_reset_email.html:12
 #, python-format
@@ -290,29 +291,29 @@ msgid ""
 "\n"
 "Best regards,\n"
 "%(site_name)s Management\n"
-msgstr "\nDein Benutzername lautet übrigens: %(username)s\n\nViele Grüße,\ndas %(site_name)s-Team\n"
+msgstr "\nA felhasználóneve, ha esetleg elfelejtette volna: %(username)s\n\n\n\nÜdvözlettel,\n\n%(site_name)s management\n"
 
 #: templates/registration/password_reset_form.html:3
 #: templates/registration/password_reset_form.html:16
 msgid "Reset password"
-msgstr "Passwort zurücksetzen"
+msgstr "Jelszó visszaállítása"
 
 #: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
-msgstr "Passwort vergessen?"
+msgstr "Elfelejtette a jelszavát?"
 
 #: templates/registration/password_reset_form.html:7
 msgid "No Problem! We'll send you instructions on how to reset your password."
-msgstr "Kein Problem! Wir schicken Dir eine E-Mail mit der Anleitung wie Du Dein Passort zurücksetzen kannst."
+msgstr "Semmi gond! Elküldjük önnek, hogy hogyan állíthatja vissza a jelszavát."
 
 #: volunteer_planner/settings/base.py:131
 msgid "German"
-msgstr "Deutsch"
+msgstr "Német"
 
 #: volunteer_planner/settings/base.py:132
 msgid "English"
-msgstr "Englisch"
+msgstr "Angol"
 
 #: volunteer_planner/settings/base.py:133
 msgid "Hungarian"
-msgstr "Ungarisch"
+msgstr "Magyar"
