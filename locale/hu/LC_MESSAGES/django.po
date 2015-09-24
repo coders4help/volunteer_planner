@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Christoph Meißner <post@christophmeissner.de>, 2015
+# Christoph, 2015
+# Christoph, 2015
 # Nagy László <aznagylaci@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 16:35+0200\n"
-"PO-Revision-Date: 2015-09-24 23:15+0000\n"
-"Last-Translator: Christoph Meißner <post@christophmeissner.de>\n"
+"POT-Creation-Date: 2015-09-25 16:57+0200\n"
+"PO-Revision-Date: 2015-09-25 09:03+0000\n"
+"Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +54,7 @@ msgstr "alcím"
 
 #: notifications/models.py:15
 msgid "articletext"
-msgstr "cikk címe"
+msgstr ""
 
 #: registration/admin.py:35
 msgid "Activate users"
