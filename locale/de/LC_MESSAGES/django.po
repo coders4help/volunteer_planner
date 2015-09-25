@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 02:58+0200\n"
+"POT-Creation-Date: 2015-09-25 16:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -204,9 +204,10 @@ msgstr "Organisation"
 msgid "email"
 msgstr "E-Mail"
 
-#: templates/home.html:84
+#: templates/home.html:89
 #, python-format
-msgid "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
+#| msgid "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
+msgid "Already %(volunteer_count)s volunteers signed up and worked %(volunteer_hours)s hours in total."
 msgstr "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
 
 #: templates/registration/password_change_done.html:3

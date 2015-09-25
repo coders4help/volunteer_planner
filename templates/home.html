@@ -1,4 +1,7 @@
 {% load cache humanize volunteer_stats i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE %}
+
 <!DOCTYPE html>
 <html>
 <head lang="de">
@@ -78,15 +81,17 @@
 
             <div class="col-md-3">
                 <h2>
+                    {% cache 900 volunteer_stats CURRENT_LANGUAGE %}
                         {% get_volunteer_number as volunteer_count %}
                         {% get_volunteer_hours as volunteer_hours %}
                         {% if volunteer_count and volunteer_hours %}
                             {% blocktrans with volunteer_hours=volunteer_hours|intcomma volunteer_count=volunteer_count|intcomma trimmed %}
-                                {{ volunteer_count }} Freiwillige sind
-                                bereits registriert und haben
-                                {{ volunteer_hours }} Stunden geholfen.
+                                Already {{ volunteer_count }} volunteers signed
+                                up and worked {{ volunteer_hours }} hours in
+                                total.
                             {% endblocktrans %}
                         {% endif %}
+                    {% endcache %}
                 </h2>
             </div>
             <div class="disclaimer">
