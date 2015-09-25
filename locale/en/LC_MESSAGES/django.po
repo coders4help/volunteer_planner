@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 12:28+0200\n"
+"POT-Creation-Date: 2015-09-25 02:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,60 +130,56 @@ msgstr ""
 msgid "Scheduler"
 msgstr ""
 
-#: scheduler/models.py:17
-msgid "shift"
-msgstr ""
-
-#: scheduler/models.py:18
-msgid "shifts"
-msgstr ""
-
-#: scheduler/models.py:20 scheduler/models.py:67
+#: scheduler/models.py:16 scheduler/models.py:68
 msgid "helptype"
 msgstr ""
 
-#: scheduler/models.py:20
+#: scheduler/models.py:16
 msgid "helptype_text"
 msgstr ""
 
-#: scheduler/models.py:21 scheduler/models.py:90
+#: scheduler/models.py:17 scheduler/models.py:91
 msgid "location"
 msgstr ""
 
-#: scheduler/models.py:23
+#: scheduler/models.py:19
 msgid "starting time"
 msgstr ""
 
-#: scheduler/models.py:24
+#: scheduler/models.py:20
 msgid "ending time"
 msgstr ""
 
-#: scheduler/models.py:28
+#: scheduler/models.py:24
 msgid "number of needed volunteers"
 msgstr ""
 
-#: scheduler/models.py:68
+#: scheduler/models.py:27
+msgid "shift"
+msgstr ""
+
+#: scheduler/models.py:28
+msgid "shifts"
+msgstr ""
+
+#: scheduler/models.py:69
 msgid "helptypes"
 msgstr ""
 
-#: scheduler/models.py:91
+#: scheduler/models.py:92
 msgid "locations"
 msgstr ""
 
-#: scheduler/models.py:126
-msgid "working hours"
-msgstr ""
-
-#: scheduler/views.py:94
+#: scheduler/views.py:76
 msgid "The submitted data was invalid."
 msgstr ""
 
-#: scheduler/views.py:107
+#: scheduler/views.py:89
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr ""
 
-#: scheduler/views.py:112
+#: scheduler/views.py:94
 msgid "You were successfully added to this shift."
 msgstr ""
 
@@ -207,6 +203,11 @@ msgstr ""
 msgid "email"
 msgstr ""
 
+#: templates/home.html:84
+#, python-format
+msgid "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
+msgstr "%(volunteer_count)s volunteers are registered and helped %(volunteer_hours)s hours."
+
 #: templates/registration/password_change_done.html:3
 msgid "Password changed"
 msgstr ""
@@ -217,15 +218,17 @@ msgstr ""
 
 #: templates/registration/password_change_form.html:3
 #: templates/registration/password_change_form.html:6
+#, fuzzy
+#| msgid "Reset password"
 msgid "Change Password"
-msgstr ""
+msgstr "Reset password"
 
 #: templates/registration/password_change_form.html:11
 #: templates/registration/password_change_form.html:13
 #: templates/registration/password_reset_form.html:12
 #: templates/registration/password_reset_form.html:14
 msgid "Email address"
-msgstr ""
+msgstr "Email address"
 
 #: templates/registration/password_change_form.html:15
 #: templates/registration/password_reset_confirm.html:13
@@ -285,20 +288,20 @@ msgstr ""
 #: templates/registration/password_reset_form.html:3
 #: templates/registration/password_reset_form.html:16
 msgid "Reset password"
-msgstr ""
+msgstr "Reset password"
 
 #: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Forgot your password?"
 
 #: templates/registration/password_reset_form.html:7
 msgid "No Problem! We'll send you instructions on how to reset your password."
-msgstr ""
+msgstr "No Problem! We'll send you instructions on how to reset your password."
 
 #: volunteer_planner/settings/base.py:131
 msgid "German"
-msgstr ""
+msgstr "German"
 
 #: volunteer_planner/settings/base.py:132
 msgid "English"
-msgstr ""
+msgstr "English"

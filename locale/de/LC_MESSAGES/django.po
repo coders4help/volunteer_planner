@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-20 01:45+0200\n"
+"POT-Creation-Date: 2015-09-25 02:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,60 +131,56 @@ msgstr "Benutzername und Passort ungültig. Bitte versuche es erneut."
 msgid "Scheduler"
 msgstr "Schichtplaner"
 
-#: scheduler/models.py:17
-msgid "shift"
-msgstr "Schicht"
-
-#: scheduler/models.py:18
-msgid "shifts"
-msgstr "Schichten"
-
-#: scheduler/models.py:20 scheduler/models.py:67
+#: scheduler/models.py:16 scheduler/models.py:68
 msgid "helptype"
 msgstr "Hilfebereich"
 
-#: scheduler/models.py:20
+#: scheduler/models.py:16
 msgid "helptype_text"
 msgstr "Jeder Hilfebereich hat so viele Planelemente wie es Arbeitsschichten geben soll. Dies ist EINE Arbeitsschicht für einen bestimmten Tag"
 
-#: scheduler/models.py:21 scheduler/models.py:90
+#: scheduler/models.py:17 scheduler/models.py:91
 msgid "location"
 msgstr "Ort"
 
-#: scheduler/models.py:23
+#: scheduler/models.py:19
 msgid "starting time"
 msgstr "Beginn"
 
-#: scheduler/models.py:24
+#: scheduler/models.py:20
 msgid "ending time"
 msgstr "Ende"
 
-#: scheduler/models.py:28
+#: scheduler/models.py:24
 msgid "number of needed volunteers"
 msgstr "Anz. benötigter Freiwillige"
 
-#: scheduler/models.py:68
+#: scheduler/models.py:27
+msgid "shift"
+msgstr "Schicht"
+
+#: scheduler/models.py:28
+msgid "shifts"
+msgstr "Schichten"
+
+#: scheduler/models.py:69
 msgid "helptypes"
 msgstr "Hilfebereiche"
 
-#: scheduler/models.py:91
+#: scheduler/models.py:92
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/models.py:112
-msgid "working hours"
-msgstr "Arbeitsstunden"
-
-#: scheduler/views.py:91
+#: scheduler/views.py:76
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:104
+#: scheduler/views.py:89
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Du kannst der Schicht nicht beitreten, da Du bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
-#: scheduler/views.py:109
+#: scheduler/views.py:94
 msgid "You were successfully added to this shift."
 msgstr "Du hast sich erfolgreich für die Schicht angemeldet."
 
@@ -208,6 +204,11 @@ msgstr "Organisation"
 msgid "email"
 msgstr "E-Mail"
 
+#: templates/home.html:84
+#, python-format
+msgid "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
+msgstr "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
+
 #: templates/registration/password_change_done.html:3
 msgid "Password changed"
 msgstr "Passwort geändert"
@@ -226,7 +227,7 @@ msgstr "Passwort ändern"
 #: templates/registration/password_reset_form.html:12
 #: templates/registration/password_reset_form.html:14
 msgid "Email address"
-msgstr "E-Mailadresse"
+msgstr "E-Mail Adresse"
 
 #: templates/registration/password_change_form.html:15
 #: templates/registration/password_reset_confirm.html:13
