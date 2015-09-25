@@ -43,26 +43,24 @@
 
             {% cache 900 volunteer_stats LANGUAGE_CODE %}
                 <div class="facts">
-                    {% get_facility_count as facility_count %}
-                    {% get_volunteer_number as volunteer_count %}
-                    {% get_volunteer_hours as volunteer_hours %}
+                    {% get_volunteer_stats as volunteer_stats %}
 
                     <span class="fact-amount">
-                        {{ facility_count|intcomma }}
+                        {{ volunteer_stats.facility_count|intcomma }}
                     </span>
                     <br/>
                     {% trans "Places to help" %}
 
                     <hr/>
                     <span class="fact-amount">
-                        {{ volunteer_count|intcomma }}
+                        {{ volunteer_stats.volunteer_count|intcomma }}
                     </span>
                     <br/>
                     {% trans "Registered Volunteers" %}
                     <hr/>
 
                     <span class="fact-amount">
-                        {{ volunteer_hours|intcomma }}
+                        {{ volunteer_stats.volunteer_hours|intcomma }}
                     </span>
                     <br/>
                     {% trans "Worked Hours" %}
