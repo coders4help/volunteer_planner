@@ -1,4 +1,7 @@
-{% load cache volunteer_stats %}
+{% load cache humanize volunteer_stats i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE %}
+
 <!DOCTYPE html>
 <html>
 <head lang="de">
@@ -6,7 +9,8 @@
 
     <title>{% block title %}Volunteer Planner{% endblock %}</title>
 
-    <link href="/static/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/static/bootstrap/dist/css/bootstrap.css" rel="stylesheet"
+          type="text/css">
 
     <meta name="description" property="og:description"
           content="Volunteer-Planner.org ist ein kostenloses und werbungsfreies Tool, um Dienstpläne für Freiwillige in Flüchtlingsunterkünfte zu organisieren">
@@ -77,10 +81,16 @@
 
             <div class="col-md-3">
                 <h2>
-                    {# Doesn't have to be accurate, cache expensive query for an hour #}
-                    {% cache 3600 volunteer_stats %}
-                        {% get_volunteer_number %} Freiwillige sind bereits registriert
-                        und haben {% get_volunteer_hours %} Stunden geholfen.
+                    {% cache 900 volunteer_stats CURRENT_LANGUAGE %}
+                        {% get_volunteer_number as volunteer_count %}
+                        {% get_volunteer_hours as volunteer_hours %}
+                        {% if volunteer_count and volunteer_hours %}
+                            {% blocktrans with volunteer_hours=volunteer_hours|intcomma volunteer_count=volunteer_count|intcomma trimmed %}
+                                Already {{ volunteer_count }} volunteers signed
+                                up and worked {{ volunteer_hours }} hours in
+                                total.
+                            {% endblocktrans %}
+                        {% endif %}
                     {% endcache %}
                 </h2>
             </div>

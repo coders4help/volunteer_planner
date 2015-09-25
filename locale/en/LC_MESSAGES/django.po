@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 01:13+0200\n"
+"POT-Creation-Date: 2015-09-25 16:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Re-send activation emails"
 msgstr ""
 
-#: registration/forms.py:35
+#: registration/forms.py:35 tests/registration/test_registration.py:79
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Password (again)"
 msgstr ""
 
-#: registration/forms.py:51
+#: registration/forms.py:51 tests/registration/test_registration.py:107
 msgid "A user with that username already exists."
 msgstr ""
 
@@ -201,6 +201,11 @@ msgstr ""
 
 #: shiftmailer/models.py:13
 msgid "email"
+msgstr ""
+
+#: templates/home.html:88
+#, python-format
+msgid "Already %(volunteer_count)s volunteers signed up and worked %(volunteer_hours)s hours in total."
 msgstr ""
 
 #: templates/registration/password_change_done.html:3
