@@ -1,8 +1,7 @@
-import datetime
+# coding: utf-8
+
 from django import template
 from django.contrib.auth.models import User
-
-from registration.models import RegistrationProfile
 
 register = template.Library()
 
