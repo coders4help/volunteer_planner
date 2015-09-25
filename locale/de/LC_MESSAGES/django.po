@@ -1,17 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
+# Christoph Meißner <post@christophmeissner.de>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 16:18+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2015-09-25 16:35+0200\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +59,7 @@ msgstr "Benutzer aktivieren"
 msgid "Re-send activation emails"
 msgstr "Aktivierungsmail erneut versenden"
 
-#: registration/forms.py:35
+#: registration/forms.py:35 tests/registration/test_registration.py:79
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ enthalten"
 
@@ -74,7 +71,7 @@ msgstr "Passwort"
 msgid "Password (again)"
 msgstr "Passwort (noch einmal)"
 
-#: registration/forms.py:51
+#: registration/forms.py:51 tests/registration/test_registration.py:107
 msgid "A user with that username already exists."
 msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
 
@@ -204,9 +201,8 @@ msgstr "Organisation"
 msgid "email"
 msgstr "E-Mail"
 
-#: templates/home.html:89
+#: templates/home.html:88
 #, python-format
-#| msgid "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
 msgid "Already %(volunteer_count)s volunteers signed up and worked %(volunteer_hours)s hours in total."
 msgstr "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
 
@@ -315,3 +311,7 @@ msgstr "Deutsch"
 #: volunteer_planner/settings/base.py:132
 msgid "English"
 msgstr "Englisch"
+
+#: volunteer_planner/settings/base.py:133
+msgid "Hungarian"
+msgstr "Ungarisch"
