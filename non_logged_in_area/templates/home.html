@@ -1,5 +1,7 @@
 {% extends "base_non_logged_in.html" %}
-{% load number_registrations %}
+
+{% load volunteer_numbers cache i18n humanize %}
+
 {% block stage %}
     <!-- Full Width Image Header -->
     <header class="header-image">
@@ -36,13 +38,38 @@
             </a>
         </div>
         <div class="col-md-4">
-            <div class="facts">
-                <span class="fact-amount">{% get_volunteer_number %} </span><br/>
-                registrierte Freiwillige
-                <hr/>
-                <span class="fact-amount">26.000</span><br/>
-                ehrenamtliche Arbeitsstunden
-            </div>
+
+            {% get_current_language as LANGUAGE_CODE %}
+
+            {% cache 900 volunteer_stats LANGUAGE_CODE %}
+                <div class="facts">
+                    {% get_facility_count as facility_count %}
+                    {% get_volunteer_number as volunteer_count %}
+                    {% get_volunteer_hours as volunteer_hours %}
+
+                    <span class="fact-amount">
+                        {{ facility_count|intcomma }}
+                    </span>
+                    <br/>
+                    {% trans "Places to help" %}
+
+                    <hr/>
+                    <span class="fact-amount">
+                        {{ volunteer_count|intcomma }}
+                    </span>
+                    <br/>
+                    {% trans "Registered Volunteers" %}
+                    <hr/>
+
+                    <span class="fact-amount">
+                        {{ volunteer_hours|intcomma }}
+                    </span>
+                    <br/>
+                    {% trans "Worked Hours" %}
+                </div>
+
+            {% endcache %}
+
         </div>
     </div>
     <div class="col-lg-12">
@@ -72,54 +99,54 @@
                 erat non elit porta accumsan. Fusce viverra enim sit amet lacus
                 cursus varius.</p>
         </div>
-        <div class="col-md-4">
-            <div class="facts facts-less-padding">
-                <h2>Hilfe wird an diesen Orten benötigt</h2>
-
-                <div class="spacer"></div>
-                <div id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-
-                        {% regroup places by area.region as places_by_region %}
-                        {% for place_in_region in places_by_region %}
-                            <div class="panel-heading" role="tab"
-                                 id="headingOne">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse"
-                                       data-parent="#accordion"
-                                       href="#collapseOne"
-                                       aria-expanded="true"
-                                       aria-controls="collapseOne">
-                                        {{ place_in_region.grouper.name }}
-                                        ({{ place_in_region.list|length }})
-                                    </a>
-                                </h4>
-                            </div>
-                            {% regroup place_in_region.list by area as places_by_area %}
-                            <div id="collapseOne"
-                                 class="panel-collapse collapse"
-                                 role="tabpanel"
-                                 aria-labelledby="headingOne">
-                                <ul>
-                                    {% for place_in_area in places_by_area %}
-                                        <li>{{ place_in_area.grouper }}
-                                            ({{ place_in_area.list|length }})
-                                        </li>
-                                        <ul>
-                                            {% for place in place_in_area.list %}
-                                                <li>{{ place.name }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endfor %}
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
+{#        <div class="col-md-4">#}
+{#            <div class="facts facts-less-padding">#}
+{#                <h2>Hilfe wird an diesen Orten benötigt</h2>#}
+{##}
+{#                <div class="spacer"></div>#}
+{#                <div id="accordion" role="tablist" aria-multiselectable="true">#}
+{#                    <div class="panel panel-default">#}
+{##}
+{#                        {% regroup places by area.region as places_by_region %}#}
+{#                        {% for place_in_region in places_by_region %}#}
+{#                            <div class="panel-heading" role="tab"#}
+{#                                 id="headingOne">#}
+{#                                <h4 class="panel-title">#}
+{#                                    <a data-toggle="collapse"#}
+{#                                       data-parent="#accordion"#}
+{#                                       href="#collapseOne"#}
+{#                                       aria-expanded="true"#}
+{#                                       aria-controls="collapseOne">#}
+{#                                        {{ place_in_region.grouper.name }}#}
+{#                                        ({{ place_in_region.list|length }})#}
+{#                                    </a>#}
+{#                                </h4>#}
+{#                            </div>#}
+{#                            {% regroup place_in_region.list by area as places_by_area %}#}
+{#                            <div id="collapseOne"#}
+{#                                 class="panel-collapse collapse"#}
+{#                                 role="tabpanel"#}
+{#                                 aria-labelledby="headingOne">#}
+{#                                <ul>#}
+{#                                    {% for place_in_area in places_by_area %}#}
+{#                                        <li>{{ place_in_area.grouper }}#}
+{#                                            ({{ place_in_area.list|length }})#}
+{#                                        </li>#}
+{#                                        <ul>#}
+{#                                            {% for place in place_in_area.list %}#}
+{#                                                <li>{{ place.name }}</li>#}
+{#                                            {% endfor %}#}
+{#                                        </ul>#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
 
         <div class="spacer"></div>
     </div>
