@@ -1,4 +1,5 @@
 from django.db import ProgrammingError, OperationalError
+from django.db.models.aggregates import Count
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.core.urlresolvers import reverse
@@ -22,7 +23,11 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['regions'] = Region.objects.all().prefetch_related('areas__municipalities__locations')
+        context['regions'] = Region.objects.annotate(locations_count=Count('areas__municipalities__locations')).exclude(locations_count=0).prefetch_related('areas', 'areas__region').all()
+        for i in context['regions']:
+            location=i
+            pass
+        #context['regions'] = Region.objects.all().prefetch_related('areas__municipalities__locations')
         context['notifications'] = Notification.objects.all()
         try:
             work_done = WorkDone.objects.get(pk=1)

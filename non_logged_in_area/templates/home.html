@@ -74,16 +74,17 @@
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                        aria-expanded="true" aria-controls="collapseOne">
-                                        {{ region }}
+                                        {{ region.location_count }}
+                                        {% for area in regions %}
+                                        {{ area.location_count }}
+                                        {% endfor %}
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
                                  aria-labelledby="headingOne">
                                 <ul>
-                                    {% for location in region.areas__municipalities__locations %}
-                                    <li>{{ location }}</li>
-                                    {% endfor %}
+                                    <li></li>
                                 </ul>
                             </div>
                             {% endfor %}
