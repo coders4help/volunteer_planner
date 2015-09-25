@@ -78,8 +78,6 @@
 
             <div class="col-md-3">
                 <h2>
-                    {# Doesn't have to be accurate, cache expensive query for 15 minutes #}
-                    {% cache 900 volunteer_stats %}
                         {% get_volunteer_number as volunteer_count %}
                         {% get_volunteer_hours as volunteer_hours %}
                         {% if volunteer_count and volunteer_hours %}
@@ -89,7 +87,6 @@
                                 {{ volunteer_hours }} Stunden geholfen.
                             {% endblocktrans %}
                         {% endif %}
-                    {% endcache %}
                 </h2>
             </div>
             <div class="disclaimer">
