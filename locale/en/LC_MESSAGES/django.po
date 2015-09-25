@@ -112,11 +112,11 @@ msgid "areas"
 msgstr ""
 
 #: places/models.py:67 places/models.py:75 scheduler/models.py:94
-msgid "municipality"
+msgid "place"
 msgstr ""
 
 #: places/models.py:76
-msgid "municipalities"
+msgid "places"
 msgstr ""
 
 #: registration/admin.py:35

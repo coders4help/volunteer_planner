@@ -6,8 +6,7 @@ from django.db import models, migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
@@ -37,17 +36,17 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Municipality',
+            name='Place',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(unique=True, max_length=50, verbose_name='name')),
                 ('slug', models.SlugField(verbose_name='slug')),
-                ('area', models.ForeignKey(related_name='municipalities', verbose_name='municipality', to='places.Area')),
+                ('area', models.ForeignKey(related_name='places', verbose_name='place', to='places.Area')),
             ],
             options={
                 'ordering': ('area', 'name'),
-                'verbose_name': 'municipality',
-                'verbose_name_plural': 'municipalities',
+                'verbose_name': 'place',
+                'verbose_name_plural': 'places',
             },
         ),
         migrations.CreateModel(

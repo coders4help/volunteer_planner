@@ -88,16 +88,16 @@ class Location(models.Model):
     longitude = models.CharField(max_length=30, blank=True)
     additional_info = models.TextField(max_length=300000, blank=True)
 
-    municipality = models.ForeignKey("places.Municipality",
-                                     null=False,
-                                     related_name='locations',
-                                     verbose_name=_('municipality'))
+    place = models.ForeignKey("places.Place",
+                              null=False,
+                              related_name='locations',
+                              verbose_name=_('place'))
 
     class Meta:
         verbose_name = _(u'location')
         verbose_name_plural = _(u'locations')
         ordering = (
-            'municipality',
+            'place',
             'name',
         )
         permissions = (
@@ -106,8 +106,6 @@ class Location(models.Model):
 
     def __unicode__(self):
         return u'{}'.format(self.name)
-
-
 
 
 # class Organization(models.Model):

@@ -9,28 +9,26 @@ def add_places(apps, schema_editor):
     Country = apps.get_model('places', 'Country')
     Region = apps.get_model('places', 'Region')
     Area = apps.get_model('places', 'Area')
-    Municipality = apps.get_model('places', 'Municipality')
+    Place = apps.get_model('places', 'Place')
     Location = apps.get_model('scheduler', 'Location')
 
     germany, _ = Country.objects.get_or_create(name='Deutschland',
-                                               defaults=dict(
-                                                   slug=slugify('Deutschland')))
+                                               defaults=dict(slug=slugify('Deutschland')))
 
     for location in Location.objects.all():
 
         city = location.city
-        region, _ = Region.objects.get_or_create(name=city, defaults=dict(
-            slug=slugify(city), country=germany))
+        region, _ = Region.objects.get_or_create(name=city,
+                                                 defaults=dict(slug=slugify(city),
+                                                               country=germany))
         area, _ = Area.objects.get_or_create(name=city,
                                              defaults=dict(slug=slugify(city),
                                                            region=region))
-        municipality, _ = Municipality.objects.get_or_create(name=city,
-                                                             defaults=dict(
-                                                                 slug=slugify(
-                                                                     city),
-                                                                 area=area))
+        place, _ = Place.objects.get_or_create(name=city,
+                                               defaults=dict(slug=slugify(city),
+                                                             area=area))
 
-        location.municipality = municipality
+        location.place = place
 
         location.save()
 
@@ -38,7 +36,7 @@ def add_places(apps, schema_editor):
 def remove_places(apps, schema_editor):
     Location = apps.get_model('scheduler', 'Location')
     for location in Location.objects.all():
-        location.city = location.municipality.name
+        location.city = location.place.name
 
 
 class Migration(migrations.Migration):
@@ -50,22 +48,24 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='location',
-            options={'ordering': ('municipality', 'name'),
+            options={'ordering': ('place', 'name'),
                      'verbose_name': 'location',
                      'verbose_name_plural': 'locations',
                      'permissions': (('can_view', 'User can view location'),)},
         ),
         migrations.AddField(
             model_name='location',
-            name='municipality',
+            name='place',
             field=models.ForeignKey(related_name='locations',
-                                    verbose_name='municipality',
-                                    to='places.Municipality', null=True),
+                                    verbose_name='place',
+                                    to='places.Place', null=True),
         ),
         migrations.RunPython(add_places, remove_places),
         migrations.AlterField(
             model_name='location',
-            name='municipality',
-            field=models.ForeignKey(related_name='locations', verbose_name='municipality', to='places.Municipality'),
+            name='place',
+            field=models.ForeignKey(related_name='locations',
+                                    verbose_name='place',
+                                    to='places.Place'),
         ),
     ]
