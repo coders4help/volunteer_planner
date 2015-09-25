@@ -122,7 +122,7 @@ LOGGING = {
         },
     }
 }
-LOGIN_REDIRECT_URL = '/helpdesk/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/auth/login/'
 
 TIME_ZONE = 'Europe/Berlin'
