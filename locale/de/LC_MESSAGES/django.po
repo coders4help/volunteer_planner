@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-20 01:45+0200\n"
+"POT-Creation-Date: 2015-09-24 13:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,20 +171,20 @@ msgstr "Hilfebereiche"
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/models.py:112
+#: scheduler/models.py:126
 msgid "working hours"
 msgstr "Arbeitsstunden"
 
-#: scheduler/views.py:91
+#: scheduler/views.py:94
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:104
+#: scheduler/views.py:107
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Du kannst der Schicht nicht beitreten, da Du bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
-#: scheduler/views.py:109
+#: scheduler/views.py:112
 msgid "You were successfully added to this shift."
 msgstr "Du hast sich erfolgreich für die Schicht angemeldet."
 
