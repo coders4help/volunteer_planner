@@ -40,14 +40,16 @@ def send_email_notifications(sender, instance, **kwargs):
 @receiver(pre_save, sender=Need)
 def notify_users_shift_change(sender, instance, **kwargs):
     shift = instance
-    try:
-        old = Need.objects.get(pk=shift.pk)
-        diff_start = (old.starting_time - shift.starting_time).seconds
-        diff_end = (old.ending_time - shift.ending_time).seconds
+    old = Need.objects.filter(pk=shift.pk)
+    # Test whether this is modification or creation, to avoid DoesNotExist exception
+    if shift.pk and old.exists():
+        old_shift = old.get()
+        diff_start = (old_shift.starting_time - shift.starting_time).seconds
+        diff_end = (old_shift.ending_time - shift.ending_time).seconds
         if grace < diff_start or grace < diff_end:
             subject = u'Schicht am {} wurde verändert'.format(shift.starting_time.strftime('%d.%m.%y'))
 
-            message = render_to_string('shift_modification_notification.html', dict(old=old, shift=shift))
+            message = render_to_string('shift_modification_notification.html', dict(old=old_shift, shift=shift))
 
             from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
 
@@ -57,8 +59,6 @@ def notify_users_shift_change(sender, instance, **kwargs):
                                     bcc=addresses)
                 logger.info(u'Shift %s at %s changed: (%s-%s -> %s->%s). Sending email notification to %d affected user(s).',
                             shift.topic.title, shift.location.name,
-                            old.starting_time, old.ending_time, shift.starting_time, shift.ending_time,
+                            old_shift.starting_time, old_shift.ending_time, shift.starting_time, shift.ending_time,
                             len(addresses))
                 mail.send()
-    except Need.DoesNotExist:
-        logger.error(u'What\'s wrong with %s?', shift)
