@@ -209,7 +209,7 @@ msgstr "E-Mail"
 #: templates/home.html:88
 #, python-format
 msgid "Already %(volunteer_count)s volunteers signed up and worked %(volunteer_hours)s hours in total."
-msgstr ""
+msgstr "%(volunteer_count)s Freiwillige sind bereits registriert und haben %(volunteer_hours)s Stunden geholfen."
 
 #: templates/registration/password_change_done.html:3
 msgid "Password changed"
