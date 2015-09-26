@@ -28,7 +28,16 @@ class AreaAdmin(admin.ModelAdmin):
 
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
-    list_display = (u'id', 'area', 'name', 'slug')
-    list_filter = ('area',)
+
+    def get_region(self, obj):
+        return obj.area.region
+    get_region.short_description = Region._meta.verbose_name
+
+    def get_country(self, obj):
+        return self.get_region(obj).country
+    get_country.short_description = Country._meta.verbose_name
+
+    list_display = (u'id', 'area', 'get_region', 'get_country', 'name', 'slug')
+    list_filter = ('area', 'area__region', 'area__region__country')
     search_fields = ('name', 'slug')
     prepopulated_fields = {'slug': ['name']}

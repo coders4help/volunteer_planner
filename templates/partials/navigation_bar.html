@@ -20,6 +20,8 @@
                     <a href="{{ helpdesk_url }}" {% if helpdesk_url in reqeust.path %}class="active"{% endif %}>Helpdesk</a>
                 </li>
 
+                {% include "partials/region_selection.html" %}
+
                 <li>
                     {% url 'faq' as faq_url %}
                     <a href="{{ faq_url }}" {% if faq_url in reqeust.path %}class="active"{% endif %}>

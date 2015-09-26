@@ -1,0 +1,170 @@
+{% load placestemplatetags %}
+
+{% get_places_having_facilities as places %}
+
+<li class="menu-item dropdown">
+
+    <a class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-globe"></i>
+
+        {% if current_area %}
+            Region: {{ current_area.name }}
+        {% else %}
+            Regionen
+        {% endif %}
+        <span class="caret"></span>
+    </a>
+
+
+    <ul role="menu" class="dropdown-menu">
+        {#        <li>#}
+        {#            <a href="{% url "helpdesk" %}">Alle Regionen</a>#}
+        {#        </li>#}
+
+        {% regroup places by area.region.country as places_by_country %}
+
+        {% for place_in_country in places_by_country %}
+            <li class="menu-item dropdown dropdown-submenu">
+                <a href="#">
+                    C {{ place_in_country.grouper.name }}
+                    <span class="caret-right"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    {% regroup place_in_country.list by area.region as places_by_region %}
+
+                    {% for place_in_region in places_by_region %}
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#">
+                                R {{ place_in_region.grouper.name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% regroup place_in_region.list by area as places_by_area %}
+                                {% if places_by_area|length == 1 %}
+                                    {% for place in places_by_area.0.list %}
+                                        <li class="menu-item">
+                                            <a href="#">
+                                                {% if place.area.name == place_in_region.grouper.name %}
+                                                    {{ place.name }}
+                                                {% else %}
+                                                    {{ place.area.name }}
+                                                    {{ place.name }}
+                                                {% endif %}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    {% for place_in_area in places_by_area %}
+                                        {% if place_in_area.list|length == 1 %}
+                                            {% with place_in_area.list.0 as place %}
+                                                <li class="menu-item">
+                                                    <a href="#">
+                                                        {% if place.area.name == place.name %}
+                                                            {{ place.name }}
+                                                        {% else %}
+                                                            {{ place.area.name }}
+                                                            {{ place.name }}
+                                                        {% endif %}
+                                                    </a>
+                                                </li>
+                                            {% endwith %}
+                                        {% else %}
+                                            <li class="menu-item dropdown dropdown-submenu">
+                                                <a href="#">
+                                                    A {{ place_in_area.grouper.name }}
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    {% for place in place_in_area.list %}
+                                                        <li class="menu-item">
+                                                            <a href="#">
+                                                                {{ place.name }}
+                                                            </a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+
+        {#        {% for p in places %}#}
+
+
+        {##}
+        {#                <ul class="dropdown-menu">#}
+        {#                    {% for area in region.list %}#}
+        {#                        <li class="menu-item dropdown dropdown-submenu {% if current_area == area %}active{% endif %}">#}
+        {#                            <a href="{% url 'area-by-slug' area.slug %}">#}
+        {#                                {{ area.name }}#}
+        {#                                <span class="badge badge-danger pull-right">3</span>#}
+        {#                            </a>#}
+        {#                            <ul class="dropdown-menu">#}
+        {#                                {% for facility in area.facilities.all %}#}
+        {#                                    <li class="menu-item {% if current_facility == facility %}active{% endif %}">#}
+        {#                                        <a href="#">#}
+        {#                                            {{ facility.name }}#}
+        {#                                        </a>#}
+        {#                                    </li>#}
+        {#                                {% endfor %}#}
+        {#                            </ul>#}
+        {#                        </li>#}
+        {#                    {% endfor %}#}
+        {#                </ul>#}
+        {#            </li>#}
+        {#        {% endfor %}#}
+
+        {#        {% for region in active_regions %}#}
+        {#            {% if region.list|length > 1 %}#}
+        {#                <li class="menu-item dropdown dropdown-submenu {% if current_area.region == region.grouper %}active{% endif %}">#}
+        {#                    <a href="#">#}
+        {#                        {{ region.grouper.name }}#}
+        {#                        <span class="caret-right"></span>#}
+        {#                        <span class="badge badge-danger pull-right">5</span>#}
+        {#                    </a>#}
+        {##}
+        {#                    <ul class="dropdown-menu">#}
+        {#                        {% for area in region.list %}#}
+        {#                            <li class="menu-item dropdown dropdown-submenu {% if current_area == area %}active{% endif %}">#}
+        {#                                <a href="{% url 'area-by-slug' area.slug %}">#}
+        {#                                    {{ area.name }}#}
+        {#                                    <span class="badge badge-danger pull-right">3</span>#}
+        {#                                </a>#}
+        {#                                <ul class="dropdown-menu">#}
+        {#                                    {% for facility in area.facilities.all %}#}
+        {#                                        <li class="menu-item {% if current_facility == facility %}active{% endif %}">#}
+        {#                                            <a href="#">#}
+        {#                                                {{ facility.name }}#}
+        {#                                            </a>#}
+        {#                                        </li>#}
+        {#                                    {% endfor %}#}
+        {#                                </ul>#}
+        {#                            </li>#}
+        {#                        {% endfor %}#}
+        {#                    </ul>#}
+        {#                </li>#}
+        {#            {% else %}#}
+        {#                {% with region.list.0 as area %}#}
+        {#                    <li class="menu-item dropdown dropdown-submenu {% if current_area == area %}active{% endif %}">#}
+        {#                        <a href="{% url 'area-by-slug' area.slug %}">#}
+        {#                            {{ area.name }}#}
+        {#                        </a>#}
+        {#                        <ul class="dropdown-menu">#}
+        {#                            {% for facility in area.facilities.all %}#}
+        {#                                <li class="menu-item {% if current_facility == facility %}active{% endif %}">#}
+        {#                                    <a href="#">#}
+        {#                                        {{ facility.name }}#}
+        {#                                    </a>#}
+        {#                                </li>#}
+        {#                            {% endfor %}#}
+        {#                        </ul>#}
+        {#                    </li>#}
+        {#                {% endwith %}#}
+        {#            {% endif %}#}
+        {#        {% endfor %}#}
+    </ul>
+</li>

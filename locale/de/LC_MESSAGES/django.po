@@ -83,7 +83,7 @@ msgstr "Artikeltext"
 #: places/models.py:11 places/models.py:27 places/models.py:49
 #: places/models.py:68 shiftmailer/models.py:10
 msgid "name"
-msgstr "Nachname"
+msgstr "Name"
 
 #: places/models.py:12 places/models.py:31 places/models.py:50
 #: places/models.py:69
