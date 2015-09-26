@@ -6,9 +6,10 @@ import datetime
 import factory
 from django.core.management.base import BaseCommand
 from django.db.models import signals
-from tests.factories import NeedFactory, TopicFactory, LocationFactory, RegistrationProfileFactory
+from tests.factories import NeedFactory, TopicFactory, LocationFactory, RegistrationProfileFactory, MunicipalityFactory
 from registration.models import RegistrationProfile
 from scheduler.models import Need, Location, Topics
+from places.models import Region, Area, Municipality, Country
 from django.contrib.auth.models import User
 
 HELPTOPICS = ["Jumper", "Translator", "Clothing Room", "Womens Room", "Donation Counter", "Highlights" ]
@@ -55,13 +56,29 @@ class Command(BaseCommand):
             Need.objects.all().delete()
             Location.objects.all().delete()
             Topics.objects.all().delete()
+
+            # delete geographic information
+            Country.objects.all().delete()
+            Region.objects.all().delete()
+            Area.objects.all().delete()
+            Municipality.objects.all().delete()
+
             User.objects.filter().exclude(is_superuser=True).delete()
+
+        # create regional data
+        municipalities = list()
+        for i in range(0,10):
+            municipalities.append(MunicipalityFactory.create())
 
         # create shifts for number of days
         for day in range(0, options['days'][0]):
             for i in range(2, 23):
                 topic = TopicFactory.create(title=random.choice(HELPTOPICS))
-                location = LocationFactory.create(name="Shelter" + str(random.randint(0,9)), additional_info=LOREM)
+                location = LocationFactory.create(
+                    name="Shelter" + str(random.randint(0,9)),
+                    municipality=municipalities[random.randint(0,len(municipalities)-1)],
+                    additional_info=LOREM
+                )
                 need = NeedFactory.create(
                     starting_time=self.gen_date(hour=i-1, day=day),
                     ending_time=self.gen_date(hour=i, day=day),
