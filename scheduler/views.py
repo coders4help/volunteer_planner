@@ -4,20 +4,22 @@ import datetime
 import logging
 
 from django.core.urlresolvers import reverse
+
 from django.contrib import messages
+
 from django.db.models import Count
-from django.views.generic import TemplateView, FormView
+
+from django.views.generic import TemplateView, FormView, DetailView
 
 from django.utils.translation import ugettext_lazy as _
 
 from django.shortcuts import get_object_or_404
 
-from scheduler.models import Location, Need, WorkDone
+from scheduler.models import Location, Need
 from notifications.models import Notification
 from registration.models import RegistrationProfile
 from .forms import RegisterForNeedForm
 from volunteer_planner.utils import LoginRequiredMixin
-
 
 logger = logging.getLogger(__name__)
 
@@ -110,3 +112,23 @@ class PlannerView(LoginRequiredMixin, FormView):
         Redirect to the same page.
         """
         return reverse('planner_by_location', kwargs=self.kwargs)
+
+
+class PlaceDetailView(DetailView):
+    def make_breadcrumps_dict(self, country, region=None, area=None,
+                              place=None):
+
+        result = dict(country=country, flattened=[country, ])
+
+        for k, v in zip(('region', 'area', 'place'), (region, area, place)):
+            if v:
+                result[k] = v
+                result['flattened'].append(v)
+
+        return result
+
+    def get_context_data(self, **kwargs):
+        context = super(PlaceDetailView, self).get_context_data(**kwargs)
+        context['breadcrumps'] = self.make_breadcrumps_dict(
+            *self.object.breadcrumps)
+        return context

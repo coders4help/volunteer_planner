@@ -14,3 +14,4 @@ def get_places_having_facilities():
         locations_count=Count('locations')).exclude(locations_count=0)
 
     return places
+

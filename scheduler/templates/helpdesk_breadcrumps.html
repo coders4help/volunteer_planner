@@ -1,0 +1,15 @@
+{% if breadcrumps %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">Helpdesk</a>
+        </li>
+
+        {% for breadcrump in breadcrumps.flattened %}
+            <li>
+                <a href="{{ breadcrump.get_absolute_url }}">
+                    {{ breadcrump.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

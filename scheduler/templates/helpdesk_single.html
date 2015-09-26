@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "helpdesk_base.html" %}
 
 {% load i18n %}
 {% load vpfilters %}
@@ -12,9 +12,7 @@
     {% endwith %}
 {% endblock %}
 
-{% block body_class %}helpdesk{% endblock %}
-
-{% block content %}
+{% block helpdesk_content %}
 
         {% include "partials/alert_messages.html" %}
 

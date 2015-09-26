@@ -13,6 +13,7 @@ def subtract(lhs, rhs):
     lhs = int(lhs) if not isinstance(lhs, Number) else lhs
     return rhs - lhs
 
+
 @register.filter
 def divide(lhs, rhs):
     lhs = float(lhs) if not isinstance(lhs, Number) else lhs
@@ -28,3 +29,23 @@ def contains(enumeratable, obj):
 @register.filter
 def split(value, separator=' '):
     return value.split(separator)
+
+
+@register.filter
+def eq(lhs, rhs):
+    return lhs == rhs
+
+
+@register.filter
+def neq(lhs, rhs):
+    return lhs != rhs
+
+
+@register.filter
+def yes(lhs, rhs, default=""):
+    return rhs if lhs else default
+
+
+@register.filter
+def no(lhs, rhs, default=""):
+    return rhs if not lhs else default
