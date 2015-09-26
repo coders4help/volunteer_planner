@@ -43,14 +43,6 @@
 
             {% cache 900 volunteer_stats LANGUAGE_CODE %}
                 <div class="facts">
-                    {% get_volunteer_stats as volunteer_stats %}
-
-                    <span class="fact-amount">
-                        {{ volunteer_stats.facility_count|intcomma }}
-                    </span>
-                    <br/>
-                    {% trans "Places to help" %}
-
                     <hr/>
                     <span class="fact-amount">
                         {{ volunteer_stats.volunteer_count|intcomma }}
@@ -59,11 +51,38 @@
                     {% trans "Registered Volunteers" %}
                     <hr/>
 
-                    <span class="fact-amount">
-                        {{ volunteer_stats.volunteer_hours|intcomma }}
-                    </span>
-                    <br/>
-                    {% trans "Worked Hours" %}
+                <p>Integer at libero justo. Aliquam bibendum odio vitae eros tincidunt tempus. Aenean at massa
+                    efficitur, ullamcorper dolor vel, tristique enim. Duis pulvinar tristique tellus, in malesuada odio
+                    rhoncus sit amet. Sed facilisis sed nulla in sollicitudin. Quisque eu purus vitae nunc bibendum
+                    molestie. Sed sodales metus non lacus fermentum, sit amet commodo tellus sollicitudin. Donec vitae
+                    erat non elit porta accumsan. Fusce viverra enim sit amet lacus cursus varius.</p>
+            </div>
+            {% regroup locations by municipality.name as loc_municipality %}
+            <div class="col-md-4">
+                <div class="facts facts-less-padding">
+                    <h2>Du kannst bereits in diesen Städten helfen!</h2>
+                     <div class="spacer"></div>
+                    {{loc_municipality.grouper}}
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                        {% for location in loc_municipality%}
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       aria-expanded="true" aria-controls="collapseOne">
+                                        {{ location.municipality }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            {% endfor %}
+                        </div>
                 </div>
 
             {% endcache %}

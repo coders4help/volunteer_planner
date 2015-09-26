@@ -8,8 +8,8 @@ from django.core.urlresolvers import reverse
 
 from notifications.models import Notification
 from scheduler.models import WorkDone
-from places.models import Region, Place
 
+from places.models import Region, Place
 logger = logging.getLogger(__name__)
 
 
@@ -24,6 +24,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
+
         context['regions'] = Region.objects.annotate(
             locations_count=Count('areas__places__locations')).exclude(
             locations_count=0).prefetch_related('areas', 'areas__region').all()
@@ -33,7 +34,7 @@ class HomeView(TemplateView):
         for i in context['regions']:
             location = i
             pass
-        # context['regions'] = Region.objects.all().prefetch_related('areas__places__locations')
+
         context['notifications'] = Notification.objects.all()
         try:
             work_done = WorkDone.objects.get(pk=1)
