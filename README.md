@@ -109,6 +109,7 @@ You might consider to use this example `postactivate` script
     git fetch --all
     git status
 
+*Note:* You'll need to re-active your virtual environment after each change to it's `postactivate` hook to take effect. Just run `workon vp` again, to make sure your current venv session has executed the `postactivate` hook.
 
 #### 2.3.1 ... settings module for using MySQL
 
