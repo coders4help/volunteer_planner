@@ -43,22 +43,22 @@ class AreaFactory(factory.DjangoModelFactory):
 
     region = factory.SubFactory(RegionFactory)
 
-class MunicipalityFactory(factory.DjangoModelFactory):
+class PlaceFactory(factory.DjangoModelFactory):
     class Meta:
-        model = places_models.Municipality
+        model = places_models.Place
 
-    name = factory.Sequence(lambda n: 'Municipality ' + str(n))
-    slug = factory.Sequence(lambda n: 'municipality_' + str(n))
+    name = factory.Sequence(lambda n: 'Place ' + str(n))
+    slug = factory.Sequence(lambda n: 'place_' + str(n))
 
     area = factory.SubFactory(AreaFactory)
 
 class LocationFactory(factory.DjangoModelFactory):
     name = "Rathaus W"
-    municipality = factory.SubFactory(MunicipalityFactory)
+    place = factory.SubFactory(PlaceFactory)
 
     class Meta:
         model = scheduler_models.Location
-        django_get_or_create = ['name', 'municipality']
+        django_get_or_create = ['name', 'place']
 
 
 class NeedFactory(factory.DjangoModelFactory):

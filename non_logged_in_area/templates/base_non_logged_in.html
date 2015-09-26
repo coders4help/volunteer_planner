@@ -42,17 +42,22 @@
         <a class="navbar-brand" href="#"><img src="/static/images/volunteer-planner-logo.png" alt=""></a>
 
             <div class="form-inline navbar-form pull-right">
-                <button type="button" class="btn btn-secondary">Login</button>
-                <button type="button" class="btn btn-primary">Registrieren und helfen</button>
+                <a href="{% url 'auth_login' %}">
+                    <button type="button" class="btn btn-secondary">Login</button>
+                </a>
+                 <a href="{% url 'registation' %}">
+                     <button type="button" class="btn btn-primary">Registrieren und helfen</button>
+                 </a>
             </div>
         </div>
       </div>
     </nav>
 
     {% block stage %}
+    <div class="spacer-stage"></div>
 
     {% endblock %}
-    <div class="container">
+    <div class="container main-content">
     {% block content %}
     {% endblock %}
     </div>
