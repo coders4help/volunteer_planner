@@ -1,0 +1,72 @@
+{% extends "base_non_logged_in.html" %}
+
+{% block content %}
+<h2>Häufige Fragen zum Volunteer Planner</h2>
+<div class="card card-block">
+  <h4 class="card-title">Wie funktioniert volunteer-planner.org?</h4>
+  <p class="card-text">
+      <ol>
+                  <li><a href="{% url 'registation' %}" target="_blank">Registriere dich,</a></li>
+                  <li>Klick den Link in der Bestätigungs-Email (bitte auch im Spam-Ordner nachschauen.),</li>
+                  <li>Log dich ein,</li>
+                  <li>Wähle eine Schicht,</li>
+                  <li>Gehe hin und helfe.</li>
+              </ol>
+  </p>
+</div>
+<div class="card card-block">
+    <h4 class="card-title">Ich kann meine Schicht doch nicht wahrnehmen. Was soll ich tun?</h4>
+    <p class="card-text">
+        Kein Problem. Logge dich wieder ein, suche deine gewählte Schicht und trage dich wieder aus. Dann sehen die anderen User, dass dort in der Schicht wieder ein Platz frei ist und können einspringen.
+    </p>
+</div>
+<!-- LIST OF LOCATIONS
+Should use the same as in home, but DRY. Probably should be a snippet that gets loaded via include 'locations.htm'
+
+<div class="card card-block">
+    <h4 class="card-title">Welche Flüchtlingsunterkünfte nutzen derzeit diese Plattform?</h4>
+    <p class="card-text">
+
+    </p>
+</div>
+-->
+<div class="card card-block">
+    <h4 class="card-title">Kommen weitere Flüchtlingsunterkünfte hinzu?</h4>
+    <p class="card-text">
+Ja! Falls du in einer Flüchtlingsunterkunft aktiv bist, die ebenfalls diese Plattform nutzen möchte, bitte kontaktiere uns per <a href="mailto:support@volunteer-planner.org">Email</a>.
+    </p>
+</div>
+<div class="card card-block">
+    <h4 class="card-title">Ich habe mich registriert, aber keine Email mit einem Bestätigungs-Link erhalten. Was soll ich tun?</h4>
+    <p class="card-text">
+Bitte schaue in den Spam-Ordner deines Email-Postfachs. Falls sie dort nicht zu finden ist, gedulde dich bitte: Der Email-Versand kann bis zu 30 Minuten dauern.
+    </p>
+</div>
+<div class="card card-block">
+    <h4 class="card-title">Muss ich geimpft sein um vor Ort zu helfen?
+</h4>
+    <p class="card-text">
+         Du musst nicht geimpft sein. Aber: An allen Orten, an denen viele Menschen auf engem Raum zusammenleben, können sich Krankheiten leichter verbreiten. Somit sind die <a href="http://www.berlin-hilft-lageso.de/impfkalender.html" target="_blank">üblichen Impfungen</a> empfehlenswert.
+    </p>
+</div>
+<div class="card card-block">
+    <h4 class="card-title">Wer macht den Volunteer-Planner.org?</h4>
+    <p class="card-text">
+Wir sind Coders4Help, eine Gruppe von ehrenamtlichen Programmierern, Designern und Projektmanagern.
+    </p>
+</div>
+<div class="card card-block">
+    <h4 class="card-title">Wie kann ich euch helfen?</h4>
+    <p class="card-text">
+        Wir brauchen aktuell Hilfe bei Übersetzungen, Design und Texten. Schreibe uns bitte eine Nachricht auf <a href="https://www.facebook.com/volunteerplanner?fref=ts">unserer Facebook-Gruppe</a> oder sende eine <a href="mailto:support@volunteer-planner.org">Mail</a>.
+    </p>
+</div>
+<!-- FAQ - TEMPLATE
+<div class="card card-block">
+    <h4 class="card-title"></h4>
+    <p class="card-text">
+
+    </p>
+</div>
+-->
+{% endblock %}
