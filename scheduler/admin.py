@@ -1,7 +1,9 @@
 # coding: utf-8
+from ckeditor.widgets import CKEditorWidget
 
 from django.contrib import admin
 from django.db.models import Count
+from django import forms
 
 from scheduler.models import Need, Topics, Location
 
@@ -34,9 +36,14 @@ class NeedAdmin(admin.ModelAdmin):
 admin.site.register(Need, NeedAdmin)
 
 
+class TopicsAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
+
+
 class TopicsAdmin(admin.ModelAdmin):
     list_display = ('title', 'id')
     search_fields = ('id',)
+    form = TopicsAdminForm
 
 
 admin.site.register(Topics, TopicsAdmin)
