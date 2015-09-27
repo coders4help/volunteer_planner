@@ -1,6 +1,8 @@
-# volunteer_planner
+# volunteer-planner.org
 
 A platform to schedule shifts of volunteers. 
+
+**TODO**: Add general project description and goals, ie. link to wiki.
 
 ## Project Setup
 
