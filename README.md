@@ -109,12 +109,17 @@ You might consider to use this example `postactivate` script
     git fetch --all
     git status
 
-#### 2.3.1 Setup your local environment (optional)
+*Note:* You'll need to re-active your virtual environment after each change to it's `postactivate` hook to take effect. Just run `workon vp` again, to make sure your current venv session has executed the `postactivate` hook.
+
+#### 2.3.1 ... settings module for using MySQL
+
+When you prefer to use MySQL locally, you'll probably need to use the settings module `volunteer_planner.settings.local_mysql` instead of `volunteer_planner.settings.local`.
+
+#### 2.3.2 Setup your local environment (optional)
 
 Also, if you need to use non-default settings values, setting (exporting) the 
 environment variables in your virtualenvs' `postactivate` hook is a good place 
 if you're not using an IDE to configure your environment variables. 
-
 
 ### 3. Initialize the database with Django
 
