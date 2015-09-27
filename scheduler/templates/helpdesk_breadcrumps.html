@@ -5,11 +5,17 @@
         </li>
 
         {% for breadcrump in breadcrumps.flattened %}
-            <li>
-                <a href="{{ breadcrump.get_absolute_url }}">
+            {% if not forloop.last %}
+                <li>
+                    <a href="{{ breadcrump.get_absolute_url }}">
+                        {{ breadcrump.name }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="active">
                     {{ breadcrump.name }}
-                </a>
-            </li>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endif %}

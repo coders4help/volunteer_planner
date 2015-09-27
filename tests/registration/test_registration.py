@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
-
+from django.utils.translation import ugettext_lazy as _
 
 from registration.models import RegistrationProfile
 
@@ -76,7 +76,7 @@ class RegistrationTestCase(TestCase):
             response,
             'form',
             'username',
-            'This value may contain only letters, numbers and @/./+/-/_ characters.')
+            _(u'This value may contain only letters, numbers and @/./+/-/_ characters.'))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -104,7 +104,7 @@ class RegistrationTestCase(TestCase):
             response,
             'form',
             'username',
-            'Dieser Benutzername ist bereits vergeben.')
+            _(u'A user with that username already exists.'))
 
         assert RegistrationProfile.objects.count() == 1
 

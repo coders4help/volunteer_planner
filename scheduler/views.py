@@ -4,20 +4,16 @@ import datetime
 import logging
 
 from django.core.urlresolvers import reverse
-
 from django.contrib import messages
-
 from django.db.models import Count
-
 from django.views.generic import TemplateView, FormView, DetailView
+from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
 
-from django.shortcuts import get_object_or_404
-
+from registration.models import RegistrationProfile
 from scheduler.models import Location, Need
 from notifications.models import Notification
-from registration.models import RegistrationProfile
 from .forms import RegisterForNeedForm
 from volunteer_planner.utils import LoginRequiredMixin
 
