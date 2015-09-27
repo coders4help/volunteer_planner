@@ -70,6 +70,7 @@ class Topics(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
+    description_raw = models.TextField(max_length=20000, blank=True)
 
     def __unicode__(self):
         return self.title

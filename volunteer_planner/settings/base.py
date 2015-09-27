@@ -36,11 +36,15 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    # Bootstrap for admin
+    'django_admin_bootstrapped',
     # A prettier theme
     'djangocms_admin_style',
     # Admin panel and documentation:
     'django.contrib.admin',
     # 'django.contrib.admindocs',
+    # For markdown input in helptype description
+    'django_bootstrap_markdown',
 )
 
 LOCAL_APPS = (

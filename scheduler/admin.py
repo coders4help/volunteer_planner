@@ -1,9 +1,17 @@
 # coding: utf-8
+import logging
+from django.core.exceptions import ValidationError
+from django.forms import HiddenInput
+import mistune
+from django import forms
 
 from django.contrib import admin
 from django.db.models import Count
+from django_bootstrap_markdown.widgets import MarkdownInput
 
 from scheduler.models import Need, Topics, Location
+
+logger = logging.getLogger(__name__)
 
 
 class NeedAdmin(admin.ModelAdmin):
@@ -36,7 +44,47 @@ admin.site.register(Need, NeedAdmin)
 
 class TopicsAdmin(admin.ModelAdmin):
     list_display = ('title', 'id')
-    search_fields = ('id',)
+    search_fields = ('id', 'title')
+
+    def get_form(self, request, obj=None, **kwargs):
+        kwargs['form'] = TopicsForm
+        return super(TopicsAdmin, self).get_form(request, obj, **kwargs)
+
+
+class TopicsForm(forms.ModelForm):
+    description = forms.CharField(widget=MarkdownInput, required=False)
+    description_raw = forms.CharField(widget=HiddenInput, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(TopicsForm, self).__init__(*args, **kwargs)
+        self.initial['description'] = self.instance.description_raw
+
+    def clean(self):
+        parent = super(TopicsForm, self)
+        changed = parent.changed_data
+
+        if 'description_raw' in changed:
+            self.add_error(ValidationError('You''re not supposed to modify this field!!!'))
+
+        if 'description' in changed:
+            cleaned_data = parent.clean()
+            desc_raw = cleaned_data.get('description')
+            cleaned_data.update({'description_raw': desc_raw})
+            changed.append('description_raw')
+            cleaned_data.update({'description': (mistune.markdown(desc_raw, renderer=TopicRenderer()))})
+
+
+class TopicRenderer(mistune.Renderer):
+    def __init__(self, **kwargs):
+        if 'escape' not in kwargs:
+            kwargs.update({'escape': True})
+        super(TopicRenderer, self).__init__(**kwargs)
+
+    def link(self, link, title, text):
+        result = super(TopicRenderer, self).link(link, title, text)
+        if result:
+            result = result.replace('<a ', '<a style="text-decoration: underline" target="_blank" ')
+        return result
 
 
 admin.site.register(Topics, TopicsAdmin)
