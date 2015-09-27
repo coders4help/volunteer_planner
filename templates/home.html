@@ -46,30 +46,29 @@
 
                 <a href="{% url 'registation' %}">
                     <button type="button" class="btn btn-primary btn-lg active">
-                        Helfen und Registrieren
+                        {% trans "Help and registration" %}
                     </button>
                 </a>
                 <a href="{% url 'auth_login' %}">
                     <button type="button"
                             class="btn btn-primary transparent btn-lg active">
-                        Login
+                        {% trans "Login" %}
                     </button>
                 </a>
                 <br>
                 <a href="{% url 'faq' %}">
                     <button type="button"
                             class="btn btn-primary transparent btn-lg active">
-                        Häufig gestellte Fragen
+                        {% trans "Frequently Asked Questions" %}
                     </button>
                 </a>
             </div>
 
             <div class="col-md-3" style="padding-left: 60px;">
 
-                <h2>Platform zur Organisation von Freiwilligen-Diensten</h2>
+                <h2>{% trans "Volunteer scheduler platfrom" %}</h2>
 
-                <p>Auf dieser Plattform werden die Freiwilligen-Dienste in
-                    folgenden Einrichtungen koordiniert:</p>
+                <p>{% trans "The following Organizations are coordinating volunteers on this platform:" %}</p>
                 <ul>
                     {% for location in locations %}
                         <li>{{ location }}, {{ location.city }}</li>
@@ -96,7 +95,7 @@
             </div>
             <div class="disclaimer">
                 <p>
-                    Für Kritik, Anregungen oder Support: <a
+                    {% trans "Observations, suggestions and support:" %} <a
                         href="mailto:support@volunteer-planner.org">support@volunteer-planner.org</a>
                 </p>
             </div>
