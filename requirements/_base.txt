@@ -19,3 +19,6 @@ sqlparse==0.1.16
 traitlets==4.0.0
 wsgiref==0.1.2
 xlwt==1.0.0
+django-bootstrap-markdown==1.8.1
+django-admin-bootstrapped==2.5.6
+mistune==0.7.1
