@@ -4,7 +4,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">{% trans "Toggle navigation"%}</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -15,19 +15,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{% url 'helpdesk' %}">Helpdesk</a></li>
-        <li><a href="mailto:support@volunteer-planner.org">Bei Fragen: support@volunteer-planner.org</a></li>
+        <li><a href="{% url 'helpdesk' %}">{% trans "Helpdesk"%}</a></li>
+        <li><a href="mailto:support@volunteer-planner.org">{% trans "write to" %} support@volunteer-planner.org</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">eingeloggt als {{ user.username }}  <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "logged in as" %}{{ user.username }}  <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'account_detail' %}">Account <span aria-hidden="true"></span></a></li>
+            <li><a href="{% url 'account_detail' %}">{% trans "Account" %}<span aria-hidden="true"></span></a></li>
             {% if user.is_staff or user.is_superuser %}
-                <li><a href="{% url 'admin:index' %}">Admin <span aria-hidden="true"></span></a></li>
+                <li><a href="{% url 'admin:index' %}">{% trans "Admin" %}<span aria-hidden="true"></span></a></li>
             {% endif %}
-            <li><a href="{% url 'auth_logout' %}">Logout <span aria-hidden="true" class="glyphicon glyphicon-off"></span></a></li>
+            <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %} <span aria-hidden="true" class="glyphicon glyphicon-off"></span></a></li>
           </ul>
         </li>
       </ul>
