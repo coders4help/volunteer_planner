@@ -5,10 +5,11 @@
     {% include 'navbar.html' %}
 {% endblock %}
 
+{% load i18n %}
 {% block content %}
 
 <div class="col-md-7">
-    <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
+    <h2>{% trans "Volunteers are needed in the following facilities:"%}</h2>
 
     {% for location in locations %}
         <div class="row">
@@ -42,7 +43,7 @@
 {% if notifications %}
     <div class="col-md-3 notification-container">
         {% for notification in notifications %}
-            <h2>Aufrufe von "{{ notification.location.name }}"</h2>
+            <h2>{% trans "See" %} "{{ notification.location.name }}"</h2>
             {{ notification.creation_date }}
             <h3>{{ notification.title }}</h3>
             {{ notification.subtitle }}

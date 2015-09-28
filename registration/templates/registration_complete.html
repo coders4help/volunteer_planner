@@ -1,9 +1,9 @@
 {% extends "registration_base.html" %}
 {% load i18n %}
-{% block title %} Activation email sent{% endblock %}
+{% block title %} {% trans "Activation email sent" %}{% endblock %}
 {% block content %}
 <div class="col-md-12">
-   <h2>Eine Aktivierungsmail wurde Dir soeben zugesendet.</h2>
-    <h3>Bitte bestätige die Anmeldung mit dem Link in der Email. Bitte schaue im Spam-Ordner nach, solltest Du nach 10 Minuten noch keine Mail bekommen haben.</h3>
+   <h2>{% blocktrans %} An activation mail will be sent to you email address. {% endblocktrans %}</h2>
+    <h3>{% blocktrans %}Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in the Spam folder.{% endblocktrans %}</h3>
 </div>
 {% endblock %}
