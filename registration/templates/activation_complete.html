@@ -1,9 +1,9 @@
 {% extends "registration_base.html" %}
 {% load i18n %}
-{% block title %} {% trans "Actvation successful!" %}{% endblock %}
+{% block title %} {% trans "Activation successful!" %}{% endblock %}
 {% block content %}
 {% url 'auth_login' as auth_login_url %}
 <div class="col-md-12">
-  <h3>{% trans "Thank you for signing up." %}  <a href='{% url 'auth_login' %}'> {% trans "You can login here" %}</a>.</h3>
+  <h3>{% blocktrans %} Thank you for signing up. <a href='{{ auth_login_url}}'> You can login here. {% endblocktrans %}</a></h3>
 </div>
 {% endblock %}
