@@ -1,4 +1,4 @@
-Schichtplan für {{  mail.organization }} vom {{ needs.0.starting_time|date:"d.m.Y"  }}
+{% trans "Shift schedule for" %} {{  mail.organization }} {% trans "from" %} {{ needs.0.starting_time|date:"d.m.Y"  }}
 
 Alle Daten sind vertraulich und nicht zur Weitergabe an Dritte bestimmt!
 
@@ -9,7 +9,7 @@ Alle Daten sind vertraulich und nicht zur Weitergabe an Dritte bestimmt!
      {% ifchanged need.topic.title %}
          {{ need.topic.title }}
      {% endifchanged %}
-     von {{ need.starting_time|date:"H" }} - {{ need.ending_time|date:"H" }} Uhr angemeldet sind {{ need.volunteer_count }}) Freiwillige:
+     {% blocktrans %} from {{ need.starting_time|date:"H" }} to  {{ need.ending_time|date:"H" }} {{ need.volunteer_count }} volunteers are registered:{% endblocktrans %}
 
     {% for volunteer in need.registrationprofile_set.all %}
              {{ volunteer.user.username }} ({{ volunteer.user.email }})

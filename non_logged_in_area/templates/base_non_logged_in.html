@@ -1,6 +1,6 @@
 {% load humanize i18n %}
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -45,7 +45,7 @@
                 <a href="{% url 'auth_login' %}">
                     <button type="button" class="btn btn-secondary">{% trans "Login" %}</button>
                 </a>
-                 <a href="{% url 'registation' %}">
+                 <a href="{% url 'registration' %}">
                      <button type="button" class="btn btn-primary">{% trans "Register and start helping now!" %}</button>
                  </a>
             </div>
@@ -74,10 +74,10 @@
 
             <div id="footer-nav">
                 <ul>
-                    <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                    <li><a href="{% url 'home' %}">{% trans "Main page" %}</a></li>
                     <li><a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a></li>
                     <li><a href="">{% trans "Contact" %}</a></li>
-                    <li><a href="">{% trans "Imprint & Privacy" %}</a></li>
+                    <li><a href="">{% trans "Imprint, Terms and Privacy"%}</a></li>
                 </ul>
             </div>
 
