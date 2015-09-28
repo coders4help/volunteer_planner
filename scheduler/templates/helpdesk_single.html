@@ -23,7 +23,7 @@
                 {% ifchanged need.topic.title %}
                     <h3>{{ need.topic.title }}</h3>
                     <div class="help-text-wrapper" style="margin:10px 0px 10px 0">
-                        <span aria-hidden="true" class="glyphicon glyphicon-info-sign"></span> {{ need.topic.description }}
+                        <span aria-hidden="true" class="glyphicon glyphicon-info-sign"></span> {{ need.topic.description|safe }}
                     </div>
                 {% endifchanged %}
 
