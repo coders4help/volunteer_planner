@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-<h2>{% trans "Häufige Fragen zum Volunteer Planner" %}</h2>
+<h2>{% trans "Frequently Asked Questions" %}</h2>
 <div class="card card-block">
   <h4 class="card-title">{% trans "How does volunteer-planner work?" %}</h4>
   <p class="card-text">
@@ -35,34 +35,39 @@ Should use the same as in home, but DRY. Probably should be a snippet that gets 
 </div>
 -->
 <div class="card card-block">
-    <h4 class="card-title">Kommen weitere Flüchtlingsunterkünfte hinzu?</h4>
+    <h4 class="card-title">{% trans "Are there more shelters coming into volunteer-planner?" %}</h4>
+    {% blocktrans %}
+        <p class="card-text">
+            Yes! If you are a volunteer worker in a refugee shelter and they also want to use volunteer-planner please contact us via email <a href="mailto:support@volunteer-planner.org">Email</a>
+        </p>
+    {% endblocktrans %}
+</div>
+<div class="card card-block">
+    <h4 class="card-title">{% trans "I registered but I didn't get any activation link. What can I do?" %}</h4>
     <p class="card-text">
-Ja! Falls du in einer Flüchtlingsunterkunft aktiv bist, die ebenfalls diese Plattform nutzen möchte, bitte kontaktiere uns per <a href="mailto:support@volunteer-planner.org">Email</a>.
+
+        {% trans "Please look into your email-spam folder. If you can't find something please wait another 30 minutes. Email delivery can sometimes take longer." %}
     </p>
 </div>
 <div class="card card-block">
-    <h4 class="card-title">Ich habe mich registriert, aber keine Email mit einem Bestätigungs-Link erhalten. Was soll ich tun?</h4>
-    <p class="card-text">
-Bitte schaue in den Spam-Ordner deines Email-Postfachs. Falls sie dort nicht zu finden ist, gedulde dich bitte: Der Email-Versand kann bis zu 30 Minuten dauern.
-    </p>
-</div>
-<div class="card card-block">
-    <h4 class="card-title">Muss ich geimpft sein um vor Ort zu helfen?
+    <h4 class="card-title">{% trans "Do I have to be vaccinated to help at the camps/shelters" %}
 </h4>
     <p class="card-text">
-         Du musst nicht geimpft sein. Aber: An allen Orten, an denen viele Menschen auf engem Raum zusammenleben, können sich Krankheiten leichter verbreiten. Somit sind die <a href="http://www.berlin-hilft-lageso.de/impfkalender.html" target="_blank">üblichen Impfungen</a> empfehlenswert.
+        {% trans "You are not supposed to be vaccinated. BUT: Where there are a lot of people deseases can flourish better." %}
     </p>
 </div>
 <div class="card card-block">
-    <h4 class="card-title">Wer macht den Volunteer-Planner.org?</h4>
+    <h4 class="card-title">{% trans "Who is volunteer-planner.org?" %}</h4>
     <p class="card-text">
-Wir sind Coders4Help, eine Gruppe von ehrenamtlichen Programmierern, Designern und Projektmanagern.
+{% trans  "We are Coders4Help, a group of international volunteering programmers, designers and projectmanagers." %}
     </p>
 </div>
 <div class="card card-block">
-    <h4 class="card-title">Wie kann ich euch helfen?</h4>
+    <h4 class="card-title">{% trans "How can I help you?" %}</h4>
     <p class="card-text">
-        Wir brauchen aktuell Hilfe bei Übersetzungen, Design und Texten. Schreibe uns bitte eine Nachricht auf <a href="https://www.facebook.com/volunteerplanner?fref=ts">unserer Facebook-Gruppe</a> oder sende eine <a href="mailto:support@volunteer-planner.org">Mail</a>.
+     {% blocktrans %}
+       Currently we need help to translate, write texts and create awesome designs. Want to help? Write a message  on our <a href="https://www.facebook.com/volunteerplanner?fref=ts">facebook site</a> or send an email to <a href="mailto:support@volunteer-planner.org">support@volunteer-planner.org</a>.
+    {% endblocktrans %}
     </p>
 </div>
 <!-- FAQ - TEMPLATE
