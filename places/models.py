@@ -1,0 +1,101 @@
+# coding: utf-8
+
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
+
+
+class BreadcrumpablePlaceModel(models.Model):
+    name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    class Meta:
+        abstract = True
+
+    @property
+    def parent(self):
+        return None
+
+    @property
+    def breadcrumps(self):
+        return self.parent and self.parent.breadcrumps + [self, ] or [self, ]
+
+    def get_detail_view_name(self):
+        DETAIL_VIEW_NAME = getattr(self, 'DETAIL_VIEW_NAME', None)
+        return DETAIL_VIEW_NAME or u'{}-details'.format(
+            self._meta.model_name.lower())
+
+    def get_absolute_url(self):
+        return reverse(self.get_detail_view_name(),
+                       args=[o.slug for o in self.breadcrumps])
+
+    def __unicode__(self):
+        return u'{}'.format(self.name)
+
+
+class Country(BreadcrumpablePlaceModel):
+    '''
+    A country
+    '''
+
+    DETAIL_VIEW_NAME = 'country-details'
+
+    class Meta:
+        verbose_name = _('country')
+        verbose_name_plural = _('countries')
+        ordering = ('name',)
+
+
+class Region(BreadcrumpablePlaceModel):
+    '''
+    A region is a geographical region for grouping areas (and facilities within areas).
+    '''
+    country = models.ForeignKey(Country,
+                                related_name='regions',
+                                verbose_name=_('country'))
+
+    class Meta:
+        verbose_name = _('region')
+        verbose_name_plural = _('regions')
+        ordering = ('country', 'name',)
+
+    @property
+    def parent(self):
+        return self.country
+
+
+class Area(BreadcrumpablePlaceModel):
+    '''
+    An area is a subdevision of a region, such as cities, neighbourhoods, etc.
+    Each area belongs to a region.
+    '''
+    region = models.ForeignKey(Region, related_name='areas',
+                               verbose_name=_('region'))
+
+    class Meta:
+        verbose_name = _('area')
+        verbose_name_plural = _('areas')
+        ordering = ('region', 'name',)
+
+    @property
+    def parent(self):
+        return self.region
+
+
+class Place(BreadcrumpablePlaceModel):
+    '''
+    A place (german: Ort) can be a city like Jena in Thüringen - Jena
+    or a 'district' like  Wilmersdorf in Berlin - Berlin.
+    '''
+    area = models.ForeignKey(Area,
+                             related_name='places',
+                             verbose_name=_('area'))
+
+    class Meta:
+        verbose_name = _('place')
+        verbose_name_plural = _('places')
+        ordering = ('area', 'name',)
+
+    @property
+    def parent(self):
+        return self.area

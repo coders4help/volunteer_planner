@@ -53,7 +53,9 @@ LOCAL_APPS = (
     'notifications',
     'ckeditor',
     'shiftmailer',
-    'stats'
+    'stats',
+    'places',
+    'non_logged_in_area',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
@@ -69,21 +71,21 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-STATIC_ROOT = os.path.normpath(os.path.join(PROJECT_ROOT, 'static'))
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, 'resources'),
+)
 MEDIA_URL = '/media/'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(SITE_ROOT, 'templates')],
+        'DIRS': [os.path.join(SITE_ROOT, 'templates'),
+                 os.path.join(PROJECT_ROOT, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +122,7 @@ LOGGING = {
         },
     }
 }
-LOGIN_REDIRECT_URL = '/helpdesk/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/auth/login/'
 
 TIME_ZONE = 'Europe/Berlin'

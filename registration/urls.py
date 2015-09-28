@@ -22,13 +22,12 @@ include these views. Other backends may or may not include them;
 consult a specific backend's documentation for details.
 
 """
-from .views import RegistrationView, ActivationView, reg_complete, reg_act_complete
-
-from django.conf.urls import include
 from django.conf.urls import patterns
 from django.conf.urls import url
-from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
+
+from .views import RegistrationView, ActivationView, reg_complete, \
+    reg_act_complete
 
 urlpatterns = patterns('',
                        url(r'^password/change/$',

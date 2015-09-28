@@ -1,54 +1,67 @@
-{% extends "home.html" %}
-{% block title %}Helpdesk{% endblock %}
-{% block body_class %}helpdesk{% endblock %}
-{% block navbar %}
-    {% include 'navbar.html' %}
-{% endblock %}
+{% extends "base.html" %}
+
+{% load google_links i18n %}
 
 {% block content %}
 
-<div class="col-md-7">
-    <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
-
-    {% for location in locations %}
+    {% if notifications %}
         <div class="row">
-            <div class="col-md-5">
-                <h3>{{ location }}</h3>
-                <p>
-                    {{ location.street }}<br>
-                    {{ location.postal_code }} {{ location.city }}
-                </p>
-                <p>
-                    {{  location.additional_info|safe }}
-                </p>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-unstyled">
-                    {% for date, date_name in location.get_days_with_needs %}
-                        <li>
-                            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-                            <a href="{% url 'planner_by_location' pk=location.pk year=date.year month=date.month day=date.day %}">
-                                {{ date_name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <hr>
-    {% endfor %}
-</div>
+            <h2>{% trans "Notifications" %}</h2>
+            {% for notification in notifications %}
 
-{% if notifications %}
-    <div class="col-md-3 notification-container">
-        {% for notification in notifications %}
-            <h2>Aufrufe von "{{ notification.location.name }}"</h2>
-            {{ notification.creation_date }}
-            <h3>{{ notification.title }}</h3>
-            {{ notification.subtitle }}
-            {{ notification.text|safe }}
+                <div>
+                    <h3>{{ notification.title }}</h3>
+                    <h4>
+                        {% blocktrans with location_name=notification.location.name date=notification.creation_date %}
+                            {{ location_name }} on {{ date }}
+                        {% endblocktrans %}
+                    </h4>
+                    {{ notification.text|safe }}
+                </div>
+            {% endfor %}
+        </div>
+        <hr/>
+    {% endif %}
+
+    <div class="row">
+        <h2>Helfer gesucht</h2>
+
+        {% regroup shifts by location as shifts_by_location %}
+
+        {% for location_shifts in shifts_by_location %}
+            {% with location_shifts.grouper as location %}
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3>{{ location }} </h3>
+                        {% with location.street|add:", "|add:location.postal_code|add:" "|add:location.city as address_line %}
+                            {% if address_line %}
+                                <h5>{{ address_line }} <a
+                                        href="{{ address_line|google_maps_directions }}"
+                                        target="_blank">&rarr; Google Maps</a>
+                                </h5>
+                            {% endif %}
+                        {% endwith %}
+                        <p>{{ location.additional_info|safe }}</p>
+                    </div>
+
+                    {% regroup location_shifts.list by ending_time.date as shifts_by_time %}
+
+                    <div class="pull-right">
+                        <h3>{% trans "dates" %}</h3>
+
+                        <p>
+                            {% for shift_time in shifts_by_time %}
+                                {% with shift_time.grouper as shift_date %}
+                                    <a href="{% url 'planner_by_location' pk=location.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                                        {{ shift_date|date }}
+                                    </a>
+                                    <br/>
+                                {% endwith %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            {% endwith %}
         {% endfor %}
     </div>
-{% endif %}
-
 {% endblock %}

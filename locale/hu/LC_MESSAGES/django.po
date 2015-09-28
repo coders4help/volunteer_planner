@@ -5,14 +5,15 @@
 # Translators:
 # Christoph, 2015
 # Christoph, 2015
+# Julia Biro <juliabiro@gmail.com>, 2015
 # Nagy László <aznagylaci@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 16:59+0200\n"
-"PO-Revision-Date: 2015-09-25 14:58+0000\n"
-"Last-Translator: Christoph\n"
+"POT-Creation-Date: 2015-09-28 08:47+0200\n"
+"PO-Revision-Date: 2015-09-27 14:30+0000\n"
+"Last-Translator: Julia Biro <juliabiro@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -44,6 +45,30 @@ msgstr "E-mail"
 msgid "Edit Account"
 msgstr "Fiók szerkesztése"
 
+#: google_tools/templatetags/google_links.py:17
+#, python-brace-format
+msgctxt "maps search url pattern"
+msgid "https://www.google.com/maps/place/{location}"
+msgstr ""
+
+#: google_tools/templatetags/google_links.py:27
+#, python-brace-format
+msgctxt "maps directions url pattern"
+msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
+msgstr ""
+
+#: non_logged_in_area/templates/home.html:51
+msgid "Places to help"
+msgstr ""
+
+#: non_logged_in_area/templates/home.html:58
+msgid "Registered Volunteers"
+msgstr ""
+
+#: non_logged_in_area/templates/home.html:65
+msgid "Worked Hours"
+msgstr ""
+
 #: notifications/models.py:13
 msgid "title"
 msgstr "cím"
@@ -54,6 +79,46 @@ msgstr "alcím"
 
 #: notifications/models.py:15
 msgid "text"
+msgstr ""
+
+#: places/models.py:9 scheduler/models.py:83 shiftmailer/models.py:10
+msgid "name"
+msgstr "név"
+
+#: places/models.py:10
+msgid "slug"
+msgstr ""
+
+#: places/models.py:44 places/models.py:55
+msgid "country"
+msgstr ""
+
+#: places/models.py:45
+msgid "countries"
+msgstr ""
+
+#: places/models.py:58 places/models.py:73
+msgid "region"
+msgstr ""
+
+#: places/models.py:59
+msgid "regions"
+msgstr ""
+
+#: places/models.py:76 places/models.py:92
+msgid "area"
+msgstr ""
+
+#: places/models.py:77
+msgid "areas"
+msgstr ""
+
+#: places/models.py:95 scheduler/models.py:100
+msgid "place"
+msgstr ""
+
+#: places/models.py:96
+msgid "places"
 msgstr ""
 
 #: registration/admin.py:35
@@ -133,23 +198,23 @@ msgstr "A felhasználónév és a jelszó nem megfelelő. Próbálja újra."
 msgid "Scheduler"
 msgstr "Ütemező"
 
-#: scheduler/models.py:16 scheduler/models.py:68
-msgid "helptype"
-msgstr "segítség típusa"
+#: scheduler/models.py:14 scheduler/models.py:68
+msgid "help type"
+msgstr ""
 
-#: scheduler/models.py:16
-msgid "helptype_text"
-msgstr "segítségtípus_szövege"
+#: scheduler/models.py:14
+msgid "HELP_TYPE_HELP"
+msgstr ""
 
-#: scheduler/models.py:17 scheduler/models.py:91
+#: scheduler/models.py:15 scheduler/models.py:103
 msgid "location"
 msgstr "helyszín"
 
-#: scheduler/models.py:19
+#: scheduler/models.py:17
 msgid "starting time"
 msgstr "kezdés ideje"
 
-#: scheduler/models.py:20
+#: scheduler/models.py:19
 msgid "ending time"
 msgstr "befejezés ideje"
 
@@ -166,33 +231,136 @@ msgid "shifts"
 msgstr "műszakok"
 
 #: scheduler/models.py:69
-msgid "helptypes"
-msgstr "segítségtípusok"
+msgid "help types"
+msgstr ""
 
-#: scheduler/models.py:92
+#: scheduler/models.py:85
+msgid "address"
+msgstr ""
+
+#: scheduler/models.py:87
+msgid "city"
+msgstr ""
+
+#: scheduler/models.py:89
+msgid "postal code"
+msgstr ""
+
+#: scheduler/models.py:91
+msgid "latitude"
+msgstr ""
+
+#: scheduler/models.py:93
+msgid "longitude"
+msgstr ""
+
+#: scheduler/models.py:95
+msgid "description"
+msgstr ""
+
+#: scheduler/models.py:104
 msgid "locations"
 msgstr "helyszínek"
 
-#: scheduler/views.py:76
+#: scheduler/templates/helpdesk.html:9
+msgid "Notifications"
+msgstr ""
+
+#: scheduler/templates/helpdesk.html:15
+#, python-format
+msgid ""
+"\n"
+"                            %(location_name)s on %(date)s\n"
+"                        "
+msgstr ""
+
+#: scheduler/templates/helpdesk.html:50
+msgid "dates"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:9
+#, python-format
+msgid "Schedule for %(schedule_date_short)s"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:27
+#, python-format
+msgid "Schedule for %(schedule_date)s"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:53
+msgid "Time"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:55
+msgid "Helpers"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:59
+msgid "Start"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:60
+msgid "End"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:62
+msgid "Required"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:63
+msgid "Status"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:64
+msgid "Users"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:65
+msgid "You"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:90
+#, python-format
+msgid "%(slots_left)s more"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:94
+msgid "Covered"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:134
+msgid "Drop out"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:141
+msgid "Sign up"
+msgstr ""
+
+#: scheduler/views.py:69
 msgid "The submitted data was invalid."
 msgstr "A megadott adat érvénytelen volt."
 
-#: scheduler/views.py:89
+#: scheduler/views.py:76
+msgid "User profile does not exist."
+msgstr ""
+
+#: scheduler/views.py:92
 #, python-brace-format
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
 msgstr "Nem adhatunk hozzá ehhez a műszakhoz, mert már beleegyeztél másik műszakokhoz ugyanebben az időben: {conflicts}"
 
-#: scheduler/views.py:94
+#: scheduler/views.py:97
 msgid "You were successfully added to this shift."
 msgstr "Sikeresen hozzáadtunk ehhez a műszakhoz."
+
+#: scheduler/views.py:101
+msgid "You successfully left this shift."
+msgstr ""
 
 #: shiftmailer/models.py:9
 msgid "given_name"
 msgstr "keresztnév"
-
-#: shiftmailer/models.py:10
-msgid "name"
-msgstr "név"
 
 #: shiftmailer/models.py:11
 msgid "position"
@@ -206,9 +374,24 @@ msgstr "szervezet"
 msgid "email"
 msgstr "e-mail"
 
-#: templates/home.html:88
-#, python-format
-msgid "Already %(volunteer_count)s volunteers signed up and worked %(volunteer_hours)s hours in total."
+#: templates/partials/footer.html:8
+msgid "Imprint"
+msgstr ""
+
+#: templates/partials/footer.html:9
+msgid "Terms of Service"
+msgstr ""
+
+#: templates/partials/footer.html:10
+msgid "Contact"
+msgstr ""
+
+#: templates/partials/footer.html:11
+msgid "F.A.Q."
+msgstr ""
+
+#: templates/partials/navigation_bar.html:7
+msgid "Toggle navigation"
 msgstr ""
 
 #: templates/registration/password_change_done.html:3
@@ -317,14 +500,14 @@ msgstr "Elfelejtette a jelszavát?"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Semmi gond! Elküldjük önnek, hogy hogyan állíthatja vissza a jelszavát."
 
-#: volunteer_planner/settings/base.py:131
+#: volunteer_planner/settings/base.py:133
 msgid "German"
 msgstr "Német"
 
-#: volunteer_planner/settings/base.py:132
+#: volunteer_planner/settings/base.py:134
 msgid "English"
 msgstr "Angol"
 
-#: volunteer_planner/settings/base.py:133
+#: volunteer_planner/settings/base.py:135
 msgid "Hungarian"
 msgstr "Magyar"
