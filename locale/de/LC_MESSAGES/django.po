@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # audrey liehn <woog_wg@web.de>, 2015
 # Caroline Elis <caroline@adazylla.de>, 2015
@@ -9,18 +9,19 @@
 # Christoph, 2015
 # Christoph, 2015
 # Franziska Böttger <fr.boettger@gmail.com>, 2015
+# Peter Palmreuther <pitpalme@yahoo.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-28 08:47+0200\n"
-"PO-Revision-Date: 2015-09-27 20:29+0000\n"
+"POT-Creation-Date: 2015-09-28 21:33+0200\n"
+"PO-Revision-Date: 2015-09-28 19:39+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accounts/templates/user_account_edit.html:16
@@ -160,11 +161,15 @@ msgid "You must agree to the terms to register"
 msgstr "Du musst den Nutzungsbedingungen zustimmen"
 
 #: registration/forms.py:99
-msgid "This email address is already in use. Please supply a different email address."
+msgid ""
+"This email address is already in use. Please supply a different email "
+"address."
 msgstr "Diese E-Mail Adresse ist bereits registriert. Bitte verwende eine andere E-Mailadresse."
 
 #: registration/forms.py:124
-msgid "Registration using free email addresses is prohibited. Please supply a different email address."
+msgid ""
+"Registration using free email addresses is prohibited. Please supply a "
+"different email address."
 msgstr "Die Registrierung mit einer E-Mail-Adresses dieses Anbieters ist leider verboten. Bitte verwende eine andere E-Mailadresse."
 
 #: registration/models.py:219
@@ -185,11 +190,16 @@ msgstr "Benutzeraccount konnte nicht aktiviert werden"
 
 #: registration/templates/activate.html:14
 #, python-format
-msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
+msgid ""
+"Thanks %(account)s, activation complete! You may now <a "
+"href='%(auth_login_url)s'>login</a> using the username and password you set "
+"at registration."
 msgstr "Danke %(account)s, die Aktivierung ist abgeschlossen! Du kannst dich jetzt mit deinem Benutzernamen und Passwort, welche du bei der Registrierung gewählt hast <a href='%(auth_login_url)s'>einloggen</a>."
 
 #: registration/templates/activate.html:19
-msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgid ""
+"Oops &ndash; Either you activated your account already, or the activation "
+"key is invalid or has expired."
 msgstr "Uuppss &ndash; Entweder dein Account wurde bereits aktiviert oder der Aktivierungschlüssel ist ungültig oder abgelaufen."
 
 #: registration/templates/login.html:15
@@ -274,10 +284,7 @@ msgid ""
 "\n"
 "                            %(location_name)s on %(date)s\n"
 "                        "
-msgstr ""
-"\n"
-"                            %(location_name)s am %(date)s\n"
-"                        "
+msgstr "\n                            %(location_name)s am %(date)s\n                        "
 
 #: scheduler/templates/helpdesk.html:50
 msgid "dates"
@@ -293,52 +300,52 @@ msgstr "Dienstplan für %(schedule_date_short)s"
 msgid "Schedule for %(schedule_date)s"
 msgstr "Dienstplan für  %(schedule_date)s"
 
-#: scheduler/templates/helpdesk_single.html:53
+#: scheduler/templates/helpdesk_single.html:54
 msgid "Time"
 msgstr "Zeit"
 
-#: scheduler/templates/helpdesk_single.html:55
+#: scheduler/templates/helpdesk_single.html:56
 msgid "Helpers"
 msgstr "Helfer"
 
-#: scheduler/templates/helpdesk_single.html:59
+#: scheduler/templates/helpdesk_single.html:60
 msgid "Start"
 msgstr "Von"
 
-#: scheduler/templates/helpdesk_single.html:60
+#: scheduler/templates/helpdesk_single.html:61
 msgid "End"
 msgstr "Bis"
 
-#: scheduler/templates/helpdesk_single.html:62
+#: scheduler/templates/helpdesk_single.html:63
 msgid "Required"
 msgstr "Benötigt"
 
-#: scheduler/templates/helpdesk_single.html:63
+#: scheduler/templates/helpdesk_single.html:64
 msgid "Status"
 msgstr "Status"
 
-#: scheduler/templates/helpdesk_single.html:64
+#: scheduler/templates/helpdesk_single.html:65
 msgid "Users"
 msgstr "Benutzer"
 
-#: scheduler/templates/helpdesk_single.html:65
+#: scheduler/templates/helpdesk_single.html:66
 msgid "You"
 msgstr "Du"
 
-#: scheduler/templates/helpdesk_single.html:90
+#: scheduler/templates/helpdesk_single.html:91
 #, python-format
 msgid "%(slots_left)s more"
 msgstr "noch %(slots_left)s"
 
-#: scheduler/templates/helpdesk_single.html:94
+#: scheduler/templates/helpdesk_single.html:95
 msgid "Covered"
 msgstr "Abgedeckt"
 
-#: scheduler/templates/helpdesk_single.html:134
+#: scheduler/templates/helpdesk_single.html:135
 msgid "Drop out"
 msgstr "Absagen"
 
-#: scheduler/templates/helpdesk_single.html:141
+#: scheduler/templates/helpdesk_single.html:142
 msgid "Sign up"
 msgstr "Mitmachen"
 
@@ -352,7 +359,9 @@ msgstr "Benutzeraccount existiert nicht"
 
 #: scheduler/views.py:92
 #, python-brace-format
-msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+msgid ""
+"We can't add you to this shift because you've already agreed to other shifts"
+" at the same time: {conflicts}"
 msgstr "Du kannst der Schicht nicht beitreten, da Du bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
 
 #: scheduler/views.py:97
@@ -430,7 +439,9 @@ msgstr "Passwort wurde geändert"
 
 #: templates/registration/password_reset_complete.html:7
 #, python-format
-msgid "Your password has been reset! You may now <a href=\"%(login_url)s\">log in</a>."
+msgid ""
+"Your password has been reset! You may now <a href=\"%(login_url)s\">log "
+"in</a>."
 msgstr "Dein Passwort wurde geändert. Du kannst dich jetzt <a href=\"%(login_url)s\">erneut anmelden</a>."
 
 #: templates/registration/password_reset_confirm.html:3
@@ -462,12 +473,7 @@ msgid ""
 "\n"
 "To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
-msgstr ""
-"Du bekommst diese E-Mail, weil jemand (wahrscheinlich Du selbst)\n"
-"Dein Passwort für %(domain)s ändern möchte. Wenn Du Dein Passwort nicht\n"
-"ändern möchtest, kannst Du diese E-Mail einfach ignorieren und es passiert nichts.\n"
-"\n"
-"Um Dein Passwort zu ändern, klicke bitte folgenden Link:"
+msgstr "Du bekommst diese E-Mail, weil jemand (wahrscheinlich Du selbst)\nDein Passwort für %(domain)s ändern möchte. Wenn Du Dein Passwort nicht\nändern möchtest, kannst Du diese E-Mail einfach ignorieren und es passiert nichts.\n\nUm Dein Passwort zu ändern, klicke bitte folgenden Link:"
 
 #: templates/registration/password_reset_email.html:12
 #, python-format
@@ -477,12 +483,7 @@ msgid ""
 "\n"
 "Best regards,\n"
 "%(site_name)s Management\n"
-msgstr ""
-"\n"
-"Dein Benutzername lautet übrigens: %(username)s\n"
-"\n"
-"Viele Grüße,\n"
-"das %(site_name)s-Team\n"
+msgstr "\nDein Benutzername lautet übrigens: %(username)s\n\nViele Grüße,\ndas %(site_name)s-Team\n"
 
 #: templates/registration/password_reset_form.html:3
 #: templates/registration/password_reset_form.html:16

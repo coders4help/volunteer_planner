@@ -1,23 +1,27 @@
 {% extends "base_non_logged_in.html" %}
+{% load i18n %}
 
 {% block content %}
-<h2>Häufige Fragen zum Volunteer Planner</h2>
+<h2>{% trans "Häufige Fragen zum Volunteer Planner" %}</h2>
 <div class="card card-block">
-  <h4 class="card-title">Wie funktioniert volunteer-planner.org?</h4>
+  <h4 class="card-title">{% trans "How does volunteer-planner work?" %}</h4>
   <p class="card-text">
+  {% url 'registation' as the_url %}
+    {% blocktrans %}
       <ol>
-                  <li><a href="{% url 'registation' %}" target="_blank">Registriere dich,</a></li>
-                  <li>Klick den Link in der Bestätigungs-Email (bitte auch im Spam-Ordner nachschauen.),</li>
-                  <li>Log dich ein,</li>
-                  <li>Wähle eine Schicht,</li>
-                  <li>Gehe hin und helfe.</li>
+                  <li><a href="{{ the_url }}" target="_blank">register</a>,</li>
+                  <li>click the link in the confirmation email (please see also in spam folder.),</li>
+                  <li>log in,</li>
+                  <li>choose a shift,</li>
+                  <li>get there and start helping!</li>
               </ol>
-  </p>
+{% endblocktrans %}
+
 </div>
 <div class="card card-block">
-    <h4 class="card-title">Ich kann meine Schicht doch nicht wahrnehmen. Was soll ich tun?</h4>
+    <h4 class="card-title">{% trans "How can I unsubscribe from a shift?" %}</h4>
     <p class="card-text">
-        Kein Problem. Logge dich wieder ein, suche deine gewählte Schicht und trage dich wieder aus. Dann sehen die anderen User, dass dort in der Schicht wieder ein Platz frei ist und können einspringen.
+        {% trans "No problem. Log-in again look for the shift you planned to do and unsubscribe. Then other volunteers can again subscribe." %}
     </p>
 </div>
 <!-- LIST OF LOCATIONS
