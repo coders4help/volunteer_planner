@@ -1,4 +1,5 @@
 {% extends "helpdesk_base.html" %}
+{% block title %}{% blocktrans %} Helpdesk for {{ location.name }}{% endblocktrans %} {% endblock %}
 
 {% load i18n %}
 {% load vpfilters %}
@@ -42,7 +43,6 @@
                         <p>
                             {{ topic.description|safe }}
                         </p>
-
                     {% endif %}
                 {% endwith %}
 
@@ -64,7 +64,6 @@
                         <th width="15%">{% trans "Status" %}</th>
                         <th>{% trans "Users" %}</th>
                         <th width="10%">{% trans "You" %}</th>
-
                     </tr>
                     </thead>
                     <tbody>
@@ -150,7 +149,6 @@
                     </tbody>
                 </table>
             </div>
-
         {% endfor %}
     </form>
 {% endblock %}
