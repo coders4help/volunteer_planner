@@ -1,5 +1,5 @@
 {% extends "home.html" %}
-{% block title %}Helpdesk für {{ location.name }} {% endblock %}
+{% block title %}{% blocktrans %} Helpdesk for {{ location.name }}{% endblocktrans %} {% endblock %}
 {% block body_class %}helpdesk{% endblock %}
 
 {% block navbar %}
@@ -11,8 +11,8 @@
         {% include "partials/alert_messages.html" %}
 
         <h2>
-            Dienstpläne für "{{ needs.0.location.name }}"
-            am {{ needs.0.ending_time|date:"d. M. Y" }}
+            {% blocktrans %} Rotations "{{ needs.0.location.name }}"
+            am {{ needs.0.ending_time|date:"d. M. Y" }} {% endblocktrans %}
         </h2>
 
         {% for need in needs %}
@@ -29,28 +29,28 @@
 
                 <p class="need" data-need-id="{{ need.pk }}">
                     <strong>
-                        von {{ need.starting_time|date:"H:i" }} -
-                        {{ need.ending_time|date:"H:i" }} Uhr
+                        {% trans "between" %} {{ need.starting_time|date:"H:i" }} -
+                        {{ need.ending_time|date:"H:i" }} {% trans "hours" %}
                     </strong>
-                    (benötigt: {{ need.slots }}/angemeldet: {{ need.volunteer_count }})
-                    | Freiwillige:
+                    ({% trans "required" %}: {{ need.slots }}/{% trans "filled" %}: {{ need.volunteer_count }})
+                    | {% trans "Volunteers" %}:
                     {% for volunteer in need.registrationprofile_set.all %}
                         {{ volunteer.user.username }},
                     {% endfor %}
                     |
                     {% if need.slots > need.volunteer_count %}
-                        <span style="color:red">Wird gebraucht</span>
+                        <span style="color:red">{% blocktrans %}are needed {% endblocktrans %}</span>
                         <span aria-hidden="true" class="glyphicon glyphicon-exclamation-sign"></span>
                         {% if user.registrationprofile not in need.registrationprofile_set.all %}
                             <button type="submit" name="action" value="add" style="margin-left:10px;" aria-expanded="false" aria-haspopup="true" class="btn btn-info add-button">
-                                mitmachen! <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+                                {% blocktrans %}I participate! {% endblocktrans %} <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
                             </button>
                         {% endif %}
                     {% else %}
-                        <span style="color:green">ist abgedeckt</span>
+                        <span style="color:green">{% blocktrans %}covered{% endblocktrans %}</span>
                     {% endif %}
                     {% if user.registrationprofile in need.registrationprofile_set.all %}
-                        <button type="submit" name="action" value="remove" class="btn btn-danger delete-button">austragen</button>
+                        <button type="submit" name="action" value="remove" class="btn btn-danger delete-button">{% trans "submit" %}</button>
                     {% endif %}
                 </p>
             </form>
