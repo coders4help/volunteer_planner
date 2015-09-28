@@ -14,76 +14,77 @@
 
 {% block helpdesk_content %}
 
-        {% include "partials/alert_messages.html" %}
+    {% include "partials/alert_messages.html" %}
 
-        {% regroup needs by topic as needs_by_topic %}
+    {% regroup needs by topic as needs_by_topic %}
 
-        <div class="row">
-            <h2>
-                {{ location.name }}
-            </h2>
+    <div class="row">
+        <h2>
+            {{ location.name }}
+        </h2>
 
-            <h3>
-                {% blocktrans trimmed %}
-                    Schedule for {{ schedule_date }}
-                {% endblocktrans %}
-            </h3>
-        </div>
+        <h3>
+            {% blocktrans trimmed %}
+                Schedule for {{ schedule_date }}
+            {% endblocktrans %}
+        </h3>
+    </div>
 
-        <form method="POST">
-            {% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
 
-            {% for need_by_topic in needs_by_topic %}
-                <div class="row">
-                    {% with need_by_topic.grouper as topic %}
-                        <h3>{{ topic.title }}</h3>
+        {% for need_by_topic in needs_by_topic %}
+            <div class="row">
+                {% with need_by_topic.grouper as topic %}
+                    <h3>{{ topic.title }}</h3>
 
-                        {% if topic.description %}
-                            <p>
-                                {{ topic.description|safe }}
-                            </p>
-                        {% endif %}
-                    {% endwith %}
+                    {% if topic.description %}
+                        <p>
+                            {{ topic.description|safe }}
+                        </p>
+
+                    {% endif %}
+                {% endwith %}
 
 
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th colspan="2"
-                                width="10%">{% trans "Time" %}</th>
-                            <th colspan="3"
-                                width="80%">{% trans "Helpers" %}</th>
-                            <th colspan="1" width="10%"></th>
-                        </tr>
-                        <tr>
-                            <th width="5%">{% trans "Start" %}</th>
-                            <th width="5%">{% trans "End" %}</th>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th colspan="2"
+                            width="10%">{% trans "Time" %}</th>
+                        <th colspan="3"
+                            width="80%">{% trans "Helpers" %}</th>
+                        <th colspan="1" width="10%"></th>
+                    </tr>
+                    <tr>
+                        <th width="5%">{% trans "Start" %}</th>
+                        <th width="5%">{% trans "End" %}</th>
 
-                            <th width="5%">{% trans "Required" %}</th>
-                            <th width="15%">{% trans "Status" %}</th>
-                            <th>{% trans "Users" %}</th>
-                            <th width="10%">{% trans "You" %}</th>
+                        <th width="5%">{% trans "Required" %}</th>
+                        <th width="15%">{% trans "Status" %}</th>
+                        <th>{% trans "Users" %}</th>
+                        <th width="10%">{% trans "You" %}</th>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for need in need_by_topic.list %}
-                            {% with need.volunteer_count|subtract:need.slots as slots_left %}
-                                {% with need.volunteer_count|divide:need.slots as slots_percent %}
-                                    {% with need.registrationprofile_set.all|contains:user.registrationprofile as is_assigned %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for need in need_by_topic.list %}
+                        {% with need.volunteer_count|subtract:need.slots as slots_left %}
+                            {% with need.volunteer_count|divide:need.slots as slots_percent %}
+                                {% with need.registrationprofile_set.all|contains:user.registrationprofile as is_assigned %}
 
-                                        <tr>
-                                            <td>
-                                                {{ need.starting_time|date:"H:i" }}
-                                            </td>
-                                            <td>
-                                                {{ need.ending_time|date:"H:i" }}
-                                            </td>
-                                            <td>
-                                                {{ need.slots }}
-                                            </td>
+                                    <tr>
+                                        <td>
+                                            {{ need.starting_time|date:"H:i" }}
+                                        </td>
+                                        <td>
+                                            {{ need.ending_time|date:"H:i" }}
+                                        </td>
+                                        <td>
+                                            {{ need.slots }}
+                                        </td>
 
-                                            <td>
+                                        <td>
                                         <span style="color:{% if slots_left %}red{% else %}green{% endif %};">
 
                                             {% if slots_left %}
@@ -106,52 +107,52 @@
                                                 </div>
                                             {% endcomment %}
                                         </span>
-                                            </td>
+                                        </td>
 
-                                            <td>
-                                                {% for volunteer in need.registrationprofile_set.all %}
+                                        <td>
+                                            {% for volunteer in need.registrationprofile_set.all %}
 
-                                                    {% if volunteer.user == request.user %}
-                                                        <u><strong>{{ volunteer.user.username }}</strong></u>
-                                                    {% else %}
-                                                        {{ volunteer.user.username }}
-                                                    {% endif %}
-
-
-                                                    {% if not forloop.last %}
-                                                        ,
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </td>
-
-                                            <td>
-                                                {% if is_assigned %}
-                                                    <button type="submit"
-                                                            name="leave_shift"
-                                                            value="{{ need.pk }}"
-                                                            class="btn btn-danger delete-button">
-                                                        {% trans "Drop out" %}
-                                                    </button>
-                                                    {% elif slots_left %}
-                                                    <button type="submit"
-                                                            name="join_shift"
-                                                            value="{{ need.pk }}"
-                                                            class="btn btn-info add-button">
-                                                        {% trans "Sign up" %}!
-                                                    </button>
+                                                {% if volunteer.user == request.user %}
+                                                    <u><strong>{{ volunteer.user.username }}</strong></u>
+                                                {% else %}
+                                                    {{ volunteer.user.username }}
                                                 {% endif %}
-                                            </td>
-                                        </tr>
-                                    {% endwith %}
+
+
+                                                {% if not forloop.last %}
+                                                    ,
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+
+                                        <td>
+                                            {% if is_assigned %}
+                                                <button type="submit"
+                                                        name="leave_shift"
+                                                        value="{{ need.pk }}"
+                                                        class="btn btn-danger delete-button">
+                                                    {% trans "Drop out" %}
+                                                </button>
+                                                {% elif slots_left %}
+                                                <button type="submit"
+                                                        name="join_shift"
+                                                        value="{{ need.pk }}"
+                                                        class="btn btn-info add-button">
+                                                    {% trans "Sign up" %}!
+                                                </button>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
                                 {% endwith %}
                             {% endwith %}
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                        {% endwith %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-            {% endfor %}
-        </form>
+        {% endfor %}
+    </form>
 {% endblock %}
 
 
