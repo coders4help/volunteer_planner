@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christoph, 2015
 # Christoph, 2015
 # Julia Biro <juliabiro@gmail.com>, 2015
-# Nagy László <aznagylaci@gmail.com>, 2015
+# Nagy László, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-28 08:47+0200\n"
-"PO-Revision-Date: 2015-09-27 14:30+0000\n"
-"Last-Translator: Julia Biro <juliabiro@gmail.com>\n"
+"POT-Creation-Date: 2015-09-28 21:33+0200\n"
+"PO-Revision-Date: 2015-09-28 19:33+0000\n"
+"Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
-"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accounts/templates/user_account_edit.html:16
@@ -79,7 +79,7 @@ msgstr "alcím"
 
 #: notifications/models.py:15
 msgid "text"
-msgstr ""
+msgstr "szöveg"
 
 #: places/models.py:9 scheduler/models.py:83 shiftmailer/models.py:10
 msgid "name"
@@ -158,11 +158,15 @@ msgid "You must agree to the terms to register"
 msgstr "Bele kell egyeznie a feltételekbe, hogy regisztrálhasson."
 
 #: registration/forms.py:99
-msgid "This email address is already in use. Please supply a different email address."
+msgid ""
+"This email address is already in use. Please supply a different email "
+"address."
 msgstr "Ezt az e-mail címet már használják. Kérem, adjon meg másik e-mail címet."
 
 #: registration/forms.py:124
-msgid "Registration using free email addresses is prohibited. Please supply a different email address."
+msgid ""
+"Registration using free email addresses is prohibited. Please supply a "
+"different email address."
 msgstr "Ingyenes e-mail címmel nem engedélyezett a regisztráció. Kérem, adjon meg másik e-mail címet."
 
 #: registration/models.py:219
@@ -183,11 +187,16 @@ msgstr "Probléma van az aktivációval."
 
 #: registration/templates/activate.html:14
 #, python-format
-msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
+msgid ""
+"Thanks %(account)s, activation complete! You may now <a "
+"href='%(auth_login_url)s'>login</a> using the username and password you set "
+"at registration."
 msgstr "Köszönjük, %(account)s. Az aktiváció elkészült. Mostmár <a href='%(auth_login_url)s'>bejelentkezhet</a> a regisztrációkor megadott felhasználónévvel és jelszóval."
 
 #: registration/templates/activate.html:19
-msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgid ""
+"Oops &ndash; Either you activated your account already, or the activation "
+"key is invalid or has expired."
 msgstr "Hoppá &ndash; Ön már vagy előzőleg aktiválta a felhasználói fiókját, vagy az aktivációs kulcs érvénytelen, vagy lejárt."
 
 #: registration/templates/login.html:15
@@ -288,52 +297,52 @@ msgstr ""
 msgid "Schedule for %(schedule_date)s"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:53
+#: scheduler/templates/helpdesk_single.html:54
 msgid "Time"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:55
+#: scheduler/templates/helpdesk_single.html:56
 msgid "Helpers"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:59
+#: scheduler/templates/helpdesk_single.html:60
 msgid "Start"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:60
+#: scheduler/templates/helpdesk_single.html:61
 msgid "End"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:62
+#: scheduler/templates/helpdesk_single.html:63
 msgid "Required"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:63
+#: scheduler/templates/helpdesk_single.html:64
 msgid "Status"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:64
+#: scheduler/templates/helpdesk_single.html:65
 msgid "Users"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:65
+#: scheduler/templates/helpdesk_single.html:66
 msgid "You"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:90
+#: scheduler/templates/helpdesk_single.html:91
 #, python-format
 msgid "%(slots_left)s more"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:94
+#: scheduler/templates/helpdesk_single.html:95
 msgid "Covered"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:134
+#: scheduler/templates/helpdesk_single.html:135
 msgid "Drop out"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:141
+#: scheduler/templates/helpdesk_single.html:142
 msgid "Sign up"
 msgstr ""
 
@@ -347,7 +356,9 @@ msgstr ""
 
 #: scheduler/views.py:92
 #, python-brace-format
-msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+msgid ""
+"We can't add you to this shift because you've already agreed to other shifts"
+" at the same time: {conflicts}"
 msgstr "Nem adhatunk hozzá ehhez a műszakhoz, mert már beleegyeztél másik műszakokhoz ugyanebben az időben: {conflicts}"
 
 #: scheduler/views.py:97
@@ -425,7 +436,9 @@ msgstr "A jelszó-visszaállítás kész."
 
 #: templates/registration/password_reset_complete.html:7
 #, python-format
-msgid "Your password has been reset! You may now <a href=\"%(login_url)s\">log in</a>."
+msgid ""
+"Your password has been reset! You may now <a href=\"%(login_url)s\">log "
+"in</a>."
 msgstr "A jelszavát visszaállítottuk. Mostmár <a href=\"%(login_url)s\">bejelentkezhet</a>."
 
 #: templates/registration/password_reset_confirm.html:3
@@ -457,17 +470,7 @@ msgid ""
 "\n"
 "To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
-msgstr ""
-"Ezt az e-mailt azért kapta, mert ön (vagy valaki az ön nevében)\n"
-"\n"
-"azt ön jelszavának a visszaállítását kérte a %(domain)s weboldalon. Ha nem szeretné\n"
-"\n"
-"visszaállítani a jelszavát, kérem hagyja figyelmen kívül ezt az üzenetet.\n"
-"\n"
-"\n"
-"\n"
-"A jelszava visszaállításához kattintson a következő hivatkozásra, vagy másolja ki és illessze be\n"
-"a böngészőjébe:"
+msgstr "Ezt az e-mailt azért kapta, mert ön (vagy valaki az ön nevében)\n\nazt ön jelszavának a visszaállítását kérte a %(domain)s weboldalon. Ha nem szeretné\n\nvisszaállítani a jelszavát, kérem hagyja figyelmen kívül ezt az üzenetet.\n\n\n\nA jelszava visszaállításához kattintson a következő hivatkozásra, vagy másolja ki és illessze be\na böngészőjébe:"
 
 #: templates/registration/password_reset_email.html:12
 #, python-format
@@ -477,15 +480,7 @@ msgid ""
 "\n"
 "Best regards,\n"
 "%(site_name)s Management\n"
-msgstr ""
-"\n"
-"A felhasználóneve, ha esetleg elfelejtette volna: %(username)s\n"
-"\n"
-"\n"
-"\n"
-"Üdvözlettel,\n"
-"\n"
-"%(site_name)s management\n"
+msgstr "\nA felhasználóneve, ha esetleg elfelejtette volna: %(username)s\n\n\n\nÜdvözlettel,\n\n%(site_name)s management\n"
 
 #: templates/registration/password_reset_form.html:3
 #: templates/registration/password_reset_form.html:16

@@ -7,7 +7,7 @@
     <header class="header-image">
         <div id="stage">
             <div class="container">
-                <h1>{% trans "Volunteers helping refugees" %}</h1>
+                <h1>{% trans "Volunteers Helping Refugees" %}</h1>
             </div>
         </div>
     </header>
@@ -24,17 +24,16 @@
 
         <div class="col-md-4">
             <a id="help-cta" href="{% url 'registration' %}">
-                <h2>Ich möchte helfen!</h2>
+                <h2>{% trans "I want to help!" %}</h2>
                 <hr/>
-                <p>Registriere dich und schaue nach wo du helfen kannst.</p>
+                <p>{% trans "Register and see where you can help" %}</p>
             </a><!-- // #about -->
         </div>
         <div class="col-md-4">
             <a id="need-cta">
-                <h2>Wir benötigen Hilfe!</h2>
+                <h2>{% trans "Organize volunteers!" %}</h2>
                 <hr/>
-                <p>Registriere eine Flüchtlingsunterkunft und finde Leute die
-                    helfen wollen.</p>
+                <p>{% trans "Register a shelter and organize volunteers" %}</p>
             </a>
         </div>
         <div class="col-md-4">
@@ -74,33 +73,22 @@
     <div class="row">
 
         <div class="col-md-8">
-            <h2>Worum es geht</h2>
+            <h2>{% trans "What is it all about?" %}</h2>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-                consequat, tortor sed accumsan
-                pretium, felis arcu lobortis elit, at accumsan nisi nulla eu
-                diam. Suspendisse suscipit metus a nunc
-                congue auctor. Mauris suscipit ligula ut ultrices egestas. Nunc
-                mollis justo quis blandit
-                condimentum.</p>
+            {% blocktrans %}
+            <p>You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how
+                to help directly in the field. </p>
 
-            <p>Integer at libero justo. Aliquam bibendum odio vitae eros
-                tincidunt tempus. Aenean at massa
-                efficitur, ullamcorper dolor vel, tristique enim. Duis pulvinar
-                tristique tellus, in malesuada odio
-                rhoncus sit amet. Sed facilisis sed nulla in sollicitudin.
-                Quisque eu purus vitae nunc bibendum
-                molestie. Sed sodales metus non lacus fermentum, sit amet
-                commodo tellus sollicitudin. Donec vitae
-                erat non elit porta accumsan. Fusce viverra enim sit amet lacus
-                cursus varius.</p>
+            <p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers
+                and designers are volunteering for this project and bring in their professional experience to make a difference.</p>
+            {% endblocktrans %}
         </div>
 
         {% regroup locations by place.area as locations_by_area %}
 
         <div class="col-md-4">
             <div class="facts facts-less-padding">
-                <h2>Du kannst bereits an diesen Orten helfen:</h2>
+                <h2>{% trans "You can help at this locations:" %}</h2>
 
                 {% for location_in_area in locations_by_area %}
 
