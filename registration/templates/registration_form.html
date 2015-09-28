@@ -1,6 +1,6 @@
 {% extends "registration_base.html" %}
 {% load i18n %}
-{% block title %}Register for an account{% endblock %}
+{% block title %}{% trans "Register for an account" %}{% endblock %}
 {% block content %}
 <div class="col-md-1"></div>
 <div class="col-md-3 form-container ">
@@ -19,7 +19,7 @@
             <input type="email" class="form-control" id="Email" placeholder="Email" name="email">
         </div>
         <div class="form-group {%  if form.username.errors %} has-error{% endif %}">
-            <label {%  if form.username.errors %} style="color:red"{% endif %} for="Username">{% trans "User name" %}{%  if form.username.errors %} ist bereits vorhanden! Bitte wähle einen anderen Namen{% endif %}</label>
+            <label {%  if form.username.errors %} style="color:red"{% endif %} for="Username">{%  if form.username.errors %} {% trans "Username already exists. Please choose a different username." %} {% endif %}</label>
             <input class="form-control " id="Username" placeholder="Benutzername" name="username">
         <p class="help-block">{% trans "Don't use spaces or special characters" %}</p>
         </div>
