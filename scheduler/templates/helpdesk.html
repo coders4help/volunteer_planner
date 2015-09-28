@@ -3,7 +3,11 @@
 {% block body_class %}helpdesk{% endblock %}
 
 {% load google_links i18n %}
-    {% if notifications %}
+
+<div class="col-md-7">
+    <h2>{% trans "Volunteers are needed in the following facilities:"%}</h2>
+
+    {% for location in locations %}
         <div class="row">
             <h2>{% trans "Notifications" %}</h2>
             {% for notification in notifications %}
