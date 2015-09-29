@@ -31,7 +31,9 @@
 
                 <li>
                     <a href="mailto:support@volunteer-planner.org">
-                        {% trans "For questions, write to:" %} support@volunteer-planner.org
+                        {% blocktrans trimmed with email_address="support@volunteer-planner.org" %}
+                            For questions, write to {{ email_address }}
+                        {% endblocktrans %}
                     </a>
                 </li>
             </ul>

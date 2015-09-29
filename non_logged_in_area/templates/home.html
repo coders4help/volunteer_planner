@@ -75,13 +75,22 @@
         <div class="col-md-8">
             <h2>{% trans "What is it all about?" %}</h2>
 
-            {% blocktrans %}
-            <p>You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how
-                to help directly in the field. </p>
+            <p>
+                {% blocktrans trimmed %}
+                    You are a volunteer and want to help refugees?
+                    Volunteer-Planner.org shows you where, when and how
+                    to help directly in the field.
+                {% endblocktrans %}
+            </p>
 
-            <p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers
-                and designers are volunteering for this project and bring in their professional experience to make a difference.</p>
-            {% endblocktrans %}
+            <p>
+                {% blocktrans trimmed %}
+                    This platform is non-commercial and ads-free. An
+                    international team of field workers, programmers, project
+                    managers and designers are volunteering for this project and
+                    bring in their professional experience to make a difference.
+                {% endblocktrans %}
+                < /p>
         </div>
 
         {% regroup locations by place.area as locations_by_area %}

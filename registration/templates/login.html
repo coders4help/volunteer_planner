@@ -12,27 +12,40 @@
     </div>
     <div class="col-md-3 form-container border-left">
         {% if form.errors %}
-            <p>{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
+            <p>
+                {% blocktrans trimmed %}
+                    Your username and password didn't match. Please try again.
+                {% endblocktrans %}
+            </p>
         {% endif %}
 
         <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
             <div class="form-group">
                 <label for="exampleInputEmail1">{% trans "Username" %}</label>
-                <input class="form-control" id="Username" placeholder="Benutzername" name="username">
+                <input class="form-control" id="Username"
+                       placeholder="Benutzername" name="username">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">{% trans "Password" %}</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                <input type="password" class="form-control"
+                       id="exampleInputPassword1" placeholder="Password"
                        name="password">
             </div>
 
-            <input type="submit" class="btn btn-primary align-left" value="login"/>
+            <input type="submit" class="btn btn-primary align-left"
+                   value="login"/>
             <input type="hidden" name="next" value="{{ next }}"/>
+
             <div class="row">
                 <div class="col-md-12">
                     <p>
-                        <a href="{% url 'password_reset' %}"> {% blocktrans %}Forgot your password?{% endblocktrans %}</a><br>
-                        <a href="{% url 'registration' %}"> {% blocktrans %} Help and sign-up {% endblocktrans %}</a>
+                        <a href="{% url 'password_reset' %}">
+                            {% trans "Forgot your password?" %}
+                        </a>
+                        <br>
+                        <a href="{% url 'registration' %}">
+                            {% trans "Help and sign-up" %}
+                        </a>
                     </p>
                 </div>
             </div>

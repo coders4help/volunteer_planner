@@ -2,8 +2,19 @@
 {% load i18n %}
 {% block title %} {% trans "Activation email sent" %}{% endblock %}
 {% block content %}
-<div class="col-md-12">
-   <h2>{% blocktrans %} An activation mail will be sent to you email address. {% endblocktrans %}</h2>
-    <h3>{% blocktrans %}Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in the Spam folder.{% endblocktrans %}</h3>
-</div>
+    <div class="col-md-12">
+        <h2>
+            {% blocktrans trimmed %}
+                An activation mail will be sent to you email address.
+            {% endblocktrans %}
+        </h2>
+
+        <h3>
+            {% blocktrans trimmed %}
+                Please confirm registration with the link in the email. If you
+                haven't received it in 10 minutes, look for it in your spam
+                folder.
+            {% endblocktrans %}
+        </h3>
+    </div>
 {% endblock %}
