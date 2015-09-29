@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 18:37+0200\n"
+"POT-Creation-Date: 2015-09-29 19:39+0200\n"
 "PO-Revision-Date: 2015-09-29 12:07+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -437,6 +437,7 @@ msgid "Activation email sent"
 msgstr "Aktivierungsemail wurde versandt"
 
 #: registration/templates/registration_complete.html:7
+#: tests/registration/test_registration.py:142
 msgid "An activation mail will be sent to you email address."
 msgstr "Dir wird jetzt eine Aktivierungs-E-Mail zugesendet."
 
@@ -536,13 +537,11 @@ msgstr "Beschreibung"
 msgid "locations"
 msgstr "Orte"
 
-#: scheduler/templates/facility_row.html:18
 #: scheduler/templates/geographic_helpdesk.html:55
 #: scheduler/templates/helpdesk.html:49
 msgid "dates"
 msgstr "Tage"
 
-#: scheduler/templates/facility_row.html:32
 #: scheduler/templates/geographic_helpdesk.html:69
 msgid "No shifts planned"
 msgstr ""
