@@ -28,7 +28,7 @@ class NeedManager(models.Manager):
         return self.get_queryset().filter(
             location__place__area__region__country=country)
 
-    def by_geographical_affiliation(self, geo_affiliation):
+    def by_geography(self, geo_affiliation):
         if isinstance(geo_affiliation, Location):
             return self.at_location(geo_affiliation)
         elif isinstance(geo_affiliation, Place):
