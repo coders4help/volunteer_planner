@@ -14,21 +14,26 @@
         <p>{{ facility.additional_info|safe }}</p>
     </div>
 
-
-    {% regroup facility.need_set.open by ending_time.date as shifts_by_time %}
-
     <div class="pull-right">
         <h3>{% trans "dates" %}</h3>
 
         <p>
-            {% for shift_time in shifts_by_time %}
-                {% with shift_time.grouper as shift_date %}
-                    <a href="{% url 'planner_by_location' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
-                        {{ shift_date|date }}
-                    </a>
-                    <br/>
-                {% endwith %}
-            {% endfor %}
+            {% regroup facility.open_needs by ending_time.date as shifts_by_time %}
+            {% if shifts_by_time %}
+                {% for shift_time in shifts_by_time %}
+                    {% with shift_time.grouper as shift_date %}
+                        <a href="{% url 'planner_by_location' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                            {{ shift_date|date }}
+                        </a>
+                        <br/>
+                    {% endwith %}
+                {% endfor %}
+            {% else %}
+                {% trans "No shifts planned" %}
+            {% endif %}
         </p>
     </div>
+
 </div>
+
+
