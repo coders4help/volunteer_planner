@@ -4,15 +4,16 @@
 
 {% block helpdesk_content %}
 
-    <div class="row">
+    <div>
         <h1>{{ place.name }}</h1>
-    </div>
 
-    {% for facility in place.locations.all %}
-        <li>
-            {{ facility.name }}
-        </li>
-    {% endfor %}
+        {% for facility in place.locations.all %}
+            <div class="row">
+                {% include "facility_row.html" with facility=facility %}
+            </div>
+        {% endfor %}
+    </div>
+    <hr/>
 
 {% endblock %}
 

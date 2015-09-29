@@ -1,0 +1,34 @@
+{% load i18n google_links %}
+
+<div class="row">
+    <div class="col-md-8">
+        <h3>{{ facility.name }}</h3>
+        {% with facility.street|add:", "|add:facility.postal_code|add:" "|add:facility.city as address_line %}
+            {% if address_line %}
+                <h5>{{ address_line }} <a
+                        href="{{ address_line|google_maps_directions }}"
+                        target="_blank">&rarr; Google Maps</a>
+                </h5>
+            {% endif %}
+        {% endwith %}
+        <p>{{ facility.additional_info|safe }}</p>
+    </div>
+
+
+    {% regroup facility.need_set.open by ending_time.date as shifts_by_time %}
+
+    <div class="pull-right">
+        <h3>{% trans "dates" %}</h3>
+
+        <p>
+            {% for shift_time in shifts_by_time %}
+                {% with shift_time.grouper as shift_date %}
+                    <a href="{% url 'planner_by_location' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                        {{ shift_date|date }}
+                    </a>
+                    <br/>
+                {% endwith %}
+            {% endfor %}
+        </p>
+    </div>
+</div>

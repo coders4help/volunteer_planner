@@ -3,15 +3,24 @@
 import datetime
 
 from django.db import models
+from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
+
+
+class OpenNeedManager(models.Manager):
+    def get_queryset(self):
+        now = timezone.now()
+        qs = super(OpenNeedManager, self).get_queryset()
+        return qs.filter(ending_time__gte=now)
 
 
 class Need(models.Model):
     """
     This is the primary instance to create shifts
     """
-    topic = models.ForeignKey("Topics", verbose_name=_(u'help type'), help_text=_(u'HELP_TYPE_HELP'))
+    topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
+                              help_text=_(u'HELP_TYPE_HELP'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
@@ -22,6 +31,9 @@ class Need(models.Model):
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+
+    objects = models.Manager()
+    open = OpenNeedManager()
 
     class Meta:
         verbose_name = _(u'shift')
@@ -102,27 +114,10 @@ class Location(models.Model):
     class Meta:
         verbose_name = _(u'location')
         verbose_name_plural = _(u'locations')
-        ordering = ('place', 'name', )
+        ordering = ('place', 'name',)
         permissions = (
             ("can_view", u"User can view location"),
         )
 
     def __unicode__(self):
         return u'{}'.format(self.name)
-
-
-# class Organization(models.Model):
-#     '''
-#     An organization is a NGO or a group of people managing one or more facilities.
-#     '''
-#     name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
-#     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
-#     slug = models.SlugField(verbose_name=_(u'slug'))
-#
-#     class Meta:
-#         verbose_name = _('organization')
-#         verbose_name_plural = _('organizations')
-#         ordering = ('name',)
-#
-#     def __str__(self):
-#         return '{}'.format(self.name)

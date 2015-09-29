@@ -2,24 +2,24 @@
 
 {% load google_links i18n %}
 {% block content %}
-    
-   {% if notifications %}
-	<div class="row">
-		<h2>{% trans "Notifications" %}</h2>
-		    {% for notification in notifications %}
 
-			<div>
-			    <h3>{{ notification.title }}</h3>
-			    <h4>
-				{% blocktrans with location_name=notification.location.name date=notification.creation_date %}
-				    {{ location_name }} on {{ date }}
-				{% endblocktrans %}
-			    </h4>
-			    {{ notification.text|safe }}
-			</div>
-		    {% endfor %}
-		</div>
-		<hr/>
+    {% if notifications %}
+        <div class="row">
+            <h2>{% trans "Notifications" %}</h2>
+            {% for notification in notifications %}
+
+                <div>
+                    <h3>{{ notification.title }}</h3>
+                    <h4>
+                        {% blocktrans with location_name=notification.location.name date=notification.creation_date %}
+                            {{ location_name }} on {{ date }}
+                        {% endblocktrans %}
+                    </h4>
+                    {{ notification.text|safe }}
+                </div>
+            {% endfor %}
+        </div>
+        <hr/>
     {% endif %}
 
     <div class="row">

@@ -4,29 +4,30 @@
 
 {% block helpdesk_content %}
 
-    <div class="row">
-        <h1>{{ region.name }}</h1>
-    </div>
+    <div>
+        <h1>
+            {{ region.name }}
+        </h1>
 
-    {% for area in region.areas.all %}
-        <div class="row">
-            {% if area.name != region.name %}
-                <h2>{{ area.name }}</h2>
-            {% endif %}
+        {% for area in region.areas.all %}
+            <h3>
+                <a href="{{ area.get_absolute_url }}">
+                    {{ area.name }}
+                </a>
+            </h3>
 
             {% for place in area.places.all %}
-                <h3>{{ place.name }}</h3>
-                <ul>
-                    {% for facility in place.locations.all %}
-                        <li>
-                            {{ facility.name }}
-                        </li>
-                    {% endfor %}
-                </ul>
+                <h4>
+                    <a href="{{ place.get_absolute_url }}">
+                        {{ place.name }}
+                    </a>
+                </h4>
+                {% for facility in place.locations.all %}
+                    {% include "facility_row.html" with facility=facility %}
+                {% endfor %}
             {% endfor %}
-        </div>
-        <hr/>
-    {% endfor %}
+        {% endfor %}
+    </div>
 
 {% endblock %}
 

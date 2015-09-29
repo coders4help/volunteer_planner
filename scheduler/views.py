@@ -123,8 +123,12 @@ class PlaceDetailView(DetailView):
 
         return result
 
+    def get_queryset(self):
+        return super(PlaceDetailView, self).get_queryset().select_related(
+            *self.model.get_select_related_list())
+
     def get_context_data(self, **kwargs):
         context = super(PlaceDetailView, self).get_context_data(**kwargs)
-        context['breadcrumps'] = self.make_breadcrumps_dict(
-            *self.object.breadcrumps)
+        place = self.object
+        context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
         return context
