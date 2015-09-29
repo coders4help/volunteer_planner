@@ -6,7 +6,6 @@ from registration.models import RegistrationProfile
 
 
 class RegistrationTestCase(TestCase):
-
     def setUp(self):
         # TODO: fix typo in url name in urls.py
         self.registration_url = reverse('registration')
@@ -76,7 +75,8 @@ class RegistrationTestCase(TestCase):
             response,
             'form',
             'username',
-            _(u'This value may contain only letters, numbers and @/./+/-/_ characters.'))
+            _(
+                u'This value may contain only letters, numbers and @/./+/-/_ characters.'))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -138,7 +138,8 @@ class RegistrationTestCase(TestCase):
 
         self.assertRedirects(response, registration_complete_url)
         self.assertContains(
-            response, 'Eine Aktivierungsmail wurde Dir soeben zugesendet.')
+            response,
+            _(u'An activation mail will be sent to you email address.'))
 
         assert RegistrationProfile.objects.count() == 1
         new_user = RegistrationProfile.objects.first()
