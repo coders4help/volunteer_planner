@@ -5,9 +5,22 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 
+class BreadcrumpablePlaceManager(models.Manager):
+
+    def get_queryset(self):
+        return super(BreadcrumpablePlaceManager,
+                     self).get_queryset().select_related(
+            *self.model.get_select_related_list())
+
+
 class BreadcrumpablePlaceModel(models.Model):
+    PARENT_MODEL = None
+    PARENT_FIELD = None
+
     name = models.CharField(max_length=50, unique=True, verbose_name=_('name'))
     slug = models.SlugField(verbose_name=_(u'slug'))
+
+    objects = BreadcrumpablePlaceManager()
 
     class Meta:
         abstract = True
@@ -19,6 +32,18 @@ class BreadcrumpablePlaceModel(models.Model):
     @property
     def breadcrumps(self):
         return self.parent and self.parent.breadcrumps + [self, ] or [self, ]
+
+    @classmethod
+    def get_select_related_list(cls, chain=None):
+        select_related = []
+        if cls.PARENT_FIELD:
+            if chain:
+                related = '{}__{}'.format(chain, cls.PARENT_FIELD)
+            else:
+                related = cls.PARENT_FIELD
+            select_related.append(related)
+            select_related += cls.PARENT_MODEL.get_select_related_list(related)
+        return select_related
 
     def get_detail_view_name(self):
         DETAIL_VIEW_NAME = getattr(self, 'DETAIL_VIEW_NAME', None)
@@ -50,6 +75,10 @@ class Region(BreadcrumpablePlaceModel):
     '''
     A region is a geographical region for grouping areas (and facilities within areas).
     '''
+
+    PARENT_FIELD = 'country'
+    PARENT_MODEL = Country
+
     country = models.ForeignKey(Country,
                                 related_name='regions',
                                 verbose_name=_('country'))
@@ -69,6 +98,10 @@ class Area(BreadcrumpablePlaceModel):
     An area is a subdevision of a region, such as cities, neighbourhoods, etc.
     Each area belongs to a region.
     '''
+
+    PARENT_FIELD = 'region'
+    PARENT_MODEL = Region
+
     region = models.ForeignKey(Region, related_name='areas',
                                verbose_name=_('region'))
 
@@ -87,6 +120,10 @@ class Place(BreadcrumpablePlaceModel):
     A place (german: Ort) can be a city like Jena in Thüringen - Jena
     or a 'district' like  Wilmersdorf in Berlin - Berlin.
     '''
+
+    PARENT_FIELD = 'area'
+    PARENT_MODEL = Area
+
     area = models.ForeignKey(Area,
                              related_name='places',
                              verbose_name=_('area'))
