@@ -1,0 +1,24 @@
+{% extends "helpdesk_base.html" %}
+
+{% load i18n vpfilters %}
+
+{% block helpdesk_content %}
+    <div class="row">
+        <h1>{{ area.region.name }}
+            {{ area.name|neq:area.region.name|yes:area.name }}</h1>
+    </div>
+
+    {% for place in area.places.all %}
+        <div class="row">
+            <h2>{{ place.name }}</h2>
+
+            {% for facility in place.locations.all %}
+                <h3>{{ facility.name }}</h3>
+            {% endfor %}
+        </div>
+        <hr/>
+    {% endfor %}
+
+{% endblock %}
+
+

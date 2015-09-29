@@ -1,8 +1,8 @@
 """
 This app is mainly for storing values of saving calculations to display
 on the website.
-For instance the management command in scheudler "calculate_volunteer_hours"
-calculates shifts every 12 hours and makes results persistent in DB
+
+As far as Maik can tell, it's unused at the moment.
 """
 
 from django.db import models

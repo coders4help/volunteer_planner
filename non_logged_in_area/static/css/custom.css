@@ -1,0 +1,342 @@
+body, html{
+  height:100%
+}
+body, p, ul {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial;
+}
+
+.bg-faded {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.btn-secondary {
+  color: #0275d8;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 3px;
+  border: 2px solid #0275d8;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+*::selection {
+  background: #F2EC7A;
+  /* Safari */
+}
+
+*::-moz-selection {
+  background: #F2EC7A;
+  /* Firefox */
+}
+
+a {
+  color: #338EFF;
+}
+
+.spacer {
+  width: 100%;
+  height: 30px;
+}
+.spacer-stage{
+  margin-top:200px;
+
+}
+.main-content{
+  min-height:50%;
+}
+
+.header-image {
+  display: block;
+  width: 100%;
+  /*text-align: center;*/
+  background: url("../images/helpers.jpg") no-repeat center center scroll;
+  background-position: center;
+  background-size: cover;
+}
+
+.headline {
+  padding: 120px 0;
+}
+
+hr {
+  border: 0px none;
+  height: 1px;
+  clear: both;
+  background: #b9b9b9;
+  margin: 30px 0;
+}
+
+/* ######################################################################################################### */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 30%;
+  background-color: #fff;
+}
+
+.loader-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/ajax-loader.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.js #no-js-info {
+  display: none;
+}
+
+.no-js #no-js-info {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff99b;
+  z-index: 900;
+  padding: 10px;
+}
+
+/* ######################################################################################################### */
+#stage {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 400px;
+  padding: 130px 30px 30px 30px;
+  color: #fff;
+}
+
+#stage h1 {
+  font-weight: 400;
+  font-size: 3.5em;
+  margin: 30px 0;
+  text-shadow: 0px 0px 7px rgba(150, 150, 150, 1);
+}
+
+.facts {
+  width: 100%;
+
+  border: 2px solid #338EFF;
+  color: #338EFF;
+  float: right;
+  text-align: center;
+  padding: 31px;
+}
+.facts-less-padding {
+  padding: 20px 20px;
+}
+
+#facts hr {
+  background-color: #add2ff;
+}
+
+.fact-amount {
+  font-weight: 200;
+  font-size: 2em;
+}
+
+#facts *:first-child {
+  margin-top: 0;
+}
+
+#facts *:last-child {
+  margin-bottom: 0;
+}
+
+#help-cta, #need-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  background-color: #eaf3ff;
+  color: #338EFF;
+  padding: 230px 30px 30px 30px;
+  background-position: center 30px;
+  background-repeat: no-repeat;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#help-cta:hover, #need-cta:hover {
+  background-color: #338EFF;
+  color: #fff;
+}
+
+#help-cta hr, #need-cta hr {
+  background-color: #add2ff;
+}
+
+#help-cta:hover hr, #need-cta:hover hr {
+  background-color: #85bbff;
+}
+
+#help-cta *:first-child, #need-cta *:first-child {
+  margin-top: 0;
+}
+
+#help-cta *:last-child, #need-cta *:last-child {
+  margin-bottom: 0;
+}
+
+#help-cta {
+  /*float: left;*/
+  background-image: url(../images/help-visual.png);
+}
+
+#need-cta {
+  /*float: right;*/
+  background-image: url(../images/need-visual.png);
+}
+
+#need-cta:hover {
+  text-decoration: none;
+  background-image: url(../images/need-visual-2.png);
+}
+
+#help-cta:hover {
+  text-decoration: none;
+  background-image: url(../images/help-visual-2.png);
+}
+
+/* ######################################################################################################### */
+.preload-image {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+#preload-1 {
+  background-image: url(../images/need-visual-2.png);
+}
+
+#preload-2 {
+  background-image: url(../images/help-visual-2.png);
+}
+
+/* ######################################################################################################### */
+#footer {
+  background-color: #338EFF;
+  color: #fff;
+  padding: 30px;
+}
+
+#footer .inset {
+  min-height: 300px;
+}
+
+#footer hr {
+  background-color: #85bbff;
+}
+
+#footer a {
+  color: #fff;
+}
+
+#footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#footer-nav ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+#footer-nav ul li a {
+  background-color: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  padding: 0 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0 5px 5px 0;
+  text-decoration: none;
+}
+
+.form-container{
+}
+
+/* ######################################################################################################### */
+/* ##################################### HIGH RESOLUTION DISPLAYS: ######################################### */
+/* ######################################################################################################### */
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
+  #primary-logo {
+    background-image: url(../images/volunteer-planner-logo@2x.png);
+    background-size: 238px 30px;
+  }
+  #help-cta {
+    background-image: url(../images/help-visual@2x.png);
+    background-size: 200px 200px;
+  }
+  #need-cta {
+    background-image: url(../images/need-visual@2x.png);
+    background-size: 200px 200px;
+  }
+  #need-cta:hover {
+    background-image: url(../images/need-visual-2@2x.png);
+    background-size: 200px 200px;
+  }
+  #help-cta:hover {
+    background-image: url(../images/help-visual-2@2x.png);
+    background-size: 200px 200px;
+  }
+  /**/
+  #preload-1 {
+    background-image: url(../images/need-visual-2@2x.png);
+    background-size: 200px 200px;
+  }
+  #preload-2 {
+    background-image: url(../images/help-visual-2@2x.png);
+    background-size: 200px 200px;
+  }
+}
+
+/* ######################################################################################################### */
+/* ############################################### VIEWPORTS: ############################################## */
+/* ######################################################################################################### */
+@media only screen and (max-width: 700px) {
+  #about, #facts, #help-cta, #need-cta {
+    width: 100%;
+    float: none;
+    margin-bottom: 30px;
+  }
+  #primary-logo {
+    position: relative;
+    width: 100%;
+    background-position: center center;
+    height: 60px;
+  }
+  #primary-cta {
+    position: relative;
+    top: 0;
+    right: auto;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+  }
+  #primary-cta a {
+    font-weight: 600;
+    line-height: 24px;
+    border: 2px solid #338EFF;
+  }
+}

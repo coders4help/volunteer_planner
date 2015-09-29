@@ -1,59 +1,159 @@
-{% extends "home.html" %}
-{% block title %}Helpdesk für {{ location.name }} {% endblock %}
-{% block body_class %}helpdesk{% endblock %}
+{% extends "helpdesk_base.html" %}
 
-{% block navbar %}
-    {% include 'navbar.html' %}
+{% block title %}
+    {% blocktrans trimmed context "title with location" with location_name=location.name %}
+        Schedule for {{ location_name }}
+    {% endblocktrans %}
 {% endblock %}
 
-{% block content %}
-    <div class="col-md-12">
-        {% include "partials/alert_messages.html" %}
+{% load i18n %}
+{% load vpfilters %}
 
+
+{% block title %}
+        {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date:"d.M.y"  %}
+            Schedule for {{ schedule_date }}
+        {% endblocktrans %}
+{% endblock %}
+
+{% block helpdesk_content %}
+
+    {% include "partials/alert_messages.html" %}
+
+    {% regroup needs by topic as needs_by_topic %}
+
+    <div class="row">
         <h2>
-            Dienstpläne für "{{ needs.0.location.name }}"
-            am {{ needs.0.ending_time|date:"d. M. Y" }}
+            {{ location.name }}
         </h2>
 
-        {% for need in needs %}
-            <form method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="need" value="{{ need.pk }}">
-
-                {% ifchanged need.topic.title %}
-                    <h3>{{ need.topic.title }}</h3>
-                    <div class="help-text-wrapper" style="margin:10px 0px 10px 0">
-                        <span aria-hidden="true" class="glyphicon glyphicon-info-sign"></span> {{ need.topic.description }}
-                    </div>
-                {% endifchanged %}
-
-                <p class="need" data-need-id="{{ need.pk }}">
-                    <strong>
-                        von {{ need.starting_time|date:"H:i" }} -
-                        {{ need.ending_time|date:"H:i" }} Uhr
-                    </strong>
-                    (benötigt: {{ need.slots }}/angemeldet: {{ need.volunteer_count }})
-                    | Freiwillige:
-                    {% for volunteer in need.registrationprofile_set.all %}
-                        {{ volunteer.user.username }},
-                    {% endfor %}
-                    |
-                    {% if need.slots > need.volunteer_count %}
-                        <span style="color:red">Wird gebraucht</span>
-                        <span aria-hidden="true" class="glyphicon glyphicon-exclamation-sign"></span>
-                        {% if user.registrationprofile not in need.registrationprofile_set.all %}
-                            <button type="submit" name="action" value="add" style="margin-left:10px;" aria-expanded="false" aria-haspopup="true" class="btn btn-info add-button">
-                                mitmachen! <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                        {% endif %}
-                    {% else %}
-                        <span style="color:green">ist abgedeckt</span>
-                    {% endif %}
-                    {% if user.registrationprofile in need.registrationprofile_set.all %}
-                        <button type="submit" name="action" value="remove" class="btn btn-danger delete-button">austragen</button>
-                    {% endif %}
-                </p>
-            </form>
-        {% endfor %}
+        <h3>
+            {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date  %}
+                Schedule for {{ schedule_date }}
+            {% endblocktrans %}
+        </h3>
     </div>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% for need_by_topic in needs_by_topic %}
+            <div class="row">
+                {% with need_by_topic.grouper as topic %}
+                    <h3>{{ topic.title }}</h3>
+
+                    {% if topic.description %}
+                        <p>
+                            {{ topic.description|safe }}
+                        </p>
+                    {% endif %}
+                {% endwith %}
+
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th colspan="2"
+                            width="10%">{% trans "Time" %}</th>
+                        <th colspan="3"
+                            width="80%">{% trans "Helpers" %}</th>
+                        <th colspan="1" width="10%"></th>
+                    </tr>
+                    <tr>
+                        <th width="5%">{% trans "Start" %}</th>
+                        <th width="5%">{% trans "End" %}</th>
+
+                        <th width="5%">{% trans "Required" %}</th>
+                        <th width="15%">{% trans "Status" %}</th>
+                        <th>{% trans "Users" %}</th>
+                        <th width="10%">{% trans "You" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for need in need_by_topic.list %}
+                        {% with need.volunteer_count|subtract:need.slots as slots_left %}
+                            {% with need.volunteer_count|divide:need.slots as slots_percent %}
+                                {% with need.registrationprofile_set.all|contains:user.registrationprofile as is_assigned %}
+
+                                    <tr>
+                                        <td>
+                                            {{ need.starting_time|date:"H:i" }}
+                                        </td>
+                                        <td>
+                                            {{ need.ending_time|date:"H:i" }}
+                                        </td>
+                                        <td>
+                                            {{ need.slots }}
+                                        </td>
+
+                                        <td>
+                                        <span style="color:{% if slots_left %}red{% else %}green{% endif %};">
+
+                                            {% if slots_left %}
+                                                {% blocktrans trimmed %}
+                                                    {{ slots_left }} more
+                                                {% endblocktrans %}
+                                            {% else %}
+                                                {% trans "Covered" %}
+                                            {% endif %}
+                                            {% comment %}
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         role="progressbar"
+                                                         aria-valuenow="{{ need.volunteer_count }}"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="{{ need.slots }}"
+                                                         style="width:{{ slots_percent }}%;">
+                                                        <span class="sr-only">40% Complete (success)</span>
+                                                    </div>
+                                                </div>
+                                            {% endcomment %}
+                                        </span>
+                                        </td>
+
+                                        <td>
+                                            {% for volunteer in need.registrationprofile_set.all %}
+
+                                                {% if volunteer.user == request.user %}
+                                                    <u><strong>{{ volunteer.user.username }}</strong></u>
+                                                {% else %}
+                                                    {{ volunteer.user.username }}
+                                                {% endif %}
+
+
+                                                {% if not forloop.last %}
+                                                    ,
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+
+                                        <td>
+                                            {% if is_assigned %}
+                                                <button type="submit"
+                                                        name="leave_shift"
+                                                        value="{{ need.pk }}"
+                                                        class="btn btn-danger delete-button">
+                                                    {% trans "Drop out" %}
+                                                </button>
+                                                {% elif slots_left %}
+                                                <button type="submit"
+                                                        name="join_shift"
+                                                        value="{{ need.pk }}"
+                                                        class="btn btn-info add-button">
+                                                    {% trans "Sign up" %}!
+                                                </button>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endwith %}
+                            {% endwith %}
+                        {% endwith %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </form>
 {% endblock %}
+
+

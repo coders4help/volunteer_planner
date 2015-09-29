@@ -1,0 +1,21 @@
+{% if breadcrumps %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+        </li>
+
+        {% for breadcrump in breadcrumps.flattened %}
+            {% if not forloop.last %}
+                <li>
+                    <a href="{{ breadcrump.get_absolute_url }}">
+                        {{ breadcrump.name }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="active">
+                    {{ breadcrump.name }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

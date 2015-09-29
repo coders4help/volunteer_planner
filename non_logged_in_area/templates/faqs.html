@@ -1,0 +1,162 @@
+{% extends "base_non_logged_in.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans "Frequently Asked Questions" %}</h2>
+
+    <div class="card card-block">
+
+        <h4 class="card-title">
+            {% blocktrans trimmed context "FAQ Q1" %}
+                How does volunteer-planner work?
+            {% endblocktrans %}
+        </h4>
+
+        <p class="card-text">
+        <ol>
+            <li>
+                <a href="{% url 'registation' %}" target="_blank">
+                    {% blocktrans trimmed context "FAQ A1.1" %}
+                        Create an account.
+                    {% endblocktrans %}
+                </a>
+            </li>
+            <li>
+                {% blocktrans trimmed context "FAQ A1.2" %}
+                    Confirm your email address by clicking the activation link
+                    you've been sent.
+                {% endblocktrans %}
+
+            </li>
+            <li>
+                {% blocktrans trimmed context "FAQ A1.3" %}
+                    Log in.
+                {% endblocktrans %}
+            </li>
+            <li>
+                {% blocktrans trimmed context "FAQ A1.4" %}
+                    Choose a place to help and a shift and sign up to help.
+                {% endblocktrans %}
+            </li>
+            <li>
+                {% blocktrans trimmed context "FAQ A1.5" %}
+                    Get there on time and start helping out.
+                {% endblocktrans %}
+            </li>
+        </ol>
+    </div>
+
+    <div class="card card-block">
+        <h4 class="card-title">
+            {% blocktrans trimmed context "FAQ Q2" %}
+                How can I unsubscribe from a shift?
+            {% endblocktrans %}
+        </h4>
+
+        <p class="card-text">
+            {% blocktrans trimmed context "FAQ A2" %}
+                No problem. Log-in again look for the shift you planned to do
+                and unsubscribe. Then other volunteers can again subscribe.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class="card card-block">
+        <h4 class="card-title">
+            {% blocktrans trimmed context "FAQ Q3" %}
+                Are there more shelters coming into volunteer-planner?
+            {% endblocktrans %}
+        </h4>
+        {% trans "email" as email %}
+        <p class="card-text">
+            {% blocktrans trimmed context "FAQ A3" with email_url="<a href='mailto:support@volunteer-planner.org'>"|add:email|add:"</a>" %}
+                Yes! If you are a volunteer worker in a refugee shelter and they
+                also want to use volunteer-planner please contact us via
+                {{ email_url }}.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class="card card-block">
+        <h4 class="card-title">
+            {% blocktrans trimmed context "FAQ Q4" %}
+                I registered but I didn't get any activation link. What can I
+                do?
+            {% endblocktrans %}
+        </h4>
+
+        <p class="card-text">
+            {% blocktrans trimmed context "FAQ A4" %}
+                Please look into your email-spam folder. If you can't find
+                something please wait another 30 minutes. Email delivery can
+                sometimes take longer.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class="card card-block">
+        <h4 class="card-title">
+            {% blocktrans trimmed context "FAQ Q5" %}
+                Do I have to be vaccinated to help at the camps/shelters?
+            {% endblocktrans %}
+        </h4>
+
+        <p class="card-text">
+            {% blocktrans trimmed context "FAQ A5" %}
+                You are not supposed to be vaccinated. BUT: Where there are a
+                lot of people deseases can flourish better.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class="card card-block">
+        <h4 class="card-title">
+            {% blocktrans trimmed context "FAQ Q6" %}
+                Who is volunteer-planner.org?
+            {% endblocktrans %}
+        </h4>
+
+        <p class="card-text">
+            {% blocktrans trimmed context "FAQ A6" %}
+                We are Coders4Help, a group of international volunteering
+                programmers, designers and projectmanagers.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class="card card-block">
+        <h4 class="card-title">
+
+            {% blocktrans trimmed context "FAQ Q7" %}
+                How can I help you?
+            {% endblocktrans %}
+
+        </h4>
+
+        <p class="card-text">
+            {% trans "Facebook site" as facebook_link_text %}
+            {% trans "email" as email %}
+            {% blocktrans trimmed context "FAQ A7" with facebook_link="<a href='https://www.facebook.com/volunteerplanner?fref=ts'>"|add:facebook_link_text|add:"</a>" email_url="<a href='mailto:support@volunteer-planner.org'>"|add:email|add:"</a>" %}
+                Currently we need help to translate, write texts and create
+                awesome designs. Want to help? Write a message on our
+                {{ facebook_link }} or send an {{ email_url }}.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    {% comment %}
+        <div class="card card-block">
+            <h4 class="card-title">
+                {% blocktrans trimmed context "FAQ Q#" %}
+
+                {% endblocktrans %}
+            </h4>
+
+            <p class="card-text">
+                {% blocktrans trimmed context "FAQ Q#" %}
+
+                {% endblocktrans %}
+            </p>
+        </div>
+    {% endcomment %}
+{% endblock %}

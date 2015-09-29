@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
-<head lang="de">
+<head>
     <meta charset="UTF-8">
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>{% block title %}{% trans "Home" %}{% endblock %}</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -70,7 +71,7 @@
 <div class="container">
     <div class="col-md-12">
         <div class="jumbotron">
-            <h2 class="text-center">Blueprint auf folgenden Tag anwenden:</h2>
+            <h2 class="text-center">{% trans "Apply template for the following day:" %}</h2>
 
             <p class="text-center">
                 <select id="tokenize" multiple="multiple" class="tokenize-sample">
@@ -78,10 +79,10 @@
                         <option value="{{ location.id }}">{{ location.name }}</option>
                     {% endfor %}
                 </select></p>
-            <p class="text-center">Date: <input type="text" id="datepicker"></p>
+            <p class="text-center">{% trans "Date" %}: <input type="text" id="datepicker"></p>
 
             <p>
-                <button class="btn btn-primary btn-lg" href="#" role="button">anwenden</button>
+                <button class="btn btn-primary btn-lg" href="#" role="button">{% trans "apply" %}</button>
             </p>
         </div>
     </div>

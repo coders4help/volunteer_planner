@@ -1,0 +1,142 @@
+/**************************
+ *  BEGIN sticky footer
+ *  see http://getbootstrap.com/examples/sticky-footer-navbar/
+ */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+/*    END sticky footer
+ **************************/
+
+body > .container {
+    padding: 60px 15px 0;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+
+.label-0 {
+  background-color: #777;
+}
+.label-0[href]:hover,
+.label-0[href]:focus {
+  background-color: #5e5e5e;
+}
+.label-5 {
+  background-color: #337ab7;
+}
+.label-5[href]:hover,
+.label-5[href]:focus {
+  background-color: #286090;
+}
+.label-4 {
+  background-color: #5cb85c;
+}
+.label-4[href]:hover,
+.label-4[href]:focus {
+  background-color: #449d44;
+}
+.label-3 {
+  background-color: #5bc0de;
+}
+.label-3[href]:hover,
+.label-3[href]:focus {
+  background-color: #31b0d5;
+}
+.label-warning {
+  background-color: #f0ad4e;
+}
+.label-2[href]:hover,
+.label-2[href]:focus {
+  background-color: #ec971f;
+}
+
+.label-1 {
+  background-color: #d9534f;
+}
+.label-1[href]:hover,
+.label-1[href]:focus {
+  background-color: #c9302c;
+}
+
+.priority_column {
+    text-align: left;
+    width: 15%;
+}
+
+
+
+
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    margin-left:-1px;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display:block;
+}
+.dropdown-submenu>a:after {
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after {
+    border-left-color:#ffffff;
+}
+.dropdown-submenu.pull-left {
+    float:none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+
+.dropdown-menu li {
+  display: block;
+}

@@ -1,7 +1,6 @@
 # coding: utf-8
 
 import datetime
-import locale
 
 from django.db import models
 from django.utils.formats import localize
@@ -17,8 +16,8 @@ class Need(models.Model):
         verbose_name = _(u'shift')
         verbose_name_plural = _(u'shifts')
 
-    topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'),
-                              help_text=_(u'helptype_text'))
+    topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
+                              help_text=_(u'HELP_TYPE_HELP'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
@@ -33,6 +32,11 @@ class Need(models.Model):
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+
+    class Meta:
+        verbose_name = _(u'shift')
+        verbose_name_plural = _(u'shifts')
+        ordering = ['starting_time', 'ending_time']
 
     def get_conflicting_needs(self, needs, grace=datetime.timedelta(hours=1)):
         """
@@ -82,8 +86,8 @@ class ShiftHelper(models.Model):
 
 class Topics(models.Model):
     class Meta:
-        verbose_name = _(u'helptype')
-        verbose_name_plural = _(u'helptypes')
+        verbose_name = _(u'help type')
+        verbose_name_plural = _(u'help types')
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
@@ -96,57 +100,33 @@ class Topics(models.Model):
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=255, blank=True)
-    street = models.CharField(max_length=255, blank=True)
-    city = models.CharField(max_length=255, blank=True)
-    postal_code = models.CharField(max_length=5, blank=True)
-    latitude = models.CharField(max_length=30, blank=True)
-    longitude = models.CharField(max_length=30, blank=True)
-    additional_info = models.TextField(max_length=300000, blank=True)
+    name = models.CharField(max_length=255, blank=True,
+                            verbose_name=_('name'))
+    street = models.CharField(max_length=255, blank=True,
+                              verbose_name=_('address'))
+    city = models.CharField(max_length=255, blank=True,
+                            verbose_name=_('city'))
+    postal_code = models.CharField(max_length=5, blank=True,
+                                   verbose_name=_('postal code'))
+    latitude = models.CharField(max_length=30, blank=True,
+                                verbose_name=_('latitude'))
+    longitude = models.CharField(max_length=30, blank=True,
+                                 verbose_name=_('longitude'))
+    additional_info = models.TextField(max_length=300000, blank=True,
+                                       verbose_name=_('description'))
+
+    place = models.ForeignKey("places.Place",
+                              null=False,
+                              related_name='locations',
+                              verbose_name=_('place'))
 
     class Meta:
         verbose_name = _(u'location')
         verbose_name_plural = _(u'locations')
+        ordering = ('place', 'name',)
         permissions = (
             ("can_view", u"User can view location"),
         )
 
     def __unicode__(self):
         return u'{}'.format(self.name)
-
-    def get_days_with_needs(self):
-        """
-        Returns a list of tuples, representing days that this location has
-        needs. The tuple contains a datetime object, and a date formatted
-        in German format.
-        """
-        dates = self.need_set.filter(ending_time__gt=datetime.datetime.now()
-                                     ).order_by('ending_time').values_list(
-            'starting_time', flat=True)
-        dates_and_date_strings = []
-        seen_date_strings = []
-        locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')  # FIXME
-        for date in dates:
-            date_string = date.strftime("%A, %d.%m.%Y")
-            if date_string not in seen_date_strings:
-                seen_date_strings.append(date_string)
-                dates_and_date_strings.append((date, date_string))
-        return dates_and_date_strings
-
-
-class WorkDone(models.Model):
-    """
-    A SQL view is used to calculate total volunteer hours. This unmanaged model is used to
-    let us access that data via Django.
-
-    Note that this won't work with a local SQLite backend.
-    """
-    id = models.IntegerField(primary_key=True)
-    hours = models.IntegerField(name=u'hours', verbose_name=_('working hours'))
-
-    class Meta:
-        managed = False
-        db_table = 'work_done'
-
-    def __unicode__(self):
-        return u'{}'.format(self.hours)
