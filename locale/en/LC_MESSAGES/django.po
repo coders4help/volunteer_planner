@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 19:39+0200\n"
+"POT-Creation-Date: 2015-09-29 21:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -534,16 +534,16 @@ msgstr ""
 msgid "locations"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:55
-#: scheduler/templates/helpdesk.html:49
-msgid "dates"
+#: scheduler/templates/geographic_helpdesk.html:52
+msgid "Show on Google Maps"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:69
-msgid "No shifts planned"
+#: scheduler/templates/geographic_helpdesk.html:61
+msgctxt "helpdesk shifts heading"
+msgid "shifts"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:87
+#: scheduler/templates/geographic_helpdesk.html:90
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr ""
@@ -562,6 +562,10 @@ msgstr ""
 
 #: scheduler/templates/helpdesk.html:26
 msgid "Volunteers wanted"
+msgstr ""
+
+#: scheduler/templates/helpdesk.html:49
+msgid "dates"
 msgstr ""
 
 #: scheduler/templates/helpdesk_breadcrumps.html:6

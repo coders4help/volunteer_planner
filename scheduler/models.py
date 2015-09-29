@@ -154,8 +154,3 @@ class Location(models.Model):
 
     def __unicode__(self):
         return u'{}'.format(self.name)
-
-    @property
-    def open_needs(self):
-        now = timezone.now()
-        return self.need_set.filter(ending_time__gte=now)

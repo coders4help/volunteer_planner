@@ -6,57 +6,82 @@
 
     {% if shifts %}
         <div>
-            {% regroup shifts by location.place.area.region.country as shifts_by_country %}
+            {% with breadcrumps.flattened|slice:":-1" as sliced_breadcrumps %}
 
-            {% for shifts_in_country in shifts_by_country %}
-                {# TODO: skip if region or below is shown {% if geographical_unit == shifts_in_country.grouper %}#}
-                <h5>{{ shifts_in_country.grouper.name }}</h5>
-                {# {% endif %}#}
+                {% regroup shifts by location.place.area.region.country as shifts_by_country %}
 
-                {% regroup shifts_in_country.list by location.place.area.region as shifts_by_region %}
-
-                {% for shifts_in_region in shifts_by_region %}
-                    {% if geographical_unit == shifts_in_region.grouper or shifts_in_region.grouper %}
-                        <h5>{{ shifts_in_region.grouper.name }}</h5>
+                {% for shifts_in_country in shifts_by_country %}
+                    {% if geographical_unit in shifts_in_country.grouper.breadcrumps|slice:":-1" %}
+                        <h3>
+                            <a href="{{ shifts_in_country.grouper.get_absolute_url }}">
+                                {{ shifts_in_country.grouper.name }}
+                            </a>
+                        </h3>
                     {% endif %}
 
-                    <h4>{{ shifts_in_region.grouper.name }}</h4>
-                    {% regroup shifts_in_region.list by location.place.area as shifts_by_area %}
+                    {% regroup shifts_in_country.list by location.place.area.region as shifts_by_region %}
 
-                    {% for shifts_in_area in shifts_by_area %}
-                        <h3>{{ shifts_in_area.grouper.name }}</h3>
+                    {% for shifts_in_region in shifts_by_region %}
+                        {% if geographical_unit in shifts_in_region.grouper.breadcrumps|slice:":-1" %}
+                            <h2>
+                                <a href="{{ shifts_in_region.grouper.get_absolute_url }}">
+                                    {{ shifts_in_region.grouper.name }}
+                                </a>
+                            </h2>
+                        {% endif %}
 
-                        {% regroup shifts_in_area.list by location.place as shifts_by_place %}
+                        {% regroup shifts_in_region.list by location.place.area as shifts_by_area %}
 
-                        {% for shifts_in_place in shifts_by_place %}
-                            <h2>{{ shifts_in_place.grouper.name }}</h2>
+                        {% for shifts_in_area in shifts_by_area %}
 
-                            {% regroup shifts_in_place.list by location as shifts_by_location %}
+                            {% if geographical_unit in shifts_in_area.grouper.breadcrumps|slice:":-1" %}
+                                <h1>
+                                    <a href="{{ shifts_in_area.grouper.get_absolute_url }}">
+                                        {{ shifts_in_area.grouper.name }}
+                                    </a>
+                                </h1>
+                            {% endif %}
 
-                            {% for shifts_in_location in shifts_by_location %}
-                                <div class="row">
-                                    {% with shifts_in_location.grouper as facility %}
+                            {% regroup shifts_in_area.list by location.place as shifts_by_place %}
 
-                                        <div class="col-md-8">
-                                            <h3>{{ facility.name }}</h3>
-                                            {% with facility.street|add:", "|add:facility.postal_code|add:" "|add:facility.city as address_line %}
-                                                {% if address_line %}
-                                                    <h5>{{ address_line }} <a
-                                                            href="{{ address_line|google_maps_directions }}"
-                                                            target="_blank">&rarr;
-                                                        Google Maps</a>
-                                                    </h5>
-                                                {% endif %}
-                                            {% endwith %}
-                                            <p>{{ facility.additional_info|safe }}</p>
-                                        </div>
+                            {% for shifts_in_place in shifts_by_place %}
+                                {% if geographical_unit in shifts_in_place.grouper.breadcrumps|slice:":-1" %}
+                                    <h4>
+                                        <a href="{{ shifts_in_place.grouper.get_absolute_url }}">
+                                            {{ shifts_in_place.grouper.name }}
+                                        </a>
+                                    </h4>
+                                {% endif %}
 
-                                        <div class="pull-right">
-                                            <h3>{% trans "dates" %}</h3>
+                                {% regroup shifts_in_place.list by location as shifts_by_location %}
 
-                                            <p>
-                                                {% regroup facility.open_needs by ending_time.date as shifts_by_time %}
-                                                {% if shifts_by_time %}
+                                {% for shifts_in_location in shifts_by_location %}
+                                    <div class="row">
+                                        {% with shifts_in_location.grouper as facility %}
+
+                                            <div class="col-md-8">
+                                                <h3>{{ facility.name }}</h3>
+                                                {% with facility.street|add:", "|add:facility.postal_code|add:" "|add:facility.city as address_line %}
+                                                    {% if address_line %}
+                                                        <h5>{{ address_line }}
+                                                            <a href="{{ address_line|google_maps_directions }}"
+                                                               target="_blank">
+                                                                &rarr; {% trans "Show on Google Maps" %}
+                                                            </a>
+                                                        </h5>
+                                                    {% endif %}
+                                                {% endwith %}
+                                                <p>{{ facility.additional_info|safe }}</p>
+                                            </div>
+
+                                            <div class="pull-right">
+                                                {% trans "shifts" as shifts_heading context "helpdesk shifts heading" %}
+                                                <h3>
+                                                    {{ shifts_heading|title }}
+                                                </h3>
+
+                                                <p>
+                                                    {% regroup shifts_in_location.list by ending_time.date as shifts_by_time %}
                                                     {% for shift_time in shifts_by_time %}
                                                         {% with shift_time.grouper as shift_date %}
                                                             <a href="{% url 'planner_by_location' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
@@ -65,24 +90,22 @@
                                                             <br/>
                                                         {% endwith %}
                                                     {% endfor %}
-                                                {% else %}
-                                                    {% trans "No shifts planned" %}
-                                                {% endif %}
-                                            </p>
-                                        </div>
+                                                </p>
+                                            </div>
 
-                                    {% endwith %}
-                                </div>
-                            {% endfor %} {# end: by location #}
-                        {% endfor %} {# end: by place #}
-                    {% endfor %} {# end: by area #}
-                {% endfor %} {# end: by region #}
-            {% endfor %} {# end: by country #}
+                                        {% endwith %}
+                                    </div>
+                                {% endfor %} {# end: by location #}
+                                {% if not forloop.last %}
+                                    <hr>
+                                {% endif %}
+                            {% endfor %} {# end: by place #}
+                        {% endfor %} {# end: by area #}
+                    {% endfor %} {# end: by region #}
+                {% endfor %} {# end: by country #}
+            {% endwith %}
         </div>
     {% else %}
-        {% with geographical_unit.name as geographical_name %}
-
-        {% endwith %}
         <h2>
             {% blocktrans trimmed with geographical_name=geographical_unit.name %}
                 There are no upcoming shifts available for
