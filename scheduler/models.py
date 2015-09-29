@@ -66,7 +66,7 @@ class Need(models.Model):
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
     objects = NeedManager()
-    open = OpenNeedManager()
+    open_needs = OpenNeedManager()
 
     class Meta:
         verbose_name = _(u'shift')

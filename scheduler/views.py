@@ -139,7 +139,7 @@ class GeographicHelpdeskView(DetailView):
         context = super(GeographicHelpdeskView, self).get_context_data(**kwargs)
         place = self.object
         context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
-        shifts = Need.open.by_geographical_affiliation(place)
+        shifts = Need.open_needs.by_geographical_affiliation(place)
         shifts = shifts.select_related('topic',
                                        'location',
                                        'location__place',
