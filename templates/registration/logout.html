@@ -1,7 +1,7 @@
-{% extends "registration_base.html" %}
+{% extends "registration/registration_base.html" %}
 {% load i18n %}
 {% block title %}{% trans "Logged out" %}{% endblock %}
 {% block content %}
 <h2 class="text-center">{% trans "Logged out!" %}</h2>
 <p class="text-center"><a href="{% url 'auth_login' %}">{% trans "Login again?" %}</a></p>
-{% endblock %} 
+{% endblock %}

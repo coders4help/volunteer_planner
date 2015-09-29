@@ -66,7 +66,7 @@ class RegistrationView(_RequestPassingFormView):
     form_class = RegistrationForm
     http_method_names = ['get', 'post', 'head', 'options', 'trace']
     success_url = None
-    template_name = 'registration_form.html'
+    template_name = 'registration/registration_form.html'
 
     def dispatch(self, request, *args, **kwargs):
         """
@@ -117,7 +117,7 @@ class ActivationView(TemplateView):
 
     """
     http_method_names = ['get']
-    template_name = 'activate.html'
+    template_name = 'registration/activate.html'
 
     def get(self, request, *args, **kwargs):
         activated_user = self.activate(request)

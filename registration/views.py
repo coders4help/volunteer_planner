@@ -134,8 +134,8 @@ class ActivationView(BaseActivationView):
 
 
 def reg_complete(request):
-    return render_to_response('registration_complete.html', context_instance=RequestContext(request, locals()))
+    return render_to_response('registration/registration_complete.html', context_instance=RequestContext(request, locals()))
 
 
 def reg_act_complete(request):
-    return render_to_response('activation_complete.html', context_instance=RequestContext(request, locals()))
+    return render_to_response('registration/activation_complete.html', context_instance=RequestContext(request, locals()))
