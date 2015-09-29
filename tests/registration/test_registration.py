@@ -9,7 +9,7 @@ class RegistrationTestCase(TestCase):
 
     def setUp(self):
         # TODO: fix typo in url name in urls.py
-        self.registration_url = reverse('registation')
+        self.registration_url = reverse('registration')
 
         self.valid_user_data = {'username': 'somename',
                                 'email': 'somename@example.de',

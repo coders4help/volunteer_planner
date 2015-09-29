@@ -12,3 +12,4 @@ db.sqlite3
 /htmlcov
 /.coverage
 *.log
+*.po

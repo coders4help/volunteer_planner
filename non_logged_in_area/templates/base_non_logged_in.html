@@ -1,6 +1,6 @@
-{% load humanize %}
+{% load humanize i18n %}
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -19,7 +19,8 @@
     <!-- Custom CSS -->
     <link href="/static/css/custom.css" rel="stylesheet">
     <!-- Webfonts -->
-        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
+          rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,58 +33,72 @@
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
-      <div class="container">
-        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+<!-- Navigation -->
+<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+    <div class="container">
+        <button class="navbar-toggler hidden-sm-up" type="button"
+                data-toggle="collapse" data-target="#exCollapsingNavbar2">
             &#9776;
         </button>
         <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-        <a class="navbar-brand" href="#"><img src="/static/images/volunteer-planner-logo.png" alt=""></a>
+            <a class="navbar-brand" href="#"><img
+                    src="/static/images/volunteer-planner-logo.png" alt=""></a>
 
             <div class="form-inline navbar-form pull-right">
                 <a href="{% url 'auth_login' %}">
-                    <button type="button" class="btn btn-secondary">Login</button>
+                    <button type="button"
+                            class="btn btn-secondary">{% trans "Login" %}</button>
                 </a>
-                 <a href="{% url 'registation' %}">
-                     <button type="button" class="btn btn-primary">Registrieren und helfen</button>
-                 </a>
+                <a href="{% url 'registration' %}">
+                    <button type="button"
+                            class="btn btn-primary">{% trans "Register and start helping now!" %}</button>
+                </a>
             </div>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    {% block stage %}
+{% block stage %}
     <div class="spacer-stage"></div>
 
-    {% endblock %}
-    <div class="container main-content">
+{% endblock %}
+<div class="container main-content">
     {% block content %}
     {% endblock %}
-    </div>
+</div>
 
-    <div class="spacer"></div>
+<div class="spacer"></div>
 
-    <div id="footer">
-        <div class="container">
+<div id="footer">
+    <div class="container">
         <div class="inset">
 
             <!-- <div id="footer-logo">volunteer planner</div> -->
 
-            <hr />
+            <hr/>
 
             <div id="footer-nav">
                 <ul>
-                    <li><a href="{% url 'home' %}">Startseite</a></li>
-                    <li><a href="{% url 'faqs' %}">Häufig gestellte Fragen</a></li>
-                    <li><a href="">Kontakt</a></li>
-                    <li><a href="">Impressum & Rechtliches</a></li>
+                    <li><a href="{% url 'home' %}">{% trans "Main page" %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a>
+                    </li>
+                    <li><a href="">{% trans "Contact" %}</a></li>
+                    {% trans "Imprint" as imprint %}
+                    {% trans "Terms of Service" as tos %}
+                    {% trans "Privacy Policy" as privacy_policy %}
+                    {% blocktrans with imprint=imprint terms=terms privacy=privacy trimmed %}
+                        {{ imprint }}, {{ tos }} and {{ privacy_policy }}
+                    {% endblocktrans %}
+                    <li><a href=""></a></li>
                 </ul>
             </div>
 
-        </div><!-- // .inset -->
         </div>
+        <!-- // .inset -->
     </div>
+</div>
 
 <!-- SCRIPTS -->
 <script src="/static/bootstrap4/js/bootstrap.min.js"></script>

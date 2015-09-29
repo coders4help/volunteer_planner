@@ -1,15 +1,19 @@
 {% extends "helpdesk_base.html" %}
 
+{% block title %}
+    {% blocktrans trimmed context "title with location" with location_name=location.name %}
+        Schedule for {{ location_name }}
+    {% endblocktrans %}
+{% endblock %}
+
 {% load i18n %}
 {% load vpfilters %}
 
 
 {% block title %}
-    {% with schedule_date|date:"d.M.y" as schedule_date_short %}
-        {% blocktrans trimmed %}
-            Schedule for {{ schedule_date_short }}
+        {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date:"d.M.y"  %}
+            Schedule for {{ schedule_date }}
         {% endblocktrans %}
-    {% endwith %}
 {% endblock %}
 
 {% block helpdesk_content %}
@@ -24,7 +28,7 @@
         </h2>
 
         <h3>
-            {% blocktrans trimmed %}
+            {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date  %}
                 Schedule for {{ schedule_date }}
             {% endblocktrans %}
         </h3>
@@ -42,7 +46,6 @@
                         <p>
                             {{ topic.description|safe }}
                         </p>
-
                     {% endif %}
                 {% endwith %}
 
@@ -64,7 +67,6 @@
                         <th width="15%">{% trans "Status" %}</th>
                         <th>{% trans "Users" %}</th>
                         <th width="10%">{% trans "You" %}</th>
-
                     </tr>
                     </thead>
                     <tbody>
@@ -150,7 +152,6 @@
                     </tbody>
                 </table>
             </div>
-
         {% endfor %}
     </form>
 {% endblock %}

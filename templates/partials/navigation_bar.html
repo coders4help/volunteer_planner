@@ -31,7 +31,9 @@
 
                 <li>
                     <a href="mailto:support@volunteer-planner.org">
-                        Bei Fragen: support@volunteer-planner.org
+                        {% blocktrans trimmed with email_address="support@volunteer-planner.org" %}
+                            For questions, write to {{ email_address }}
+                        {% endblocktrans %}
                     </a>
                 </li>
             </ul>
@@ -52,18 +54,18 @@
                             </a>
                         </li>
 
-                        <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                        <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %}</a></li>
 
                         {% if user.is_staff or user.is_superuser %}
                             <li role="separator" class="divider"></li>
-                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                            <li><a href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
                         {% endif %}
                     </ul>
 
                 </li>
             {% else %}
                 <li>
-                    <a href="{% url 'auth_login'  %}">Login</a>
+                    <a href="{% url 'auth_login'  %}">{% trans "Login" %}</a>
                 </li>
             {% endif %}
             </ul>
