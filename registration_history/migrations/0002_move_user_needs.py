@@ -41,8 +41,8 @@ def move_user_needs(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('registration_history', '0001_initial'),
         ('accounts', '0001_initial'),
+        ('registration_history', '0001_initial'),
         ('scheduler', '0021_add_shift_users'),
     ]
 

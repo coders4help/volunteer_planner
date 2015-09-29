@@ -9,7 +9,8 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('scheduler', '0021_add_shift_users'),
+        ('accounts', '0001_initial'),
+        ('scheduler', '0025_merge'),
     ]
 
     operations = [
