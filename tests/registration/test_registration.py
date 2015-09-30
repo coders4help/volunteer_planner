@@ -8,7 +8,7 @@ from registration.models import RegistrationProfile
 class RegistrationTestCase(TestCase):
     def setUp(self):
         # TODO: fix typo in url name in urls.py
-        self.registration_url = reverse('registration')
+        self.registration_url = reverse('registration_register')
 
         self.valid_user_data = {'username': 'somename',
                                 'email': 'somename@example.de',
@@ -18,7 +18,7 @@ class RegistrationTestCase(TestCase):
     def test_get_displays_empty_form(self):
         response = self.client.get(self.registration_url)
         assert response.status_code == 200
-        self.assertTemplateUsed(response, 'registration_form.html')
+        self.assertTemplateUsed(response, 'registration/registration_form.html')
 
         form = response.context['form']
         assert form is not None
@@ -37,7 +37,7 @@ class RegistrationTestCase(TestCase):
             response,
             'form',
             'email',
-            'Dieses Feld ist zwingend erforderlich.')
+            _('Dieses Feld ist zwingend erforderlich.'))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -76,7 +76,7 @@ class RegistrationTestCase(TestCase):
             'form',
             'username',
             _(
-                u'This value may contain only letters, numbers and @/./+/-/_ characters.'))
+                'Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters.'))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -124,8 +124,8 @@ class RegistrationTestCase(TestCase):
         self.assertFormError(
             response,
             'form',
-            None,
-            'Die zwei Passwoerter sind nicht gleich!')
+            'password2',
+            _("The two password fields didn't match."))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -159,11 +159,11 @@ class RegistrationTestCase(TestCase):
 
         assert not new_user.user.is_active
 
-        activation_url = reverse('user_activate')
         activation_key = new_user.activation_key
+        activation_url = reverse('registration_activate',
+                                 args=[activation_key, ])
 
         response = self.client.get(activation_url,
-                                   data={'activation_key': activation_key},
                                    follow=True)
 
         activation_complete_url = reverse('registration_activation_complete')

@@ -65,7 +65,7 @@
                     {% for need in need_by_topic.list %}
                         {% with need.volunteer_count|subtract:need.slots as slots_left %}
                             {% with need.volunteer_count|divide:need.slots as slots_percent %}
-                                {% with need.registrationprofile_set.all|contains:user.registrationprofile as is_assigned %}
+                                {% with need.helpers.all|contains:user.account as is_assigned %}
 
                                     <tr>
                                         <td>
@@ -104,7 +104,7 @@
                                         </td>
 
                                         <td>
-                                            {% for volunteer in need.registrationprofile_set.all %}
+                                            {% for volunteer in need.helpers.all %}
 
                                                 {% if volunteer.user == request.user %}
                                                     <u><strong>{{ volunteer.user.username }}</strong></u>

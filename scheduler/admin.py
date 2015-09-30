@@ -33,7 +33,7 @@ class NeedAdmin(admin.ModelAdmin):
             return u'"{}"'.format(user.username)
 
         return u", ".join(_format_username(volunteer.user) for volunteer in
-                          obj.registrationprofile_set.all())
+                          obj.helpers.all())
 
     list_display = (
         'id', 'topic', 'starting_time', 'ending_time', 'slots',

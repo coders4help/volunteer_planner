@@ -27,8 +27,7 @@ def send_email_notifications(sender, instance, **kwargs):
 
     from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
 
-    addresses = shift.registrationprofile_set.values_list('user__email',
-                                                          flat=True)
+    addresses = shift.helpers.values_list('user__email', flat=True)
 
     mail = EmailMessage(subject=subject, body=message,
                         to=['support@volunteer-planner.org'],
@@ -53,7 +52,7 @@ def notify_users_shift_change(sender, instance, **kwargs):
 
             from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
 
-            addresses = shift.registrationprofile_set.values_list('user__email', flat=True)
+            addresses = shift.helpers.values_list('user__email', flat=True)
             if 0 < len(addresses):
                 mail = EmailMessage(subject=subject, body=message, to=['support@volunteer-planner.org'], from_email=from_email,
                                     bcc=addresses)

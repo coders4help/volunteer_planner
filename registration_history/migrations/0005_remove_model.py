@@ -6,7 +6,7 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('registration_history', '0005_update_activated'),
+        ('registration_history', '0004_migrate_to_redux'),
     ]
 
     operations = [

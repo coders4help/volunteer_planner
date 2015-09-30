@@ -15,7 +15,7 @@ from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
 
-from registration.models import RegistrationProfile
+from accounts.models import UserAccount
 from scheduler.models import Location, Need
 from notifications.models import Notification
 from .forms import RegisterForNeedForm
@@ -75,9 +75,9 @@ class PlannerView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         try:
-            reg_profile = self.request.user.registrationprofile
-        except RegistrationProfile.DoesNotExist:
-            messages.warning(self.request, _(u'User profile does not exist.'))
+            user_account = self.request.user.account
+        except UserAccount.DoesNotExist:
+            messages.warning(self.request, _(u'User account does not exist.'))
             return super(PlannerView, self).form_valid(form)
 
         join_shift = form.cleaned_data.get("join_shift")
@@ -87,7 +87,7 @@ class PlannerView(LoginRequiredMixin, FormView):
 
         if join_shift:
             conflicts = join_shift.get_conflicting_needs(
-                reg_profile.needs.all())
+                user_account.needs.all())
             if conflicts:
                 conflicts_string = u", ".join(
                     u'{}'.format(conflict) for conflict in conflicts)
@@ -99,12 +99,12 @@ class PlannerView(LoginRequiredMixin, FormView):
             else:
                 messages.success(self.request, _(
                     u'You were successfully added to this shift.'))
-                reg_profile.needs.add(join_shift)
+                user_account.needs.add(join_shift)
         elif leave_shift:
             messages.success(self.request, _(
                 u'You successfully left this shift.'))
-            reg_profile.needs.remove(leave_shift)
-        reg_profile.save()
+            user_account.needs.remove(leave_shift)
+        user_account.save()
         return super(PlannerView, self).form_valid(form)
 
     def get_success_url(self):

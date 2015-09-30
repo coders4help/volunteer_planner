@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-30 14:24+0200\n"
+"POT-Creation-Date: 2015-09-30 17:26+0200\n"
 "PO-Revision-Date: 2015-09-29 17:48+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -37,8 +37,7 @@ msgstr "Benutzerkonten"
 msgid "Save"
 msgstr "Speichern"
 
-#: accounts/templates/user_detail.html:14 registration/forms.py:34
-#: templates/registration/login.html:24
+#: accounts/templates/user_detail.html:14 templates/registration/login.html:24
 msgid "Username"
 msgstr "Benutzername"
 
@@ -50,7 +49,7 @@ msgstr "Vorname"
 msgid "Last name"
 msgstr "Nachname"
 
-#: accounts/templates/user_detail.html:17 registration/forms.py:37
+#: accounts/templates/user_detail.html:17
 #: templates/registration/registration_form.html:15
 msgid "Email"
 msgstr "E-Mail Adresse"
@@ -331,59 +330,6 @@ msgstr "Ort"
 msgid "places"
 msgstr "Orte"
 
-#: registration/admin.py:35
-msgid "Activate users"
-msgstr "Benutzer aktivieren "
-
-#: registration/admin.py:56
-msgid "Re-send activation emails"
-msgstr "Aktivierungsmail erneut versenden"
-
-#: registration/forms.py:35 tests/registration/test_registration.py:79
-msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ enthalten"
-
-#: registration/forms.py:39 templates/registration/login.html:29
-#: templates/registration/registration_form.html:27
-msgid "Password"
-msgstr "Passwort"
-
-#: registration/forms.py:41
-msgid "Password (again)"
-msgstr "Passwort (noch einmal)"
-
-#: registration/forms.py:51 tests/registration/test_registration.py:107
-msgid "A user with that username already exists."
-msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
-
-#: registration/forms.py:58
-msgid "A user with that email already exists. Please login instead."
-msgstr "Die Emailadresse ist bereits bekannt. Bitte logge Dich mit Deinem Benutzername und Password ein."
-
-#: registration/forms.py:82
-msgid "I have read and agree to the Terms of Service"
-msgstr "Ich habe die Nutzungsbedingungen gelesen und stimme ihnen zu"
-
-#: registration/forms.py:83
-msgid "You must agree to the terms to register"
-msgstr "Du musst den Nutzungsbedingungen zustimmen"
-
-#: registration/forms.py:99
-msgid "This email address is already in use. Please supply a different email address."
-msgstr "Diese E-Mail Adresse ist bereits registriert. Bitte verwende eine andere E-Mailadresse."
-
-#: registration/forms.py:124
-msgid "Registration using free email addresses is prohibited. Please supply a different email address."
-msgstr "Die Registrierung mit einer E-Mail-Adresses dieses Anbieters ist leider verboten. Bitte verwende eine andere E-Mailadresse."
-
-#: registration/models.py:219
-msgid "user"
-msgstr "Benutzer"
-
-#: registration/models.py:220
-msgid "activation key"
-msgstr "Aktivierungsschlüssel"
-
 #: scheduler/apps.py:7
 msgid "Scheduler"
 msgstr "Schichtplaner"
@@ -608,7 +554,7 @@ msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
 #: scheduler/views.py:80
-msgid "User profile does not exist."
+msgid "User account does not exist."
 msgstr "Benutzeraccount existiert nicht"
 
 #: scheduler/views.py:96
@@ -710,6 +656,11 @@ msgstr "Du kannst Dich hier einloggen."
 #: templates/registration/login.html:16
 msgid "Your username and password didn't match. Please try again."
 msgstr "Benutzername und Passort ungültig. Bitte versuche es erneut."
+
+#: templates/registration/login.html:29
+#: templates/registration/registration_form.html:27
+msgid "Password"
+msgstr "Passwort"
 
 #: templates/registration/login.html:43
 #: templates/registration/password_reset_form.html:6
@@ -868,6 +819,22 @@ msgstr "Passwort wiederholen"
 #: templates/registration/registration_form.html:34
 msgid "Sign-up"
 msgstr "Eintragen"
+
+#: tests/registration/test_registration.py:40
+msgid "Dieses Feld ist zwingend erforderlich."
+msgstr ""
+
+#: tests/registration/test_registration.py:79
+msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr "Bitte einen gültigen Benutzernamen wählen. Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ enthalten"
+
+#: tests/registration/test_registration.py:107
+msgid "A user with that username already exists."
+msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
+
+#: tests/registration/test_registration.py:128
+msgid "The two password fields didn't match."
+msgstr "Die Passwörter stimmen nicht überein."
 
 #: volunteer_planner/settings/base.py:135
 msgid "German"

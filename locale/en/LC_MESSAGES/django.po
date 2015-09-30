@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-30 14:24+0200\n"
+"POT-Creation-Date: 2015-09-30 17:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,8 +28,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: accounts/templates/user_detail.html:14 registration/forms.py:34
-#: templates/registration/login.html:24
+#: accounts/templates/user_detail.html:14 templates/registration/login.html:24
 msgid "Username"
 msgstr ""
 
@@ -41,7 +40,7 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: accounts/templates/user_detail.html:17 registration/forms.py:37
+#: accounts/templates/user_detail.html:17
 #: templates/registration/registration_form.html:15
 msgid "Email"
 msgstr ""
@@ -328,59 +327,6 @@ msgstr ""
 msgid "places"
 msgstr ""
 
-#: registration/admin.py:35
-msgid "Activate users"
-msgstr ""
-
-#: registration/admin.py:56
-msgid "Re-send activation emails"
-msgstr ""
-
-#: registration/forms.py:35 tests/registration/test_registration.py:79
-msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr ""
-
-#: registration/forms.py:39 templates/registration/login.html:29
-#: templates/registration/registration_form.html:27
-msgid "Password"
-msgstr ""
-
-#: registration/forms.py:41
-msgid "Password (again)"
-msgstr ""
-
-#: registration/forms.py:51 tests/registration/test_registration.py:107
-msgid "A user with that username already exists."
-msgstr ""
-
-#: registration/forms.py:58
-msgid "A user with that email already exists. Please login instead."
-msgstr ""
-
-#: registration/forms.py:82
-msgid "I have read and agree to the Terms of Service"
-msgstr ""
-
-#: registration/forms.py:83
-msgid "You must agree to the terms to register"
-msgstr ""
-
-#: registration/forms.py:99
-msgid "This email address is already in use. Please supply a different email address."
-msgstr ""
-
-#: registration/forms.py:124
-msgid "Registration using free email addresses is prohibited. Please supply a different email address."
-msgstr ""
-
-#: registration/models.py:219
-msgid "user"
-msgstr ""
-
-#: registration/models.py:220
-msgid "activation key"
-msgstr ""
-
 #: scheduler/apps.py:7
 msgid "Scheduler"
 msgstr ""
@@ -605,7 +551,7 @@ msgid "The submitted data was invalid."
 msgstr ""
 
 #: scheduler/views.py:80
-msgid "User profile does not exist."
+msgid "User account does not exist."
 msgstr ""
 
 #: scheduler/views.py:96
@@ -706,6 +652,11 @@ msgstr ""
 
 #: templates/registration/login.html:16
 msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/registration/login.html:29
+#: templates/registration/registration_form.html:27
+msgid "Password"
 msgstr ""
 
 #: templates/registration/login.html:43
@@ -854,6 +805,22 @@ msgstr ""
 
 #: templates/registration/registration_form.html:34
 msgid "Sign-up"
+msgstr ""
+
+#: tests/registration/test_registration.py:40
+msgid "Dieses Feld ist zwingend erforderlich."
+msgstr ""
+
+#: tests/registration/test_registration.py:79
+msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: tests/registration/test_registration.py:107
+msgid "A user with that username already exists."
+msgstr ""
+
+#: tests/registration/test_registration.py:128
+msgid "The two password fields didn't match."
 msgstr ""
 
 #: volunteer_planner/settings/base.py:135

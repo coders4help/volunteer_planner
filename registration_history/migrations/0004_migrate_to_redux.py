@@ -27,11 +27,6 @@ class Migration(migrations.Migration):
             model_name='oldregistrationprofile',
             name='needs',
         ),
-        migrations.AddField(
-            model_name='oldregistrationprofile',
-            name='activated',
-            field=models.BooleanField(default=False),
-        ),
         migrations.DeleteModel(
             name='OldRegistrationProfileNeed',
         ),
