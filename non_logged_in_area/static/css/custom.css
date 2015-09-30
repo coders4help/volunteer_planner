@@ -222,6 +222,24 @@ hr {
 .boxed-cta{
   height:439px;
 }
+
+ul.advantages{
+      list-style:none;
+      margin:0;
+      padding:0;
+}
+
+.advantages li{
+margin:10px;
+}
+
+li.check-icon:before {
+    font-family: 'FontAwesome';
+    content: '\f00c';
+    margin:0 5px 0 -15px;
+
+
+}
 /* ######################################################################################################### */
 .preload-image {
   display: none;
