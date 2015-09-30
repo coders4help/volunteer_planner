@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 21:23+0200\n"
+"POT-Creation-Date: 2015-09-30 14:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,12 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: accounts/models.py:13
+msgid "user account"
+msgstr ""
+
+#: accounts/models.py:14
+msgid "user accounts"
+msgstr ""
+
 #: accounts/templates/user_account_edit.html:16
 msgid "Save"
 msgstr ""
 
 #: accounts/templates/user_detail.html:14 registration/forms.py:34
-#: registration/templates/login.html:24
+#: templates/registration/login.html:24
 msgid "Username"
 msgstr ""
 
@@ -34,7 +42,7 @@ msgid "Last name"
 msgstr ""
 
 #: accounts/templates/user_detail.html:17 registration/forms.py:37
-#: registration/templates/registration_form.html:15
+#: templates/registration/registration_form.html:15
 msgid "Email"
 msgstr ""
 
@@ -71,8 +79,8 @@ msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
 msgstr ""
 
 #: non_logged_in_area/templates/base_non_logged_in.html:50
-#: registration/templates/login.html:3 registration/templates/login.html:11
 #: templates/partials/navigation_bar.html:68
+#: templates/registration/login.html:3 templates/registration/login.html:11
 msgid "Login"
 msgstr ""
 
@@ -280,7 +288,7 @@ msgstr ""
 msgid "text"
 msgstr ""
 
-#: places/models.py:20 scheduler/models.py:128 shiftmailer/models.py:10
+#: places/models.py:20 scheduler/models.py:144 shiftmailer/models.py:10
 msgid "name"
 msgstr ""
 
@@ -312,7 +320,7 @@ msgstr ""
 msgid "areas"
 msgstr ""
 
-#: places/models.py:132 scheduler/models.py:145
+#: places/models.py:132 scheduler/models.py:161
 msgid "place"
 msgstr ""
 
@@ -332,8 +340,8 @@ msgstr ""
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
-#: registration/forms.py:39 registration/templates/login.html:29
-#: registration/templates/registration_form.html:27
+#: registration/forms.py:39 templates/registration/login.html:29
+#: templates/registration/registration_form.html:27
 msgid "Password"
 msgstr ""
 
@@ -373,177 +381,92 @@ msgstr ""
 msgid "activation key"
 msgstr ""
 
-#: registration/templates/activate.html:5
-msgid "Activation complete"
-msgstr ""
-
-#: registration/templates/activate.html:7
-msgid "Activation problem"
-msgstr ""
-
-#: registration/templates/activate.html:14
-#, python-format
-msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
-msgstr ""
-
-#: registration/templates/activate.html:19
-msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
-msgstr ""
-
-#: registration/templates/activation_complete.html:3
-msgid "Activation successful!"
-msgstr ""
-
-#: registration/templates/activation_complete.html:9
-msgctxt "Activation successful page"
-msgid "Thank you for signing up."
-msgstr ""
-
-#: registration/templates/activation_complete.html:12
-msgctxt "Login link text on activation success page"
-msgid "You can login here."
-msgstr ""
-
-#: registration/templates/login.html:16
-msgid "Your username and password didn't match. Please try again."
-msgstr ""
-
-#: registration/templates/login.html:43
-#: templates/registration/password_reset_form.html:6
-msgid "Forgot your password?"
-msgstr ""
-
-#: registration/templates/login.html:47
-msgid "Help and sign-up"
-msgstr ""
-
-#: registration/templates/logout.html:3
-msgid "Logged out"
-msgstr ""
-
-#: registration/templates/logout.html:5
-msgid "Logged out!"
-msgstr ""
-
-#: registration/templates/logout.html:6
-msgid "Login again?"
-msgstr ""
-
-#: registration/templates/registration_complete.html:3
-msgid "Activation email sent"
-msgstr ""
-
-#: registration/templates/registration_complete.html:7
-#: tests/registration/test_registration.py:142
-msgid "An activation mail will be sent to you email address."
-msgstr ""
-
-#: registration/templates/registration_complete.html:13
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
-msgstr ""
-
-#: registration/templates/registration_form.html:3
-msgid "Register for an account"
-msgstr ""
-
-#: registration/templates/registration_form.html:8
-msgid "Registration"
-msgstr ""
-
-#: registration/templates/registration_form.html:22
-msgid "Username already exists. Please choose a different username."
-msgstr ""
-
-#: registration/templates/registration_form.html:24
-msgid "Don't use spaces or special characters"
-msgstr ""
-
-#: registration/templates/registration_form.html:31
-msgid "Password repeated"
-msgstr ""
-
-#: registration/templates/registration_form.html:34
-msgid "Sign-up"
-msgstr ""
-
 #: scheduler/apps.py:7
 msgid "Scheduler"
 msgstr ""
 
-#: scheduler/models.py:55 scheduler/models.py:113
+#: scheduler/models.py:56 scheduler/models.py:129
 msgid "help type"
 msgstr ""
 
-#: scheduler/models.py:56
+#: scheduler/models.py:57
 msgid "HELP_TYPE_HELP"
 msgstr ""
 
-#: scheduler/models.py:57 scheduler/models.py:148
+#: scheduler/models.py:58 scheduler/models.py:164
 msgid "location"
 msgstr ""
 
-#: scheduler/models.py:59
+#: scheduler/models.py:60
 msgid "starting time"
 msgstr ""
 
-#: scheduler/models.py:61
+#: scheduler/models.py:62
 msgid "ending time"
 msgstr ""
 
-#: scheduler/models.py:66
+#: scheduler/models.py:71
 msgid "number of needed volunteers"
 msgstr ""
 
-#: scheduler/models.py:72
+#: scheduler/models.py:77
 msgid "shift"
 msgstr ""
 
-#: scheduler/models.py:73
+#: scheduler/models.py:78
 msgid "shifts"
 msgstr ""
 
-#: scheduler/models.py:114
-msgid "help types"
+#: scheduler/models.py:123
+msgid "shift helper"
+msgstr ""
+
+#: scheduler/models.py:124
+msgid "shift helpers"
 msgstr ""
 
 #: scheduler/models.py:130
+msgid "help types"
+msgstr ""
+
+#: scheduler/models.py:146
 msgid "address"
 msgstr ""
 
-#: scheduler/models.py:132
+#: scheduler/models.py:148
 msgid "city"
 msgstr ""
 
-#: scheduler/models.py:134
+#: scheduler/models.py:150
 msgid "postal code"
 msgstr ""
 
-#: scheduler/models.py:136
+#: scheduler/models.py:152
 msgid "latitude"
 msgstr ""
 
-#: scheduler/models.py:138
+#: scheduler/models.py:154
 msgid "longitude"
 msgstr ""
 
-#: scheduler/models.py:140
+#: scheduler/models.py:156
 msgid "description"
 msgstr ""
 
-#: scheduler/models.py:149
+#: scheduler/models.py:165
 msgid "locations"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:52
+#: scheduler/templates/geographic_helpdesk.html:69
 msgid "Show on Google Maps"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:61
+#: scheduler/templates/geographic_helpdesk.html:78
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:90
+#: scheduler/templates/geographic_helpdesk.html:110
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr ""
@@ -564,8 +487,8 @@ msgstr ""
 msgid "Volunteers wanted"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:49
-msgid "dates"
+#: scheduler/templates/helpdesk.html:51
+msgid "open shifts"
 msgstr ""
 
 #: scheduler/templates/helpdesk_breadcrumps.html:6
@@ -750,6 +673,62 @@ msgstr ""
 msgid "Regions"
 msgstr ""
 
+#: templates/registration/activate.html:5
+msgid "Activation complete"
+msgstr ""
+
+#: templates/registration/activate.html:7
+msgid "Activation problem"
+msgstr ""
+
+#: templates/registration/activate.html:14
+#, python-format
+msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
+msgstr ""
+
+#: templates/registration/activate.html:19
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgstr ""
+
+#: templates/registration/activation_complete.html:3
+msgid "Activation successful!"
+msgstr ""
+
+#: templates/registration/activation_complete.html:9
+msgctxt "Activation successful page"
+msgid "Thank you for signing up."
+msgstr ""
+
+#: templates/registration/activation_complete.html:12
+msgctxt "Login link text on activation success page"
+msgid "You can login here."
+msgstr ""
+
+#: templates/registration/login.html:16
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/registration/login.html:43
+#: templates/registration/password_reset_form.html:6
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/registration/login.html:47
+msgid "Help and sign-up"
+msgstr ""
+
+#: templates/registration/logout.html:3
+msgid "Logged out"
+msgstr ""
+
+#: templates/registration/logout.html:5
+msgid "Logged out!"
+msgstr ""
+
+#: templates/registration/logout.html:6
+msgid "Login again?"
+msgstr ""
+
 #: templates/registration/password_change_done.html:3
 msgid "Password changed"
 msgstr ""
@@ -840,14 +819,51 @@ msgstr ""
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr ""
 
-#: volunteer_planner/settings/base.py:133
-msgid "German"
+#: templates/registration/registration_complete.html:3
+msgid "Activation email sent"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:134
-msgid "English"
+#: templates/registration/registration_complete.html:7
+#: tests/registration/test_registration.py:142
+msgid "An activation mail will be sent to you email address."
+msgstr ""
+
+#: templates/registration/registration_complete.html:13
+msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgstr ""
+
+#: templates/registration/registration_form.html:3
+msgid "Register for an account"
+msgstr ""
+
+#: templates/registration/registration_form.html:8
+msgid "Registration"
+msgstr ""
+
+#: templates/registration/registration_form.html:22
+msgid "Username already exists. Please choose a different username."
+msgstr ""
+
+#: templates/registration/registration_form.html:24
+msgid "Don't use spaces or special characters"
+msgstr ""
+
+#: templates/registration/registration_form.html:31
+msgid "Password repeated"
+msgstr ""
+
+#: templates/registration/registration_form.html:34
+msgid "Sign-up"
 msgstr ""
 
 #: volunteer_planner/settings/base.py:135
+msgid "German"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:136
+msgid "English"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:137
 msgid "Hungarian"
 msgstr ""
