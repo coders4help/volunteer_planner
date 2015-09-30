@@ -140,3 +140,6 @@ code {
 .dropdown-menu li {
   display: block;
 }
+.spacer{
+    margin-top:35px;
+}
