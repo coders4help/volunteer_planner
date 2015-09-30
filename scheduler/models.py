@@ -3,18 +3,55 @@
 import datetime
 
 from django.db import models
+from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
+
+from places.models import Country, Area, Place
+from places.models import Region
+
+
+class NeedManager(models.Manager):
+    def at_location(self, location):
+        return self.get_queryset().filter(location=location)
+
+    def at_place(self, place):
+        return self.get_queryset().filter(location__place=place)
+
+    def in_area(self, area):
+        return self.get_queryset().filter(location__place__area=area)
+
+    def in_region(self, region):
+        return self.get_queryset().filter(location__place__area__region=region)
+
+    def in_country(self, country):
+        return self.get_queryset().filter(
+            location__place__area__region__country=country)
+
+    def by_geography(self, geo_affiliation):
+        if isinstance(geo_affiliation, Location):
+            return self.at_location(geo_affiliation)
+        elif isinstance(geo_affiliation, Place):
+            return self.at_place(geo_affiliation)
+        elif isinstance(geo_affiliation, Area):
+            return self.in_area(geo_affiliation)
+        elif isinstance(geo_affiliation, Region):
+            return self.in_region(geo_affiliation)
+        elif isinstance(geo_affiliation, Country):
+            return self.in_country(geo_affiliation)
+
+
+class OpenNeedManager(NeedManager):
+    def get_queryset(self):
+        now = timezone.now()
+        qs = super(OpenNeedManager, self).get_queryset()
+        return qs.filter(ending_time__gte=now)
 
 
 class Need(models.Model):
     """
     This is the primary instance to create shifts
     """
-
-    class Meta:
-        verbose_name = _(u'shift')
-        verbose_name_plural = _(u'shifts')
 
     topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
                               help_text=_(u'HELP_TYPE_HELP'))
@@ -32,6 +69,9 @@ class Need(models.Model):
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+
+    objects = NeedManager()
+    open_needs = OpenNeedManager()
 
     class Meta:
         verbose_name = _(u'shift')

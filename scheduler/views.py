@@ -4,9 +4,13 @@ import datetime
 import logging
 
 from django.core.urlresolvers import reverse
+
 from django.contrib import messages
+
 from django.db.models import Count
+
 from django.views.generic import TemplateView, FormView, DetailView
+
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
@@ -110,7 +114,10 @@ class PlannerView(LoginRequiredMixin, FormView):
         return reverse('planner_by_location', kwargs=self.kwargs)
 
 
-class PlaceDetailView(DetailView):
+class GeographicHelpdeskView(DetailView):
+    template_name = 'geographic_helpdesk.html'
+    context_object_name = 'geographical_unit'
+
     def make_breadcrumps_dict(self, country, region=None, area=None,
                               place=None):
 
@@ -123,8 +130,30 @@ class PlaceDetailView(DetailView):
 
         return result
 
+    def get_queryset(self):
+        return super(GeographicHelpdeskView,
+                     self).get_queryset().select_related(
+            *self.model.get_select_related_list())
+
     def get_context_data(self, **kwargs):
-        context = super(PlaceDetailView, self).get_context_data(**kwargs)
-        context['breadcrumps'] = self.make_breadcrumps_dict(
-            *self.object.breadcrumps)
+        context = super(GeographicHelpdeskView, self).get_context_data(**kwargs)
+        place = self.object
+        context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
+        shifts = Need.open_needs.by_geography(place)
+        shifts = shifts.select_related('topic',
+                                       'location',
+                                       'location__place',
+                                       'location__place__area',
+                                       'location__place__area__region',
+                                       'location__place__area__region__country',
+                                       )
+        shifts = shifts.order_by('location__place__area__region__country',
+                                 'location__place__area__region',
+                                 'location__place__area',
+                                 'location__place',
+                                 'location',
+                                 'ending_time',
+                                 )
+        context['shifts'] = shifts
+
         return context

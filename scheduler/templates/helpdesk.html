@@ -2,24 +2,24 @@
 
 {% load google_links i18n %}
 {% block content %}
-    
-   {% if notifications %}
-	<div class="row">
-		<h2>{% trans "Notifications" %}</h2>
-		    {% for notification in notifications %}
 
-			<div>
-			    <h3>{{ notification.title }}</h3>
-			    <h4>
-				{% blocktrans with location_name=notification.location.name date=notification.creation_date %}
-				    {{ location_name }} on {{ date }}
-				{% endblocktrans %}
-			    </h4>
-			    {{ notification.text|safe }}
-			</div>
-		    {% endfor %}
-		</div>
-		<hr/>
+    {% if notifications %}
+        <div class="row">
+            <h2>{% trans "Notifications" %}</h2>
+            {% for notification in notifications %}
+
+                <div>
+                    <h3>{{ notification.title }}</h3>
+                    <h4>
+                        {% blocktrans with location_name=notification.location.name date=notification.creation_date %}
+                            {{ location_name }} on {{ date }}
+                        {% endblocktrans %}
+                    </h4>
+                    {{ notification.text|safe }}
+                </div>
+            {% endfor %}
+        </div>
+        <hr/>
     {% endif %}
 
     <div class="row">
@@ -30,8 +30,10 @@
         {% for location_shifts in shifts_by_location %}
             {% with location_shifts.grouper as location %}
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <h3>{{ location }} </h3>
+                    </div>
+                <div class="col-md-8">
                         {% with location.street|add:", "|add:location.postal_code|add:" "|add:location.city as address_line %}
                             {% if address_line %}
                                 <h5>{{ address_line }} <a
@@ -45,8 +47,8 @@
 
                     {% regroup location_shifts.list by ending_time.date as shifts_by_time %}
 
-                    <div class="pull-right">
-                        <h3>{% trans "dates" %}</h3>
+                    <div class="col-md-4">
+                        <h4>{% trans "open shifts" %}</h4>
 
                         <p>
                             {% for shift_time in shifts_by_time %}
@@ -60,6 +62,7 @@
                         </p>
                     </div>
                 </div>
+                <hr>
             {% endwith %}
         {% endfor %}
     </div>

@@ -1,19 +1,11 @@
 {% extends "helpdesk_base.html" %}
 
+{% load i18n vpfilters %}
+
 {% block title %}
     {% blocktrans trimmed context "title with location" with location_name=location.name %}
         Schedule for {{ location_name }}
     {% endblocktrans %}
-{% endblock %}
-
-{% load i18n %}
-{% load vpfilters %}
-
-
-{% block title %}
-        {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date:"d.M.y"  %}
-            Schedule for {{ schedule_date }}
-        {% endblocktrans %}
 {% endblock %}
 
 {% block helpdesk_content %}
@@ -28,7 +20,7 @@
         </h2>
 
         <h3>
-            {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date  %}
+            {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date %}
                 Schedule for {{ schedule_date }}
             {% endblocktrans %}
         </h3>
