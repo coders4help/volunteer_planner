@@ -32,11 +32,11 @@ def move_user_needs(apps, schema_editor):
                 has_shifts = True
             if not has_shifts:
                 users_without_shifts += 1
-
-        sys.stdout.write(
-            '\r    Migrated {} accounts totalling {} shifts ({} users w/o shifts)'.format(
-                account_count, shift_count, users_without_shifts))
-        sys.stdout.flush()
+        if account_count % 43 == 0:
+            sys.stdout.write(
+                '\r    Migrated {} accounts totalling {} shifts ({} users w/o shifts)'.format(
+                    account_count, shift_count, users_without_shifts))
+            sys.stdout.flush()
 
 
 class Migration(migrations.Migration):

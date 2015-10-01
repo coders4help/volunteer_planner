@@ -54,7 +54,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='RegistrationProfile',
-            options={'managed': False},
+            options={
+                'managed': False
+            },
         ),
         migrations.RemoveField(
             model_name='RegistrationProfile',
