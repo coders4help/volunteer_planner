@@ -7,7 +7,6 @@
     <header class="header-image">
         <div id="stage">
             <div class="container">
-                <h1>{% trans "Volunteers Helping Refugees" %}</h1>
             </div>
         </div>
     </header>
@@ -22,22 +21,22 @@
             <div class="spacer"></div>
         </div>
 
-        <div class="col-md-4">
-            <a id="help-cta" href="{% url 'registration_register' %}">
+        <div class="col-md-4 ">
+            <a id="help-cta" href="{% url 'registration' %}">
                 <h2>{% trans "I want to help!" %}</h2>
                 <hr/>
                 <p>{% trans "Register and see where you can help" %}</p>
             </a><!-- // #about -->
         </div>
         <div class="col-md-4">
-            <a id="need-cta">
+            <a href="{% url  "shelter_info" %}" id="need-cta">
                 <h2>{% trans "Organize volunteers!" %}</h2>
                 <hr/>
                 <p>{% trans "Register a shelter and organize volunteers" %}</p>
             </a>
         </div>
         <div class="col-md-4">
-            <div class="facts">
+            <div class="facts ">
                 {% get_current_language as LANGUAGE_CODE %}
 
                 {% cache 900 volunteer_stats LANGUAGE_CODE %}

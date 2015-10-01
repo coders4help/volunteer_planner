@@ -136,6 +136,7 @@ hr {
   float: right;
   text-align: center;
   padding: 31px;
+  min-height:439px;
 }
 .facts-less-padding {
   padding: 20px 20px;
@@ -171,6 +172,7 @@ hr {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  min-height:439px;
 }
 
 #help-cta:hover, #need-cta:hover {
@@ -199,6 +201,10 @@ hr {
   background-image: url(../images/help-visual.png);
 }
 
+#help-cta h2{
+  margin:20px 0 45px !important;
+}
+
 #need-cta {
   /*float: right;*/
   background-image: url(../images/need-visual.png);
@@ -213,7 +219,27 @@ hr {
   text-decoration: none;
   background-image: url(../images/help-visual-2.png);
 }
+.boxed-cta{
+  height:439px;
+}
 
+ul.advantages{
+      list-style:none;
+      margin:0;
+      padding:0;
+}
+
+.advantages li{
+margin:10px;
+}
+
+li.check-icon:before {
+    font-family: 'FontAwesome';
+    content: '\f00c';
+    margin:0 5px 0 -15px;
+
+
+}
 /* ######################################################################################################### */
 .preload-image {
   display: none;

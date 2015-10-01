@@ -15,6 +15,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/static/bootstrap4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
     <link href="/static/css/custom.css" rel="stylesheet">
@@ -79,19 +80,24 @@
 
             <div id="footer-nav">
                 <ul>
-                    <li><a href="{% url 'home' %}">{% trans "Main page" %}</a>
+                    <li>
+                        <a href="{% url 'home' %}">{% trans "Main page" %}</a>
                     </li>
                     <li>
                         <a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a>
                     </li>
-                    <li><a href="">{% trans "Contact" %}</a></li>
-                    {% trans "Imprint" as imprint %}
-                    {% trans "Terms of Service" as tos %}
-                    {% trans "Privacy Policy" as privacy_policy %}
-                    {% blocktrans with imprint=imprint terms=terms privacy=privacy trimmed %}
-                        {{ imprint }}, {{ tos }} and {{ privacy_policy }}
-                    {% endblocktrans %}
-                    <li><a href=""></a></li>
+                    <li>
+                        <a href="">{% trans "Contact" %}</a>
+                    </li>
+                    <li>
+                        <a href="">{% trans "Imprint"%}</a>
+                    </li>
+                    <li>
+                        <a href="">{% trans "Terms of Service"%} </a>
+                    </li>
+                    <li>
+                        <a href="">{% trans "Privacy Policy" %}</a>
+                    </li>
                 </ul>
             </div>
 
