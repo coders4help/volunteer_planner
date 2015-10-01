@@ -6,6 +6,7 @@ import logging
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.db.models import Count
+from django.utils.safestring import mark_safe
 from django.views.generic import TemplateView, FormView, DetailView
 from django.shortcuts import get_object_or_404
 
@@ -82,18 +83,20 @@ class PlannerView(LoginRequiredMixin, FormView):
         print(form.cleaned_data)
 
         if shift_to_join:
-            conflicts = shift_to_join.get_conflicting_needs(
-                user_account.needs.all())
-            if conflicts:
-                conflicts_string = u", ".join(
-                    u'{}'.format(conflict) for conflict in conflicts)
+
+            conflicts = ShiftHelper.objects.conflicting(shift_to_join,
+                                                        user_account=user_account)
+            conflicted_needs = [shift_helper.need for shift_helper in conflicts]
+
+            if conflicted_needs:
+                error_message = _(
+                    u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
+                message_list = u'<ul>{}</ul>'.format('\n'.join(
+                    ['<li>{}</li>'.format(conflict) for conflict in conflicted_needs]))
                 messages.warning(self.request,
-                                 _(
-                                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time: {conflicts}'.format(
-                                         conflicts=
-                                         conflicts_string)))
+                                 mark_safe(u'{}<br/>{}'.format(error_message,
+                                                     message_list)))
             else:
-                # user_account.needs.add(join_shift)
                 shift_helper, created = ShiftHelper.objects.get_or_create(
                     user_account=user_account, need=shift_to_join)
                 if created:
@@ -108,7 +111,8 @@ class PlannerView(LoginRequiredMixin, FormView):
                 ShiftHelper.objects.get(user_account=user_account,
                                         need=shift_to_leave).delete()
             except ShiftHelper.DoesNotExist:
-                # just catch the exception, user seems not to have signed up for this shift tho
+                # just catch the exception,
+                # user seems not to have signed up for this shift
                 pass
             messages.success(self.request, _(
                 u'You successfully left this shift.'))

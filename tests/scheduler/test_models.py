@@ -1,18 +1,24 @@
-import datetime
+# coding: utf-8
+
+from datetime import timedelta, datetime
 
 from django.test import TestCase
 
-from scheduler.models import Need, Location
-from tests.factories import NeedFactory, LocationFactory
+from scheduler.models import Need, Location, ShiftHelper
+from tests.factories import NeedFactory, LocationFactory, UserAccountFactory
 
 
-def create_need(start_hour, end_hour):
+def create_need(start_hour, end_hour, location=None):
     """
     Tiny helper because setting time periods is awkward till we remove the FK relationship.
     """
-    start = datetime.datetime(2015, 1, 1, start_hour)
-    end = datetime.datetime(2015, 1, 1, end_hour)
-    return NeedFactory.create(starting_time=start, ending_time=end)
+    create_args = dict(
+        starting_time=datetime(2015, 1, 1, start_hour),
+        ending_time=datetime(2015, 1, 1, end_hour)
+    )
+    if location:
+        create_args['location'] = location
+    return NeedFactory.create(**create_args)
 
 
 class NeedTestCase(TestCase):
@@ -22,24 +28,89 @@ class NeedTestCase(TestCase):
     """
 
     def setUp(self):
-        self.needs = [create_need(9, 12), create_need(18, 21)]
+        self.user_account = UserAccountFactory.create()
+        self.morning_shift = create_need(9, 12)
+        ShiftHelper.objects.create(user_account=self.user_account,
+                                   need=self.morning_shift)
 
-    def test_non_conflict(self):
-        need = create_need(14, 16)
-        assert not need.get_conflicting_needs(self.needs)
+        self.evening_shift = create_need(18, 21)
+        ShiftHelper.objects.create(user_account=self.user_account,
+                                   need=self.evening_shift)
 
-    def test_clear_conflict(self):
+    def tearDown(self):
+        Need.objects.all().delete()
+        ShiftHelper.objects.all().delete()
+
+    def test_non_conflict_tight_fitting(self):
+        need = create_need(12, 18)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 0
+
+    def test_non_conflict_gap_after(self):
+        need = create_need(12, 17)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 0
+
+    def test_non_conflict_gap_before(self):
+        need = create_need(13, 18)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 0
+
+    def test_non_conflict_tight_fitting_no_grace(self):
+        need = create_need(12, 18)
+        assert ShiftHelper.objects.conflicting(need=need,
+                                               grace=None).count() == 0
+
+    def test_non_conflict_gap_after_no_grace(self):
+        need = create_need(12, 17)
+        assert ShiftHelper.objects.conflicting(need=need,
+                                               grace=None).count() == 0
+
+    def test_non_conflict_gap_before_no_grace(self):
+        need = create_need(13, 18)
+        assert ShiftHelper.objects.conflicting(need=need,
+                                               grace=None).count() == 0
+
+    def test_non_conflict_gaps(self):
+        need = create_need(13, 17)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 0
+
+    def test_non_conflict_gaps_no_grace(self):
+        need = create_need(13, 17)
+        assert ShiftHelper.objects.conflicting(need=need,
+                                               grace=None).count() == 0
+
+    def test_conflict_at_beginning(self):
+        need = create_need(8, 11)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 1
+
+    def test_conflict_at_beginning_no_grace(self):
+        need = create_need(9, 11)
+        assert ShiftHelper.objects.conflicting(need=need,
+                                               grace=None).count() == 1
+
+    def test_conflict_at_end(self):
+        need = create_need(10, 15)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 1
+
+    def test_conflict_at_end_no_grace(self):
+        need = create_need(11, 15)
+        assert ShiftHelper.objects.conflicting(need=need,
+                                               grace=None).count() == 1
+
+    def test_conflict_within(self):
+        need = create_need(10, 11)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 1
+
+    def test_conflict_within_no_grace(self):
         need = create_need(9, 12)
-        assert need.get_conflicting_needs(self.needs)
+        assert ShiftHelper.objects.conflicting(need=need,
+                                               grace=None).count() == 1
 
-    def test_not_conflict_1h_grace(self):
-        need = create_need(11, 14)
-        assert not need.get_conflicting_needs(self.needs)
+    def test_conflict_around(self):
+        need = create_need(8, 13)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 1
 
-    def test_conflict_0h_grace(self):
-        need = create_need(11, 14)
-        assert need.get_conflicting_needs(self.needs,
-                                          grace=datetime.timedelta(hours=0))
+    def test_conflict_around_no_grace(self):
+        need = create_need(8, 13)
+        assert ShiftHelper.objects.conflicting(need=need).count() == 1
 
 
 class LocationTestCase(TestCase):
@@ -47,11 +118,11 @@ class LocationTestCase(TestCase):
         """
             checks that get_days_with_needs() returns only dates later than datetime.now()
         """
-        now = datetime.datetime.now()
-        yesterday_start = now - datetime.timedelta(1)
-        yesterday_end = yesterday_start + datetime.timedelta(hours=1)
-        tomorrow_start = now + datetime.timedelta(1)
-        tomorrow_end = tomorrow_start + datetime.timedelta(hours=1)
+        now = datetime.now()
+        yesterday_start = now - timedelta(1)
+        yesterday_end = yesterday_start + timedelta(hours=1)
+        tomorrow_start = now + timedelta(1)
+        tomorrow_end = tomorrow_start + timedelta(hours=1)
 
         location = LocationFactory.create()
 
