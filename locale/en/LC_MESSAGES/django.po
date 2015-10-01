@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-01 20:40+0200\n"
+"POT-Creation-Date: 2015-10-02 01:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,48 +77,43 @@ msgctxt "maps directions url pattern"
 msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:50
+#: non_logged_in_area/templates/base_non_logged_in.html:51
 #: templates/partials/navigation_bar.html:68
 #: templates/registration/login.html:3 templates/registration/login.html:11
 msgid "Login"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:54
+#: non_logged_in_area/templates/base_non_logged_in.html:55
 msgid "Register and start helping now!"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:82
+#: non_logged_in_area/templates/base_non_logged_in.html:84
 msgid "Main page"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:85
+#: non_logged_in_area/templates/base_non_logged_in.html:87
 #: non_logged_in_area/templates/faqs.html:5
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:87
+#: non_logged_in_area/templates/base_non_logged_in.html:90
 #: templates/partials/footer.html:10
 msgid "Contact"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:88
+#: non_logged_in_area/templates/base_non_logged_in.html:93
 #: templates/partials/footer.html:8
 msgid "Imprint"
 msgstr "Impressum"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:89
+#: non_logged_in_area/templates/base_non_logged_in.html:96
 #: templates/partials/footer.html:9
 msgid "Terms of Service"
 msgstr "Benutzungsbedingungen"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:90
+#: non_logged_in_area/templates/base_non_logged_in.html:99
 msgid "Privacy Policy"
 msgstr "Privatssphäre"
-
-#: non_logged_in_area/templates/base_non_logged_in.html:91
-#, python-format
-msgid "%(imprint)s, %(tos)s and %(privacy_policy)s"
-msgstr "%(imprint)s, %(tos)s und %(privacy_policy)s"
 
 #: non_logged_in_area/templates/faqs.html:10
 #, fuzzy
@@ -227,51 +222,47 @@ msgctxt "FAQ A7"
 msgid "Currently we need help to translate, write texts and create awesome designs. Want to help? Write a message on our %(facebook_link)s or send an %(email_url)s."
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:10
-msgid "Volunteers Helping Refugees"
-msgstr ""
-
-#: non_logged_in_area/templates/home.html:27
+#: non_logged_in_area/templates/home.html:26
 msgid "I want to help!"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:29
+#: non_logged_in_area/templates/home.html:28
 msgid "Register and see where you can help"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:34
+#: non_logged_in_area/templates/home.html:33
 msgid "Organize volunteers!"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:36
+#: non_logged_in_area/templates/home.html:35
 msgid "Register a shelter and organize volunteers"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:50
+#: non_logged_in_area/templates/home.html:49
 msgid "Places to help"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:57
+#: non_logged_in_area/templates/home.html:56
 msgid "Registered Volunteers"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:64
+#: non_logged_in_area/templates/home.html:63
 msgid "Worked Hours"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:76
+#: non_logged_in_area/templates/home.html:75
 msgid "What is it all about?"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:79
+#: non_logged_in_area/templates/home.html:78
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:87
+#: non_logged_in_area/templates/home.html:86
 msgid "This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference."
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:100
+#: non_logged_in_area/templates/home.html:99
 msgid "You can help at this locations:"
 msgstr ""
 
@@ -423,10 +414,7 @@ msgstr ""
 
 #: scheduler/templates/helpdesk.html:14
 #, python-format
-msgid ""
-"\n"
-"                            %(location_name)s on %(date)s\n"
-"                        "
+msgid "%(location_name)s on %(date)s"
 msgstr ""
 
 #: scheduler/templates/helpdesk.html:26

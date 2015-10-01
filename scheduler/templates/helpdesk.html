@@ -11,7 +11,7 @@
                 <div>
                     <h3>{{ notification.title }}</h3>
                     <h4>
-                        {% blocktrans with location_name=notification.location.name date=notification.creation_date %}
+                        {% blocktrans trimmed with location_name=notification.location.name date=notification.creation_date %}
                             {{ location_name }} on {{ date }}
                         {% endblocktrans %}
                     </h4>
