@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-30 17:26+0200\n"
+"POT-Creation-Date: 2015-10-01 20:40+0200\n"
 "PO-Revision-Date: 2015-09-29 17:48+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/models.py:13
+#: accounts/models.py:15
 msgid "user account"
 msgstr ""
 
-#: accounts/models.py:14
+#: accounts/models.py:16
 msgid "user accounts"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgstr "alcím"
 msgid "text"
 msgstr "szöveg"
 
-#: places/models.py:20 scheduler/models.py:144 shiftmailer/models.py:10
+#: places/models.py:20 scheduler/models.py:143 shiftmailer/models.py:10
 msgid "name"
 msgstr "név"
 
@@ -319,7 +319,7 @@ msgstr ""
 msgid "areas"
 msgstr ""
 
-#: places/models.py:132 scheduler/models.py:161
+#: places/models.py:132 scheduler/models.py:160
 msgid "place"
 msgstr ""
 
@@ -331,7 +331,7 @@ msgstr ""
 msgid "Scheduler"
 msgstr "Ütemező"
 
-#: scheduler/models.py:56 scheduler/models.py:129
+#: scheduler/models.py:56 scheduler/models.py:128
 msgid "help type"
 msgstr ""
 
@@ -339,7 +339,7 @@ msgstr ""
 msgid "HELP_TYPE_HELP"
 msgstr ""
 
-#: scheduler/models.py:58 scheduler/models.py:164
+#: scheduler/models.py:58 scheduler/models.py:163
 msgid "location"
 msgstr "helyszín"
 
@@ -363,45 +363,45 @@ msgstr "műszak"
 msgid "shifts"
 msgstr "műszakok"
 
-#: scheduler/models.py:123
+#: scheduler/models.py:115
 msgid "shift helper"
 msgstr ""
 
-#: scheduler/models.py:124
+#: scheduler/models.py:116
 #, fuzzy
 #| msgid "shifts"
 msgid "shift helpers"
 msgstr "műszakok"
 
-#: scheduler/models.py:130
+#: scheduler/models.py:129
 msgid "help types"
 msgstr ""
 
-#: scheduler/models.py:146
+#: scheduler/models.py:145
 msgid "address"
 msgstr ""
 
-#: scheduler/models.py:148
+#: scheduler/models.py:147
 msgid "city"
 msgstr ""
 
-#: scheduler/models.py:150
+#: scheduler/models.py:149
 msgid "postal code"
 msgstr ""
 
-#: scheduler/models.py:152
+#: scheduler/models.py:151
 msgid "latitude"
 msgstr ""
 
-#: scheduler/models.py:154
+#: scheduler/models.py:153
 msgid "longitude"
 msgstr ""
 
-#: scheduler/models.py:156
+#: scheduler/models.py:155
 msgid "description"
 msgstr ""
 
-#: scheduler/models.py:165
+#: scheduler/models.py:164
 msgid "locations"
 msgstr "helyszínek"
 
@@ -552,24 +552,30 @@ msgid ""
 "volunteer-planner.org\n"
 msgstr ""
 
-#: scheduler/views.py:73
+#: scheduler/views.py:70
 msgid "The submitted data was invalid."
 msgstr "A megadott adat érvénytelen volt."
 
-#: scheduler/views.py:80
+#: scheduler/views.py:77
 msgid "User account does not exist."
 msgstr ""
 
-#: scheduler/views.py:96
-#, python-brace-format
-msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+#: scheduler/views.py:93
+#, fuzzy
+#| msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Nem adhatunk hozzá ehhez a műszakhoz, mert már beleegyeztél másik műszakokhoz ugyanebben az időben: {conflicts}"
 
-#: scheduler/views.py:101
+#: scheduler/views.py:104
 msgid "You were successfully added to this shift."
 msgstr "Sikeresen hozzáadtunk ehhez a műszakhoz."
 
-#: scheduler/views.py:105
+#: scheduler/views.py:107
+#, python-brace-format
+msgid "You already signed up for this shift at {date_time}."
+msgstr ""
+
+#: scheduler/views.py:118
 msgid "You successfully left this shift."
 msgstr ""
 
@@ -799,7 +805,7 @@ msgid "Activation email sent"
 msgstr ""
 
 #: templates/registration/registration_complete.html:7
-#: tests/registration/test_registration.py:142
+#: tests/registration/test_registration.py:144
 msgid "An activation mail will be sent to you email address."
 msgstr ""
 
@@ -831,21 +837,21 @@ msgstr ""
 msgid "Sign-up"
 msgstr ""
 
-#: tests/registration/test_registration.py:40
-msgid "Dieses Feld ist zwingend erforderlich."
+#: tests/registration/test_registration.py:42
+msgid "This field is required."
 msgstr ""
 
-#: tests/registration/test_registration.py:79
+#: tests/registration/test_registration.py:81
 #, fuzzy
 #| msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Ez az érték csak betűt, számot és a @ . + - _ karaktereket tartalmazhatja"
 
-#: tests/registration/test_registration.py:107
+#: tests/registration/test_registration.py:109
 msgid "A user with that username already exists."
 msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
 
-#: tests/registration/test_registration.py:128
+#: tests/registration/test_registration.py:130
 msgid "The two password fields didn't match."
 msgstr ""
 

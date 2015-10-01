@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-30 17:26+0200\n"
+"POT-Creation-Date: 2015-10-01 20:40+0200\n"
 "PO-Revision-Date: 2015-09-29 17:48+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -25,11 +25,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/models.py:13
+#: accounts/models.py:15
 msgid "user account"
 msgstr "Benutzerkonto"
 
-#: accounts/models.py:14
+#: accounts/models.py:16
 msgid "user accounts"
 msgstr "Benutzerkonten"
 
@@ -290,7 +290,7 @@ msgstr "Untertitel"
 msgid "text"
 msgstr "Text"
 
-#: places/models.py:20 scheduler/models.py:144 shiftmailer/models.py:10
+#: places/models.py:20 scheduler/models.py:143 shiftmailer/models.py:10
 msgid "name"
 msgstr "Nachname"
 
@@ -322,7 +322,7 @@ msgstr "Gebiet"
 msgid "areas"
 msgstr "Gebiete"
 
-#: places/models.py:132 scheduler/models.py:161
+#: places/models.py:132 scheduler/models.py:160
 msgid "place"
 msgstr "Ort"
 
@@ -334,7 +334,7 @@ msgstr "Orte"
 msgid "Scheduler"
 msgstr "Schichtplaner"
 
-#: scheduler/models.py:56 scheduler/models.py:129
+#: scheduler/models.py:56 scheduler/models.py:128
 msgid "help type"
 msgstr "Hilfebereich"
 
@@ -342,7 +342,7 @@ msgstr "Hilfebereich"
 msgid "HELP_TYPE_HELP"
 msgstr ""
 
-#: scheduler/models.py:58 scheduler/models.py:164
+#: scheduler/models.py:58 scheduler/models.py:163
 msgid "location"
 msgstr "Ort"
 
@@ -366,43 +366,43 @@ msgstr "Schicht"
 msgid "shifts"
 msgstr "Schichten"
 
-#: scheduler/models.py:123
+#: scheduler/models.py:115
 msgid "shift helper"
 msgstr ""
 
-#: scheduler/models.py:124
+#: scheduler/models.py:116
 msgid "shift helpers"
 msgstr "Schichthelfer"
 
-#: scheduler/models.py:130
+#: scheduler/models.py:129
 msgid "help types"
 msgstr "Hilfebereiche"
 
-#: scheduler/models.py:146
+#: scheduler/models.py:145
 msgid "address"
 msgstr "Adresse"
 
-#: scheduler/models.py:148
+#: scheduler/models.py:147
 msgid "city"
 msgstr "Ort"
 
-#: scheduler/models.py:150
+#: scheduler/models.py:149
 msgid "postal code"
 msgstr "Postleitzahl"
 
-#: scheduler/models.py:152
+#: scheduler/models.py:151
 msgid "latitude"
 msgstr "Breite"
 
-#: scheduler/models.py:154
+#: scheduler/models.py:153
 msgid "longitude"
 msgstr "Länge"
 
-#: scheduler/models.py:156
+#: scheduler/models.py:155
 msgid "description"
 msgstr "Beschreibung"
 
-#: scheduler/models.py:165
+#: scheduler/models.py:164
 msgid "locations"
 msgstr "Orte"
 
@@ -549,24 +549,28 @@ msgid ""
 "volunteer-planner.org\n"
 msgstr ""
 
-#: scheduler/views.py:73
+#: scheduler/views.py:70
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:80
+#: scheduler/views.py:77
 msgid "User account does not exist."
 msgstr "Benutzeraccount existiert nicht"
 
-#: scheduler/views.py:96
-#, python-brace-format
-msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
-msgstr "Du kannst der Schicht nicht beitreten, da Du bereits an anderen mit überschneidenden Zeiten teilnehmen: {conflicts}"
+#: scheduler/views.py:93
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
+msgstr "Du kannst der Schicht nicht beitreten, da Du bereits an anderen mit überschneidenden Zeiten teilnehmen:"
 
-#: scheduler/views.py:101
+#: scheduler/views.py:104
 msgid "You were successfully added to this shift."
 msgstr "Du hast Dich erfolgreich für die Schicht angemeldet."
 
-#: scheduler/views.py:105
+#: scheduler/views.py:107
+#, python-brace-format
+msgid "You already signed up for this shift at {date_time}."
+msgstr "Du hast Dich bereits am {date_time} zu dieser Schicht angemeldet."
+
+#: scheduler/views.py:118
 msgid "You successfully left this shift."
 msgstr "Du hast Deine Teilnahme abgesagt."
 
@@ -663,7 +667,7 @@ msgid "Password"
 msgstr "Passwort"
 
 #: templates/registration/login.html:43
-#: templates/registration/auth_password_reset_form.html:6
+#: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
@@ -698,52 +702,52 @@ msgstr "Passwort ändern"
 
 #: templates/registration/password_change_form.html:11
 #: templates/registration/password_change_form.html:13
-#: templates/registration/auth_password_reset_form.html:12
-#: templates/registration/auth_password_reset_form.html:14
+#: templates/registration/password_reset_form.html:12
+#: templates/registration/password_reset_form.html:14
 msgid "Email address"
 msgstr "E-Mailadresse"
 
 #: templates/registration/password_change_form.html:15
-#: templates/registration/auth_password_reset_confirm.html:13
+#: templates/registration/password_reset_confirm.html:13
 msgid "Change password"
 msgstr "Passwort ändern"
 
-#: templates/registration/auth_password_reset_complete.html:3
+#: templates/registration/password_reset_complete.html:3
 msgid "Password reset complete"
 msgstr "Passwort wurde geändert"
 
-#: templates/registration/auth_password_reset_complete.html:8
+#: templates/registration/password_reset_complete.html:8
 msgctxt "login link title reset password complete page"
 msgid "log in"
 msgstr "einloggen"
 
-#: templates/registration/auth_password_reset_complete.html:9
+#: templates/registration/password_reset_complete.html:9
 #, python-format
 msgctxt "reset password complete page"
 msgid "Your password has been reset! You may now %(login_link)s again."
 msgstr "Dein Passwort wurde geändert. Du kannst dich jetzt wieder %(login_link)s."
 
-#: templates/registration/auth_password_reset_confirm.html:3
+#: templates/registration/password_reset_confirm.html:3
 msgid "Enter new password"
 msgstr "Neues Passwort festlegen"
 
-#: templates/registration/auth_password_reset_confirm.html:6
+#: templates/registration/password_reset_confirm.html:6
 msgid "Enter your new password below to reset your password"
 msgstr "Bitte gib dein neues Passwort ein"
 
-#: templates/registration/auth_password_reset_done.html:3
+#: templates/registration/password_reset_done.html:3
 msgid "Password reset"
 msgstr "Passwort zurückgesetzt"
 
-#: templates/registration/auth_password_reset_done.html:6
+#: templates/registration/password_reset_done.html:6
 msgid "We sent you an email with a link to reset your password."
 msgstr "Wir haben Dir eine E-Mail mit der Anleitung zum Ändern des Passwortes geschickt."
 
-#: templates/registration/auth_password_reset_done.html:7
+#: templates/registration/password_reset_done.html:7
 msgid "Please check your email and click the link to continue."
 msgstr "Bitte prüfe Deine E-Mails und folge der Anleitung um fortzufahren."
 
-#: templates/registration/auth_password_reset_email.html:3
+#: templates/registration/password_reset_email.html:3
 #, python-format
 msgid ""
 "You are receiving this email because you (or someone pretending to be you)\n"
@@ -759,7 +763,7 @@ msgstr ""
 "\n"
 "Um Dein Passwort zu ändern, klicke bitte folgenden Link:"
 
-#: templates/registration/auth_password_reset_email.html:12
+#: templates/registration/password_reset_email.html:12
 #, python-format
 msgid ""
 "\n"
@@ -774,12 +778,12 @@ msgstr ""
 "Viele Grüße,\n"
 "das %(site_name)s-Team\n"
 
-#: templates/registration/auth_password_reset_form.html:3
-#: templates/registration/auth_password_reset_form.html:16
+#: templates/registration/password_reset_form.html:3
+#: templates/registration/password_reset_form.html:16
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
-#: templates/registration/auth_password_reset_form.html:7
+#: templates/registration/password_reset_form.html:7
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Kein Problem! Wir schicken Dir eine E-Mail mit der Anleitung wie Du Dein Passort zurücksetzen kannst."
 
@@ -788,7 +792,7 @@ msgid "Activation email sent"
 msgstr "Aktivierungsemail wurde versandt"
 
 #: templates/registration/registration_complete.html:7
-#: tests/registration/test_registration.py:142
+#: tests/registration/test_registration.py:144
 msgid "An activation mail will be sent to you email address."
 msgstr "Dir wird jetzt eine Aktivierungs-E-Mail zugesendet."
 
@@ -820,19 +824,19 @@ msgstr "Passwort wiederholen"
 msgid "Sign-up"
 msgstr "Eintragen"
 
-#: tests/registration/test_registration.py:40
-msgid "Dieses Feld ist zwingend erforderlich."
-msgstr ""
+#: tests/registration/test_registration.py:42
+msgid "This field is required."
+msgstr "Dieses Feld ist zwingend erforderlich."
 
-#: tests/registration/test_registration.py:79
+#: tests/registration/test_registration.py:81
 msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Bitte einen gültigen Benutzernamen wählen. Der Wert darf nur Buchstaben, Zahlen und die Zeichen @, ., +, - und _ enthalten"
 
-#: tests/registration/test_registration.py:107
+#: tests/registration/test_registration.py:109
 msgid "A user with that username already exists."
 msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
 
-#: tests/registration/test_registration.py:128
+#: tests/registration/test_registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Die Passwörter stimmen nicht überein."
 

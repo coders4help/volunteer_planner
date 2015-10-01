@@ -39,7 +39,7 @@ class RegistrationTestCase(TestCase):
             response,
             'form',
             'email',
-            _('Dieses Feld ist zwingend erforderlich.'))
+            _('This field is required.'))
 
         assert RegistrationProfile.objects.count() == 0
 
