@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import datetime
+from datetime import timedelta
 
 from django.db import models
 from django.utils import timezone
@@ -52,6 +52,7 @@ class Need(models.Model):
     """
     This is the primary instance to create shifts
     """
+
     topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
                               help_text=_(u'HELP_TYPE_HELP'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
@@ -60,6 +61,10 @@ class Need(models.Model):
                                          db_index=True)
     ending_time = models.DateTimeField(verbose_name=_('ending time'),
                                        db_index=True)
+
+    helpers = models.ManyToManyField('accounts.UserAccount',
+                                     through='ShiftHelper',
+                                     related_name='needs')
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
@@ -73,39 +78,49 @@ class Need(models.Model):
         verbose_name_plural = _(u'shifts')
         ordering = ['starting_time', 'ending_time']
 
-    def get_conflicting_needs(self, needs, grace=datetime.timedelta(hours=1)):
-        """
-        Given a list of other needs, this function returns needs that overlap by time.
-        A grace period of overlap is allowed:
-
-               Event A: 10 till 14
-               Event B: 13 till 15
-
-        would not conflict if a grace period of 1 hour or more is allowed, but would conflict if
-        the grace period is less.
-
-        This is not the most efficient implementation, but one of the more obvious. Optimize
-        only if needed. Nicked from:
-        http://stackoverflow.com/questions/3721249/python-date-interval-intersection
-
-        :param needs: A Django queryset of Need instances.
-        """
-        latest_start_time = self.starting_time + grace
-        earliest_end_time = self.ending_time - grace
-        if earliest_end_time <= latest_start_time:
-            # Event is shorter than 2 * grace time, can't have overlaps.
-            return []
-
-        return [
-            need for need in needs
-            if (need.starting_time < latest_start_time < need.ending_time) or
-            (latest_start_time < need.starting_time < earliest_end_time)
-            ]
-
     def __unicode__(self):
         return u"{title} - {location} ({start} - {end})".format(
             title=self.topic.title, location=self.location.name,
             start=localize(self.starting_time), end=localize(self.ending_time))
+
+
+class ShiftHelperManager(models.Manager):
+    def conflicting(self, need, user_account=None, grace=timedelta(hours=1)):
+
+        grace = grace or timedelta(0)
+        graced_start = need.starting_time + grace
+        graced_end = need.ending_time - grace
+
+        query_set = self.get_queryset().select_related('need', 'user_account')
+
+        if user_account:
+            query_set = query_set.filter(user_account=user_account)
+
+        query_set = query_set.exclude(need__starting_time__lt=graced_start,
+                                      need__ending_time__lte=graced_start)
+        query_set = query_set.exclude(need__starting_time__gte=graced_end,
+                                      need__ending_time__gte=graced_end)
+        return query_set
+
+
+class ShiftHelper(models.Model):
+    user_account = models.ForeignKey('accounts.UserAccount',
+                                     related_name='shift_helpers')
+    need = models.ForeignKey('scheduler.Need', related_name='shift_helpers')
+    joined_shift_at = models.DateTimeField(auto_now_add=True)
+
+    objects = ShiftHelperManager()
+
+    class Meta:
+        verbose_name = _('shift helper')
+        verbose_name_plural = _('shift helpers')
+        unique_together = ('user_account', 'need')
+
+    def __repr__(self):
+        return "{}".format(self.need)
+
+    def __unicode__(self):
+        return u"{}".format(repr(self))
 
 
 class Topics(models.Model):

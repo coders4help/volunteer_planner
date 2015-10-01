@@ -1,8 +1,10 @@
-argparse==1.2.1
+argparse==1.4.0
 decorator==4.0.2
 django-appconf==0.6
 django-ckeditor==4.5.0
 django-compressor==1.4
+django-extensions==1.5.7
+django-registration-redux==1.2
 Django==1.8.4
 djangocms-admin-style==0.2.8
 ipdb==0.8.1

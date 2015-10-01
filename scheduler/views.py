@@ -4,19 +4,16 @@ import datetime
 import logging
 
 from django.core.urlresolvers import reverse
-
 from django.contrib import messages
-
 from django.db.models import Count
-
+from django.utils.safestring import mark_safe
 from django.views.generic import TemplateView, FormView, DetailView
-
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
 
-from registration.models import RegistrationProfile
-from scheduler.models import Location, Need
+from accounts.models import UserAccount
+from scheduler.models import Location, Need, ShiftHelper
 from notifications.models import Notification
 from .forms import RegisterForNeedForm
 from volunteer_planner.utils import LoginRequiredMixin
@@ -54,14 +51,14 @@ class PlannerView(LoginRequiredMixin, FormView):
         context = super(PlannerView, self).get_context_data(**kwargs)
 
         context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']) \
-            .annotate(volunteer_count=Count('registrationprofile')) \
+            .annotate(volunteer_count=Count('helpers')) \
             .filter(ending_time__year=self.kwargs['year'],
                     ending_time__month=self.kwargs['month'],
                     ending_time__day=self.kwargs['day']) \
             .order_by('topic', 'ending_time') \
             .select_related('topic', 'location') \
-            .prefetch_related('registrationprofile_set',
-                              'registrationprofile_set__user')
+            .prefetch_related('helpers',
+                              'helpers__user')
 
         context['location'] = get_object_or_404(Location, pk=self.kwargs['pk'])
         context['schedule_date'] = datetime.date(int(self.kwargs['year']),
@@ -75,36 +72,52 @@ class PlannerView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         try:
-            reg_profile = self.request.user.registrationprofile
-        except RegistrationProfile.DoesNotExist:
-            messages.warning(self.request, _(u'User profile does not exist.'))
+            user_account = self.request.user.account
+        except UserAccount.DoesNotExist:
+            messages.warning(self.request, _(u'User account does not exist.'))
             return super(PlannerView, self).form_valid(form)
 
-        join_shift = form.cleaned_data.get("join_shift")
-        leave_shift = form.cleaned_data.get("leave_shift")
+        shift_to_join = form.cleaned_data.get("join_shift")
+        shift_to_leave = form.cleaned_data.get("leave_shift")
 
         print(form.cleaned_data)
 
-        if join_shift:
-            conflicts = join_shift.get_conflicting_needs(
-                reg_profile.needs.all())
-            if conflicts:
-                conflicts_string = u", ".join(
-                    u'{}'.format(conflict) for conflict in conflicts)
+        if shift_to_join:
+
+            conflicts = ShiftHelper.objects.conflicting(shift_to_join,
+                                                        user_account=user_account)
+            conflicted_needs = [shift_helper.need for shift_helper in conflicts]
+
+            if conflicted_needs:
+                error_message = _(
+                    u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
+                message_list = u'<ul>{}</ul>'.format('\n'.join(
+                    ['<li>{}</li>'.format(conflict) for conflict in conflicted_needs]))
                 messages.warning(self.request,
-                                 _(
-                                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time: {conflicts}'.format(
-                                         conflicts=
-                                         conflicts_string)))
+                                 mark_safe(u'{}<br/>{}'.format(error_message,
+                                                     message_list)))
             else:
-                messages.success(self.request, _(
-                    u'You were successfully added to this shift.'))
-                reg_profile.needs.add(join_shift)
-        elif leave_shift:
+                shift_helper, created = ShiftHelper.objects.get_or_create(
+                    user_account=user_account, need=shift_to_join)
+                if created:
+                    messages.success(self.request, _(
+                        u'You were successfully added to this shift.'))
+                else:
+                    messages.warning(self.request, _(
+                        u'You already signed up for this shift at {date_time}.').format(
+                        date_time=shift_helper.joined_shift_at))
+        elif shift_to_leave:
+            try:
+                ShiftHelper.objects.get(user_account=user_account,
+                                        need=shift_to_leave).delete()
+            except ShiftHelper.DoesNotExist:
+                # just catch the exception,
+                # user seems not to have signed up for this shift
+                pass
             messages.success(self.request, _(
                 u'You successfully left this shift.'))
-            reg_profile.needs.remove(leave_shift)
-        reg_profile.save()
+
+        user_account.save()
         return super(PlannerView, self).form_valid(form)
 
     def get_success_url(self):

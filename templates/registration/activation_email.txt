@@ -1,4 +1,4 @@
-{% url 'user_activate' as activation_key_url %}
+{% url 'registration_activate' as activation_key_url %}
 Hallo {{ user }},
 vielen Dank, dass Du helfen willst! Nur noch einen Schritt, dann kannst Du Dich für die Freiwilligendienste anmelden!
 

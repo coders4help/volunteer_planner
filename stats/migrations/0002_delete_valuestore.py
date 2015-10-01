@@ -7,12 +7,11 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('registration', '0005_merge'),
+        ('stats', '0001_initial'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='registrationprofile',
-            name='interests',
+        migrations.DeleteModel(
+            name='ValueStore',
         ),
     ]

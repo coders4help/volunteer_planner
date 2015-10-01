@@ -13,16 +13,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='RegistrationProfile',
+            name='UserAccount',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('activation_key', models.CharField(max_length=40, verbose_name='activation key')),
-                ('user', models.ForeignKey(verbose_name='user', to=settings.AUTH_USER_MODEL, unique=True)),
+                ('user', models.OneToOneField(related_name='account', to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'verbose_name': 'registration profile',
-                'verbose_name_plural': 'registration profiles',
+                'verbose_name': 'user account',
+                'verbose_name_plural': 'user accounts',
             },
-            bases=(models.Model,),
         ),
     ]

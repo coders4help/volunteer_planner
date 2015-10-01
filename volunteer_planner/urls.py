@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     # Examples:
 
-    url(r'^auth/', include('registration.urls')),
+    url(r'^auth/', include('registration.backends.default.urls')),
     url(r'^account/', include('accounts.urls')),
     url(r'^faq/', TemplateView.as_view(template_name='faq.html'), name="faq"),
     url(r'^helpdesk/', include('scheduler.urls')),

@@ -1,14 +1,16 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
+import pytest
 
 from registration.models import RegistrationProfile
+from accounts.models import UserAccount
 
 
 class RegistrationTestCase(TestCase):
     def setUp(self):
         # TODO: fix typo in url name in urls.py
-        self.registration_url = reverse('registration')
+        self.registration_url = reverse('registration_register')
 
         self.valid_user_data = {'username': 'somename',
                                 'email': 'somename@example.de',
@@ -18,7 +20,7 @@ class RegistrationTestCase(TestCase):
     def test_get_displays_empty_form(self):
         response = self.client.get(self.registration_url)
         assert response.status_code == 200
-        self.assertTemplateUsed(response, 'registration_form.html')
+        self.assertTemplateUsed(response, 'registration/registration_form.html')
 
         form = response.context['form']
         assert form is not None
@@ -37,7 +39,7 @@ class RegistrationTestCase(TestCase):
             response,
             'form',
             'email',
-            'Dieses Feld ist zwingend erforderlich.')
+            _('This field is required.'))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -76,7 +78,7 @@ class RegistrationTestCase(TestCase):
             'form',
             'username',
             _(
-                u'This value may contain only letters, numbers and @/./+/-/_ characters.'))
+                'Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters.'))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -124,8 +126,8 @@ class RegistrationTestCase(TestCase):
         self.assertFormError(
             response,
             'form',
-            None,
-            'Die zwei Passwoerter sind nicht gleich!')
+            'password2',
+            _("The two password fields didn't match."))
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -152,6 +154,9 @@ class RegistrationTestCase(TestCase):
         new_user = RegistrationProfile.objects.first()
         assert not new_user.user.is_active
 
+        with pytest.raises(UserAccount.DoesNotExist):
+            UserAccount.objects.get(user=new_user.user)
+
     def test_activate_registered_user(self):
         self.client.post(self.registration_url, self.valid_user_data)
 
@@ -159,15 +164,21 @@ class RegistrationTestCase(TestCase):
 
         assert not new_user.user.is_active
 
-        activation_url = reverse('user_activate')
         activation_key = new_user.activation_key
+        activation_url = reverse('registration_activate',
+                                 args=[activation_key, ])
 
         response = self.client.get(activation_url,
-                                   data={'activation_key': activation_key},
                                    follow=True)
 
         activation_complete_url = reverse('registration_activation_complete')
 
         self.assertRedirects(response, activation_complete_url)
 
-        assert RegistrationProfile.objects.first().user.is_active
+        user_from_regprofile = RegistrationProfile.objects.get(
+            user=new_user.user).user
+        user_from_account = UserAccount.objects.get(user=new_user.user).user
+
+        assert user_from_account == user_from_regprofile
+        assert user_from_account.is_active
+        assert user_from_regprofile.is_active

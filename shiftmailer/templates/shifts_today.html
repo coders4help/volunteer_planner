@@ -7,7 +7,7 @@
 
 {% for need in needs %}
 
-    {% if need.registrationprofile_set %}
+    {% if need.helpers %}
         {% ifchanged need.topic.title %}
             {{ need.topic.title }}
         {% endifchanged %}
@@ -17,7 +17,7 @@
             {{ volunteer_count }} volunteers have signed up:
         {% endblocktrans %}
 
-        {% for volunteer in need.registrationprofile_set.all %}
+        {% for volunteer in need.helpers.all %}
             {{ volunteer.user.username }} ({{ volunteer.user.email }})
         {% endfor %}
 

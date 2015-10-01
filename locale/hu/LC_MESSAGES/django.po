@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 21:23+0200\n"
+"POT-Creation-Date: 2015-10-01 20:40+0200\n"
 "PO-Revision-Date: 2015-09-29 17:48+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
@@ -22,12 +22,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: accounts/models.py:15
+msgid "user account"
+msgstr ""
+
+#: accounts/models.py:16
+msgid "user accounts"
+msgstr ""
+
 #: accounts/templates/user_account_edit.html:16
 msgid "Save"
 msgstr "Mentés"
 
-#: accounts/templates/user_detail.html:14 registration/forms.py:34
-#: registration/templates/login.html:24
+#: accounts/templates/user_detail.html:14 templates/registration/login.html:24
 msgid "Username"
 msgstr "Felhasználónév"
 
@@ -39,8 +46,8 @@ msgstr "Keresztnév"
 msgid "Last name"
 msgstr "Vezetéknév"
 
-#: accounts/templates/user_detail.html:17 registration/forms.py:37
-#: registration/templates/registration_form.html:15
+#: accounts/templates/user_detail.html:17
+#: templates/registration/registration_form.html:15
 msgid "Email"
 msgstr "E-mail"
 
@@ -77,8 +84,8 @@ msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
 msgstr ""
 
 #: non_logged_in_area/templates/base_non_logged_in.html:50
-#: registration/templates/login.html:3 registration/templates/login.html:11
 #: templates/partials/navigation_bar.html:68
+#: templates/registration/login.html:3 templates/registration/login.html:11
 msgid "Login"
 msgstr ""
 
@@ -280,7 +287,7 @@ msgstr "alcím"
 msgid "text"
 msgstr "szöveg"
 
-#: places/models.py:20 scheduler/models.py:128 shiftmailer/models.py:10
+#: places/models.py:20 scheduler/models.py:143 shiftmailer/models.py:10
 msgid "name"
 msgstr "név"
 
@@ -312,7 +319,7 @@ msgstr ""
 msgid "areas"
 msgstr ""
 
-#: places/models.py:132 scheduler/models.py:145
+#: places/models.py:132 scheduler/models.py:160
 msgid "place"
 msgstr ""
 
@@ -320,232 +327,96 @@ msgstr ""
 msgid "places"
 msgstr ""
 
-#: registration/admin.py:35
-msgid "Activate users"
-msgstr "Felhasználók aktiválása"
-
-#: registration/admin.py:56
-msgid "Re-send activation emails"
-msgstr "Aktiváló e-mail újraküldése"
-
-#: registration/forms.py:35 tests/registration/test_registration.py:79
-msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Ez az érték csak betűt, számot és a @ . + - _ karaktereket tartalmazhatja"
-
-#: registration/forms.py:39 registration/templates/login.html:29
-#: registration/templates/registration_form.html:27
-msgid "Password"
-msgstr "Jelszó"
-
-#: registration/forms.py:41
-msgid "Password (again)"
-msgstr "Jelszó (újra)"
-
-#: registration/forms.py:51 tests/registration/test_registration.py:107
-msgid "A user with that username already exists."
-msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
-
-#: registration/forms.py:58
-msgid "A user with that email already exists. Please login instead."
-msgstr "Már létezik ellel az e-mail címmel felhasználó. Inkább jelentkezzen be!"
-
-#: registration/forms.py:82
-msgid "I have read and agree to the Terms of Service"
-msgstr "Elolvastam a használati feltételeket és beleegyezem."
-
-#: registration/forms.py:83
-msgid "You must agree to the terms to register"
-msgstr "Bele kell egyeznie a feltételekbe, hogy regisztrálhasson."
-
-#: registration/forms.py:99
-msgid "This email address is already in use. Please supply a different email address."
-msgstr "Ezt az e-mail címet már használják. Kérem, adjon meg másik e-mail címet."
-
-#: registration/forms.py:124
-msgid "Registration using free email addresses is prohibited. Please supply a different email address."
-msgstr "Ingyenes e-mail címmel nem engedélyezett a regisztráció. Kérem, adjon meg másik e-mail címet."
-
-#: registration/models.py:219
-msgid "user"
-msgstr "felhasználó"
-
-#: registration/models.py:220
-msgid "activation key"
-msgstr "aktivációs kulcs"
-
-#: registration/templates/activate.html:5
-msgid "Activation complete"
-msgstr "Az aktiváció kész."
-
-#: registration/templates/activate.html:7
-msgid "Activation problem"
-msgstr "Probléma van az aktivációval."
-
-#: registration/templates/activate.html:14
-#, python-format
-msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
-msgstr "Köszönjük, %(account)s. Az aktiváció elkészült. Mostmár <a href='%(auth_login_url)s'>bejelentkezhet</a> a regisztrációkor megadott felhasználónévvel és jelszóval."
-
-#: registration/templates/activate.html:19
-msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
-msgstr "Hoppá &ndash; Ön már vagy előzőleg aktiválta a felhasználói fiókját, vagy az aktivációs kulcs érvénytelen, vagy lejárt."
-
-#: registration/templates/activation_complete.html:3
-msgid "Activation successful!"
-msgstr ""
-
-#: registration/templates/activation_complete.html:9
-msgctxt "Activation successful page"
-msgid "Thank you for signing up."
-msgstr ""
-
-#: registration/templates/activation_complete.html:12
-msgctxt "Login link text on activation success page"
-msgid "You can login here."
-msgstr ""
-
-#: registration/templates/login.html:16
-msgid "Your username and password didn't match. Please try again."
-msgstr "A felhasználónév és a jelszó nem megfelelő. Próbálja újra."
-
-#: registration/templates/login.html:43
-#: templates/registration/password_reset_form.html:6
-msgid "Forgot your password?"
-msgstr "Elfelejtette a jelszavát?"
-
-#: registration/templates/login.html:47
-msgid "Help and sign-up"
-msgstr ""
-
-#: registration/templates/logout.html:3
-msgid "Logged out"
-msgstr ""
-
-#: registration/templates/logout.html:5
-msgid "Logged out!"
-msgstr ""
-
-#: registration/templates/logout.html:6
-msgid "Login again?"
-msgstr ""
-
-#: registration/templates/registration_complete.html:3
-msgid "Activation email sent"
-msgstr ""
-
-#: registration/templates/registration_complete.html:7
-#: tests/registration/test_registration.py:142
-msgid "An activation mail will be sent to you email address."
-msgstr ""
-
-#: registration/templates/registration_complete.html:13
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
-msgstr ""
-
-#: registration/templates/registration_form.html:3
-msgid "Register for an account"
-msgstr ""
-
-#: registration/templates/registration_form.html:8
-msgid "Registration"
-msgstr ""
-
-#: registration/templates/registration_form.html:22
-msgid "Username already exists. Please choose a different username."
-msgstr ""
-
-#: registration/templates/registration_form.html:24
-msgid "Don't use spaces or special characters"
-msgstr ""
-
-#: registration/templates/registration_form.html:31
-msgid "Password repeated"
-msgstr ""
-
-#: registration/templates/registration_form.html:34
-msgid "Sign-up"
-msgstr ""
-
 #: scheduler/apps.py:7
 msgid "Scheduler"
 msgstr "Ütemező"
 
-#: scheduler/models.py:55 scheduler/models.py:113
+#: scheduler/models.py:56 scheduler/models.py:128
 msgid "help type"
 msgstr ""
 
-#: scheduler/models.py:56
+#: scheduler/models.py:57
 msgid "HELP_TYPE_HELP"
 msgstr ""
 
-#: scheduler/models.py:57 scheduler/models.py:148
+#: scheduler/models.py:58 scheduler/models.py:163
 msgid "location"
 msgstr "helyszín"
 
-#: scheduler/models.py:59
+#: scheduler/models.py:60
 msgid "starting time"
 msgstr "kezdés ideje"
 
-#: scheduler/models.py:61
+#: scheduler/models.py:62
 msgid "ending time"
 msgstr "befejezés ideje"
 
-#: scheduler/models.py:66
+#: scheduler/models.py:71
 msgid "number of needed volunteers"
 msgstr "a szükséges önkéntesek száma"
 
-#: scheduler/models.py:72
+#: scheduler/models.py:77
 msgid "shift"
 msgstr "műszak"
 
-#: scheduler/models.py:73
+#: scheduler/models.py:78
 msgid "shifts"
 msgstr "műszakok"
 
-#: scheduler/models.py:114
+#: scheduler/models.py:115
+msgid "shift helper"
+msgstr ""
+
+#: scheduler/models.py:116
+#, fuzzy
+#| msgid "shifts"
+msgid "shift helpers"
+msgstr "műszakok"
+
+#: scheduler/models.py:129
 msgid "help types"
 msgstr ""
 
-#: scheduler/models.py:130
+#: scheduler/models.py:145
 msgid "address"
 msgstr ""
 
-#: scheduler/models.py:132
+#: scheduler/models.py:147
 msgid "city"
 msgstr ""
 
-#: scheduler/models.py:134
+#: scheduler/models.py:149
 msgid "postal code"
 msgstr ""
 
-#: scheduler/models.py:136
+#: scheduler/models.py:151
 msgid "latitude"
 msgstr ""
 
-#: scheduler/models.py:138
+#: scheduler/models.py:153
 msgid "longitude"
 msgstr ""
 
-#: scheduler/models.py:140
+#: scheduler/models.py:155
 msgid "description"
 msgstr ""
 
-#: scheduler/models.py:149
+#: scheduler/models.py:164
 msgid "locations"
 msgstr "helyszínek"
 
-#: scheduler/templates/geographic_helpdesk.html:52
+#: scheduler/templates/geographic_helpdesk.html:69
 msgid "Show on Google Maps"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:61
+#: scheduler/templates/geographic_helpdesk.html:78
 #, fuzzy
 #| msgid "shifts"
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
 msgstr "műszakok"
 
-#: scheduler/templates/geographic_helpdesk.html:90
+#: scheduler/templates/geographic_helpdesk.html:110
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr ""
@@ -566,9 +437,11 @@ msgstr ""
 msgid "Volunteers wanted"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:49
-msgid "dates"
-msgstr ""
+#: scheduler/templates/helpdesk.html:51
+#, fuzzy
+#| msgid "shifts"
+msgid "open shifts"
+msgstr "műszakok"
 
 #: scheduler/templates/helpdesk_breadcrumps.html:6
 msgid "Helpdesk"
@@ -679,24 +552,30 @@ msgid ""
 "volunteer-planner.org\n"
 msgstr ""
 
-#: scheduler/views.py:73
+#: scheduler/views.py:70
 msgid "The submitted data was invalid."
 msgstr "A megadott adat érvénytelen volt."
 
-#: scheduler/views.py:80
-msgid "User profile does not exist."
+#: scheduler/views.py:77
+msgid "User account does not exist."
 msgstr ""
 
-#: scheduler/views.py:96
-#, python-brace-format
-msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+#: scheduler/views.py:93
+#, fuzzy
+#| msgid "We can't add you to this shift because you've already agreed to other shifts at the same time: {conflicts}"
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Nem adhatunk hozzá ehhez a műszakhoz, mert már beleegyeztél másik műszakokhoz ugyanebben az időben: {conflicts}"
 
-#: scheduler/views.py:101
+#: scheduler/views.py:104
 msgid "You were successfully added to this shift."
 msgstr "Sikeresen hozzáadtunk ehhez a műszakhoz."
 
-#: scheduler/views.py:105
+#: scheduler/views.py:107
+#, python-brace-format
+msgid "You already signed up for this shift at {date_time}."
+msgstr ""
+
+#: scheduler/views.py:118
 msgid "You successfully left this shift."
 msgstr ""
 
@@ -750,6 +629,67 @@ msgstr ""
 
 #: templates/partials/region_selection.html:15
 msgid "Regions"
+msgstr ""
+
+#: templates/registration/activate.html:5
+msgid "Activation complete"
+msgstr "Az aktiváció kész."
+
+#: templates/registration/activate.html:7
+msgid "Activation problem"
+msgstr "Probléma van az aktivációval."
+
+#: templates/registration/activate.html:14
+#, python-format
+msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
+msgstr "Köszönjük, %(account)s. Az aktiváció elkészült. Mostmár <a href='%(auth_login_url)s'>bejelentkezhet</a> a regisztrációkor megadott felhasználónévvel és jelszóval."
+
+#: templates/registration/activate.html:19
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgstr "Hoppá &ndash; Ön már vagy előzőleg aktiválta a felhasználói fiókját, vagy az aktivációs kulcs érvénytelen, vagy lejárt."
+
+#: templates/registration/activation_complete.html:3
+msgid "Activation successful!"
+msgstr ""
+
+#: templates/registration/activation_complete.html:9
+msgctxt "Activation successful page"
+msgid "Thank you for signing up."
+msgstr ""
+
+#: templates/registration/activation_complete.html:12
+msgctxt "Login link text on activation success page"
+msgid "You can login here."
+msgstr ""
+
+#: templates/registration/login.html:16
+msgid "Your username and password didn't match. Please try again."
+msgstr "A felhasználónév és a jelszó nem megfelelő. Próbálja újra."
+
+#: templates/registration/login.html:29
+#: templates/registration/registration_form.html:27
+msgid "Password"
+msgstr "Jelszó"
+
+#: templates/registration/login.html:43
+#: templates/registration/password_reset_form.html:6
+msgid "Forgot your password?"
+msgstr "Elfelejtette a jelszavát?"
+
+#: templates/registration/login.html:47
+msgid "Help and sign-up"
+msgstr ""
+
+#: templates/registration/logout.html:3
+msgid "Logged out"
+msgstr ""
+
+#: templates/registration/logout.html:5
+msgid "Logged out!"
+msgstr ""
+
+#: templates/registration/logout.html:6
+msgid "Login again?"
 msgstr ""
 
 #: templates/registration/password_change_done.html:3
@@ -860,14 +800,69 @@ msgstr "Jelszó visszaállítása"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Semmi gond! Elküldjük önnek, hogy hogyan állíthatja vissza a jelszavát."
 
-#: volunteer_planner/settings/base.py:133
+#: templates/registration/registration_complete.html:3
+msgid "Activation email sent"
+msgstr ""
+
+#: templates/registration/registration_complete.html:7
+#: tests/registration/test_registration.py:144
+msgid "An activation mail will be sent to you email address."
+msgstr ""
+
+#: templates/registration/registration_complete.html:13
+msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgstr ""
+
+#: templates/registration/registration_form.html:3
+msgid "Register for an account"
+msgstr ""
+
+#: templates/registration/registration_form.html:8
+msgid "Registration"
+msgstr ""
+
+#: templates/registration/registration_form.html:22
+msgid "Username already exists. Please choose a different username."
+msgstr ""
+
+#: templates/registration/registration_form.html:24
+msgid "Don't use spaces or special characters"
+msgstr ""
+
+#: templates/registration/registration_form.html:31
+msgid "Password repeated"
+msgstr ""
+
+#: templates/registration/registration_form.html:34
+msgid "Sign-up"
+msgstr ""
+
+#: tests/registration/test_registration.py:42
+msgid "This field is required."
+msgstr ""
+
+#: tests/registration/test_registration.py:81
+#, fuzzy
+#| msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr "Ez az érték csak betűt, számot és a @ . + - _ karaktereket tartalmazhatja"
+
+#: tests/registration/test_registration.py:109
+msgid "A user with that username already exists."
+msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
+
+#: tests/registration/test_registration.py:130
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: volunteer_planner/settings/base.py:135
 msgid "German"
 msgstr "Német"
 
-#: volunteer_planner/settings/base.py:134
+#: volunteer_planner/settings/base.py:136
 msgid "English"
 msgstr "Angol"
 
-#: volunteer_planner/settings/base.py:135
+#: volunteer_planner/settings/base.py:137
 msgid "Hungarian"
 msgstr "Magyar"

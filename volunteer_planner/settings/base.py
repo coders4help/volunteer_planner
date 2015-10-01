@@ -44,6 +44,7 @@ DJANGO_APPS = (
 )
 
 LOCAL_APPS = (
+
     'google_tools',
     'accounts',
     'common',
@@ -56,6 +57,7 @@ LOCAL_APPS = (
     'stats',
     'places',
     'non_logged_in_area',
+    'registration_history',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
