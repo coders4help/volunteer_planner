@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
         (b'registration', '0004_auto_20150903_2258'),
         (b'registration', '0004_auto_20150830_1945'),
         (b'registration', '0004_auto_20150822_1800'),
+        (b'registration', '0006_auto_20150917_2328'),
         (b'registration', '0005_merge'),
         (b'registration', '0006_remove_registrationprofile_interests'),
         (b'registration', '0002_registrationprofile_activated'),

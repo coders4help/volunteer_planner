@@ -1,8 +1,10 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
+import pytest
 
 from registration.models import RegistrationProfile
+from accounts.models import UserAccount
 
 
 class RegistrationTestCase(TestCase):
@@ -152,6 +154,9 @@ class RegistrationTestCase(TestCase):
         new_user = RegistrationProfile.objects.first()
         assert not new_user.user.is_active
 
+        with pytest.raises(UserAccount.DoesNotExist):
+            UserAccount.objects.get(user=new_user.user)
+
     def test_activate_registered_user(self):
         self.client.post(self.registration_url, self.valid_user_data)
 
@@ -170,4 +175,10 @@ class RegistrationTestCase(TestCase):
 
         self.assertRedirects(response, activation_complete_url)
 
-        assert RegistrationProfile.objects.first().user.is_active
+        user_from_regprofile = RegistrationProfile.objects.get(
+            user=new_user.user).user
+        user_from_account = UserAccount.objects.get(user=new_user.user).user
+
+        assert user_from_account == user_from_regprofile
+        assert user_from_account.is_active
+        assert user_from_regprofile.is_active

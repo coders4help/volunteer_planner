@@ -29,7 +29,7 @@ def get_volunteer_hours():
     """
     finished_needs = Need.objects.filter(
         starting_time__lte=timezone.now()).annotate(
-        slots_done=Count('registrationprofile'))
+        slots_done=Count('helpers'))
     delta = timedelta()
     for need in finished_needs:
         delta += need.slots_done * (need.ending_time - need.starting_time)

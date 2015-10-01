@@ -18,9 +18,9 @@ from scheduler.models import Need, Topics, Location
 class NeedAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         return super(NeedAdmin, self).get_queryset(request) \
-            .annotate(volunteer_count=Count('registrationprofile')) \
-            .prefetch_related('registrationprofile_set',
-                              'registrationprofile_set__user')
+            .annotate(volunteer_count=Count('helpers')) \
+            .prefetch_related('helpers',
+                              'helpers__user')
 
     def get_volunteer_count(self, obj):
         return obj.volunteer_count

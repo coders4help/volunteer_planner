@@ -1,6 +1,6 @@
 {% extends "base_non_logged_in.html" %}
 
-{% load volunteer_numbers humanize i18n cache %}
+{% load volunteer_stats humanize i18n cache %}
 
 {% block stage %}
     <!-- Full Width Image Header -->
@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-md-4">
-            <a id="help-cta" href="{% url 'registration' %}">
+            <a id="help-cta" href="{% url 'registration_register' %}">
                 <h2>{% trans "I want to help!" %}</h2>
                 <hr/>
                 <p>{% trans "Register and see where you can help" %}</p>
