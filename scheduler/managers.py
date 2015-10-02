@@ -3,7 +3,6 @@ from dateutil.parser import parse
 from django.db import models
 from django.utils import timezone
 from places.models import Place, Area, Region, Country
-from scheduler.models import Shift, RecurringEvent, Location
 
 
 class EnrolmentManager(models.Manager):
@@ -50,6 +49,10 @@ class NeedManager(models.Manager):
             location__place__area__region__country=country)
 
     def by_geography(self, geo_affiliation):
+        # HACK To avoid circular import
+        # TODO Remove hack once Location is in it's proper app: places
+        from .models import Location
+
         if isinstance(geo_affiliation, Location):
             return self.at_location(geo_affiliation)
         elif isinstance(geo_affiliation, Place):
@@ -71,6 +74,11 @@ class OpenNeedManager(NeedManager):
 
 class ShiftManager(NeedManager):
 
+    """
+    Draft of what blueprinting methods could look like. But there's no need for
+    them to live in a manager. Better to have a dedicated blueprinting module,
+    or such like.
+
     def create_datetime_from_day_and_time_string(self, day, time_str):
         return parse(time_str, default=day)
 
@@ -91,6 +99,7 @@ class ShiftManager(NeedManager):
         for event in events:
             shifts.append(self.create_shift_from_event_and_day(event, day))
         return shifts
+    """
 
     def open_shifts(self):
         return super(ShiftManager, self).get_queryset().filter(end_time__gte=timezone.now())
@@ -100,7 +109,7 @@ class RecurringEventManager(models.Manager):
 
     def get_events_for_facility_and_day(self, facility, day):
         weekday = day.weekday()
-        # since working with datetime, we may need to add deltatime and so here
+        # since working with datetime, we may need to add timedelta and so here
         return self.filter(facility=facility,
                            weekday=weekday,
                            first_date__gte=day,
