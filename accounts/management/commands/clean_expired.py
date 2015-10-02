@@ -19,4 +19,14 @@ class Command(BaseCommand):
         self.stdout.write('Deleting expired user registrations')
         dry_run = True if self.OPT_SIMULATE in options and options[
             self.OPT_SIMULATE] else False
-        RegistrationProfile.objects.delete_expired_users(dry_run)
+        if dry_run:
+            user_count, reg_profile_count = 0, 0
+            for profile in RegistrationProfile.objects.select_related(
+                    'user').exclude(user__is_active=True):
+                if profile.activation_key_expired():
+                    user_count += 1
+                    reg_profile_count += 1
+            print "Would delete {} User and {} RegistrationProfile objects".format(
+                user_count, reg_profile_count)
+        else:
+            RegistrationProfile.objects.delete_expired_users()
