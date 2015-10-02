@@ -20,7 +20,7 @@ shift_time_short_format = '%H:%M'
 class GenerateExcelSheet:
     def __init__(self, shifts, mailer):
         if not shifts:
-            raise AssertionError(u'No shifts given. Cannot generate Excel file.')
+            raise AssertionError(u'No shifts given. Cannot generate Excel file for {}.'.format(mailer.location))
 
         self.shifts = shifts
         self.mailer = mailer
