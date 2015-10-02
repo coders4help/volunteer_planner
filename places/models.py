@@ -138,9 +138,30 @@ class Place(BreadcrumpablePlaceModel):
         return self.area
 
 
-class Workplace(models.Model):
-    facility = models.ForeignKey("TBD.Facility", verbose_name=_(u''), help_text=_(u''))
-    # set only location if different from facility?
-    location = models.ForeignKey("scheduler.Location", null=True, verbose_name=_(u''), help_text=_(u''))
+class Organization(models.Model):
+    """
+    An organization of people, e.g. "Wilmersdorf hilft"
+    """
     name = models.CharField(max_length=255)
-    description = models.TextField(max_length=20000, blank=True)
+
+
+class Facility(models.Model):
+    """
+    A building complex or suchlike.
+    """
+    name = models.CharField(max_length=255)
+    organization = models.ForeignKey("places.Organization")
+    location = models.ForeignKey("scheduler.Location")
+
+
+class Workplace(models.Model):
+    """
+    A place where work is performed. E.g. "Spendenkammer".
+
+    TODO:
+    - We discussed workplaces having their own location if they're offsite. But wouldn't
+      we just create a new facility for that?
+    """
+    name = models.CharField(max_length=255)
+    facility = models.ForeignKey("places.Facility")
+    description = models.TextField(blank=True)
