@@ -47,8 +47,15 @@ class NeedManager(models.Manager):
             return self.in_country(geo_affiliation)
 
 
-
 class Location(models.Model):
+    """
+    TODO:
+    * Name, street, city, postal_code probably shouldn't be blank
+    * This really is a container for an address; it should be called that.
+    * lat/long should be removed until needed. Needs timestamps for last address
+      update and last lat/long update to be useful.
+    * Should be moved to places app
+    """
     name = models.CharField(max_length=255, blank=True,
                             verbose_name=_('name'))
     street = models.CharField(max_length=255, blank=True,
@@ -78,7 +85,7 @@ class Location(models.Model):
         )
 
     def __unicode__(self):
-        return u'{}'.format(self.name)
+        return self.name
 
 
 ## OLD PART TO BE REMOVED LATER
@@ -201,16 +208,24 @@ class Enrolment(models.Model):
         return _(u"{} enrolment for").format(self.user, self.shift)
 
 
-class Skill(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-    needs_approval = models.BooleanField(verbose_name=_(u'Skill needs approval'))
+# TBD: Isn't this too fine-grained? Maik would leave it out till we're sure we need it.
+#
+# class Skill(models.Model):
+#     """
+#     A particular skill of an individual, like cooking or translating.
+#     """
+#     name = models.CharField(max_length=255)
+#     description = models.TextField(blank=True)
+#     needs_approval = models.BooleanField(verbose_name=_(u'Skill needs approval'))
 
 
 class Task(models.Model):
-    skill = models.ManyToManyField("scheduler.Skill", verbose_name=_(u''), help_text=_(u''))
+    """
+    A particular task to be performed, like taking care of kids.
+    """
+    #skill = models.ManyToManyField("scheduler.Skill", verbose_name=_(u''), help_text=_(u''))
     name = models.CharField(max_length=255)
-    description = models.TextField(max_length=20000, blank=True)
+    description = models.TextField(blank=True)
 
 
 class Workplace(models.Model):
