@@ -14,6 +14,8 @@ from places.models import Region
 
 
 ## KEPT FROM OLD FOR NEW MODEL
+from scheduler.managers import EnrolmentManager
+
 
 class NeedManager(models.Manager):
     def at_location(self, location):
@@ -179,48 +181,29 @@ class Topics(models.Model):
 
 ### NEW PART
 
-class ShiftRegistrationManager(models.Manager):
-    def conflicting(self, shift, user_account=None, grace=timedelta(hours=1)):
 
-        grace = grace or timedelta(0)
-        graced_start = shift.starting_time + grace
-        graced_end = shift.ending_time - grace
-
-        query_set = self.get_queryset().select_related('shift', 'user_account')
-
-        if user_account:
-            query_set = query_set.filter(user_account=user_account)
-
-        query_set = query_set.exclude(shift__start_time__lt=graced_start,
-                                      shift__end_time__lte=graced_start)
-        query_set = query_set.exclude(shift__start_time__gte=graced_end,
-                                      shift__end_time__gte=graced_end)
-        return query_set
-
-
-class ShiftRegistration(models.Model):
-    user_account = models.ForeignKey('accounts.UserAccount')
+class Enrolment(models.Model):
+    """
+    Through model, representing when a user enrolled for a shift.
+    """
+    user = models.ForeignKey('accounts.UserAccount')
     shift = models.ForeignKey('scheduler.Shift')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
-    registration_ip = models.GenericIPAddressField()
 
-    objects = ShiftRegistrationManager()
+    objects = EnrolmentManager()
 
     class Meta:
-        verbose_name = _('shift registration')
-        verbose_name_plural = _('shift registrations')
-        unique_together = ('user_account', 'shift')
-
-    def __repr__(self):
-        return "{}".format(self.shift)
+        verbose_name = _('Enrolment for shift')
+        verbose_name_plural = _('Enrolments for shifts')
+        unique_together = ('user', 'shift')
 
     def __unicode__(self):
-        return u"{}".format(repr(self))
+        return _(u"{} enrolment for").format(self.user, self.shift)
 
 
 class Skill(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField(max_length=20000, blank=True)
+    description = models.TextField(blank=True)
     needs_approval = models.BooleanField(verbose_name=_(u'Skill needs approval'))
 
 
@@ -348,7 +331,7 @@ class Shift(models.Model):
     facility = models.ForeignKey("TBD.Facility", verbose_name=_(u''), help_text=_(u''))
     task = models.ForeignKey("scheduler.Task", verbose_name=_(u''), help_text=_(u''))
     workplace = models.ForeignKey("scheduler.Workplace", verbose_name=_(u''), help_text=_(u''))
-    helpers = models.ManyToManyField('accounts.UserAccount', through='ShiftRegistration', related_name='shifts')
+    helpers = models.ManyToManyField('accounts.UserAccount', through='Enrolment', related_name='shifts')
     # to set only if created from template. But really useful? Maybe just more complexity
     # origin_event = models.ForeignKey("RecurringEvent", null=True, verbose_name=_(u''), help_text=_(u''))
     name = models.CharField(max_length=255)
