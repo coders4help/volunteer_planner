@@ -62,6 +62,13 @@ class NeedManager(models.Manager):
             return self.in_country(geo_affiliation)
 
 
+class OpenNeedManager(NeedManager):
+    def get_queryset(self):
+        now = timezone.now()
+        qs = super(OpenNeedManager, self).get_queryset()
+        return qs.filter(ending_time__gte=now)
+
+
 class ShiftManager(NeedManager):
 
     def create_datetime_from_day_and_time_string(self, day, time_str):
@@ -87,3 +94,34 @@ class ShiftManager(NeedManager):
 
     def open_shifts(self):
         return super(ShiftManager, self).get_queryset().filter(end_time__gte=timezone.now())
+
+
+class RecurringEventManager(models.Manager):
+
+    def get_events_for_facility_and_day(self, facility, day):
+        weekday = day.weekday()
+        # since working with datetime, we may need to add deltatime and so here
+        return self.filter(facility=facility,
+                           weekday=weekday,
+                           first_date__gte=day,
+                           end_date__lte=day,
+                           disabled=False)
+
+
+class ShiftHelperManager(models.Manager):
+    def conflicting(self, need, user_account=None, grace=timedelta(hours=1)):
+
+        grace = grace or timedelta(0)
+        graced_start = need.starting_time + grace
+        graced_end = need.ending_time - grace
+
+        query_set = self.get_queryset().select_related('need', 'user_account')
+
+        if user_account:
+            query_set = query_set.filter(user_account=user_account)
+
+        query_set = query_set.exclude(need__starting_time__lt=graced_start,
+                                      need__ending_time__lte=graced_start)
+        query_set = query_set.exclude(need__starting_time__gte=graced_end,
+                                      need__ending_time__gte=graced_end)
+        return query_set

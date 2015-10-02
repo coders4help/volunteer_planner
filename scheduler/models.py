@@ -1,15 +1,12 @@
 # coding: utf-8
 
-from datetime import timedelta
-
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils import timezone
 from django.utils.formats import localize
 
 from django.utils.translation import ugettext_lazy as _
 
-from .managers import EnrolmentManager, ShiftManager, NeedManager
+from . import managers
 
 
 ## KEPT FROM OLD FOR NEW MODEL
@@ -57,12 +54,6 @@ class Location(models.Model):
 
 ## OLD PART TO BE REMOVED LATER
 
-class OpenNeedManager(NeedManager):
-    def get_queryset(self):
-        now = timezone.now()
-        qs = super(OpenNeedManager, self).get_queryset()
-        return qs.filter(ending_time__gte=now)
-
 
 class Need(models.Model):
     """
@@ -86,8 +77,8 @@ class Need(models.Model):
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
-    objects = NeedManager()
-    open_needs = OpenNeedManager()
+    objects = managers.NeedManager()
+    open_needs = managers.OpenNeedManager()
 
     class Meta:
         verbose_name = _(u'shift')
@@ -100,32 +91,13 @@ class Need(models.Model):
             start=localize(self.starting_time), end=localize(self.ending_time))
 
 
-class ShiftHelperManager(models.Manager):
-    def conflicting(self, need, user_account=None, grace=timedelta(hours=1)):
-
-        grace = grace or timedelta(0)
-        graced_start = need.starting_time + grace
-        graced_end = need.ending_time - grace
-
-        query_set = self.get_queryset().select_related('need', 'user_account')
-
-        if user_account:
-            query_set = query_set.filter(user_account=user_account)
-
-        query_set = query_set.exclude(need__starting_time__lt=graced_start,
-                                      need__ending_time__lte=graced_start)
-        query_set = query_set.exclude(need__starting_time__gte=graced_end,
-                                      need__ending_time__gte=graced_end)
-        return query_set
-
-
 class ShiftHelper(models.Model):
     user_account = models.ForeignKey('accounts.UserAccount',
                                      related_name='shift_helpers')
     need = models.ForeignKey('scheduler.Need', related_name='shift_helpers')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
-    objects = ShiftHelperManager()
+    objects = managers.ShiftHelperManager()
 
     class Meta:
         verbose_name = _('shift helper')
@@ -164,7 +136,7 @@ class Enrolment(models.Model):
     shift = models.ForeignKey('scheduler.Shift')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
-    objects = EnrolmentManager()
+    objects = managers.EnrolmentManager()
 
     class Meta:
         verbose_name = _('Enrolment for shift')
@@ -217,19 +189,11 @@ def time_validator(value):
         raise ValidationError('minutes %s can not be lower than 0 or higher than 59' % value)
 
 
-class RecurringEventManager(models.Manager):
-
-    def get_events_for_facility_and_day(self, facility, day):
-        weekday = day.weekday()
-        # since working with datetime, we may need to add deltatime and so here
-        return self.filter(facility=facility,
-                           weekday=weekday,
-                           first_date__gte=day,
-                           end_date__lte=day,
-                           disabled=False)
-
-
 class RecurringEvent(models.Model):
+    """
+    A sort of blueprint to bulk-create shifts.
+    """
+    # TODO: special checks for start_time and end_time CharField? in a validate method? Subclass of CharField?
     WEEKDAYS = ((0, _('Monday')),
                 (1, _('Tuesday')),
                 (2, _('Wednesday')),
@@ -250,19 +214,8 @@ class RecurringEvent(models.Model):
     created_at = models.DateTimeField(verbose_name=_('created_at'), auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name=_('updated_at'), auto_now=True)
     disabled = models.BooleanField(verbose_name=_('Disabled'), default=False)
-    # Event slug as well as any other grouping mechanism is disabled for now, to be added on request later on
-    # event_slug = models.CharField(max_length=255)
 
-    objects = RecurringEventManager()
-
-    # @property
-    # def slugify(self):
-    #     return '{}#{}-{}'.format(self.weekday, self.start_time, self.end_time)
-
-    def save(self, *args, **kwargs):
-        # TODO: special checks for start_time and end_time CharField? in a validate method? Subclass of CharField?
-        #self.event_slug = self.slugify
-        self.save(*args, **kwargs)
+    objects = managers.RecurringEventManager()
 
 
 class Shift(models.Model):
@@ -283,4 +236,4 @@ class Shift(models.Model):
     published_at = models.DateTimeField(verbose_name=_('published at'), null=True)
     cancelled_at = models.DateTimeField(verbose_name=_('cancelled at'), null=True)
 
-    objects = ShiftManager()
+    objects = managers.ShiftManager()
