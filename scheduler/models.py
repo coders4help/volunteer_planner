@@ -270,7 +270,6 @@ class RecurringEvent(models.Model):
                 (4, _('Friday')),
                 (5, _('Saturday')),
                 (6, _('Sunday')))
-    facility = models.ForeignKey("TBD.Facility", verbose_name=_(u''), help_text=_(u''))
     task = models.ForeignKey("scheduler.Task", verbose_name=_(u''), help_text=_(u''))
     workplace = models.ForeignKey("scheduler.Workplace", verbose_name=_(u''), help_text=_(u''))
     name = models.CharField(max_length=255)
@@ -309,8 +308,7 @@ class ShiftManager(NeedManager):
         return parse(time_str, default=day)
 
     def create_shift_from_event_and_day(self, event, day):
-        shift = Shift(facility=event.facility,
-                      task=event.task,
+        shift = Shift(task=event.task,
                       workplace=event.workplace,
                       name=event.name,
                       description=event.description,
