@@ -1,20 +1,20 @@
 # coding: utf-8
 
 from datetime import timedelta
-from dateutil.parser import parse
-from django.core.exceptions import ValidationError
 
+from dateutil.parser import parse
+
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
 
-from places.models import Country, Area, Place
-from places.models import Region
+from places.models import Country, Area, Place, Region
 
+from .managers import EnrolmentManager
 
 ## KEPT FROM OLD FOR NEW MODEL
-from scheduler.managers import EnrolmentManager
 
 
 class NeedManager(models.Manager):
@@ -227,13 +227,6 @@ class Task(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
 
-
-class Workplace(models.Model):
-    facility = models.ForeignKey("TBD.Facility", verbose_name=_(u''), help_text=_(u''))
-    # set only location if different from facility?
-    location = models.ForeignKey("scheduler.Location", null=True, verbose_name=_(u''), help_text=_(u''))
-    name = models.CharField(max_length=255)
-    description = models.TextField(max_length=20000, blank=True)
 
 # TODO: Think about timezone!
 # Blueprint is replaced by this. Day occurrence adjustment/copy is done on front-end

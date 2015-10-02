@@ -136,3 +136,11 @@ class Place(BreadcrumpablePlaceModel):
     @property
     def parent(self):
         return self.area
+
+
+class Workplace(models.Model):
+    facility = models.ForeignKey("TBD.Facility", verbose_name=_(u''), help_text=_(u''))
+    # set only location if different from facility?
+    location = models.ForeignKey("scheduler.Location", null=True, verbose_name=_(u''), help_text=_(u''))
+    name = models.CharField(max_length=255)
+    description = models.TextField(max_length=20000, blank=True)
