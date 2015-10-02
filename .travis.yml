@@ -5,3 +5,5 @@ before_install:
 install: "pip install -r requirements/dev.txt"
 env: DJANGO_SETTINGS_MODULE=volunteer_planner.settings.local
 script: py.test --create-db tests/
+notifications:
+  email: false
