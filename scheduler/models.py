@@ -167,33 +167,10 @@ class Task(models.Model):
     description = models.TextField(blank=True)
 
 
-# TODO: Think about timezone!
-# Blueprint is replaced by this. Day occurrence adjustment/copy is done on front-end
-# slot_amount is here an integer to make queries faster, it could evolve to something more flexible
-# or have something like senior_amount of manager_amount later on
-
-def time_validator(value):
-    if len(value) != 5:
-        raise ValidationError('length of %s is not equal to 5' % value)
-    if value[2] != ':':
-        raise ValidationError('separator of %s is not ":"' % value)
-    hours, minutes = value.split(':')
-    try:
-        hours = int(hours)
-        minutes = int(minutes)
-    except Exception, e:
-        raise ValidationError('hours and minutes of %s can not be converted to integer' % value)
-    if hours < 0 or hours > 23:
-        raise ValidationError('hours %s can not be lower than 0 or higher than 23' % value)
-    if minutes < 0 or minutes > 59:
-        raise ValidationError('minutes %s can not be lower than 0 or higher than 59' % value)
-
-
 class RecurringEvent(models.Model):
     """
     A sort of blueprint to bulk-create shifts.
     """
-    # TODO: special checks for start_time and end_time CharField? in a validate method? Subclass of CharField?
     WEEKDAYS = ((0, _('Monday')),
                 (1, _('Tuesday')),
                 (2, _('Wednesday')),
@@ -201,18 +178,18 @@ class RecurringEvent(models.Model):
                 (4, _('Friday')),
                 (5, _('Saturday')),
                 (6, _('Sunday')))
-    task = models.ForeignKey("scheduler.Task", verbose_name=_(u''), help_text=_(u''))
-    workplace = models.ForeignKey("scheduler.Workplace", verbose_name=_(u''), help_text=_(u''))
+    task = models.ForeignKey("scheduler.Task")
+    workplace = models.ForeignKey("places.Workplace")
     name = models.CharField(max_length=255)
-    description = models.TextField(max_length=20000, blank=True)
-    weekday = models.IntegerField(choices=WEEKDAYS, null=False)
+    description = models.TextField(blank=True)
+    weekday = models.IntegerField(choices=WEEKDAYS)
     needed_volunteers = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
-    start_time = models.CharField(verbose_name=_('Starting time'), max_length=5, validators=[time_validator])
-    end_time = models.CharField(verbose_name=_('Ending time'), max_length=5)
-    first_date = models.DateTimeField(verbose_name=_('First occurence'))
-    last_date = models.DateTimeField(verbose_name=_('Last occurence'))
-    created_at = models.DateTimeField(verbose_name=_('created_at'), auto_now_add=True)
-    updated_at = models.DateTimeField(verbose_name=_('updated_at'), auto_now=True)
+    start_time = models.TimeField(verbose_name=_('Starting time'))
+    end_time = models.TimeField(verbose_name=_('Ending time'))
+    first_date = models.DateTimeField(verbose_name=_('First occurrence'))
+    last_date = models.DateTimeField(verbose_name=_('Last occurrence'))
+    created_at = models.DateTimeField(verbose_name=_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name=_('updated at'), auto_now=True)
     disabled = models.BooleanField(verbose_name=_('Disabled'), default=False)
 
     objects = managers.RecurringEventManager()
