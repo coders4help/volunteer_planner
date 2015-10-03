@@ -1,4 +1,4 @@
-{% load humanize i18n %}
+{% load humanize i18n staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,26 +36,18 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-fixed-top navbar-light bg-faded">
-    <div class="container">
-        <button class="navbar-toggler hidden-sm-up" type="button"
-                data-toggle="collapse" data-target="#exCollapsingNavbar2">
-            &#9776;
-        </button>
-        <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-            <a class="navbar-brand" href="/"><img
-                    src="/static/images/volunteer-planner-logo.png" alt=""></a>
+    {# There's a issue with Nexus 4 not working with the collapsible hamburger in BS4 #}
+    <a class="navbar-brand" href="{% url 'home' %}">
+        <img src={% static "images/volunteer-planner-logo.png" %}>
+    </a>
 
-            <div class="form-inline navbar-form pull-right">
-                <a href="{% url 'auth_login' %}">
-                    <button type="button"
-                            class="btn btn-secondary">{% trans "Login" %}</button>
-                </a>
-                <a href="{% url 'registration' %}">
-                    <button type="button"
-                            class="btn btn-primary">{% trans "Register and start helping now!" %}</button>
-                </a>
-            </div>
-        </div>
+    <div class="pull-right">
+        <a href="{% url 'auth_login' %}" class="btn btn-secondary">
+            {% trans "Login" %}
+        </a>
+        <a href="{% url 'registration' %}" class="btn btn-primary">
+            {% trans "Start helping" %}
+        </a>
     </div>
 </nav>
 
