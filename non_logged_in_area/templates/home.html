@@ -15,7 +15,6 @@
 
 {% block content %}
 
-    <!-- /. row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="spacer"></div>
@@ -99,26 +98,18 @@
                 <h2>{% trans "You can help at this locations:" %}</h2>
 
                 {% for location_in_area in locations_by_area %}
-
-                    <div class="panel-heading" role="tab"
-                         id="heading-{{ location_in_area.grouper.id }}">
-                        <a data-toggle="collapse"
-                           data-parent="#accordion"
-                           href="#collapse-{{ location_in_area.grouper.id }}"
-                           aria-expanded="true"
-                           aria-controls="collapseOne">
-                            {{ location_in_area.grouper }}
-                        </a>
-                    </div>
-                    <div id="collapse-{{ location_in_area.grouper.id }}"
-                         class="panel-collapse collapse"
-                         role="tabpanel"
-                         aria-labelledby="heading-{{ location_in_area.grouper.id }}">
+                    {% comment %}
+                       If we get many locations, we can always make this a collapsed-by-default
+                       list. At the moment, there's not enough and it's more usable and SEO
+                       friendly to show all.
+                    {% endcomment %}
+                    {{ location_in_area.grouper }}
+                    <p>
                         {% for location in location_in_area.list %}
                             {{ location.name }}
                             {% if not forloop.last %}&bullet;{% endif %}
                         {% endfor %}
-                    </div>
+                    </p>
                 {% endfor %}
             </div>
         </div>
