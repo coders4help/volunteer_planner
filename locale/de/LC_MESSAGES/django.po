@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-03 15:49+0200\n"
-"PO-Revision-Date: 2015-10-03 13:52+0000\n"
+"PO-Revision-Date: 2015-10-03 14:17+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -94,7 +94,7 @@ msgstr "Login"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:49
 msgid "Start helping"
-msgstr ""
+msgstr "Hilf mit"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:76
 msgid "Main page"
@@ -433,7 +433,7 @@ msgstr "Derzeit sind keine Schichten geplant für %(geographical_name)s."
 
 #: scheduler/templates/helpdesk.html:8
 msgid "Important news"
-msgstr ""
+msgstr "Ankündigungen"
 
 #: scheduler/templates/helpdesk.html:14
 #, python-format
