@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(verbose_name='description')),
                 ('contact_info', models.TextField(verbose_name='description')),
                 ('address', models.TextField(verbose_name='address')),
-                ('zip_code', models.CharField(max_length=5, verbose_name='postal code', blank=True)),
+                ('zip_code', models.CharField(max_length=25, verbose_name='postal code', blank=True)),
                 ('show_on_map', models.BooleanField(default=True, verbose_name='Show on map of all facilities')),
                 ('latitude', models.CharField(max_length=30, verbose_name='latitude', blank=True)),
                 ('longitude', models.CharField(max_length=30, verbose_name='longitude', blank=True)),

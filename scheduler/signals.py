@@ -57,7 +57,7 @@ def notify_users_shift_change(sender, instance, **kwargs):
                 mail = EmailMessage(subject=subject, body=message, to=['support@volunteer-planner.org'], from_email=from_email,
                                     bcc=addresses)
                 logger.info(u'Shift %s at %s changed: (%s-%s -> %s->%s). Sending email notification to %d affected user(s).',
-                            shift.topic.title, shift.location.name,
+                            shift.topic.title, shift.facility.name,
                             old_shift.starting_time, old_shift.ending_time, shift.starting_time, shift.ending_time,
                             len(addresses))
                 mail.send()

@@ -26,13 +26,13 @@ class Command(BaseCommand):
         mailer = Mailer.objects.all()
         t = datetime.datetime.strptime(options['print_date'], DATE_FORMAT)
         for mail in mailer:
-            needs = Need.objects.filter(location=mail.location).filter(
+            needs = Need.objects.filter(facility=mail.facility).filter(
                 ending_time__year=t.strftime("%Y"),
                 ending_time__month=t.strftime("%m"),
                 ending_time__day=t.strftime("%d")) \
                 .order_by('topic', 'ending_time') \
                 .annotate(volunteer_count=Count('helpers')) \
-                .select_related('topic', 'location') \
+                .select_related('topic', 'facility') \
                 .prefetch_related('helpers', 'helpers__user')
             # if it's not used anyway, we maybe shouldn't even render it? #
             # message = render_to_string('shifts_today.html', locals())

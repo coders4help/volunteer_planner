@@ -3,8 +3,8 @@
 {% load i18n vpfilters %}
 
 {% block title %}
-    {% blocktrans trimmed context "title with location" with location_name=location.name %}
-        Schedule for {{ location_name }}
+    {% blocktrans trimmed context "title with facility" with facility_name=facility.name %}
+        Schedule for {{ facility_name }}
     {% endblocktrans %}
 {% endblock %}
 
@@ -16,7 +16,7 @@
 
     <div class="row">
         <h2>
-            {{ location.name }}
+            {{ facility.name }}
         </h2>
 
         <h3>

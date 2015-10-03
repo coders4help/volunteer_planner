@@ -3,16 +3,22 @@
 import random
 import string
 import datetime
+
 import factory
 from django.core.management.base import BaseCommand
 from django.db.models import signals
-from tests.factories import NeedFactory, TopicFactory, LocationFactory, RegistrationProfileFactory, PlaceFactory
 from registration.models import RegistrationProfile
-from scheduler.models import Need, Location, Topics
-from places.models import Region, Area, Place, Country
+
 from django.contrib.auth.models import User
 
-HELPTOPICS = ["Jumper", "Translator", "Clothing Room", "Womens Room", "Donation Counter", "Highlights" ]
+from organizations.models import Facility
+from tests.factories import NeedFactory, TopicFactory, FacilityFactory, \
+    RegistrationProfileFactory, PlaceFactory
+from scheduler.models import Need, Topics
+from places.models import Region, Area, Place, Country
+
+HELPTOPICS = ["Jumper", "Translator", "Clothing Room", "Womens Room",
+              "Donation Counter", "Highlights"]
 LOREM = "Lorem tellivizzle dolizzle bling bling amizzle, mah nizzle adipiscing" \
         " elit. Nullam doggy velizzle, pizzle volutpizzle, suscipizzle" \
         " quizzle, gangsta vizzle, i'm in the shizzle. Pellentesque boom" \
@@ -23,6 +29,18 @@ LOREM = "Lorem tellivizzle dolizzle bling bling amizzle, mah nizzle adipiscing" 
         "Bizzle dapibizzle. Curabitizzle tellizzle urna, pretizzle i" \
         " saw beyonces tizzles and my pizzle went crizzle, " \
         "mattis we gonna chung, eleifend vitae, nunc. "
+
+
+def gen_date(hour, day):
+    date_today = datetime.date.today() + datetime.timedelta(days=day)
+    date_time = datetime.time(hour=hour, minute=0, second=0, microsecond=0)
+    new_date = datetime.datetime.combine(date_today, date_time)
+    return new_date
+
+
+def random_string(length=10):
+    return u''.join(
+        random.choice(string.ascii_letters) for x in range(length))
 
 
 class Command(BaseCommand):
@@ -39,22 +57,13 @@ class Command(BaseCommand):
         parser.add_argument('days', nargs='+', type=int)
         parser.add_argument('--flush')
 
-    def gen_date(self, hour, day):
-        date_today = datetime.date.today() + datetime.timedelta(days=day)
-        date_time = datetime.time(hour=hour, minute=0, second=0, microsecond=0)
-        new_date = datetime.datetime.combine(date_today, date_time)
-        return new_date
-
-    def random_string(self, length=10):
-        return u''.join(random.choice(string.ascii_letters) for x in range(length))
-
     @factory.django.mute_signals(signals.pre_delete)
     def handle(self, *args, **options):
         if options['flush']:
             print "delete all data in app tables"
             RegistrationProfile.objects.all().delete()
             Need.objects.all().delete()
-            Location.objects.all().delete()
+            Facility.objects.all().delete()
             Topics.objects.all().delete()
 
             # delete geographic information
@@ -67,23 +76,23 @@ class Command(BaseCommand):
 
         # create regional data
         places = list()
-        for i in range(0,10):
+        for i in range(0, 10):
             places.append(PlaceFactory.create())
 
         # create shifts for number of days
         for day in range(0, options['days'][0]):
             for i in range(2, 23):
                 topic = TopicFactory.create(title=random.choice(HELPTOPICS))
-                location = LocationFactory.create(
-                    name="Shelter" + str(random.randint(0,9)),
-                    place=places[random.randint(0,len(places)-1)],
-                    additional_info=LOREM
+                facility = FacilityFactory.create(
+                    name="Shelter" + str(random.randint(0, 9)),
+                    place=places[random.randint(0, len(places) - 1)],
+                    description=LOREM
                 )
                 need = NeedFactory.create(
-                    starting_time=self.gen_date(hour=i-1, day=day),
-                    ending_time=self.gen_date(hour=i, day=day),
+                    starting_time=gen_date(hour=i - 1, day=day),
+                    ending_time=gen_date(hour=i, day=day),
                     topic=topic,
-                    location=location
+                    facility=facility
                 )
                 # assign random volunteer for each need
                 reg_user = RegistrationProfileFactory.create()

@@ -43,8 +43,8 @@
             $('button').on('click', function () {
 
                 var date_pick = $("#datepicker").datepicker( "getDate" )
-                var locations = $('#tokenize').val()
-                if( date_pick == null || locations == null) {
+                var facilities = $('#tokenize').val()
+                if( date_pick == null || facilities == null) {
                     alert('Mindestens eines der Answahlfelder ist leer')
                 }
                 else{
@@ -52,7 +52,7 @@
                         type: "POST",
                         url: "/vorlagen/generate/",
                         data: {
-                            locations:JSON.stringify(locations),
+                            facilities:JSON.stringify(facilities),
                             'date': moment(date_pick).format('YYYY/MM/DD')
                         },
                         async: false,
@@ -75,8 +75,8 @@
 
             <p class="text-center">
                 <select id="tokenize" multiple="multiple" class="tokenize-sample">
-                    {% for location in locations %}
-                        <option value="{{ location.id }}">{{ location.name }}</option>
+                    {% for facility in facilities %}
+                        <option value="{{ facility.id }}">{{ facility.name }}</option>
                     {% endfor %}
                 </select></p>
             <p class="text-center">{% trans "Date" %}: <input type="text" id="datepicker"></p>

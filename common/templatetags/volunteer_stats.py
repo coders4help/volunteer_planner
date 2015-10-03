@@ -7,14 +7,15 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.utils import timezone
 
-from scheduler.models import Need, Location
+from organizations.models import Facility
+from scheduler.models import Need
 
 register = template.Library()
 
 
 @register.assignment_tag
 def get_facility_count():
-    return Location.objects.filter().count()
+    return Facility.objects.filter().count()
 
 
 @register.assignment_tag

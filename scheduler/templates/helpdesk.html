@@ -11,8 +11,8 @@
                 <div>
                     <h3>{{ notification.title }}</h3>
                     <h4>
-                        {% blocktrans trimmed with location_name=notification.location.name date=notification.creation_date %}
-                            {{ location_name }} on {{ date }}
+                        {% blocktrans trimmed with facility_name=notification.facility.name date=notification.creation_date %}
+                            {{ facility_name }} on {{ date }}
                         {% endblocktrans %}
                     </h4>
                     {{ notification.text|safe }}
@@ -25,27 +25,26 @@
     <div class="row">
         <h2>{% trans "Volunteers wanted" %}</h2>
 
-        {% regroup shifts by location as shifts_by_location %}
+        {% regroup shifts by facility as shifts_by_facility %}
 
-        {% for location_shifts in shifts_by_location %}
-            {% with location_shifts.grouper as location %}
+        {% for facility_shifts in shifts_by_facility %}
+            {% with facility_shifts.grouper as facility %}
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>{{ location }} </h3>
+                        <h3>{{ facility }} </h3>
                     </div>
-                <div class="col-md-8">
-                        {% with location.street|add:", "|add:location.postal_code|add:" "|add:location.city as address_line %}
-                            {% if address_line %}
-                                <h5>{{ address_line }} <a
-                                        href="{{ address_line|google_maps_directions }}"
-                                        target="_blank">&rarr; Google Maps</a>
-                                </h5>
-                            {% endif %}
-                        {% endwith %}
-                        <p>{{ location.additional_info|safe }}</p>
+                    <div class="col-md-8">
+
+                        {% if facility.address %}
+                            <h5>{{ address_line }} <a
+                                    href="{{ facility.address_line|google_maps_directions }}"
+                                    target="_blank">&rarr; Google Maps</a>
+                            </h5>
+                        {% endif %}
+                        <p>{{ facility.description|safe }}</p>
                     </div>
 
-                    {% regroup location_shifts.list by ending_time.date as shifts_by_time %}
+                    {% regroup facility_shifts.list by ending_time.date as shifts_by_time %}
 
                     <div class="col-md-4">
                         <h4>{% trans "open shifts" %}</h4>
@@ -53,7 +52,7 @@
                         <p>
                             {% for shift_time in shifts_by_time %}
                                 {% with shift_time.grouper as shift_date %}
-                                    <a href="{% url 'planner_by_location' pk=location.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                                    <a href="{% url 'planner_by_facility' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
                                         {{ shift_date|date }}
                                     </a>
                                     <br/>

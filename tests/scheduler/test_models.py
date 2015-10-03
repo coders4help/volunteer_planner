@@ -3,12 +3,13 @@
 from datetime import timedelta, datetime
 
 from django.test import TestCase
+from organizations.models import Facility
 
-from scheduler.models import Need, Location, ShiftHelper
-from tests.factories import NeedFactory, LocationFactory, UserAccountFactory
+from scheduler.models import Need, ShiftHelper
+from tests.factories import NeedFactory, FacilityFactory, UserAccountFactory
 
 
-def create_need(start_hour, end_hour, location=None):
+def create_need(start_hour, end_hour, facility=None):
     """
     Tiny helper because setting time periods is awkward till we remove the FK relationship.
     """
@@ -16,8 +17,8 @@ def create_need(start_hour, end_hour, location=None):
         starting_time=datetime(2015, 1, 1, start_hour),
         ending_time=datetime(2015, 1, 1, end_hour)
     )
-    if location:
-        create_args['location'] = location
+    if facility:
+        create_args['facility'] = facility
     return NeedFactory.create(**create_args)
 
 
@@ -113,8 +114,8 @@ class NeedTestCase(TestCase):
         assert ShiftHelper.objects.conflicting(need=need).count() == 1
 
 
-class LocationTestCase(TestCase):
-    def test_need_manager_for_location(self):
+class FacilityTestCase(TestCase):
+    def test_need_manager_for_facility(self):
         """
             checks that get_days_with_needs() returns only dates later than datetime.now()
         """
@@ -124,19 +125,19 @@ class LocationTestCase(TestCase):
         tomorrow_start = now + timedelta(1)
         tomorrow_end = tomorrow_start + timedelta(hours=1)
 
-        location = LocationFactory.create()
+        facility = FacilityFactory.create()
 
-        yesterday_need = NeedFactory.create(location=location,
+        yesterday_need = NeedFactory.create(facility=facility,
                                             starting_time=yesterday_start,
                                             ending_time=yesterday_end)
-        tomorrow_need = NeedFactory.create(location=location,
+        tomorrow_need = NeedFactory.create(facility=facility,
                                            starting_time=tomorrow_start,
                                            ending_time=tomorrow_end)
 
-        assert Location.objects.count() == 1, "test case assumes that needs have been created for the same location, as the NeedFactory indeed does at the time of writing of this test case"
-        assert Location.objects.all()[0] == location
+        assert Facility.objects.count() == 1, "test case assumes that needs have been created for the same facility, as the NeedFactory indeed does at the time of writing of this test case"
+        assert Facility.objects.all()[0] == facility
 
-        needs = Need.open_needs.at_location(location=location)
+        needs = Need.open_needs.at_facility(facility=facility)
 
         assert needs.count() == 1, "only 1 need should be found with Need.open_needs"
         assert needs[0] == tomorrow_need, "wrong shift was found"

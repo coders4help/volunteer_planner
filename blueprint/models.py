@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class BluePrintCreator(models.Model):
@@ -9,8 +10,9 @@ class BluePrintCreator(models.Model):
         verbose_name_plural = "Vorlagen"
 
     title = models.CharField(verbose_name="Name der Vorlage", max_length=255)
-    location = models.ForeignKey('scheduler.Location', verbose_name="Ort")
-    needs = models.ManyToManyField('NeedBluePrint', verbose_name="Schichten")
+    facility = models.ForeignKey('organizations.Facility',
+                                 verbose_name=_('facility'))
+    needs = models.ManyToManyField('NeedBluePrint', verbose_name=_('shifts'))
 
     def __unicode__(self):
         return u'{}'.format(self.title)
@@ -26,13 +28,15 @@ class NeedBluePrint(models.Model):
     to_time = models.CharField(verbose_name='Uhrzeit bis', max_length=5)
     slots = models.IntegerField(verbose_name="Anz. benoetigter Freiwillige")
 
-    def get_location(self):
-        return self.blueprintcreator_set.all().get().location
+    def get_facility(self):
+        return self.blueprintcreator_set.all().get().facility
 
     def __unicode__(self):
         try:
-            location_name = u' ({})'.format(self.blueprintcreator_set.all().get().location.name)
+            facility_name = u' ({})'.format(
+                self.blueprintcreator_set.all().get().facility.name)
         except:
-            location_name = u''
+            facility_name = u''
 
-        return u'{} von {} bis {}{}'.format(self.topic.title, self.from_time, self.to_time, location_name)
+        return u'{} von {} bis {}{}'.format(self.topic.title, self.from_time,
+                                            self.to_time, facility_name)

@@ -17,6 +17,7 @@ def migrate_locations(apps, schema_editor):
 
     def make_org_from_location(location):
         org = Organization()
+        org.id = location.id
         org.name = location.name
         org.slug = slugify(location.name)
         org.short_description = ""
@@ -31,6 +32,7 @@ def migrate_locations(apps, schema_editor):
 
         org = make_org_from_location(location)
         facility = Facility()
+        facility.id = location.id
         facility.organization = org
         facility.name = location.name
         facility.slug = slugify(location.name)

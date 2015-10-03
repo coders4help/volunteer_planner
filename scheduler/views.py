@@ -13,7 +13,8 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
-from scheduler.models import Location, Need, ShiftHelper
+from organizations.models import Facility
+from scheduler.models import Need, ShiftHelper
 from notifications.models import Notification
 from .forms import RegisterForNeedForm
 from volunteer_planner.utils import LoginRequiredMixin
@@ -23,17 +24,17 @@ logger = logging.getLogger(__name__)
 
 class HelpDesk(LoginRequiredMixin, TemplateView):
     """
-    Location overview. First view that a volunteer gets redirected to when they log in.
+    Facility overview. First view that a volunteer gets redirected to when they log in.
     """
     template_name = "helpdesk.html"
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
         shifts = Need.objects.filter(ending_time__gt=datetime.datetime.now()) \
-            .order_by('location').select_related('location')
+            .order_by('facility').select_related('facility')
         context['shifts'] = shifts
         context['notifications'] = Notification.objects.all().select_related(
-            'location')
+            'facility')
         return context
 
 
@@ -50,17 +51,17 @@ class PlannerView(LoginRequiredMixin, FormView):
 
         context = super(PlannerView, self).get_context_data(**kwargs)
 
-        context['needs'] = Need.objects.filter(location__pk=self.kwargs['pk']) \
+        context['needs'] = Need.objects.filter(facility__pk=self.kwargs['pk']) \
             .annotate(volunteer_count=Count('helpers')) \
             .filter(ending_time__year=self.kwargs['year'],
                     ending_time__month=self.kwargs['month'],
                     ending_time__day=self.kwargs['day']) \
             .order_by('topic', 'ending_time') \
-            .select_related('topic', 'location') \
+            .select_related('topic', 'facility') \
             .prefetch_related('helpers',
                               'helpers__user')
 
-        context['location'] = get_object_or_404(Location, pk=self.kwargs['pk'])
+        context['facility'] = get_object_or_404(Facility, pk=self.kwargs['pk'])
         context['schedule_date'] = datetime.date(int(self.kwargs['year']),
                                                  int(self.kwargs['month']),
                                                  int(self.kwargs['day']))
@@ -92,10 +93,11 @@ class PlannerView(LoginRequiredMixin, FormView):
                 error_message = _(
                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
                 message_list = u'<ul>{}</ul>'.format('\n'.join(
-                    ['<li>{}</li>'.format(conflict) for conflict in conflicted_needs]))
+                    ['<li>{}</li>'.format(conflict) for conflict in
+                     conflicted_needs]))
                 messages.warning(self.request,
                                  mark_safe(u'{}<br/>{}'.format(error_message,
-                                                     message_list)))
+                                                               message_list)))
             else:
                 shift_helper, created = ShiftHelper.objects.get_or_create(
                     user_account=user_account, need=shift_to_join)
@@ -124,14 +126,15 @@ class PlannerView(LoginRequiredMixin, FormView):
         """
         Redirect to the same page.
         """
-        return reverse('planner_by_location', kwargs=self.kwargs)
+        return reverse('planner_by_facility', kwargs=self.kwargs)
 
 
 class GeographicHelpdeskView(DetailView):
     template_name = 'geographic_helpdesk.html'
     context_object_name = 'geographical_unit'
 
-    def make_breadcrumps_dict(self, country, region=None, area=None,
+    @staticmethod
+    def make_breadcrumps_dict(country, region=None, area=None,
                               place=None):
 
         result = dict(country=country, flattened=[country, ])
@@ -154,17 +157,17 @@ class GeographicHelpdeskView(DetailView):
         context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
         shifts = Need.open_needs.by_geography(place)
         shifts = shifts.select_related('topic',
-                                       'location',
-                                       'location__place',
-                                       'location__place__area',
-                                       'location__place__area__region',
-                                       'location__place__area__region__country',
+                                       'facility',
+                                       'facility__place',
+                                       'facility__place__area',
+                                       'facility__place__area__region',
+                                       'facility__place__area__region__country',
                                        )
-        shifts = shifts.order_by('location__place__area__region__country',
-                                 'location__place__area__region',
-                                 'location__place__area',
-                                 'location__place',
-                                 'location',
+        shifts = shifts.order_by('facility__place__area__region__country',
+                                 'facility__place__area__region',
+                                 'facility__place__area',
+                                 'facility__place',
+                                 'facility',
                                  'ending_time',
                                  )
         context['shifts'] = shifts

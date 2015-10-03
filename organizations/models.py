@@ -67,7 +67,7 @@ class Facility(models.Model):
     members = models.ManyToManyField(UserAccount,
                                      through='organizations.FacilityMembership')
 
-    # the geographical location of the faciltiy
+    # the geographical facility of the faciltiy
     place = models.ForeignKey("places.Place",
                               null=False,
                               related_name='facilities',
@@ -97,6 +97,10 @@ class Facility(models.Model):
         verbose_name = _(u'facility')
         verbose_name_plural = _(u'facilities')
         ordering = ('organization', 'place', 'name',)
+
+    @property
+    def address_line(self):
+        return self.address.replace("\n", ", ").strip()
 
     def __unicode__(self):
         return u'{}'.format(self.name)

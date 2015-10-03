@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # audrey liehn <woog_wg@web.de>, 2015
 # Caroline Elis <caroline@adazylla.de>, 2015
@@ -414,7 +414,7 @@ msgid "description"
 msgstr "Beschreibung"
 
 #: scheduler/models.py:164
-msgid "locations"
+msgid "facilities"
 msgstr "Orte"
 
 #: scheduler/templates/geographic_helpdesk.html:69
@@ -521,7 +521,7 @@ msgid ""
 "\n"
 "leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:\n"
 "\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
+"%(shift.topic.title)s, %(shift.facility.name)s\n"
 "%(shift.starting_time.date)s von %(shift.starting_time.time)s bis %(shift.ending_time.time)s\n"
 "\n"
 "Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.\n"
@@ -538,7 +538,7 @@ msgid ""
 "\n"
 "wir mussten die folgende Schicht zeitlich anpassen:\n"
 "\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
+"%(shift.topic.title)s, %(shift.facility.name)s\n"
 "%(old.starting_time.date)s von %(old.starting_time.time)s bis %(old.ending_time.time)s\n"
 "\n"
 "Die neuen Schichtzeiten sind:\n"

@@ -7,29 +7,30 @@ from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
 
+from organizations.models import Facility
 from places.models import Country, Region, Area, Place
 
 
 class NeedManager(models.Manager):
-    def at_location(self, location):
-        return self.get_queryset().filter(location=location)
+    def at_facility(self, facility):
+        return self.get_queryset().filter(facility=facility)
 
     def at_place(self, place):
-        return self.get_queryset().filter(location__place=place)
+        return self.get_queryset().filter(facility__place=place)
 
     def in_area(self, area):
-        return self.get_queryset().filter(location__place__area=area)
+        return self.get_queryset().filter(facility__place__area=area)
 
     def in_region(self, region):
-        return self.get_queryset().filter(location__place__area__region=region)
+        return self.get_queryset().filter(facility__place__area__region=region)
 
     def in_country(self, country):
         return self.get_queryset().filter(
-            location__place__area__region__country=country)
+            facility__place__area__region__country=country)
 
     def by_geography(self, geo_affiliation):
-        if isinstance(geo_affiliation, Location):
-            return self.at_location(geo_affiliation)
+        if isinstance(geo_affiliation, Facility):
+            return self.at_facility(geo_affiliation)
         elif isinstance(geo_affiliation, Place):
             return self.at_place(geo_affiliation)
         elif isinstance(geo_affiliation, Area):
@@ -54,7 +55,9 @@ class Need(models.Model):
 
     topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
                               help_text=_(u'HELP_TYPE_HELP'))
-    location = models.ForeignKey('Location', verbose_name=_(u'location'))
+
+    facility = models.ForeignKey('organizations.Facility',
+                                 verbose_name=_(u'facility'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
                                          db_index=True)
@@ -78,8 +81,8 @@ class Need(models.Model):
         ordering = ['starting_time', 'ending_time']
 
     def __unicode__(self):
-        return u"{title} - {location} ({start} - {end})".format(
-            title=self.topic.title, location=self.location.name,
+        return u"{title} - {facility} ({start} - {end})".format(
+            title=self.topic.title, facility=self.facility.name,
             start=localize(self.starting_time), end=localize(self.ending_time))
 
 
@@ -136,35 +139,3 @@ class Topics(models.Model):
     def get_current_needs_py_topic(self):
         return self.need_set.all()
 
-
-class Location(models.Model):
-    name = models.CharField(max_length=255, blank=True,
-                            verbose_name=_('name'))
-    street = models.CharField(max_length=255, blank=True,
-                              verbose_name=_('address'))
-    city = models.CharField(max_length=255, blank=True,
-                            verbose_name=_('city'))
-    postal_code = models.CharField(max_length=5, blank=True,
-                                   verbose_name=_('postal code'))
-    latitude = models.CharField(max_length=30, blank=True,
-                                verbose_name=_('latitude'))
-    longitude = models.CharField(max_length=30, blank=True,
-                                 verbose_name=_('longitude'))
-    additional_info = models.TextField(max_length=300000, blank=True,
-                                       verbose_name=_('description'))
-
-    place = models.ForeignKey("places.Place",
-                              null=False,
-                              related_name='locations',
-                              verbose_name=_('place'))
-
-    class Meta:
-        verbose_name = _(u'location')
-        verbose_name_plural = _(u'locations')
-        ordering = ('place', 'name',)
-        permissions = (
-            ("can_view", u"User can view location"),
-        )
-
-    def __unicode__(self):
-        return u'{}'.format(self.name)

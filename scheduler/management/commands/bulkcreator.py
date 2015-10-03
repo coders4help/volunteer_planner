@@ -5,7 +5,8 @@ from datetime import timedelta
 from django.core.management.base import BaseCommand
 from dateutil.parser import parse
 
-from scheduler.models import Need, Location, Topics
+from organizations.models import Facility
+from scheduler.models import Need, Topics
 
 
 class Command(BaseCommand):
@@ -19,14 +20,14 @@ class Command(BaseCommand):
         parser.add_argument('date', nargs='+', type=int)
 
     def handle(self, *args, **options):
-        if options['days_to_add'] and options['location_id']:
+        if options['days_to_add'] and options['facility_id']:
             print options['days_to_add']
-            print options['location_id']
+            print options['facility_id']
 
-            location = Location.objects.get(id=options['location_id'][0])
-            location_needs = location.need_set.all()
+            facility = Facility.objects.get(id=options['facility_id'][0])
+            facility_needs = facility.need_set.all()
             topic_titles = []
-            for need in location_needs:
+            for need in facility_needs:
                 if need.topic.title not in topic_titles:
                     topic_titles.append(need.topic.title)
 
@@ -43,8 +44,7 @@ class Command(BaseCommand):
                         starting_time = date_new_from + timedelta(days=i)
 
                         Need.objects.create(topic=topic[0],
-                                            location=location,
+                                            facility=facility,
                                             slots=need.slots,
                                             starting_time=starting_time,
                                             ending_time=ending_time)
-

@@ -6,10 +6,10 @@ from django.http.response import HttpResponse
 from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import user_passes_test
-
 from dateutil.parser import parse
 
-from scheduler.models import Location, Need
+from organizations.models import Facility
+from scheduler.models import Need
 from .models import BluePrintCreator
 
 
@@ -24,18 +24,18 @@ class ExecuteBluePrintView(SuperuserRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
 
-        if 'locations' not in kwargs:
-            kwargs['locations'] = Location.objects.all()
+        if 'facilities' not in kwargs:
+            kwargs['facilities'] = Facility.objects.all()
         return kwargs
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def generate_blueprint(request):
     if request.method == 'POST' and request.is_ajax():
-        locations = json.loads(request.POST.get('locations'))
-        for location_id in locations:
-            location = Location.objects.get(pk=location_id)
-            blueprint = BluePrintCreator.objects.get(location=location)
+        facilities = json.loads(request.POST.get('facilities'))
+        for facility_id in facilities:
+            facility = Facility.objects.get(pk=facility_id)
+            blueprint = BluePrintCreator.objects.get(facility=facility)
             message = []
             for need in blueprint.needs.all():
                 time_from = parse(
@@ -46,12 +46,12 @@ def generate_blueprint(request):
 
                 # TODO: remove string casting dates here??
                 if Need.objects.filter(topic=need.topic,
-                                       location=location,
+                                       facility=facility,
                                        starting_time=str(time_from),
                                        ending_time=str(time_to)).count() > 0:
                     message.append('Ist bereits vorhanden')
                 else:
-                    Need.objects.create(topic=need.topic, location=location,
+                    Need.objects.create(topic=need.topic, facility=facility,
                                         starting_time=time_from,
                                         ending_time=time_to, slots=need.slots)
                     message.append('Ist angelegt worden!')

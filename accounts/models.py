@@ -15,9 +15,8 @@ class UserAccount(models.Model):
         verbose_name = _('user account')
         verbose_name_plural = _('user accounts')
 
+
 @receiver(user_activated)
 def registration_completed(sender, user, request, **kwargs):
     account, created = UserAccount.objects.get_or_create(user=user)
     print account, created
-
-
