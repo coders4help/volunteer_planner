@@ -10,23 +10,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">volunteer-planner.org</a>
+            <a class="navbar-brand" href="{% url 'helpdesk' %}">volunteer-planner.org</a>
         </div>
 
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-
-                <li>
-                    {% url 'helpdesk' as helpdesk_url %}
-                    <a href="{{ helpdesk_url }}" {% if helpdesk_url in reqeust.path %}class="active"{% endif %}>Helpdesk</a>
-                </li>
 
                 {% include "partials/region_selection.html" %}
 
                 <li>
                     {% url 'faq' as faq_url %}
                     <a href="{{ faq_url }}" {% if faq_url in reqeust.path %}class="active"{% endif %}>
-                        FAQ
+                        {% trans "FAQ" %}
                     </a>
                 </li>
 
