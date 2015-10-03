@@ -8,7 +8,7 @@ from accounts.models import UserAccount
 
 class Organization(models.Model):
     # the name of the organization, ie. "Wilmersdorf hilft"
-    name = models.CharField(max_length=30, verbose_name=_(u'name'))
+    name = models.CharField(max_length=256, verbose_name=_(u'name'))
 
     # the slug for the organization, which is used in the orgs' URL
     slug = models.SlugField(verbose_name=_(u'slug'))
@@ -46,7 +46,7 @@ class Facility(models.Model):
                                      related_query_name='facility')
 
     # the name of the facility, ie. "Fehrbelliner Platz 4"
-    name = models.CharField(max_length=30, verbose_name=_(u'name'))
+    name = models.CharField(max_length=256, verbose_name=_(u'name'))
 
     # the slug for the facility, which is used in the facilitys' URL,
     slug = models.SlugField(verbose_name=_(u'slug'))
@@ -79,12 +79,10 @@ class Facility(models.Model):
     # street, postal code, city
     address = models.TextField(verbose_name=_('address'))
 
-    street = models.CharField(max_length=255, blank=True,
-                              verbose_name=_('address'))
-    city = models.CharField(max_length=255, blank=True,
-                            verbose_name=_('city'))
-    postal_code = models.CharField(max_length=5, blank=True,
-                                   verbose_name=_('postal code'))
+    # might be useful later, once we want to search by zip code
+    zip_code = models.CharField(max_length=25,
+                                blank=True,
+                                verbose_name=_('postal code'))
 
     # coordinates for showing it on a map and a flag to switch it on
     show_on_map = models.BooleanField(default=True,
