@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 01:54+0200\n"
+"POT-Creation-Date: 2015-10-03 15:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,8 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: accounts/templates/user_detail.html:14 templates/registration/login.html:24
+#: accounts/templates/user_detail.html:14 templates/registration/login.html:23
+#: templates/registration/registration_form.html:22
 msgid "Username"
 msgstr ""
 
@@ -41,7 +42,7 @@ msgid "Last name"
 msgstr ""
 
 #: accounts/templates/user_detail.html:17
-#: templates/registration/registration_form.html:15
+#: templates/registration/registration_form.html:18
 msgid "Email"
 msgstr ""
 
@@ -77,41 +78,37 @@ msgctxt "maps directions url pattern"
 msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:51
-#: templates/partials/navigation_bar.html:68
-#: templates/registration/login.html:3 templates/registration/login.html:11
+#: non_logged_in_area/templates/base_non_logged_in.html:46
+#: templates/registration/login.html:3 templates/registration/login.html:10
 msgid "Login"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:55
-msgid "Register and start helping now!"
+#: non_logged_in_area/templates/base_non_logged_in.html:49
+msgid "Start helping"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:84
+#: non_logged_in_area/templates/base_non_logged_in.html:76
 msgid "Main page"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:87
+#: non_logged_in_area/templates/base_non_logged_in.html:79
 #: non_logged_in_area/templates/faqs.html:5
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:90
-#: templates/partials/footer.html:10
+#: non_logged_in_area/templates/base_non_logged_in.html:82
 msgid "Contact"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:93
-#: templates/partials/footer.html:8
+#: non_logged_in_area/templates/base_non_logged_in.html:85
 msgid "Imprint"
 msgstr "Impressum"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:96
-#: templates/partials/footer.html:9
+#: non_logged_in_area/templates/base_non_logged_in.html:88
 msgid "Terms of Service"
 msgstr "Benutzungsbedingungen"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:99
+#: non_logged_in_area/templates/base_non_logged_in.html:91
 msgid "Privacy Policy"
 msgstr "Privatssphäre"
 
@@ -222,47 +219,47 @@ msgctxt "FAQ A7"
 msgid "Currently we need help to translate, write texts and create awesome designs. Want to help? Write a message on our %(facebook_link)s or send an %(email_url)s."
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:26
+#: non_logged_in_area/templates/home.html:25
 msgid "I want to help!"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:28
+#: non_logged_in_area/templates/home.html:27
 msgid "Register and see where you can help"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:33
+#: non_logged_in_area/templates/home.html:32
 msgid "Organize volunteers!"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:35
+#: non_logged_in_area/templates/home.html:34
 msgid "Register a shelter and organize volunteers"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:49
+#: non_logged_in_area/templates/home.html:48
 msgid "Places to help"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:56
+#: non_logged_in_area/templates/home.html:55
 msgid "Registered Volunteers"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:63
+#: non_logged_in_area/templates/home.html:62
 msgid "Worked Hours"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:75
+#: non_logged_in_area/templates/home.html:74
 msgid "What is it all about?"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:78
+#: non_logged_in_area/templates/home.html:77
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:86
+#: non_logged_in_area/templates/home.html:85
 msgid "This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference."
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:99
+#: non_logged_in_area/templates/home.html:98
 msgid "You can help at this locations:"
 msgstr ""
 
@@ -409,7 +406,7 @@ msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr ""
 
 #: scheduler/templates/helpdesk.html:8
-msgid "Notifications"
+msgid "Important news"
 msgstr ""
 
 #: scheduler/templates/helpdesk.html:14
@@ -586,24 +583,32 @@ msgstr ""
 msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
 msgstr ""
 
-#: templates/partials/footer.html:11
-msgid "F.A.Q."
+#: templates/partials/footer.html:9
+#, python-format
+msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:7
+#: templates/partials/navigation_bar.html:8
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:34
-#, python-format
-msgid "For questions, write to %(email_address)s"
+#: templates/partials/navigation_bar.html:23
+msgid "FAQ"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:57
+#: templates/partials/navigation_bar.html:39
+msgid "Account"
+msgstr ""
+
+#: templates/partials/navigation_bar.html:43
+msgid "Help"
+msgstr ""
+
+#: templates/partials/navigation_bar.html:46
 msgid "Logout"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:61
+#: templates/partials/navigation_bar.html:50
 msgid "Admin"
 msgstr ""
 
@@ -620,11 +625,16 @@ msgid "Activation problem"
 msgstr ""
 
 #: templates/registration/activate.html:14
-#, python-format
-msgid "Thanks %(account)s, activation complete! You may now <a href='%(auth_login_url)s'>login</a> using the username and password you set at registration."
+msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
+msgid "login"
 msgstr ""
 
-#: templates/registration/activate.html:19
+#: templates/registration/activate.html:15
+#, python-format
+msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
+msgstr ""
+
+#: templates/registration/activate.html:20
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 msgstr ""
 
@@ -642,34 +652,22 @@ msgctxt "Login link text on activation success page"
 msgid "You can login here."
 msgstr ""
 
-#: templates/registration/login.html:16
+#: templates/registration/login.html:15
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 
-#: templates/registration/login.html:29
-#: templates/registration/registration_form.html:27
+#: templates/registration/login.html:26
+#: templates/registration/registration_form.html:26
 msgid "Password"
 msgstr ""
 
-#: templates/registration/login.html:43
+#: templates/registration/login.html:36
 #: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
 msgstr ""
 
-#: templates/registration/login.html:47
+#: templates/registration/login.html:40
 msgid "Help and sign-up"
-msgstr ""
-
-#: templates/registration/logout.html:3
-msgid "Logged out"
-msgstr ""
-
-#: templates/registration/logout.html:5
-msgid "Logged out!"
-msgstr ""
-
-#: templates/registration/logout.html:6
-msgid "Login again?"
 msgstr ""
 
 #: templates/registration/password_change_done.html:3
@@ -783,19 +781,19 @@ msgstr ""
 msgid "Registration"
 msgstr ""
 
-#: templates/registration/registration_form.html:22
+#: templates/registration/registration_form.html:21
 msgid "Username already exists. Please choose a different username."
 msgstr ""
 
-#: templates/registration/registration_form.html:24
+#: templates/registration/registration_form.html:23
 msgid "Don't use spaces or special characters"
 msgstr ""
 
-#: templates/registration/registration_form.html:31
-msgid "Password repeated"
+#: templates/registration/registration_form.html:29
+msgid "Repeat password"
 msgstr ""
 
-#: templates/registration/registration_form.html:34
+#: templates/registration/registration_form.html:31
 msgid "Sign-up"
 msgstr ""
 
