@@ -3,12 +3,19 @@
     <div class="container">
         <p class="text-muted text-center">
             &copy; 2015 volunteer-planner.org &bullet;
-            <a href="https://github.com/volunteer-planner/volunteer_planner">Fork
-                us on GitHub!</a> &bullet;
-            <a href="#">{% trans "Imprint" %}</a> &bullet;
-            <a href="#">{% trans "Terms of Service" %}</a> &bullet;
-            <a href="#">{% trans "Contact" %}</a> &bullet;
-            <a href="#">{% trans "F.A.Q." %}</a>
+            <a href="https://github.com/volunteer-planner/volunteer_planner">GitHub</a> &bullet;
+
+            {% blocktrans trimmed with email_address="support@volunteer-planner.org" %}
+                Questions? Get in touch: <a href="mailto:{{ email_address }}">{{ email_address }}</a>
+            {% endblocktrans %}
+
+            {% comment %}
+                {# TODO #}
+                <a href="#">{% trans "Imprint" %}</a> &bullet;
+                <a href="#">{% trans "Terms of Service" %}</a> &bullet;
+                <a href="#">{% trans "Contact" %}</a> &bullet;
+                <a href="#">{% trans "F.A.Q." %}</a>
+            {% endcomment %}
         </p>
     </div>
 </footer>
