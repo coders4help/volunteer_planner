@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 15:49+0200\n"
-"PO-Revision-Date: 2015-10-03 14:17+0000\n"
-"Last-Translator: Christoph\n"
+"POT-Creation-Date: 2015-10-03 19:39+0200\n"
+"PO-Revision-Date: 2015-10-03 17:44+0000\n"
+"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,6 +58,51 @@ msgstr "E-Mail Adresse"
 #: accounts/templates/user_detail.html:20
 msgid "Edit Account"
 msgstr "Account bearbeiten"
+
+#: blueprint/models.py:8
+msgid "Blueprint Item"
+msgstr "Schicht-Einzel-Vorlage"
+
+#: blueprint/models.py:9
+msgid "Blueprint Items"
+msgstr "Schicht-Einzel-Vorlagen"
+
+#: blueprint/models.py:11
+msgid "blueprint title"
+msgstr "Vorlagen Titel"
+
+#: blueprint/models.py:12 scheduler/models.py:58 scheduler/models.py:163
+msgid "location"
+msgstr "Ort"
+
+#: blueprint/models.py:13 scheduler/models.py:78
+msgid "shifts"
+msgstr "Schichten"
+
+#: blueprint/models.py:21
+#| msgid "Imprint"
+msgid "Blueprint"
+msgstr "Vorlage"
+
+#: blueprint/models.py:22
+msgid "Blueprints"
+msgstr "Vorlagen"
+
+#: blueprint/models.py:24
+msgid "topic"
+msgstr "Hilfethema"
+
+#: blueprint/models.py:25
+msgid "from hh:mm"
+msgstr "von hh:mm"
+
+#: blueprint/models.py:26
+msgid "until hh:mm"
+msgstr "bis hh:mm"
+
+#: blueprint/models.py:27
+msgid "number of volunteers needed"
+msgstr "Anzahl der benötigten Freiwilligen"
 
 #: blueprint/templates/blueprint_executor.html:6
 msgid "Home"
@@ -353,10 +398,6 @@ msgstr "Hilfebereich"
 msgid "HELP_TYPE_HELP"
 msgstr ""
 
-#: scheduler/models.py:58 scheduler/models.py:163
-msgid "location"
-msgstr "Ort"
-
 #: scheduler/models.py:60
 msgid "starting time"
 msgstr "Beginn"
@@ -372,10 +413,6 @@ msgstr "Anz. benötigter Freiwillige"
 #: scheduler/models.py:77
 msgid "shift"
 msgstr "Schicht"
-
-#: scheduler/models.py:78
-msgid "shifts"
-msgstr "Schichten"
 
 #: scheduler/models.py:115
 msgid "shift helper"
@@ -642,7 +679,7 @@ msgstr "Ausloggen"
 msgid "Admin"
 msgstr "Verwaltung"
 
-#: templates/partials/region_selection.html:15
+#: templates/partials/region_selection.html:13
 msgid "Regions"
 msgstr "Regionen"
 

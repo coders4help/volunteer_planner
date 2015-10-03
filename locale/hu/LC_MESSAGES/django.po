@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 15:49+0200\n"
-"PO-Revision-Date: 2015-10-03 14:29+0000\n"
-"Last-Translator: Christoph\n"
+"POT-Creation-Date: 2015-10-03 19:39+0200\n"
+"PO-Revision-Date: 2015-10-03 17:40+0000\n"
+"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,6 +57,51 @@ msgstr "E-mail"
 #: accounts/templates/user_detail.html:20
 msgid "Edit Account"
 msgstr "Fiók szerkesztése"
+
+#: blueprint/models.py:8
+msgid "Blueprint Item"
+msgstr ""
+
+#: blueprint/models.py:9
+msgid "Blueprint Items"
+msgstr ""
+
+#: blueprint/models.py:11
+msgid "blueprint title"
+msgstr ""
+
+#: blueprint/models.py:12 scheduler/models.py:58 scheduler/models.py:163
+msgid "location"
+msgstr "helyszín"
+
+#: blueprint/models.py:13 scheduler/models.py:78
+msgid "shifts"
+msgstr "műszakok"
+
+#: blueprint/models.py:21
+#| msgid "Imprint"
+msgid "Blueprint"
+msgstr ""
+
+#: blueprint/models.py:22
+msgid "Blueprints"
+msgstr ""
+
+#: blueprint/models.py:24
+msgid "topic"
+msgstr ""
+
+#: blueprint/models.py:25
+msgid "from hh:mm"
+msgstr ""
+
+#: blueprint/models.py:26
+msgid "until hh:mm"
+msgstr ""
+
+#: blueprint/models.py:27
+msgid "number of volunteers needed"
+msgstr ""
 
 #: blueprint/templates/blueprint_executor.html:6
 msgid "Home"
@@ -352,10 +397,6 @@ msgstr "segítség típusa"
 msgid "HELP_TYPE_HELP"
 msgstr "HELP_TYPE_HELP"
 
-#: scheduler/models.py:58 scheduler/models.py:163
-msgid "location"
-msgstr "helyszín"
-
 #: scheduler/models.py:60
 msgid "starting time"
 msgstr "kezdés ideje"
@@ -371,10 +412,6 @@ msgstr "a szükséges önkéntesek száma"
 #: scheduler/models.py:77
 msgid "shift"
 msgstr "műszak"
-
-#: scheduler/models.py:78
-msgid "shifts"
-msgstr "műszakok"
 
 #: scheduler/models.py:115
 msgid "shift helper"
@@ -641,7 +678,7 @@ msgstr "Kijelentkezés"
 msgid "Admin"
 msgstr "adminisztrátor"
 
-#: templates/partials/region_selection.html:15
+#: templates/partials/region_selection.html:13
 msgid "Regions"
 msgstr "Régió"
 
