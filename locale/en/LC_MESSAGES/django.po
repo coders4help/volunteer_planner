@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 15:49+0200\n"
+"POT-Creation-Date: 2015-10-04 01:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,6 +48,52 @@ msgstr ""
 
 #: accounts/templates/user_detail.html:20
 msgid "Edit Account"
+msgstr ""
+
+#: blueprint/models.py:8
+msgid "Blueprint Item"
+msgstr ""
+
+#: blueprint/models.py:9
+msgid "Blueprint Items"
+msgstr ""
+
+#: blueprint/models.py:11
+msgid "blueprint title"
+msgstr ""
+
+#: blueprint/models.py:12 scheduler/models.py:58 scheduler/models.py:163
+msgid "location"
+msgstr ""
+
+#: blueprint/models.py:13 scheduler/models.py:78
+msgid "shifts"
+msgstr ""
+
+#: blueprint/models.py:21
+#, fuzzy
+#| msgid "Imprint"
+msgid "Blueprint"
+msgstr "Impressum"
+
+#: blueprint/models.py:22
+msgid "Blueprints"
+msgstr ""
+
+#: blueprint/models.py:24
+msgid "topic"
+msgstr ""
+
+#: blueprint/models.py:25
+msgid "from hh:mm"
+msgstr ""
+
+#: blueprint/models.py:26
+msgid "until hh:mm"
+msgstr ""
+
+#: blueprint/models.py:27
+msgid "number of volunteers needed"
 msgstr ""
 
 #: blueprint/templates/blueprint_executor.html:6
@@ -327,10 +373,6 @@ msgstr ""
 msgid "HELP_TYPE_HELP"
 msgstr ""
 
-#: scheduler/models.py:58 scheduler/models.py:163
-msgid "location"
-msgstr ""
-
 #: scheduler/models.py:60
 msgid "starting time"
 msgstr ""
@@ -345,10 +387,6 @@ msgstr ""
 
 #: scheduler/models.py:77
 msgid "shift"
-msgstr ""
-
-#: scheduler/models.py:78
-msgid "shifts"
 msgstr ""
 
 #: scheduler/models.py:115
@@ -612,7 +650,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: templates/partials/region_selection.html:15
+#: templates/partials/region_selection.html:13
 msgid "Regions"
 msgstr ""
 
