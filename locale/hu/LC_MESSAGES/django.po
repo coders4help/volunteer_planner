@@ -14,17 +14,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 15:49+0200\n"
+"POT-Creation-Date: 2015-10-03 21:07+0200\n"
 "PO-Revision-Date: 2015-10-03 14:29+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/models.py:15
+#: accounts/models.py:15 organizations/models.py:126
 msgid "user account"
 msgstr "felhasználói fiók"
 
@@ -57,6 +57,17 @@ msgstr "E-mail"
 #: accounts/templates/user_detail.html:20
 msgid "Edit Account"
 msgstr "Fiók szerkesztése"
+
+#: blueprint/models.py:14 organizations/models.py:97
+#: organizations/models.py:154 scheduler/models.py:60
+#, fuzzy
+#| msgid "facilities"
+msgid "facility"
+msgstr "helyszínek"
+
+#: blueprint/models.py:15 scheduler/models.py:80
+msgid "shifts"
+msgstr "műszakok"
 
 #: blueprint/templates/blueprint_executor.html:6
 msgid "Home"
@@ -121,7 +132,6 @@ msgid "Privacy Policy"
 msgstr "Magánszféra"
 
 #: non_logged_in_area/templates/faqs.html:10
-#| msgid "How does volunteer-planner work?"
 msgctxt "FAQ Q1"
 msgid "How does volunteer-planner work?"
 msgstr "Hogyan működik a volunteer-planner?"
@@ -133,8 +143,7 @@ msgstr "Azonosító létrehozása"
 
 #: non_logged_in_area/templates/faqs.html:25
 msgctxt "FAQ A1.2"
-msgid ""
-"Confirm your email address by clicking the activation link you've been sent."
+msgid "Confirm your email address by clicking the activation link you've been sent."
 msgstr "Az elküldött levélben lévő aktivációs linkre kattintva igazold az e-mail cím hitelességét."
 
 #: non_logged_in_area/templates/faqs.html:32
@@ -153,16 +162,13 @@ msgid "Get there on time and start helping out."
 msgstr "Legyél ott időben és kezdhetsz is segíteni."
 
 #: non_logged_in_area/templates/faqs.html:51
-#| msgid "How can I unsubscribe from a shift?"
 msgctxt "FAQ Q2"
 msgid "How can I unsubscribe from a shift?"
 msgstr "Hogyan tudok egy beosztásról leiratkozni?"
 
 #: non_logged_in_area/templates/faqs.html:57
 msgctxt "FAQ A2"
-msgid ""
-"No problem. Log-in again look for the shift you planned to do and "
-"unsubscribe. Then other volunteers can again subscribe."
+msgid "No problem. Log-in again look for the shift you planned to do and unsubscribe. Then other volunteers can again subscribe."
 msgstr "Semmi gond. Jelentkezz be újból a tervezett beosztásra, és iratkozz le róla. A többi önkéntes újra jelentkezhet."
 
 #: non_logged_in_area/templates/faqs.html:66
@@ -178,9 +184,7 @@ msgstr "e-mail"
 #: non_logged_in_area/templates/faqs.html:72
 #, python-format
 msgctxt "FAQ A3"
-msgid ""
-"Yes! If you are a volunteer worker in a refugee shelter and they also want "
-"to use volunteer-planner please contact us via %(email_url)s."
+msgid "Yes! If you are a volunteer worker in a refugee shelter and they also want to use volunteer-planner please contact us via %(email_url)s."
 msgstr "Igen, ha önkéntes munkára jelentkeztél egy helyszínre, és ők szintén a volunteer-planner-t akarják használni, lépj velünk kapcsolatba a %(email_url)s e-mail címen."
 
 #: non_logged_in_area/templates/faqs.html:82
@@ -190,9 +194,7 @@ msgstr "Már regisztráltam, de nem kaptam aktiváló e-mailt. Mit tehetek?"
 
 #: non_logged_in_area/templates/faqs.html:89
 msgctxt "FAQ A4"
-msgid ""
-"Please look into your email-spam folder. If you can't find something please "
-"wait another 30 minutes. Email delivery can sometimes take longer."
+msgid "Please look into your email-spam folder. If you can't find something please wait another 30 minutes. Email delivery can sometimes take longer."
 msgstr "Ellenőrizd a levélszemét könyvtárat! Ha ott sincs, akkor várj még 30 percet, az e-mail kézbesítés néha tovább tarthat."
 
 #: non_logged_in_area/templates/faqs.html:99
@@ -202,22 +204,17 @@ msgstr "Szükség van-e oltásokra ahhoz, hogy önkéntes lehessek?"
 
 #: non_logged_in_area/templates/faqs.html:105
 msgctxt "FAQ A5"
-msgid ""
-"You are not supposed to be vaccinated. BUT: Where there are a lot of people "
-"deseases can flourish better."
+msgid "You are not supposed to be vaccinated. BUT: Where there are a lot of people deseases can flourish better."
 msgstr "Nem várjuk el, hogy beoltasd magad. De ahol sok ember van egy helyen, ott betegségek gyorsabban el tudnak terjedni."
 
 #: non_logged_in_area/templates/faqs.html:114
-#| msgid "How does volunteer-planner work?"
 msgctxt "FAQ Q6"
 msgid "Who is volunteer-planner.org?"
 msgstr "Mi a pontosan a volunteer-planner.org?"
 
 #: non_logged_in_area/templates/faqs.html:120
 msgctxt "FAQ A6"
-msgid ""
-"We are Coders4Help, a group of international volunteering programmers, "
-"designers and projectmanagers."
+msgid "We are Coders4Help, a group of international volunteering programmers, designers and projectmanagers."
 msgstr "Mi vagyunk a Coders4Help, egy önkéntes fejlesztőkből, mérnökökből és projektmenedzserekből álló, nemzetközi csoport."
 
 #: non_logged_in_area/templates/faqs.html:130
@@ -232,10 +229,7 @@ msgstr "Facebook oldal"
 #: non_logged_in_area/templates/faqs.html:139
 #, python-format
 msgctxt "FAQ A7"
-msgid ""
-"Currently we need help to translate, write texts and create awesome designs."
-" Want to help? Write a message on our %(facebook_link)s or send an "
-"%(email_url)s."
+msgid "Currently we need help to translate, write texts and create awesome designs. Want to help? Write a message on our %(facebook_link)s or send an %(email_url)s."
 msgstr "Jelenleg segítségre fordításban, szövegírásban és tervezésben van szükségünk. Ha segíteni akarsz, küldj üzenetet %(facebook_link)s vagy e-mailt %(email_url)s."
 
 #: non_logged_in_area/templates/home.html:25
@@ -271,17 +265,11 @@ msgid "What is it all about?"
 msgstr "Miről szól ez az egész?"
 
 #: non_logged_in_area/templates/home.html:77
-msgid ""
-"You are a volunteer and want to help refugees? Volunteer-Planner.org shows "
-"you where, when and how to help directly in the field."
+msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr "Önkéntesként segítenél a menedékkérőknek? A Volunteer-Planner.org megmutatja, hol, mikor és hogyan segíthetsz."
 
 #: non_logged_in_area/templates/home.html:85
-msgid ""
-"This platform is non-commercial and ads-free. An international team of field"
-" workers, programmers, project managers and designers are volunteering for "
-"this project and bring in their professional experience to make a "
-"difference."
+msgid "This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference."
 msgstr "Ez a platform nem szolgál üzleti célokat, és hirdetésektől is mentes.  Egy fejlesztőkből, mérnökökből és projektmenedzserekből álló, önkéntes nemzetközi csoport legjobb tudása szerint készíti és működteti, hogy segíthessünk."
 
 #: non_logged_in_area/templates/home.html:98
@@ -300,13 +288,110 @@ msgstr "alcím"
 msgid "text"
 msgstr "szöveg"
 
-#: places/models.py:20 scheduler/models.py:143 shiftmailer/models.py:10
+#: organizations/models.py:11 organizations/models.py:49 places/models.py:20
 msgid "name"
 msgstr "név"
 
-#: places/models.py:21
+#: organizations/models.py:14 organizations/models.py:52 places/models.py:21
 msgid "slug"
 msgstr "slug"
+
+#: organizations/models.py:19 organizations/models.py:57
+#, fuzzy
+#| msgid "description"
+msgid "short description"
+msgstr "leírás"
+
+#: organizations/models.py:22 organizations/models.py:25
+#: organizations/models.py:60 organizations/models.py:63
+msgid "description"
+msgstr "leírás"
+
+#: organizations/models.py:28 organizations/models.py:80
+msgid "address"
+msgstr "cím"
+
+#: organizations/models.py:36 organizations/models.py:139
+#, fuzzy
+#| msgid "organisation"
+msgid "organization"
+msgstr "szervezet"
+
+#: organizations/models.py:37
+#, fuzzy
+#| msgid "organisation"
+msgid "organizations"
+msgstr "szervezet"
+
+#: organizations/models.py:44
+#, fuzzy
+#| msgid "organisation"
+msgid "oranization"
+msgstr "szervezet"
+
+#: organizations/models.py:76 places/models.py:132
+msgid "place"
+msgstr "hely"
+
+#: organizations/models.py:85
+msgid "postal code"
+msgstr "irányítószám"
+
+#: organizations/models.py:90
+msgid "Show on map of all facilities"
+msgstr ""
+
+#: organizations/models.py:92
+msgid "latitude"
+msgstr "szélességi fok"
+
+#: organizations/models.py:94
+msgid "longitude"
+msgstr "hosszúsági fok"
+
+#: organizations/models.py:98
+msgid "facilities"
+msgstr "helyszínek"
+
+#: organizations/models.py:116
+msgid "owner"
+msgstr ""
+
+#: organizations/models.py:117
+msgid "manager"
+msgstr ""
+
+#: organizations/models.py:118
+msgid "member"
+msgstr ""
+
+#: organizations/models.py:123
+msgid "role"
+msgstr ""
+
+#: organizations/models.py:144
+#, fuzzy
+#| msgid "organisation"
+msgid "organization member"
+msgstr "szervezet"
+
+#: organizations/models.py:145
+#, fuzzy
+#| msgid "organisation"
+msgid "organization members"
+msgstr "szervezet"
+
+#: organizations/models.py:160
+#, fuzzy
+#| msgid "facilities"
+msgid "facility member"
+msgstr "helyszínek"
+
+#: organizations/models.py:161
+#, fuzzy
+#| msgid "facilities"
+msgid "facility members"
+msgstr "helyszínek"
 
 #: places/models.py:69 places/models.py:84
 msgid "country"
@@ -332,19 +417,15 @@ msgstr "terület"
 msgid "areas"
 msgstr "területek"
 
-#: places/models.py:132 scheduler/models.py:160
-msgid "place"
-msgstr "hely"
-
 #: places/models.py:133
 msgid "places"
 msgstr "helyek"
 
-#: scheduler/apps.py:7
+#: scheduler/apps.py:8
 msgid "Scheduler"
 msgstr "Ütemező"
 
-#: scheduler/models.py:56 scheduler/models.py:128
+#: scheduler/models.py:56 scheduler/models.py:130
 msgid "help type"
 msgstr "segítség típusa"
 
@@ -352,80 +433,44 @@ msgstr "segítség típusa"
 msgid "HELP_TYPE_HELP"
 msgstr "HELP_TYPE_HELP"
 
-#: scheduler/models.py:58 scheduler/models.py:163
-msgid "location"
-msgstr "helyszín"
-
-#: scheduler/models.py:60
+#: scheduler/models.py:62
 msgid "starting time"
 msgstr "kezdés ideje"
 
-#: scheduler/models.py:62
+#: scheduler/models.py:64
 msgid "ending time"
 msgstr "befejezés ideje"
 
-#: scheduler/models.py:71
+#: scheduler/models.py:73
 msgid "number of needed volunteers"
 msgstr "a szükséges önkéntesek száma"
 
-#: scheduler/models.py:77
+#: scheduler/models.py:79
 msgid "shift"
 msgstr "műszak"
 
-#: scheduler/models.py:78
-msgid "shifts"
-msgstr "műszakok"
-
-#: scheduler/models.py:115
+#: scheduler/models.py:117
 msgid "shift helper"
 msgstr "beosztásban segítő"
 
-#: scheduler/models.py:116
+#: scheduler/models.py:118
 msgid "shift helpers"
 msgstr "beosztásban segítők"
 
-#: scheduler/models.py:129
+#: scheduler/models.py:131
 msgid "help types"
 msgstr "segítség típusai"
 
-#: scheduler/models.py:145
-msgid "address"
-msgstr "cím"
-
-#: scheduler/models.py:147
-msgid "city"
-msgstr "város"
-
-#: scheduler/models.py:149
-msgid "postal code"
-msgstr "irányítószám"
-
-#: scheduler/models.py:151
-msgid "latitude"
-msgstr "szélességi fok"
-
-#: scheduler/models.py:153
-msgid "longitude"
-msgstr "hosszúsági fok"
-
-#: scheduler/models.py:155
-msgid "description"
-msgstr "leírás"
-
-#: scheduler/models.py:164
-msgid "facilities"
-msgstr "helyszínek"
-
-#: scheduler/templates/geographic_helpdesk.html:69
+#: scheduler/templates/geographic_helpdesk.html:68
 msgid "Show on Google Maps"
 msgstr "Nézet a Google Maps-ben"
 
-#: scheduler/templates/geographic_helpdesk.html:78
+#: scheduler/templates/geographic_helpdesk.html:76
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
 msgstr "beosztás"
 
-#: scheduler/templates/geographic_helpdesk.html:110
+#: scheduler/templates/geographic_helpdesk.html:108
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "Új beosztások a/az %(geographical_name)s helyszínen."
@@ -435,15 +480,16 @@ msgid "Important news"
 msgstr "Fontos hírek"
 
 #: scheduler/templates/helpdesk.html:14
-#, python-format
-msgid "%(location_name)s on %(date)s"
+#, fuzzy, python-format
+#| msgid "%(location_name)s on %(date)s"
+msgid "%(facility_name)s on %(date)s"
 msgstr "%(location_name)s  %(date)s időpontban"
 
 #: scheduler/templates/helpdesk.html:26
 msgid "Volunteers wanted"
 msgstr "Önkéntest várunk"
 
-#: scheduler/templates/helpdesk.html:51
+#: scheduler/templates/helpdesk.html:50
 msgid "open shifts"
 msgstr "üres beosztás"
 
@@ -452,9 +498,11 @@ msgid "Helpdesk"
 msgstr "Helpdes"
 
 #: scheduler/templates/helpdesk_single.html:6
-#, python-format
-msgctxt "title with location"
-msgid "Schedule for %(location_name)s"
+#, fuzzy, python-format
+#| msgctxt "title with location"
+#| msgid "Schedule for %(location_name)s"
+msgctxt "title with facility"
+msgid "Schedule for %(facility_name)s"
 msgstr "%(location_name)s beosztás"
 
 #: scheduler/templates/helpdesk_single.html:23
@@ -527,7 +575,26 @@ msgid ""
 "\n"
 "Liebe Grüße vom Volunteer Planner\n"
 "volunteer-planner.org\n"
-msgstr "\nSzia,\n\n\nsajnos a szervezők kérésére a következő beosztást törölnünk kell:\n\n%(shift.topic.title)s, %(shift.facility.name)s\n\n%(shift.starting_time.date)s %(shift.starting_time.time)s - %(shift.ending_time.time)s\n\n\nEz egy automatikusan generált e-mail. Kérdés esetén írj arra az e-mail címre,\n\namely a helyszín leírásánál szerepel!\n\n\nA Volunteer Planner csapata\n\nvolunteer-planner.org\n"
+msgstr ""
+"\n"
+"Szia,\n"
+"\n"
+"\n"
+"sajnos a szervezők kérésére a következő beosztást törölnünk kell:\n"
+"\n"
+"%(shift.topic.title)s, %(shift.facility.name)s\n"
+"\n"
+"%(shift.starting_time.date)s %(shift.starting_time.time)s - %(shift.ending_time.time)s\n"
+"\n"
+"\n"
+"Ez egy automatikusan generált e-mail. Kérdés esetén írj arra az e-mail címre,\n"
+"\n"
+"amely a helyszín leírásánál szerepel!\n"
+"\n"
+"\n"
+"A Volunteer Planner csapata\n"
+"\n"
+"volunteer-planner.org\n"
 
 #: scheduler/templates/shift_modification_notification.html:1
 #, python-format
@@ -554,38 +621,76 @@ msgid ""
 "\n"
 "Liebe Grüße vom Volunteer Planner\n"
 "volunteer-planner.org\n"
-msgstr "\nSzia,\n\n\na következő beosztás idejét meg kellett változtatnunk:\n\n%(shift.topic.title)s, %(shift.facility.name)s\n\n%(old.starting_time.date)s %(old.starting_time.time)s - %(old.ending_time.time)s\n\n\nAz új időbeosztás:\n\n%(shift.starting_time.date)s %(shift.starting_time.time)s - %(shift.ending_time.time)s.\n\n\nHa az új időpont nem megfelelő, kérjük, jelentkezz le erről az időpontról\n\na Volunteer-Planner.org-on. Így a többi önkéntes számára felszabadul az időpont.\n\n\nKöszönjük a közreműködést :)\n\n\nEz egy automatikusan generált e-mail. Kérdés esetén írj arra az e-mail címre,\n\namely a helyszín leírásánál szerepel!\n\n\nA Volunteer Planner csapata\n\nvolunteer-planner.org\n"
+msgstr ""
+"\n"
+"Szia,\n"
+"\n"
+"\n"
+"a következő beosztás idejét meg kellett változtatnunk:\n"
+"\n"
+"%(shift.topic.title)s, %(shift.facility.name)s\n"
+"\n"
+"%(old.starting_time.date)s %(old.starting_time.time)s - %(old.ending_time.time)s\n"
+"\n"
+"\n"
+"Az új időbeosztás:\n"
+"\n"
+"%(shift.starting_time.date)s %(shift.starting_time.time)s - %(shift.ending_time.time)s.\n"
+"\n"
+"\n"
+"Ha az új időpont nem megfelelő, kérjük, jelentkezz le erről az időpontról\n"
+"\n"
+"a Volunteer-Planner.org-on. Így a többi önkéntes számára felszabadul az időpont.\n"
+"\n"
+"\n"
+"Köszönjük a közreműködést :)\n"
+"\n"
+"\n"
+"Ez egy automatikusan generált e-mail. Kérdés esetén írj arra az e-mail címre,\n"
+"\n"
+"amely a helyszín leírásánál szerepel!\n"
+"\n"
+"\n"
+"A Volunteer Planner csapata\n"
+"\n"
+"volunteer-planner.org\n"
 
-#: scheduler/views.py:70
+#: scheduler/views.py:71
 msgid "The submitted data was invalid."
 msgstr "A megadott adat érvénytelen volt."
 
-#: scheduler/views.py:77
+#: scheduler/views.py:78
 msgid "User account does not exist."
 msgstr "Ez a felhasználói azonosító nem létezik."
 
-#: scheduler/views.py:93
-msgid ""
-"We can't add you to this shift because you've already agreed to other shifts"
-" at the same time:"
+#: scheduler/views.py:94
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Nem tudunk ehhez a beosztáshoz hozzáadni, mert ebben az időben egy másik beosztásban már szerepelsz."
 
-#: scheduler/views.py:104
+#: scheduler/views.py:106
 msgid "You were successfully added to this shift."
 msgstr "Sikeresen hozzáadtunk ehhez a beosztáshoz."
 
-#: scheduler/views.py:107
+#: scheduler/views.py:109
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Erre a műszakra {date_time}-kor már jelentkeztél."
 
-#: scheduler/views.py:118
+#: scheduler/views.py:120
 msgid "You successfully left this shift."
 msgstr "Sikeresen kiléptél a beosztásból"
 
 #: shiftmailer/models.py:9
-msgid "given_name"
-msgstr "keresztnév"
+#, fuzzy
+#| msgid "First name"
+msgid "first name"
+msgstr "Keresztnév"
+
+#: shiftmailer/models.py:10
+#, fuzzy
+#| msgid "Last name"
+msgid "last name"
+msgstr "Vezetéknév"
 
 #: shiftmailer/models.py:11
 msgid "position"
@@ -607,9 +712,7 @@ msgstr "Minden adat bizalmas és nem adható tovább!"
 
 #: shiftmailer/templates/shifts_today.html:15
 #, python-format
-msgid ""
-"from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers"
-" have signed up:"
+msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
 msgstr "%(start_time)s-tól %(end_time)s-ig %(volunteer_count)s önkéntes irtakozott fel:"
 
 #: templates/partials/footer.html:9
@@ -641,7 +744,7 @@ msgstr "Kijelentkezés"
 msgid "Admin"
 msgstr "adminisztrátor"
 
-#: templates/partials/region_selection.html:15
+#: templates/partials/region_selection.html:13
 msgid "Regions"
 msgstr "Régió"
 
@@ -654,23 +757,17 @@ msgid "Activation problem"
 msgstr "Probléma van az aktivációval."
 
 #: templates/registration/activate.html:14
-msgctxt ""
-"login link title in registration confirmation success text 'You may now "
-"%(login_link)s'"
+msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
 msgstr "bejelentkezhetsz"
 
 #: templates/registration/activate.html:15
 #, python-format
-msgid ""
-"Thanks %(account)s, activation complete! You may now %(login_link)s using "
-"the username and password you set at registration."
+msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
 msgstr "Üdv %(account)s, az aktiválás rendben megtörtént! Most már %(login_link)s, a korábban megadott felhasználói nevet és jelszót használva."
 
 #: templates/registration/activate.html:20
-msgid ""
-"Oops &ndash; Either you activated your account already, or the activation "
-"key is invalid or has expired."
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 msgstr "Hoppá &ndash; Ön már vagy előzőleg aktiválta a felhasználói fiókját, vagy az aktivációs kulcs érvénytelen, vagy lejárt."
 
 #: templates/registration/activation_complete.html:3
@@ -774,7 +871,17 @@ msgid ""
 "\n"
 "To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
-msgstr "Ezt az e-mailt azért kapta, mert ön (vagy valaki az ön nevében)\n\nazt ön jelszavának a visszaállítását kérte a %(domain)s weboldalon. Ha nem szeretné\n\nvisszaállítani a jelszavát, kérem hagyja figyelmen kívül ezt az üzenetet.\n\n\n\nA jelszava visszaállításához kattintson a következő hivatkozásra, vagy másolja ki és illessze be\na böngészőjébe:"
+msgstr ""
+"Ezt az e-mailt azért kapta, mert ön (vagy valaki az ön nevében)\n"
+"\n"
+"azt ön jelszavának a visszaállítását kérte a %(domain)s weboldalon. Ha nem szeretné\n"
+"\n"
+"visszaállítani a jelszavát, kérem hagyja figyelmen kívül ezt az üzenetet.\n"
+"\n"
+"\n"
+"\n"
+"A jelszava visszaállításához kattintson a következő hivatkozásra, vagy másolja ki és illessze be\n"
+"a böngészőjébe:"
 
 #: templates/registration/password_reset_email.html:12
 #, python-format
@@ -784,7 +891,15 @@ msgid ""
 "\n"
 "Best regards,\n"
 "%(site_name)s Management\n"
-msgstr "\nA felhasználóneve, ha esetleg elfelejtette volna: %(username)s\n\n\n\nÜdvözlettel,\n\n%(site_name)s management\n"
+msgstr ""
+"\n"
+"A felhasználóneve, ha esetleg elfelejtette volna: %(username)s\n"
+"\n"
+"\n"
+"\n"
+"Üdvözlettel,\n"
+"\n"
+"%(site_name)s management\n"
 
 #: templates/registration/password_reset_form.html:3
 #: templates/registration/password_reset_form.html:16
@@ -800,14 +915,12 @@ msgid "Activation email sent"
 msgstr "Az akitváló e-mailt elküldtük!"
 
 #: templates/registration/registration_complete.html:7
-#: tests/registration/test_registration.py:144
+#: tests/registration/test_registration.py:145
 msgid "An activation mail will be sent to you email address."
 msgstr "A regisztrációt aktiváló e-mailt küldünk az e-mail címedre."
 
 #: templates/registration/registration_complete.html:13
-msgid ""
-"Please confirm registration with the link in the email. If you haven't "
-"received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Erősítsd meg a regisztrációs szándékodat az e-malben kapott linkre kattintva. Ha nem kapsz e-mailt, nézd meg a levélszemetet tartalmazó könyvtárat 10 perc múlva."
 
 #: templates/registration/registration_form.html:3
@@ -834,32 +947,30 @@ msgstr "Ismételd meg a jelszót"
 msgid "Sign-up"
 msgstr "Regisztráció"
 
-#: tests/registration/test_registration.py:42
+#: tests/registration/test_registration.py:43
 msgid "This field is required."
 msgstr "Kötelezően megadandó érték."
 
-#: tests/registration/test_registration.py:81
-msgid ""
-"Enter a valid username. This value may contain only letters, numbers and "
-"@/./+/-/_ characters."
+#: tests/registration/test_registration.py:82
+msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Egy érvényes felhasználói nevet adj meg, ami betüből, számból és a következő karakterekből állhat: @/./+/-/_ "
 
-#: tests/registration/test_registration.py:109
+#: tests/registration/test_registration.py:110
 msgid "A user with that username already exists."
 msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
 
-#: tests/registration/test_registration.py:130
+#: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
 msgstr "A két jelszó nem egyezik!"
 
-#: volunteer_planner/settings/base.py:135
+#: volunteer_planner/settings/base.py:136
 msgid "German"
 msgstr "Német"
 
-#: volunteer_planner/settings/base.py:136
+#: volunteer_planner/settings/base.py:137
 msgid "English"
 msgstr "Angol"
 
-#: volunteer_planner/settings/base.py:137
+#: volunteer_planner/settings/base.py:138
 msgid "Hungarian"
 msgstr "Magyar"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 15:49+0200\n"
+"POT-Creation-Date: 2015-10-03 21:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounts/models.py:15
+#: accounts/models.py:15 organizations/models.py:126
 msgid "user account"
 msgstr ""
 
@@ -48,6 +48,15 @@ msgstr ""
 
 #: accounts/templates/user_detail.html:20
 msgid "Edit Account"
+msgstr ""
+
+#: blueprint/models.py:14 organizations/models.py:97
+#: organizations/models.py:154 scheduler/models.py:60
+msgid "facility"
+msgstr ""
+
+#: blueprint/models.py:15 scheduler/models.py:80
+msgid "shifts"
 msgstr ""
 
 #: blueprint/templates/blueprint_executor.html:6
@@ -275,12 +284,93 @@ msgstr ""
 msgid "text"
 msgstr ""
 
-#: places/models.py:20 scheduler/models.py:143 shiftmailer/models.py:10
+#: organizations/models.py:11 organizations/models.py:49 places/models.py:20
 msgid "name"
 msgstr ""
 
-#: places/models.py:21
+#: organizations/models.py:14 organizations/models.py:52 places/models.py:21
 msgid "slug"
+msgstr ""
+
+#: organizations/models.py:19 organizations/models.py:57
+msgid "short description"
+msgstr ""
+
+#: organizations/models.py:22 organizations/models.py:25
+#: organizations/models.py:60 organizations/models.py:63
+msgid "description"
+msgstr ""
+
+#: organizations/models.py:28 organizations/models.py:80
+msgid "address"
+msgstr ""
+
+#: organizations/models.py:36 organizations/models.py:139
+msgid "organization"
+msgstr ""
+
+#: organizations/models.py:37
+msgid "organizations"
+msgstr ""
+
+#: organizations/models.py:44
+msgid "oranization"
+msgstr ""
+
+#: organizations/models.py:76 places/models.py:132
+msgid "place"
+msgstr ""
+
+#: organizations/models.py:85
+msgid "postal code"
+msgstr ""
+
+#: organizations/models.py:90
+msgid "Show on map of all facilities"
+msgstr ""
+
+#: organizations/models.py:92
+msgid "latitude"
+msgstr ""
+
+#: organizations/models.py:94
+msgid "longitude"
+msgstr ""
+
+#: organizations/models.py:98
+msgid "facilities"
+msgstr ""
+
+#: organizations/models.py:116
+msgid "owner"
+msgstr ""
+
+#: organizations/models.py:117
+msgid "manager"
+msgstr ""
+
+#: organizations/models.py:118
+msgid "member"
+msgstr ""
+
+#: organizations/models.py:123
+msgid "role"
+msgstr ""
+
+#: organizations/models.py:144
+msgid "organization member"
+msgstr ""
+
+#: organizations/models.py:145
+msgid "organization members"
+msgstr ""
+
+#: organizations/models.py:160
+msgid "facility member"
+msgstr ""
+
+#: organizations/models.py:161
+msgid "facility members"
 msgstr ""
 
 #: places/models.py:69 places/models.py:84
@@ -307,19 +397,15 @@ msgstr ""
 msgid "areas"
 msgstr ""
 
-#: places/models.py:132 scheduler/models.py:160
-msgid "place"
-msgstr ""
-
 #: places/models.py:133
 msgid "places"
 msgstr ""
 
-#: scheduler/apps.py:7
+#: scheduler/apps.py:8
 msgid "Scheduler"
 msgstr ""
 
-#: scheduler/models.py:56 scheduler/models.py:128
+#: scheduler/models.py:56 scheduler/models.py:130
 msgid "help type"
 msgstr ""
 
@@ -327,80 +413,44 @@ msgstr ""
 msgid "HELP_TYPE_HELP"
 msgstr ""
 
-#: scheduler/models.py:58 scheduler/models.py:163
-msgid "location"
-msgstr ""
-
-#: scheduler/models.py:60
+#: scheduler/models.py:62
 msgid "starting time"
 msgstr ""
 
-#: scheduler/models.py:62
+#: scheduler/models.py:64
 msgid "ending time"
 msgstr ""
 
-#: scheduler/models.py:71
+#: scheduler/models.py:73
 msgid "number of needed volunteers"
 msgstr ""
 
-#: scheduler/models.py:77
+#: scheduler/models.py:79
 msgid "shift"
 msgstr ""
 
-#: scheduler/models.py:78
-msgid "shifts"
-msgstr ""
-
-#: scheduler/models.py:115
+#: scheduler/models.py:117
 msgid "shift helper"
 msgstr ""
 
-#: scheduler/models.py:116
+#: scheduler/models.py:118
 msgid "shift helpers"
 msgstr ""
 
-#: scheduler/models.py:129
+#: scheduler/models.py:131
 msgid "help types"
 msgstr ""
 
-#: scheduler/models.py:145
-msgid "address"
-msgstr ""
-
-#: scheduler/models.py:147
-msgid "city"
-msgstr ""
-
-#: scheduler/models.py:149
-msgid "postal code"
-msgstr ""
-
-#: scheduler/models.py:151
-msgid "latitude"
-msgstr ""
-
-#: scheduler/models.py:153
-msgid "longitude"
-msgstr ""
-
-#: scheduler/models.py:155
-msgid "description"
-msgstr ""
-
-#: scheduler/models.py:164
-msgid "facilities"
-msgstr ""
-
-#: scheduler/templates/geographic_helpdesk.html:69
+#: scheduler/templates/geographic_helpdesk.html:68
 msgid "Show on Google Maps"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:78
+#: scheduler/templates/geographic_helpdesk.html:76
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
 msgstr ""
 
-#: scheduler/templates/geographic_helpdesk.html:110
+#: scheduler/templates/geographic_helpdesk.html:108
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr ""
@@ -411,14 +461,14 @@ msgstr ""
 
 #: scheduler/templates/helpdesk.html:14
 #, python-format
-msgid "%(location_name)s on %(date)s"
+msgid "%(facility_name)s on %(date)s"
 msgstr ""
 
 #: scheduler/templates/helpdesk.html:26
 msgid "Volunteers wanted"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:51
+#: scheduler/templates/helpdesk.html:50
 msgid "open shifts"
 msgstr ""
 
@@ -428,8 +478,8 @@ msgstr ""
 
 #: scheduler/templates/helpdesk_single.html:6
 #, python-format
-msgctxt "title with location"
-msgid "Schedule for %(location_name)s"
+msgctxt "title with facility"
+msgid "Schedule for %(facility_name)s"
 msgstr ""
 
 #: scheduler/templates/helpdesk_single.html:23
@@ -531,33 +581,37 @@ msgid ""
 "volunteer-planner.org\n"
 msgstr ""
 
-#: scheduler/views.py:70
+#: scheduler/views.py:71
 msgid "The submitted data was invalid."
 msgstr ""
 
-#: scheduler/views.py:77
+#: scheduler/views.py:78
 msgid "User account does not exist."
 msgstr ""
 
-#: scheduler/views.py:93
+#: scheduler/views.py:94
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr ""
 
-#: scheduler/views.py:104
+#: scheduler/views.py:106
 msgid "You were successfully added to this shift."
 msgstr ""
 
-#: scheduler/views.py:107
+#: scheduler/views.py:109
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr ""
 
-#: scheduler/views.py:118
+#: scheduler/views.py:120
 msgid "You successfully left this shift."
 msgstr ""
 
 #: shiftmailer/models.py:9
-msgid "given_name"
+msgid "first name"
+msgstr ""
+
+#: shiftmailer/models.py:10
+msgid "last name"
 msgstr ""
 
 #: shiftmailer/models.py:11
@@ -612,7 +666,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: templates/partials/region_selection.html:15
+#: templates/partials/region_selection.html:13
 msgid "Regions"
 msgstr ""
 
@@ -765,7 +819,7 @@ msgid "Activation email sent"
 msgstr ""
 
 #: templates/registration/registration_complete.html:7
-#: tests/registration/test_registration.py:144
+#: tests/registration/test_registration.py:145
 msgid "An activation mail will be sent to you email address."
 msgstr ""
 
@@ -797,30 +851,30 @@ msgstr ""
 msgid "Sign-up"
 msgstr ""
 
-#: tests/registration/test_registration.py:42
+#: tests/registration/test_registration.py:43
 msgid "This field is required."
 msgstr ""
 
-#: tests/registration/test_registration.py:81
+#: tests/registration/test_registration.py:82
 msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
-#: tests/registration/test_registration.py:109
+#: tests/registration/test_registration.py:110
 msgid "A user with that username already exists."
 msgstr ""
 
-#: tests/registration/test_registration.py:130
+#: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: volunteer_planner/settings/base.py:135
+#: volunteer_planner/settings/base.py:136
 msgid "German"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:136
+#: volunteer_planner/settings/base.py:137
 msgid "English"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:137
+#: volunteer_planner/settings/base.py:138
 msgid "Hungarian"
 msgstr ""
