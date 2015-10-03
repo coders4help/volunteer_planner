@@ -7,8 +7,7 @@ from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
 
-from places.models import Country, Area, Place
-from places.models import Region
+from places.models import Country, Region, Area, Place
 
 
 class NeedManager(models.Manager):
