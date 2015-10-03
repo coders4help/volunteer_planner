@@ -47,6 +47,7 @@ LOCAL_APPS = (
 
     'google_tools',
     'accounts',
+    'organizations',
     'common',
     'registration',
     'scheduler',

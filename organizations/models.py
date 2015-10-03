@@ -1,0 +1,160 @@
+# coding: utf-8
+
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
+from accounts.models import UserAccount
+
+
+class Organization(models.Model):
+    # the name of the organization, ie. "Wilmersdorf hilft"
+    name = models.CharField(max_length=30, verbose_name=_(u'name'))
+
+    # the slug for the organization, which is used in the orgs' URL
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    # a short description of the organization.
+    # will be derived from description, if empty
+    short_description = models.TextField(blank=True,
+                                         verbose_name=_(u'short description'))
+
+    # a description of the organization
+    description = models.TextField(verbose_name=_(u'description'))
+
+    # anything one needs to know on how to contact the facility
+    contact_info = models.TextField(verbose_name=_(u'description'))
+
+    # the orgs address
+    address = models.TextField(verbose_name=_('address'))
+
+    # users associated with this organization
+    # ie. members, admins, owners
+    members = models.ManyToManyField(UserAccount,
+                                     through='organizations.OrganizationMembership')
+
+    class Meta:
+        verbose_name = _(u'organization')
+        verbose_name_plural = _(u'organizations')
+        ordering = ('name',)
+
+
+class Facility(models.Model):
+    # the organization running this facility
+    organization = models.ForeignKey('organizations.Organization',
+                                     verbose_name=_('oranization'),
+                                     related_name='facilities',
+                                     related_query_name='facility')
+
+    # the name of the facility, ie. "Fehrbelliner Platz 4"
+    name = models.CharField(max_length=30, verbose_name=_(u'name'))
+
+    # the slug for the facility, which is used in the facilitys' URL,
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    # a short description of the facility.
+    # will be derived from description, if empty
+    short_description = models.TextField(blank=True,
+                                         verbose_name=_(u'short description'))
+
+    # a description of the facility
+    description = models.TextField(verbose_name=_(u'description'))
+
+    # anything one needs to know on how to contact the facility
+    contact_info = models.TextField(verbose_name=_(u'description'))
+
+    # users associated with this facility
+    # ie. members, admins, owners
+    members = models.ManyToManyField(UserAccount,
+                                     through='organizations.FacilityMembership')
+
+    # the geographical location of the faciltiy
+    place = models.ForeignKey("places.Place",
+                              null=False,
+                              related_name='facilities',
+                              related_query_name='facility',
+                              verbose_name=_(
+                                  'place'))
+
+    # not all addresses need to have the western pattern of
+    # street, postal code, city
+    address = models.TextField(verbose_name=_('address'))
+
+    street = models.CharField(max_length=255, blank=True,
+                              verbose_name=_('address'))
+    city = models.CharField(max_length=255, blank=True,
+                            verbose_name=_('city'))
+    postal_code = models.CharField(max_length=5, blank=True,
+                                   verbose_name=_('postal code'))
+
+    # coordinates for showing it on a map and a flag to switch it on
+    show_on_map = models.BooleanField(default=True,
+                                      verbose_name=_(
+                                          'Show on map of all facilities'))
+    latitude = models.CharField(max_length=30, blank=True,
+                                verbose_name=_('latitude'))
+    longitude = models.CharField(max_length=30, blank=True,
+                                 verbose_name=_('longitude'))
+
+    class Meta:
+        verbose_name = _(u'facility')
+        verbose_name_plural = _(u'facilities')
+        ordering = ('organization', 'place', 'name',)
+
+    def __unicode__(self):
+        return u'{}'.format(self.name)
+
+
+class Membership(models.Model):
+    related_name = None
+    related_query_name = None
+
+    class Roles:
+        OWNER, MANAGER, MEMBER = 0, 1, 2
+        CHOICES = (
+            (OWNER, _(u'owner').title()),
+            (MANAGER, _(u'manager').title()),
+            (MEMBER, _(u'member').title()),
+        )
+
+    role = models.PositiveIntegerField(choices=Roles.CHOICES,
+                                       default=Roles.MEMBER,
+                                       verbose_name=_(u'role'))
+
+    user_account = models.ForeignKey(UserAccount,
+                                     verbose_name=_(u'user account'),
+                                     related_name=related_name,
+                                     related_query_name=related_query_name)
+
+    class Meta:
+        abstract = True
+
+
+class OrganizationMembership(Membership):
+    related_name = 'organizations'
+    related_query_name = 'organization'
+
+    organization = models.ForeignKey(Organization,
+                                     verbose_name=_(u'organization'),
+                                     related_name='memberships',
+                                     related_query_name='membership')
+
+    class Meta:
+        verbose_name = _(u'organization member')
+        verbose_name_plural = _(u'organization members')
+        ordering = ('organization', 'role', 'user_account')
+
+
+class FacilityMembership(Membership):
+    related_name = 'facilities'
+    related_query_name = 'facility'
+
+    facility = models.ForeignKey(Facility,
+                                 verbose_name=_(u'facility'),
+                                 related_name='memberships',
+                                 related_query_name='membership'
+                                 )
+
+    class Meta:
+        verbose_name = _(u'facility member')
+        verbose_name_plural = _(u'facility members')
+        ordering = ('facility', 'role', 'user_account')
