@@ -185,29 +185,26 @@ This generates a nice HTML coverage page, to poke around which can be found at `
 *Note*: The directory `htmlcov` is git-ignored.
 
 ### Translations
-
-Can create/update the translations file with
-
+We use transiflex for managing translations.
+You first need to make sure that the transiflex client is installed.
 ```
-./manage.py makemessages --no-obsolete --no-wrap
+pip install transifex-client
 ```
+For further installation infos check http://docs.transifex.com/client/setup/
 
-The options are intended to make the output more git-friendly.
+The workflow is like
 
-Compile the messages file with
-
-```
-./manage.py compilemessages
-```
+1. you code you stuff
+2. "./manage.py makemessages --no-obsolete --no-wrap" The options are intended to make the output more git-friendly.
+3. "tx push -s django"
+3. do translations on transiflex
+4. "tx pull"
+5. "./manage.py compilemessages"
+6. test if it looks good
+7. commit push with git
 
 Your local installation should be translated then.
 The .mo file created by compilemessages is gitignored,
 you'll need to (re-)generate it locally every time the .po file changes.
 
 
-### CSS / Less
-
-We use less for precompiling css. The less file you will find in
-`scheduler/static/bootstrap/less/project.less` To make this work you can just
-initialize the folder with "npm install -g" and then let grunt watch for
-changes.
