@@ -31,10 +31,9 @@ class Command(BaseCommand):
                 ending_time__month=t.strftime("%m"),
                 ending_time__day=t.strftime("%d")) \
                 .order_by('topic', 'ending_time') \
-                .annotate(volunteer_count=Count('registrationprofile')) \
+                .annotate(volunteer_count=Count('helpers')) \
                 .select_related('topic', 'location') \
-                .prefetch_related('registrationprofile_set', 'registrationprofile_set__user')
-
+                .prefetch_related('helpers', 'helpers__user')
             # if it's not used anyway, we maybe shouldn't even render it? #
             # message = render_to_string('shifts_today.html', locals())
             iua = GenerateExcelSheet(shifts=needs, mailer=mail)

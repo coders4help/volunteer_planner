@@ -1,19 +1,26 @@
-Schichtplan für {{  mail.organization }} vom {{ needs.0.starting_time|date:"d.m.Y"  }}
+{% blocktrans trimmed context "shift today title" with organization_name=mail.organization date=needs.0.starting_time|date:"d.m.Y" %}
+    Schedule for {{ organization_name }} on {{ date }}
+{% endblocktrans %}
 
-Alle Daten sind vertraulich und nicht zur Weitergabe an Dritte bestimmt!
-
+{# Alle Daten sind vertraulich und nicht zur Weitergabe an Dritte bestimmt! #}
+{% trans "All data is private and not supposed to be given away!" %}
 
 {% for need in needs %}
 
-    {% if need.registrationprofile_set %}
-     {% ifchanged need.topic.title %}
-         {{ need.topic.title }}
-     {% endifchanged %}
-     von {{ need.starting_time|date:"H" }} - {{ need.ending_time|date:"H" }} Uhr angemeldet sind {{ need.volunteer_count }}) Freiwillige:
+    {% if need.helpers %}
+        {% ifchanged need.topic.title %}
+            {{ need.topic.title }}
+        {% endifchanged %}
 
-    {% for volunteer in need.registrationprofile_set.all %}
-             {{ volunteer.user.username }} ({{ volunteer.user.email }})
-    {% endfor %}
+        {% blocktrans trimmed with start_time=need.starting_time|date:"H" end_time=need.ending_time|date:"H" volunteer_count=need.volunteer_count %}
+            from {{ start_time }} to {{ end_time }} following
+            {{ volunteer_count }} volunteers have signed up:
+        {% endblocktrans %}
+
+        {% for volunteer in need.helpers.all %}
+            {{ volunteer.user.username }} ({{ volunteer.user.email }})
+        {% endfor %}
+
     {% endif %}
 
 {% endfor %}

@@ -4,8 +4,11 @@ import string
 import factory
 from django.contrib.auth.models import User
 from factory.fuzzy import FuzzyText
+
+from accounts import models as account_models
+
 from scheduler import models as scheduler_models
-from registration import models as registration_models
+from places import models as places_models
 
 
 class TopicFactory(factory.DjangoModelFactory):
@@ -18,12 +21,51 @@ class TopicFactory(factory.DjangoModelFactory):
     description = FuzzyText(length=150, chars=string.ascii_letters, prefix='')
 
 
+class CountryFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = places_models.Country
+
+    name = factory.Sequence(lambda n: 'Country ' + str(n))
+    slug = factory.Sequence(lambda n: 'country_' + str(n))
+
+
+class RegionFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = places_models.Region
+
+    name = factory.Sequence(lambda n: 'Region ' + str(n))
+    slug = factory.Sequence(lambda n: 'region_' + str(n))
+
+    country = factory.SubFactory(CountryFactory)
+
+
+class AreaFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = places_models.Area
+
+    name = factory.Sequence(lambda n: 'Area ' + str(n))
+    slug = factory.Sequence(lambda n: 'area_' + str(n))
+
+    region = factory.SubFactory(RegionFactory)
+
+
+class PlaceFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = places_models.Place
+
+    name = factory.Sequence(lambda n: 'Place ' + str(n))
+    slug = factory.Sequence(lambda n: 'place_' + str(n))
+
+    area = factory.SubFactory(AreaFactory)
+
+
 class LocationFactory(factory.DjangoModelFactory):
     name = "Rathaus W"
+    place = factory.SubFactory(PlaceFactory)
 
     class Meta:
         model = scheduler_models.Location
-        django_get_or_create = ['name']
+        django_get_or_create = ['name', 'place']
 
 
 class NeedFactory(factory.DjangoModelFactory):
@@ -48,9 +90,8 @@ class UserFactory(factory.DjangoModelFactory):
     email = factory.LazyAttribute(lambda o: '%s@example.com' % o.last_name)
 
 
-class RegistrationProfileFactory(factory.DjangoModelFactory):
+class UserAccountFactory(factory.DjangoModelFactory):
     class Meta:
-        model = registration_models.RegistrationProfile
+        model = account_models.UserAccount
 
     user = factory.SubFactory(UserFactory)
-    activation_key = "ACTIVATION_KEY"
