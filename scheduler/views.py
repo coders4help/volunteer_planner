@@ -30,7 +30,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
         shifts = Need.objects.filter(ending_time__gt=datetime.datetime.now()) \
-            .order_by('location').select_related('location')
+            .order_by('location', 'ending_time').select_related('location')
         context['shifts'] = shifts
         context['notifications'] = Notification.objects.all().select_related(
             'location')
