@@ -5,8 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 
 class BluePrintCreator(models.Model):
     class Meta:
-        verbose_name = _("Blueprint Item")
-        verbose_name_plural = _("Blueprint Items")
+        verbose_name = _("Blueprint")
+        verbose_name_plural = _("Blueprints")
 
     title = models.CharField(verbose_name=_("blueprint title"), max_length=255)
     location = models.ForeignKey('scheduler.Location', verbose_name=_("location"))
@@ -18,8 +18,8 @@ class BluePrintCreator(models.Model):
 
 class NeedBluePrint(models.Model):
     class Meta:
-        verbose_name = _("Blueprint")
-        verbose_name_plural = _("Blueprints")
+        verbose_name = _("Blueprint Item")
+        verbose_name_plural = _("Blueprint Items")
 
     topic = models.ForeignKey('scheduler.Topics', verbose_name=_("topic"))
     from_time = models.CharField(verbose_name=_('from hh:mm'), max_length=5)
