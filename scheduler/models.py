@@ -1,11 +1,51 @@
 # coding: utf-8
 
-import datetime
-import locale
+from datetime import timedelta
 
 from django.db import models
+from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
+
+from places.models import Country, Area, Place
+from places.models import Region
+
+
+class NeedManager(models.Manager):
+    def at_location(self, location):
+        return self.get_queryset().filter(location=location)
+
+    def at_place(self, place):
+        return self.get_queryset().filter(location__place=place)
+
+    def in_area(self, area):
+        return self.get_queryset().filter(location__place__area=area)
+
+    def in_region(self, region):
+        return self.get_queryset().filter(location__place__area__region=region)
+
+    def in_country(self, country):
+        return self.get_queryset().filter(
+            location__place__area__region__country=country)
+
+    def by_geography(self, geo_affiliation):
+        if isinstance(geo_affiliation, Location):
+            return self.at_location(geo_affiliation)
+        elif isinstance(geo_affiliation, Place):
+            return self.at_place(geo_affiliation)
+        elif isinstance(geo_affiliation, Area):
+            return self.in_area(geo_affiliation)
+        elif isinstance(geo_affiliation, Region):
+            return self.in_region(geo_affiliation)
+        elif isinstance(geo_affiliation, Country):
+            return self.in_country(geo_affiliation)
+
+
+class OpenNeedManager(NeedManager):
+    def get_queryset(self):
+        now = timezone.now()
+        qs = super(OpenNeedManager, self).get_queryset()
+        return qs.filter(ending_time__gte=now)
 
 
 class Need(models.Model):
@@ -13,48 +53,30 @@ class Need(models.Model):
     This is the primary instance to create shifts
     """
 
-    class Meta:
-        verbose_name = _(u'shift')
-        verbose_name_plural = _(u'shifts')
-
-    topic = models.ForeignKey("Topics", verbose_name=_(u'helptype'), help_text=_(u'helptype_text'))
+    topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
+                              help_text=_(u'HELP_TYPE_HELP'))
     location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
-    starting_time = models.DateTimeField(verbose_name=_('starting time'), db_index=True)
-    ending_time = models.DateTimeField(verbose_name=_('ending time'), db_index=True)
+    starting_time = models.DateTimeField(verbose_name=_('starting time'),
+                                         db_index=True)
+    ending_time = models.DateTimeField(verbose_name=_('ending time'),
+                                       db_index=True)
+
+    helpers = models.ManyToManyField('accounts.UserAccount',
+                                     through='ShiftHelper',
+                                     related_name='needs')
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
-    def get_conflicting_needs(self, needs, grace=datetime.timedelta(hours=1)):
-        """
-        Given a list of other needs, this function returns needs that overlap by time.
-        A grace period of overlap is allowed:
+    objects = NeedManager()
+    open_needs = OpenNeedManager()
 
-               Event A: 10 till 14
-               Event B: 13 till 15
-
-        would not conflict if a grace period of 1 hour or more is allowed, but would conflict if
-        the grace period is less.
-
-        This is not the most efficient implementation, but one of the more obvious. Optimize
-        only if needed. Nicked from:
-        http://stackoverflow.com/questions/3721249/python-date-interval-intersection
-
-        :param needs: A Django queryset of Need instances.
-        """
-        latest_start_time = self.starting_time + grace
-        earliest_end_time = self.ending_time - grace
-        if earliest_end_time <= latest_start_time:
-            # Event is shorter than 2 * grace time, can't have overlaps.
-            return []
-
-        return [
-            need for need in needs
-            if (need.starting_time < latest_start_time < need.ending_time) or
-            (latest_start_time < need.starting_time < earliest_end_time)
-            ]
+    class Meta:
+        verbose_name = _(u'shift')
+        verbose_name_plural = _(u'shifts')
+        ordering = ['starting_time', 'ending_time']
 
     def __unicode__(self):
         return u"{title} - {location} ({start} - {end})".format(
@@ -62,10 +84,49 @@ class Need(models.Model):
             start=localize(self.starting_time), end=localize(self.ending_time))
 
 
+class ShiftHelperManager(models.Manager):
+    def conflicting(self, need, user_account=None, grace=timedelta(hours=1)):
+
+        grace = grace or timedelta(0)
+        graced_start = need.starting_time + grace
+        graced_end = need.ending_time - grace
+
+        query_set = self.get_queryset().select_related('need', 'user_account')
+
+        if user_account:
+            query_set = query_set.filter(user_account=user_account)
+
+        query_set = query_set.exclude(need__starting_time__lt=graced_start,
+                                      need__ending_time__lte=graced_start)
+        query_set = query_set.exclude(need__starting_time__gte=graced_end,
+                                      need__ending_time__gte=graced_end)
+        return query_set
+
+
+class ShiftHelper(models.Model):
+    user_account = models.ForeignKey('accounts.UserAccount',
+                                     related_name='shift_helpers')
+    need = models.ForeignKey('scheduler.Need', related_name='shift_helpers')
+    joined_shift_at = models.DateTimeField(auto_now_add=True)
+
+    objects = ShiftHelperManager()
+
+    class Meta:
+        verbose_name = _('shift helper')
+        verbose_name_plural = _('shift helpers')
+        unique_together = ('user_account', 'need')
+
+    def __repr__(self):
+        return "{}".format(self.need)
+
+    def __unicode__(self):
+        return u"{}".format(repr(self))
+
+
 class Topics(models.Model):
     class Meta:
-        verbose_name = _(u'helptype')
-        verbose_name_plural = _(u'helptypes')
+        verbose_name = _(u'help type')
+        verbose_name_plural = _(u'help types')
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
@@ -78,56 +139,33 @@ class Topics(models.Model):
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=255, blank=True)
-    street = models.CharField(max_length=255, blank=True)
-    city = models.CharField(max_length=255, blank=True)
-    postal_code = models.CharField(max_length=5, blank=True)
-    latitude = models.CharField(max_length=30, blank=True)
-    longitude = models.CharField(max_length=30, blank=True)
-    additional_info = models.TextField(max_length=300000, blank=True)
+    name = models.CharField(max_length=255, blank=True,
+                            verbose_name=_('name'))
+    street = models.CharField(max_length=255, blank=True,
+                              verbose_name=_('address'))
+    city = models.CharField(max_length=255, blank=True,
+                            verbose_name=_('city'))
+    postal_code = models.CharField(max_length=5, blank=True,
+                                   verbose_name=_('postal code'))
+    latitude = models.CharField(max_length=30, blank=True,
+                                verbose_name=_('latitude'))
+    longitude = models.CharField(max_length=30, blank=True,
+                                 verbose_name=_('longitude'))
+    additional_info = models.TextField(max_length=300000, blank=True,
+                                       verbose_name=_('description'))
+
+    place = models.ForeignKey("places.Place",
+                              null=False,
+                              related_name='locations',
+                              verbose_name=_('place'))
 
     class Meta:
         verbose_name = _(u'location')
         verbose_name_plural = _(u'locations')
+        ordering = ('place', 'name',)
         permissions = (
             ("can_view", u"User can view location"),
         )
 
     def __unicode__(self):
         return u'{}'.format(self.name)
-
-    def get_days_with_needs(self):
-        """
-        Returns a list of tuples, representing days that this location has
-        needs. The tuple contains a datetime object, and a date formatted
-        in German format.
-        """
-        dates = self.need_set.filter(ending_time__gt=datetime.datetime.now()
-            ).order_by('ending_time').values_list('starting_time', flat=True)
-        dates_and_date_strings = []
-        seen_date_strings = []
-        locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')  # FIXME
-        for date in dates:
-            date_string = date.strftime("%A, %d.%m.%Y")
-            if date_string not in seen_date_strings:
-                seen_date_strings.append(date_string)
-                dates_and_date_strings.append((date, date_string))
-        return dates_and_date_strings
-
-
-class WorkDone(models.Model):
-    """
-    A SQL view is used to calculate total volunteer hours. This unmanaged model is used to
-    let us access that data via Django.
-
-    Note that this won't work with a local SQLite backend.
-    """
-    id = models.IntegerField(primary_key=True)
-    hours = models.IntegerField(name=u'hours', verbose_name=_('working hours'))
-
-    class Meta:
-        managed = False
-        db_table = 'work_done'
-
-    def __unicode__(self):
-        return u'{}'.format(self.hours)

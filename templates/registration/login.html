@@ -1,0 +1,47 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Login" %}{% endblock %}
+{% block content %}
+    {% url 'auth_password_reset' as auth_password_reset_url %}
+    {% url 'registration_register' as registration_url %}
+    <div class="col-md-4 form-container">
+        <h1 class="text-right">volunteer-planner.org</h1>
+
+        <h2 class="text-right">{% trans "Login" %}</h2>
+    </div>
+    <div class="col-md-3 form-container border-left">
+        {% if form.errors %}
+            <p>
+                {% blocktrans trimmed %}
+                    Your username and password didn't match. Please try again.
+                {% endblocktrans %}
+            </p>
+        {% endif %}
+
+        <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" placeholder="{% trans "Username" %}" name="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="{% trans "Password" %}" name="password">
+            </div>
+
+            <input type="submit" class="btn btn-primary align-left" value="login"/>
+            <input type="hidden" name="next" value="{{ next }}"/>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <a href="{% url 'auth_password_reset' %}">
+                            {% trans "Forgot your password?" %}
+                        </a>
+                        <br>
+                        <a href="{% url 'registration_register' %}">
+                            {% trans "Help and sign-up" %}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

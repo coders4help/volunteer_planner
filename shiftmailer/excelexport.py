@@ -20,7 +20,7 @@ shift_time_short_format = '%H:%M'
 class GenerateExcelSheet:
     def __init__(self, shifts, mailer):
         if not shifts:
-            raise AssertionError(u'No shifts given. Cannot generate Excel file.')
+            raise AssertionError(u'No shifts given. Cannot generate Excel file for {}.'.format(mailer.location))
 
         self.shifts = shifts
         self.mailer = mailer
@@ -89,7 +89,7 @@ class GenerateExcelSheet:
                                                             shift.volunteer_count, shift.slots))
             cur_line += 1
 
-            for volunteer in shift.registrationprofile_set.all():
+            for volunteer in shift.helpers.all():
                 log.debug(u'Writing user line: %s', volunteer.user.username)
                 write_user_line(ws, cur_line, i, volunteer, colstyle)
                 cur_line += 1

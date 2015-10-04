@@ -1,6 +1,8 @@
-# volunteer_planner
+# volunteer-planner.org
 
 A platform to schedule shifts of volunteers. 
+
+**TODO**: Add general project description and goals, ie. link to wiki.
 
 ## Project Setup
 
@@ -109,12 +111,17 @@ You might consider to use this example `postactivate` script
     git fetch --all
     git status
 
-#### 2.3.1 Setup your local environment (optional)
+*Note:* You'll need to re-active your virtual environment after each change to it's `postactivate` hook to take effect. Just run `workon vp` again, to make sure your current venv session has executed the `postactivate` hook.
+
+#### 2.3.1 ... settings module for using MySQL
+
+When you prefer to use MySQL locally, you'll probably need to use the settings module `volunteer_planner.settings.local_mysql` instead of `volunteer_planner.settings.local`.
+
+#### 2.3.2 Setup your local environment (optional)
 
 Also, if you need to use non-default settings values, setting (exporting) the 
 environment variables in your virtualenvs' `postactivate` hook is a good place 
 if you're not using an IDE to configure your environment variables. 
-
 
 ### 3. Initialize the database with Django
 
@@ -167,32 +174,37 @@ A good read on TDD is the free o'Reilly eBook ["Test-Driven Development with Pyt
 
 To run the tests, run the following command (with your virtual env activated, see 3.)
 
-    $ py.test [/path/to/volunteer_planner.git/]
+    $ py.test -v [/path/to/volunteer_planner.git/]
+
+If you want to generate a coverage report as well, run
+
+    $ py.test --cov=. --cov-report html --cov-report term-missing --no-cov-on-fail -v
+
+This generates a nice HTML coverage page, to poke around which can be found at `/path/to/volunteer_planner.git/htmlcov/index.html`. 
+
+*Note*: The directory `htmlcov` is git-ignored.
 
 ### Translations
-
-Can create/update the translations file with
-
+We use transiflex for managing translations.
+You first need to make sure that the transiflex client is installed.
 ```
-./manage.py makemessages --no-obsolete --no-wrap
+pip install transifex-client
 ```
+For further installation infos check http://docs.transifex.com/client/setup/
 
-The options are intended to make the output more git-friendly.
+The workflow is like
 
-Compile the messages file with
-
-```
-./manage.py compilemessages
-```
+1. you code you stuff
+2. "./manage.py makemessages --no-obsolete --no-wrap" The options are intended to make the output more git-friendly.
+3. "tx push -s django"
+3. do translations on transiflex
+4. "tx pull"
+5. "./manage.py compilemessages"
+6. test if it looks good
+7. commit push with git
 
 Your local installation should be translated then.
 The .mo file created by compilemessages is gitignored,
 you'll need to (re-)generate it locally every time the .po file changes.
 
 
-### CSS / Less
-
-We use less for precompiling css. The less file you will find in
-`scheduler/static/bootstrap/less/project.less` To make this work you can just
-initialize the folder with "npm install -g" and then let grunt watch for
-changes.
