@@ -205,7 +205,7 @@ We use [Transifex (tx)](https://www.transifex.com/coders4help/volunteer-planner/
 3. Push the updated translations to git. **Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).**
 4. Transifex will automatically update the source strings via github once a day and make them available for translation. 
 4.1. If necessary, translation managers (meaning VP's Transifex project admins) can update the source language manually using the tx client command `tx push -s django`. 
-5. Translators will then translate on [tx](https://www.transifex.com/coders4help/volunteer-planner/)
+5. Translators will then translate on [VP's Transifex project](https://www.transifex.com/coders4help/volunteer-planner/)
 6. When new translations are available on Transifex `tx pull` will update the local .po files with translations from TX
 7. `./manage.py makemessages --no-wrap --no-obsolete` will reformat po files in a more readable single-line message string format
 8. `./manage.py compilemessages`
@@ -223,7 +223,7 @@ You first need to make sure that the transiflex client is installed (should be i
 pip install transifex-client
 ```
 
-* For further installation infos check http://docs.transifex.com/client/setup/
+* For further installation infos and setup read [Transifex: Client setup](http://docs.transifex.com/client/config/)
 * Then, sign up at https://www.transifex.com, search for the project volunteer-planner.org, and join the respective team.
 * If you used an Oauth-ish method (Google, Facebook, etc.) to sign up for Transifex, you might need to set a password in your [Transifex profile](https://www.transifex.com/user/settings/password/) before you can use the client.
 * Edit your personal transifex configuration file that is stored in your home directory at ~/.transifexrc
