@@ -6,9 +6,9 @@ import datetime
 import factory
 from django.core.management.base import BaseCommand
 from django.db.models import signals
-from tests.factories import NeedFactory, TopicFactory, LocationFactory, RegistrationProfileFactory, PlaceFactory
+from tests.factories import NeedFactory, TopicFactory, LocationFactory, PlaceFactory, ShiftHelperFactory
 from registration.models import RegistrationProfile
-from scheduler.models import Need, Location, Topics
+from scheduler.models import Need, Location, Topics, ShiftHelper
 from places.models import Region, Area, Place, Country
 from django.contrib.auth.models import User
 
@@ -86,6 +86,5 @@ class Command(BaseCommand):
                     location=location
                 )
                 # assign random volunteer for each need
-                reg_user = RegistrationProfileFactory.create()
-                reg_user.needs.add(need)
+                reg_user = ShiftHelperFactory.create(need=need)
                 reg_user.save()
