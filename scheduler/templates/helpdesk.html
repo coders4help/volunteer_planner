@@ -1,40 +1,69 @@
-{% extends "home.html" %}
-{% load staticfiles %}
-{% block javascript %}
-    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
-{% endblock %}
-{% block meta %}
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-{% endblock %}
-{% block css %}
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
-{% endblock %}
-{% block title %}Helpdesk{% endblock %}
-{% block body_class %}helpdesk{% endblock %}
-{% block navbar %}
-    {% include 'navbar.html' %}
-{% endblock %}
+{% extends "base.html" %}
 
+{% load google_links i18n %}
 {% block content %}
 
-<div class="col-md-7">
-    <h2>Freiwillige werden benötigt in folgenden Einrichtungen:</h2>
-    {% include 'map.html' %}
-</div>
+    {% if notifications %}
+        <div class="row">
+            <h2>{% trans "Important news" %}</h2>
+            {% for notification in notifications %}
 
-{% if notifications %}
-    <div class="col-md-3 notification-container">
-        {% for notification in notifications %}
-            <h2>Aufrufe von "{{ notification.location.name }}"</h2>
-            {{ notification.creation_date }}
-            <h3>{{ notification.title }}</h3>
-            {{ notification.subtitle }}
-            {{ notification.text|safe }}
+                <div>
+                    <h3>{{ notification.title }}</h3>
+                    <h4>
+                        {% blocktrans trimmed with location_name=notification.location.name date=notification.creation_date %}
+                            {{ location_name }} on {{ date }}
+                        {% endblocktrans %}
+                    </h4>
+                    {{ notification.text|safe }}
+                </div>
+            {% endfor %}
+        </div>
+        <hr/>
+    {% endif %}
+
+    <div class="row">
+        <h2>{% trans "Volunteers wanted" %}</h2>
+
+        {% regroup shifts by location as shifts_by_location %}
+
+        {% for location_shifts in shifts_by_location %}
+            {% with location_shifts.grouper as location %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{ location }} </h3>
+                    </div>
+                <div class="col-md-8">
+                        {% with location.street|add:", "|add:location.postal_code|add:" "|add:location.city as address_line %}
+                            {% if address_line %}
+                                <h5>{{ address_line }} <a
+                                        href="{{ address_line|google_maps_directions }}"
+                                        target="_blank">&rarr; Google Maps</a>
+                                </h5>
+                            {% endif %}
+                        {% endwith %}
+                        <p>{{ location.additional_info|safe }}</p>
+                    </div>
+
+                    {% regroup location_shifts.list by ending_time.date as shifts_by_time %}
+
+                    <div class="col-md-4">
+                        <h4>{% trans "open shifts" %}</h4>
+
+                        <p>
+                            {% for shift_time in shifts_by_time %}
+                                {% with shift_time.grouper as shift_date %}
+                                    <a href="{% url 'planner_by_location' pk=location.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                                        {{ shift_date|date }}
+                                    </a>
+                                    <br/>
+                                {% endwith %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            {% endwith %}
         {% endfor %}
     </div>
-{% endif %}
-
 {% endblock %}

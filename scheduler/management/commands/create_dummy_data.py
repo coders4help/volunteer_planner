@@ -6,9 +6,10 @@ import datetime
 import factory
 from django.core.management.base import BaseCommand
 from django.db.models import signals
-from tests.factories import NeedFactory, TopicFactory, LocationFactory, RegistrationProfileFactory
+from tests.factories import NeedFactory, TopicFactory, LocationFactory, RegistrationProfileFactory, PlaceFactory
 from registration.models import RegistrationProfile
 from scheduler.models import Need, Location, Topics
+from places.models import Region, Area, Place, Country
 from django.contrib.auth.models import User
 
 HELPTOPICS = ["Jumper", "Translator", "Clothing Room", "Womens Room", "Donation Counter", "Highlights" ]
@@ -55,7 +56,19 @@ class Command(BaseCommand):
             Need.objects.all().delete()
             Location.objects.all().delete()
             Topics.objects.all().delete()
+
+            # delete geographic information
+            Country.objects.all().delete()
+            Region.objects.all().delete()
+            Area.objects.all().delete()
+            Place.objects.all().delete()
+
             User.objects.filter().exclude(is_superuser=True).delete()
+
+        # create regional data
+        places = list()
+        for i in range(0,10):
+            places.append(PlaceFactory.create())
 
         # create shifts for number of days
         for day in range(0, options['days'][0]):
@@ -63,8 +76,7 @@ class Command(BaseCommand):
                 topic = TopicFactory.create(title=random.choice(HELPTOPICS))
                 location = LocationFactory.create(
                     name="Shelter" + str(random.randint(0,9)),
-                    latitude=random.uniform(47.0, 55.0),
-                    longitude=random.uniform(5.0, 16.0),
+                    place=places[random.randint(0,len(places)-1)],
                     additional_info=LOREM
                 )
                 need = NeedFactory.create(

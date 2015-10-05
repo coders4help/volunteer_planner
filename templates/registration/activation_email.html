@@ -1,0 +1,11 @@
+{% url 'registration_activate' activation_key as activation_key_url %}
+Hallo {{ user }},
+
+vielen Dank, dass Du helfen willst! Nur noch einen Schritt, dann kannst Du Dich für die Freiwilligendienste anmelden!
+
+Bitte klicke auf den folgenden Link um die Registrierung Deines Benutzerkontos abzuschließen.
+Dieser Link ist für {{ expiration_days }} Tage gültig.
+
+<a href ="http://{{site.domain}}{{ activation_key_url }}">http://{{site.domain}}{{ activation_key_url }}</a>
+
+Dein Freiwilligen-Team zur Unterstützung der Geflüchteten

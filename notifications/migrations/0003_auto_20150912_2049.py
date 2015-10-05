@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='notification',
             name='text',
-            field=models.TextField(max_length=20055, verbose_name='articletext'),
+            field=models.TextField(max_length=20055, verbose_name='text'),
         ),
         migrations.AlterField(
             model_name='notification',

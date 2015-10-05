@@ -1,16 +1,16 @@
 # coding: utf-8
 
 from django.db import models
-
+from django.utils.translation import ugettext_lazy as _
 
 class BluePrintCreator(models.Model):
     class Meta:
-        verbose_name = "Vorlage"
-        verbose_name_plural = "Vorlagen"
+        verbose_name = _("Blueprint")
+        verbose_name_plural = _("Blueprints")
 
-    title = models.CharField(verbose_name="Name der Vorlage", max_length=255)
-    location = models.ForeignKey('scheduler.Location', verbose_name="Ort")
-    needs = models.ManyToManyField('NeedBluePrint', verbose_name="Schichten")
+    title = models.CharField(verbose_name=_("blueprint title"), max_length=255)
+    location = models.ForeignKey('scheduler.Location', verbose_name=_("location"))
+    needs = models.ManyToManyField('NeedBluePrint', verbose_name=_("shifts"))
 
     def __unicode__(self):
         return u'{}'.format(self.title)
@@ -18,13 +18,13 @@ class BluePrintCreator(models.Model):
 
 class NeedBluePrint(models.Model):
     class Meta:
-        verbose_name = "Schicht Vorlage"
-        verbose_name_plural = "Schicht Vorlagen"
+        verbose_name = _("Blueprint Item")
+        verbose_name_plural = _("Blueprint Items")
 
-    topic = models.ForeignKey('scheduler.Topics', verbose_name="Hilfetyp")
-    from_time = models.CharField(verbose_name='Uhrzeit von', max_length=5)
-    to_time = models.CharField(verbose_name='Uhrzeit bis', max_length=5)
-    slots = models.IntegerField(verbose_name="Anz. benoetigter Freiwillige")
+    topic = models.ForeignKey('scheduler.Topics', verbose_name=_("topic"))
+    from_time = models.CharField(verbose_name=_('from hh:mm'), max_length=5)
+    to_time = models.CharField(verbose_name=_('until hh:mm'), max_length=5)
+    slots = models.IntegerField(verbose_name=_("number of volunteers needed"))
 
     def get_location(self):
         return self.blueprintcreator_set.all().get().location

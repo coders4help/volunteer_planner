@@ -1,0 +1,80 @@
+{% extends "base_non_logged_in.html" %}
+
+{% load humanize i18n cache %}
+
+{% block stage %}
+    <!-- Full Width Image Header -->
+    <header class="header-image">
+        <div id="stage">
+            <div class="container">
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="spacer"></div>
+    <div class="col-md-12">
+    </div>
+    <div class="col-md-6">
+        <h2> {% trans "advantages" %}</h2>
+        <ul class="advantages">
+            <li class="check-icon"> {% trans "save time" %}</li>
+            <li class="check-icon"> {% trans "improve selforganization of the volunteers" %}
+            </li>
+            <li class="check-icon">
+                {% blocktrans %}
+                    volunteers split themselves up more effectively into shifts,
+                    temporary shortcuts can be anticipated by helpers themselves more easily
+                {% endblocktrans %}
+            </li>
+            <li class="check-icon">
+                {% blocktrans %}
+                    shift plans can be given to the security personnel
+                    or coordinating persons by an auto-mailer
+                    every morning
+                {% endblocktrans %}
+            </li>
+            <li class="check-icon">
+                {% blocktrans %}
+                the more shelters and camps are organized with us, the more volunteers are joining
+                    and all facilities will benefit from a common pool of motivated volunteers
+                {% endblocktrans %}
+            </li>
+            <li class="check-icon">
+                 {% trans "for free without costs" %}
+            </li>
+        </ul>
+
+    </div>
+    <div class="col-md-6">
+        <h2> {% trans "The right help at the right time at the right place" %}</h2>
+                 {% blocktrans %}
+        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.
+        volunteer-planner tries to solve this problem! <br>
+        </p>
+            {% endblocktrans %}
+    </div>
+
+    <div class="col-md-6">
+        <h2> {% trans "for free, ad free" %}</h2>
+        {% blocktrans %}
+        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,
+        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>
+            {% endblocktrans %}
+    </div>
+    <div class="col-md-12">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3">{% trans "contact us!" %}</h1>
+
+                <p class="lead">
+                    {% blocktrans %}
+                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a
+                            href="mailto:neue_unterkunefte@volunteer-planner.org">onboarding@volunteer-planner.org</a>
+                    {% endblocktrans %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
