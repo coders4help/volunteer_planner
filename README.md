@@ -210,8 +210,5 @@ We use the following workflow to manage translations and .po files:
 9. test if it looks good
 10. commit and push the updated translations to github
 
-Your local installation should be translated then.
-The .mo file created by compilemessages is gitignored,
+Your local installation should be translated then. The .mo file created by compilemessages is gitignored,
 you'll need to (re-)generate it locally every time the .po file changes.
-
-
