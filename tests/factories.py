@@ -95,3 +95,11 @@ class UserAccountFactory(factory.DjangoModelFactory):
         model = account_models.UserAccount
 
     user = factory.SubFactory(UserFactory)
+
+
+class ShiftHelperFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = scheduler_models.ShiftHelper
+        django_get_or_create = ['need']
+
+    user_account = factory.SubFactory(UserAccountFactory)
