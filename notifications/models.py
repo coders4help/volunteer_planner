@@ -12,7 +12,7 @@ class Notification(models.Model):
     creation_date = models.DateField(auto_now=True)
     title = models.CharField(max_length=255, verbose_name=_("title"))
     subtitle = models.CharField(max_length=255, verbose_name=_("subtitle"), null=True, blank=True)
-    text = models.TextField(max_length=20055, verbose_name=_("articletext"))
+    text = models.TextField(max_length=20055, verbose_name=_("text"))
     slug = models.SlugField(auto_created=True, max_length=255)
     location = models.ForeignKey('scheduler.Location')
 

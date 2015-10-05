@@ -1,0 +1,106 @@
+{% load humanize i18n staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Volunteer Planner</title>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/static/bootstrap4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/custom.css" rel="stylesheet">
+    <!-- Webfonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
+          rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+    {# There's a issue with Nexus 4 not working with the collapsible hamburger in BS4 #}
+    <a class="navbar-brand" href="{% url 'home' %}">
+        <img src={% static "images/volunteer-planner-logo.png" %}>
+    </a>
+
+    <div class="pull-right">
+        <a href="{% url 'auth_login' %}" class="btn btn-secondary">
+            {% trans "Login" %}
+                </a>
+        <a href="{% url 'registration_register' %}" class="btn btn-primary">
+            {% trans "Start helping" %}
+                </a>
+    </div>
+</nav>
+
+{% block stage %}
+    <div class="spacer-stage"></div>
+
+{% endblock %}
+<div class="container main-content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div class="spacer"></div>
+
+<div id="footer">
+    <div class="container">
+        <div class="inset">
+
+            <!-- <div id="footer-logo">volunteer planner</div> -->
+
+            <hr/>
+
+            <div id="footer-nav">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">{% trans "Main page" %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a>
+                    </li>
+                    <li>
+                        <a href="">{% trans "Contact" %}</a>
+                    </li>
+                    <li>
+                        <a href="">{% trans "Imprint"%}</a>
+                    </li>
+                    <li>
+                        <a href="">{% trans "Terms of Service"%} </a>
+                    </li>
+                    <li>
+                        <a href="">{% trans "Privacy Policy" %}</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- // .inset -->
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="/static/bootstrap4/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

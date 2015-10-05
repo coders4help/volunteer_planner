@@ -1,6 +1,8 @@
-# volunteer_planner
+# volunteer-planner.org
 
 A platform to schedule shifts of volunteers. 
+
+**TODO**: Add general project description and goals, ie. link to wiki.
 
 ## Project Setup
 
@@ -109,12 +111,17 @@ You might consider to use this example `postactivate` script
     git fetch --all
     git status
 
-#### 2.3.1 Setup your local environment (optional)
+*Note:* You'll need to re-active your virtual environment after each change to it's `postactivate` hook to take effect. Just run `workon vp` again, to make sure your current venv session has executed the `postactivate` hook.
+
+#### 2.3.1 ... settings module for using MySQL
+
+When you prefer to use MySQL locally, you'll probably need to use the settings module `volunteer_planner.settings.local_mysql` instead of `volunteer_planner.settings.local`.
+
+#### 2.3.2 Setup your local environment (optional)
 
 Also, if you need to use non-default settings values, setting (exporting) the 
 environment variables in your virtualenvs' `postactivate` hook is a good place 
 if you're not using an IDE to configure your environment variables. 
-
 
 ### 3. Initialize the database with Django
 
@@ -179,28 +186,52 @@ This generates a nice HTML coverage page, to poke around which can be found at `
 
 ### Translations
 
-Can create/update the translations file with
+We use [Transifex (tx)](https://www.transifex.com/coders4help/volunteer-planner/) for managing translations.
 
-```
-./manage.py makemessages --no-obsolete --no-wrap
-```
+#### General notes
 
-The options are intended to make the output more git-friendly.
+* Please read 
+    * [Django 1.8: Internationalization and localization](https://docs.djangoproject.com/en/1.8/topics/i18n/)
+    * [Django 1.8: Translations](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/)
+* Please avoid internationalized strings / messages containing HTML markup. This makes the site layout depending on the translators and them getting the markup right; it's error prone and hardly maintainable when the page's layout changes.
+* use `trimmed` option in [blocktrans](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/#std:templatetag-blocktrans) template tags, if indention is not intended.
+* Please provide [contextual markers](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/#contextual-markers) on strings to help translators understanding the usage of the strings better. The shorter an internationalized string is, the more abigious it will be and the more important an contextual hint will be.
 
-Compile the messages file with
+#### Workflow
 
-```
-./manage.py compilemessages
-```
+1. Code your stuff using the `ugettext_lazy as _` etc. methods to mark internationalized strings
+2. Update the po files `./manage.py makemessages --no-obsolete --no-wrap`
+   The options are intended to make the output more git-friendly.
+3. Push the updated translations to git. **Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).**
+4. Transifex will automatically update the source strings via github once a day and make them available for translation. 
+4.1. If necessary, translation managers (meaning VP's Transifex project admins) can update the source language manually using the tx client command `tx push -s django`. 
+5. Translators will then translate on [VP's Transifex project](https://www.transifex.com/coders4help/volunteer-planner/)
+6. When new translations are available on Transifex `tx pull` will update the local .po files with translations from TX
+7. `./manage.py makemessages --no-wrap --no-obsolete` will reformat po files in a more readable single-line message string format
+8. `./manage.py compilemessages`
+9. Test if it looks good and works as intended
+10. Commit and push the updated translations to git
 
-Your local installation should be translated then.
-The .mo file created by compilemessages is gitignored,
+Your local installation should be translated then. The .mo file created by compilemessages is gitignored,
 you'll need to (re-)generate it locally every time the .po file changes.
 
+#### How to use the Transifex client
 
-### CSS / Less
+You first need to make sure that the transiflex client is installed (should be in the requirements/dev.txt file).
 
-We use less for precompiling css. The less file you will find in
-`scheduler/static/bootstrap/less/project.less` To make this work you can just
-initialize the folder with "npm install -g" and then let grunt watch for
-changes.
+```
+pip install transifex-client
+```
+
+* For further installation infos and setup read [Transifex: Client setup](http://docs.transifex.com/client/config/)
+* Then, sign up at https://www.transifex.com, search for the project volunteer-planner.org, and join the respective team.
+* If you used an Oauth-ish method (Google, Facebook, etc.) to sign up for Transifex, you might need to set a password in your [Transifex profile](https://www.transifex.com/user/settings/password/) before you can use the client.
+* Edit your personal transifex configuration file that is stored in your home directory at ~/.transifexrc
+```
+[https://www.transifex.com]
+username = YOUR_TRANSIFEX_USERNAME
+token =
+password = YOUR_TRANSIFEX_PASSWORD
+hostname = https://www.transifex.com
+```
+Make sure not to share this file with anyone, as it contains your credentials! For more information on configuration, see http://docs.transifex.com/client/config/

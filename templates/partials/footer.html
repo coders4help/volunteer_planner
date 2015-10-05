@@ -1,0 +1,22 @@
+{% load i18n %}
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted text-center">
+            &copy; 2015 volunteer-planner.org &bullet;
+            <a href="https://github.com/volunteer-planner/volunteer_planner">GitHub</a> &bullet;
+
+
+            {% blocktrans trimmed with mailto_link='<a href="mailto:support@volunteer-planner.org">support@volunteer-planner.org</a>' %}
+                Questions? Get in touch: {{ mailto_link }}
+            {% endblocktrans %}
+
+            {% comment %}
+                {# TODO #}
+                <a href="#">{% trans "Imprint" %}</a> &bullet;
+                <a href="#">{% trans "Terms of Service" %}</a> &bullet;
+                <a href="#">{% trans "Contact" %}</a> &bullet;
+                <a href="#">{% trans "F.A.Q." %}</a>
+            {% endcomment %}
+        </p>
+    </div>
+</footer>

@@ -1,0 +1,119 @@
+{% extends "base_non_logged_in.html" %}
+
+{% load volunteer_stats humanize i18n cache %}
+
+{% block stage %}
+    <!-- Full Width Image Header -->
+    <header class="header-image">
+        <div id="stage">
+            <div class="container">
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="spacer"></div>
+        </div>
+
+        <div class="col-md-4 ">
+            <a id="help-cta" href="{% url 'registration_register' %}">
+                <h2>{% trans "I want to help!" %}</h2>
+                <hr/>
+                <p>{% trans "Register and see where you can help" %}</p>
+            </a><!-- // #about -->
+        </div>
+        <div class="col-md-4">
+            <a href="{% url  "shelter_info" %}" id="need-cta">
+                <h2>{% trans "Organize volunteers!" %}</h2>
+                <hr/>
+                <p>{% trans "Register a shelter and organize volunteers" %}</p>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <div class="facts ">
+                {% get_current_language as LANGUAGE_CODE %}
+
+                {% cache 900 volunteer_stats LANGUAGE_CODE %}
+                    {% get_volunteer_stats as volunteer_stats %}
+
+                    <span class="fact-amount">
+                        {{ volunteer_stats.facility_count|intcomma }}
+                    </span>
+                    <br/>
+                    {% trans "Places to help" %}
+
+                    <hr/>
+                    <span class="fact-amount">
+                        {{ volunteer_stats.volunteer_count|intcomma }}
+                    </span>
+                    <br/>
+                    {% trans "Registered Volunteers" %}
+                    <hr/>
+
+                    <span class="fact-amount">
+                        {{ volunteer_stats.volunteer_hours|intcomma }}
+                    </span>
+                    <br/>
+                    {% trans "Worked Hours" %}
+
+                {% endcache %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="spacer"></div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-8">
+            <h2>{% trans "What is it all about?" %}</h2>
+
+            <p>
+                {% blocktrans trimmed %}
+                    You are a volunteer and want to help refugees?
+                    Volunteer-Planner.org shows you where, when and how
+                    to help directly in the field.
+                {% endblocktrans %}
+            </p>
+
+
+                {% blocktrans trimmed %}
+                    <p>This platform is non-commercial and ads-free. An
+                    international team of field workers, programmers, project
+                    managers and designers are volunteering for this project and
+                    bring in their professional experience to make a difference.</p>
+                {% endblocktrans %}
+
+        </div>
+
+        {% regroup locations by place.area as locations_by_area %}
+
+        <div class="col-md-4">
+            <div class="facts facts-less-padding">
+                <h2>{% trans "You can help at this locations:" %}</h2>
+
+                {% for location_in_area in locations_by_area %}
+                    {% comment %}
+                       If we get many locations, we can always make this a collapsed-by-default
+                       list. At the moment, there's not enough and it's more usable and SEO
+                       friendly to show all.
+                    {% endcomment %}
+                    {{ location_in_area.grouper }}
+                    <p>
+                        {% for location in location_in_area.list %}
+                            {{ location.name }}
+                            {% if not forloop.last %}&bullet;{% endif %}
+                        {% endfor %}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
