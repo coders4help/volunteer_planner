@@ -35,7 +35,7 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+<nav class="navbar navbar-fixed-top navbar-light bg-faded hidden-xs-down">
     {# There's a issue with Nexus 4 not working with the collapsible hamburger in BS4 #}
     <a class="navbar-brand" href="{% url 'home' %}">
         <img src={% static "images/volunteer-planner-logo.png" %}>
@@ -49,6 +49,14 @@
             {% trans "Start helping" %}
                 </a>
     </div>
+</nav>
+<nav class="navbar navbar-fixed-bottom hidden-sm-up navbar-light m-a-0 p-a-0" style="background-color: white;">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6  m-a-0 p-a-0"><a href="{% url 'registration_register' %}" class="btn btn-primary btn-lg btn-block">{% trans "Start helping" %}</a></div>
+        <div class="col-xs-6  m-a-0 p-a-0"><a href="{% url 'auth_login' %}" class="btn btn-secondary  btn-block btn-lg">{% trans "Login" %}</a></div>
+    </div>
+</div>
 </nav>
 
 {% block stage %}
