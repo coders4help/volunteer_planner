@@ -185,9 +185,10 @@ This generates a nice HTML coverage page, to poke around which can be found at `
 *Note*: The directory `htmlcov` is git-ignored.
 
 ### Translations
-We use [https://www.transifex.com/coders4help/volunteer-planner/](https://www.transifex.com/coders4help/volunteer-planner/) for managing translations.
 
-General hints:
+We use [Transifex (tx)](https://www.transifex.com/coders4help/volunteer-planner/) for managing translations.
+
+#### General notes
 
 * Please read 
     * [Django 1.8: Internationalization and localization](https://docs.djangoproject.com/en/1.8/topics/i18n/)
@@ -196,19 +197,41 @@ General hints:
 * use `trimmed` option in [blocktrans](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/#std:templatetag-blocktrans) template tags, if indention is not intended.
 * Please provide [contextual markers](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/#contextual-markers) on strings to help translators understanding the usage of the strings better. The shorter an internationalized string is, the more abigious it will be and the more important an contextual hint will be.
 
-We use the following workflow to manage translations and .po files:
+#### Workflow
 
-1. code you stuff using the ugettext_lazy as _ et. al methods to mark internationalized strings
+1. Code your stuff using the `ugettext_lazy as _` etc. methods to mark internationalized strings
 2. Update the po files `./manage.py makemessages --no-obsolete --no-wrap`
    The options are intended to make the output more git-friendly.
-3. Push the updated translations to git. *Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).*
-4. Once a day TX automatically updates the source strings via github. This will update the strings available for translation. If necessary, translation managers (aka tx project admins) can update the source language manually using the tx client command `tx push -s django`. 
+3. Push the updated translations to git. **Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).**
+4. Transifex will automatically update the source strings via github once a day and make them available for translation. 
+4.1. If necessary, translation managers (meaning VP's Transifex project admins) can update the source language manually using the tx client command `tx push -s django`. 
 5. Translators will then translate on [tx](https://www.transifex.com/coders4help/volunteer-planner/)
 6. When new translations are available on Transifex `tx pull` will update the local .po files with translations from TX
 7. `./manage.py makemessages --no-wrap --no-obsolete` will reformat po files in a more readable single-line message string format
 8. `./manage.py compilemessages`
-9. test if it looks good
-10. commit and push the updated translations to github
+9. Test if it looks good and works as intended
+10. Commit and push the updated translations to git
 
 Your local installation should be translated then. The .mo file created by compilemessages is gitignored,
 you'll need to (re-)generate it locally every time the .po file changes.
+
+#### How to use the Transifex client
+
+You first need to make sure that the transiflex client is installed (should be in the requirements/dev.txt file).
+
+```
+pip install transifex-client
+```
+
+* For further installation infos check http://docs.transifex.com/client/setup/
+* Then, sign up at https://www.transifex.com, search for the project volunteer-planner.org, and join the respective team.
+* If you used an Oauth-ish method (Google, Facebook, etc.) to sign up for Transifex, you might need to set a password in your [Transifex profile](https://www.transifex.com/user/settings/password/) before you can use the client.
+* Edit your personal transifex configuration file that is stored in your home directory at ~/.transifexrc
+```
+[https://www.transifex.com]
+username = YOUR_TRANSIFEX_USERNAME
+token =
+password = YOUR_TRANSIFEX_PASSWORD
+hostname = https://www.transifex.com
+```
+Make sure not to share this file with anyone, as it contains your credentials! For more information on configuration, see http://docs.transifex.com/client/config/
