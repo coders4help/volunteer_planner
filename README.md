@@ -185,23 +185,30 @@ This generates a nice HTML coverage page, to poke around which can be found at `
 *Note*: The directory `htmlcov` is git-ignored.
 
 ### Translations
-We use transiflex for managing translations.
-You first need to make sure that the transiflex client is installed.
-```
-pip install transifex-client
-```
-For further installation infos check http://docs.transifex.com/client/setup/
+We use [https://www.transifex.com/coders4help/volunteer-planner/](https://www.transifex.com/coders4help/volunteer-planner/) for managing translations.
 
-The workflow is like
+General hints:
 
-1. you code you stuff
-2. "./manage.py makemessages --no-obsolete --no-wrap" The options are intended to make the output more git-friendly.
-3. "tx push -s django"
-3. do translations on transiflex
-4. "tx pull"
-5. "./manage.py compilemessages"
-6. test if it looks good
-7. commit push with git
+* Please read 
+    * [Django 1.8: Internationalization and localization](https://docs.djangoproject.com/en/1.8/topics/i18n/)
+    * [Django 1.8: Translations](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/)
+* Please avoid internationalized strings / messages containing HTML markup. This makes the site layout depending on the translators and them getting the markup right; it's error prone and hardly maintainable when the page's layout changes.
+* use `trimmed` option in [blocktrans](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/#std:templatetag-blocktrans) template tags, if indention is not intended.
+* Please provide [contextual markers](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/#contextual-markers) on strings to help translators understanding the usage of the strings better. The shorter an internationalized string is, the more abigious it will be and the more important an contextual hint will be.
+
+We use the following workflow to manage translations and .po files:
+
+1. code you stuff using the ugettext_lazy as _ et. al methods to mark internationalized strings
+2. Update the po files `./manage.py makemessages --no-obsolete --no-wrap`
+   The options are intended to make the output more git-friendly.
+3. Push the updated translations to git. *Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).*
+4. Once a day TX automatically updates the source strings via github. This will update the strings available for translation. If necessary, translation managers (aka tx project admins) can update the source language manually using the tx client command `tx push -s django`. 
+5. Translators will then translate on [tx](https://www.transifex.com/coders4help/volunteer-planner/)
+6. When new translations are available on Transifex `tx pull` will update the local .po files with translations from TX
+7. `./manage.py makemessages --no-wrap --no-obsolete` will reformat po files in a more readable single-line message string format
+8. `./manage.py compilemessages`
+9. test if it looks good
+10. commit and push the updated translations to github
 
 Your local installation should be translated then.
 The .mo file created by compilemessages is gitignored,
