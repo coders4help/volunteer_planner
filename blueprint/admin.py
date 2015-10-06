@@ -1,6 +1,8 @@
 # coding=utf-8
+
 from django.contrib import admin
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from .models import BluePrintCreator, NeedBluePrint
 
@@ -13,7 +15,8 @@ class BluePrintCreatorAdminForm(forms.ModelForm):
     def clean(self):
         try:
             if BluePrintCreator.objects.get(facility=self.data['facility']):
-                raise forms.ValidationError("Ort hat bereits eine Vorlage!")
+                raise forms.ValidationError(
+                    _("There is already a blueprint for this location!"))
         except Exception:
             return self.cleaned_data
 

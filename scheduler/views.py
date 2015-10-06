@@ -31,7 +31,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
         shifts = Need.objects.filter(ending_time__gt=datetime.datetime.now()) \
-            .order_by('facility').select_related('facility')
+            .order_by('facility', 'ending_time').select_related('facility')
         context['shifts'] = shifts
         context['notifications'] = Notification.objects.all().select_related(
             'facility')
@@ -93,8 +93,7 @@ class PlannerView(LoginRequiredMixin, FormView):
                 error_message = _(
                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
                 message_list = u'<ul>{}</ul>'.format('\n'.join(
-                    ['<li>{}</li>'.format(conflict) for conflict in
-                     conflicted_needs]))
+                    [u'<li>{}</li>'.format(conflict) for conflict in conflicted_needs]))
                 messages.warning(self.request,
                                  mark_safe(u'{}<br/>{}'.format(error_message,
                                                                message_list)))

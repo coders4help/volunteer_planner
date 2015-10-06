@@ -11,9 +11,10 @@ from registration.models import RegistrationProfile
 
 from django.contrib.auth.models import User
 
+from tests.factories import ShiftHelperFactory
 from organizations.models import Facility
 from tests.factories import NeedFactory, TopicFactory, FacilityFactory, \
-    RegistrationProfileFactory, PlaceFactory
+    PlaceFactory
 from scheduler.models import Need, Topics
 from places.models import Region, Area, Place, Country
 
@@ -95,6 +96,5 @@ class Command(BaseCommand):
                     facility=facility
                 )
                 # assign random volunteer for each need
-                reg_user = RegistrationProfileFactory.create()
-                reg_user.needs.add(need)
+                reg_user = ShiftHelperFactory.create(need=need)
                 reg_user.save()

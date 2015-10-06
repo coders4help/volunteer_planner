@@ -41,7 +41,7 @@ class Organization(models.Model):
 class Facility(models.Model):
     # the organization running this facility
     organization = models.ForeignKey('organizations.Organization',
-                                     verbose_name=_('oranization'),
+                                     verbose_name=_('organization'),
                                      related_name='facilities',
                                      related_query_name='facility')
 
