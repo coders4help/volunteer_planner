@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 10:57+0200\n"
+"POT-Creation-Date: 2015-10-06 12:38+0200\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -353,11 +353,9 @@ msgid "The service provider collects, uses, and shares personal data with third 
 msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:67
-#, fuzzy
-#| msgid "Contact"
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr "Contact"
+msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
@@ -386,11 +384,9 @@ msgid "The user can manage the use of cookies from many online advertisers by vi
 msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:105
-#, fuzzy
-#| msgid "Registration"
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
-msgstr "Registration"
+msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
