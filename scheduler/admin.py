@@ -1,16 +1,8 @@
 # coding: utf-8
-from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.db.models import Count
-from django import forms
 
-from scheduler.models import Need, Topics
-
-
-# @admin.register(Organization)
-# class OrganizationAdmin(admin.ModelAdmin):
-#     list_display = ('name', )
-#     search_fields = ('name', 'description')
+from .models import Need, ShiftHelper, Topics, Enrolment, RecurringEvent, Shift
 
 
 class NeedAdmin(admin.ModelAdmin):
@@ -47,65 +39,74 @@ class NeedAdmin(admin.ModelAdmin):
 admin.site.register(Need, NeedAdmin)
 
 
-class TopicsAdminForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorWidget())
+class ShiftHelperAdmin(admin.ModelAdmin):
+    list_display = (u'id', 'user_account', 'need', 'joined_shift_at')
+    list_filter = ('joined_shift_at',)
+    raw_id_fields = ('user_account', 'need')
+
+
+admin.site.register(ShiftHelper, ShiftHelperAdmin)
 
 
 class TopicsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'id')
-    search_fields = ('id',)
-    form = TopicsAdminForm
+    list_display = (u'id', 'title', 'description')
 
 
 admin.site.register(Topics, TopicsAdmin)
 
 
-# @admin.register(Location)
-# class LocationAdmin(admin.ModelAdmin):
-#     def get_queryset(self, request):
-#         return Location.objects.select_related('place',
-#                                                'place__area',
-#                                                'place__area__region',
-#                                                'place__area__region__country')
-#
-#     def get_place_name(self, obj):
-#         return obj.place.name
-#
-#     get_place_name.short_description = Place._meta.verbose_name
-#     get_place_name.admin_order_field = 'place'
-#
-#     def get_area_name(self, obj):
-#         return obj.place.area.name
-#
-#     get_area_name.short_description = Area._meta.verbose_name
-#     get_area_name.admin_order_field = 'place__area'
-#
-#     def get_region_name(self, obj):
-#         return obj.place.area.region.name
-#
-#     get_region_name.short_description = Region._meta.verbose_name
-#     get_region_name.admin_order_field = 'place__area__region'
-#
-#     def get_country_name(self, obj):
-#         return obj.place.area.region.country.name
-#
-#     get_country_name.short_description = Country._meta.verbose_name
-#     get_country_name.admin_order_field = 'place__area__region__country'
-#
-#     list_display = (
-#         'name',
-#         'street',
-#         'city',
-#         'postal_code',
-#         'get_place_name',
-#         'get_area_name',
-#         'get_region_name',
-#         'get_country_name',
-#     )
-#     list_filter = (
-#         # 'place',
-#         'place__area',
-#         'place__area__region',
-#         'place__area__region__country'
-#     )
-#     search_fields = ('name',)
+class EnrolmentAdmin(admin.ModelAdmin):
+    list_display = (u'id', 'user_account', 'shift', 'joined_shift_at')
+    list_filter = ('user_account', 'shift', 'joined_shift_at')
+
+
+admin.site.register(Enrolment, EnrolmentAdmin)
+
+
+class RecurringEventAdmin(admin.ModelAdmin):
+    list_display = (
+        u'id',
+        'task',
+        'workplace',
+        'name',
+        'description',
+        'weekday',
+        'needed_volunteers',
+        'start_time',
+        'end_time',
+        'first_date',
+        'last_date',
+        'disabled',
+    )
+    list_filter = (
+        'task',
+        'workplace',
+        'first_date',
+        'last_date',
+        'disabled',
+    )
+    search_fields = ('name',)
+
+
+admin.site.register(RecurringEvent, RecurringEventAdmin)
+
+
+class ShiftAdmin(admin.ModelAdmin):
+    list_display = (
+        u'id',
+        'task',
+        'workplace',
+        'needed_volunteers',
+        'start_time',
+        'end_time',
+    )
+    list_filter = (
+        'task',
+        'workplace',
+        'start_time',
+        'end_time',
+    )
+    raw_id_fields = ('volunteers',)
+
+
+admin.site.register(Shift, ShiftAdmin)

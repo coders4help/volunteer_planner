@@ -1,51 +1,27 @@
 # coding: utf-8
 
-from datetime import timedelta
-
 from django.db import models
-from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
 
 from organizations.models import Facility
 from places.models import Country, Region, Area, Place
+from . import managers
 
 
-class NeedManager(models.Manager):
-    def at_facility(self, facility):
-        return self.get_queryset().filter(facility=facility)
+class Topics(models.Model):
+    class Meta:
+        verbose_name = _(u'help type')
+        verbose_name_plural = _(u'help types')
 
-    def at_place(self, place):
-        return self.get_queryset().filter(facility__place=place)
+    title = models.CharField(max_length=255)
+    description = models.TextField(max_length=20000, blank=True)
 
-    def in_area(self, area):
-        return self.get_queryset().filter(facility__place__area=area)
+    def __unicode__(self):
+        return self.title
 
-    def in_region(self, region):
-        return self.get_queryset().filter(facility__place__area__region=region)
-
-    def in_country(self, country):
-        return self.get_queryset().filter(
-            facility__place__area__region__country=country)
-
-    def by_geography(self, geo_affiliation):
-        if isinstance(geo_affiliation, Facility):
-            return self.at_facility(geo_affiliation)
-        elif isinstance(geo_affiliation, Place):
-            return self.at_place(geo_affiliation)
-        elif isinstance(geo_affiliation, Area):
-            return self.in_area(geo_affiliation)
-        elif isinstance(geo_affiliation, Region):
-            return self.in_region(geo_affiliation)
-        elif isinstance(geo_affiliation, Country):
-            return self.in_country(geo_affiliation)
-
-
-class OpenNeedManager(NeedManager):
-    def get_queryset(self):
-        now = timezone.now()
-        qs = super(OpenNeedManager, self).get_queryset()
-        return qs.filter(ending_time__gte=now)
+    def get_current_needs_py_topic(self):
+        return self.need_set.all()
 
 
 class Need(models.Model):
@@ -72,8 +48,8 @@ class Need(models.Model):
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
-    objects = NeedManager()
-    open_needs = OpenNeedManager()
+    objects = managers.NeedManager()
+    open_needs = managers.OpenNeedManager()
 
     class Meta:
         verbose_name = _(u'shift')
@@ -86,56 +62,101 @@ class Need(models.Model):
             start=localize(self.starting_time), end=localize(self.ending_time))
 
 
-class ShiftHelperManager(models.Manager):
-    def conflicting(self, need, user_account=None, grace=timedelta(hours=1)):
-
-        grace = grace or timedelta(0)
-        graced_start = need.starting_time + grace
-        graced_end = need.ending_time - grace
-
-        query_set = self.get_queryset().select_related('need', 'user_account')
-
-        if user_account:
-            query_set = query_set.filter(user_account=user_account)
-
-        query_set = query_set.exclude(need__starting_time__lt=graced_start,
-                                      need__ending_time__lte=graced_start)
-        query_set = query_set.exclude(need__starting_time__gte=graced_end,
-                                      need__ending_time__gte=graced_end)
-        return query_set
-
-
 class ShiftHelper(models.Model):
     user_account = models.ForeignKey('accounts.UserAccount',
                                      related_name='shift_helpers')
     need = models.ForeignKey('scheduler.Need', related_name='shift_helpers')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
-    objects = ShiftHelperManager()
+    objects = managers.ShiftHelperManager()
 
     class Meta:
         verbose_name = _('shift helper')
         verbose_name_plural = _('shift helpers')
         unique_together = ('user_account', 'need')
 
-    def __repr__(self):
-        return "{}".format(self.need)
-
     def __unicode__(self):
-        return u"{}".format(repr(self))
+        return u"{} on {}".format(self.user_account, self.need)
 
 
-class Topics(models.Model):
+class Enrolment(models.Model):
+    """
+    Through model, representing when a user enrolled for a shift.
+    """
+    user_account = models.ForeignKey('accounts.UserAccount',
+                                     related_name='enrolments',
+                                     verbose_name=_('user account'))
+    shift = models.ForeignKey('scheduler.Shift',
+                              related_name='enrolled_users',
+                              verbose_name=_('shift'))
+    joined_shift_at = models.DateTimeField(auto_now_add=True,
+                                           verbose_name=_('joined at'))
+
+    objects = managers.EnrolmentManager()
+
     class Meta:
-        verbose_name = _(u'help type')
-        verbose_name_plural = _(u'help types')
-
-    title = models.CharField(max_length=255)
-    description = models.TextField(max_length=20000, blank=True)
+        verbose_name = _('Enrolment for shift')
+        verbose_name_plural = _('Enrolments for shifts')
+        unique_together = ('user_account', 'shift')
 
     def __unicode__(self):
-        return self.title
+        return _(u"{} on {}").format(self.user, self.shift)
 
-    def get_current_needs_py_topic(self):
-        return self.need_set.all()
+class Shift(models.Model):
+    """
+    A shift. Happens at a time and place, and hopefully has many volunteers attached to it.
+    """
+    task = models.ForeignKey("organizations.Task", verbose_name=_(u'task'),
+                             help_text=_(u''))
+    workplace = models.ForeignKey("organizations.Workplace",
+                                  verbose_name=_(u'workplace'),
+                                  help_text=_(u''))
+    volunteers = models.ManyToManyField(
+        'accounts.UserAccount', through='scheduler.Enrolment',
+        related_name='shifts', verbose_name=_('volunteers'))
+    # to set only if created from template. But really useful? Maybe just more complexity
+    # origin_event = models.ForeignKey("RecurringEvent", null=True, verbose_name=_(u''), help_text=_(u''))
+    needed_volunteers = models.IntegerField(
+        verbose_name=_(u'number of needed volunteers'))
+    start_time = models.DateTimeField(verbose_name=_('starting time'),
+                                      db_index=True)
+    end_time = models.DateTimeField(verbose_name=_('ending time'),
+                                    db_index=True)
 
+    objects = managers.ShiftManager()
+
+    def __unicode__(self):
+        return _(u"{} at {}").format(self.task, self.workplace)
+
+
+class RecurringEvent(models.Model):
+    """
+    A sort of blueprint to bulk-create shifts.
+    """
+    WEEKDAYS = ((0, _('Monday')),
+                (1, _('Tuesday')),
+                (2, _('Wednesday')),
+                (3, _('Thursday')),
+                (4, _('Friday')),
+                (5, _('Saturday')),
+                (6, _('Sunday')))
+    task = models.ForeignKey("organizations.Task", verbose_name=_('task'))
+    workplace = models.ForeignKey("organizations.Workplace",
+                                  verbose_name=_('workplace'))
+    name = models.CharField(max_length=255, verbose_name=_('name'))
+    description = models.TextField(blank=True, verbose_name=_('description'))
+    weekday = models.IntegerField(choices=WEEKDAYS, verbose_name=_('weekday'))
+    needed_volunteers = models.IntegerField(
+        verbose_name=_(u'number of needed volunteers'))
+    start_time = models.TimeField(verbose_name=_('Starting time'))
+    end_time = models.TimeField(verbose_name=_('Ending time'))
+    first_date = models.DateTimeField(verbose_name=_('First occurrence'))
+    last_date = models.DateTimeField(verbose_name=_('Last occurrence'))
+
+    disabled = models.BooleanField(verbose_name=_('Disabled'), default=False)
+
+    objects = managers.RecurringEventManager()
+
+
+    def __unicode__(self):
+        return _(u"{}").format(self.name)

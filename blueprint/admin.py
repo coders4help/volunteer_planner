@@ -16,7 +16,7 @@ class BluePrintCreatorAdminForm(forms.ModelForm):
         try:
             if BluePrintCreator.objects.get(facility=self.data['facility']):
                 raise forms.ValidationError(
-                    _("There is already a blueprint for this location!"))
+                    _("There is already a blueprint for this facility!"))
         except Exception:
             return self.cleaned_data
 

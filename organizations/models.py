@@ -120,7 +120,7 @@ class Membership(models.Model):
 
     user_account = models.ForeignKey(UserAccount,
                                      verbose_name=_(u'user account'),
-                                     related_name=related_name                                     )
+                                     related_name=related_name)
 
     class Meta:
         abstract = True
@@ -138,6 +138,10 @@ class OrganizationMembership(Membership):
         verbose_name_plural = _(u'organization members')
         ordering = ('organization', 'role', 'user_account')
 
+    def __unicode__(self):
+        return _(u"{} at {} ({})").format(self.user_account.user.suername,
+                                          self.organization.name, self.role)
+
 
 class FacilityMembership(Membership):
     related_name = 'facilities'
@@ -151,6 +155,10 @@ class FacilityMembership(Membership):
         verbose_name = _(u'facility member')
         verbose_name_plural = _(u'facility members')
         ordering = ('facility', 'role', 'user_account')
+
+    def __unicode__(self):
+        return _(u"{} at {} ({})").format(self.user_account.user.suername,
+                                          self.facility.name, self.role)
 
 
 class Workplace(models.Model):
@@ -174,6 +182,9 @@ class Workplace(models.Model):
         verbose_name_plural = _(u'workplaces')
         ordering = ('facility', 'name',)
 
+    def __unicode__(self):
+        return _(u"{}").format(self.name)
+
 
 class Remit(models.Model):
     # the facility the remit belongs to
@@ -196,6 +207,9 @@ class Remit(models.Model):
         verbose_name_plural = _(u'remits')
         ordering = ('facility', 'name',)
 
+    def __unicode__(self):
+        return _(u"{}").format(self.name)
+
 
 class Task(models.Model):
     # the facility the remit belongs to
@@ -216,3 +230,6 @@ class Task(models.Model):
         verbose_name = _(u'task')
         verbose_name_plural = _(u'tasks')
         ordering = ('remit__facility', 'remit', 'name',)
+
+    def __unicode__(self):
+        return _(u"{}/{}").format(self.remit.name, self.name)
