@@ -2,8 +2,10 @@ from .base import *
 
 # Settings for running our tests
 
-# TODO: Should run with DEBUG = False
-DEBUG = True
+DEBUG = False
+
+# Needed for letting Selenium access our server.
+ALLOWED_HOSTS = ['localhost']
 
 # TODO: Should run against MySQL
 DATABASES = {

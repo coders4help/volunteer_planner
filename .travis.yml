@@ -7,7 +7,9 @@ env: DJANGO_SETTINGS_MODULE=volunteer_planner.settings.tests
 install: "pip install -r requirements/dev.txt"
 
 # Fire up a webserver for Selenium
-before_script: gunicorn -D volunteer_planner.wsgi_behave
+before_script:
+- ./manage.py migrate
+- gunicorn -D volunteer_planner.wsgi_behave
 
 script:
 # Python tests (mostly unit tests)
