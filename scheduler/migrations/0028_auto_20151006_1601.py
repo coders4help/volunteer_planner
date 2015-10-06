@@ -5,10 +5,9 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('accounts', '0001_initial'),
-        ('organizations', '0004_remits_and_tasks'),
+        ('organizations', '0004_add_tasks'),
         ('scheduler', '0027_auto_20151003_1941'),
     ]
 

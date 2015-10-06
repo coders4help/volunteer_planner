@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 from .models import (Organization, Facility, OrganizationMembership,
-                     FacilityMembership, Workplace, Remit, Task)
+                     FacilityMembership, Workplace, Task)
 
 
 class OrganizationAdmin(admin.ModelAdmin):
@@ -86,29 +86,12 @@ class WorkplaceAdmin(admin.ModelAdmin):
 admin.site.register(Workplace, WorkplaceAdmin)
 
 
-class RemitAdmin(admin.ModelAdmin):
-    list_display = (
-        'facility',
-        'name',
-        'slug',
-        'description'
-    )
-    list_filter = ('facility',)
-    search_fields = ('name', 'slug')
-    prepopulated_fields = {'slug': ['name']}
-
-
-admin.site.register(Remit, RemitAdmin)
-
-
 class TaskAdmin(admin.ModelAdmin):
     list_display = (
-        'remit',
         'name',
         'slug',
         'description'
     )
-    list_filter = ('remit',)
     search_fields = ('name', 'slug')
     prepopulated_fields = {'slug': ['name']}
 

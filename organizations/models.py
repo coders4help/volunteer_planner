@@ -186,36 +186,11 @@ class Workplace(models.Model):
         return _(u"{}").format(self.name)
 
 
-class Remit(models.Model):
-    # the facility the remit belongs to
+class Task(models.Model):
+    # the facility the task belongs to
     facility = models.ForeignKey('Facility',
                                  verbose_name=_(u"facility"),
-                                 related_name='remits')
-
-
-    # the name of the remit, ie. "Dolmetscher"
-    name = models.CharField(max_length=256, verbose_name=_(u'name'))
-
-    # the slug for the workplace
-    slug = models.SlugField(verbose_name=_(u'slug'))
-
-    # a description of the workplace
-    description = models.TextField(blank=True, verbose_name=_(u'description'))
-
-    class Meta:
-        verbose_name = _(u'remit')
-        verbose_name_plural = _(u'remits')
-        ordering = ('facility', 'name',)
-
-    def __unicode__(self):
-        return _(u"{}").format(self.name)
-
-
-class Task(models.Model):
-    # the facility the remit belongs to
-    remit = models.ForeignKey('Remit',
-                              verbose_name=_(u"remit"),
-                              related_name='tasks')
+                                 related_name='tasks')
 
     # the name of the task, ie. "Dolmetscher Farsi"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
@@ -229,7 +204,7 @@ class Task(models.Model):
     class Meta:
         verbose_name = _(u'task')
         verbose_name_plural = _(u'tasks')
-        ordering = ('remit__facility', 'remit', 'name',)
+        ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{}/{}").format(self.remit.name, self.name)
+        return _(u"{}").format(self.name)
