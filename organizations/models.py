@@ -10,9 +10,6 @@ class Organization(models.Model):
     # the name of the organization, ie. "Wilmersdorf hilft"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
 
-    # the slug for the organization, which is used in the orgs' URL
-    slug = models.SlugField(verbose_name=_(u'slug'))
-
     # a short description of the organization.
     # will be derived from description, if empty
     short_description = models.TextField(blank=True,
@@ -47,9 +44,6 @@ class Facility(models.Model):
     # the name of the facility, ie. "Fehrbelliner Platz 4"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
 
-    # the slug for the facility, which is used in the facilitys' URL,
-    slug = models.SlugField(verbose_name=_(u'slug'))
-
     # a short description of the facility.
     # will be derived from description, if empty
     short_description = models.TextField(blank=True,
@@ -66,7 +60,7 @@ class Facility(models.Model):
     members = models.ManyToManyField(UserAccount,
                                      through='organizations.FacilityMembership')
 
-    # the geographical facility of the faciltiy
+    # the geographical location of the faciltiy
     place = models.ForeignKey("places.Place",
                               null=False,
                               related_name='facilities',
@@ -171,9 +165,6 @@ class Workplace(models.Model):
     # the name of the workplace, ie. "Küche"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
 
-    # the slug for the workplace
-    slug = models.SlugField(verbose_name=_(u'slug'))
-
     # a description of the workplace
     description = models.TextField(blank=True, verbose_name=_(u'description'))
 
@@ -194,9 +185,6 @@ class Task(models.Model):
 
     # the name of the task, ie. "Dolmetscher Farsi"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
-
-    # the slug for the task
-    slug = models.SlugField(verbose_name=_(u'slug'))
 
     # a description of the task
     description = models.TextField(blank=True, verbose_name=_(u'description'))

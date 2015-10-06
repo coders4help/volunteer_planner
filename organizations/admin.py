@@ -8,15 +8,13 @@ from .models import (Organization, Facility, OrganizationMembership,
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'slug',
         'short_description',
         'description',
         'contact_info',
         'address',
     )
     raw_id_fields = ('members',)
-    search_fields = ('name', 'slug')
-    prepopulated_fields = {'slug': ['name']}
+    search_fields = ('name',)
 
 
 admin.site.register(Organization, OrganizationAdmin)
@@ -26,7 +24,6 @@ class FacilityAdmin(admin.ModelAdmin):
     list_display = (
         'organization',
         'name',
-        'slug',
         'short_description',
         'description',
         'contact_info',
@@ -39,8 +36,7 @@ class FacilityAdmin(admin.ModelAdmin):
     )
     list_filter = ('organization', 'place', 'show_on_map')
     raw_id_fields = ('members',)
-    search_fields = ('name', 'slug')
-    prepopulated_fields = {'slug': ['name']}
+    search_fields = ('name', )
 
 
 admin.site.register(Facility, FacilityAdmin)
@@ -75,12 +71,10 @@ class WorkplaceAdmin(admin.ModelAdmin):
     list_display = (
         'facility',
         'name',
-        'slug',
         'description'
     )
     list_filter = ('facility',)
-    search_fields = ('name', 'slug')
-    prepopulated_fields = {'slug': ['name']}
+    search_fields = ('name', )
 
 
 admin.site.register(Workplace, WorkplaceAdmin)
@@ -89,11 +83,9 @@ admin.site.register(Workplace, WorkplaceAdmin)
 class TaskAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'slug',
         'description'
     )
-    search_fields = ('name', 'slug')
-    prepopulated_fields = {'slug': ['name']}
+    search_fields = ('name',)
 
 
 admin.site.register(Task, TaskAdmin)
