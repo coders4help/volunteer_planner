@@ -78,39 +78,23 @@
 
     <div class="card card-block">
         <h4 class="card-title">
-            Newsletter
-        </h4>
-
-        <p class="card-text">
-            Mit dem Newsletter informieren wir Sie über uns und unsere Angebote.
-            <br /><br />
-            Wenn Sie den Newsletter empfangen möchten, benötigen wir von Ihnen eine valide Email-Adresse sowie Informationen, die uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen Email-Adresse sind bzw. deren Inhaber mit dem Empfang des Newsletters einverstanden ist. Weitere Daten werden nicht erhoben. Diese Daten werden nur für den Versand der Newsletter verwendet und werden nicht an Dritte weiter gegeben.
-            <br /><br />
-            Mit der Anmeldung zum Newsletter speichern wir Ihre IP-Adresse und das Datum der Anmeldung. Diese Speicherung dient alleine dem Nachweis im Fall, dass ein Dritter eine Emailadresse missbraucht und sich ohne Wissen des Berechtigten für den Newsletterempfang anmeldet.
-            <br /><br />
-            Ihre Einwilligung zur Speicherung der Daten, der Email-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen. Der Widerruf kann über einen Link in den Newslettern selbst, in Ihrem Profilbereich oder per Mitteilung an die oben stehenden Kontaktmöglichkeiten erfolgen.<br />
-        </p>
-    </div>
-
-    <div class="card card-block">
-        <h4 class="card-title">
-            {% blocktrans trimmed context "Privacy Policy Sec6" %}
+            {% blocktrans trimmed context "Privacy Policy Sec5" %}
                 Cookies
             {% endblocktrans %}
         </h4>
 
         <p class="card-text">
-            {% blocktrans trimmed context "Privacy Policy Sec6 P1" %}
+            {% blocktrans trimmed context "Privacy Policy Sec5 P1" %}
                 Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, "remembering" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service.
             {% endblocktrans %}
         </p>
         <p class="card-text">
-            {% blocktrans trimmed context "Privacy Policy Sec6 P2" %}
+            {% blocktrans trimmed context "Privacy Policy Sec5 P2" %}
                 The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website.
             {% endblocktrans %}
         </p>
         <p class="card-text">
-            {% blocktrans trimmed context "Privacy Policy Sec6 P3" with us_url="<a href='http://www.aboutads.info/choices/'>http://www.aboutads.info/choices/</a>" eu_url="<a href='http://www.youronlinechoices.com/uk/your-ad-choices/'>http://www.youronlinechoices.com/uk/your-ad-choices/</a>" %}
+            {% blocktrans trimmed context "Privacy Policy Sec5 P3" with us_url="<a href='http://www.aboutads.info/choices/'>http://www.aboutads.info/choices/</a>" eu_url="<a href='http://www.youronlinechoices.com/uk/your-ad-choices/'>http://www.youronlinechoices.com/uk/your-ad-choices/</a>" %}
                 The user can manage the use of cookies from many online advertisers by visiting either the US-american website {{ us_url }} or the European website {{ eu_url }}.
             {% endblocktrans %}
         </p>
@@ -118,19 +102,43 @@
 
     <div class="card card-block">
         <h4 class="card-title">
-            {% blocktrans trimmed context "Privacy Policy Sec7" %}
+            {% blocktrans trimmed context "Privacy Policy Sec6" %}
                 Registration
             {% endblocktrans %}
         </h4>
 
         <p class="card-text">
+            {% blocktrans trimmed context "Privacy Policy Sec6 P1" %}
+                The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section).
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed context "Privacy Policy Sec6 P2" %}
+                The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class="card card-block">
+        <h4 class="card-title">
+            {% blocktrans trimmed context "Privacy Policy Sec7" %}
+            E-mail notifications / Newsletter
+            {% endblocktrans %}
+        </h4>
+
+        <p class="card-text">
             {% blocktrans trimmed context "Privacy Policy Sec7 P1" %}
-            The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information.
+            When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails.
             {% endblocktrans %}
         </p>
         <p class="card-text">
             {% blocktrans trimmed context "Privacy Policy Sec7 P2" %}
-            The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address.
+            E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s).
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed context "Privacy Policy Sec7 P3" %}
+            If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account. 
             {% endblocktrans %}
         </p>
     </div>
