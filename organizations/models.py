@@ -42,8 +42,7 @@ class Facility(models.Model):
     # the organization running this facility
     organization = models.ForeignKey('organizations.Organization',
                                      verbose_name=_('organization'),
-                                     related_name='facilities',
-                                     related_query_name='facility')
+                                     related_name='facilities')
 
     # the name of the facility, ie. "Fehrbelliner Platz 4"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
@@ -71,9 +70,7 @@ class Facility(models.Model):
     place = models.ForeignKey("places.Place",
                               null=False,
                               related_name='facilities',
-                              related_query_name='facility',
-                              verbose_name=_(
-                                  'place'))
+                              verbose_name=_('place'))
 
     # not all addresses need to have the western pattern of
     # street, postal code, city
@@ -108,7 +105,6 @@ class Facility(models.Model):
 
 class Membership(models.Model):
     related_name = None
-    related_query_name = None
 
     class Roles:
         OWNER, MANAGER, MEMBER = 0, 1, 2
@@ -124,8 +120,7 @@ class Membership(models.Model):
 
     user_account = models.ForeignKey(UserAccount,
                                      verbose_name=_(u'user account'),
-                                     related_name=related_name,
-                                     related_query_name=related_query_name)
+                                     related_name=related_name                                     )
 
     class Meta:
         abstract = True
@@ -133,12 +128,10 @@ class Membership(models.Model):
 
 class OrganizationMembership(Membership):
     related_name = 'organizations'
-    related_query_name = 'organization'
 
     organization = models.ForeignKey(Organization,
                                      verbose_name=_(u'organization'),
-                                     related_name='memberships',
-                                     related_query_name='membership')
+                                     related_name='memberships')
 
     class Meta:
         verbose_name = _(u'organization member')
@@ -148,15 +141,78 @@ class OrganizationMembership(Membership):
 
 class FacilityMembership(Membership):
     related_name = 'facilities'
-    related_query_name = 'facility'
 
     facility = models.ForeignKey(Facility,
                                  verbose_name=_(u'facility'),
-                                 related_name='memberships',
-                                 related_query_name='membership'
+                                 related_name='memberships'
                                  )
 
     class Meta:
         verbose_name = _(u'facility member')
         verbose_name_plural = _(u'facility members')
         ordering = ('facility', 'role', 'user_account')
+
+
+class Workplace(models.Model):
+    # the facility the workplace belongs to
+    facility = models.ForeignKey('Facility',
+                                 verbose_name=_(u"facility"),
+                                 related_name='workplaces'
+                                 )
+
+    # the name of the workplace, ie. "Küche"
+    name = models.CharField(max_length=256, verbose_name=_(u'name'))
+
+    # the slug for the workplace
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    # a description of the workplace
+    description = models.TextField(blank=True, verbose_name=_(u'description'))
+
+    class Meta:
+        verbose_name = _(u'workplace')
+        verbose_name_plural = _(u'workplaces')
+        ordering = ('facility', 'name',)
+
+
+class Remit(models.Model):
+    # the facility the remit belongs to
+    facility = models.ForeignKey('Facility',
+                                 verbose_name=_(u"facility"),
+                                 related_name='remits')
+
+
+    # the name of the remit, ie. "Dolmetscher"
+    name = models.CharField(max_length=256, verbose_name=_(u'name'))
+
+    # the slug for the workplace
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    # a description of the workplace
+    description = models.TextField(blank=True, verbose_name=_(u'description'))
+
+    class Meta:
+        verbose_name = _(u'remit')
+        verbose_name_plural = _(u'remits')
+        ordering = ('facility', 'name',)
+
+
+class Task(models.Model):
+    # the facility the remit belongs to
+    remit = models.ForeignKey('Remit',
+                              verbose_name=_(u"remit"),
+                              related_name='tasks')
+
+    # the name of the task, ie. "Dolmetscher Farsi"
+    name = models.CharField(max_length=256, verbose_name=_(u'name'))
+
+    # the slug for the task
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    # a description of the task
+    description = models.TextField(blank=True, verbose_name=_(u'description'))
+
+    class Meta:
+        verbose_name = _(u'task')
+        verbose_name_plural = _(u'tasks')
+        ordering = ('remit__facility', 'remit', 'name',)

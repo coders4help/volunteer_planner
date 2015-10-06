@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Owner'), (1, 'Manager'), (2, 'Member')])),
-                ('facility', models.ForeignKey(related_query_name=b'membership', related_name='memberships', verbose_name='facility', to='organizations.Facility')),
+                ('facility', models.ForeignKey(related_name='memberships', verbose_name='facility', to='organizations.Facility')),
                 ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount')),
             ],
             options={
@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Owner'), (1, 'Manager'), (2, 'Member')])),
-                ('organization', models.ForeignKey(related_query_name=b'membership', related_name='memberships', verbose_name='organization', to='organizations.Organization')),
+                ('organization', models.ForeignKey(related_name='memberships', verbose_name='organization', to='organizations.Organization')),
                 ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount')),
             ],
             options={
@@ -91,11 +91,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='facility',
             name='organization',
-            field=models.ForeignKey(related_query_name=b'facility', related_name='facilities', verbose_name='oranization', to='organizations.Organization'),
+            field=models.ForeignKey(related_name='facilities', verbose_name='organization', to='organizations.Organization'),
         ),
         migrations.AddField(
             model_name='facility',
             name='place',
-            field=models.ForeignKey(related_query_name=b'facility', related_name='facilities', verbose_name='place', to='places.Place'),
+            field=models.ForeignKey(related_name='facilities', verbose_name='place', to='places.Place'),
         ),
     ]

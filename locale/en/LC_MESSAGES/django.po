@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 14:32+0200\n"
+"POT-Creation-Date: 2015-10-06 14:41+0200\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -68,7 +68,8 @@ msgid "blueprint title"
 msgstr ""
 
 #: blueprint/models.py:14 organizations/models.py:97
-#: organizations/models.py:154 scheduler/models.py:60
+#: organizations/models.py:154 organizations/models.py:168
+#: organizations/models.py:190 scheduler/models.py:60
 msgid "facility"
 msgstr ""
 
@@ -560,11 +561,15 @@ msgstr ""
 msgid "text"
 msgstr ""
 
-#: organizations/models.py:11 organizations/models.py:49 places/models.py:20
+#: organizations/models.py:11 organizations/models.py:49
+#: organizations/models.py:173 organizations/models.py:196
+#: organizations/models.py:218 places/models.py:20
 msgid "name"
 msgstr ""
 
-#: organizations/models.py:14 organizations/models.py:52 places/models.py:21
+#: organizations/models.py:14 organizations/models.py:52
+#: organizations/models.py:176 organizations/models.py:199
+#: organizations/models.py:221 places/models.py:21
 msgid "slug"
 msgstr ""
 
@@ -574,6 +579,8 @@ msgstr ""
 
 #: organizations/models.py:22 organizations/models.py:25
 #: organizations/models.py:60 organizations/models.py:63
+#: organizations/models.py:179 organizations/models.py:202
+#: organizations/models.py:224
 msgid "description"
 msgstr ""
 
@@ -644,6 +651,30 @@ msgstr ""
 
 #: organizations/models.py:161
 msgid "facility members"
+msgstr ""
+
+#: organizations/models.py:182
+msgid "workplace"
+msgstr ""
+
+#: organizations/models.py:183
+msgid "workplaces"
+msgstr ""
+
+#: organizations/models.py:205 organizations/models.py:213
+msgid "remit"
+msgstr ""
+
+#: organizations/models.py:206
+msgid "remits"
+msgstr ""
+
+#: organizations/models.py:227
+msgid "task"
+msgstr ""
+
+#: organizations/models.py:228
+msgid "tasks"
 msgstr ""
 
 #: places/models.py:69 places/models.py:84

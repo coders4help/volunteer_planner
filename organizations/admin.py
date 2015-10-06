@@ -1,17 +1,12 @@
-# coding: utf-8
-
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from .models import (Organization,
-                     Facility,
-                     OrganizationMembership,
-                     FacilityMembership)
-from places.models import Place, Area, Region, Country
+from .models import (Organization, Facility, OrganizationMembership,
+                     FacilityMembership, Workplace, Remit, Task)
 
 
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = (
-        u'id',
         'name',
         'slug',
         'short_description',
@@ -27,59 +22,37 @@ class OrganizationAdmin(admin.ModelAdmin):
 admin.site.register(Organization, OrganizationAdmin)
 
 
-@admin.register(Facility)
 class FacilityAdmin(admin.ModelAdmin):
-    def get_queryset(self, request):
-        return FacilityAdmin.objects.select_related('place',
-                                                    'place__area',
-                                                    'place__area__region',
-                                                    'place__area__region__country')
-
-    def get_place_name(self, obj):
-        return obj.place.name
-
-    get_place_name.short_description = Place._meta.verbose_name
-    get_place_name.admin_order_field = 'place'
-
-    def get_area_name(self, obj):
-        return obj.place.area.name
-
-    get_area_name.short_description = Area._meta.verbose_name
-    get_area_name.admin_order_field = 'place__area'
-
-    def get_region_name(self, obj):
-        return obj.place.area.region.name
-
-    get_region_name.short_description = Region._meta.verbose_name
-    get_region_name.admin_order_field = 'place__area__region'
-
-    def get_country_name(self, obj):
-        return obj.place.area.region.country.name
-
-    get_country_name.short_description = Country._meta.verbose_name
-    get_country_name.admin_order_field = 'place__area__region__country'
-
     list_display = (
-        'name',
         'organization',
+        'name',
+        'slug',
+        'short_description',
+        'description',
+        'contact_info',
+        'place',
         'address',
-        'get_place_name',
-        'get_area_name',
-        'get_region_name',
-        'get_country_name',
+        'zip_code',
+        'show_on_map',
+        'latitude',
+        'longitude',
     )
-    list_filter = (
-        # 'place',
-        'place__area',
-        'place__area__region',
-        'place__area__region__country'
-    )
+    list_filter = ('organization', 'place', 'show_on_map')
+    raw_id_fields = ('members',)
+    search_fields = ('name', 'slug')
     prepopulated_fields = {'slug': ['name']}
-    search_fields = ('name', 'organization__name',)
+
+
+admin.site.register(Facility, FacilityAdmin)
 
 
 class OrganizationMembershipAdmin(admin.ModelAdmin):
-    list_display = (u'id', 'role', 'user_account', 'organization')
+    list_display = (
+
+        'user_account',
+        'organization',
+        'role',
+    )
     list_filter = ('user_account', 'organization')
 
 
@@ -87,8 +60,57 @@ admin.site.register(OrganizationMembership, OrganizationMembershipAdmin)
 
 
 class FacilityMembershipAdmin(admin.ModelAdmin):
-    list_display = (u'id', 'role', 'user_account', 'facility')
+    list_display = (
+        'role',
+        'user_account',
+        'facility'
+    )
     list_filter = ('user_account', 'facility')
 
 
 admin.site.register(FacilityMembership, FacilityMembershipAdmin)
+
+
+class WorkplaceAdmin(admin.ModelAdmin):
+    list_display = (
+        'facility',
+        'name',
+        'slug',
+        'description'
+    )
+    list_filter = ('facility',)
+    search_fields = ('name', 'slug')
+    prepopulated_fields = {'slug': ['name']}
+
+
+admin.site.register(Workplace, WorkplaceAdmin)
+
+
+class RemitAdmin(admin.ModelAdmin):
+    list_display = (
+        'facility',
+        'name',
+        'slug',
+        'description'
+    )
+    list_filter = ('facility',)
+    search_fields = ('name', 'slug')
+    prepopulated_fields = {'slug': ['name']}
+
+
+admin.site.register(Remit, RemitAdmin)
+
+
+class TaskAdmin(admin.ModelAdmin):
+    list_display = (
+        'remit',
+        'name',
+        'slug',
+        'description'
+    )
+    list_filter = ('remit',)
+    search_fields = ('name', 'slug')
+    prepopulated_fields = {'slug': ['name']}
+
+
+admin.site.register(Task, TaskAdmin)
