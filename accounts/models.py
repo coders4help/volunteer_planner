@@ -8,6 +8,9 @@ from django.dispatch import receiver
 
 
 class UserAccount(models.Model):
+    """
+    A user account. Used to store any information related to users.
+    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL,
                                 related_name='account')
 
