@@ -2,6 +2,9 @@ language: python
 python: "2.7"
 install: "pip install -r requirements/dev.txt"
 env: DJANGO_SETTINGS_MODULE=volunteer_planner.settings.local
-script: py.test --create-db tests/
+before_script: gunicorn -D volunteer_planner.wsgi_behave
+script:
+- py.test --create-db tests/
+- behave tests/_behave
 notifications:
   email: false
