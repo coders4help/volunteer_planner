@@ -3,21 +3,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # audrey liehn <woog_wg@web.de>, 2015
 # Caroline Elis <caroline@adazylla.de>, 2015
 # Christoph, 2015
 # Christoph, 2015
 # Christoph, 2015
 # Dorian Cantzen <cantzen@googlemail.com>, 2015
+# Fabian Lindenberg, 2015
 # Franziska Böttger <fr.boettger@gmail.com>, 2015
 # Peter Palmreuther <pitpalme@yahoo.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 14:26+0200\n"
-"PO-Revision-Date: 2015-10-04 22:25+0000\n"
-"Last-Translator: Christoph\n"
+"POT-Creation-Date: 2015-10-06 14:32+0200\n"
+"PO-Revision-Date: 2015-10-06 11:48+0000\n"
+"Last-Translator: Fabian Lindenberg\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -169,7 +171,7 @@ msgstr "Benutzungsbedingungen"
 #: non_logged_in_area/templates/base_non_logged_in.html:91
 #: non_logged_in_area/templates/privacy_policy.html:6
 msgid "Privacy Policy"
-msgstr "Privatsphäre"
+msgstr "Datenschutzerklärung"
 
 #: non_logged_in_area/templates/faqs.html:10
 msgctxt "FAQ Q1"
@@ -319,164 +321,164 @@ msgstr "Helfe hier vor Ort:"
 #: non_logged_in_area/templates/privacy_policy.html:10
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
-msgstr ""
+msgstr "Geltungsbereich"
 
 #: non_logged_in_area/templates/privacy_policy.html:16
 msgctxt "Privacy Policy Sec1 P1"
 msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
-msgstr ""
+msgstr "Diese Datenschutzerklärung klärt den Nutzer über die Art, den Umfang und Zwecke der Erhebung und Verwendung personenbezogener Daten durch den verantwortlichen Anbieter - der Benefit e.V. (Wollankstr. 2, 13187 Berlin) - auf dieser Website (im folgenden „Angebot“) auf."
 
 #: non_logged_in_area/templates/privacy_policy.html:21
 msgctxt "Privacy Policy Sec1 P2"
 msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
-msgstr ""
+msgstr "Die rechtlichen Grundlagen des Datenschutzes finden sich im Bundesdatenschutzgesetz (BDSG) und dem Telemediengesetz (TMG)."
 
 #: non_logged_in_area/templates/privacy_policy.html:29
 msgctxt "Privacy Policy Sec2"
 msgid "Access data / server log files"
-msgstr ""
+msgstr "Zugriffsdaten / Server-Logfiles"
 
 #: non_logged_in_area/templates/privacy_policy.html:35
 msgctxt "Privacy Policy Sec2 P1"
 msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
-msgstr ""
+msgstr "Der Anbieter (beziehungsweise sein Webspace-Provider) erhebt Daten über jeden Zugriff auf das Angebot und speichert sie in so genannten Server-Logfiles. Zu den Zugriffsdaten gehören: Name der abgerufenen Webseite, Datei, Datum und Uhrzeit des Abrufs, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Browsertyp nebst Version, das Betriebssystem des Nutzers, Referrer URL (die zuvor besuchte Seite), IP-Adresse und der anfragende Provider."
 
 #: non_logged_in_area/templates/privacy_policy.html:40
 msgctxt "Privacy Policy Sec2 P2"
 msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
-msgstr ""
+msgstr "Der Anbieter verwendet die Protokolldaten nur für statistische Auswertungen zum Zweck des Betriebs, der Sicherheit und der Optimierung des Angebotes. Der Anbieter behält sich jedoch vor, die Protokolldaten nachträglich zu überprüfen, wenn aufgrund konkreter Anhaltspunkte der berechtigte Verdacht einer rechtswidrigen Nutzung besteht."
 
 #: non_logged_in_area/templates/privacy_policy.html:48
 msgctxt "Privacy Policy Sec3"
 msgid "Use of personal data"
-msgstr ""
+msgstr "Umgang mit personenbezogenen Daten"
 
 #: non_logged_in_area/templates/privacy_policy.html:54
 msgctxt "Privacy Policy Sec3 P1"
 msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
-msgstr ""
+msgstr "Personenbezogene Daten sind Informationen, mit deren Hilfe eine Person bestimmbar ist, also Angaben, die zurück zu einer Person verfolgt werden können. Dazu gehören der Name, die E-Mail-Adresse oder die Telefonnummer des Nutzers. Aber auch Daten über Vorlieben, Hobbies, Mitgliedschaften oder welche Webseiten von jemandem angesehen wurden zählen zu personenbezogenen Daten."
 
 #: non_logged_in_area/templates/privacy_policy.html:59
 msgctxt "Privacy Policy Sec3 P2"
 msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
-msgstr ""
+msgstr "Personenbezogene Daten werden von dem Anbieter nur dann erhoben, genutzt und weiter gegeben, wenn dies gesetzlich erlaubt ist oder der Nutzer in die Datenerhebung und -verwendung einwilligt."
 
 #: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr "Kontakt"
+msgstr "Kontaktaufnahme"
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
 msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
-msgstr ""
+msgstr "Bei der Kontaktaufnahme mit dem Anbieter (zum Beispiel per Kontaktformular oder E-Mail) werden die Angaben des Nutzers zwecks Bearbeitung der Anfrage sowie für den Fall, dass Anschlussfragen entstehen, gespeichert."
 
 #: non_logged_in_area/templates/privacy_policy.html:81
 msgctxt "Privacy Policy Sec5"
 msgid "Cookies"
-msgstr ""
+msgstr "Cookies"
 
 #: non_logged_in_area/templates/privacy_policy.html:87
 msgctxt "Privacy Policy Sec5 P1"
 msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
-msgstr ""
+msgstr "Cookies sind kleine Dateien, die es ermöglichen, auf dem Zugriffsgerät des Nutzers (PC, Smartphone o.ä.) spezifische, auf das Gerät bezogene Informationen zu speichern. Sie dienen zum einem der Benutzerfreundlichkeit von Webseiten und damit dem Nutzer (z.B. Speicherung von Logindaten). Zum anderen dienen sie, um statistische Daten der Webseitennutzung zu erfassen und sie zwecks Verbesserung des Angebotes analysieren zu können."
 
 #: non_logged_in_area/templates/privacy_policy.html:92
 msgctxt "Privacy Policy Sec5 P2"
 msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
-msgstr ""
+msgstr "Der Nutzer kann auf den Einsatz der Cookies Einfluss nehmen. Die meisten Browser verfügen eine Option mit der das Speichern von Cookies eingeschränkt oder komplett verhindert wird. Allerdings wird darauf hingewiesen, dass die Nutzung und insbesondere der Nutzungskomfort ohne Cookies eingeschränkt werden."
 
 #: non_logged_in_area/templates/privacy_policy.html:97
 #, python-format
 msgctxt "Privacy Policy Sec5 P3"
 msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
-msgstr ""
+msgstr "Der Nutzer kann viele Online-Anzeigen-Cookies von Unternehmen über die US-amerikanische Seite %(us_url)s oder die EU-Seite %(eu_url)s verwalten."
 
 #: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
-msgstr "Anmeldung"
+msgstr "Registrierung"
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
 msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
-msgstr ""
+msgstr "Die im Rahmen der Registrierung eingegebenen Daten werden für die Zwecke der Nutzung des Angebotes verwendet. Der Nutzer kann über angebots- oder registrierungsrelevante Informationen, wie Änderungen des Angebotsumfangs oder technische Umstände per E-Mail informiert werden (siehe auch nächster Abschnitt)."
 
 #: non_logged_in_area/templates/privacy_policy.html:116
 msgctxt "Privacy Policy Sec6 P2"
 msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
-msgstr ""
+msgstr "Die erhobenen Daten sind aus den Eingabemasken im Rahmen der Registrierung und in der Nutzerprofilverwaltung ersichtlich. Dazu gehören unter anderem Vorname, Nachname und E-Mail-Adresse des Nutzers."
 
 #: non_logged_in_area/templates/privacy_policy.html:124
 msgctxt "Privacy Policy Sec7"
 msgid "E-mail notifications / Newsletter"
-msgstr ""
+msgstr "E-Mail Benachrichtigungen / Newsletter"
 
 #: non_logged_in_area/templates/privacy_policy.html:130
 msgctxt "Privacy Policy Sec7 P1"
 msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
-msgstr ""
+msgstr "Mit der Registrierung eines Benutzerkontos erklärt sich der Nutzer mit dem Empfang von E-Mail-Benachrichtigungen und Newsletter-Mails einverstanden."
 
 #: non_logged_in_area/templates/privacy_policy.html:135
 msgctxt "Privacy Policy Sec7 P2"
 msgid "E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s)."
-msgstr ""
+msgstr "E-Mail-Benachrichtigungen informieren den Nutzer über bestimmte Ereignisse, die mit der Nutzung des Angebots durch den Nutzer in Bezug stehen. Mit dem Newsletter informiert der Anbieter den Nutzer über sich und sein(e) Angebot(e)."
 
 #: non_logged_in_area/templates/privacy_policy.html:140
 msgctxt "Privacy Policy Sec7 P3"
 msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
-msgstr ""
+msgstr "Seine Einwilligung E-Mail-Benachrichtigungen und Newsletter-Mails zu empfangen kann der Nutzer widerrufen, indem er sein Benutzerkonto löscht."
 
 #: non_logged_in_area/templates/privacy_policy.html:148
 msgctxt "Privacy Policy Sec8"
 msgid "Google Analytics"
-msgstr ""
+msgstr "Google Analytics"
 
 #: non_logged_in_area/templates/privacy_policy.html:154
 msgctxt "Privacy Policy Sec8 P1"
 msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
-msgstr ""
+msgstr "Dieses Angebot benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“, Textdateien, die auf dem Gerät des Nutzers gespeichert werden und die eine Analyse der Benutzung der Website durch sie ermöglichen. Die durch den Cookie erzeugten Informationen über Benutzung dieser Website durch den Nutzer werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert."
 
 #: non_logged_in_area/templates/privacy_policy.html:159
 msgctxt "Privacy Policy Sec8 P2"
 msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
-msgstr ""
+msgstr "Im Falle der Aktivierung der IP-Anonymisierung auf dieser Webseite, wird die IP-Adresse des Nutzers von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die IP-Anonymisierung ist auf dieser Website aktiv."
 
 #: non_logged_in_area/templates/privacy_policy.html:164
 msgctxt "Privacy Policy Sec8 P3"
 msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
-msgstr ""
+msgstr "Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um die Nutzung der Website durch die Nutzer auszuwerten, um Reports über die Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegenüber dem Websitebetreiber zu erbringen."
 
 #: non_logged_in_area/templates/privacy_policy.html:169
 #, python-format
 msgctxt "Privacy Policy Sec8 P4"
 msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
-msgstr ""
+msgstr "Die im Rahmen von Google Analytics vom Browser des Nutzers übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Der Nutzer kann die Speicherung der Cookies durch eine entsprechende Einstellung seiner Browser-Software verhindern; Der Anbieter weist den Nutzer jedoch darauf hin, dass er in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich wird nutzen können. Der Nutzer kann darüber hinaus die Erfassung der durch das Cookie erzeugten und auf seine Nutzung der Website bezogenen Daten, inkl. seiner IP-Adresse, an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem er das unter dem folgenden Link verfügbare Browser-Plugin herunterlädt und installiert: %(optout_plugin_url)s"
 
 #: non_logged_in_area/templates/privacy_policy.html:174
 msgid "click this link"
-msgstr ""
+msgstr "diesen Link klicken"
 
 #: non_logged_in_area/templates/privacy_policy.html:175
 #, python-format
 msgctxt "Privacy Policy Sec8 P5"
 msgid "As an alternative to the browser Addon or within browsers on mobile devices, the user can %(optout_javascript)s in order to opt-out from being tracked by Google Analytics within this website in the future (the opt-out applies only for the browser in which the user sets it and within this domain). An opt-out cookie will be stored on the user's device, which means that the user will have to click this link again, if he deletes his cookies."
-msgstr ""
+msgstr "Alternativ zum Browser-Add-On oder innerhalb von Browsern auf mobilen Geräten, kann der Nutzer %(optout_javascript)s, um die Erfassung durch Google Analytics innerhalb dieser Website zukünftig zu verhindern. Dabei wird ein Opt-Out-Cookie in den Browsers des Nutzers abgelegt. Löscht der Nutzer seine Cookies, muss er diesen Link erneut klicken."
 
 #: non_logged_in_area/templates/privacy_policy.html:183
 msgctxt "Privacy Policy Sec9"
 msgid "Revocation, Changes, Corrections, and Updates"
-msgstr ""
+msgstr "Widerruf, Änderungen, Berichtigungen und Aktualisierungen"
 
 #: non_logged_in_area/templates/privacy_policy.html:189
 msgctxt "Privacy Policy Sec9 P1"
 msgid "The user has the right to be informed upon application and free of charge, which personal data about him has been stored. Additionally, the user can ask for the correction of uncorrect data, as well as for the suspension or even deletion of his personal data as far as there is no legal obligation to retain that data."
-msgstr ""
+msgstr "Der Nutzer hat das Recht, auf Antrag unentgeltlich Auskunft zu erhalten über die personenbezogenen Daten, die über ihn gespeichert wurden. Zusätzlich hat der Nutzer das Recht auf Berichtigung unrichtiger Daten, Sperrung und Löschung seiner personenbezogenen Daten, soweit dem keine gesetzliche Aufbewahrungspflicht entgegensteht."
 
 #: non_logged_in_area/templates/privacy_policy.html:198
 msgctxt "Privacy Policy Credit"
 msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
-msgstr ""
+msgstr "Basierend auf dem Datenschutz-Muster von Rechtsanwalt Thomas Schwenke - I LAW it"
 
 #: non_logged_in_area/templates/shelters_need_help.html:20
 msgid "advantages"

@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Christoph, 2015
 # Christoph, 2015
 # Christoph, 2015
@@ -14,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 14:26+0200\n"
+"POT-Creation-Date: 2015-10-06 14:32+0200\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
@@ -363,7 +364,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr "Kapcsolat"
+msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
@@ -394,7 +395,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
-msgstr "Regisztráció"
+msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
