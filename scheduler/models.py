@@ -7,7 +7,10 @@ from django.utils.translation import ugettext_lazy as _
 from organizations.models import Facility
 from places.models import Country, Region, Area, Place
 from . import managers
+from . import old_managers
 
+
+# old models
 
 class Topics(models.Model):
     class Meta:
@@ -48,8 +51,8 @@ class Need(models.Model):
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
-    objects = managers.NeedManager()
-    open_needs = managers.OpenNeedManager()
+    objects = old_managers.NeedManager()
+    open_needs = old_managers.OpenNeedManager()
 
     class Meta:
         verbose_name = _(u'shift')
@@ -68,7 +71,7 @@ class ShiftHelper(models.Model):
     need = models.ForeignKey('scheduler.Need', related_name='shift_helpers')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
-    objects = managers.ShiftHelperManager()
+    objects = old_managers.ShiftHelperManager()
 
     class Meta:
         verbose_name = _('shift helper')
@@ -79,28 +82,7 @@ class ShiftHelper(models.Model):
         return u"{} on {}".format(self.user_account, self.need)
 
 
-class Enrolment(models.Model):
-    """
-    Through model, representing when a user enrolled for a shift.
-    """
-    user_account = models.ForeignKey('accounts.UserAccount',
-                                     related_name='enrolments',
-                                     verbose_name=_('user account'))
-    shift = models.ForeignKey('scheduler.Shift',
-                              related_name='enrolled_users',
-                              verbose_name=_('shift'))
-    joined_shift_at = models.DateTimeField(auto_now_add=True,
-                                           verbose_name=_('joined at'))
-
-    objects = managers.EnrolmentManager()
-
-    class Meta:
-        verbose_name = _('Enrolment for shift')
-        verbose_name_plural = _('Enrolments for shifts')
-        unique_together = ('user_account', 'shift')
-
-    def __unicode__(self):
-        return _(u"{} on {}").format(self.user, self.shift)
+# New models
 
 class Shift(models.Model):
     """
@@ -127,6 +109,30 @@ class Shift(models.Model):
 
     def __unicode__(self):
         return _(u"{} at {}").format(self.task, self.workplace)
+
+
+class Enrolment(models.Model):
+    """
+    Through model, representing when a user enrolled for a shift.
+    """
+    user_account = models.ForeignKey('accounts.UserAccount',
+                                     related_name='enrolments',
+                                     verbose_name=_('user account'))
+    shift = models.ForeignKey('scheduler.Shift',
+                              related_name='enrolled_users',
+                              verbose_name=_('shift'))
+    joined_shift_at = models.DateTimeField(auto_now_add=True,
+                                           verbose_name=_('joined at'))
+
+    objects = managers.EnrolmentManager()
+
+    class Meta:
+        verbose_name = _('Enrolment for shift')
+        verbose_name_plural = _('Enrolments for shifts')
+        unique_together = ('user_account', 'shift')
+
+    def __unicode__(self):
+        return _(u"{} on {}").format(self.user, self.shift)
 
 
 class RecurringEvent(models.Model):
@@ -156,7 +162,6 @@ class RecurringEvent(models.Model):
     disabled = models.BooleanField(verbose_name=_('Disabled'), default=False)
 
     objects = managers.RecurringEventManager()
-
 
     def __unicode__(self):
         return _(u"{}").format(self.name)
