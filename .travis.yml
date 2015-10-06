@@ -1,10 +1,22 @@
 language: python
+
 python: "2.7"
+
+env: DJANGO_SETTINGS_MODULE=volunteer_planner.settings.tests
+
 install: "pip install -r requirements/dev.txt"
-env: DJANGO_SETTINGS_MODULE=volunteer_planner.settings.local
+
+# Fire up a webserver for Selenium
 before_script: gunicorn -D volunteer_planner.wsgi_behave
+
 script:
+# Python tests (mostly unit tests)
 - py.test --create-db tests/
+
+# Our behave tests (using Selenium)
 - behave tests/_behave
+
+# Disable Travis rather annoying email notifications. Talk to Maik
+# if you want them enabled.
 notifications:
   email: false
