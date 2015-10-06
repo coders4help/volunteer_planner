@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 12:38+0200\n"
+"POT-Creation-Date: 2015-10-06 13:11+0200\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -960,17 +960,17 @@ msgstr "Activation complete"
 msgid "Activation problem"
 msgstr "Activation problem"
 
-#: templates/registration/activate.html:14
+#: templates/registration/activate.html:15
 msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
 msgstr "login"
 
-#: templates/registration/activate.html:15
+#: templates/registration/activate.html:17
 #, python-format
 msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
 msgstr "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
 
-#: templates/registration/activate.html:20
+#: templates/registration/activate.html:25
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 msgstr "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 

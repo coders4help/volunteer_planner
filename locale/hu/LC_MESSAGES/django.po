@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Christoph, 2015
 # Christoph, 2015
 # Christoph, 2015
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 12:38+0200\n"
-"PO-Revision-Date: 2015-10-04 21:53+0000\n"
-"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
+"POT-Creation-Date: 2015-10-06 13:11+0200\n"
+"PO-Revision-Date: 2015-10-06 10:38+0000\n"
+"Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -362,7 +363,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr "Kapcsolat"
+msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
@@ -393,7 +394,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
-msgstr "Regisztráció"
+msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
@@ -958,17 +959,17 @@ msgstr "Az aktiváció kész."
 msgid "Activation problem"
 msgstr "Probléma van az aktivációval."
 
-#: templates/registration/activate.html:14
+#: templates/registration/activate.html:15
 msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
 msgstr "bejelentkezhetsz"
 
-#: templates/registration/activate.html:15
+#: templates/registration/activate.html:17
 #, python-format
 msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
 msgstr "Üdv %(account)s, az aktiválás rendben megtörtént! Most már %(login_link)s, a korábban megadott felhasználói nevet és jelszót használva."
 
-#: templates/registration/activate.html:20
+#: templates/registration/activate.html:25
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 msgstr "Hoppá &ndash; Ön már vagy előzőleg aktiválta a felhasználói fiókját, vagy az aktivációs kulcs érvénytelen, vagy lejárt."
 
