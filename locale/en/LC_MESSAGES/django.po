@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 19:00+0200\n"
+"POT-Creation-Date: 2015-10-07 16:19+0200\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -67,7 +67,7 @@ msgstr ""
 msgid "blueprint title"
 msgstr ""
 
-#: blueprint/models.py:12 scheduler/models.py:58 scheduler/models.py:163
+#: blueprint/models.py:12 scheduler/models.py:58 scheduler/models.py:161
 msgid "location"
 msgstr ""
 
@@ -559,7 +559,7 @@ msgstr ""
 msgid "text"
 msgstr ""
 
-#: places/models.py:20 scheduler/models.py:143 shiftmailer/models.py:10
+#: places/models.py:20 scheduler/models.py:141 shiftmailer/models.py:10
 msgid "name"
 msgstr ""
 
@@ -591,7 +591,7 @@ msgstr ""
 msgid "areas"
 msgstr ""
 
-#: places/models.py:132 scheduler/models.py:160
+#: places/models.py:132 scheduler/models.py:158
 msgid "place"
 msgstr ""
 
@@ -603,7 +603,7 @@ msgstr ""
 msgid "Scheduler"
 msgstr ""
 
-#: scheduler/models.py:56 scheduler/models.py:128
+#: scheduler/models.py:56 scheduler/models.py:126
 msgid "help type"
 msgstr ""
 
@@ -635,35 +635,35 @@ msgstr ""
 msgid "shift helpers"
 msgstr ""
 
-#: scheduler/models.py:129
+#: scheduler/models.py:127
 msgid "help types"
 msgstr ""
 
-#: scheduler/models.py:145
+#: scheduler/models.py:143
 msgid "address"
 msgstr ""
 
-#: scheduler/models.py:147
+#: scheduler/models.py:145
 msgid "city"
 msgstr ""
 
-#: scheduler/models.py:149
+#: scheduler/models.py:147
 msgid "postal code"
 msgstr ""
 
-#: scheduler/models.py:151
+#: scheduler/models.py:149
 msgid "latitude"
 msgstr ""
 
-#: scheduler/models.py:153
+#: scheduler/models.py:151
 msgid "longitude"
 msgstr ""
 
-#: scheduler/models.py:155
+#: scheduler/models.py:153
 msgid "description"
 msgstr ""
 
-#: scheduler/models.py:164
+#: scheduler/models.py:162
 msgid "locations"
 msgstr ""
 
@@ -771,8 +771,8 @@ msgid ""
 "\n"
 "leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:\n"
 "\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
-"%(shift.starting_time.date)s von %(shift.starting_time.time)s bis %(shift.ending_time.time)s\n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s\n"
 "\n"
 "Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.\n"
 "\n"
@@ -788,12 +788,12 @@ msgid ""
 "\n"
 "wir mussten die folgende Schicht zeitlich anpassen:\n"
 "\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
-"%(old.starting_time.date)s von %(old.starting_time.time)s bis %(old.ending_time.time)s\n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s\n"
 "\n"
 "Die neuen Schichtzeiten sind:\n"
 "\n"
-"am %(shift.starting_time.date)s von %(shift.starting_time.time)s bis %(shift.ending_time.time)s.\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s\n"
 "\n"
 "Wenn Sie zur neuen Uhrzeit unglücklicher Weise nicht mehr helfen kännen, bitten\n"
 "wir Sie, sich im Volunteer-Planner aus dieser Schicht auszutragen, damit jemand\n"

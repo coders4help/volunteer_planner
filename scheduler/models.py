@@ -79,7 +79,8 @@ class ShiftHelper(models.Model):
         unique_together = ('user_account', 'need')
 
     def __unicode__(self):
-        return u"{} on {}".format(self.user_account, self.need)
+        return u"{} on {}".format(self.user_account.user.username,
+                                  self.need.topic)
 
 
 # New models

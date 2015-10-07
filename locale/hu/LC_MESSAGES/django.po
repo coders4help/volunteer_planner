@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 19:00+0200\n"
-"PO-Revision-Date: 2015-10-06 16:55+0000\n"
+"POT-Creation-Date: 2015-10-07 16:19+0200\n"
+"PO-Revision-Date: 2015-10-07 14:15+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "Language: hu\n"
@@ -75,7 +75,7 @@ msgstr ""
 msgid "blueprint title"
 msgstr ""
 
-#: blueprint/models.py:12 scheduler/models.py:58 scheduler/models.py:163
+#: blueprint/models.py:12 scheduler/models.py:58 scheduler/models.py:161
 msgid "location"
 msgstr "helyszín"
 
@@ -159,16 +159,16 @@ msgstr "Kapcsolat"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:85
 msgid "Imprint"
-msgstr ""
+msgstr "Impresszum"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:88
 msgid "Terms of Service"
-msgstr ""
+msgstr "Használati feltételek"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:91
 #: non_logged_in_area/templates/privacy_policy.html:6
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Magánszféra"
 
 #: non_logged_in_area/templates/faqs.html:10
 msgctxt "FAQ Q1"
@@ -363,7 +363,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr ""
+msgstr "Kapcsolat"
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
@@ -394,7 +394,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
-msgstr ""
+msgstr "Regisztráció"
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
@@ -567,7 +567,7 @@ msgstr "alcím"
 msgid "text"
 msgstr "szöveg"
 
-#: places/models.py:20 scheduler/models.py:143 shiftmailer/models.py:10
+#: places/models.py:20 scheduler/models.py:141 shiftmailer/models.py:10
 msgid "name"
 msgstr "név"
 
@@ -599,7 +599,7 @@ msgstr "terület"
 msgid "areas"
 msgstr "területek"
 
-#: places/models.py:132 scheduler/models.py:160
+#: places/models.py:132 scheduler/models.py:158
 msgid "place"
 msgstr "hely"
 
@@ -611,7 +611,7 @@ msgstr "helyek"
 msgid "Scheduler"
 msgstr "Ütemező"
 
-#: scheduler/models.py:56 scheduler/models.py:128
+#: scheduler/models.py:56 scheduler/models.py:126
 msgid "help type"
 msgstr "segítség típusa"
 
@@ -643,35 +643,35 @@ msgstr "beosztásban segítő"
 msgid "shift helpers"
 msgstr "beosztásban segítők"
 
-#: scheduler/models.py:129
+#: scheduler/models.py:127
 msgid "help types"
 msgstr "segítség típusai"
 
-#: scheduler/models.py:145
+#: scheduler/models.py:143
 msgid "address"
 msgstr "cím"
 
-#: scheduler/models.py:147
+#: scheduler/models.py:145
 msgid "city"
 msgstr "város"
 
-#: scheduler/models.py:149
+#: scheduler/models.py:147
 msgid "postal code"
 msgstr "irányítószám"
 
-#: scheduler/models.py:151
+#: scheduler/models.py:149
 msgid "latitude"
 msgstr "szélességi fok"
 
-#: scheduler/models.py:153
+#: scheduler/models.py:151
 msgid "longitude"
 msgstr "hosszúsági fok"
 
-#: scheduler/models.py:155
+#: scheduler/models.py:153
 msgid "description"
 msgstr "leírás"
 
-#: scheduler/models.py:164
+#: scheduler/models.py:162
 msgid "locations"
 msgstr "helyszínek"
 
@@ -779,33 +779,14 @@ msgid ""
 "\n"
 "leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:\n"
 "\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
-"%(shift.starting_time.date)s von %(shift.starting_time.time)s bis %(shift.ending_time.time)s\n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s\n"
 "\n"
 "Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.\n"
 "\n"
 "Liebe Grüße vom Volunteer Planner\n"
 "volunteer-planner.org\n"
 msgstr ""
-"\n"
-"Szia,\n"
-"\n"
-"\n"
-"sajnos a szervezők kérésére a következő beosztást törölnünk kell:\n"
-"\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
-"\n"
-"%(shift.starting_time.date)s %(shift.starting_time.time)s - %(shift.ending_time.time)s\n"
-"\n"
-"\n"
-"Ez egy automatikusan generált e-mail. Kérdés esetén írj arra az e-mail címre,\n"
-"\n"
-"amely a helyszín leírásánál szerepel!\n"
-"\n"
-"\n"
-"A Volunteer Planner csapata\n"
-"\n"
-"volunteer-planner.org\n"
 
 #: scheduler/templates/shift_modification_notification.html:1
 #, python-format
@@ -815,12 +796,12 @@ msgid ""
 "\n"
 "wir mussten die folgende Schicht zeitlich anpassen:\n"
 "\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
-"%(old.starting_time.date)s von %(old.starting_time.time)s bis %(old.ending_time.time)s\n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s\n"
 "\n"
 "Die neuen Schichtzeiten sind:\n"
 "\n"
-"am %(shift.starting_time.date)s von %(shift.starting_time.time)s bis %(shift.ending_time.time)s.\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s\n"
 "\n"
 "Wenn Sie zur neuen Uhrzeit unglücklicher Weise nicht mehr helfen kännen, bitten\n"
 "wir Sie, sich im Volunteer-Planner aus dieser Schicht auszutragen, damit jemand\n"
@@ -833,38 +814,6 @@ msgid ""
 "Liebe Grüße vom Volunteer Planner\n"
 "volunteer-planner.org\n"
 msgstr ""
-"\n"
-"Szia,\n"
-"\n"
-"\n"
-"a következő beosztás idejét meg kellett változtatnunk:\n"
-"\n"
-"%(shift.topic.title)s, %(shift.location.name)s\n"
-"\n"
-"%(old.starting_time.date)s %(old.starting_time.time)s - %(old.ending_time.time)s\n"
-"\n"
-"\n"
-"Az új időbeosztás:\n"
-"\n"
-"%(shift.starting_time.date)s %(shift.starting_time.time)s - %(shift.ending_time.time)s.\n"
-"\n"
-"\n"
-"Ha az új időpont nem megfelelő, kérjük, jelentkezz le erről az időpontról\n"
-"\n"
-"a Volunteer-Planner.org-on. Így a többi önkéntes számára felszabadul az időpont.\n"
-"\n"
-"\n"
-"Köszönjük a közreműködést :)\n"
-"\n"
-"\n"
-"Ez egy automatikusan generált e-mail. Kérdés esetén írj arra az e-mail címre,\n"
-"\n"
-"amely a helyszín leírásánál szerepel!\n"
-"\n"
-"\n"
-"A Volunteer Planner csapata\n"
-"\n"
-"volunteer-planner.org\n"
 
 #: scheduler/views.py:70
 msgid "The submitted data was invalid."

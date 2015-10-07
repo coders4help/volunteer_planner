@@ -1,11 +1,6 @@
 # coding=utf-8
 """
-WSGI config for boilerplate project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-
+WSGI config for production setup.
 """
 
 import os
