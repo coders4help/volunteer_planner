@@ -1,14 +1,14 @@
-{% load i18n %}{% blocktrans %}
+{% load i18n %}{% blocktrans with shift_title=shift.topic.title location=shift.location.name from_date=shift.starting_time.date from_time=shift.starting_time.time to_time=shift.ending_time.time old_from_date=shift.starting_time.date old_from_time=shift.starting_time.time old_to_time=shift.ending_time.time %}
 Hallo,
 
 wir mussten die folgende Schicht zeitlich anpassen:
 
-{{ shift.topic.title }}, {{ shift.location.name }}
-{{ old.starting_time.date }} von {{ old.starting_time.time }} bis {{ old.ending_time.time }}
+{{ shift_title }}, {{ location }}
+{{ old_from_date }} von {{ old_from_time }} bis {{ old_to_time }}
 
 Die neuen Schichtzeiten sind:
 
-am {{ shift.starting_time.date }} von {{ shift.starting_time.time }} bis {{ shift.ending_time.time }}.
+{{ from_date }} von {{ from_time }} bis {{ to_time }}
 
 Wenn Sie zur neuen Uhrzeit unglücklicher Weise nicht mehr helfen kännen, bitten
 wir Sie, sich im Volunteer-Planner aus dieser Schicht auszutragen, damit jemand
