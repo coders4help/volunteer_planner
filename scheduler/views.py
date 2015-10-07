@@ -2,8 +2,9 @@
 
 import datetime
 import logging
+import json
 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib import messages
 from django.db.models import Count
 from django.utils.safestring import mark_safe
@@ -11,8 +12,11 @@ from django.views.generic import TemplateView, FormView, DetailView
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
+import itertools
 
 from accounts.models import UserAccount
+from google_tools.templatetags.google_links import google_maps_directions
+from places.models import Place
 from scheduler.models import Location, Need, ShiftHelper
 from notifications.models import Notification
 from .forms import RegisterForNeedForm
@@ -29,9 +33,32 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        shifts = Need.objects.filter(ending_time__gt=datetime.datetime.now()) \
-            .order_by('location', 'ending_time').select_related('location')
-        context['shifts'] = shifts
+        needy_locations = Location.objects.with_open_needs()
+        # due to the lack of an REST Api we have to serialize the shifts right here
+        places_json = [{'slug': place.slug, 'name': place.name} for place in Place.objects.all()]
+        context['places_json'] = json.dumps(places_json)
+        location_json = []
+        for location in needy_locations:
+            address_line = location.street + ", " + location.postal_code + " " + location.city
+            location_json.append({
+                'name': location.name,
+                'address_line': address_line,
+                'google_maps_link': google_maps_directions(address_line),
+                'additional_info': location.additional_info,
+                'place_slug': location.place.slug,
+                'shifts': [{
+                    'date_string': shift[0].strftime("%A, %d.%m.%Y"),
+                    'link': reverse('planner_by_location', kwargs={
+                        'pk': location.pk,
+                        'year': shift[0].year,
+                        'month': shift[0].month,
+                        'day': shift[0].day,
+                    })
+                } for shift in itertools.groupby(location.get_open_needs(),
+                                                 lambda record: record.starting_time.date())]
+            })
+
+        context['location_json'] = json.dumps(location_json)
         context['notifications'] = Notification.objects.all().select_related(
             'location')
         return context

@@ -143,3 +143,11 @@ code {
 .spacer{
     margin-top:35px;
 }
+
+.places-filter button {
+    margin-right: 6px;
+}
+
+.places-accordions {
+    margin-top: 15px
+}
