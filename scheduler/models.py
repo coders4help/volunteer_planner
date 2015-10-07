@@ -116,11 +116,9 @@ class ShiftHelper(models.Model):
         verbose_name_plural = _('shift helpers')
         unique_together = ('user_account', 'need')
 
-    def __repr__(self):
-        return "{}".format(self.need)
-
     def __unicode__(self):
-        return u"{}".format(repr(self))
+        return u"{} on {}".format(self.user_account.user.username,
+                                  self.need.topic)
 
 
 class Topics(models.Model):
