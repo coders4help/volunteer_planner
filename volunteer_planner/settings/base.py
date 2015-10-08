@@ -62,6 +62,7 @@ LOCAL_APPS = (
     'places',
     'non_logged_in_area',
     'registration_history',
+    'scheduletemplates',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
