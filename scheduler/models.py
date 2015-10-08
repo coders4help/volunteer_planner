@@ -19,9 +19,11 @@ class Topics(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
+    workplace = models.CharField(max_length=255, blank=True,
+                                 verbose_name=_('workplace'))
 
     def __unicode__(self):
-        return self.title
+        return u'{}'.format(self.title)
 
     def get_current_needs_py_topic(self):
         return self.need_set.all()
