@@ -35,21 +35,7 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
         schedule_template = get_object_or_404(self.model, pk=pk)
         shift_templates = schedule_template.shift_templates.filter(
             schedule_template=schedule_template)
-        shift_templates = shift_templates.select_related(
-            'task',
-            'task__facility',
-            'workplace',
-            'workplace__facility',
-            'schedule_template',
-            'schedule_template__facility', )
 
-        shift_templates = shift_templates.order_by(
-            'schedule_template',
-            'task',
-            'workplace',
-            'starting_time',
-            '-days',
-            '-ending_time')
         context = dict(self.admin_site.each_context(request))
         if request.method == 'GET':
             context.update({
