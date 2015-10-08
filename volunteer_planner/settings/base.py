@@ -44,14 +44,14 @@ THIRD_PARTY_APPS = (
     'ckeditor',
     # A prettier theme
     'djangocms_admin_style',
-    'registration',
+    'accounts.apps.RegistrationConfig',
     'rest_framework',
 )
 
 LOCAL_APPS = (
     'api',
     'google_tools',
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'organizations',
     'common',
     'scheduler',
