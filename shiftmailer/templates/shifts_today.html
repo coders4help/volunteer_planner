@@ -8,8 +8,8 @@
 {% for shift in shifts %}
 
     {% if shift.helpers %}
-        {% ifchanged shift.topic.title %}
-            {{ shift.topic.title }}
+        {% ifchanged shift.task.name %}
+            {{ shift.task.name }}
         {% endifchanged %}
 
         {% blocktrans trimmed with start_time=shift.starting_time|date:"H" end_time=shift.ending_time|date:"H" volunteer_count=shift.volunteer_count %}

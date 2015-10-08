@@ -56,8 +56,8 @@ class PlannerView(LoginRequiredMixin, FormView):
             .filter(ending_time__year=self.kwargs['year'],
                     ending_time__month=self.kwargs['month'],
                     ending_time__day=self.kwargs['day']) \
-            .order_by('topic', 'ending_time') \
-            .select_related('topic', 'facility') \
+            .order_by('task', 'ending_time') \
+            .select_related('task', 'facility') \
             .prefetch_related('helpers',
                               'helpers__user')
 
@@ -155,7 +155,7 @@ class GeographicHelpdeskView(DetailView):
         place = self.object
         context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
         shifts = Shift.open_shifts.by_geography(place)
-        shifts = shifts.select_related('topic',
+        shifts = shifts.select_related('task',
                                        'facility',
                                        'facility__place',
                                        'facility__place__area',

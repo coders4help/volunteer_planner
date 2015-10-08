@@ -7,20 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduler', '0029_remove_need_location'),
+        ('scheduler', '0035_delete_topics_model'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='location',
+            model_name='shift',
             name='facility',
             field=models.ForeignKey(verbose_name='facility', to='organizations.Facility'),
         ),
-        migrations.RemoveField(
-            model_name='location',
-            name='place',
-        ),
-        migrations.DeleteModel(
-            name='Location',
-        )
     ]

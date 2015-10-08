@@ -10,12 +10,12 @@ from django.db.models import signals
 from registration.models import RegistrationProfile
 
 from django.contrib.auth.models import User
+from accounts.models import UserAccount
 
 from tests.factories import ShiftHelperFactory
-from organizations.models import Facility
-from tests.factories import ShiftFactory, TopicFactory, FacilityFactory, \
-    PlaceFactory
-from scheduler.models import Shift, Topics
+from organizations.models import Facility, Workplace, Task
+from tests.factories import ShiftFactory, FacilityFactory, PlaceFactory
+from scheduler.models import Shift
 from places.models import Region, Area, Place, Country
 
 HELPTOPICS = ["Jumper", "Translator", "Clothing Room", "Womens Room",
@@ -63,9 +63,13 @@ class Command(BaseCommand):
         if options['flush']:
             print "delete all data in app tables"
             RegistrationProfile.objects.all().delete()
+
             Shift.objects.all().delete()
+            Task.objects.all().delete()
+            Workplace.objects.all().delete()
             Facility.objects.all().delete()
-            Topics.objects.all().delete()
+
+            UserAccount.objects.all().delete()
 
             # delete geographic information
             Country.objects.all().delete()
@@ -83,7 +87,6 @@ class Command(BaseCommand):
         # create shifts for number of days
         for day in range(0, options['days'][0]):
             for i in range(2, 23):
-                topic = TopicFactory.create(title=random.choice(HELPTOPICS))
                 facility = FacilityFactory.create(
                     name="Shelter" + str(random.randint(0, 9)),
                     place=places[random.randint(0, len(places) - 1)],
@@ -92,7 +95,6 @@ class Command(BaseCommand):
                 shift = ShiftFactory.create(
                     starting_time=gen_date(hour=i - 1, day=day),
                     ending_time=gen_date(hour=i, day=day),
-                    topic=topic,
                     facility=facility
                 )
                 # assign random volunteer for each shift

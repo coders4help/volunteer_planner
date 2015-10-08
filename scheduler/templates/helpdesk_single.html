@@ -12,7 +12,7 @@
 
     {% include "partials/alert_messages.html" %}
 
-    {% regroup shifts by topic as shifts_by_topic %}
+    {% regroup shifts by task as shifts_by_task %}
 
     <div class="row">
         <h2>
@@ -29,14 +29,14 @@
     <form method="POST">
         {% csrf_token %}
 
-        {% for shift_by_topic in shifts_by_topic %}
+        {% for shift_by_task in shifts_by_task %}
             <div class="row">
-                {% with shift_by_topic.grouper as topic %}
-                    <h3>{{ topic.title }}</h3>
+                {% with shift_by_task.grouper as task %}
+                    <h3>{{ task.name }}</h3>
 
-                    {% if topic.description %}
+                    {% if task.description %}
                         <p>
-                            {{ topic.description|safe }}
+                            {{ task.description|safe }}
                         </p>
                     {% endif %}
                 {% endwith %}
@@ -62,7 +62,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for shift in shift_by_topic.list %}
+                    {% for shift in shift_by_task.list %}
                         {% with shift.volunteer_count|subtract:shift.slots as slots_left %}
                             {% with shift.volunteer_count|divide:shift.slots as slots_percent %}
                                 {% with shift.helpers.all|contains:user.account as is_assigned %}

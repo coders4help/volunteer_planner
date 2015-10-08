@@ -11,16 +11,6 @@ from places import models as places_models
 from organizations import models as organization_models
 
 
-class TopicFactory(factory.DjangoModelFactory):
-    title = "Sample topic"
-
-    class Meta:
-        model = scheduler_models.Topics
-        django_get_or_create = ['title']
-
-    description = FuzzyText(length=150, chars=string.ascii_letters, prefix='')
-
-
 class CountryFactory(factory.DjangoModelFactory):
     class Meta:
         model = places_models.Country
@@ -81,7 +71,7 @@ class ShiftFactory(factory.DjangoModelFactory):
     class Meta:
         model = scheduler_models.Shift
 
-    topic = factory.SubFactory(TopicFactory)
+    taks = factory.SubFactory(TaskFactory)
     facility = factory.SubFactory(FacilityFactory)
 
     slots = 10

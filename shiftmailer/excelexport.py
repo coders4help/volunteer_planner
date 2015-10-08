@@ -74,10 +74,10 @@ class GenerateExcelSheet:
             if 0 == shift.volunteer_count:
                 continue
 
-            if prev_shift is None or shift.topic_id != prev_shift.topic_id:
-                log.debug(u'New shift topic %s->%s', prev_shift, shift)
+            if prev_shift is None or shift.task_id != prev_shift.task_id:
+                log.debug(u'New shift task %s->%s', prev_shift, shift)
                 prev_shift = shift
-                ws.write(cur_line, 0, shift.topic.title, style_bold)
+                ws.write(cur_line, 0, shift.task.name, style_bold)
                 cur_line += 1
             if shift.starting_time.day == shift.ending_time.day:
                 end_fmt = shift_time_short_format
