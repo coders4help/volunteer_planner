@@ -6,7 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from organizations.models import Facility
 from places.models import Country, Region, Area, Place
-from . import managers
 from . import old_managers
 
 
@@ -40,9 +39,6 @@ class Need(models.Model):
     facility = models.ForeignKey('organizations.Facility',
                                  verbose_name=_(u'facility'),
                                  null=True)
-
-    location = models.ForeignKey('scheduler.Location',
-                                 verbose_name=_(u'location'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
                                          db_index=True)
@@ -87,39 +83,6 @@ class ShiftHelper(models.Model):
     def __unicode__(self):
         return u"{} on {}".format(self.user_account.user.username,
                                   self.need.topic)
-
-
-class Location(models.Model):
-    name = models.CharField(max_length=255, blank=True,
-                            verbose_name=_('name'))
-    street = models.CharField(max_length=255, blank=True,
-                              verbose_name=_('address'))
-    city = models.CharField(max_length=255, blank=True,
-                            verbose_name=_('city'))
-    postal_code = models.CharField(max_length=5, blank=True,
-                                   verbose_name=_('postal code'))
-    latitude = models.CharField(max_length=30, blank=True,
-                                verbose_name=_('latitude'))
-    longitude = models.CharField(max_length=30, blank=True,
-                                 verbose_name=_('longitude'))
-    additional_info = models.TextField(max_length=300000, blank=True,
-                                       verbose_name=_('description'))
-
-    place = models.ForeignKey("places.Place",
-                              null=False,
-                              related_name='locations',
-                              verbose_name=_('place'))
-
-    class Meta:
-        verbose_name = _(u'location')
-        verbose_name_plural = _(u'locations')
-        ordering = ('place', 'name',)
-        permissions = (
-            ("can_view", u"User can view location"),
-        )
-
-    def __unicode__(self):
-        return u'{}'.format(self.name)
 
 # New models
 
