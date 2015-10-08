@@ -76,6 +76,10 @@ class WorkplaceAdmin(admin.ModelAdmin):
     list_filter = ('facility',)
     search_fields = ('name', )
 
+    def get_queryset(self, request):
+        qs = super(WorkplaceAdmin, self).get_queryset(request)
+        qs = qs.select_related('facility')
+        return qs
 
 admin.site.register(Workplace, WorkplaceAdmin)
 
@@ -86,6 +90,11 @@ class TaskAdmin(admin.ModelAdmin):
         'description'
     )
     search_fields = ('name',)
+
+    def get_queryset(self, request):
+        qs = super(TaskAdmin, self).get_queryset(request)
+        qs = qs.select_related('facility')
+        return qs
 
 
 admin.site.register(Task, TaskAdmin)

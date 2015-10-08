@@ -14,6 +14,8 @@ class Shift(models.Model):
     This is the primary instance to create shifts
     """
 
+    slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+
     task = models.ForeignKey("organizations.Task",
                              verbose_name=_(u'task'))
     workplace = models.ForeignKey("organizations.Workplace",
@@ -28,8 +30,6 @@ class Shift(models.Model):
                                          db_index=True)
     ending_time = models.DateTimeField(verbose_name=_('ending time'),
                                        db_index=True)
-
-    slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
     helpers = models.ManyToManyField('accounts.UserAccount',
                                      through='ShiftHelper',
