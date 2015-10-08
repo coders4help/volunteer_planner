@@ -18,7 +18,8 @@ class Shift(models.Model):
                              verbose_name=_(u'task'))
     workplace = models.ForeignKey("organizations.Workplace",
                                   verbose_name=_(u'workplace'),
-                                  null=True)
+                                  null=True,
+                                  blank=True)
 
     facility = models.ForeignKey('organizations.Facility',
                                  verbose_name=_(u'facility'))

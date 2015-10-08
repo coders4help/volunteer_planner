@@ -20,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='shift',
             name='workplace',
-            field=models.ForeignKey(verbose_name='workplace', to='organizations.Workplace', null=True),
+            field=models.ForeignKey(verbose_name='workplace', to='organizations.Workplace', null=True, blank=True),
         ),
     ]
