@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from datetime import timedelta, datetime
+from datetime import timedelta
 
 from django.db import models
 from django.utils import timezone
@@ -55,7 +55,7 @@ class Need(models.Model):
 
     topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
                               help_text=_(u'HELP_TYPE_HELP'))
-    location = models.ForeignKey('Location', verbose_name=_(u'location'), related_name='needs')
+    location = models.ForeignKey('Location', verbose_name=_(u'location'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
                                          db_index=True)
@@ -132,15 +132,6 @@ class Topics(models.Model):
     def __unicode__(self):
         return self.title
 
-    def get_current_needs_py_topic(self):
-        return self.need_set.all()
-
-
-class LocationManager(models.Manager):
-    def with_open_needs(self):
-        qs = self.get_queryset()
-        return qs.filter(needs__ending_time__gte=datetime.now()).distinct()
-
 
 class Location(models.Model):
     name = models.CharField(max_length=255, blank=True,
@@ -162,11 +153,6 @@ class Location(models.Model):
                               null=False,
                               related_name='locations',
                               verbose_name=_('place'))
-
-    objects = LocationManager()
-
-    def get_open_needs(self):
-        return Need.objects.filter(location=self, ending_time__gte=datetime.now())
 
     class Meta:
         verbose_name = _(u'location')

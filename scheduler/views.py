@@ -3,20 +3,24 @@
 import datetime
 import logging
 import json
+import itertools
 
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.db.models import Count
+
+from django.templatetags.l10n import localize
+
 from django.utils.safestring import mark_safe
+
 from django.views.generic import TemplateView, FormView, DetailView
+
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
-import itertools
 
 from accounts.models import UserAccount
 from google_tools.templatetags.google_links import google_maps_directions
-from places.models import Place
 from scheduler.models import Location, Need, ShiftHelper
 from notifications.models import Notification
 from .forms import RegisterForNeedForm
@@ -33,31 +37,40 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        needy_locations = Location.objects.with_open_needs()
-        # due to the lack of an REST Api we have to serialize the shifts right here
-        places_json = [{'slug': place.slug, 'name': place.name} for place in Place.objects.all()]
-        context['places_json'] = json.dumps(places_json)
+        open_needs = Need.open_needs.select_related('location',
+                                                    'location__place')
+        open_needs = open_needs.order_by('location', 'starting_time')
+
+        shifts_by_location = itertools.groupby(open_needs, lambda r: r.location)
+
         location_json = []
-        for location in needy_locations:
+        used_places = set()
+
+        for location, shifts_at_location in shifts_by_location:
             address_line = location.street + ", " + location.postal_code + " " + location.city
+            shifts_by_date = itertools.groupby(shifts_at_location,
+                                               lambda s: s.starting_time.date())
+            used_places.add(location.place)
             location_json.append({
                 'name': location.name,
                 'address_line': address_line,
                 'google_maps_link': google_maps_directions(address_line),
-                'additional_info': location.additional_info,
+                'additional_info': mark_safe(location.additional_info),
                 'place_slug': location.place.slug,
                 'shifts': [{
-                    'date_string': shift[0].strftime("%A, %d.%m.%Y"),
-                    'link': reverse('planner_by_location', kwargs={
-                        'pk': location.pk,
-                        'year': shift[0].year,
-                        'month': shift[0].month,
-                        'day': shift[0].day,
-                    })
-                } for shift in itertools.groupby(location.get_open_needs(),
-                                                 lambda record: record.starting_time.date())]
+                               'date_string': localize(shift_date),
+                               'link': reverse('planner_by_location', kwargs={
+                                   'pk': location.pk,
+                                   'year': shift_date.year,
+                                   'month': shift_date.month,
+                                   'day': shift_date.day,
+                               })
+                           } for shift_date, shifts_of_day in shifts_by_date]
             })
 
+        context['places_json'] = json.dumps(
+            [{'slug': place.slug, 'name': place.name} for place in
+             sorted(used_places, key=lambda p: p.name)])
         context['location_json'] = json.dumps(location_json)
         context['notifications'] = Notification.objects.all().select_related(
             'location')
@@ -119,10 +132,11 @@ class PlannerView(LoginRequiredMixin, FormView):
                 error_message = _(
                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
                 message_list = u'<ul>{}</ul>'.format('\n'.join(
-                    [u'<li>{}</li>'.format(conflict) for conflict in conflicted_needs]))
+                    [u'<li>{}</li>'.format(conflict) for conflict in
+                     conflicted_needs]))
                 messages.warning(self.request,
                                  mark_safe(u'{}<br/>{}'.format(error_message,
-                                                     message_list)))
+                                                               message_list)))
             else:
                 shift_helper, created = ShiftHelper.objects.get_or_create(
                     user_account=user_account, need=shift_to_join)
