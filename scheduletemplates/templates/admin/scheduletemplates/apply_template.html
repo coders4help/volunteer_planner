@@ -27,7 +27,8 @@
         {% trans "starting time" as starting_trans %}
         {% trans "ending time" as ending_trans %}
         {% regroup shift_templates by task as shifts_by_task %}
-        <form>
+        <form action="" method="post">
+            {% csrf_token %}
             <div>
                 <table>
                     {% for shifts_for_task in shifts_by_task %}
@@ -75,10 +76,9 @@
                         {% endfor %}
                     {% endfor %}
                 </table>
-
             </div>
             <div class="submit-row">
-                <input type="submit" value="{% trans "Apply checked shifts" %}"
+                <input type="submit" value="{% trans "Preview shifts to add" %}"
                        class="default" name="apply">
             </div>
         </form>

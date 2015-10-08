@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
-
 from django.contrib import admin
 from django.db.models import Min, Count, Sum
 from django.shortcuts import get_object_or_404
@@ -34,16 +33,50 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
 
     def apply_schedule_template(self, request, pk):
         schedule_template = get_object_or_404(self.model, pk=pk)
-        context = dict(self.admin_site.each_context(request))
-        context.update({
-            "opts": self.model._meta,
-            "schedule_template": schedule_template,
-            "shift_templates": ShiftTemplate.objects.filter(schedule_template=schedule_template)
-        })
+        shift_templates = schedule_template.shift_templates.filter(
+            schedule_template=schedule_template)
+        shift_templates = shift_templates.select_related(
+            'task',
+            'task__facility',
+            'workplace',
+            'workplace__facility',
+            'schedule_template',
+            'schedule_template__facility', )
 
-        return TemplateResponse(request,
-                                "admin/scheduletemplates/apply_template.html",
-                                context)
+        shift_templates = shift_templates.order_by(
+            'schedule_template',
+            'task',
+            'workplace',
+            'starting_time',
+            '-days',
+            '-ending_time')
+        context = dict(self.admin_site.each_context(request))
+        if request.method == 'GET':
+            context.update({
+                "opts": self.model._meta,
+                "schedule_template": schedule_template,
+                "shift_templates": shift_templates
+            })
+
+            return TemplateResponse(request,
+                                    "admin/scheduletemplates/apply_template.html",
+                                    context)
+        elif request.method == 'POST':
+            print request.POST.getlist('selected_shift_templates')
+            id_list = list(
+                map(int, request.POST.getlist('selected_shift_templates', [])))
+            print id_list
+            if id_list:
+                selected_shifts = shift_templates.filter(id__in=id_list)
+            print selected_shifts
+            context.update({
+                "opts": self.model._meta,
+                "schedule_template": schedule_template,
+                "shift_templates": selected_shifts
+            })
+            return TemplateResponse(request,
+                                    "admin/scheduletemplates/apply_template.html",
+                                    context)
 
     def get_urls(self):
         urls = super(ScheduleTemplateAdmin, self).get_urls()
