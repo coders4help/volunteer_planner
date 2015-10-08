@@ -14,9 +14,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
 from organizations.models import Facility
-from scheduler.models import Need, ShiftHelper
+from scheduler.models import Shift, ShiftHelper
 from notifications.models import Notification
-from .forms import RegisterForNeedForm
+from .forms import RegisterForShiftForm
 from volunteer_planner.utils import LoginRequiredMixin
 
 logger = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        shifts = Need.objects.filter(ending_time__gt=datetime.datetime.now()) \
+        shifts = Shift.objects.filter(ending_time__gt=datetime.datetime.now()) \
             .order_by('facility', 'ending_time').select_related('facility')
         context['shifts'] = shifts
         context['notifications'] = Notification.objects.all().select_related(
@@ -41,17 +41,17 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 class PlannerView(LoginRequiredMixin, FormView):
     """
     View that gets shown to volunteers when they browse a specific day.
-    It'll show all the available needs, and they can add and remove
-    themselves from needs.
+    It'll show all the available shifts, and they can add and remove
+    themselves from shifts.
     """
     template_name = "helpdesk_single.html"
-    form_class = RegisterForNeedForm
+    form_class = RegisterForShiftForm
 
     def get_context_data(self, **kwargs):
 
         context = super(PlannerView, self).get_context_data(**kwargs)
 
-        context['needs'] = Need.objects.filter(facility__pk=self.kwargs['pk']) \
+        context['shifts'] = Shift.objects.filter(facility__pk=self.kwargs['pk']) \
             .annotate(volunteer_count=Count('helpers')) \
             .filter(ending_time__year=self.kwargs['year'],
                     ending_time__month=self.kwargs['month'],
@@ -87,19 +87,19 @@ class PlannerView(LoginRequiredMixin, FormView):
 
             conflicts = ShiftHelper.objects.conflicting(shift_to_join,
                                                         user_account=user_account)
-            conflicted_needs = [shift_helper.need for shift_helper in conflicts]
+            conflicted_shifts = [shift_helper.shift for shift_helper in conflicts]
 
-            if conflicted_needs:
+            if conflicted_shifts:
                 error_message = _(
                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
                 message_list = u'<ul>{}</ul>'.format('\n'.join(
-                    [u'<li>{}</li>'.format(conflict) for conflict in conflicted_needs]))
+                    [u'<li>{}</li>'.format(conflict) for conflict in conflicted_shifts]))
                 messages.warning(self.request,
                                  mark_safe(u'{}<br/>{}'.format(error_message,
                                                                message_list)))
             else:
                 shift_helper, created = ShiftHelper.objects.get_or_create(
-                    user_account=user_account, need=shift_to_join)
+                    user_account=user_account, shift=shift_to_join)
                 if created:
                     messages.success(self.request, _(
                         u'You were successfully added to this shift.'))
@@ -110,7 +110,7 @@ class PlannerView(LoginRequiredMixin, FormView):
         elif shift_to_leave:
             try:
                 ShiftHelper.objects.get(user_account=user_account,
-                                        need=shift_to_leave).delete()
+                                        shift=shift_to_leave).delete()
             except ShiftHelper.DoesNotExist:
                 # just catch the exception,
                 # user seems not to have signed up for this shift
@@ -154,7 +154,7 @@ class GeographicHelpdeskView(DetailView):
         context = super(GeographicHelpdeskView, self).get_context_data(**kwargs)
         place = self.object
         context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
-        shifts = Need.open_needs.by_geography(place)
+        shifts = Shift.open_shifts.by_geography(place)
         shifts = shifts.select_related('topic',
                                        'facility',
                                        'facility__place',

@@ -3,10 +3,10 @@
 from datetime import timedelta
 
 from django.db import models
-
 from django.utils import timezone
 
-from scheduler.old_managers import NeedManager
+from places import models as place_models
+from organizations import models as organization_models
 
 
 class EnrolmentManager(models.Manager):
@@ -28,48 +28,57 @@ class EnrolmentManager(models.Manager):
         return query_set
 
 
-class ShiftManager(NeedManager):
-    """
-    Draft of what blueprinting methods could look like. But there's no need for
-    them to live in a manager. Better to have a dedicated blueprinting module,
-    or such like.
+class ShiftManager(models.Manager):
+    def at_facility(self, facility):
+        return self.get_queryset().filter(facility=facility)
 
-    def create_datetime_from_day_and_time_string(self, day, time_str):
-        return parse(time_str, default=day)
+    def at_place(self, place):
+        return self.get_queryset().filter(facility__place=place)
 
-    def create_shift_from_event_and_day(self, event, day):
-        shift = Shift(task=event.task,
-                      workplace=event.workplace,
-                      name=event.name,
-                      description=event.description,
-                      slot_amount=event.slot_amount,
-                      start_time=self.create_datetime_from_day_and_time_string(day, event.start_time),
-                      end_time=self.create_datetime_from_day_and_time_string(day, event.end_time))
-        # shift.save() # see if it should be done here later
-        return shift
+    def in_area(self, area):
+        return self.get_queryset().filter(facility__place__area=area)
 
-    def create_shifts_for_facility_and_day(self, facility, day):
-        events = RecurringEvent.objects.get_events_for_facility_and_day(facility, day)
-        shifts = []
-        for event in events:
-            shifts.append(self.create_shift_from_event_and_day(event, day))
-        return shifts
-    """
+    def in_region(self, region):
+        return self.get_queryset().filter(facility__place__area__region=region)
 
-    def open_shifts(self):
-        return super(ShiftManager, self).get_queryset().filter(
-            end_time__gte=timezone.now())
+    def in_country(self, country):
+        return self.get_queryset().filter(
+            facility__place__area__region__country=country)
+
+    def by_geography(self, geo_affiliation):
+        if isinstance(geo_affiliation, organization_models.Facility):
+            return self.at_facility(geo_affiliation)
+        elif isinstance(geo_affiliation, place_models.Place):
+            return self.at_place(geo_affiliation)
+        elif isinstance(geo_affiliation, place_models.Area):
+            return self.in_area(geo_affiliation)
+        elif isinstance(geo_affiliation, place_models.Region):
+            return self.in_region(geo_affiliation)
+        elif isinstance(geo_affiliation, place_models.Country):
+            return self.in_country(geo_affiliation)
 
 
-class RecurringEventManager(models.Manager):
-    def get_events_for_facility_and_day(self, facility, day):
-        weekday = day.weekday()
-        # since working with datetime, we may need to add timedelta and so here
-        return self.filter(facility=facility,
-                           weekday=weekday,
-                           first_date__gte=day,
-                           end_date__lte=day,
-                           disabled=False)
+class OpenShiftManager(ShiftManager):
+    def get_queryset(self):
+        now = timezone.now()
+        qs = super(OpenShiftManager, self).get_queryset()
+        return qs.filter(ending_time__gte=now)
 
 
+class ShiftHelperManager(models.Manager):
+    def conflicting(self, shift, user_account=None, grace=timedelta(hours=1)):
 
+        grace = grace or timedelta(0)
+        graced_start = shift.starting_time + grace
+        graced_end = shift.ending_time - grace
+
+        query_set = self.get_queryset().select_related('shift', 'user_account')
+
+        if user_account:
+            query_set = query_set.filter(user_account=user_account)
+
+        query_set = query_set.exclude(shift__starting_time__lt=graced_start,
+                                      shift__ending_time__lte=graced_start)
+        query_set = query_set.exclude(shift__starting_time__gte=graced_end,
+                                      shift__ending_time__gte=graced_end)
+        return query_set

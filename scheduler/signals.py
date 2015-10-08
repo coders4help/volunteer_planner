@@ -6,13 +6,13 @@ from django.db.models.signals import pre_delete, post_save, pre_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 
-from scheduler.models import Need
+from scheduler.models import Shift
 
 logger = logging.getLogger(__name__)
 grace = 5*60  # 5 minutes in seconds
 
 
-@receiver(pre_delete, sender=Need)
+@receiver(pre_delete, sender=Shift)
 def send_email_notifications(sender, instance, **kwargs):
     """
     HACK ALERT
@@ -36,10 +36,10 @@ def send_email_notifications(sender, instance, **kwargs):
     mail.send()
 
 
-@receiver(pre_save, sender=Need)
+@receiver(pre_save, sender=Shift)
 def notify_users_shift_change(sender, instance, **kwargs):
     shift = instance
-    old = Need.objects.filter(pk=shift.pk)
+    old = Shift.objects.filter(pk=shift.pk)
     # Test whether this is modification or creation, to avoid DoesNotExist exception
     if shift.pk and old.exists():
         old_shift = old.get()

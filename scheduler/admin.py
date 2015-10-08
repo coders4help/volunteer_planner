@@ -5,9 +5,9 @@ from django.db.models import Count
 from . import models
 
 
-class NeedAdmin(admin.ModelAdmin):
+class ShiftAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
-        return super(NeedAdmin, self).get_queryset(request) \
+        return super(ShiftAdmin, self).get_queryset(request) \
             .annotate(volunteer_count=Count('helpers')) \
             .prefetch_related('helpers',
                               'helpers__user')
@@ -36,20 +36,21 @@ class NeedAdmin(admin.ModelAdmin):
     list_filter = ('facility',)
 
 
-admin.site.register(models.Need, NeedAdmin)
+admin.site.register(models.Shift, ShiftAdmin)
 
 
 class ShiftHelperAdmin(admin.ModelAdmin):
-    list_display = (u'id', 'user_account', 'need', 'joined_shift_at')
+    list_display = (u'id', 'user_account', 'shift', 'joined_shift_at')
     list_filter = ('joined_shift_at',)
-    raw_id_fields = ('user_account', 'need')
+    raw_id_fields = ('user_account', 'shift')
 
 
 admin.site.register(models.ShiftHelper, ShiftHelperAdmin)
 
 
 class TopicsAdmin(admin.ModelAdmin):
-    list_display = (u'id', 'title', 'description')
+    list_display = (u'id', 'title', 'workplace', 'description')
+    list_editable = ('title', 'workplace')
 
 
 admin.site.register(models.Topics, TopicsAdmin)

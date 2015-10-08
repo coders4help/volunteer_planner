@@ -13,9 +13,9 @@ from django.contrib.auth.models import User
 
 from tests.factories import ShiftHelperFactory
 from organizations.models import Facility
-from tests.factories import NeedFactory, TopicFactory, FacilityFactory, \
+from tests.factories import ShiftFactory, TopicFactory, FacilityFactory, \
     PlaceFactory
-from scheduler.models import Need, Topics
+from scheduler.models import Shift, Topics
 from places.models import Region, Area, Place, Country
 
 HELPTOPICS = ["Jumper", "Translator", "Clothing Room", "Womens Room",
@@ -63,7 +63,7 @@ class Command(BaseCommand):
         if options['flush']:
             print "delete all data in app tables"
             RegistrationProfile.objects.all().delete()
-            Need.objects.all().delete()
+            Shift.objects.all().delete()
             Facility.objects.all().delete()
             Topics.objects.all().delete()
 
@@ -89,12 +89,12 @@ class Command(BaseCommand):
                     place=places[random.randint(0, len(places) - 1)],
                     description=LOREM
                 )
-                need = NeedFactory.create(
+                shift = ShiftFactory.create(
                     starting_time=gen_date(hour=i - 1, day=day),
                     ending_time=gen_date(hour=i, day=day),
                     topic=topic,
                     facility=facility
                 )
-                # assign random volunteer for each need
-                reg_user = ShiftHelperFactory.create(need=need)
+                # assign random volunteer for each shift
+                reg_user = ShiftHelperFactory.create(shift=shift)
                 reg_user.save()

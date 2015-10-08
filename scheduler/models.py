@@ -6,10 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from organizations.models import Facility
 from places.models import Country, Region, Area, Place
-from . import old_managers
+from . import managers
 
-
-# old models
 
 class Topics(models.Model):
     class Meta:
@@ -24,17 +22,21 @@ class Topics(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.title)
 
-    def get_current_needs_py_topic(self):
-        return self.need_set.all()
 
-
-class Need(models.Model):
+class Shift(models.Model):
     """
     This is the primary instance to create shifts
     """
 
-    topic = models.ForeignKey("Topics", verbose_name=_(u'help type'),
+    topic = models.ForeignKey("Topics",
+                              verbose_name=_(u'help type'),
                               help_text=_(u'HELP_TYPE_HELP'))
+
+    # task = models.ForeignKey("organizations.Task",
+    #                          verbose_name=_(u'task'))
+    # workplace = models.ForeignKey("organizations.Workplace",
+    #                               verbose_name=_(u'workplace'),
+    #                               null=True)
 
     facility = models.ForeignKey('organizations.Facility',
                                  verbose_name=_(u'facility'),
@@ -47,14 +49,14 @@ class Need(models.Model):
 
     helpers = models.ManyToManyField('accounts.UserAccount',
                                      through='ShiftHelper',
-                                     related_name='needs')
+                                     related_name='shifts')
 
     # Currently required. If you want to allow not setting this, make sure to update
     # associated logic where slots is used.
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
-    objects = old_managers.NeedManager()
-    open_needs = old_managers.OpenNeedManager()
+    objects = managers.ShiftManager()
+    open_shifts = managers.OpenShiftManager()
 
     class Meta:
         verbose_name = _(u'shift')
@@ -70,19 +72,19 @@ class Need(models.Model):
 class ShiftHelper(models.Model):
     user_account = models.ForeignKey('accounts.UserAccount',
                                      related_name='shift_helpers')
-    need = models.ForeignKey('scheduler.Need', related_name='shift_helpers')
+    shift = models.ForeignKey('scheduler.Shift', related_name='shift_helpers')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
-    objects = old_managers.ShiftHelperManager()
+    objects = managers.ShiftHelperManager()
 
     class Meta:
         verbose_name = _('shift helper')
         verbose_name_plural = _('shift helpers')
-        unique_together = ('user_account', 'need')
+        unique_together = ('user_account', 'shift')
 
     def __unicode__(self):
         return u"{} on {}".format(self.user_account.user.username,
-                                  self.need.topic)
+                                  self.shift.topic)
 
 # New models
 

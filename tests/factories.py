@@ -77,9 +77,9 @@ class FacilityFactory(factory.DjangoModelFactory):
         django_get_or_create = ['name', 'place', 'organization']
 
 
-class NeedFactory(factory.DjangoModelFactory):
+class ShiftFactory(factory.DjangoModelFactory):
     class Meta:
-        model = scheduler_models.Need
+        model = scheduler_models.Shift
 
     topic = factory.SubFactory(TopicFactory)
     facility = factory.SubFactory(FacilityFactory)
@@ -109,6 +109,6 @@ class UserAccountFactory(factory.DjangoModelFactory):
 class ShiftHelperFactory(factory.DjangoModelFactory):
     class Meta:
         model = scheduler_models.ShiftHelper
-        django_get_or_create = ['need']
+        django_get_or_create = ['shift']
 
     user_account = factory.SubFactory(UserAccountFactory)
