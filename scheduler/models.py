@@ -29,11 +29,11 @@ class Shift(models.Model):
     ending_time = models.DateTimeField(verbose_name=_('ending time'),
                                        db_index=True)
 
+    slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+
     helpers = models.ManyToManyField('accounts.UserAccount',
                                      through='ShiftHelper',
                                      related_name='shifts')
-
-    slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
     objects = managers.ShiftManager()
     open_shifts = managers.OpenShiftManager()
