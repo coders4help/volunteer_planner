@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+from django.conf.urls import url
 
 from django.contrib import admin
 from django.db.models import Min, Count, Sum
+from django.shortcuts import get_object_or_404
+from django.template.response import TemplateResponse
 from django.utils.translation import ugettext_lazy as _
 
 from .models import ScheduleTemplate, ShiftTemplate
@@ -28,6 +31,28 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
     inlines = [
         ShiftTemplateInline
     ]
+
+    def apply_schedule_template(self, request, pk):
+        schedule_template = get_object_or_404(self.model, pk=pk)
+        context = dict(self.admin_site.each_context(request))
+        context.update({
+            "opts": self.model._meta,
+            "schedule_template": schedule_template,
+            "shift_templates": ShiftTemplate.objects.filter(schedule_template=schedule_template)
+        })
+
+        return TemplateResponse(request,
+                                "admin/scheduletemplates/apply_template.html",
+                                context)
+
+    def get_urls(self):
+        urls = super(ScheduleTemplateAdmin, self).get_urls()
+        custom_urls = [
+            url(r'^(?P<pk>.+)/apply/$',
+                self.admin_site.admin_view(self.apply_schedule_template),
+                name='apply_schedule_template'),
+        ]
+        return custom_urls + urls
 
     def get_slot_count(self, obj):
         return obj.slot_count
