@@ -38,7 +38,11 @@ class Need(models.Model):
                               help_text=_(u'HELP_TYPE_HELP'))
 
     facility = models.ForeignKey('organizations.Facility',
-                                 verbose_name=_(u'facility'))
+                                 verbose_name=_(u'facility'),
+                                 null=True)
+
+    location = models.ForeignKey('scheduler.Location',
+                                 verbose_name=_(u'location'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
                                          db_index=True)
@@ -85,86 +89,118 @@ class ShiftHelper(models.Model):
                                   self.need.topic)
 
 
-# New models
+class Location(models.Model):
+    name = models.CharField(max_length=255, blank=True,
+                            verbose_name=_('name'))
+    street = models.CharField(max_length=255, blank=True,
+                              verbose_name=_('address'))
+    city = models.CharField(max_length=255, blank=True,
+                            verbose_name=_('city'))
+    postal_code = models.CharField(max_length=5, blank=True,
+                                   verbose_name=_('postal code'))
+    latitude = models.CharField(max_length=30, blank=True,
+                                verbose_name=_('latitude'))
+    longitude = models.CharField(max_length=30, blank=True,
+                                 verbose_name=_('longitude'))
+    additional_info = models.TextField(max_length=300000, blank=True,
+                                       verbose_name=_('description'))
 
-class Shift(models.Model):
-    """
-    A shift. Happens at a time and place, and hopefully has many volunteers attached to it.
-    """
-    task = models.ForeignKey("organizations.Task", verbose_name=_(u'task'),
-                             help_text=_(u''))
-    workplace = models.ForeignKey("organizations.Workplace",
-                                  verbose_name=_(u'workplace'),
-                                  help_text=_(u''))
-    volunteers = models.ManyToManyField(
-        'accounts.UserAccount', through='scheduler.Enrolment',
-        related_name='shifts', verbose_name=_('volunteers'))
-    # to set only if created from template. But really useful? Maybe just more complexity
-    # origin_event = models.ForeignKey("RecurringEvent", null=True, verbose_name=_(u''), help_text=_(u''))
-    needed_volunteers = models.IntegerField(
-        verbose_name=_(u'number of needed volunteers'))
-    start_time = models.DateTimeField(verbose_name=_('starting time'),
-                                      db_index=True)
-    end_time = models.DateTimeField(verbose_name=_('ending time'),
-                                    db_index=True)
-
-    objects = managers.ShiftManager()
-
-    def __unicode__(self):
-        return _(u"{} at {}").format(self.task, self.workplace)
-
-
-class Enrolment(models.Model):
-    """
-    Through model, representing when a user enrolled for a shift.
-    """
-    user_account = models.ForeignKey('accounts.UserAccount',
-                                     related_name='enrolments',
-                                     verbose_name=_('user account'))
-    shift = models.ForeignKey('scheduler.Shift',
-                              related_name='enrolled_users',
-                              verbose_name=_('shift'))
-    joined_shift_at = models.DateTimeField(auto_now_add=True,
-                                           verbose_name=_('joined at'))
-
-    objects = managers.EnrolmentManager()
+    place = models.ForeignKey("places.Place",
+                              null=False,
+                              related_name='locations',
+                              verbose_name=_('place'))
 
     class Meta:
-        verbose_name = _('Enrolment for shift')
-        verbose_name_plural = _('Enrolments for shifts')
-        unique_together = ('user_account', 'shift')
+        verbose_name = _(u'location')
+        verbose_name_plural = _(u'locations')
+        ordering = ('place', 'name',)
+        permissions = (
+            ("can_view", u"User can view location"),
+        )
 
     def __unicode__(self):
-        return _(u"{} on {}").format(self.user, self.shift)
+        return u'{}'.format(self.name)
 
+# New models
 
-class RecurringEvent(models.Model):
-    """
-    A sort of blueprint to bulk-create shifts.
-    """
-    WEEKDAYS = ((0, _('Monday')),
-                (1, _('Tuesday')),
-                (2, _('Wednesday')),
-                (3, _('Thursday')),
-                (4, _('Friday')),
-                (5, _('Saturday')),
-                (6, _('Sunday')))
-    task = models.ForeignKey("organizations.Task", verbose_name=_('task'))
-    workplace = models.ForeignKey("organizations.Workplace",
-                                  verbose_name=_('workplace'))
-    name = models.CharField(max_length=255, verbose_name=_('name'))
-    description = models.TextField(blank=True, verbose_name=_('description'))
-    weekday = models.IntegerField(choices=WEEKDAYS, verbose_name=_('weekday'))
-    needed_volunteers = models.IntegerField(
-        verbose_name=_(u'number of needed volunteers'))
-    start_time = models.TimeField(verbose_name=_('Starting time'))
-    end_time = models.TimeField(verbose_name=_('Ending time'))
-    first_date = models.DateTimeField(verbose_name=_('First occurrence'))
-    last_date = models.DateTimeField(verbose_name=_('Last occurrence'))
-
-    disabled = models.BooleanField(verbose_name=_('Disabled'), default=False)
-
-    objects = managers.RecurringEventManager()
-
-    def __unicode__(self):
-        return _(u"{}").format(self.name)
+# class Shift(models.Model):
+#     """
+#     A shift. Happens at a time and place, and hopefully has many volunteers attached to it.
+#     """
+#     task = models.ForeignKey("organizations.Task", verbose_name=_(u'task'),
+#                              help_text=_(u''))
+#     workplace = models.ForeignKey("organizations.Workplace",
+#                                   verbose_name=_(u'workplace'),
+#                                   help_text=_(u''))
+#     volunteers = models.ManyToManyField(
+#         'accounts.UserAccount', through='scheduler.Enrolment',
+#         related_name='shifts', verbose_name=_('volunteers'))
+#     # to set only if created from template. But really useful? Maybe just more complexity
+#     # origin_event = models.ForeignKey("RecurringEvent", null=True, verbose_name=_(u''), help_text=_(u''))
+#     needed_volunteers = models.IntegerField(
+#         verbose_name=_(u'number of needed volunteers'))
+#     start_time = models.DateTimeField(verbose_name=_('starting time'),
+#                                       db_index=True)
+#     end_time = models.DateTimeField(verbose_name=_('ending time'),
+#                                     db_index=True)
+#
+#     objects = managers.ShiftManager()
+#
+#     def __unicode__(self):
+#         return _(u"{} at {}").format(self.task, self.workplace)
+#
+#
+# class Enrolment(models.Model):
+#     """
+#     Through model, representing when a user enrolled for a shift.
+#     """
+#     user_account = models.ForeignKey('accounts.UserAccount',
+#                                      related_name='enrolments',
+#                                      verbose_name=_('user account'))
+#     shift = models.ForeignKey('scheduler.Shift',
+#                               related_name='enrolled_users',
+#                               verbose_name=_('shift'))
+#     joined_shift_at = models.DateTimeField(auto_now_add=True,
+#                                            verbose_name=_('joined at'))
+#
+#     objects = managers.EnrolmentManager()
+#
+#     class Meta:
+#         verbose_name = _('Enrolment for shift')
+#         verbose_name_plural = _('Enrolments for shifts')
+#         unique_together = ('user_account', 'shift')
+#
+#     def __unicode__(self):
+#         return _(u"{} on {}").format(self.user, self.shift)
+#
+#
+# class RecurringEvent(models.Model):
+#     """
+#     A sort of blueprint to bulk-create shifts.
+#     """
+#     WEEKDAYS = ((0, _('Monday')),
+#                 (1, _('Tuesday')),
+#                 (2, _('Wednesday')),
+#                 (3, _('Thursday')),
+#                 (4, _('Friday')),
+#                 (5, _('Saturday')),
+#                 (6, _('Sunday')))
+#     task = models.ForeignKey("organizations.Task", verbose_name=_('task'))
+#     workplace = models.ForeignKey("organizations.Workplace",
+#                                   verbose_name=_('workplace'))
+#     name = models.CharField(max_length=255, verbose_name=_('name'))
+#     description = models.TextField(blank=True, verbose_name=_('description'))
+#     weekday = models.IntegerField(choices=WEEKDAYS, verbose_name=_('weekday'))
+#     needed_volunteers = models.IntegerField(
+#         verbose_name=_(u'number of needed volunteers'))
+#     start_time = models.TimeField(verbose_name=_('Starting time'))
+#     end_time = models.TimeField(verbose_name=_('Ending time'))
+#     first_date = models.DateTimeField(verbose_name=_('First occurrence'))
+#     last_date = models.DateTimeField(verbose_name=_('Last occurrence'))
+#
+#     disabled = models.BooleanField(verbose_name=_('Disabled'), default=False)
+#
+#     objects = managers.RecurringEventManager()
+#
+#     def __unicode__(self):
+#         return _(u"{}").format(self.name)

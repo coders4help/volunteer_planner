@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.db.models import Count
 
-from .models import Need, ShiftHelper, Topics, Enrolment, RecurringEvent, Shift
+from . import models
 
 
 class NeedAdmin(admin.ModelAdmin):
@@ -36,7 +36,7 @@ class NeedAdmin(admin.ModelAdmin):
     list_filter = ('facility',)
 
 
-admin.site.register(Need, NeedAdmin)
+admin.site.register(models.Need, NeedAdmin)
 
 
 class ShiftHelperAdmin(admin.ModelAdmin):
@@ -45,68 +45,68 @@ class ShiftHelperAdmin(admin.ModelAdmin):
     raw_id_fields = ('user_account', 'need')
 
 
-admin.site.register(ShiftHelper, ShiftHelperAdmin)
+admin.site.register(models.ShiftHelper, ShiftHelperAdmin)
 
 
 class TopicsAdmin(admin.ModelAdmin):
     list_display = (u'id', 'title', 'description')
 
 
-admin.site.register(Topics, TopicsAdmin)
-
-
-class EnrolmentAdmin(admin.ModelAdmin):
-    list_display = (u'id', 'user_account', 'shift', 'joined_shift_at')
-    list_filter = ('user_account', 'shift', 'joined_shift_at')
-
-
-admin.site.register(Enrolment, EnrolmentAdmin)
-
-
-class RecurringEventAdmin(admin.ModelAdmin):
-    list_display = (
-        u'id',
-        'task',
-        'workplace',
-        'name',
-        'description',
-        'weekday',
-        'needed_volunteers',
-        'start_time',
-        'end_time',
-        'first_date',
-        'last_date',
-        'disabled',
-    )
-    list_filter = (
-        'task',
-        'workplace',
-        'first_date',
-        'last_date',
-        'disabled',
-    )
-    search_fields = ('name',)
-
-
-admin.site.register(RecurringEvent, RecurringEventAdmin)
-
-
-class ShiftAdmin(admin.ModelAdmin):
-    list_display = (
-        u'id',
-        'task',
-        'workplace',
-        'needed_volunteers',
-        'start_time',
-        'end_time',
-    )
-    list_filter = (
-        'task',
-        'workplace',
-        'start_time',
-        'end_time',
-    )
-    raw_id_fields = ('volunteers',)
-
-
-admin.site.register(Shift, ShiftAdmin)
+admin.site.register(models.Topics, TopicsAdmin)
+#
+#
+# class EnrolmentAdmin(admin.ModelAdmin):
+#     list_display = (u'id', 'user_account', 'shift', 'joined_shift_at')
+#     list_filter = ('user_account', 'shift', 'joined_shift_at')
+#
+#
+# admin.site.register(Enrolment, EnrolmentAdmin)
+#
+#
+# class RecurringEventAdmin(admin.ModelAdmin):
+#     list_display = (
+#         u'id',
+#         'task',
+#         'workplace',
+#         'name',
+#         'description',
+#         'weekday',
+#         'needed_volunteers',
+#         'start_time',
+#         'end_time',
+#         'first_date',
+#         'last_date',
+#         'disabled',
+#     )
+#     list_filter = (
+#         'task',
+#         'workplace',
+#         'first_date',
+#         'last_date',
+#         'disabled',
+#     )
+#     search_fields = ('name',)
+#
+#
+# admin.site.register(RecurringEvent, RecurringEventAdmin)
+#
+#
+# class ShiftAdmin(admin.ModelAdmin):
+#     list_display = (
+#         u'id',
+#         'task',
+#         'workplace',
+#         'needed_volunteers',
+#         'start_time',
+#         'end_time',
+#     )
+#     list_filter = (
+#         'task',
+#         'workplace',
+#         'start_time',
+#         'end_time',
+#     )
+#     raw_id_fields = ('volunteers',)
+#
+#
+# admin.site.register(Shift, ShiftAdmin)

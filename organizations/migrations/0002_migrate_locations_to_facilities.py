@@ -8,6 +8,7 @@ def migrate_locations(apps, schema_editor):
     Location = apps.get_model('scheduler', 'Location')
     Organization = apps.get_model('organizations', 'Organization')
     Facility = apps.get_model('organizations', 'Facility')
+    Need = apps.get_model('scheduler', 'Need')
 
     def merged_address(location):
         return u"{}\n{}".format(location.city,
@@ -42,9 +43,12 @@ def migrate_locations(apps, schema_editor):
         facility.latitude = location.latitude
         facility.longitude = location.longitude
         facility.show_on_map = facility.latitude and facility.longitude
-
         facility.save()
 
+    for need in Need.objects.all():
+
+        need.facility_id = need.location_id
+        need.save()
 
 def skip(_, __):
     pass
@@ -53,7 +57,7 @@ def skip(_, __):
 class Migration(migrations.Migration):
     dependencies = [
         ('organizations', '0001_initial'),
-        ('scheduler', '0026_auto_20151002_0150'),
+        ('scheduler', '0028_need_facility'),
     ]
 
     operations = [
