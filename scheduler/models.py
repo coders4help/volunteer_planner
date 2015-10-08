@@ -6,7 +6,6 @@ from django.db import models
 from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
-
 from places.models import Country, Area, Place
 from places.models import Region
 
@@ -128,6 +127,8 @@ class Topics(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=20000, blank=True)
+    workplace = models.CharField(max_length=255, blank=True,
+                                 verbose_name=_('workplace'))
 
     def __unicode__(self):
         return self.title
