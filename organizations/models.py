@@ -174,7 +174,7 @@ class Workplace(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{}").format(self.name)
+        return _(u"{} / {}").format(self.facility.name, self.name)
 
 
 class Task(models.Model):
@@ -195,4 +195,4 @@ class Task(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{}").format(self.name)
+        return _(u"{} / {}").format(self.facility.name, self.name)
