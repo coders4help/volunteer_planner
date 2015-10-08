@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-from django.utils.text import slugify
 
 
 def migrate_locations(apps, schema_editor):
@@ -19,7 +18,6 @@ def migrate_locations(apps, schema_editor):
         org = Organization()
         org.id = location.id
         org.name = location.name
-        org.slug = slugify(location.name)
         org.short_description = ""
         org.description = location.additional_info
         org.address = "TBD"
@@ -35,7 +33,6 @@ def migrate_locations(apps, schema_editor):
         facility.id = location.id
         facility.organization = org
         facility.name = location.name
-        facility.slug = slugify(location.name)
         facility.short_description = ""
         facility.description = location.additional_info
         facility.address = merged_address(location)

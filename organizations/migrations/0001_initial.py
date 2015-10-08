@@ -17,7 +17,6 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=256, verbose_name='name')),
-                ('slug', models.SlugField(verbose_name='slug')),
                 ('short_description', models.TextField(verbose_name='short description', blank=True)),
                 ('description', models.TextField(verbose_name='description')),
                 ('contact_info', models.TextField(verbose_name='description')),
@@ -52,7 +51,6 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=256, verbose_name='name')),
-                ('slug', models.SlugField(verbose_name='slug')),
                 ('short_description', models.TextField(verbose_name='short description', blank=True)),
                 ('description', models.TextField(verbose_name='description')),
                 ('contact_info', models.TextField(verbose_name='description')),

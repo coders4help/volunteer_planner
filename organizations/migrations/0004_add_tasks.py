@@ -16,7 +16,6 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=256, verbose_name='name')),
-                ('slug', models.SlugField(verbose_name='slug')),
                 ('description', models.TextField(verbose_name='description', blank=True)),
                 ('facility', models.ForeignKey(related_name='tasks', verbose_name='facility', to='organizations.Facility')),
             ],
