@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 from django.conf.urls import url
 from django.contrib import admin, messages
@@ -14,6 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 import dateutil.parser as date_parser
 
 from .models import ScheduleTemplate, ShiftTemplate
+from scheduler.models import Shift
 
 
 class ShiftTemplateInline(admin.TabularInline):
@@ -61,10 +62,11 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
             selected_date_str = request.POST.get('selected_date', None)
 
             if selected_date_str:
-                selected_date = date_parser.parse(selected_date_str)
+                selected_date = date_parser.parse(selected_date_str).date()
 
             if id_list:
-                selected_shift_templates = shift_templates.filter(id__in=id_list)
+                selected_shift_templates = shift_templates.filter(
+                    id__in=id_list)
 
             if request.POST.get('apply', None):
 
@@ -82,8 +84,18 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
                     u'{} shifts were added to {}').format(len(id_list),
                                                           localize(
                                                               selected_date)))
-                for shift_templates in selected_shift_templates:
-                    
+
+                for template in selected_shift_templates:
+
+                    shift = Shift()
+                    shift.starting_time = datetime.combine(selected_date,
+                                                           template.starting_time)
+                    shift.ending_time = shift.starting_time + template.duration
+                    shift.task = template.task
+                    shift.workplace = template.workplace
+                    shift.slots = template.slots
+                    shift.facility = template.schedule_template.facility
+                    shift.save()
 
                 return HttpResponseRedirect(
                     urlresolvers.reverse(
