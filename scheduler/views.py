@@ -1,13 +1,15 @@
 # coding: utf-8
 
-import datetime
+from datetime import datetime, time, timedelta, date
 import logging
 
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.db.models import Count
 from django.utils.safestring import mark_safe
+
 from django.views.generic import TemplateView, FormView, DetailView
+
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
@@ -30,7 +32,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        shifts = Shift.objects.filter(ending_time__gt=datetime.datetime.now()) \
+        shifts = Shift.objects.filter(ending_time__gt=datetime.now()) \
             .order_by('facility', 'ending_time').select_related('facility')
         context['shifts'] = shifts
         context['notifications'] = Notification.objects.all().select_related(
@@ -50,19 +52,22 @@ class PlannerView(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
 
         context = super(PlannerView, self).get_context_data(**kwargs)
-
+        planner_date = date(int(self.kwargs['year']),
+                            int(self.kwargs['month']),
+                            int(self.kwargs['day']))
         context['shifts'] = Shift.objects.filter(facility__pk=self.kwargs['pk']) \
             .annotate(volunteer_count=Count('helpers')) \
-            .filter(ending_time__year=self.kwargs['year'],
-                    ending_time__month=self.kwargs['month'],
-                    ending_time__day=self.kwargs['day']) \
+            .filter(starting_time__gte=planner_date,
+                    starting_time__lt=datetime.combine(
+                        planner_date + timedelta(days=1),
+                        time.min)) \
             .order_by('task', 'ending_time') \
             .select_related('task', 'facility') \
             .prefetch_related('helpers',
                               'helpers__user')
 
         context['facility'] = get_object_or_404(Facility, pk=self.kwargs['pk'])
-        context['schedule_date'] = datetime.date(int(self.kwargs['year']),
+        context['schedule_date'] = date(int(self.kwargs['year']),
                                                  int(self.kwargs['month']),
                                                  int(self.kwargs['day']))
         return context
@@ -87,13 +92,15 @@ class PlannerView(LoginRequiredMixin, FormView):
 
             conflicts = ShiftHelper.objects.conflicting(shift_to_join,
                                                         user_account=user_account)
-            conflicted_shifts = [shift_helper.shift for shift_helper in conflicts]
+            conflicted_shifts = [shift_helper.shift for shift_helper in
+                                 conflicts]
 
             if conflicted_shifts:
                 error_message = _(
                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
                 message_list = u'<ul>{}</ul>'.format('\n'.join(
-                    [u'<li>{}</li>'.format(conflict) for conflict in conflicted_shifts]))
+                    [u'<li>{}</li>'.format(conflict) for conflict in
+                     conflicted_shifts]))
                 messages.warning(self.request,
                                  mark_safe(u'{}<br/>{}'.format(error_message,
                                                                message_list)))
