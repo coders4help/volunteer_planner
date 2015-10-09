@@ -50,13 +50,13 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
             address_line = location.street + ", " + location.postal_code + " " + location.city
             shifts_by_date = itertools.groupby(shifts_at_location,
                                                lambda s: s.starting_time.date())
-            used_places.add(location.place)
+            used_places.add(location.place.area)
             location_json.append({
                 'name': location.name,
                 'address_line': address_line,
                 'google_maps_link': google_maps_directions(address_line),
                 'additional_info': mark_safe(location.additional_info),
-                'place_slug': location.place.slug,
+                'area_slug': location.place.area.slug,
                 'shifts': [{
                                'date_string': localize(shift_date),
                                'link': reverse('planner_by_location', kwargs={
@@ -68,8 +68,8 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
                            } for shift_date, shifts_of_day in shifts_by_date]
             })
 
-        context['places_json'] = json.dumps(
-            [{'slug': place.slug, 'name': place.name} for place in
+        context['areas_json'] = json.dumps(
+            [{'slug': area.slug, 'name': area.name} for area in
              sorted(used_places, key=lambda p: p.name)])
         context['location_json'] = json.dumps(location_json)
         context['notifications'] = Notification.objects.all().select_related(

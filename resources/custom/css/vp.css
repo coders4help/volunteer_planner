@@ -144,10 +144,15 @@ code {
     margin-top:35px;
 }
 
-.places-filter button {
+.area-filter button {
     margin-right: 6px;
 }
 
-.places-accordions {
+.area-accordions {
     margin-top: 15px
+}
+
+/* needed for cloaking angular filled widgets for avoiding flicker */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

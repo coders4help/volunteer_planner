@@ -4,16 +4,25 @@
 {% block html_attributes %} ng-app="vpWidgets"{% endblock %}
 
 {% block additional_js %}
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+
     <script>
-        angular.module('vpWidgets', ['ui.bootstrap'])
+        angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
                 .controller('ShiftWidgetCtrl', function($scope) {
                     // this rather should be done through an nice REST api
                     $scope.locations = {{ location_json | safe }};
-                    $scope.places = {{ places_json | safe }};
-                    $scope.selectedPlaces = [];
+                    $scope.areas = {{ areas_json | safe }};
+                    $scope.selectedAreas = [];
+                    $scope.toggleArea = function (area) {
+                        if ($scope.selectedAreas.indexOf(area) > -1) {
+                            $scope.selectedAreas.splice($scope.selectedAreas.indexOf(area),1);
+                        } else {
+                            $scope.selectedAreas.push(area);
+                        }
+                    }
                 });
 
     </script>
@@ -39,20 +48,21 @@
         </div>
         <hr/>
     {% endif %}
-        <div class="places-filter row" ng-controller="ShiftWidgetCtrl">
+        <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
             <h2>{% trans "Volunteers wanted" %}</h2>
             {% verbatim %}
                 <div class="col-md12">
+                    {% endverbatim %}<h4>{% trans "filter areas" %}</h4>{% verbatim %}
                     <button type="button"
-                            ng-repeat="place in places"
+                            ng-repeat="area in areas"
                             class="btn btn-default btn-sm"
-                            ng-click="selectedPlaces[place.slug] = !selectedPlaces[place.slug]"
-                            ng-class="{ 'btn-primary': selectedPlaces[place.slug] }"
-                            >{{ place.name }}</button>
+                            ng-click="toggleArea(area.slug)"
+                            ng-class="{ 'btn-primary': selectedAreas.indexOf(area.slug) > -1 }"
+                            >{{ area.name }}</button>
                 </div>
-                <div class="places-accordions row">
+                <div class="area-accordions row">
                     <div class="col-md-12">
-                        <div ng-repeat="location in locations" ng-show="selectedPlaces[location.place_slug]">
+                        <div ng-repeat="location in locations" ng-show="selectedAreas.indexOf(location.area_slug) > -1 || selectedAreas.length == 0">
                             <accordion>
                                 <accordion-group panel-class="panel-primary">
                                     <accordion-heading>
@@ -64,7 +74,7 @@
                                                 {{ location.address_line }}
                                                 <a target="_blank" ng-href="{{ location.google_maps_link }}">→ Google Maps</a>
                                             </h5>
-                                            <p>{{ location.additional_info }}</p>
+                                            <p ng-bind-html="location.additional_info"></p>
                                         </div>
                                         <div class="col-md-4">
                                             {% endverbatim %}<h4>{% trans "open shifts" %}</h4>{% verbatim %}
