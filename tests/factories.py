@@ -67,11 +67,19 @@ class FacilityFactory(factory.DjangoModelFactory):
         django_get_or_create = ['name', 'place', 'organization']
 
 
+class TaskFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = organization_models.Task
+
+    name = "Küchenhilfe"
+    description = "Teller waschen"
+
+
 class ShiftFactory(factory.DjangoModelFactory):
     class Meta:
         model = scheduler_models.Shift
 
-    taks = factory.SubFactory(TaskFactory)
+    task = factory.SubFactory(TaskFactory)
     facility = factory.SubFactory(FacilityFactory)
 
     slots = 10
