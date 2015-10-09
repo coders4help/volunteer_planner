@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from datetime import datetime, time, timedelta, date
+from datetime import date
 import logging
 
 from django.core.urlresolvers import reverse
@@ -99,24 +99,21 @@ class PlannerView(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
 
         context = super(PlannerView, self).get_context_data(**kwargs)
-        planner_date = date(int(self.kwargs['year']),
-                            int(self.kwargs['month']),
-                            int(self.kwargs['day']))
-        context['shifts'] = Shift.objects.filter(facility__pk=self.kwargs['pk']) \
-            .annotate(volunteer_count=Count('helpers')) \
-            .filter(starting_time__gte=planner_date,
-                    starting_time__lt=datetime.combine(
-                        planner_date + timedelta(days=1),
-                        time.min)) \
-            .order_by('task', 'ending_time') \
-            .select_related('task', 'facility') \
-            .prefetch_related('helpers',
-                              'helpers__user')
+        schedule_date = date(int(self.kwargs['year']),
+                             int(self.kwargs['month']),
+                             int(self.kwargs['day']))
+        facility = get_object_or_404(Facility, pk=self.kwargs['pk'])
 
-        context['facility'] = get_object_or_404(Facility, pk=self.kwargs['pk'])
-        context['schedule_date'] = date(int(self.kwargs['year']),
-                                                 int(self.kwargs['month']),
-                                                 int(self.kwargs['day']))
+        shifts = Shift.objects.filter(facility=facility)
+        shifts = shifts.on_shiftdate(schedule_date)
+        shifts = shifts.annotate(volunteer_count=Count('helpers'))
+        shifts = shifts.order_by('task', 'ending_time')
+        shifts = shifts.select_related('task', 'workplace', 'facility')
+        shifts = shifts.prefetch_related('helpers', 'helpers__user')
+
+        context['shifts'] = shifts
+        context['facility'] = facility
+        context['schedule_date'] = schedule_date
         return context
 
     def form_invalid(self, form):
@@ -132,8 +129,6 @@ class PlannerView(LoginRequiredMixin, FormView):
 
         shift_to_join = form.cleaned_data.get("join_shift")
         shift_to_leave = form.cleaned_data.get("leave_shift")
-
-        print(form.cleaned_data)
 
         if shift_to_join:
 
