@@ -33,10 +33,10 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
 
     def apply_schedule_template(self, request, pk):
         schedule_template = get_object_or_404(self.model, pk=pk)
-        shift_templates = schedule_template.shift_templates.filter(
-            schedule_template=schedule_template)
+        shift_templates = schedule_template.shift_templates.all()
 
         context = dict(self.admin_site.each_context(request))
+        # TODO: use a form class
         if request.method == 'GET':
             context.update({
                 "opts": self.model._meta,
@@ -48,20 +48,22 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
                                     "admin/scheduletemplates/apply_template.html",
                                     context)
         elif request.method == 'POST':
-            print request.POST.getlist('selected_shift_templates')
-            id_list = list(
-                map(int, request.POST.getlist('selected_shift_templates', [])))
-            print id_list
+            id_list = request.POST.getlist('selected_shift_templates', [])
+            selected_date = request.POST.get('selected_date')
             if id_list:
                 selected_shifts = shift_templates.filter(id__in=id_list)
-            print selected_shifts
+
+            #print selected_shifts
+            #print selected_date
+
             context.update({
                 "opts": self.model._meta,
                 "schedule_template": schedule_template,
-                "shift_templates": selected_shifts
+                "selected_shifts": selected_shifts,
+                "selected_date": selected_date
             })
             return TemplateResponse(request,
-                                    "admin/scheduletemplates/apply_template.html",
+                                    "admin/scheduletemplates/apply_template_confirm.html",
                                     context)
 
     def get_urls(self):
