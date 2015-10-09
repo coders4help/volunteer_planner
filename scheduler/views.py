@@ -24,6 +24,25 @@ from volunteer_planner.utils import LoginRequiredMixin
 logger = logging.getLogger(__name__)
 
 
+def get_open_shifts():
+    shifts = Shift.open_shifts.all()
+    shifts = shifts.select_related('facility',
+                                   'facility__place',
+                                   'facility__place__area',
+                                   'facility__place__area__region',
+                                   'facility__place__area__region__country',
+                                   )
+
+    shifts = shifts.order_by('facility__place__area__region__country',
+                             'facility__place__area__region',
+                             'facility__place__area',
+                             'facility__place',
+                             'facility',
+                             'starting_time',
+                             )
+    return shifts
+
+
 class HelpDesk(LoginRequiredMixin, TemplateView):
     """
     Facility overview. First view that a volunteer gets redirected to when they log in.
@@ -32,11 +51,39 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        shifts = Shift.objects.filter(ending_time__gt=datetime.now()) \
-            .order_by('facility', 'ending_time').select_related('facility')
-        context['shifts'] = shifts
+        context['shifts'] = get_open_shifts()
         context['notifications'] = Notification.objects.all().select_related(
             'facility')
+        return context
+
+
+class GeographicHelpdeskView(DetailView):
+    template_name = 'geographic_helpdesk.html'
+    context_object_name = 'geographical_unit'
+
+    @staticmethod
+    def make_breadcrumps_dict(country, region=None, area=None,
+                              place=None):
+
+        result = dict(country=country, flattened=[country, ])
+
+        for k, v in zip(('region', 'area', 'place'), (region, area, place)):
+            if v:
+                result[k] = v
+                result['flattened'].append(v)
+
+        return result
+
+    def get_queryset(self):
+        return super(GeographicHelpdeskView,
+                     self).get_queryset().select_related(
+            *self.model.get_select_related_list())
+
+    def get_context_data(self, **kwargs):
+        context = super(GeographicHelpdeskView, self).get_context_data(**kwargs)
+        place = self.object
+        context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
+        context['shifts'] = get_open_shifts().by_geography(place)
         return context
 
 
@@ -133,49 +180,3 @@ class PlannerView(LoginRequiredMixin, FormView):
         Redirect to the same page.
         """
         return reverse('planner_by_facility', kwargs=self.kwargs)
-
-
-class GeographicHelpdeskView(DetailView):
-    template_name = 'geographic_helpdesk.html'
-    context_object_name = 'geographical_unit'
-
-    @staticmethod
-    def make_breadcrumps_dict(country, region=None, area=None,
-                              place=None):
-
-        result = dict(country=country, flattened=[country, ])
-
-        for k, v in zip(('region', 'area', 'place'), (region, area, place)):
-            if v:
-                result[k] = v
-                result['flattened'].append(v)
-
-        return result
-
-    def get_queryset(self):
-        return super(GeographicHelpdeskView,
-                     self).get_queryset().select_related(
-            *self.model.get_select_related_list())
-
-    def get_context_data(self, **kwargs):
-        context = super(GeographicHelpdeskView, self).get_context_data(**kwargs)
-        place = self.object
-        context['breadcrumps'] = self.make_breadcrumps_dict(*place.breadcrumps)
-        shifts = Shift.open_shifts.by_geography(place)
-        shifts = shifts.select_related('task',
-                                       'facility',
-                                       'facility__place',
-                                       'facility__place__area',
-                                       'facility__place__area__region',
-                                       'facility__place__area__region__country',
-                                       )
-        shifts = shifts.order_by('facility__place__area__region__country',
-                                 'facility__place__area__region',
-                                 'facility__place__area',
-                                 'facility__place',
-                                 'facility',
-                                 'ending_time',
-                                 )
-        context['shifts'] = shifts
-
-        return context
