@@ -44,7 +44,7 @@
                         <p>{{ facility.description|safe }}</p>
                     </div>
 
-                    {% regroup facility_shifts.list by ending_time.date as shifts_by_time %}
+                    {% regroup facility_shifts.list by starting_time.date as shifts_by_time %}
 
                     <div class="col-md-4">
                         <h4>{% trans "open shifts" %}</h4>
