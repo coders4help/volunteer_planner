@@ -1,5 +1,5 @@
 {% extends "admin/change_form.html" %}
-{% load i18n admin_urls staticfiles %}
+{% load i18n l10n admin_urls staticfiles %}
 
 {% block breadcrumbs %}
     <div class="breadcrumbs">
@@ -29,21 +29,25 @@
             {% trans "workplace" as workplace_trans %}
             {% trans "starting time" as starting_trans %}
             {% trans "ending time" as ending_trans %}
-            {% regroup shift_templates by task as shifts_by_task %}
 
-            <h3>{% trans "Select a date (YYYY/MM/DD)" %} </h3>
+            <h3>{% trans "Selected date" %}</h3>
 
-            <div>
+            <div>{{ selected_date|localize }}</div>
+            <input type="hidden"
+                   name="selected_date"
+                   value="{{ selected_date|date:"Y-m-d" }}">
 
-                {% if preselected_date %}
-                    <input type="date" name="selected_date" value="{{ preselected_date|date:"Y-m-d" }}">
-                {% else %}
-                    <input type="date" name="selected_date">
-                {% endif %}
+            {% for shift in selected_shifts %}
+                <input type="hidden"
+                       name="selected_shift_templates"
+                       value="{{ shift.pk }}">
 
-            </div>
+            {% endfor %}
 
-            <h3>{% trans "Select shift templates" %}</h3>
+
+            <h3>{% trans "Selected shift templates" %}</h3>
+
+            {% regroup selected_shifts by task as shifts_by_task %}
 
             <div>
 
@@ -66,7 +70,6 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th> {{ apply_trans|title }}</th>
                                 <th> {{ num_trans|title }}</th>
                                 <th> {{ task_trans|title }}</th>
                                 <th> {{ workplace_trans|title }}</th>
@@ -77,11 +80,6 @@
                             <tbody>
                             {% for shift in shifts_at_workplace.list %}
                                 <tr>
-                                    <td><input type="checkbox"
-                                               name="selected_shift_templates"
-                                               value="{{ shift.id }}"
-                                               id="{{ shift.id }}"
-                                               checked></td>
                                     <td>{{ shift.slots }}</td>
                                     <td>{{ shift.task.name }}</td>
                                     <td>
@@ -96,8 +94,8 @@
                 </table>
             </div>
             <div class="submit-row">
-                <input type="submit" value="{% trans "Preview shifts to add" %}"
-                       class="default" name="apply">
+                <input type="submit" value="{% trans "Apply selected shifts" %}"
+                       class="default" name="confirm">
             </div>
     </div>
     </form>
