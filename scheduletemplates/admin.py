@@ -109,6 +109,7 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
                 for template in selected_shift_templates:
                     starting_time = datetime.combine(apply_date, template.starting_time)
                     Shift.objects.create(
+                        facility=template.facility,
                         starting_time=starting_time,
                         ending_time=starting_time + template.duration,
                         task=template.task,

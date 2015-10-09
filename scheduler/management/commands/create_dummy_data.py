@@ -95,6 +95,7 @@ class Command(BaseCommand):
                 shift = ShiftFactory.create(
                     starting_time=gen_date(hour=i - 1, day=day),
                     ending_time=gen_date(hour=i, day=day),
+                    facility=facility
                 )
                 # assign random volunteer for each shift
                 reg_user = ShiftHelperFactory.create(shift=shift)

@@ -81,6 +81,7 @@ class ShiftFactory(factory.DjangoModelFactory):
         model = scheduler_models.Shift
 
     task = factory.SubFactory(TaskFactory)
+    facility = factory.SubFactory(FacilityFactory)
 
     slots = 10
 

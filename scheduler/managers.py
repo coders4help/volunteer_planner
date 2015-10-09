@@ -30,20 +30,20 @@ class EnrolmentManager(models.Manager):
 
 class ShiftManager(models.Manager):
     def at_facility(self, facility):
-        return self.get_queryset().filter(task__facility=facility)
+        return self.get_queryset().filter(facility=facility)
 
     def at_place(self, place):
-        return self.get_queryset().filter(task__facility__place=place)
+        return self.get_queryset().filter(facility__place=place)
 
     def in_area(self, area):
-        return self.get_queryset().filter(task__facility__place__area=area)
+        return self.get_queryset().filter(facility__place__area=area)
 
     def in_region(self, region):
-        return self.get_queryset().filter(task__facility__place__area__region=region)
+        return self.get_queryset().filter(facility__place__area__region=region)
 
     def in_country(self, country):
         return self.get_queryset().filter(
-            task__facility__place__area__region__country=country)
+            facility__place__area__region__country=country)
 
     def by_geography(self, geo_affiliation):
         if isinstance(geo_affiliation, organization_models.Facility):
