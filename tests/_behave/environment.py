@@ -9,6 +9,7 @@ def before_all(context):
     Steps to be executed before behave features are run.
     Serves to fire up PhantomJS.
     """
+    webdriver.DesiredCapabilities.PHANTOMJS['phantomjs.page.customHeaders.Accept-Language'] = 'en-US'
     context.browser = webdriver.PhantomJS()
 
 
