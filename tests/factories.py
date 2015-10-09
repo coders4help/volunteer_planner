@@ -73,6 +73,7 @@ class TaskFactory(factory.DjangoModelFactory):
 
     name = "Küchenhilfe"
     description = "Teller waschen"
+    facility = factory.SubFactory(FacilityFactory)
 
 
 class ShiftFactory(factory.DjangoModelFactory):
@@ -80,7 +81,6 @@ class ShiftFactory(factory.DjangoModelFactory):
         model = scheduler_models.Shift
 
     task = factory.SubFactory(TaskFactory)
-    facility = factory.SubFactory(FacilityFactory)
 
     slots = 10
 

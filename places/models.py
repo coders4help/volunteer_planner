@@ -95,7 +95,7 @@ class Region(BreadcrumpablePlaceModel):
 
 class Area(BreadcrumpablePlaceModel):
     """
-    An area is a subdevision of a region, such as cities, neighbourhoods, etc.
+    An area is a subdivision of a region, such as cities, neighbourhoods, etc.
     Each area belongs to a region.
     """
 

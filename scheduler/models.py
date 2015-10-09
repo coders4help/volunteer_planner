@@ -4,8 +4,6 @@ from django.db import models
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _
 
-from organizations.models import Facility
-from places.models import Country, Region, Area, Place
 from . import managers
 
 
@@ -22,9 +20,6 @@ class Shift(models.Model):
                                   verbose_name=_(u'workplace'),
                                   null=True,
                                   blank=True)
-
-    facility = models.ForeignKey('organizations.Facility',
-                                 verbose_name=_(u'facility'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
                                          db_index=True)
@@ -46,7 +41,7 @@ class Shift(models.Model):
     def __unicode__(self):
         return u"{title} - {facility} ({start} - {end})".format(
             title=self.task.name,
-            facility=self.facility.name,
+            facility=self.task.facility.name,
             start=localize(self.starting_time),
             end=localize(self.ending_time))
 

@@ -10,7 +10,7 @@ class ShiftAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         return super(ShiftAdmin, self).get_queryset(request) \
             .annotate(volunteer_count=Count('helpers')) \
-            .select_related('facility', 'task', 'workplace') \
+            .select_related('task', 'task__facility', 'workplace') \
             .prefetch_related('helpers',
                               'helpers__user')
 
@@ -30,13 +30,13 @@ class ShiftAdmin(admin.ModelAdmin):
                           obj.helpers.all())
 
     list_display = (
-        'id', 'task', 'workplace', 'facility', 'starting_time', 'ending_time',
+        'id', 'task', 'workplace', 'starting_time', 'ending_time',
         'slots',
         'get_volunteer_count', 'get_volunteer_names'
     )
 
     search_fields = ('id', 'task__name',)
-    list_filter = ('facility',)
+    list_filter = ('task__facility',)
 
 
 @admin.register(models.ShiftHelper)

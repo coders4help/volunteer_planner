@@ -6,7 +6,7 @@ from django.test import TestCase
 from organizations.models import Facility
 
 from scheduler.models import Shift, ShiftHelper
-from tests.factories import ShiftFactory, FacilityFactory, UserAccountFactory
+from tests.factories import ShiftFactory, FacilityFactory, UserAccountFactory, TaskFactory
 
 
 def create_shift(start_hour, end_hour, facility=None):
@@ -37,10 +37,6 @@ class ShiftTestCase(TestCase):
         self.evening_shift = create_shift(18, 21)
         ShiftHelper.objects.create(user_account=self.user_account,
                                    shift=self.evening_shift)
-
-    def tearDown(self):
-        Shift.objects.all().delete()
-        ShiftHelper.objects.all().delete()
 
     def test_non_conflict_tight_fitting(self):
         shift = create_shift(12, 18)
@@ -125,19 +121,19 @@ class FacilityTestCase(TestCase):
         tomorrow_start = now + timedelta(1)
         tomorrow_end = tomorrow_start + timedelta(hours=1)
 
-        facility = FacilityFactory.create()
+        task = TaskFactory.create()
 
-        yesterday_shift = ShiftFactory.create(facility=facility,
+        yesterday_shift = ShiftFactory.create(task=task,
                                             starting_time=yesterday_start,
                                             ending_time=yesterday_end)
-        tomorrow_shift = ShiftFactory.create(facility=facility,
+        tomorrow_shift = ShiftFactory.create(task=task,
                                            starting_time=tomorrow_start,
                                            ending_time=tomorrow_end)
 
         assert Facility.objects.count() == 1, "test case assumes that shifts have been created for the same facility, as the ShiftFactory indeed does at the time of writing of this test case"
-        assert Facility.objects.all()[0] == facility
+        assert Facility.objects.get() == task.facility
 
-        shifts = Shift.open_shifts.at_facility(facility=facility)
+        shifts = Shift.open_shifts.at_facility(facility=task.facility)
 
         assert shifts.count() == 1, "only 1 shift should be found with Shifts.open_shifts"
         assert shifts[0] == tomorrow_shift, "wrong shift was found"
