@@ -52,7 +52,8 @@ class TopicsAdminForm(forms.ModelForm):
 
 
 class TopicsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'id')
+    list_display = ('title', 'workplace', 'description')
+    list_editable = ('workplace', )
     search_fields = ('id',)
     form = TopicsAdminForm
 
