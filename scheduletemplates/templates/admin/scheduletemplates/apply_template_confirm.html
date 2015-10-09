@@ -21,6 +21,11 @@
 
         <form method="post">
             {% csrf_token %}
+            {{ apply_form.apply_for_date.as_hidden }}
+            {% for shift in selected_shifts %}
+                <input type="hidden" name="selected_shift_templates" value="{{ shift.pk }}">
+            {% endfor %}
+
 
             {% trans "no workplace" as no_workplace %}
             {% trans "apply" as apply_trans %}
@@ -33,16 +38,6 @@
             <h3>{% trans "Selected date" %}</h3>
 
             <div>{{ selected_date|localize }}</div>
-            <input type="hidden"
-                   name="selected_date"
-                   value="{{ selected_date|date:"Y-m-d" }}">
-
-            {% for shift in selected_shifts %}
-                <input type="hidden"
-                       name="selected_shift_templates"
-                       value="{{ shift.pk }}">
-
-            {% endfor %}
 
 
             <h3>{% trans "Selected shift templates" %}</h3>
@@ -97,6 +92,5 @@
                 <input type="submit" value="{% trans "Apply selected shifts" %}"
                        class="default" name="confirm">
             </div>
-    </div>
-    </form>
+        </form>
 {% endblock %}

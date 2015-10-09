@@ -34,13 +34,7 @@
             <h3>{% trans "Select a date (YYYY/MM/DD)" %} </h3>
 
             <div>
-
-                {% if preselected_date %}
-                    <input type="date" name="selected_date" value="{{ preselected_date|date:"Y-m-d" }}">
-                {% else %}
-                    <input type="date" name="selected_date">
-                {% endif %}
-
+                {{ apply_form.apply_for_date }}
             </div>
 
             <h3>{% trans "Select shift templates" %}</h3>
