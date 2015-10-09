@@ -138,7 +138,7 @@ class FacilityTestCase(TestCase):
         assert Facility.objects.count() == 1, "test case assumes that shifts have been created for the same facility, as the ShiftFactory indeed does at the time of writing of this test case"
         assert Facility.objects.get() == task.facility
 
-        shifts = Shift.open_shifts.at_facility(facility=facility)
+        shifts = Shift.open_shifts.filter(facility=facility)
 
         assert shifts.count() == 1, "only 1 shift should be found with Shifts.open_shifts"
         shift = shifts.get()
