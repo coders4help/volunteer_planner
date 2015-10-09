@@ -1,35 +1,34 @@
 # coding: utf-8
 
-from datetime import timedelta
+from datetime import timedelta, datetime, time
 
 from django.db import models
 from django.utils import timezone
 
 from places import models as place_models
-from organizations import models as organization_models
 
 
-class ShiftManager(models.Manager):
-    def at_facility(self, facility):
-        return self.get_queryset().filter(facility=facility)
+class ShiftQuerySet(models.QuerySet):
+    def on_shiftdate(self, shiftdate):
+        next_day = datetime.combine(shiftdate + timedelta(days=1), time.min)
+        return self.filter(starting_time__gte=shiftdate,
+                           starting_time__lt=next_day)
 
     def at_place(self, place):
-        return self.get_queryset().filter(facility__place=place)
+        return self.filter(facility__place=place)
 
     def in_area(self, area):
-        return self.get_queryset().filter(facility__place__area=area)
+        return self.filter(facility__place__area=area)
 
     def in_region(self, region):
-        return self.get_queryset().filter(facility__place__area__region=region)
+        return self.filter(facility__place__area__region=region)
 
     def in_country(self, country):
-        return self.get_queryset().filter(
+        return self.filter(
             facility__place__area__region__country=country)
 
     def by_geography(self, geo_affiliation):
-        if isinstance(geo_affiliation, organization_models.Facility):
-            return self.at_facility(geo_affiliation)
-        elif isinstance(geo_affiliation, place_models.Place):
+        if isinstance(geo_affiliation, place_models.Place):
             return self.at_place(geo_affiliation)
         elif isinstance(geo_affiliation, place_models.Area):
             return self.in_area(geo_affiliation)
@@ -37,6 +36,9 @@ class ShiftManager(models.Manager):
             return self.in_region(geo_affiliation)
         elif isinstance(geo_affiliation, place_models.Country):
             return self.in_country(geo_affiliation)
+
+
+ShiftManager = models.Manager.from_queryset(ShiftQuerySet)
 
 
 class OpenShiftManager(ShiftManager):
