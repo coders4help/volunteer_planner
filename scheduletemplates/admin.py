@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import timedelta, datetime
+from datetime import timedelta, datetime, time
 
 from django import forms
 from django.conf.urls import url
@@ -61,13 +61,15 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
         shift_templates = schedule_template.shift_templates.all()
 
         context = dict(self.admin_site.each_context(request))
-        context["opts"] = self.model._meta  # Needed for admin template breadcrumbs
+        context[
+            "opts"] = self.model._meta  # Needed for admin template breadcrumbs
 
         # Phase 1
         if request.method == 'GET':
             # Empty form, prepopulated with tomorrow's date
             form = ApplyTemplateForm(
-                initial={'apply_for_date': timezone.now().date() + timedelta(days=1)})
+                initial={'apply_for_date': timezone.now().date() + timedelta(
+                    days=1)})
             context.update({
                 "schedule_template": schedule_template,
                 "shift_templates": shift_templates,
@@ -81,35 +83,77 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
         elif request.method == 'POST':
             # Verify the form data.
             form = ApplyTemplateForm(request.POST)
-            if form.is_valid():
-                apply_date = form.cleaned_data['apply_for_date']
-            else:
+            if not form.is_valid():
                 # Shouldn't happen, but let's make sure we don't proceed with
                 # applying shifts.
                 raise ValueError("Invalid date format")
 
+            apply_date = form.cleaned_data['apply_for_date']
+
             # Get selected shifts.
             # TODO: This should be done with a ModelMultipleChoiceField on the form.
             id_list = request.POST.getlist('selected_shift_templates', [])
+
             selected_shift_templates = shift_templates.filter(id__in=id_list)
 
-            # Phase 2: display a preview
-            if request.POST.get('apply'):
+            # Phase 2: display a preview of whole day
+            if request.POST.get('preview'):
+                existing_shifts = Shift.objects.filter(
+                    facility=schedule_template.facility)
+                existing_shifts = existing_shifts.on_shiftdate(apply_date)
+                existing_shifts = existing_shifts.select_related('task',
+                                                                 'workplace')
+                existing_shifts = list(existing_shifts.annotate(
+                    volunteer_count=Count('helpers')))
+
+                if len(existing_shifts):
+                    messages.warning(request, _(
+                        u'{} shifts already exist at {}').format(
+                        len(existing_shifts),
+                        localize(apply_date)))
+
+                    combined_shifts = list(
+                        selected_shift_templates) + existing_shifts
+
+                    # returns (task, workplace, start_time and is_template)
+                    # to make combined list sortable
+                    def __shift_key(shift):
+                        is_template = isinstance(shift, ShiftTemplate)
+                        task = shift.task.id if shift.task else 0
+                        workplace = shift.workplace.id if shift.workplace else 0
+                        shift_start = shift.starting_time
+                        if not isinstance(shift_start, time):
+                            # can't compare starting_time of shift (datetime)
+                            # and shift templates (time) directly
+                            shift_start = shift_start.time()
+                        return task, workplace, shift_start, is_template
+
+                    combined_shifts = sorted(combined_shifts, key=__shift_key)
+                else:
+                    combined_shifts = selected_shift_templates
+
                 context.update({
                     "schedule_template": schedule_template,
-                    "selected_shifts": selected_shift_templates,
                     "selected_date": apply_date,
-                    "apply_form": form,  # Needed because we need to POST the data again
+                    "selected_shifts": selected_shift_templates,
+                    "existing_shifts": existing_shifts,
+                    "combined_shifts": combined_shifts,
+                    "apply_form": form,
+                    # Needed because we need to POST the data again
                 })
+
                 return TemplateResponse(
-                    request, "admin/scheduletemplates/apply_template_confirm.html", context)
+                    request,
+                    "admin/scheduletemplates/apply_template_confirm.html",
+                    context)
 
             # Phase 3: Create shifts
             elif request.POST.get('confirm'):
                 for template in selected_shift_templates:
-                    starting_time = datetime.combine(apply_date, template.starting_time)
+                    starting_time = datetime.combine(apply_date,
+                                                     template.starting_time)
                     Shift.objects.create(
-                        facility=template.facility,
+                        facility=template.schedule_template.facility,
                         starting_time=starting_time,
                         ending_time=starting_time + template.duration,
                         task=template.task,
@@ -117,9 +161,17 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
                         slots=template.slots)
 
                 messages.success(request, _(
-                    u'{} shifts were added to {}').format(len(id_list), localize(apply_date)))
-
-                return redirect('admin:scheduletemplates_scheduletemplate_change', pk)
+                    u'{} shifts were added to {}').format(len(id_list),
+                                                          localize(apply_date)))
+                return redirect(
+                    'admin:scheduletemplates_scheduletemplate_change', pk)
+            else:
+                messages.error(request, _(
+                    u'Something didn\'t work. Sorry about that.').format(
+                    len(id_list),
+                    localize(apply_date)))
+                return redirect(
+                    'admin:scheduletemplates_scheduletemplate_change', pk)
 
     def get_urls(self):
         urls = super(ScheduleTemplateAdmin, self).get_urls()

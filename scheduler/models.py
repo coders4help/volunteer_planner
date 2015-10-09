@@ -1,8 +1,9 @@
 # coding: utf-8
+from datetime import time
 
 from django.db import models
 from django.utils.formats import localize
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
 from organizations.models import Facility
 from places.models import Country, Region, Area, Place
@@ -42,6 +43,24 @@ class Shift(models.Model):
         verbose_name = _(u'shift')
         verbose_name_plural = _(u'shifts')
         ordering = ['starting_time', 'ending_time']
+
+    @property
+    def days(self):
+        return (self.ending_time.date() - self.starting_time.date()).days
+
+    @property
+    def duration(self):
+        return self.ending_time - self.starting_time
+
+    @property
+    def localized_display_ending_time(self):
+        days = self.days if self.ending_time.time() > time.min else 0
+        days_fmt = ungettext_lazy(u'the next day',
+                                  u'after {number_of_days} days',
+                                  days)
+        days_str = days_fmt.format(number_of_days=days) if days else u''
+        return u'{time} {days}'.format(time=localize(self.ending_time.time()),
+                                       days=days_str).strip()
 
     def __unicode__(self):
         return u"{title} - {facility} ({start} - {end})".format(
