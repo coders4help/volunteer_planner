@@ -213,16 +213,5 @@ class ShiftTemplateAdmin(admin.ModelAdmin):
 
         return qs
 
-    def get_queryset(self, request):
-        qs = super(ShiftTemplateAdmin, self).get_queryset(request)
-        return self.model.objects.select_related('schedule_template',
-                                                 'schedule_template__facility',
-                                                 'workplace',
-                                                 'workplace__facility',
-                                                 'task',
-                                                 'task__facility'
-                                                 )
-        return qs
-
 
 admin.site.register(ShiftTemplate, ShiftTemplateAdmin)
