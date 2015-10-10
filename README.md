@@ -201,7 +201,7 @@ We use [Transifex (tx)](https://www.transifex.com/coders4help/volunteer-planner/
 #### Workflow
 
 1. Code your stuff using the `ugettext_lazy as _` etc. methods to mark internationalized strings
-2. Update the po files `./manage.py makemessages --no-obsolete --no-wrap`
+2. Update the po files `./manage.py makemessages --no-wrap --no-obsolete -l en`
    The options are intended to make the output more git-friendly.
 3. Push the updated translations to git. **Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).**
 4. Transifex will automatically update the source strings via github once a day and make them available for translation. 
