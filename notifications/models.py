@@ -7,14 +7,14 @@ from django.template.defaultfilters import slugify
 
 class Notification(models.Model):
     """
-    News updates/"Aufrufe" from locations. Displayed where relevant.
+    News updates/"Aufrufe" from facilities. Displayed where relevant.
     """
     creation_date = models.DateField(auto_now=True)
     title = models.CharField(max_length=255, verbose_name=_("title"))
     subtitle = models.CharField(max_length=255, verbose_name=_("subtitle"), null=True, blank=True)
     text = models.TextField(max_length=20055, verbose_name=_("text"))
     slug = models.SlugField(auto_created=True, max_length=255)
-    location = models.ForeignKey('scheduler.Location')
+    facility = models.ForeignKey('organizations.Facility')
 
     def save(self, *args, **kwargs):
         if not self.id:

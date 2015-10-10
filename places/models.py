@@ -46,8 +46,8 @@ class BreadcrumpablePlaceModel(models.Model):
         return select_related
 
     def get_detail_view_name(self):
-        DETAIL_VIEW_NAME = getattr(self, 'DETAIL_VIEW_NAME', None)
-        return DETAIL_VIEW_NAME or u'{}-details'.format(
+        detail_view_name = getattr(self, 'DETAIL_VIEW_NAME', None)
+        return detail_view_name or u'{}-details'.format(
             self._meta.model_name.lower())
 
     def get_absolute_url(self):
@@ -59,9 +59,9 @@ class BreadcrumpablePlaceModel(models.Model):
 
 
 class Country(BreadcrumpablePlaceModel):
-    '''
+    """
     A country
-    '''
+    """
 
     DETAIL_VIEW_NAME = 'country-details'
 
@@ -72,9 +72,9 @@ class Country(BreadcrumpablePlaceModel):
 
 
 class Region(BreadcrumpablePlaceModel):
-    '''
+    """
     A region is a geographical region for grouping areas (and facilities within areas).
-    '''
+    """
 
     PARENT_FIELD = 'country'
     PARENT_MODEL = Country
@@ -94,10 +94,10 @@ class Region(BreadcrumpablePlaceModel):
 
 
 class Area(BreadcrumpablePlaceModel):
-    '''
-    An area is a subdevision of a region, such as cities, neighbourhoods, etc.
+    """
+    An area is a subdivision of a region, such as cities, neighbourhoods, etc.
     Each area belongs to a region.
-    '''
+    """
 
     PARENT_FIELD = 'region'
     PARENT_MODEL = Region
@@ -116,10 +116,10 @@ class Area(BreadcrumpablePlaceModel):
 
 
 class Place(BreadcrumpablePlaceModel):
-    '''
+    """
     A place (german: Ort) can be a city like Jena in Thüringen - Jena
     or a 'district' like  Wilmersdorf in Berlin - Berlin.
-    '''
+    """
 
     PARENT_FIELD = 'area'
     PARENT_MODEL = Area

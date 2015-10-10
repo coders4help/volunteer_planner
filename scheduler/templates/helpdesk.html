@@ -13,7 +13,7 @@
         angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
                 .controller('ShiftWidgetCtrl', function($scope) {
                     // this rather should be done through an nice REST api
-                    $scope.locations = {{ location_json | safe }};
+                    $scope.facilities = {{ facility_json | safe }};
                     $scope.areas = {{ areas_json | safe }};
                     $scope.selectedAreas = [];
                     $scope.toggleArea = function (area) {
@@ -38,8 +38,8 @@
                 <div>
                     <h3>{{ notification.title }}</h3>
                     <h4>
-                        {% blocktrans trimmed with location_name=notification.location.name date=notification.creation_date %}
-                            {{ location_name }} on {{ date }}
+                        {% blocktrans trimmed with facility_name=notification.facility.name date=notification.creation_date %}
+                            {{ facility_name }} on {{ date }}
                         {% endblocktrans %}
                     </h4>
                     {{ notification.text|safe }}
@@ -48,6 +48,7 @@
         </div>
         <hr/>
     {% endif %}
+
         <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
             <h2>{% trans "Volunteers wanted" %}</h2>
             {% verbatim %}
@@ -62,24 +63,24 @@
                 </div>
                 <div class="area-accordions row">
                     <div class="col-md-12">
-                        <div ng-repeat="location in locations" ng-show="selectedAreas.indexOf(location.area_slug) > -1 || selectedAreas.length == 0">
+                        <div ng-repeat="facility in facilities" ng-show="selectedAreas.indexOf(facility.area_slug) > -1 || selectedAreas.length == 0">
                             <accordion>
                                 <accordion-group panel-class="panel-primary">
                                     <accordion-heading>
-                                        {{ location.name }}
+                                        {{ facility.name }}
                                     </accordion-heading>
                                     <div class="col-md-12">
                                         <div class="col-md-8">
                                             <h5>
-                                                {{ location.address_line }}
-                                                <a target="_blank" ng-href="{{ location.google_maps_link }}">→ Google Maps</a>
+                                                {{ facility.address_line }}
+                                                <a target="_blank" ng-href="{{ facility.google_maps_link }}">→ Google Maps</a>
                                             </h5>
-                                            <p ng-bind-html="location.additional_info"></p>
+                                            <p ng-bind-html="facility.description"></p>
                                         </div>
                                         <div class="col-md-4">
                                             {% endverbatim %}<h4>{% trans "open shifts" %}</h4>{% verbatim %}
                                             <p>
-                                                <span ng-repeat="shift in location.shifts">
+                                                <span ng-repeat="shift in facility.shifts">
                                                     <a ng-href="{{ shift.link }}">{{ shift.date_string }}</a>
                                                     <br>
                                                 </span>

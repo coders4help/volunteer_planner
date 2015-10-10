@@ -20,7 +20,7 @@ shift_time_short_format = '%H:%M'
 class GenerateExcelSheet:
     def __init__(self, shifts, mailer):
         if not shifts:
-            raise AssertionError(u'No shifts given. Cannot generate Excel file for {}.'.format(mailer.location))
+            raise AssertionError(u'No shifts given. Cannot generate Excel file for {}.'.format(mailer.facility))
 
         self.shifts = shifts
         self.mailer = mailer
@@ -40,7 +40,7 @@ class GenerateExcelSheet:
             log.warn(u'No shifts, not shift schedule.')
             return None
 
-        log.debug(u'About to generate XLS for location "%s"', self.shifts[0].location)
+        log.debug(u'About to generate XLS for facility "%s"', self.shifts[0].facility)
         log.debug(u'Shifts query: %s', self.shifts.query)
         filename = os.path.join(self.tmpdir, u'Dienstplan_{}_{}.xls'.format(self.mailer.organization,
                                                                             self.shifts[0].starting_time
@@ -50,7 +50,7 @@ class GenerateExcelSheet:
         wb = xlwt.Workbook()
         ws = get_sheet(wb, u'Anmeldungen',
                        header=u'Schichtplan für {}\n{}\n'u'Jedwede Weitergabe der Daten an Dritte ist verboten!'
-                       .format(self.mailer.location, self.mailer.organization),
+                       .format(self.mailer.facility, self.mailer.organization),
                        footer=u'Jedwede Weitergabe der Daten an Dritte ist verboten!\n&F (&P/&N)')
 
         colnames = [u'#', u'Vorname', u'Nachname',
@@ -74,10 +74,10 @@ class GenerateExcelSheet:
             if 0 == shift.volunteer_count:
                 continue
 
-            if prev_shift is None or shift.topic_id != prev_shift.topic_id:
-                log.debug(u'New shift topic %s->%s', prev_shift, shift)
+            if prev_shift is None or shift.task_id != prev_shift.task_id:
+                log.debug(u'New shift task %s->%s', prev_shift, shift)
                 prev_shift = shift
-                ws.write(cur_line, 0, shift.topic.title, style_bold)
+                ws.write(cur_line, 0, shift.task.name, style_bold)
                 cur_line += 1
             if shift.starting_time.day == shift.ending_time.day:
                 end_fmt = shift_time_short_format
@@ -109,7 +109,7 @@ class GenerateExcelSheet:
         mail.body = "Hallo " + self.mailer.first_name + " " + self.mailer.last_name + "\n\n"\
                     "Anbei die Liste zum Dienstplan der Freiwilligen.\nDies ist ein Service von volunteer-planner.org"
         mail.subject = "Dienstplan fuer den " + self.shifts[0].starting_time.strftime("%d.%m.%Y") + \
-                       " der Freiwilligen in der Unterkunft " + self.shifts[0].location.name
+                       " der Freiwilligen in der Unterkunft " + self.shifts[0].facility.name
         mail.from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
         mail.to = [str(self.mailer.email)]
         if attachment is not None:
