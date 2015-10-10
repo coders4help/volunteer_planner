@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
 from .models import ScheduleTemplate, ShiftTemplate
 from scheduler.models import Shift
@@ -107,10 +107,12 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
                     volunteer_count=Count('helpers')))
 
                 if len(existing_shifts):
-                    messages.warning(request, _(
-                        u'{} shifts already exist at {}').format(
-                        len(existing_shifts),
-                        localize(apply_date)))
+                    messages.warning(request, ungettext_lazy(
+                        u'A shift already exists at {date}',
+                        u'{num_shifts} shifts already exists at {date}',
+                        len(id_list)).format(
+                        num_shifts=len(existing_shifts),
+                        date=localize(apply_date)))
 
                     combined_shifts = list(
                         selected_shift_templates) + existing_shifts
@@ -160,9 +162,12 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
                         workplace=template.workplace,
                         slots=template.slots)
 
-                messages.success(request, _(
-                    u'{} shifts were added to {}').format(len(id_list),
-                                                          localize(apply_date)))
+                messages.success(request, ungettext_lazy(
+                    u'{num_shifts} shift was added to {date}',
+                    u'{num_shifts} shifts were added to {date}',
+                    len(id_list)).format(
+                    num_shifts=len(id_list),
+                    date=localize(apply_date)))
                 return redirect(
                     'admin:scheduletemplates_scheduletemplate_change', pk)
             else:

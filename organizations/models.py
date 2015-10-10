@@ -25,7 +25,7 @@ class Organization(models.Model):
     address = models.TextField(verbose_name=_('address'))
 
     # users associated with this organization
-    # ie. members, admins, owners
+    # ie. members, admins, admins
     members = models.ManyToManyField(UserAccount,
                                      through='organizations.OrganizationMembership')
 
@@ -33,6 +33,9 @@ class Organization(models.Model):
         verbose_name = _(u'organization')
         verbose_name_plural = _(u'organizations')
         ordering = ('name',)
+
+    def __unicode__(self):
+        return u'{}'.format(self.name)
 
 
 class Facility(models.Model):
@@ -56,7 +59,7 @@ class Facility(models.Model):
     contact_info = models.TextField(verbose_name=_(u'description'))
 
     # users associated with this facility
-    # ie. members, admins, owners
+    # ie. members, admins, admins
     members = models.ManyToManyField(UserAccount,
                                      through='organizations.FacilityMembership')
 
@@ -101,9 +104,9 @@ class Membership(models.Model):
     related_name = None
 
     class Roles:
-        OWNER, MANAGER, MEMBER = 0, 1, 2
+        ADMIN, MANAGER, MEMBER = 0, 1, 2
         CHOICES = (
-            (OWNER, _(u'owner').title()),
+            (ADMIN, _(u'admin').title()),
             (MANAGER, _(u'manager').title()),
             (MEMBER, _(u'member').title()),
         )
@@ -133,8 +136,10 @@ class OrganizationMembership(Membership):
         ordering = ('organization', 'role', 'user_account')
 
     def __unicode__(self):
-        return _(u"{} at {} ({})").format(self.user_account.user.suername,
-                                          self.organization.name, self.role)
+        return _(u"{username} at {organization_name} ({user_role})").format(
+            username=self.user_account.user.username,
+            organization_name=self.organization.name,
+            user_role=self.role)
 
 
 class FacilityMembership(Membership):
@@ -151,8 +156,10 @@ class FacilityMembership(Membership):
         ordering = ('facility', 'role', 'user_account')
 
     def __unicode__(self):
-        return _(u"{} at {} ({})").format(self.user_account.user.suername,
-                                          self.facility.name, self.role)
+        return _(u"{username} at {facility_name} ({user_role})").format(
+            username=self.user_account.user.username,
+            facility_name=self.facility.name,
+            user_role=self.role)
 
 
 class Workplace(models.Model):
@@ -174,7 +181,8 @@ class Workplace(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{} / {}").format(self.facility.name, self.name)
+        return _(u"{facility_name} / {workplace_name}").format(
+            facility_name=self.facility.name, workplace_name=self.name)
 
 
 class Task(models.Model):
@@ -195,4 +203,5 @@ class Task(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{} / {}").format(self.facility.name, self.name)
+        return _(u"{facility_name} / {task_name}").format(
+            facility_name=self.facility.name, task_name=self.name)
