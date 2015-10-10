@@ -2,21 +2,24 @@
 
 from datetime import date
 import logging
+import json
+import itertools
 
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.db.models import Count
+from django.templatetags.l10n import localize
 from django.utils.safestring import mark_safe
-
 from django.views.generic import TemplateView, FormView, DetailView
-
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
 from organizations.models import Facility
-from scheduler.models import Shift, ShiftHelper
+from scheduler.models import Shift
+from google_tools.templatetags.google_links import google_maps_directions
+from scheduler.models import ShiftHelper
 from notifications.models import Notification
 from .forms import RegisterForShiftForm
 from volunteer_planner.utils import LoginRequiredMixin
@@ -51,7 +54,42 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        context['shifts'] = get_open_shifts()
+        open_shifts = get_open_shifts()
+
+        shifts_by_facility = itertools.groupby(open_shifts,
+                                               lambda s: s.facility)
+
+        facility_list = []
+        used_places = set()
+
+        for facility, shifts_at_facility in shifts_by_facility:
+            address_line = facility.address_line if facility.address else None
+            shifts_by_date = itertools.groupby(shifts_at_facility,
+                                               lambda s: s.starting_time.date())
+            used_places.add(facility.place.area)
+            facility_list.append({
+                'name': facility.name,
+                'address_line': address_line,
+                'google_maps_link': google_maps_directions(
+                    address_line) if address_line else None,
+                'description': mark_safe(facility.description),
+                'area_slug': facility.place.area.slug,
+                'shifts': [{
+                               'date_string': localize(shift_date),
+                               'link': reverse('planner_by_facility', kwargs={
+                                   'pk': facility.pk,
+                                   'year': shift_date.year,
+                                   'month': shift_date.month,
+                                   'day': shift_date.day,
+                               })
+                           } for shift_date, shifts_of_day in shifts_by_date]
+            })
+
+        context['areas_json'] = json.dumps(
+            [{'slug': area.slug, 'name': area.name} for area in
+             sorted(used_places, key=lambda p: p.name)])
+        context['facility_json'] = json.dumps(facility_list)
+        context['shifts'] = open_shifts
         context['notifications'] = Notification.objects.all().select_related(
             'facility')
         return context
