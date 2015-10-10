@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             name='FacilityMembership',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Owner'), (1, 'Manager'), (2, 'Member')])),
+                ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Admin'), (1, 'Manager'), (2, 'Member')])),
                 ('facility', models.ForeignKey(related_name='memberships', verbose_name='facility', to='organizations.Facility')),
                 ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount')),
             ],
@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
             name='OrganizationMembership',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Owner'), (1, 'Manager'), (2, 'Member')])),
+                ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Admin'), (1, 'Manager'), (2, 'Member')])),
                 ('organization', models.ForeignKey(related_name='memberships', verbose_name='organization', to='organizations.Organization')),
                 ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount')),
             ],
