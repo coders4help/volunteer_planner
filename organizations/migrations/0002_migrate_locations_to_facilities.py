@@ -11,7 +11,7 @@ def migrate_locations(apps, schema_editor):
     Need = apps.get_model('scheduler', 'Need')
 
     def merged_address(location):
-        return u"{}\n{}".format(location.city,
+        return u"{}\n{}".format(location.street,
                                 u'{} {}'.format(location.postal_code,
                                                 location.city).strip())
 
