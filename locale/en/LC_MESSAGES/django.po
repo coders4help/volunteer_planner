@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-10 13:41+0200\n"
+"POT-Creation-Date: 2015-10-10 13:49+0200\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -693,7 +693,7 @@ msgstr ""
 msgid "shifts"
 msgstr ""
 
-#: scheduler/models.py:58 scheduletemplates/models.py:70
+#: scheduler/models.py:58 scheduletemplates/models.py:76
 #, python-brace-format
 msgid "the next day"
 msgid_plural "after {number_of_days} days"
@@ -917,6 +917,14 @@ msgstr ""
 
 #: scheduletemplates/models.py:53
 msgid "days"
+msgstr ""
+
+#: scheduletemplates/models.py:61
+msgid "shift templates"
+msgstr ""
+
+#: scheduletemplates/models.py:62
+msgid "shift template"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:6

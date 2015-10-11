@@ -55,6 +55,12 @@ class ShiftTemplate(models.Model):
 
     objects = managers.ShiftTemplateManager()
 
+
+    class Meta:
+        ordering = ('schedule_template',)
+        verbose_name_plural = _('shift templates')
+        verbose_name = _('shift template')
+
     @property
     def duration(self):
         today = datetime.today()
