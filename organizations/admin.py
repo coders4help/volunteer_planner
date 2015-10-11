@@ -49,7 +49,8 @@ class OrganizationMembershipAdmin(admin.ModelAdmin):
         'organization',
         'role',
     )
-    list_filter = ('user_account', 'organization')
+    list_filter = ('organization',)
+    raw_id_fields = ('user_account',)
 
 
 admin.site.register(OrganizationMembership, OrganizationMembershipAdmin)
@@ -61,8 +62,8 @@ class FacilityMembershipAdmin(admin.ModelAdmin):
         'user_account',
         'facility'
     )
-    list_filter = ('user_account', 'facility')
-
+    list_filter = ('facility',)
+    raw_id_fields = ('user_account',)
 
 admin.site.register(FacilityMembership, FacilityMembershipAdmin)
 
