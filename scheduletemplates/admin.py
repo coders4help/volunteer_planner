@@ -13,24 +13,17 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
 from .models import ScheduleTemplate, ShiftTemplate
+from organizations.admin import (MembershipFilteredAdmin,
+                                 MembershipFilteredTabularInline,
+                                 MembershipFieldListFilter)
 from scheduler.models import Shift
 
 
-class ShiftTemplateInline(admin.TabularInline):
+class ShiftTemplateInline(MembershipFilteredTabularInline):
     model = ShiftTemplate
     min_num = 0
     extra = 0
-
-    def get_field_queryset(self, db, db_field, request):
-
-        qs = super(ShiftTemplateInline, self).get_field_queryset(db,
-                                                                 db_field,
-                                                                 request)
-        if db_field.name in ('task', 'workplace', 'schedule_template'):
-            qs = (qs or db_field.rel.to.objects.all()).select_related(
-                'facility')
-
-        return qs
+    facility_filter_fk = 'schedule_template__facility'
 
 
 class ApplyTemplateForm(forms.Form):
@@ -44,8 +37,22 @@ class ApplyTemplateForm(forms.Form):
     apply_for_date = forms.DateField(widget=SelectDateWidget)
 
 
-class ScheduleTemplateAdmin(admin.ModelAdmin):
+@admin.register(ScheduleTemplate)
+class ScheduleTemplateAdmin(MembershipFilteredAdmin):
     inlines = [ShiftTemplateInline]
+    list_display = (
+        'name',
+        'facility',
+        'get_slot_count',
+        'get_shift_template_count',
+        'get_earliest_starting_time',
+        'get_latest_ending_time')
+    list_filter = (
+        ('facility', MembershipFieldListFilter),
+    )
+    search_fields = ('name',)
+    list_select_related = True
+    radio_fields = {"facility": admin.VERTICAL}
 
     def apply_schedule_template(self, request, pk):
         """
@@ -187,6 +194,18 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
         ]
         return custom_urls + urls
 
+    def get_queryset(self, request):
+        qs = super(ScheduleTemplateAdmin, self).get_queryset(request)
+
+        qs = qs.prefetch_related('shift_templates',
+                                 'shift_templates__workplace',
+                                 'shift_templates__task')
+        qs = qs.annotate(shift_template_count=Count('shift_templates'),
+                         min_start=Min('shift_templates__starting_time'),
+                         slot_count=Sum('shift_templates__slots'))
+        qs.order_by('facility', 'min_start')
+        return qs
+
     def get_slot_count(self, obj):
         return obj.slot_count
 
@@ -217,33 +236,9 @@ class ScheduleTemplateAdmin(admin.ModelAdmin):
 
     get_latest_ending_time.short_description = _('to')
 
-    def get_queryset(self, request):
-        qs = super(ScheduleTemplateAdmin, self).get_queryset(request)
-        qs = qs.select_related('facility')
-        qs = qs.prefetch_related('shift_templates',
-                                 'shift_templates__workplace',
-                                 'shift_templates__task')
-        qs = qs.annotate(shift_template_count=Count('shift_templates'),
-                         min_start=Min('shift_templates__starting_time'),
-                         slot_count=Sum('shift_templates__slots'))
-        qs.order_by('facility', 'min_start')
-        return qs
 
-    list_display = (
-        'facility',
-        'name',
-        'get_slot_count',
-        'get_shift_template_count',
-        'get_earliest_starting_time',
-        'get_latest_ending_time')
-    list_filter = ('facility',)
-    search_fields = ('name',)
-
-
-admin.site.register(ScheduleTemplate, ScheduleTemplateAdmin)
-
-
-class ShiftTemplateAdmin(admin.ModelAdmin):
+@admin.register(ShiftTemplate)
+class ShiftTemplateAdmin(MembershipFilteredAdmin):
     list_display = (
         u'id',
         'schedule_template',
@@ -255,20 +250,13 @@ class ShiftTemplateAdmin(admin.ModelAdmin):
         'days',
 
     )
-    list_filter = ('schedule_template__facility', 'task', 'workplace')
+    # list_filter = ('schedule_template__facility', 'task', 'workplace')
 
-    def get_field_queryset(self, db, db_field, request):
+    list_filter = (
+        ('schedule_template__facility', MembershipFieldListFilter),
+        ('task', MembershipFieldListFilter),
+        ('workplace', MembershipFieldListFilter),
+    )
 
-        qs = super(ShiftTemplateInline, self).get_field_queryset(db,
-                                                                 db_field,
-                                                                 request)
-        if db_field.name in ('task', 'workplace', 'schedule_template'):
-            qs = (qs or db_field.rel.to.objects.all()).select_related(
-                'facility')
-            if self.parent_model.facility:
-                qs = qs.filter(facility=self.parent_model.facility)
-
-        return qs
-
-
-admin.site.register(ShiftTemplate, ShiftTemplateAdmin)
+    facility_filter_fk = 'schedule_template__facility'
+    radio_fields = {"schedule_template": admin.VERTICAL}

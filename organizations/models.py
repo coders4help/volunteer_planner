@@ -128,7 +128,8 @@ class OrganizationMembership(Membership):
 
     organization = models.ForeignKey(Organization,
                                      verbose_name=_(u'organization'),
-                                     related_name='memberships')
+                                     related_name='memberships',
+                                     related_query_name='membership')
 
     class Meta:
         verbose_name = _(u'organization member')
@@ -147,7 +148,8 @@ class FacilityMembership(Membership):
 
     facility = models.ForeignKey(Facility,
                                  verbose_name=_(u'facility'),
-                                 related_name='memberships'
+                                 related_name='memberships',
+                                 related_query_name='membership'
                                  )
 
     class Meta:
