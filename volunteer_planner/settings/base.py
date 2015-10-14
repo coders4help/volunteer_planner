@@ -36,7 +36,6 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
-    # A prettier theme
     'djangocms_admin_style',
     # Admin panel and documentation:
     'django.contrib.admin',
@@ -44,24 +43,32 @@ DJANGO_APPS = (
     'restless',
 )
 
-LOCAL_APPS = (
+THIRD_PARTY_APPS = (
+    'ckeditor',
+    # A prettier theme
 
+    'accounts.apps.RegistrationConfig',
+    'rest_framework',
+)
+
+LOCAL_APPS = (
+    'api',
     'google_tools',
-    'accounts',
+    'accounts.apps.AccountsConfig',
+    'organizations',
     'common',
-    'registration',
     'scheduler',
     'blueprint',
     'notifications',
-    'ckeditor',
     'shiftmailer',
     'stats',
     'places',
     'non_logged_in_area',
     'registration_history',
+    'scheduletemplates',
 )
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS +  LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

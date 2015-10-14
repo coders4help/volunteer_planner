@@ -2,9 +2,9 @@
 
 from django import forms
 
-from scheduler.models import Need
+from scheduler.models import Shift
 
 
-class RegisterForNeedForm(forms.Form):
-    leave_shift = forms.ModelChoiceField(queryset=Need.objects, required=False)
-    join_shift = forms.ModelChoiceField(queryset=Need.objects, required=False)
+class RegisterForShiftForm(forms.Form):
+    leave_shift = forms.ModelChoiceField(queryset=Shift.objects, required=False)
+    join_shift = forms.ModelChoiceField(queryset=Shift.objects, required=False)

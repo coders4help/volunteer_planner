@@ -1,31 +1,25 @@
 # coding: utf-8
-from ckeditor.widgets import CKEditorWidget
-
 from django.contrib import admin
 from django.db.models import Count
-from django import forms
 
-from places.models import Region, Country, Area, Place
-from scheduler.models import Need, Topics, Location
+from . import models
 
 
-# @admin.register(Organization)
-# class OrganizationAdmin(admin.ModelAdmin):
-#     list_display = ('name', )
-#     search_fields = ('name', 'description')
-
-
-class NeedAdmin(admin.ModelAdmin):
+@admin.register(models.Shift)
+class ShiftAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
-        return super(NeedAdmin, self).get_queryset(request) \
+        return super(ShiftAdmin, self).get_queryset(request) \
             .annotate(volunteer_count=Count('helpers')) \
+            .select_related('facility', 'task', 'workplace') \
             .prefetch_related('helpers',
                               'helpers__user')
 
-    def get_volunteer_count(self, obj):
+    @staticmethod
+    def get_volunteer_count(obj):
         return obj.volunteer_count
 
-    def get_volunteer_names(self, obj):
+    @staticmethod
+    def get_volunteer_names(obj):
         def _format_username(user):
             full_name = user.get_full_name()
             if full_name:
@@ -36,76 +30,17 @@ class NeedAdmin(admin.ModelAdmin):
                           obj.helpers.all())
 
     list_display = (
-        'id', 'topic', 'starting_time', 'ending_time', 'slots',
+        'id', 'task', 'workplace', 'facility', 'starting_time', 'ending_time',
+        'slots',
         'get_volunteer_count', 'get_volunteer_names'
     )
 
-    search_fields = ('id', 'topic__title',)
-    list_filter = ('location',)
+    search_fields = ('id', 'task__name',)
+    list_filter = ('facility',)
 
 
-admin.site.register(Need, NeedAdmin)
-
-
-class TopicsAdminForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorWidget())
-
-
-class TopicsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'id')
-    search_fields = ('id',)
-    form = TopicsAdminForm
-
-
-admin.site.register(Topics, TopicsAdmin)
-
-
-@admin.register(Location)
-class LocationAdmin(admin.ModelAdmin):
-    def get_queryset(self, request):
-        return Location.objects.select_related('place',
-                                               'place__area',
-                                               'place__area__region',
-                                               'place__area__region__country')
-
-    def get_place_name(self, obj):
-        return obj.place.name
-
-    get_place_name.short_description = Place._meta.verbose_name
-    get_place_name.admin_order_field = 'place'
-
-    def get_area_name(self, obj):
-        return obj.place.area.name
-
-    get_area_name.short_description = Area._meta.verbose_name
-    get_area_name.admin_order_field = 'place__area'
-
-    def get_region_name(self, obj):
-        return obj.place.area.region.name
-
-    get_region_name.short_description = Region._meta.verbose_name
-    get_region_name.admin_order_field = 'place__area__region'
-
-    def get_country_name(self, obj):
-        return obj.place.area.region.country.name
-
-    get_country_name.short_description = Country._meta.verbose_name
-    get_country_name.admin_order_field = 'place__area__region__country'
-
-    list_display = (
-        'name',
-        'street',
-        'city',
-        'postal_code',
-        'get_place_name',
-        'get_area_name',
-        'get_region_name',
-        'get_country_name',
-    )
-    list_filter = (
-        # 'place',
-        'place__area',
-        'place__area__region',
-        'place__area__region__country'
-    )
-    search_fields = ('name',)
+@admin.register(models.ShiftHelper)
+class ShiftHelperAdmin(admin.ModelAdmin):
+    list_display = (u'id', 'user_account', 'shift', 'joined_shift_at')
+    list_filter = ('joined_shift_at',)
+    raw_id_fields = ('user_account', 'shift')

@@ -7,14 +7,15 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.utils import timezone
 
-from scheduler.models import Need, Location
+from organizations.models import Facility
+from scheduler.models import Shift
 
 register = template.Library()
 
 
 @register.assignment_tag
 def get_facility_count():
-    return Location.objects.filter().count()
+    return Facility.objects.filter().count()
 
 
 @register.assignment_tag
@@ -27,12 +28,12 @@ def get_volunteer_hours():
     """
     Returns the number of total volunteer hours worked.
     """
-    finished_needs = Need.objects.filter(
+    finished_shifts = Shift.objects.filter(
         starting_time__lte=timezone.now()).annotate(
         slots_done=Count('helpers'))
     delta = timedelta()
-    for need in finished_needs:
-        delta += need.slots_done * (need.ending_time - need.starting_time)
+    for shift in finished_shifts:
+        delta += shift.slots_done * (shift.ending_time - shift.starting_time)
     hours = int(delta.total_seconds() / 3600)
     return hours
 

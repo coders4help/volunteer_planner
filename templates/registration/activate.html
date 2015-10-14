@@ -1,24 +1,32 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 {% block title %}
-  {% if account %}
-    {% trans "Activation complete" %}
-  {% else %}
-    {% trans "Activation problem" %}
-  {% endif %}
+    {% if account %}
+        {% trans "Activation complete" %}
+    {% else %}
+        {% trans "Activation problem" %}
+    {% endif %}
 {% endblock %}
 
 {% block registration_content %}
-    {% url 'auth_login' as auth_login_url %}
     {% if account %}
+
+        {% url 'auth_login' as auth_login_url %}
         {% trans "login" as login_link_title context "login link title in registration confirmation success text 'You may now %(login_link)s'" %}
-        {% blocktrans trimmed login_link='<a href="'|add:auth_login_url|add:'">'|add:login_link_title|add:'</a>'%}
-            Thanks {{ account }}, activation complete!
-            You may now {{ login_link }} using the username and password you set at registration.
+
+        {% blocktrans trimmed with login_link='<a href="'|add:auth_login_url|add:'">'|add:login_link_title|add:'</a>'|safe %}
+            Thanks {{ account }}, activation complete! You may now
+            {{ login_link }} using the username and password you set at
+            registration.
         {% endblocktrans %}
+
     {% else %}
+
         {% blocktrans trimmed %}
-          Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired.
+            Oops &ndash; Either you activated your account already, or the
+            activation key is invalid or has expired.
         {% endblocktrans %}
+
     {% endif %}
+
 {% endblock %}

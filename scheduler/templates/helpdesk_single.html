@@ -3,8 +3,8 @@
 {% load i18n vpfilters %}
 
 {% block title %}
-    {% blocktrans trimmed context "title with location" with location_name=location.name %}
-        Schedule for {{ location_name }}
+    {% blocktrans trimmed context "title with facility" with facility_name=facility.name %}
+        Schedule for {{ facility_name }}
     {% endblocktrans %}
 {% endblock %}
 
@@ -12,11 +12,11 @@
 
     {% include "partials/alert_messages.html" %}
 
-    {% regroup needs by topic as needs_by_topic %}
+    {% regroup shifts by task as shifts_by_task %}
 
     <div class="row">
         <h2>
-            {{ location.name }}
+            {{ facility.name }}
         </h2>
 
         <h3>
@@ -29,14 +29,14 @@
     <form method="POST">
         {% csrf_token %}
 
-        {% for need_by_topic in needs_by_topic %}
+        {% for shift_by_task in shifts_by_task %}
             <div class="row">
-                {% with need_by_topic.grouper as topic %}
-                    <h3>{{ topic.title }}</h3>
+                {% with shift_by_task.grouper as task %}
+                    <h3>{{ task.name }}</h3>
 
-                    {% if topic.description %}
+                    {% if task.description %}
                         <p>
-                            {{ topic.description|safe }}
+                            {{ task.description|safe }}
                         </p>
                     {% endif %}
                 {% endwith %}
@@ -62,20 +62,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for need in need_by_topic.list %}
-                        {% with need.volunteer_count|subtract:need.slots as slots_left %}
-                            {% with need.volunteer_count|divide:need.slots as slots_percent %}
-                                {% with need.helpers.all|contains:user.account as is_assigned %}
+                    {% for shift in shift_by_task.list %}
+                        {% with shift.volunteer_count|subtract:shift.slots as slots_left %}
+                            {% with shift.volunteer_count|divide:shift.slots as slots_percent %}
+                                {% with shift.helpers.all|contains:user.account as is_assigned %}
 
                                     <tr>
                                         <td>
-                                            {{ need.starting_time|date:"H:i" }}
+                                            {{ shift.starting_time|date:"H:i" }}
                                         </td>
                                         <td>
-                                            {{ need.ending_time|date:"H:i" }}
+                                            {{ shift.ending_time|date:"H:i" }}
                                         </td>
                                         <td>
-                                            {{ need.slots }}
+                                            {{ shift.slots }}
                                         </td>
 
                                         <td>
@@ -92,9 +92,9 @@
                                                 <div class="progress">
                                                     <div class="progress-bar progress-bar-success"
                                                          role="progressbar"
-                                                         aria-valuenow="{{ need.volunteer_count }}"
+                                                         aria-valuenow="{{ shift.volunteer_count }}"
                                                          aria-valuemin="0"
-                                                         aria-valuemax="{{ need.slots }}"
+                                                         aria-valuemax="{{ shift.slots }}"
                                                          style="width:{{ slots_percent }}%;">
                                                         <span class="sr-only">40% Complete (success)</span>
                                                     </div>
@@ -104,7 +104,7 @@
                                         </td>
 
                                         <td>
-                                            {% for volunteer in need.helpers.all %}
+                                            {% for volunteer in shift.helpers.all %}
 
                                                 {% if volunteer.user == request.user %}
                                                     <u><strong>{{ volunteer.user.username }}</strong></u>
@@ -123,14 +123,14 @@
                                             {% if is_assigned %}
                                                 <button type="submit"
                                                         name="leave_shift"
-                                                        value="{{ need.pk }}"
+                                                        value="{{ shift.pk }}"
                                                         class="btn btn-danger delete-button">
                                                     {% trans "Drop out" %}
                                                 </button>
                                                 {% elif slots_left %}
                                                 <button type="submit"
                                                         name="join_shift"
-                                                        value="{{ need.pk }}"
+                                                        value="{{ shift.pk }}"
                                                         class="btn btn-info add-button">
                                                     {% trans "Sign up" %}!
                                                 </button>

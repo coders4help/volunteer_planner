@@ -1,10 +1,10 @@
-{% load i18n %}{% blocktrans %}
+{% load i18n %}{% blocktrans with shift_title=shift.task.name location=shift.location.name from_date=shift.starting_time.date from_time=shift.starting_time.time to_time=shift.ending_time.time %}
 Hallo,
 
 leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:
 
-{{ shift.topic.title }}, {{ shift.location.name }}
-{{ shift.starting_time.date }} von {{ shift.starting_time.time }} bis {{ shift.ending_time.time }}
+{{ shift_title }}, {{ location }}
+{{ from_date }} von {{ from_time }} bis {{ to_time }}
 
 Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.
 
