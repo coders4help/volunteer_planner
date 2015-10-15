@@ -3,23 +3,26 @@ from django.contrib import admin
 from django.db.models import Count
 
 from . import models
+from organizations.admin import MembershipFilteredAdmin, \
+    MembershipFieldListFilter
 
 
 @admin.register(models.Shift)
-class ShiftAdmin(admin.ModelAdmin):
+class ShiftAdmin(MembershipFilteredAdmin):
     def get_queryset(self, request):
-        return super(ShiftAdmin, self).get_queryset(request) \
-            .annotate(volunteer_count=Count('helpers')) \
-            .select_related('facility', 'task', 'workplace') \
-            .prefetch_related('helpers',
-                              'helpers__user')
+        qs = super(ShiftAdmin, self).get_queryset(request)
+        qs = qs.annotate(volunteer_count=Count('helpers'))
+        qs = qs.select_related('facility',
+                               'task',
+                               'workplace')
+        qs = qs.prefetch_related('helpers',
+                                 'helpers__user')
+        return qs
 
-    @staticmethod
-    def get_volunteer_count(obj):
+    def get_volunteer_count(self, obj):
         return obj.volunteer_count
 
-    @staticmethod
-    def get_volunteer_names(obj):
+    def get_volunteer_names(self, obj):
         def _format_username(user):
             full_name = user.get_full_name()
             if full_name:
@@ -30,17 +33,26 @@ class ShiftAdmin(admin.ModelAdmin):
                           obj.helpers.all())
 
     list_display = (
-        'id', 'task', 'workplace', 'facility', 'starting_time', 'ending_time',
+        'task',
+        'workplace',
+        'facility',
+        'starting_time',
+        'ending_time',
         'slots',
-        'get_volunteer_count', 'get_volunteer_names'
+        'get_volunteer_count',
+        'get_volunteer_names'
     )
 
     search_fields = ('id', 'task__name',)
-    list_filter = ('facility',)
+    list_filter = (
+        ('facility', MembershipFieldListFilter),
+        'starting_time',
+        'ending_time'
+    )
 
 
 @admin.register(models.ShiftHelper)
-class ShiftHelperAdmin(admin.ModelAdmin):
+class ShiftHelperAdmin(MembershipFilteredAdmin):
     list_display = (u'id', 'user_account', 'shift', 'joined_shift_at')
     list_filter = ('joined_shift_at',)
     raw_id_fields = ('user_account', 'shift')
