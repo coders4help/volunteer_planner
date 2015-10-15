@@ -4,6 +4,7 @@ from django import forms
 # Register your models here.
 from ckeditor.widgets import CKEditorWidget
 from .models import Notification
+from organizations.admin import MembershipFilteredAdmin
 
 
 class NotificationAdminForm(forms.ModelForm):
@@ -13,8 +14,9 @@ class NotificationAdminForm(forms.ModelForm):
     text = forms.CharField(widget=CKEditorWidget())
 
 
-class NotificationAdmin(admin.ModelAdmin):
+@admin.register(Notification)
+class NotificationAdmin(MembershipFilteredAdmin):
     form = NotificationAdminForm
     readonly_fields = ('slug',)
 
-admin.site.register(Notification, NotificationAdmin)
+
