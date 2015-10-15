@@ -42,10 +42,13 @@
 
     // adds an inactive marker to the map with the given data
     // this marker will contribute to the initial viewport of the map when calling setViewport() if is_viewport_marker is defined and true
-    HEREMap.prototype.addMarker = function(lat, lon, data, is_viewport_marker) {
+    HEREMap.prototype.addMarker = function(lat, lon, id, data, is_viewport_marker) {
         // create marker and set data
         var marker = this.createMarker(lat, lon, INACTIVE_COLOR);
-        marker.setData(data);
+        marker.setData({
+            id: id,
+            data: data
+        });
 
         // add marker to the list of markers
         this.markers.push(marker);
@@ -96,7 +99,7 @@
                 target.setIcon(active_marker_icon);
 
                 // run the callback method
-                callback(target.getData());
+                callback(target.getData().id, target.getData().data);
             }
 
         });
@@ -124,12 +127,12 @@
  * var map_instance = new HEREMap(platform.createDefaultLayers(), 'map');
  *
  * // sets a viewport marker that is used for setting the initial viewport of the map
- * map_instance.addViewportMarker(52.5159, 13.3777, "Marker Data 0");
+ * map_instance.addViewportMarker(52.5159, 13.3777, "marker_0", "Marker Data 0");
  * // sets a marker that is not used for the initial viewport
- * map_instance.addMarker(52.5159, 13.3877, "Marker Data 1");
+ * map_instance.addMarker(52.5159, 13.3877, "marker_1", "Marker Data 1");
  *
  * // this adds an event listener that will be called if a marker was activated
- * map_instance.registerEventListener(function(data) {
+ * map_instance.registerEventListener(function(id, data) {
  *  // just looks for an element with the ID content and sets its content to the marker data
  * 	$('#content').text(data);
  * });
