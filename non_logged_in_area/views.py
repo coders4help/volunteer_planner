@@ -5,8 +5,6 @@ from django.db.models.aggregates import Count
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.core.urlresolvers import reverse
-
-from notifications.models import Notification
 from organizations.models import Facility
 from places.models import Region
 
@@ -31,5 +29,4 @@ class HomeView(TemplateView):
         context['facilities'] = Facility.objects.select_related('place',
                                                                 'place__area',
                                                                 'place__area__region').all()
-        context['notifications'] = Notification.objects.all()
         return context

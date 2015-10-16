@@ -207,3 +207,5 @@ class TaskAdmin(MembershipFilteredAdmin):
     )
     search_fields = ('name',)
     list_select_related = True
+
+admin.site.register(models.News)
