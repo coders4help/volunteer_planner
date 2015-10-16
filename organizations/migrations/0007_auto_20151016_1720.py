@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('notifications', '0001_initial'),
+        ('organizations', '0006_auto_20151016_1554'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='notification',
-            name='subtitle',
-            field=models.CharField(max_length=255, null=True, verbose_name=b'Untertitel', blank=True),
+            model_name='news',
+            name='date_created',
+            field=models.DateTimeField(auto_now=True, verbose_name='date published'),
         ),
     ]

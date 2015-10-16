@@ -57,7 +57,6 @@ LOCAL_APPS = (
     'common',
     'scheduler',
     'blueprint',
-    'notifications',
     'shiftmailer',
     'stats',
     'places',
