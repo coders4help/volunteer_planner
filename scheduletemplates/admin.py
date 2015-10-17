@@ -26,6 +26,7 @@ class ShiftTemplateInline(MembershipFilteredTabularInline):
     min_num = 0
     extra = 0
     facility_filter_fk = 'schedule_template__facility'
+    template = 'admin/scheduletemplates/shifttemplate/shift_template_inline.html'
 
 
 class ApplyTemplateForm(forms.Form):
