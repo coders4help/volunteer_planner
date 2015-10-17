@@ -35,7 +35,7 @@ class Organization(models.Model):
         ordering = ('name',)
 
     def __unicode__(self):
-        return u'{}'.format(self.name)
+        return _(u"{name}").format(name=self.name)
 
 
 class Facility(models.Model):
@@ -97,7 +97,7 @@ class Facility(models.Model):
         return self.address.replace("\n", ", ").strip()
 
     def __unicode__(self):
-        return u'{}'.format(self.name)
+        return _(u"{name}").format(name=self.name)
 
 
 class Membership(models.Model):
@@ -183,8 +183,7 @@ class Workplace(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{facility_name} / {workplace_name}").format(
-            facility_name=self.facility.name, workplace_name=self.name)
+        return _(u"{name}").format(name=self.name)
 
 
 class Task(models.Model):
@@ -205,5 +204,4 @@ class Task(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{facility_name} / {task_name}").format(
-            facility_name=self.facility.name, task_name=self.name)
+        return _(u"{name}").format(name=self.name)
