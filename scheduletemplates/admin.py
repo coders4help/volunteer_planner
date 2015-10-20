@@ -59,7 +59,8 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
 
     def response_change(self, request, obj):
         if "_save_and_apply" in request.POST:
-            redirect_url = reverse('admin:apply_schedule_template', args=(obj._get_pk_val(),))
+            redirect_url = reverse('admin:apply_schedule_template',
+                                   args=(obj._get_pk_val(),))
             return HttpResponseRedirect(redirect_url)
         return super(ScheduleTemplateAdmin, self).response_change(request, obj)
 
