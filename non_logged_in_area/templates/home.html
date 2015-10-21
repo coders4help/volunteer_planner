@@ -96,21 +96,24 @@
         <div class="col-md-4">
             <div class="facts facts-less-padding">
                 <h2>{% trans "You can help at this locations:" %}</h2>
-
-                {% for facility_in_area in facilities_by_area %}
-                    {% comment %}
-                       If we get many facilities, we can always make this a collapsed-by-default
-                       list. At the moment, there's not enough and it's more usable and SEO
-                       friendly to show all.
-                    {% endcomment %}
-                    {{ facility_in_area.grouper }}
-                    <p>
-                        {% for facility in facility_in_area.list %}
-                            {{ facility.name }}
-                            {% if not forloop.last %}&bullet;{% endif %}
-                        {% endfor %}
-                    </p>
-                {% endfor %}
+                {% if facilities_by_area %}
+                    {% for facility_in_area in facilities_by_area %}
+                        {% comment %}
+                           If we get many facilities, we can always make this a collapsed-by-default
+                           list. At the moment, there's not enough and it's more usable and SEO
+                           friendly to show all.
+                        {% endcomment %}
+                        {{ facility_in_area.grouper }}
+                        <p>
+                            {% for facility in facility_in_area.list %}
+                                {{ facility.name }}
+                                {% if not forloop.last %}&bullet;{% endif %}
+                            {% endfor %}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    {% trans "There are currently no places in need of help." %}
+                {% endif %}
             </div>
         </div>
     </div>

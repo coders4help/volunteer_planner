@@ -49,7 +49,9 @@ def find_areas_and_facilities(context):
 
     regex_heading = '^.*\n'
     regex_one_area = u'(^[\w ]+\n([\w ]+\u2022)*[\w ]+)'
-    regex_total = regex_heading + '(' + regex_one_area + '\n)*' + regex_one_area + '\Z'
+    regex_at_least_one_area = '(' + regex_one_area + '\n)*' + regex_one_area
+    regex_placeholder_msg = 'There are currently no places in need of help.'
+    regex_total = regex_heading + '(' + regex_at_least_one_area + '|' + regex_placeholder_msg + ')' + '\Z'
 
     match = re.match(
                 regex_total,
