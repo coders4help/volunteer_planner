@@ -1,3 +1,4 @@
+# coding=utf-8
 # codging: utf-8
 
 from django.utils.decorators import method_decorator

@@ -166,13 +166,10 @@ If you just use "python manage.py create_dummy_data 5" without --flush it is NOT
 
 ### Running Tests
 
-*Note*: we're committed to testing and hope, the next paragraph will not be a lie any longer soon :-) 
+Feature PR should be accompanied by appropriate test. We have unit and integration tests that
+are run with `py.test`, and functional/behave tests that are run with `selenium`.
 
-We are using test driven development (TDD) with [py.test](http://pytest.org/). 
-
-A good read on TDD is the free o'Reilly eBook ["Test-Driven Development with Python"](http://chimera.labs.oreilly.com/books/1234000000754/index.html)
-
-To run the tests, run the following command (with your virtual env activated, see 3.)
+To run unit tests, run the following command (with your virtual env activated, see 3.)
 
     $ py.test -v [/path/to/volunteer_planner.git/]
 
@@ -183,6 +180,10 @@ If you want to generate a coverage report as well, run
 This generates a nice HTML coverage page, to poke around which can be found at `/path/to/volunteer_planner.git/htmlcov/index.html`. 
 
 *Note*: The directory `htmlcov` is git-ignored.
+
+To run selenium tests, run
+
+    $ behave tests/_behave
 
 ### Translations
 
@@ -200,7 +201,7 @@ We use [Transifex (tx)](https://www.transifex.com/coders4help/volunteer-planner/
 #### Workflow
 
 1. Code your stuff using the `ugettext_lazy as _` etc. methods to mark internationalized strings
-2. Update the po files `./manage.py makemessages --no-obsolete --no-wrap`
+2. Update the po files `./manage.py makemessages --no-wrap --no-obsolete -l en`
    The options are intended to make the output more git-friendly.
 3. Push the updated translations to git. **Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).**
 4. Transifex will automatically update the source strings via github once a day and make them available for translation. 

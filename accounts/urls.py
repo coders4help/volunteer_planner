@@ -1,4 +1,7 @@
+# coding: utf-8
+
 from django.conf.urls import url
+
 from .views import user_account_detail, AccountUpdateView
 
 urlpatterns = [

@@ -1,3 +1,4 @@
+# coding=utf-8
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
@@ -12,7 +13,6 @@ urlpatterns = [
     url(r'^places/', include('scheduler.place_urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
-    url(r'^vorlagen/', include('blueprint.urls')),
     url(r'^', include('non_logged_in_area.urls')),
 ]
 

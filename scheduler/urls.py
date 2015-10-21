@@ -8,8 +8,8 @@ urlpatterns = [
     url(r'^$', HelpDesk.as_view(), name="helpdesk"),
 
     url(
-        r'^location/(?P<pk>\d+)/(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/?$',
+        r'^facility/(?P<pk>\d+)/(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/?$',
         PlannerView.as_view(),
-        name="planner_by_location"),
+        name="planner_by_facility"),
 
 ]

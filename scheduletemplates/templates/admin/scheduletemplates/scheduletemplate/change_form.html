@@ -1,0 +1,4 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls scheduletemplates_tags %}
+
+{% block submit_buttons_bottom %}{% schedule_template_submit_row %}{% endblock %}

@@ -8,6 +8,7 @@ django-extensions==1.5.7
 django-registration-redux==1.2
 Django==1.8.4
 djangocms-admin-style==0.2.8
+djangorestframework==3.2.4
 ipdb==0.8.1
 ipython-genutils==0.1.0
 ipython==4.0.0
