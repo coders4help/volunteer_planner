@@ -18,7 +18,8 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
-from organizations.models import Facility, News
+from organizations.models import Facility
+from news.models import News
 from scheduler.models import Shift
 from google_tools.templatetags.google_links import google_maps_directions
 from scheduler.models import ShiftHelper
@@ -55,7 +56,7 @@ def getNewsFacility(facility):
         for item in news_query:
             news.append({
                 'title':item.title,
-                'date':item.date_created,
+                'date':item.creation_date,
                 'text':item.text
             })
     return news

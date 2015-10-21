@@ -207,18 +207,3 @@ class Task(models.Model):
     def __unicode__(self):
         return _(u"{facility_name} / {task_name}").format(
             facility_name=self.facility.name, task_name=self.name)
-
-
-class News(models.Model):
-    # facility can publish news to appear in helpdesk
-    title = models.CharField(max_length=256, verbose_name=_(u'title'))
-    text = models.TextField(blank=True, verbose_name=_(u'text'))
-    date_created = models.DateTimeField(auto_now=True, verbose_name=_(u'date published'))
-    facility = models.ForeignKey(Facility, null=True, related_name='facility')
-
-    class Meta:
-        verbose_name = _(u'News')
-        verbose_name_plural = _(u'News')
-
-    def __unicode__(self):
-        return self.title

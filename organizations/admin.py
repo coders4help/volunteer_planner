@@ -193,19 +193,3 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
     )
     search_fields = ('name',)
     list_select_related = True
-
-
-@admin.register(models.Task)
-class TaskAdmin(MembershipFilteredAdmin):
-    list_display = (
-        'facility',
-        'name',
-        'description'
-    )
-    list_filter = (
-        ('facility', MembershipFieldListFilter),
-    )
-    search_fields = ('name',)
-    list_select_related = True
-
-admin.site.register(models.News)

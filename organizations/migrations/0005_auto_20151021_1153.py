@@ -11,16 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='News',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('title', models.CharField(max_length=256, verbose_name='title')),
-                ('text', models.TextField(verbose_name='text', blank=True)),
-                ('date_created', models.DateField(auto_now=True, verbose_name='date published')),
-                ('news', models.ForeignKey(to='organizations.Facility', null=True)),
-            ],
-        ),
         migrations.AlterField(
             model_name='facilitymembership',
             name='facility',
