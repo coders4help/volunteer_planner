@@ -57,13 +57,13 @@ LOCAL_APPS = (
     'common',
     'scheduler',
     'blueprint',
-    'notifications',
     'shiftmailer',
     'stats',
     'places',
     'non_logged_in_area',
     'registration_history',
     'scheduletemplates',
+    'news'
 )
 
 INSTALLED_APPS = DJANGO_APPS +  LOCAL_APPS + THIRD_PARTY_APPS
