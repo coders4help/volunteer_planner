@@ -31,9 +31,15 @@ def find_button(context, btn_label):
 def find_statistics(context):
     facts_div_containers = context.browser.find_elements_by_class_name('facts')
     stats_div = facts_div_containers[0]
+
     stats_reg_ex = "(^[0-9]+\n[A-Za-z ]+\n)*(^[0-9]+\n[A-Za-z ]+$)\Z"
-    assert re.match(
-                stats_reg_ex, stats_div.text, re.MULTILINE), "Statistics could not be found (regex didnt match)"
+
+    match = re.match(
+                stats_reg_ex,
+                stats_div.text,
+                re.MULTILINE)
+
+    assert match, "Statistics could not be found (regex didnt match)"
 
 @then('I see a list of areas with their respective facilities')
 def find_areas_and_facilities(context):
@@ -45,7 +51,10 @@ def find_areas_and_facilities(context):
     regex_total = regex_heading + '(' + regex_one_area + '\n)*' + regex_one_area + '\Z'
 
     match = re.match(
-                regex_total, areas_facilities_div.text, re.MULTILINE | re.UNICODE)
+                regex_total,
+                areas_facilities_div.text,
+                re.MULTILINE | re.UNICODE)
+
     assert match, "Areas and their facilities could not be found (regex didnt match)"
 
 
