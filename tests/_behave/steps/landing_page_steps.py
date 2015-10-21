@@ -1,4 +1,5 @@
 from behave import given, then
+import re, string
 
 
 @given("I visit the home page")
@@ -25,6 +26,12 @@ def find_button(context, btn_label):
     btn_labels = [btn.text for btn in context.browser.find_elements_by_class_name("btn") if btn.text]
     assert btn_label in btn_labels, 'Cannot find a button with the label "%s"' % btn_label
 
+
+@then('I see some statistics about the Volunteer Planner')
+def find_statistics(context):
+    stats_div = context.browser.find_element_by_class_name('facts')
+    stats_reg_ex = "(^[0-9]+\n[A-Za-z ]+\n)*(^[0-9]+\n[A-Za-z ]+$)\Z"
+    assert re.match(stats_reg_ex, stats_div.text, re.MULTILINE), "No statistics were found"
 
 @then('I see a navigation bar in the footer')
 def find_nav_bar(context):
