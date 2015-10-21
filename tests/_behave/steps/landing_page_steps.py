@@ -1,5 +1,5 @@
 from behave import given, then
-import re, string
+import re
 
 
 @given("I visit the home page")
@@ -32,7 +32,22 @@ def find_statistics(context):
     facts_div_containers = context.browser.find_elements_by_class_name('facts')
     stats_div = facts_div_containers[0]
     stats_reg_ex = "(^[0-9]+\n[A-Za-z ]+\n)*(^[0-9]+\n[A-Za-z ]+$)\Z"
-    assert re.match(stats_reg_ex, stats_div.text, re.MULTILINE), "No statistics were found"
+    assert re.match(
+                stats_reg_ex, stats_div.text, re.MULTILINE), "No statistics were found"
+
+@then('I see a list of areas with their respective facilities')
+def find_areas_and_facilities(context):
+    facts_div_containers = context.browser.find_elements_by_class_name('facts')
+    areas_facilities_div = facts_div_containers[1]
+
+    regex_heading = '^.*\n'
+    regex_one_area = u'(^[\w ]+\n([\w ]+\u2022)*[\w ]+)'
+    regex_total = regex_heading + '(' + regex_one_area + '\n)*' + regex_one_area + '\Z'
+
+    match = re.match(
+                regex_total, areas_facilities_div.text, re.MULTILINE | re.UNICODE)
+    assert match, "No areas and facilities were found"
+
 
 @then('I see a navigation bar in the footer')
 def find_nav_bar(context):

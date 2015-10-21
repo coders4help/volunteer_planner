@@ -9,4 +9,5 @@ Feature: Landing Page
         And I see a button labeled "Login"
         And I see a button labeled "Start helping"
         And I see some statistics about the Volunteer Planner
+        And I see a list of areas with their respective facilities
         And I see a navigation bar in the footer
