@@ -53,5 +53,4 @@ def find_areas_and_facilities(context):
 def find_nav_bar(context):
     navigation_link_labels = [link.text for link in context.browser.find_elements_by_xpath(
         '//div[@id="footer-nav"]//li//a') if link.text]
-    print(navigation_link_labels)
     assert navigation_link_labels, 'No navigation bar with links was found'
