@@ -33,7 +33,7 @@ def find_statistics(context):
     stats_div = facts_div_containers[0]
     stats_reg_ex = "(^[0-9]+\n[A-Za-z ]+\n)*(^[0-9]+\n[A-Za-z ]+$)\Z"
     assert re.match(
-                stats_reg_ex, stats_div.text, re.MULTILINE), "No statistics were found"
+                stats_reg_ex, stats_div.text, re.MULTILINE), "Statistics could not be found (regex didnt match)"
 
 @then('I see a list of areas with their respective facilities')
 def find_areas_and_facilities(context):
@@ -46,7 +46,7 @@ def find_areas_and_facilities(context):
 
     match = re.match(
                 regex_total, areas_facilities_div.text, re.MULTILINE | re.UNICODE)
-    assert match, "No areas and facilities were found"
+    assert match, "Areas and their facilities could not be found (regex didnt match)"
 
 
 @then('I see a navigation bar in the footer')
