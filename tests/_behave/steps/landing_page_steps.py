@@ -29,7 +29,8 @@ def find_button(context, btn_label):
 
 @then('I see some statistics about the Volunteer Planner')
 def find_statistics(context):
-    stats_div = context.browser.find_element_by_class_name('facts')
+    facts_div_containers = context.browser.find_elements_by_class_name('facts')
+    stats_div = facts_div_containers[0]
     stats_reg_ex = "(^[0-9]+\n[A-Za-z ]+\n)*(^[0-9]+\n[A-Za-z ]+$)\Z"
     assert re.match(stats_reg_ex, stats_div.text, re.MULTILINE), "No statistics were found"
 
