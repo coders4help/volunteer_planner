@@ -41,6 +41,7 @@ def find_statistics(context):
 
     assert match, "Statistics could not be found (regex didnt match)"
 
+
 @then('I see a list of areas with their respective facilities')
 def find_areas_and_facilities(context):
     facts_div_containers = context.browser.find_elements_by_class_name('facts')
