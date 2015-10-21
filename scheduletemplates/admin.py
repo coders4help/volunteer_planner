@@ -4,8 +4,10 @@ from datetime import timedelta, datetime, time
 from django import forms
 from django.conf.urls import url
 from django.contrib import admin, messages
+from django.core.urlresolvers import reverse
 from django.db.models import Min, Count, Sum
 from django.forms.extras import SelectDateWidget
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
@@ -24,6 +26,7 @@ class ShiftTemplateInline(MembershipFilteredTabularInline):
     min_num = 0
     extra = 0
     facility_filter_fk = 'schedule_template__facility'
+    template = 'admin/scheduletemplates/shifttemplate/shift_template_inline.html'
 
 
 class ApplyTemplateForm(forms.Form):
@@ -53,6 +56,13 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
     search_fields = ('name',)
     list_select_related = True
     radio_fields = {"facility": admin.VERTICAL}
+
+    def response_change(self, request, obj):
+        if "_save_and_apply" in request.POST:
+            redirect_url = reverse('admin:apply_schedule_template',
+                                   args=(obj._get_pk_val(),))
+            return HttpResponseRedirect(redirect_url)
+        return super(ScheduleTemplateAdmin, self).response_change(request, obj)
 
     def apply_schedule_template(self, request, pk):
         """

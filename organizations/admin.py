@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.utils.encoding import smart_text
 
 from . import models
+from organizations.models import Facility
 
 DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
                         models.Membership.Roles.MANAGER)
@@ -48,10 +49,10 @@ def filter_queryset_by_membership(qs, user,
 
     user_memberships = get_cached_memberships(user)
     user_orgs = itertools.chain.from_iterable(
-            user_memberships['organizations'][role] for role in roles)
+        user_memberships['organizations'][role] for role in roles)
 
     user_facilities = itertools.chain.from_iterable(
-            user_memberships['facilities'][role] for role in roles)
+        user_memberships['facilities'][role] for role in roles)
 
     if qs.model == models.Organization:
         return qs.filter(pk__in=user_facilities)
@@ -75,6 +76,19 @@ def filter_queryset_by_membership(qs, user,
 
 class MembershipFilteredAdmin(admin.ModelAdmin):
     facility_filter_fk = 'facility'
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(MembershipFilteredAdmin, self).get_form(request, obj,
+                                                             **kwargs)
+
+        if 'facility' in form.base_fields:
+            facilities = Facility.objects.all()
+            user_facilities = filter_queryset_by_membership(facilities,
+                                                            request.user)
+            if len(user_facilities) == 1:
+                form.base_fields['facility'].initial = user_facilities.get()
+
+        return form
 
     def get_queryset(self, request):
         qs = super(MembershipFilteredAdmin, self).get_queryset(request)
@@ -153,6 +167,7 @@ class FacilityAdmin(MembershipFilteredAdmin):
     )
     raw_id_fields = ('members',)
     search_fields = ('name',)
+    radio_fields = {"organization": admin.VERTICAL}
 
 
 @admin.register(models.OrganizationMembership)
@@ -193,3 +208,19 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
     )
     search_fields = ('name',)
     list_select_related = True
+    radio_fields = {"facility": admin.VERTICAL}
+
+
+@admin.register(models.Task)
+class TaskAdmin(MembershipFilteredAdmin):
+    list_display = (
+        'facility',
+        'name',
+        'description'
+    )
+    list_filter = (
+        ('facility', MembershipFieldListFilter),
+    )
+    search_fields = ('name',)
+    list_select_related = True
+    radio_fields = {"facility": admin.VERTICAL}
