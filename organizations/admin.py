@@ -3,8 +3,12 @@ from collections import defaultdict
 import itertools
 from operator import itemgetter
 
+from ckeditor.widgets import CKEditorWidget
+
 from django.contrib import admin
+
 from django.db.models import Q
+
 from django.utils.encoding import smart_text
 
 from . import models
@@ -76,10 +80,11 @@ def filter_queryset_by_membership(qs, user,
 
 class MembershipFilteredAdmin(admin.ModelAdmin):
     facility_filter_fk = 'facility'
+    widgets = None
 
     def get_form(self, request, obj=None, **kwargs):
-        form = super(MembershipFilteredAdmin, self).get_form(request, obj,
-                                                             **kwargs)
+        form = super(MembershipFilteredAdmin, self).get_form(
+            request, obj, widgets=self.widgets, **kwargs)
 
         if 'facility' in form.base_fields:
             facilities = Facility.objects.all()
@@ -145,6 +150,11 @@ class OrganizationAdmin(MembershipFilteredAdmin):
     )
     raw_id_fields = ('members',)
     search_fields = ('name',)
+    widgets = {
+        'short_description': CKEditorWidget(),
+        'description': CKEditorWidget(),
+        'contact_info': CKEditorWidget(),
+    }
 
 
 @admin.register(models.Facility)
@@ -168,6 +178,11 @@ class FacilityAdmin(MembershipFilteredAdmin):
     raw_id_fields = ('members',)
     search_fields = ('name',)
     radio_fields = {"organization": admin.VERTICAL}
+    widgets = {
+        'short_description': CKEditorWidget(),
+        'description': CKEditorWidget(),
+        'contact_info': CKEditorWidget(),
+    }
 
 
 @admin.register(models.OrganizationMembership)
@@ -209,6 +224,9 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
     search_fields = ('name',)
     list_select_related = True
     radio_fields = {"facility": admin.VERTICAL}
+    widgets = {
+        'description': CKEditorWidget(),
+    }
 
 
 @admin.register(models.Task)
@@ -224,3 +242,6 @@ class TaskAdmin(MembershipFilteredAdmin):
     search_fields = ('name',)
     list_select_related = True
     radio_fields = {"facility": admin.VERTICAL}
+    widgets = {
+        'description': CKEditorWidget(),
+    }
