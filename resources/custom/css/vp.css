@@ -11,6 +11,7 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    color:#373a3c !important;
 }
 
 .footer {
@@ -142,4 +143,50 @@ code {
 }
 .spacer{
     margin-top:35px;
+}
+
+.area-filter button {
+    margin-right: 6px;
+}
+
+.area-accordions {
+    margin-top: 15px
+}
+
+/* needed for cloaking angular filled widgets for avoiding flicker */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.area-filter{
+    margin-right:10px;
+}
+
+.area-filter input[type="checkbox"]{
+    margin: 4px 8px 0;
+}
+
+.panel-heading{
+    background-image: none !important;
+    background-color: rgba(213, 213, 211, 0.85) !important;
+    color:#373a3c !important;
+
+
+
+}
+.panel-heading:hover{
+
+    background-color: rgba(176, 176, 174, 0.85) !important;
+    -webkit-transition: background-color 0.5s; /* Safari */
+    transition: background-color 0.5s;
+}
+
+
+.panel-heading a{
+    width:100%;
+    display:block;
+    text-decoration: none;
+    outline: 0;
+}
+.panel-primary{
+    border:none;
 }

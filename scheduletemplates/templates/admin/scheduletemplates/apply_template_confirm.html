@@ -1,0 +1,125 @@
+{% extends "admin/change_form.html" %}
+{% load i18n l10n admin_urls staticfiles %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        &rsaquo; <a
+            href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+        &rsaquo;
+        <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        &rsaquo;
+        <a href="{% url opts|admin_urlname:'change' schedule_template.pk|admin_urlquote %}">{{ schedule_template }}</a>
+        &rsaquo;
+        {% trans "Apply Template" %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="content-main">
+
+    <h2>
+    {% blocktrans trimmed with localized_date=selected_date|localize facility_name=schedule_template.facility.name %}
+        Please review and confirm shifts to create on {{ localized_date }} for {{ facility_name }}
+    {% endblocktrans %}
+    </h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ apply_form.apply_for_date.as_hidden }}
+        {% for shift in selected_shifts %}
+            <input type="hidden" name="selected_shift_templates"
+                   value="{{ shift.pk }}">
+        {% endfor %}
+
+
+        {% trans "no workplace" as no_workplace %}
+        {% trans "apply" as apply_trans %}
+        {% trans "volunteers" as num_trans %}
+        {% trans "task" as task_trans %}
+        {% trans "workplace" as workplace_trans %}
+        {% trans "starting time" as starting_trans %}
+        {% trans "ending time" as ending_trans %}
+
+        <h3>
+
+
+
+        </h3>
+
+        {% regroup combined_shifts by task as shifts_by_task %}
+
+        <p>
+
+        <table>
+            {% for shifts_for_task in shifts_by_task %}
+
+                {% regroup shifts_for_task.list by workplace as shifts_by_workplace %}
+
+                {% for shifts_at_workplace in shifts_by_workplace %}
+                    <thead>
+                    <tr>
+                        <th colspan="6">
+                            <h2>
+                                {{ shifts_for_task.grouper.name }}
+                                {% if shifts_at_workplace.grouper %}
+                                    -
+                                    {{ shifts_at_workplace.grouper.name }}
+                                {% endif %}
+                            </h2>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th> {{ num_trans|title }}</th>
+                        <th> {{ task_trans|title }}</th>
+                        <th> {{ workplace_trans|title }}</th>
+                        <th> {{ starting_trans|title }}</th>
+                        <th> {{ ending_trans|title }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for shift in shifts_at_workplace.list %}
+                        {% with is_template=shift.schedule_template %}
+
+                            <tr style="background-color:
+                                    {{ is_template|yesno:"#EEFFEE,#FFFDD9" }};">
+                                <td>
+                                    {% if is_template %}
+                                        <strong>&rarr;</strong>
+                                    {% else %}
+
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if not is_template %}
+                                        {{ shift.volunteer_count }} /
+                                    {% endif %}
+                                    {{ shift.slots }}</td>
+                                <td>{{ shift.task.name }}</td>
+                                <td>
+                                    {{ shift.workplace.name|default:"-" }}</td>
+                                <td>
+                                    {% if is_template %}
+                                        {{ shift.starting_time }}
+                                    {% else %}
+                                        {{ shift.starting_time.time }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ shift.localized_display_ending_time }}
+                                </td>
+                            </tr>
+                        {% endwith %}
+                    {% endfor %}
+                    </tbody>
+                {% endfor %}
+            {% endfor %}
+        </table>
+        </p>
+        <div class="submit-row">
+            <input type="submit" value="{% trans "Apply selected shifts" %}"
+                   class="default" name="confirm">
+        </div>
+    </form>
+{% endblock %}

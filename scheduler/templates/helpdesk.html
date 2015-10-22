@@ -1,69 +1,101 @@
 {% extends "base.html" %}
 
+
+{% block html_attributes %} ng-app="vpWidgets"{% endblock %}
+
+{% block additional_js %}
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.js"></script>
+    <!-- TODO: Conditional for Languages -->
+    <script src="//code.angularjs.org/1.2.5/i18n/angular-locale_de-de.js"></script>
+    <!--<script src="//code.angularjs.org/1.2.5/i18n/angular-locale_en-gb.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+
+    <script>
+        angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
+                .controller('ShiftWidgetCtrl', function($scope) {
+                    // this rather should be done through an nice REST api
+                    $scope.facilities = {{ facility_json | safe }};
+                    $scope.areas = {{ areas_json | safe }};
+                    $scope.selectedAreas = [];
+                    $scope.toggleArea = function (area) {
+                        if ($scope.selectedAreas.indexOf(area) > -1) {
+                            $scope.selectedAreas.splice($scope.selectedAreas.indexOf(area),1);
+                        } else {
+                            $scope.selectedAreas.push(area);
+                        }
+                    }
+                });
+
+    </script>
+
+{% endblock %}
+
 {% load google_links i18n %}
 {% block content %}
 
-    {% if notifications %}
-        <div class="row">
-            <h2>{% trans "Important news" %}</h2>
-            {% for notification in notifications %}
-
-                <div>
-                    <h3>{{ notification.title }}</h3>
-                    <h4>
-                        {% blocktrans trimmed with location_name=notification.location.name date=notification.creation_date %}
-                            {{ location_name }} on {{ date }}
-                        {% endblocktrans %}
-                    </h4>
-                    {{ notification.text|safe }}
-                </div>
-            {% endfor %}
-        </div>
-        <hr/>
-    {% endif %}
-
-    <div class="row">
-        <h2>{% trans "Volunteers wanted" %}</h2>
-
-        {% regroup shifts by location as shifts_by_location %}
-
-        {% for location_shifts in shifts_by_location %}
-            {% with location_shifts.grouper as location %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>{{ location }} </h3>
-                    </div>
-                <div class="col-md-8">
-                        {% with location.street|add:", "|add:location.postal_code|add:" "|add:location.city as address_line %}
-                            {% if address_line %}
-                                <h5>{{ address_line }} <a
-                                        href="{{ address_line|google_maps_directions }}"
-                                        target="_blank">&rarr; Google Maps</a>
-                                </h5>
-                            {% endif %}
-                        {% endwith %}
-                        <p>{{ location.additional_info|safe }}</p>
-                    </div>
-
-                    {% regroup location_shifts.list by ending_time.date as shifts_by_time %}
-
-                    <div class="col-md-4">
-                        <h4>{% trans "open shifts" %}</h4>
-
-                        <p>
-                            {% for shift_time in shifts_by_time %}
-                                {% with shift_time.grouper as shift_date %}
-                                    <a href="{% url 'planner_by_location' pk=location.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
-                                        {{ shift_date|date }}
-                                    </a>
-                                    <br/>
-                                {% endwith %}
-                            {% endfor %}
-                        </p>
-                    </div>
-                </div>
+        <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
+            <h2>{% trans "You can help in the following facilities" %}</h2>
+            {% verbatim %}
                 <hr>
-            {% endwith %}
-        {% endfor %}
-    </div>
+                <div class="col-md12">
+                    {% endverbatim %}<span>{% trans "filter" %}:</span>{% verbatim %}
+                    <label class="area-filter" ng-repeat="area in areas">
+                        <input type="checkbox" value="{{ area.name }}"
+
+                            class=""
+                            ng-click="toggleArea(area.slug)"
+                            ng-class="{ 'fddf': selectedAreas.indexOf(area.slug) > -1 }"
+                            >{{ area.name }}
+                    </label>
+                </div>
+
+                <div class="area-accordions row">
+                    <div class="col-md-12">
+                        <div ng-repeat="facility in facilities" ng-show="selectedAreas.indexOf(facility.area_slug) > -1 || selectedAreas.length == 0">
+                            <accordion>
+                                <accordion-group panel-class="panel-primary">
+                                    <accordion-heading>
+                                        {{ facility.name }} {% endverbatim %}[{% trans "see more" %}]{% verbatim %} <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
+                                    </accordion-heading>
+                                    <div class="col-md-12">
+                                        <div class="col-md-8">
+                                            <h5>
+                                                {{ facility.address_line }}
+                                                <a target="_blank" ng-href="{{ facility.google_maps_link }}">→ Google Maps</a>
+                                            </h5>
+                                            <p ng-bind-html="facility.description"></p>
+
+
+                                            <h4 ng-show="facility.news[0]">{% endverbatim %}{% trans "News" %}{% verbatim %}</h4>
+
+
+                                        <div ng-repeat="news in facility.news">
+                                            <hr>
+                                        <h4>{{ news.title }} </h4>
+                                            <date><i> {{ news.date | date:'fullDate' }}</i></date>
+                                        <p ng-bind-html="news.text">{{ news.text }}</p>
+                                        </div>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            {% endverbatim %}<h4>{% trans "open shifts" %}</h4>{% verbatim %}
+                                            <p>
+                                                <span ng-repeat="shift in facility.shifts">
+                                                    <a ng-href="{{ shift.link }}">{{ shift.date_string }}</a>
+                                                    <br>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                </accordion-group>
+                            </accordion>
+                        </div>
+                    </div>
+                </div>
+            {% endverbatim %}
+        </div>
 {% endblock %}

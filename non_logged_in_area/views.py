@@ -1,12 +1,11 @@
+# coding=utf-8
 import logging
 
 from django.db.models.aggregates import Count
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.core.urlresolvers import reverse
-
-from notifications.models import Notification
-from scheduler.models import Location
+from organizations.models import Facility
 from places.models import Region
 
 logger = logging.getLogger(__name__)
@@ -25,10 +24,9 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
 
         context['regions'] = Region.objects.annotate(
-            locations_count=Count('areas__places__locations')).exclude(
-            locations_count=0).prefetch_related('areas', 'areas__region').all()
-        context['locations'] = Location.objects.select_related('place',
-                                                               'place__area',
-                                                               'place__area__region').all()
-        context['notifications'] = Notification.objects.all()
+            facility_count=Count('areas__places__facilities')).exclude(
+            facility_count=0).prefetch_related('areas', 'areas__region').all()
+        context['facilities'] = Facility.objects.select_related('place',
+                                                                'place__area',
+                                                                'place__area__region').all()
         return context

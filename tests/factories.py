@@ -6,19 +6,9 @@ from django.contrib.auth.models import User
 from factory.fuzzy import FuzzyText
 
 from accounts import models as account_models
-
 from scheduler import models as scheduler_models
 from places import models as places_models
-
-
-class TopicFactory(factory.DjangoModelFactory):
-    title = "Sample topic"
-
-    class Meta:
-        model = scheduler_models.Topics
-        django_get_or_create = ['title']
-
-    description = FuzzyText(length=150, chars=string.ascii_letters, prefix='')
+from organizations import models as organization_models
 
 
 class CountryFactory(factory.DjangoModelFactory):
@@ -59,21 +49,39 @@ class PlaceFactory(factory.DjangoModelFactory):
     area = factory.SubFactory(AreaFactory)
 
 
-class LocationFactory(factory.DjangoModelFactory):
+class OrganizationFactory(factory.DjangoModelFactory):
+    name = "Rathaus W"
+
+    class Meta:
+        model = organization_models.Organization
+        django_get_or_create = ['name', ]
+
+
+class FacilityFactory(factory.DjangoModelFactory):
     name = "Rathaus W"
     place = factory.SubFactory(PlaceFactory)
+    organization = factory.SubFactory(OrganizationFactory)
 
     class Meta:
-        model = scheduler_models.Location
-        django_get_or_create = ['name', 'place']
+        model = organization_models.Facility
+        django_get_or_create = ['name', 'place', 'organization']
 
 
-class NeedFactory(factory.DjangoModelFactory):
+class TaskFactory(factory.DjangoModelFactory):
     class Meta:
-        model = scheduler_models.Need
+        model = organization_models.Task
 
-    topic = factory.SubFactory(TopicFactory)
-    location = factory.SubFactory(LocationFactory)
+    name = "Küchenhilfe"
+    description = "Teller waschen"
+    facility = factory.SubFactory(FacilityFactory)
+
+
+class ShiftFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = scheduler_models.Shift
+
+    task = factory.SubFactory(TaskFactory)
+    facility = factory.SubFactory(FacilityFactory)
 
     slots = 10
 
@@ -100,6 +108,6 @@ class UserAccountFactory(factory.DjangoModelFactory):
 class ShiftHelperFactory(factory.DjangoModelFactory):
     class Meta:
         model = scheduler_models.ShiftHelper
-        django_get_or_create = ['need']
+        django_get_or_create = ['shift']
 
     user_account = factory.SubFactory(UserAccountFactory)

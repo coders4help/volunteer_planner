@@ -1,0 +1,125 @@
+{% extends "admin/change_form.html" %}
+{% load i18n l10n admin_urls staticfiles %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ apply_form.media }}
+    <script>
+        $(function () {
+            $("#{{ apply_form.apply_for_date.auto_id }}").datepicker({
+                firstDay: 1,
+                defaultDate: +1,
+                minDate: +0,
+                monthNames: gettext('January February March April May June July August September October November December').split(' '),
+                monthNamesShort: gettext('January February March April May June July August September October November December').split(' '),
+                dayNamesMin: gettext('S M T W T F S').split(' '),
+                dayNamesShort: gettext('S M T W T F S').split(' '),
+                firstDay: parseInt(get_format('FIRST_DAY_OF_WEEK')),
+                numberOfMonths: 3,
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                constrainInput: false,
+                showWeek: true,
+                weekHeader: "W",
+                dateFormat: "{{ apply_form.js_date_format|default:'apply_form' }}"
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        &rsaquo; <a
+            href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+        &rsaquo;
+        <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        &rsaquo;
+        <a href="{% url opts|admin_urlname:'change' schedule_template.pk|admin_urlquote %}">{{ schedule_template }}</a>
+        &rsaquo;
+        {% trans "Apply Template" %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="content-main">
+        <h2>{% trans "Apply Template" %} {{ schedule_template }}</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% trans "no workplace" as no_workplace %}
+            {% trans "apply" as apply_trans %}
+            {% trans "number of needed volunteers" as num_trans %}
+            {% trans "task" as task_trans %}
+            {% trans "workplace" as workplace_trans %}
+            {% trans "starting time" as starting_trans %}
+            {% trans "ending time" as ending_trans %}
+            {% regroup shift_templates by task as shifts_by_task %}
+
+            <h3>{% trans "Select a date" %} </h3>
+
+            <div>
+                {{ apply_form.apply_for_date }}
+
+            </div>
+
+            <h3>{% trans "Select shift templates" %}</h3>
+
+            <div>
+
+                <table>
+                    {% for shifts_for_task in shifts_by_task %}
+
+                        {% regroup shifts_for_task.list by workplace as shifts_by_workplace %}
+
+                        {% for shifts_at_workplace in shifts_by_workplace %}
+                            <thead>
+                            <tr>
+                                <th colspan="6">
+                                    <h2>
+                                        {{ shifts_for_task.grouper.name }}
+                                        {% if shifts_at_workplace.grouper %}
+                                            -
+                                            {{ shifts_at_workplace.grouper.name }}
+                                        {% endif %}
+                                    </h2>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th> {{ apply_trans|title }}</th>
+                                <th> {{ num_trans|title }}</th>
+                                <th> {{ task_trans|title }}</th>
+                                <th> {{ workplace_trans|title }}</th>
+                                <th> {{ starting_trans|title }}</th>
+                                <th> {{ ending_trans|title }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for shift in shifts_at_workplace.list %}
+                                <tr>
+                                    <td><input type="checkbox"
+                                               name="selected_shift_templates"
+                                               value="{{ shift.id }}"
+                                               id="{{ shift.id }}"
+                                               checked></td>
+                                    <td>{{ shift.slots }}</td>
+                                    <td>{{ shift.task.name }}</td>
+                                    <td>
+                                        {{ shift.workplace.name|default:"" }}</td>
+                                    <td>{{ shift.starting_time }}</td>
+                                    <td>{{ shift.localized_display_ending_time }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        {% endfor %}
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="submit-row">
+                <input type="submit" value="{% trans "Preview shifts to add" %}"
+                       class="default" name="preview">
+            </div>
+    </div>
+    </form>
+{% endblock %}

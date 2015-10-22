@@ -1,3 +1,4 @@
+# coding=utf-8
 from .base import *
 
 DEBUG = True
@@ -84,4 +85,4 @@ if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
     EMAIL_USE_TLS = True
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'local')
-LANGUAGE_CODE =  os.environ.get('LANGUAGE_CODE', 'de')
+LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'de')
