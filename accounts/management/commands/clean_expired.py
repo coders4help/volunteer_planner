@@ -17,7 +17,6 @@ class Command(BaseCommand):
                             help='Only print registrations that would be deleted')
 
     def handle(self, *args, **options):
-        self.stdout.write('Deleting expired user registrations')
         dry_run = True if self.OPT_SIMULATE in options and options[
             self.OPT_SIMULATE] else False
         if dry_run:
