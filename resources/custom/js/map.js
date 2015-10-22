@@ -62,8 +62,8 @@
     };
 
     // convenient method for adding a viewport marker
-    HEREMap.prototype.addViewportMarker = function(lat, lon, marker_id) {
-        this.addMarker(lat, lon, marker_id, true);
+    HEREMap.prototype.addViewportMarker = function(lat, lon, marker_id, marker_data) {
+        this.addMarker(lat, lon, marker_id, marker_data, true);
     };
 
     // sets the viewport of the map based on the viewport markers or the given default coordinates
