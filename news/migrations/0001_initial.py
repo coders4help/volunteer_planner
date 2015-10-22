@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('slug', models.SlugField(max_length=255, auto_created=True)),
-                ('creation_date', models.DateField(auto_now=True)),
+                ('creation_date', models.DateField(auto_now=True, verbose_name='creation date')),
                 ('title', models.CharField(max_length=255, verbose_name='title')),
                 ('subtitle', models.CharField(max_length=255, null=True, verbose_name='subtitle', blank=True)),
                 ('text', models.TextField(max_length=20055, verbose_name='articletext')),
