@@ -1,9 +1,11 @@
 # coding: utf-8
 
-from datetime import date
+from datetime import date, datetime
 import logging
 import json
 import itertools
+from time import mktime
+from django.core.serializers.json import DjangoJSONEncoder
 
 from django.core.urlresolvers import reverse
 from django.contrib import messages
@@ -17,10 +19,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
 from organizations.models import Facility
+from news.models import News
 from scheduler.models import Shift
 from google_tools.templatetags.google_links import google_maps_directions
 from scheduler.models import ShiftHelper
-from notifications.models import Notification
 from .forms import RegisterForShiftForm
 from volunteer_planner.utils import LoginRequiredMixin
 
@@ -54,6 +56,20 @@ def get_open_shifts():
     return shifts
 
 
+def getNewsFacility(facility):
+    news_query = News.objects.filter(facility=facility)
+    news = []
+    if news_query:
+
+        for item in news_query:
+            news.append({
+                'title':item.title,
+                'date':item.creation_date,
+                'text':item.text
+            })
+    return news
+
+
 class HelpDesk(LoginRequiredMixin, TemplateView):
     """
     Facility overview. First view that a volunteer gets redirected to when they log in.
@@ -77,6 +93,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
             used_places.add(facility.place.area)
             facility_list.append({
                 'name': facility.name,
+                'news': getNewsFacility(facility),
                 'address_line': address_line,
                 'google_maps_link': google_maps_directions(
                     address_line) if address_line else None,
@@ -96,10 +113,8 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
              sorted(used_places, key=lambda p: p.name)])
-        context['facility_json'] = json.dumps(facility_list)
+        context['facility_json'] = json.dumps(facility_list, cls=DjangoJSONEncoder)
         context['shifts'] = open_shifts
-        context['notifications'] = Notification.objects.all().select_related(
-            'facility')
         return context
 
 

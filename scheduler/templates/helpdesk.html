@@ -6,6 +6,9 @@
 {% block additional_js %}
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.js"></script>
+    <!-- TODO: Conditional for Languages -->
+    <script src="//code.angularjs.org/1.2.5/i18n/angular-locale_de-de.js"></script>
+    <!--<script src="//code.angularjs.org/1.2.5/i18n/angular-locale_en-gb.js"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
 
@@ -31,43 +34,30 @@
 
 {% load google_links i18n %}
 {% block content %}
-    {% if notifications %}
-        <div class="row">
-            <h2>{% trans "Important news" %}</h2>
-            {% for notification in notifications %}
-                <div>
-                    <h3>{{ notification.title }}</h3>
-                    <h4>
-                        {% blocktrans trimmed with facility_name=notification.facility.name date=notification.creation_date %}
-                            {{ facility_name }} on {{ date }}
-                        {% endblocktrans %}
-                    </h4>
-                    {{ notification.text|safe }}
-                </div>
-            {% endfor %}
-        </div>
-        <hr/>
-    {% endif %}
 
         <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
-            <h2>{% trans "Volunteers wanted" %}</h2>
+            <h2>{% trans "You can help in the following facilities" %}</h2>
             {% verbatim %}
+                <hr>
                 <div class="col-md12">
-                    {% endverbatim %}<h4>{% trans "filter areas" %}</h4>{% verbatim %}
-                    <button type="button"
-                            ng-repeat="area in areas"
-                            class="btn btn-default btn-sm"
+                    {% endverbatim %}<span>{% trans "filter" %}:</span>{% verbatim %}
+                    <label class="area-filter" ng-repeat="area in areas">
+                        <input type="checkbox" value="{{ area.name }}"
+
+                            class=""
                             ng-click="toggleArea(area.slug)"
-                            ng-class="{ 'btn-primary': selectedAreas.indexOf(area.slug) > -1 }"
-                            >{{ area.name }}</button>
+                            ng-class="{ 'fddf': selectedAreas.indexOf(area.slug) > -1 }"
+                            >{{ area.name }}
+                    </label>
                 </div>
+
                 <div class="area-accordions row">
                     <div class="col-md-12">
                         <div ng-repeat="facility in facilities" ng-show="selectedAreas.indexOf(facility.area_slug) > -1 || selectedAreas.length == 0">
                             <accordion>
                                 <accordion-group panel-class="panel-primary">
                                     <accordion-heading>
-                                        {{ facility.name }}
+                                        {{ facility.name }} {% endverbatim %}[{% trans "see more" %}]{% verbatim %} <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
                                     </accordion-heading>
                                     <div class="col-md-12">
                                         <div class="col-md-8">
@@ -76,6 +66,18 @@
                                                 <a target="_blank" ng-href="{{ facility.google_maps_link }}">→ Google Maps</a>
                                             </h5>
                                             <p ng-bind-html="facility.description"></p>
+
+
+                                            <h4 ng-show="facility.news[0]">{% endverbatim %}{% trans "News" %}{% verbatim %}</h4>
+
+
+                                        <div ng-repeat="news in facility.news">
+                                            <hr>
+                                        <h4>{{ news.title }} </h4>
+                                            <date><i> {{ news.date | date:'fullDate' }}</i></date>
+                                        <p ng-bind-html="news.text">{{ news.text }}</p>
+                                        </div>
+
                                         </div>
                                         <div class="col-md-4">
                                             {% endverbatim %}<h4>{% trans "open shifts" %}</h4>{% verbatim %}
@@ -87,6 +89,8 @@
                                             </p>
                                         </div>
                                     </div>
+
+
                                 </accordion-group>
                             </accordion>
                         </div>

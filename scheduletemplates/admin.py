@@ -2,10 +2,13 @@
 from datetime import timedelta, datetime, time
 
 from django import forms
+from django.conf.global_settings import SHORT_DATE_FORMAT
 from django.conf.urls import url
 from django.contrib import admin, messages
+from django.core.urlresolvers import reverse
 from django.db.models import Min, Count, Sum
-from django.forms.extras import SelectDateWidget
+from django.forms import DateInput
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
@@ -24,17 +27,30 @@ class ShiftTemplateInline(MembershipFilteredTabularInline):
     min_num = 0
     extra = 0
     facility_filter_fk = 'schedule_template__facility'
+    template = 'admin/scheduletemplates/shifttemplate/shift_template_inline.html'
 
 
 class ApplyTemplateForm(forms.Form):
     """
-    Form that lets one select a date. We mostly use it because it lets us use
-    Django's decent enough date selector.
+    Form that lets one select a date.
 
     TODO: Also select shifts via the form instead of inspecting raw POST data.
           https://docs.djangoproject.com/en/1.8/ref/forms/fields/#modelmultiplechoicefield
     """
-    apply_for_date = forms.DateField(widget=SelectDateWidget)
+
+    apply_for_date = forms.DateField(widget=DateInput)
+    date_format = SHORT_DATE_FORMAT
+
+    class Media:
+        css = {
+            'all': (
+                'jquery/css/jquery-ui.min.css',
+            )
+        }
+        js = (
+            'jquery/js/jquery.min.js',
+            'jquery/js/jquery-ui.min.js',
+        )
 
 
 @admin.register(ScheduleTemplate)
@@ -53,6 +69,13 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
     search_fields = ('name',)
     list_select_related = True
     radio_fields = {"facility": admin.VERTICAL}
+
+    def response_change(self, request, obj):
+        if "_save_and_apply" in request.POST:
+            redirect_url = reverse('admin:apply_schedule_template',
+                                   args=(obj._get_pk_val(),))
+            return HttpResponseRedirect(redirect_url)
+        return super(ScheduleTemplateAdmin, self).response_change(request, obj)
 
     def apply_schedule_template(self, request, pk):
         """
@@ -93,7 +116,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
             if not form.is_valid():
                 # Shouldn't happen, but let's make sure we don't proceed with
                 # applying shifts.
-                raise ValueError("Invalid date format")
+                raise ValueError("Invalid date format {}".format(form.errors))
 
             apply_date = form.cleaned_data['apply_for_date']
 

@@ -80,7 +80,8 @@ class ShiftTemplate(models.Model):
         return u'{time} {days}'.format(time=localize(self.ending_time),
                                        days=days_str).strip()
 
-    def __unicode__(self):
+    @property
+    def summary(self):
         return u'{}: {} x {}{} from {} to {}'.format(self.schedule_template,
                                                      self.slots,
                                                      self.task.name,
@@ -88,6 +89,15 @@ class ShiftTemplate(models.Model):
                                                          self.workplace.name) or u'',
                                                      self.starting_time,
                                                      self.localized_display_ending_time)
+
+    def __unicode__(self):
+
+        if self.workplace:
+            return _(u"{task_name} - {workplace_name}").format(
+                task_name=self.task.name,
+                workplace_name=self.workplace.name)
+        else:
+            return _(u"{task_name}").format(task_name=self.task.name)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):

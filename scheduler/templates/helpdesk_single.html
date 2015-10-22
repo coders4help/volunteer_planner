@@ -12,7 +12,7 @@
 
     {% include "partials/alert_messages.html" %}
 
-    {% regroup shifts by task as shifts_by_task %}
+
 
     <div class="row">
         <h2>
@@ -29,56 +29,85 @@
     <form method="POST">
         {% csrf_token %}
 
+        {% regroup shifts by task as shifts_by_task %}
+
         {% for shift_by_task in shifts_by_task %}
-            <div class="row">
-                {% with shift_by_task.grouper as task %}
-                    <h3>{{ task.name }}</h3>
+            {% with shift_by_task.grouper as task %}
 
-                    {% if task.description %}
-                        <p>
-                            {{ task.description|safe }}
-                        </p>
-                    {% endif %}
-                {% endwith %}
+                {% regroup shift_by_task.list by workplace as shifts_by_workplace %}
 
+                {% for shift_by_workplace in shifts_by_workplace %}
+                    {% with shift_by_workplace.grouper as workplace %}
 
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th colspan="2"
-                            width="10%">{% trans "Time" %}</th>
-                        <th colspan="3"
-                            width="80%">{% trans "Helpers" %}</th>
-                        <th colspan="1" width="10%"></th>
-                    </tr>
-                    <tr>
-                        <th width="5%">{% trans "Start" %}</th>
-                        <th width="5%">{% trans "End" %}</th>
+                        <div class="row">
+                            <h3>
+                                {% if workplace %}
+                                    {{ task.name }} - {{ workplace.name }}
+                                {% else %}
+                                    {{ task.name }}
+                                {% endif %}
+                            </h3>
 
-                        <th width="5%">{% trans "Required" %}</th>
-                        <th width="15%">{% trans "Status" %}</th>
-                        <th>{% trans "Users" %}</th>
-                        <th width="10%">{% trans "You" %}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for shift in shift_by_task.list %}
-                        {% with shift.volunteer_count|subtract:shift.slots as slots_left %}
-                            {% with shift.volunteer_count|divide:shift.slots as slots_percent %}
-                                {% with shift.helpers.all|contains:user.account as is_assigned %}
+                            {% if task.description %}
+                                <p>
+                                    {{ task.description|safe }}
+                                </p>
+                            {% endif %}
+                            {% if workplace.description %}
+                                <p>
+                                    <strong>{{ workplace.name }}</strong>: {{ workplace.description|safe }}
+                                </p>
+                            {% endif %}
 
-                                    <tr>
-                                        <td>
-                                            {{ shift.starting_time|date:"H:i" }}
-                                        </td>
-                                        <td>
-                                            {{ shift.ending_time|date:"H:i" }}
-                                        </td>
-                                        <td>
-                                            {{ shift.slots }}
-                                        </td>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th colspan="2" width="10%">
+                                        {% trans "Time" %}
+                                    </th>
+                                    <th colspan="3" width="80%">
+                                        {% trans "Helpers" %}
+                                    </th>
+                                    <th colspan="1" width="10%">
 
-                                        <td>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th width="5%">
+                                        {% trans "Start" %}
+                                    </th>
+                                    <th width="5%">
+                                        {% trans "End" %}
+                                    </th>
+                                    <th width="5%">
+                                        {% trans "Required" %}
+                                    </th>
+                                    <th width="15%">
+                                        {% trans "Status" %}
+                                    </th>
+                                    <th>
+                                        {% trans "Users" %}
+                                    </th>
+                                    <th width="10%">
+                                        {% trans "You" %}
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for shift in shift_by_workplace.list %}
+                                    {% with slots_left=shift.volunteer_count|subtract:shift.slots slots_percent=shift.volunteer_count|divide:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
+                                        <tr>
+                                            <td>
+                                                {{ shift.starting_time|date:"H:i" }}
+                                            </td>
+                                            <td>
+                                                {{ shift.ending_time|date:"H:i" }}
+                                            </td>
+                                            <td>
+                                                {{ shift.slots }}
+                                            </td>
+
+                                            <td>
                                         <span style="color:{% if slots_left %}red{% else %}green{% endif %};">
 
                                             {% if slots_left %}
@@ -88,63 +117,53 @@
                                             {% else %}
                                                 {% trans "Covered" %}
                                             {% endif %}
-                                            {% comment %}
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success"
-                                                         role="progressbar"
-                                                         aria-valuenow="{{ shift.volunteer_count }}"
-                                                         aria-valuemin="0"
-                                                         aria-valuemax="{{ shift.slots }}"
-                                                         style="width:{{ slots_percent }}%;">
-                                                        <span class="sr-only">40% Complete (success)</span>
-                                                    </div>
-                                                </div>
-                                            {% endcomment %}
                                         </span>
-                                        </td>
+                                            </td>
 
-                                        <td>
-                                            {% for volunteer in shift.helpers.all %}
+                                            <td>
+                                                {% for volunteer in shift.helpers.all %}
 
-                                                {% if volunteer.user == request.user %}
-                                                    <u><strong>{{ volunteer.user.username }}</strong></u>
-                                                {% else %}
-                                                    {{ volunteer.user.username }}
+                                                    {% if volunteer.user == request.user %}
+                                                        <u><strong>{{ volunteer.user.username }}</strong></u>
+                                                    {% else %}
+                                                        {{ volunteer.user.username }}
+                                                    {% endif %}
+
+
+                                                    {% if not forloop.last %}
+                                                        ,
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+
+                                            <td>
+                                                {% if is_assigned %}
+                                                    <button type="submit"
+                                                            name="leave_shift"
+                                                            value="{{ shift.pk }}"
+                                                            class="btn btn-danger delete-button">
+                                                        {% trans "Drop out" %}
+                                                    </button>
+                                                    {% elif slots_left %}
+                                                    <button type="submit"
+                                                            name="join_shift"
+                                                            value="{{ shift.pk }}"
+                                                            class="btn btn-info add-button">
+                                                        {% trans "Sign up" %}!
+                                                    </button>
                                                 {% endif %}
-
-
-                                                {% if not forloop.last %}
-                                                    ,
-                                                {% endif %}
-                                            {% endfor %}
-                                        </td>
-
-                                        <td>
-                                            {% if is_assigned %}
-                                                <button type="submit"
-                                                        name="leave_shift"
-                                                        value="{{ shift.pk }}"
-                                                        class="btn btn-danger delete-button">
-                                                    {% trans "Drop out" %}
-                                                </button>
-                                                {% elif slots_left %}
-                                                <button type="submit"
-                                                        name="join_shift"
-                                                        value="{{ shift.pk }}"
-                                                        class="btn btn-info add-button">
-                                                    {% trans "Sign up" %}!
-                                                </button>
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                {% endwith %}
-                            {% endwith %}
-                        {% endwith %}
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                                            </td>
+                                        </tr>
+                                    {% endwith %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+            {% endwith %}
         {% endfor %}
+
     </form>
 {% endblock %}
 

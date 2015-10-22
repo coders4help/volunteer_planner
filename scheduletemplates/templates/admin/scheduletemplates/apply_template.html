@@ -1,5 +1,31 @@
 {% extends "admin/change_form.html" %}
-{% load i18n admin_urls staticfiles %}
+{% load i18n l10n admin_urls staticfiles %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ apply_form.media }}
+    <script>
+        $(function () {
+            $("#{{ apply_form.apply_for_date.auto_id }}").datepicker({
+                firstDay: 1,
+                defaultDate: +1,
+                minDate: +0,
+                monthNames: gettext('January February March April May June July August September October November December').split(' '),
+                monthNamesShort: gettext('January February March April May June July August September October November December').split(' '),
+                dayNamesMin: gettext('S M T W T F S').split(' '),
+                dayNamesShort: gettext('S M T W T F S').split(' '),
+                firstDay: parseInt(get_format('FIRST_DAY_OF_WEEK')),
+                numberOfMonths: 3,
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                constrainInput: false,
+                showWeek: true,
+                weekHeader: "W",
+                dateFormat: "{{ apply_form.js_date_format|default:'apply_form' }}"
+            });
+        });
+    </script>
+{% endblock %}
 
 {% block breadcrumbs %}
     <div class="breadcrumbs">
@@ -31,10 +57,11 @@
             {% trans "ending time" as ending_trans %}
             {% regroup shift_templates by task as shifts_by_task %}
 
-            <h3>{% trans "Select a date (YYYY/MM/DD)" %} </h3>
+            <h3>{% trans "Select a date" %} </h3>
 
             <div>
                 {{ apply_form.apply_for_date }}
+
             </div>
 
             <h3>{% trans "Select shift templates" %}</h3>
