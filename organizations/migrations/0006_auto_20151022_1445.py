@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='facilitymembership',
             name='role',
-            field=models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Admin'), (1, 'Manager'), (2, 'Member')]),
+            field=models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'admin'), (1, 'manager'), (2, 'member')]),
         ),
         migrations.AlterField(
             model_name='organizationmembership',
             name='role',
-            field=models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Admin'), (1, 'Manager'), (2, 'Member')]),
+            field=models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'admin'), (1, 'manager'), (2, 'member')]),
         ),
     ]

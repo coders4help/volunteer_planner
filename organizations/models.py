@@ -106,9 +106,9 @@ class Membership(models.Model):
     class Roles:
         ADMIN, MANAGER, MEMBER = 0, 1, 2
         CHOICES = (
-            (ADMIN, _(u'admin').title()),
-            (MANAGER, _(u'manager').title()),
-            (MEMBER, _(u'member').title()),
+            (ADMIN, _(u'admin')),
+            (MANAGER, _(u'manager')),
+            (MEMBER, _(u'member')),
         )
 
     role = models.PositiveIntegerField(choices=Roles.CHOICES,
