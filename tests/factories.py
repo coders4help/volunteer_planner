@@ -3,7 +3,7 @@ import string
 
 import factory
 from django.contrib.auth.models import User
-from factory.fuzzy import FuzzyText
+from factory.fuzzy import FuzzyText, FuzzyDecimal
 
 from accounts import models as account_models
 from scheduler import models as scheduler_models
@@ -61,6 +61,8 @@ class FacilityFactory(factory.DjangoModelFactory):
     name = "Rathaus W"
     place = factory.SubFactory(PlaceFactory)
     organization = factory.SubFactory(OrganizationFactory)
+    latitude = FuzzyDecimal(47.0, 55.0)
+    longitude = FuzzyDecimal(5.7, 15.1)
 
     class Meta:
         model = organization_models.Facility
