@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 13:20+0200\n"
-"PO-Revision-Date: 2015-10-22 11:18+0000\n"
+"POT-Creation-Date: 2015-10-22 13:29+0200\n"
+"PO-Revision-Date: 2015-10-22 11:28+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
 "Language: de\n"
@@ -82,7 +82,7 @@ msgstr "https://www.google.de/maps/dir/{departure}/{destination}/"
 
 #: news/models.py:13
 msgid "creation date"
-msgstr ""
+msgstr "Datum"
 
 #: news/models.py:14
 msgid "title"
@@ -94,7 +94,7 @@ msgstr "Untertitel"
 
 #: news/models.py:16
 msgid "articletext"
-msgstr ""
+msgstr "Artikeltext"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:46
 #: templates/registration/login.html:3 templates/registration/login.html:10
@@ -563,7 +563,7 @@ msgstr "Organisationen"
 #: organizations/models.py:186 organizations/models.py:207
 #, python-brace-format
 msgid "{name}"
-msgstr ""
+msgstr "{name}"
 
 #: organizations/models.py:70 places/models.py:132
 msgid "place"
@@ -751,19 +751,19 @@ msgstr "Derzeit sind keine Schichten geplant für %(geographical_name)s."
 
 #: scheduler/templates/helpdesk.html:39
 msgid "You can help in the following facilities"
-msgstr ""
+msgstr "Du kannst in folgenden Einrichtungen helfen"
 
 #: scheduler/templates/helpdesk.html:43
 msgid "filter"
-msgstr ""
+msgstr "filtern"
 
 #: scheduler/templates/helpdesk.html:60
-msgid "[see more]"
-msgstr ""
+msgid "see more"
+msgstr "mehr anzeigen"
 
 #: scheduler/templates/helpdesk.html:71
 msgid "News"
-msgstr ""
+msgstr "Nachrichten"
 
 #: scheduler/templates/helpdesk.html:83
 msgid "open shifts"
@@ -956,12 +956,12 @@ msgstr "Schichtvorlage"
 #: scheduletemplates/models.py:96
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
-msgstr ""
+msgstr "{task_name} - {workplace_name}"
 
 #: scheduletemplates/models.py:100
 #, python-brace-format
 msgid "{task_name}"
-msgstr ""
+msgstr "{task_name}"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:32
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
@@ -986,7 +986,7 @@ msgstr "anwenden"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:60
 msgid "Select a date"
-msgstr ""
+msgstr "Wähle ein Datum"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:67
 msgid "Select shift templates"
@@ -1011,31 +1011,31 @@ msgstr "Ausgewählte Schichtvorlagen anwenden"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save and apply template"
-msgstr ""
+msgstr "Vorlage speichern und anwenden"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:4
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:5
 msgid "Save as new"
-msgstr ""
+msgstr "Als neu speichern"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:6
 msgid "Save and add another"
-msgstr ""
+msgstr "Speichern und neu hinzufügen"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:7
 msgid "Save and continue editing"
-msgstr ""
+msgstr "Speichern und weiter bearbeiten"
 
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:17
 msgid "Delete?"
-msgstr ""
+msgstr "Löschen?"
 
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
 msgid "Change"
-msgstr ""
+msgstr "Ändern"
 
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:33
 msgid "View on site"
@@ -1044,11 +1044,11 @@ msgstr "Auf der Seite anzeigen"
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:80
 #, python-format
 msgid "Add another %(verbose_name)s"
-msgstr ""
+msgstr "%(verbose_name)s erstellen"
 
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: shiftmailer/models.py:9
 msgid "first name"

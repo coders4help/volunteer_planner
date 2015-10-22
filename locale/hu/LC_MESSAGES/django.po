@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 13:20+0200\n"
-"PO-Revision-Date: 2015-10-22 11:18+0000\n"
+"POT-Creation-Date: 2015-10-22 13:29+0200\n"
+"PO-Revision-Date: 2015-10-22 11:28+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "Language: hu\n"
@@ -740,7 +740,7 @@ msgid "filter"
 msgstr ""
 
 #: scheduler/templates/helpdesk.html:60
-msgid "[see more]"
+msgid "see more"
 msgstr ""
 
 #: scheduler/templates/helpdesk.html:71
