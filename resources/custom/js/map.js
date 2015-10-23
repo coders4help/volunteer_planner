@@ -104,6 +104,18 @@
 
         });
     };
+
+    HEREMap.prototype.showOnly = function(marker_ids) {
+        for (var i = 0; i < this.markers.length; i++) {
+            var marker = this.markers[i];
+
+            if ($.inArray(marker.getData().id, marker_ids) > -1) {
+                marker.setVisibility(true);
+            } else {
+                marker.setVisibility(false);
+            }
+        }
+    };
 }
 
 /*
