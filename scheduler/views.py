@@ -85,14 +85,21 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
         facility_list = []
         used_places = set()
+        area_to_facilities = {}
 
         for facility, shifts_at_facility in shifts_by_facility:
             address_line = facility.address_line if facility.address else None
             shifts_by_date = itertools.groupby(shifts_at_facility,
                                                lambda s: s.starting_time.date())
             used_places.add(facility.place.area)
+            if facility.place.area.slug not in area_to_facilities:
+                area_to_facilities[facility.place.area.slug] = []
+            area_to_facilities[facility.place.area.slug].append(facility.id)
             facility_list.append({
+                'id': facility.id,
                 'name': facility.name,
+                'latitude': facility.latitude,
+                'longitude': facility.longitude,
                 'news': getNewsFacility(facility),
                 'address_line': address_line,
                 'google_maps_link': google_maps_directions(
@@ -113,6 +120,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
              sorted(used_places, key=lambda p: p.name)])
+        context['area_to_facility_json'] = json.dumps(area_to_facilities, cls=DjangoJSONEncoder)
         context['facility_json'] = json.dumps(facility_list, cls=DjangoJSONEncoder)
         context['shifts'] = open_shifts
         return context

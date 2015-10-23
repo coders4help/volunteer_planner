@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
 
 {% block html_attributes %} ng-app="vpWidgets"{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+{% endblock %}
 
 {% block additional_js %}
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -12,12 +17,46 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
 
-    <script>
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <script type="text/javascript" charset="UTF-8" src="{% static "custom/js/map.js" %}"></script>
+
+    <script type="text/javascript">
+        // Sample code for instantiating the platform and instantiating the map, adding some data
+        var platform = new H.service.Platform({
+            app_id: 'mZIEtVjJGeugdntBBM7B',
+            app_code: 'QyYAEUpGd0Nt0DDfh94YAA',
+            useCIT: true,
+            useHTTPS: true
+        });
+
+        // instantiates the map and draws it into a div with the ID 'map'
+        var map_instance = new HEREMap(platform.createDefaultLayers(), 'map');
+
+        var facilities = {{ facility_json | safe }};
+        for (var i = 0; i < facilities.length; i++) {
+            var facility = facilities[i];
+            map_instance.addViewportMarker(facility.latitude, facility.longitude, facility.id, facility);
+        }
+
+        // no special event listener is added for now - this call only enables activating the clicked marker
+        // we could use the event listener to highlight the corresponding facility in the list or move it to the top
+        map_instance.registerEventListener(function() {});
+
+        // sets the initial viewport - default center location will be Rathaus Wilmersdorf in Berlin if no facility is listed that has a latitude/longitude
+        map_instance.setViewport(52.490062, 13.314006, 14);
+
         angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
                 .controller('ShiftWidgetCtrl', function($scope) {
                     // this rather should be done through an nice REST api
+                    $scope.map = map_instance;
                     $scope.facilities = {{ facility_json | safe }};
                     $scope.areas = {{ areas_json | safe }};
+                    $scope.areasToFacility = {{ area_to_facility_json | safe }};
                     $scope.selectedAreas = [];
                     $scope.toggleArea = function (area) {
                         if ($scope.selectedAreas.indexOf(area) > -1) {
@@ -26,15 +65,25 @@
                             $scope.selectedAreas.push(area);
                         }
                     }
+                    $scope.showSelectedFacitlitiesOnMap = function() {
+                        var facility_ids = [];
+                        for (var i = 0; i < $scope.selectedAreas.length; i++) {
+                            var facility_ids_of_area = $scope.areasToFacility[$scope.selectedAreas[i]];
+                            for (var j = 0; j < facility_ids_of_area.length; j++) {
+                                facility_ids.push(facility_ids_of_area[j]);
+                            }
+                        }
+                        $scope.map.showOnly(facility_ids);
+                        map_instance.setViewport(52.490062, 13.314006, 14);
+                    }
                 });
 
     </script>
-
 {% endblock %}
 
 {% load google_links i18n %}
 {% block content %}
-
+        <div id="map" style="width:100%; height: 400px"></div>
         <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
             <h2>{% trans "You can help in the following facilities" %}</h2>
             {% verbatim %}
@@ -45,7 +94,7 @@
                         <input type="checkbox" value="{{ area.name }}"
 
                             class=""
-                            ng-click="toggleArea(area.slug)"
+                            ng-click="toggleArea(area.slug); showSelectedFacitlitiesOnMap()"
                             ng-class="{ 'fddf': selectedAreas.indexOf(area.slug) > -1 }"
                             >{{ area.name }}
                     </label>
