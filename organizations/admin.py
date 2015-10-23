@@ -78,7 +78,6 @@ def filter_queryset_by_membership(qs, user,
                 Q(**{facility_filter_fk + '_id__in': user_facilities}) |
                 Q(**{facility_filter_fk + '__organization_id__in': user_orgs})
             )
-    print qs
     return qs
 
 
