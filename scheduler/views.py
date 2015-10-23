@@ -1,25 +1,28 @@
 # coding: utf-8
 
-from datetime import date, datetime
+from datetime import date
 import logging
 import json
 import itertools
-from time import mktime
-from django.core.serializers.json import DjangoJSONEncoder
 
+from django.core.serializers.json import DjangoJSONEncoder
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.db.models import Count
+
 from django.templatetags.l10n import localize
+
 from django.utils.safestring import mark_safe
+
 from django.views.generic import TemplateView, FormView, DetailView
+
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
+from news.models import NewsEntry
 from organizations.models import Facility
-from news.models import News
 from scheduler.models import Shift
 from google_tools.templatetags.google_links import google_maps_directions
 from scheduler.models import ShiftHelper
@@ -48,25 +51,17 @@ def get_open_shifts():
     return shifts
 
 
-def getNewsFacility(facility):
-    news_query = News.objects.filter(facility=facility)
-    news = []
-    if news_query:
-
-        for item in news_query:
-            news.append({
-                'title':item.title,
-                'date':item.creation_date,
-                'text':item.text
-            })
-    return news
-
-
 class HelpDesk(LoginRequiredMixin, TemplateView):
     """
     Facility overview. First view that a volunteer gets redirected to when they log in.
     """
     template_name = "helpdesk.html"
+
+    @staticmethod
+    def serialize_news(news_entries):
+        return [dict(title=news_entry.title,
+                     date=news_entry.creation_date,
+                     text=news_entry.text) for news_entry in news_entries]
 
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
@@ -85,7 +80,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
             used_places.add(facility.place.area)
             facility_list.append({
                 'name': facility.name,
-                'news': getNewsFacility(facility),
+                'news': self.serialize_news(NewsEntry.objects.filter(facility=facility)),
                 'address_line': address_line,
                 'google_maps_link': google_maps_directions(
                     address_line) if address_line else None,
@@ -105,7 +100,8 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
              sorted(used_places, key=lambda p: p.name)])
-        context['facility_json'] = json.dumps(facility_list, cls=DjangoJSONEncoder)
+        context['facility_json'] = json.dumps(facility_list,
+                                              cls=DjangoJSONEncoder)
         context['shifts'] = open_shifts
         return context
 
