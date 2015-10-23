@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 13:29+0200\n"
+"POT-Creation-Date: 2015-10-23 21:02+0200\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/admin.py:15 accounts/admin.py:22 shiftmailer/models.py:9
+msgid "first name"
+msgstr ""
+
+#: accounts/admin.py:28 non_logged_in_area/templates/faqs.html:70
+#: non_logged_in_area/templates/faqs.html:138 shiftmailer/models.py:13
+msgid "email"
+msgstr ""
 
 #: accounts/apps.py:8 accounts/apps.py:16
 msgid "Accounts"
@@ -68,19 +77,19 @@ msgctxt "maps directions url pattern"
 msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
 msgstr ""
 
-#: news/models.py:13
+#: news/models.py:14
 msgid "creation date"
 msgstr ""
 
-#: news/models.py:14
+#: news/models.py:15
 msgid "title"
 msgstr ""
 
-#: news/models.py:15
+#: news/models.py:16
 msgid "subtitle"
 msgstr ""
 
-#: news/models.py:16
+#: news/models.py:18
 msgid "articletext"
 msgstr ""
 
@@ -162,11 +171,6 @@ msgstr ""
 #: non_logged_in_area/templates/faqs.html:66
 msgctxt "FAQ Q3"
 msgid "Are there more shelters coming into volunteer-planner?"
-msgstr ""
-
-#: non_logged_in_area/templates/faqs.html:70
-#: non_logged_in_area/templates/faqs.html:138 shiftmailer/models.py:13
-msgid "email"
 msgstr ""
 
 #: non_logged_in_area/templates/faqs.html:72
@@ -504,6 +508,10 @@ msgid ""
 "                    "
 msgstr ""
 
+#: organizations/admin.py:126 organizations/admin.py:128
+msgid "edit"
+msgstr ""
+
 #: organizations/models.py:11 organizations/models.py:48
 #: organizations/models.py:175 organizations/models.py:196 places/models.py:20
 #: scheduletemplates/models.py:13
@@ -514,10 +522,13 @@ msgstr ""
 msgid "short description"
 msgstr ""
 
-#: organizations/models.py:19 organizations/models.py:22
-#: organizations/models.py:56 organizations/models.py:59
+#: organizations/models.py:19 organizations/models.py:56
 #: organizations/models.py:178 organizations/models.py:199
 msgid "description"
+msgstr ""
+
+#: organizations/models.py:22 organizations/models.py:59
+msgid "contact info"
 msgstr ""
 
 #: organizations/models.py:25 organizations/models.py:74
@@ -612,7 +623,7 @@ msgid "{username} at {facility_name} ({user_role})"
 msgstr ""
 
 #: organizations/models.py:181 scheduler/models.py:23
-#: scheduletemplates/models.py:42
+#: scheduletemplates/models.py:40
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "workplace"
@@ -623,7 +634,7 @@ msgid "workplaces"
 msgstr ""
 
 #: organizations/models.py:202 scheduler/models.py:21
-#: scheduletemplates/models.py:38
+#: scheduletemplates/models.py:37
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "task"
@@ -665,22 +676,33 @@ msgstr ""
 msgid "places"
 msgstr ""
 
+#: scheduler/admin.py:28
+msgid "number of volunteers"
+msgstr ""
+
+#: scheduler/admin.py:42
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
+msgid "volunteers"
+msgstr ""
+
 #: scheduler/apps.py:8
 msgid "Scheduler"
 msgstr ""
 
-#: scheduler/models.py:18 scheduletemplates/models.py:35
+#: scheduler/models.py:18 scheduletemplates/models.py:34
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
 msgid "number of needed volunteers"
 msgstr ""
 
-#: scheduler/models.py:30 scheduletemplates/models.py:47
+#: scheduler/models.py:30 scheduletemplates/admin.py:34
+#: scheduletemplates/models.py:44
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "starting time"
 msgstr ""
 
-#: scheduler/models.py:32 scheduletemplates/models.py:50
+#: scheduler/models.py:32 scheduletemplates/admin.py:37
+#: scheduletemplates/models.py:47
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "ending time"
@@ -690,11 +712,11 @@ msgstr ""
 msgid "shift"
 msgstr ""
 
-#: scheduler/models.py:44 scheduletemplates/admin.py:241
+#: scheduler/models.py:44 scheduletemplates/admin.py:259
 msgid "shifts"
 msgstr ""
 
-#: scheduler/models.py:58 scheduletemplates/models.py:76
+#: scheduler/models.py:58 scheduletemplates/models.py:73
 #, python-brace-format
 msgid "the next day"
 msgid_plural "after {number_of_days} days"
@@ -877,33 +899,33 @@ msgstr ""
 msgid "You successfully left this shift."
 msgstr ""
 
-#: scheduletemplates/admin.py:141
+#: scheduletemplates/admin.py:159
 #, python-brace-format
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scheduletemplates/admin.py:196
+#: scheduletemplates/admin.py:214
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scheduletemplates/admin.py:205
+#: scheduletemplates/admin.py:223
 msgid "Something didn't work. Sorry about that."
 msgstr ""
 
-#: scheduletemplates/admin.py:235
+#: scheduletemplates/admin.py:253
 msgid "slots"
 msgstr ""
 
-#: scheduletemplates/admin.py:247
+#: scheduletemplates/admin.py:265
 msgid "from"
 msgstr ""
 
-#: scheduletemplates/admin.py:260
+#: scheduletemplates/admin.py:278
 msgid "to"
 msgstr ""
 
@@ -911,28 +933,28 @@ msgstr ""
 msgid "schedule templates"
 msgstr ""
 
-#: scheduletemplates/models.py:22 scheduletemplates/models.py:31
+#: scheduletemplates/models.py:22 scheduletemplates/models.py:30
 msgid "schedule template"
 msgstr ""
 
-#: scheduletemplates/models.py:53
+#: scheduletemplates/models.py:50
 msgid "days"
 msgstr ""
 
-#: scheduletemplates/models.py:61
+#: scheduletemplates/models.py:58
 msgid "shift templates"
 msgstr ""
 
-#: scheduletemplates/models.py:62
+#: scheduletemplates/models.py:59
 msgid "shift template"
 msgstr ""
 
-#: scheduletemplates/models.py:96
+#: scheduletemplates/models.py:93
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr ""
 
-#: scheduletemplates/models.py:100
+#: scheduletemplates/models.py:97
 #, python-brace-format
 msgid "{task_name}"
 msgstr ""
@@ -973,10 +995,6 @@ msgstr ""
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
 #, python-format
 msgid "Please review and confirm shifts to create on %(localized_date)s for %(facility_name)s"
-msgstr ""
-
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
-msgid "volunteers"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:121
@@ -1022,10 +1040,6 @@ msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
 msgid "Remove"
-msgstr ""
-
-#: shiftmailer/models.py:9
-msgid "first name"
 msgstr ""
 
 #: shiftmailer/models.py:10
@@ -1285,14 +1299,14 @@ msgstr ""
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: volunteer_planner/settings/base.py:141
+#: volunteer_planner/settings/base.py:142
 msgid "German"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:142
+#: volunteer_planner/settings/base.py:143
 msgid "English"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:143
+#: volunteer_planner/settings/base.py:144
 msgid "Hungarian"
 msgstr ""
