@@ -134,8 +134,10 @@ class MembershipFilteredTabularInline(admin.TabularInline):
 
 class MembershipFieldListFilter(admin.RelatedFieldListFilter):
     def field_choices(self, field, request, model_admin):
-        qs = filter_queryset_by_membership(field.rel.to.objects.all(),
-                                           request.user)
+        query = field.rel.to.objects.all()
+        query = query.annotate(usage_count=Count(field.related_query_name()))
+        query = query.exclude(usage_count=0)
+        qs = filter_queryset_by_membership(query, request.user)
         return [(x._get_pk_val(), smart_text(x)) for x in qs]
 
 
