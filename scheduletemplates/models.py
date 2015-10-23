@@ -22,8 +22,7 @@ class ScheduleTemplate(models.Model):
         verbose_name = _('schedule template')
 
     def __unicode__(self):
-        return u'{} / {}'.format(self.name,
-                                 self.facility.name)
+        return u'{}'.format(self.name)
 
 
 class ShiftTemplate(models.Model):

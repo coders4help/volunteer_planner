@@ -1,10 +1,13 @@
 # coding: utf-8
 from django.contrib import admin
 from django.db.models import Count
+from django.utils.translation import ugettext_lazy as _
 
 from . import models
-from organizations.admin import MembershipFilteredAdmin, \
+from organizations.admin import (
+    MembershipFilteredAdmin,
     MembershipFieldListFilter
+)
 
 
 @admin.register(models.Shift)
@@ -22,15 +25,22 @@ class ShiftAdmin(MembershipFilteredAdmin):
     def get_volunteer_count(self, obj):
         return obj.volunteer_count
 
+    get_volunteer_count.short_description = _(u'number of volunteers')
+    get_volunteer_count.admin_order_field = 'volunteer_count'
+
     def get_volunteer_names(self, obj):
         def _format_username(user):
             full_name = user.get_full_name()
+            username = u'{}<br><strong>{}</strong>'.format(user.username, user.email)
             if full_name:
-                return u'{} ("{}")'.format(full_name, user.username)
-            return u'"{}"'.format(user.username)
+                username = u'{} / {}'.format(full_name, username)
+            return u'<li>{}</li>'.format(username)
 
-        return u", ".join(_format_username(volunteer.user) for volunteer in
-                          obj.helpers.all())
+        return u"<ul>{}</ul>".format(u"\n".join(_format_username(volunteer.user) for volunteer in
+                          obj.helpers.all()))
+
+    get_volunteer_names.short_description = _(u'volunteers')
+    get_volunteer_names.allow_tags = True
 
     list_display = (
         'task',
