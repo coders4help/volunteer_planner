@@ -39,6 +39,8 @@ DJANGO_APPS = (
     'djangocms_admin_style',
     # Admin panel and documentation:
     'django.contrib.admin',
+    # 'django.contrib.admindocs',
+    'restless',
 )
 
 THIRD_PARTY_APPS = (
