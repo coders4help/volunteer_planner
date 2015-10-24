@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^account/', include('accounts.urls')),
     url(r'^faq/', TemplateView.as_view(template_name='faq.html'), name="faq"),
     url(r'^helpdesk/', include('scheduler.urls')),
+    url(r'^orgs/', include('organizations.urls')),
     url(r'^places/', include('scheduler.place_urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),

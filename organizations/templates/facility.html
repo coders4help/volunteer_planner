@@ -1,0 +1,37 @@
+{% extends "helpdesk_base.html" %}
+
+{% load i18n vpfilters %}
+
+{% block helpdesk_content %}
+
+<h1>{{ facility.name }}</h1>
+
+{% if facility.address %}
+    <p>
+        {{ facility.address_line }}
+        <a target="_blank" href="{{ facility.google_maps_link }}">→ Google Maps</a>
+    </p>
+{% endif %}
+
+{{ facility.contact_info | safe }}
+
+{{ facility.description | safe }}
+
+<h4>{% trans "Open Shifts" %}</h4>
+<p>
+    {% for shift in facility.shifts %}
+        <a href="{{ shift.link }}">{{ shift.date_string }}</a>
+        <br>
+    {% endfor %}
+</p>
+
+{% if facility.news %}
+    <h4>{% trans "News" %}</h4>
+    {% for news in facility.news %}
+        <h5>{{ news.title }}</h5>
+        <date><i>{{ news.date }}</i></date>
+        {{ news.text | safe }}
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

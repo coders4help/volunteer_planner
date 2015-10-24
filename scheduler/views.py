@@ -23,6 +23,7 @@ from django.utils.translation import ugettext_lazy as _
 from accounts.models import UserAccount
 from news.models import NewsEntry
 from organizations.models import Facility
+from organizations.views import get_facility_details
 from scheduler.models import Shift
 from google_tools.templatetags.google_links import google_maps_directions
 from scheduler.models import ShiftHelper
@@ -66,7 +67,6 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
         open_shifts = get_open_shifts()
-
         shifts_by_facility = itertools.groupby(open_shifts,
                                                lambda s: s.facility)
 
@@ -74,28 +74,8 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         used_places = set()
 
         for facility, shifts_at_facility in shifts_by_facility:
-            address_line = facility.address_line if facility.address else None
-            shifts_by_date = itertools.groupby(shifts_at_facility,
-                                               lambda s: s.starting_time.date())
             used_places.add(facility.place.area)
-            facility_list.append({
-                'name': facility.name,
-                'news': self.serialize_news(NewsEntry.objects.filter(facility=facility)),
-                'address_line': address_line,
-                'google_maps_link': google_maps_directions(
-                    address_line) if address_line else None,
-                'description': mark_safe(facility.description),
-                'area_slug': facility.place.area.slug,
-                'shifts': [{
-                               'date_string': localize(shift_date),
-                               'link': reverse('planner_by_facility', kwargs={
-                                   'pk': facility.pk,
-                                   'year': shift_date.year,
-                                   'month': shift_date.month,
-                                   'day': shift_date.day,
-                               })
-                           } for shift_date, shifts_of_day in shifts_by_date]
-            })
+            facility_list.append(get_facility_details(facility, shifts_at_facility))
 
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
