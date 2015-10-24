@@ -22,8 +22,7 @@ class ScheduleTemplate(models.Model):
         verbose_name = _('schedule template')
 
     def __unicode__(self):
-        return u'{} / {}'.format(self.name,
-                                 self.facility.name)
+        return u'{}'.format(self.name)
 
 
 class ShiftTemplate(models.Model):
@@ -35,12 +34,10 @@ class ShiftTemplate(models.Model):
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
     task = models.ForeignKey('organizations.Task',
-                             verbose_name=_(u'task'),
-                             related_name='+')
+                             verbose_name=_(u'task'),)
 
     workplace = models.ForeignKey('organizations.Workplace',
                                   verbose_name=_(u'workplace'),
-                                  related_name='+',
                                   null=True,
                                   blank=True)
 

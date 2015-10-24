@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta, datetime, time
 
+from django.utils import formats
 from django import forms
 from django.conf.global_settings import SHORT_DATE_FORMAT
 from django.conf.urls import url
 from django.contrib import admin, messages
 from django.core.urlresolvers import reverse
 from django.db.models import Min, Count, Sum
-from django.forms import DateInput
+from django.forms import DateInput, TimeInput
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
@@ -15,19 +16,37 @@ from django.templatetags.l10n import localize
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
-from .models import ScheduleTemplate, ShiftTemplate
+from . import models
 from organizations.admin import (MembershipFilteredAdmin,
                                  MembershipFilteredTabularInline,
-                                 MembershipFieldListFilter)
-from scheduler.models import Shift
+                                 MembershipFieldListFilter,
+                                 filter_queryset_by_membership)
+from scheduler import models as scheduler_models
+
+
+class ShiftTemplateForm(forms.ModelForm):
+    time_formats = formats.get_format('TIME_INPUT_FORMATS') + ('%H', '%H%M')
+
+    class Meta:
+        model = models.ShiftTemplate
+        fields = '__all__'
+
+    starting_time = forms.TimeField(label=_(u'starting time'),
+                                    widget=TimeInput,
+                                    input_formats=time_formats)
+    ending_time = forms.TimeField(label=_(u'ending time'),
+                                  widget=TimeInput,
+                                  input_formats=time_formats)
 
 
 class ShiftTemplateInline(MembershipFilteredTabularInline):
-    model = ShiftTemplate
+    model = models.ShiftTemplate
+
     min_num = 0
     extra = 0
     facility_filter_fk = 'schedule_template__facility'
     template = 'admin/scheduletemplates/shifttemplate/shift_template_inline.html'
+    form = ShiftTemplateForm
 
 
 class ApplyTemplateForm(forms.Form):
@@ -53,7 +72,7 @@ class ApplyTemplateForm(forms.Form):
         )
 
 
-@admin.register(ScheduleTemplate)
+@admin.register(models.ScheduleTemplate)
 class ScheduleTemplateAdmin(MembershipFilteredAdmin):
     inlines = [ShiftTemplateInline]
     list_display = (
@@ -68,7 +87,6 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
     )
     search_fields = ('name',)
     list_select_related = True
-    radio_fields = {"facility": admin.VERTICAL}
 
     def response_change(self, request, obj):
         if "_save_and_apply" in request.POST:
@@ -91,8 +109,8 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
         shift_templates = schedule_template.shift_templates.all()
 
         context = dict(self.admin_site.each_context(request))
-        context[
-            "opts"] = self.model._meta  # Needed for admin template breadcrumbs
+        context["opts"] = self.model._meta
+        # Needed for admin template breadcrumbs
 
         # Phase 1
         if request.method == 'GET':
@@ -128,7 +146,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
 
             # Phase 2: display a preview of whole day
             if request.POST.get('preview'):
-                existing_shifts = Shift.objects.filter(
+                existing_shifts = scheduler_models.Shift.objects.filter(
                     facility=schedule_template.facility)
                 existing_shifts = existing_shifts.on_shiftdate(apply_date)
                 existing_shifts = existing_shifts.select_related('task',
@@ -150,7 +168,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                     # returns (task, workplace, start_time and is_template)
                     # to make combined list sortable
                     def __shift_key(shift):
-                        is_template = isinstance(shift, ShiftTemplate)
+                        is_template = isinstance(shift, models.ShiftTemplate)
                         task = shift.task.id if shift.task else 0
                         workplace = shift.workplace.id if shift.workplace else 0
                         shift_start = shift.starting_time
@@ -184,7 +202,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                 for template in selected_shift_templates:
                     starting_time = datetime.combine(apply_date,
                                                      template.starting_time)
-                    Shift.objects.create(
+                    scheduler_models.Shift.objects.create(
                         facility=template.schedule_template.facility,
                         starting_time=starting_time,
                         ending_time=starting_time + template.duration,
@@ -253,17 +271,18 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                                                         '-ending_time')[
                            0:1].get()
             return latest_shift.localized_display_ending_time
-        except ShiftTemplate.DoesNotExist:
+        except models.ShiftTemplate.DoesNotExist:
             pass
         return None
 
     get_latest_ending_time.short_description = _('to')
 
 
-@admin.register(ShiftTemplate)
+@admin.register(models.ShiftTemplate)
 class ShiftTemplateAdmin(MembershipFilteredAdmin):
+    form = ShiftTemplateForm
     list_display = (
-        u'id',
+        'get_edit_link',
         'schedule_template',
         'slots',
         'task',
@@ -271,15 +290,26 @@ class ShiftTemplateAdmin(MembershipFilteredAdmin):
         'starting_time',
         'ending_time',
         'days',
-
     )
-    # list_filter = ('schedule_template__facility', 'task', 'workplace')
-
     list_filter = (
         ('schedule_template__facility', MembershipFieldListFilter),
+        ('schedule_template', MembershipFieldListFilter),
         ('task', MembershipFieldListFilter),
         ('workplace', MembershipFieldListFilter),
     )
-
+    search_fields = (
+        'schedule_template__name',
+        'task__name',
+        'workplace__name',
+        'schedule_template__facility__name',
+        'schedule_template__facility__organization__name',
+    )
     facility_filter_fk = 'schedule_template__facility'
-    radio_fields = {"schedule_template": admin.VERTICAL}
+
+    def get_field_queryset(self, db, db_field, request):
+        qs = super(ShiftTemplateAdmin, self).get_field_queryset(
+            db, db_field, request)
+        if db_field.rel.to == models.ScheduleTemplate:
+            qs = qs or db_field.rel.to.objects.all()
+            qs = filter_queryset_by_membership(qs, request.user)
+        return qs
