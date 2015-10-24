@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+
+{% block content %}
+<div class="">
+    <h1>Create new shift</h1>
+    
+    {% include "organizations/shift_details.html" %}
+    
+    <br>
+    <!--The dates at which the shift is to be scheduled-->
+    Dates:<br>
+    <!--TODO for loop for the next 21 days-->
+    <form class="">
+        <input type="checkbox" name="save_as_template" value="template">Save as template</input><br>
+         <button type="button">Create</button>
+         <button type="button">Cancel</button>
+    </form>
+</div>
+{% endblock %}

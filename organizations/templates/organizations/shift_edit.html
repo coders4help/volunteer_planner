@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+
+{% block content %}
+<div class="">
+    <h1>Edit shift</h1>
+    
+    {% include "organizations/shift_details.html" %}
+    
+    <br>
+    <!--The date at which the shift is to be scheduled-->
+    Date:<br>
+    <input type="text" name="date">
+    <form class="">
+         <button type="button">Save</button>
+         <button type="button">Cancel</button>
+    </form>
+</div>
+{% endblock %}
