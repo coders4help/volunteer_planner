@@ -3,7 +3,6 @@ from datetime import timedelta, datetime, time
 
 from django.utils import formats
 from django import forms
-from django.conf.global_settings import SHORT_DATE_FORMAT
 from django.conf.urls import url
 from django.contrib import admin, messages
 from django.core.urlresolvers import reverse
@@ -49,6 +48,22 @@ class ShiftTemplateInline(MembershipFilteredTabularInline):
     form = ShiftTemplateForm
 
 
+JQUERYUI_FORMAT_MAPPING = {
+    '%Y': 'yy',
+    '%y': 'y',
+    '%m': 'mm',
+    '%b': 'M',
+    '%d': 'dd',
+    '%B': 'MM',
+}
+
+
+def translate_date_format(format_string, mappings=JQUERYUI_FORMAT_MAPPING):
+    for k, v in mappings.iteritems():
+        format_string = format_string.replace(k, v)
+    return format_string
+
+
 class ApplyTemplateForm(forms.Form):
     """
     Form that lets one select a date.
@@ -58,7 +73,11 @@ class ApplyTemplateForm(forms.Form):
     """
 
     apply_for_date = forms.DateField(widget=DateInput)
-    date_format = SHORT_DATE_FORMAT
+
+    def __init__(self, *args, **kwargs):
+        super(ApplyTemplateForm, self).__init__(*args, **kwargs)
+        self.js_date_format = translate_date_format(
+            formats.get_format_lazy('DATE_INPUT_FORMATS')[0])
 
     class Media:
         css = {
