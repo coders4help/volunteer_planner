@@ -17,6 +17,12 @@
             <ul class="nav navbar-nav">
                 {% include "partials/region_selection.html" %}
 
+				<li>
+					{% url 'shift_management' as shifts_url %}
+					<a href="{{ shifts_url }}" {% if shifts_url in reqeust.path %}class="active"{% endif %}>
+					Shifts
+					</a>
+				</li>
                 <li>
                     {% url 'faq' as faq_url %}
                     <a href="{{ faq_url }}" {% if faq_url in reqeust.path %}class="active"{% endif %}>
