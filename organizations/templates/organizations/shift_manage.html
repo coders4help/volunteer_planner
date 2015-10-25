@@ -8,13 +8,23 @@
 <div class="">
     <h1>Manage shifts</h1>
     <button type="button">Add shift</button>
-    <table>
+    <table border="1">
         <tr>
             <th>Date</th>
             <th>Location</th>
             <th>Task</th>
             <th>Actions</th>
         </tr>
+    {% for shift in shifts %}
+        <tr>
+            <td>{{ shift.starting_time }}</td>
+            <td>{{ shift.facility }}</td>
+            <td>{{ shift.task }}</td>
+            <td><button type="button">Edit</button>  <button type="button">Delete</button>  </td>
+        </tr>
+    {% endfor %}
+        
+        
     </table>
 </div>
 {% endblock %}
