@@ -7,10 +7,8 @@
 {% block content %}
 <div class="">
     <h1>Manage shifts</h1>
-    <button type="button">
-	  <a href="{% url 'shift_new' %}">Add shift
-	  </a>
-    </button>
+	<a class="btn btn-default" href="{% url 'shift_new' %}" role="button">Add shift
+	</a>
     <table border="1">
         <tr>
             <th>Date</th>
@@ -24,14 +22,10 @@
             <td>{{ shift.facility }} ({{ shift.facility.organization }})</td>
             <td>{{ shift.task }}</td>
             <td>
-                <button type="button">
-                    <a href="{% url 'shift_edit' shift.id %}">Edit
-                    </a>
-                </button>
-                <button type="button">
-                    <a href="{% url 'shift_delete' shift.id %}">Delete
-                    </a>
-                </button>
+				<a class="btn btn-default btn-sm" href="{% url 'shift_edit' shift.id %}" role="button">Edit
+				</a>
+				<a class="btn btn-default btn-sm" href="{% url 'shift_delete' shift.id %}" role="button">Delete
+				</a>
             </td>
         </tr>
     {% endfor %}
