@@ -21,7 +21,7 @@
     {% for shift in shifts %}
         <tr>
             <td>{{ shift.starting_time }}</td>
-            <td>{{ shift.facility }}</td>
+            <td>{{ shift.facility }} ({{ shift.facility.organization }})</td>
             <td>{{ shift.task }}</td>
             <td>
                 <button type="button">
