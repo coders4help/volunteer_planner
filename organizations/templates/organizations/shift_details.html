@@ -8,7 +8,7 @@
     </select>
     <br>
     Task:<br>
-    <input type="text" name="task">
+    <input type="text" name="task" value="{{ shift.task }}">
     <br>
     Description:<br>
     <textarea rows="4" cols="50"></textarea>
@@ -19,9 +19,9 @@
             <th>Max. volunteers</th>
         </tr>
         <tr>
-            <td><input type="text" name="time_start_1"></td>
-            <td><input type="text" name="time_end_1"></td>
-            <td><input type="text" name="max_vol_1"></td>
+            <td><input type="text" name="time_start_1" value="{{ shift.starting_time }}"></td>
+            <td><input type="text" name="time_end_1" value="{{ shift.starting_time }}"></td>
+            <td><input type="text" name="max_vol_1" value="{{ shift.slots }}"></td>
         <tr>
     </table>
     <button type="button">Add line</button>

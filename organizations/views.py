@@ -19,3 +19,24 @@ def shift_management(request):
     context = {'shifts': all_shifts}
     
     return render(request, 'organizations/shift_manage.html', context)
+
+@login_required()
+def shift_new(request):
+    context = {}
+
+    return render(request, 'organizations/shift_new.html', context)
+
+@login_required()
+def shift_edit(request, shift_id):
+    shift = Shift.objects.get(id=shift_id)
+
+    context = {'shift': shift}
+
+    return render(request, 'organizations/shift_edit.html', context)
+
+@login_required()
+def shift_delete(request, shift_id):
+    context = {}
+
+	# TODO: implement delete and redirect
+    return render(request, 'organizations/shift_edit.html', context)
