@@ -55,6 +55,7 @@
 
                                 {% regroup shifts_in_place.list by facility as shifts_by_facility %}
 
+                                {# TODO: Include template partials/compact_facility.html #}
                                 {% for shifts_in_facility in shifts_by_facility %}
                                     <div class="row">
                                         {% with shifts_in_facility.grouper as facility %}

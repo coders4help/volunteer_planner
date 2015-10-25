@@ -5,7 +5,6 @@ from django.db import models
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
-from organizations.models import Facility
 from places.models import Country, Region, Area, Place
 from . import managers
 

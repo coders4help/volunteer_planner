@@ -1,0 +1,45 @@
+{% load i18n google_links %}
+
+<div class="row">
+    <div class="col-md-8">
+        <h3>{{ facility.name }}</h3>
+
+        {% if facility.address %}
+            <p>
+                {{ facility.address_line }}
+                <a target="_blank" href="{{ facility.address_line|google_maps_directions }}">→ Google Maps</a>
+            </p>
+        {% endif %}
+
+        <p>
+            {% if facility.short_description %}
+                {{ facility.short_description|safe }}
+            {% else %}
+                {{ facility.description|truncatechars_html:150|safe }}
+            {% endif %}
+        </p>
+
+        <p>
+            <a href="{% url "facility" facility.organization.id facility.id %}">{% trans "Show details" %}</a>
+        </p>
+    </div>
+
+    {# TODO: Should be optimized (see Facility.open_shifts) #}
+    {% regroup facility.open_shifts.all by starting_time.date as shifts_by_day %}
+    {% if shifts_by_day %}
+        <div class="pull-right">
+            <h4>{% trans "Open Shifts" %}</h4>
+
+            <p>
+                {% for shifts_on_day in shifts_by_day %}
+                    {% with shifts_on_day.grouper as shift_date %}
+                        <a href="{% url 'planner_by_facility' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                            {{ shift_date|date }}
+                        </a>
+                        <br/>
+                    {% endwith %}
+                {% endfor %}
+            </p>
+        </div>
+    {% endif %}
+</div>

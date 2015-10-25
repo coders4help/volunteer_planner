@@ -8,7 +8,15 @@ from django.templatetags.l10n import localize
 from scheduler.models import Shift
 from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
-from .models import Facility
+from .models import Organization, Facility
+
+class OrganizationView(DetailView):
+    template_name = 'organization.html'
+    model = Organization
+
+    def get_queryset(self):
+        qs = super(OrganizationView, self).get_queryset()
+        return qs.prefetch_related('facilities')
 
 class FacilityView(DetailView):
     template_name = 'facility.html'
@@ -16,7 +24,7 @@ class FacilityView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(FacilityView, self).get_context_data(**kwargs)
-        shifts = Shift.objects.filter(facility_id=self.object.pk)
+        shifts = Shift.open_shifts.filter(facility=self.object)
         context['facility'] = get_facility_details(self.object, shifts)
         return context
 
@@ -40,7 +48,8 @@ def get_facility_details(facility, shifts):
                            'month': shift_date.month,
                            'day': shift_date.day,
                        })
-                   } for shift_date, shifts_of_day in shifts_by_date]
+                   } for shift_date, shifts_of_day in shifts_by_date],
+        'organization': {'id': facility.organization.id, 'name': facility.organization.name}
     }
 
 def _serialize_news(news_entries):

@@ -2,8 +2,9 @@
 
 from django.conf.urls import url
 
-from .views import FacilityView
+from .views import OrganizationView, FacilityView
 
 urlpatterns = [
-    url(r'^facility/(?P<pk>[^/]+)$', FacilityView.as_view(), name='facility')
+    url(r'^(?P<pk>[^/]+)$', OrganizationView.as_view(), name='organization'),
+    url(r'^(?P<orgpk>[^/]+)/facilities/(?P<pk>[^/]+)$', FacilityView.as_view(), name='facility')
 ]

@@ -6,7 +6,7 @@
 
 <h1>{{ facility.name }}</h1>
 
-{% if facility.address %}
+{% if facility.address_line %}
     <p>
         {{ facility.address_line }}
         <a target="_blank" href="{{ facility.google_maps_link }}">→ Google Maps</a>
@@ -16,6 +16,11 @@
 {{ facility.contact_info | safe }}
 
 {{ facility.description | safe }}
+
+<p>
+    {% trans "Operated by: " %}
+    <a href="{% url "organization" facility.organization.id %}">{{ facility.organization.name }}</a>
+</p>
 
 <h4>{% trans "Open Shifts" %}</h4>
 <p>

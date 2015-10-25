@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
+from scheduler.models import Shift
 
 
 class Organization(models.Model):
@@ -95,6 +96,11 @@ class Facility(models.Model):
     @property
     def address_line(self):
         return self.address.replace("\n", ", ").strip()
+
+    # TODO: Could this be implemented in a more optimized way?
+    @property
+    def open_shifts(self):
+        return Shift.open_shifts.filter(facility=self)
 
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
