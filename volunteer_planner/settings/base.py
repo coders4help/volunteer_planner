@@ -32,6 +32,7 @@ DJANGO_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.flatpages',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
@@ -65,6 +66,7 @@ LOCAL_APPS = (
     'scheduletemplates',
     'news',
     'notifications',
+    'content'
 )
 
 INSTALLED_APPS = DJANGO_APPS +  LOCAL_APPS + THIRD_PARTY_APPS
