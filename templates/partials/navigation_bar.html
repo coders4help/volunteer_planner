@@ -1,4 +1,6 @@
-{% load i18n %}
+{% load i18n site %}
+{% request_site request as site %}
+
 {# Bootstrap 3 nav bar, only shown in logged-in areas #}
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -11,7 +13,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'helpdesk' %}">volunteer-planner.org</a>
+            <a class="navbar-brand" href="{% url 'helpdesk' %}">{{ site.domain }}</a>
         </div>
 
         <div id="navbar" class="collapse navbar-collapse">
