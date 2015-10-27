@@ -32,8 +32,8 @@ def get_cached_memberships(user):
     if not user_memberships:
         print 'cache miss. caching now...'
         user_memberships = {
-            'organizations': get_memberships_by_role(user.account.facility_set),
-            'facilities': get_memberships_by_role(
+            'facilities': get_memberships_by_role(user.account.facility_set),
+            'organizations': get_memberships_by_role(
                 user.account.organization_set),
         }
         setattr(user, '__memberships', user_memberships)
