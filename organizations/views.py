@@ -2,9 +2,9 @@
 
 import itertools
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import date
 from django.views.generic import DetailView
 from django.utils.safestring import mark_safe
-from django.templatetags.l10n import localize
 from scheduler.models import Shift
 from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
@@ -41,7 +41,7 @@ def get_facility_details(facility, shifts):
         'description': mark_safe(facility.description),
         'area_slug': facility.place.area.slug,
         'shifts': [{
-                       'date_string': localize(shift_date),
+                       'date_string': date(shift_date),
                        'link': reverse('planner_by_facility', kwargs={
                            'pk': facility.pk,
                            'year': shift_date.year,
