@@ -1,6 +1,6 @@
 # coding=utf-8
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.template.defaultfilters import time as date_filter
 from django.core.mail import EmailMessage
@@ -42,16 +42,29 @@ def send_email_notifications(sender, instance, **kwargs):
             mail.send()
 
 
+def times_changed(shift, old_shift, grace=timedelta(minutes=5)):
+    starting_time = min(shift.starting_time, shift.ending_time)
+    ending_time = max(shift.starting_time, shift.ending_time)
+
+    old_starting_time = min(old_shift.starting_time, old_shift.ending_time)
+    old_ending_time = max(old_shift.starting_time, old_shift.ending_time)
+
+    starting_diff = max(old_starting_time, starting_time) - min(
+        old_starting_time, starting_time)
+    ending_diff = max(old_ending_time, ending_time) - min(
+        old_ending_time, ending_time)
+
+    return ending_diff > grace or starting_diff > grace
+
+
 @receiver(pre_save, sender=Shift)
 def notify_users_shift_change(sender, instance, **kwargs):
     shift = instance
-
     if shift.pk:
         old_shift = Shift.objects.get(pk=shift.pk)
 
-        # Test whether this is modification or creation, to avoid DoesNotExist exception
-        if old_shift.ending_time >= datetime.now():
-
+        if old_shift.starting_time >= datetime.now() and times_changed(shift,
+                                                                       old_shift):
             subject = u'Schicht wurde verändert: {task} am {date}'.format(
                 task=old_shift.task.name,
                 date=date_filter(old_shift.starting_time))
