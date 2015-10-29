@@ -136,7 +136,7 @@ class PlannerView(LoginRequiredMixin, FormView):
         shifts = Shift.objects.filter(facility=facility)
         shifts = shifts.on_shiftdate(schedule_date)
         shifts = shifts.annotate(volunteer_count=Count('helpers'))
-        shifts = shifts.order_by('task', 'ending_time')
+        shifts = shifts.order_by('task', 'workplace', 'ending_time')
         shifts = shifts.select_related('task', 'workplace', 'facility')
         shifts = shifts.prefetch_related('helpers', 'helpers__user')
 
