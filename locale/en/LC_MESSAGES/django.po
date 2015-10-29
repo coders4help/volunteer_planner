@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-27 14:25+0100\n"
+"POT-Creation-Date: 2015-10-30 00:29+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -346,6 +346,10 @@ msgstr ""
 
 #: non_logged_in_area/templates/home.html:98
 msgid "You can help at this locations:"
+msgstr ""
+
+#: non_logged_in_area/templates/home.html:116
+msgid "There are currently no places in need of help."
 msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:10
@@ -814,7 +818,7 @@ msgstr ""
 msgid "shift"
 msgstr ""
 
-#: scheduler/models.py:43 scheduletemplates/admin.py:278
+#: scheduler/models.py:43 scheduletemplates/admin.py:282
 msgid "shifts"
 msgstr ""
 
@@ -997,33 +1001,33 @@ msgstr ""
 msgid "You successfully left this shift."
 msgstr ""
 
-#: scheduletemplates/admin.py:178
+#: scheduletemplates/admin.py:176
 #, python-brace-format
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scheduletemplates/admin.py:233
+#: scheduletemplates/admin.py:231
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scheduletemplates/admin.py:242
+#: scheduletemplates/admin.py:243
 msgid "Something didn't work. Sorry about that."
 msgstr ""
 
-#: scheduletemplates/admin.py:272
+#: scheduletemplates/admin.py:276
 msgid "slots"
 msgstr ""
 
-#: scheduletemplates/admin.py:284
+#: scheduletemplates/admin.py:288
 msgid "from"
 msgstr ""
 
-#: scheduletemplates/admin.py:297
+#: scheduletemplates/admin.py:301
 msgid "to"
 msgstr ""
 
@@ -1082,12 +1086,13 @@ msgstr ""
 msgid "Select a date"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:67
-msgid "Select shift templates"
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:65
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:122
+msgid "Continue"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:120
-msgid "Preview shifts to add"
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:69
+msgid "Select shift templates"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
@@ -1096,7 +1101,11 @@ msgid "Please review and confirm shifts to create on %(localized_date)s for %(fa
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:121
-msgid "Apply selected shifts"
+msgid "Apply"
+msgstr ""
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:123
+msgid "Apply and select new date"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
@@ -1159,27 +1168,27 @@ msgstr ""
 msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:9
+#: templates/partials/navigation_bar.html:11
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:24
+#: templates/partials/navigation_bar.html:26
 msgid "FAQ"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:43
+#: templates/partials/navigation_bar.html:45
 msgid "Account"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:47
+#: templates/partials/navigation_bar.html:49
 msgid "Help"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:50
+#: templates/partials/navigation_bar.html:52
 msgid "Logout"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:54
+#: templates/partials/navigation_bar.html:56
 msgid "Admin"
 msgstr ""
 
