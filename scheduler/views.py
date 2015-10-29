@@ -1,19 +1,19 @@
 # coding: utf-8
 
-from datetime import date, datetime
+from datetime import date
 import logging
 import json
 import itertools
-from time import mktime
-from django.core.serializers.json import DjangoJSONEncoder
 
+from django.core.serializers.json import DjangoJSONEncoder
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.db.models import Count
-from django.templatetags.l10n import localize
 from django.utils.safestring import mark_safe
 from django.views.generic import TemplateView, FormView, DetailView
 from django.shortcuts import get_object_or_404
+
+from django.template.defaultfilters import date as date_filter
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -55,9 +55,9 @@ def getNewsFacility(facility):
 
         for item in news_query:
             news.append({
-                'title':item.title,
-                'date':item.creation_date,
-                'text':item.text
+                'title': item.title,
+                'date': item.creation_date,
+                'text': item.text
             })
     return news
 
@@ -92,7 +92,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
                 'description': mark_safe(facility.description),
                 'area_slug': facility.place.area.slug,
                 'shifts': [{
-                               'date_string': localize(shift_date),
+                               'date_string': date_filter(shift_date),
                                'link': reverse('planner_by_facility', kwargs={
                                    'pk': facility.pk,
                                    'year': shift_date.year,
@@ -105,7 +105,8 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
              sorted(used_places, key=lambda p: p.name)])
-        context['facility_json'] = json.dumps(facility_list, cls=DjangoJSONEncoder)
+        context['facility_json'] = json.dumps(facility_list,
+                                              cls=DjangoJSONEncoder)
         context['shifts'] = open_shifts
         return context
 
