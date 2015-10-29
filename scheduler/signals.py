@@ -11,7 +11,6 @@ from django.template.loader import render_to_string
 from scheduler.models import Shift
 
 logger = logging.getLogger(__name__)
-grace = 5 * 60  # 5 minutes in seconds
 
 
 @receiver(pre_delete, sender=Shift)
