@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-27 14:25+0100\n"
+"POT-Creation-Date: 2015-10-30 01:10+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -346,6 +346,10 @@ msgstr ""
 
 #: non_logged_in_area/templates/home.html:98
 msgid "You can help at this locations:"
+msgstr ""
+
+#: non_logged_in_area/templates/home.html:116
+msgid "There are currently no places in need of help."
 msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:10
@@ -937,7 +941,7 @@ msgid ""
 "leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:\n"
 "\n"
 "%(shift_title)s, %(location)s\n"
-"%(from_date)s von %(from_time)s bis %(to_time)s\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n"
 "\n"
 "Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.\n"
 "\n"
@@ -954,11 +958,11 @@ msgid ""
 "wir mussten die folgende Schicht zeitlich anpassen:\n"
 "\n"
 "%(shift_title)s, %(location)s\n"
-"%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s\n"
+"%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s Uhr\n"
 "\n"
 "Die neuen Schichtzeiten sind:\n"
 "\n"
-"%(from_date)s von %(from_time)s bis %(to_time)s\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n"
 "\n"
 "Wenn Sie zur neuen Uhrzeit unglücklicher Weise nicht mehr helfen kännen, bitten\n"
 "wir Sie, sich im Volunteer-Planner aus dieser Schicht auszutragen, damit jemand\n"
@@ -972,28 +976,28 @@ msgid ""
 "volunteer-planner.org\n"
 msgstr ""
 
-#: scheduler/views.py:149
+#: scheduler/views.py:143
 msgid "The submitted data was invalid."
 msgstr ""
 
-#: scheduler/views.py:156
+#: scheduler/views.py:150
 msgid "User account does not exist."
 msgstr ""
 
-#: scheduler/views.py:171
+#: scheduler/views.py:165
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr ""
 
-#: scheduler/views.py:183
+#: scheduler/views.py:177
 msgid "You were successfully added to this shift."
 msgstr ""
 
-#: scheduler/views.py:186
+#: scheduler/views.py:180
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr ""
 
-#: scheduler/views.py:197
+#: scheduler/views.py:191
 msgid "You successfully left this shift."
 msgstr ""
 
@@ -1159,27 +1163,27 @@ msgstr ""
 msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:9
+#: templates/partials/navigation_bar.html:11
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:24
+#: templates/partials/navigation_bar.html:26
 msgid "FAQ"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:43
+#: templates/partials/navigation_bar.html:45
 msgid "Account"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:47
+#: templates/partials/navigation_bar.html:49
 msgid "Help"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:50
+#: templates/partials/navigation_bar.html:52
 msgid "Logout"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:54
+#: templates/partials/navigation_bar.html:56
 msgid "Admin"
 msgstr ""
 
@@ -1385,17 +1389,21 @@ msgid "The two password fields didn't match."
 msgstr ""
 
 #: volunteer_planner/settings/base.py:144
-msgid "German"
-msgstr ""
-
-#: volunteer_planner/settings/base.py:145
 msgid "English"
 msgstr ""
 
+#: volunteer_planner/settings/base.py:145
+msgid "German"
+msgstr ""
+
 #: volunteer_planner/settings/base.py:146
-msgid "Hungarian"
+msgid "Greek"
 msgstr ""
 
 #: volunteer_planner/settings/base.py:147
+msgid "Hungarian"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:148
 msgid "Swedish"
 msgstr ""
