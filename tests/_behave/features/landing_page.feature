@@ -5,7 +5,7 @@ Feature: Landing Page
         Then I see the call to action "I want to help!" on the page
         And I see the call to action "Organize volunteers!" on the page
         And I see the section "What is it all about?"
-        And I see the section "You can help at this locations:"
+        And I see the section "You can help at these locations:"
         And I see a button labeled "Login"
         And I see a button labeled "Start helping"
         And I see some statistics about the Volunteer Planner
