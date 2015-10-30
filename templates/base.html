@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load staticfiles site %}
+{% request_site request as site %}
 
 <html{% block html_attributes %}{% endblock %}>
 <head>
@@ -7,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}volunteer-planner.org{% endblock %}</title>
+    <title>{% block title %}{{ site.domain }}{% endblock %}</title>
 
     {% include "google_headers.html" %}
 

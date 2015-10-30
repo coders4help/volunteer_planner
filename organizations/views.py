@@ -1,14 +1,18 @@
 # coding=utf-8
 
 import itertools
+
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import date
 from django.views.generic import DetailView
+
 from django.utils.safestring import mark_safe
-from django.templatetags.l10n import localize
+
 from scheduler.models import Shift
 from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
 from .models import Organization, Facility
+
 
 class OrganizationView(DetailView):
     template_name = 'organization.html'
@@ -17,6 +21,7 @@ class OrganizationView(DetailView):
     def get_queryset(self):
         qs = super(OrganizationView, self).get_queryset()
         return qs.prefetch_related('facilities')
+
 
 class FacilityView(DetailView):
     template_name = 'facility.html'
@@ -27,6 +32,7 @@ class FacilityView(DetailView):
         shifts = Shift.open_shifts.filter(facility=self.object)
         context['facility'] = get_facility_details(self.object, shifts)
         return context
+
 
 def get_facility_details(facility, shifts):
     address_line = facility.address_line if facility.address else None
@@ -41,7 +47,7 @@ def get_facility_details(facility, shifts):
         'description': mark_safe(facility.description),
         'area_slug': facility.place.area.slug,
         'shifts': [{
-                       'date_string': localize(shift_date),
+                       'date_string': date(shift_date),
                        'link': reverse('planner_by_facility', kwargs={
                            'pk': facility.pk,
                            'year': shift_date.year,
@@ -49,8 +55,10 @@ def get_facility_details(facility, shifts):
                            'day': shift_date.day,
                        })
                    } for shift_date, shifts_of_day in shifts_by_date],
-        'organization': {'id': facility.organization.id, 'name': facility.organization.name}
+        'organization': {'id': facility.organization.id,
+                         'name': facility.organization.name}
     }
+
 
 def _serialize_news(news_entries):
     return [dict(title=news_entry.title,

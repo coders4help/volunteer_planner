@@ -2,6 +2,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from content.views import translated_flatpage
 
 urlpatterns = [
     # Examples:
@@ -18,5 +19,6 @@ urlpatterns = [
     url(r'^', include('non_logged_in_area.urls')),
 ]
 
-
-
+urlpatterns += [
+    url(r'^(?P<url>.*/)$', translated_flatpage),
+]
