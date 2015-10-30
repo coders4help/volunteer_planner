@@ -30,7 +30,6 @@ def get_memberships_by_role(membership_queryset):
 def get_cached_memberships(user):
     user_memberships = getattr(user, '__memberships', None)
     if not user_memberships:
-        print 'cache miss. caching now...'
         user_memberships = {
             'facilities': get_memberships_by_role(user.account.facility_set),
             'organizations': get_memberships_by_role(
@@ -59,7 +58,7 @@ def filter_queryset_by_membership(qs, user,
         user_memberships['facilities'][role] for role in roles)
 
     if qs.model == models.Organization:
-        return qs.filter(pk__in=user_facilities)
+        return qs.filter(pk__in=user_orgs)
     elif qs.model == models.Facility:
         return qs.filter(
             Q(pk__in=user_facilities) |
