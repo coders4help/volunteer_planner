@@ -4,11 +4,9 @@ import itertools
 from operator import itemgetter
 
 from ckeditor.widgets import CKEditorWidget
-
 from django.contrib import admin
-
 from django.db.models import Q, Count
-
+from django.template.defaultfilters import striptags
 from django.utils.encoding import smart_text
 
 from django.utils.translation import ugettext_lazy as _
@@ -61,7 +59,7 @@ def filter_queryset_by_membership(qs, user,
     user_orgs, user_facilities = get_cached_memberships(user, roles)
 
     if qs.model == models.Organization:
-        qs = qs.filter(pk__in=user_facilities)
+        qs = qs.filter(pk__in=user_orgs)
     elif qs.model == models.Facility:
         qs = qs.filter(
             Q(pk__in=user_facilities) |
@@ -192,10 +190,29 @@ class MembershipFieldListFilter(admin.RelatedFieldListFilter):
 
 @admin.register(models.Organization)
 class OrganizationAdmin(MembershipFilteredAdmin):
+
+    def get_short_description(self, obj):
+        return striptags(obj.short_description)
+
+    get_short_description.short_description = _(u'short description')
+    get_short_description.allow_tags = True
+
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
+    def get_contact_info(self, obj):
+        return striptags(obj.contact_info)
+
+    get_contact_info.short_description = _(u'contact info')
+    get_contact_info.allow_tags = True
+
     list_display = (
         'name',
         'short_description',
-        'description',
+        'get_description',
         'contact_info',
         'address',
     )
@@ -210,12 +227,30 @@ class OrganizationAdmin(MembershipFilteredAdmin):
 
 @admin.register(models.Facility)
 class FacilityAdmin(MembershipFilteredAdmin):
+    def get_short_description(self, obj):
+        return striptags(obj.short_description)
+
+    get_short_description.short_description = _(u'short description')
+    get_short_description.allow_tags = True
+
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
+    def get_contact_info(self, obj):
+        return striptags(obj.contact_info)
+
+    get_contact_info.short_description = _(u'contact info')
+    get_contact_info.allow_tags = True
+
     list_display = (
         'organization',
         'name',
-        'short_description',
-        'description',
-        'contact_info',
+        'get_short_description',
+        'get_description',
+        'get_contact_info',
         'place',
         'address',
         'zip_code',
@@ -263,10 +298,16 @@ class FacilityMembershipAdmin(MembershipFilteredAdmin):
 
 @admin.register(models.Workplace)
 class WorkplaceAdmin(MembershipFilteredAdmin):
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
     list_display = (
         'facility',
         'name',
-        'description'
+        'get_description'
     )
     list_filter = (
         ('facility', MembershipFieldListFilter),
@@ -281,10 +322,16 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
 
 @admin.register(models.Task)
 class TaskAdmin(MembershipFilteredAdmin):
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
     list_display = (
         'facility',
         'name',
-        'description'
+        'get_description'
     )
     list_filter = (
         ('facility', MembershipFieldListFilter),
