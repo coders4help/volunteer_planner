@@ -9,23 +9,16 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.db.models import Count
-
-from django.templatetags.l10n import localize
-
 from django.utils.safestring import mark_safe
-
 from django.views.generic import TemplateView, FormView, DetailView
-
 from django.shortcuts import get_object_or_404
 
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
-from news.models import NewsEntry
 from organizations.models import Facility
 from organizations.views import get_facility_details
 from scheduler.models import Shift
-from google_tools.templatetags.google_links import google_maps_directions
 from scheduler.models import ShiftHelper
 from .forms import RegisterForShiftForm
 from volunteer_planner.utils import LoginRequiredMixin
@@ -75,7 +68,8 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
         for facility, shifts_at_facility in shifts_by_facility:
             used_places.add(facility.place.area)
-            facility_list.append(get_facility_details(facility, shifts_at_facility))
+            facility_list.append(
+                get_facility_details(facility, shifts_at_facility))
 
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
