@@ -56,7 +56,7 @@ class Facility(models.Model):
     description = models.TextField(verbose_name=_(u'description'))
 
     # anything one needs to know on how to contact the facility
-    contact_info = models.TextField(verbose_name=_(u'description'))
+    contact_info = models.TextField(verbose_name=_(u'contact info'))
 
     # users associated with this facility
     # ie. members, admins, admins
