@@ -4,15 +4,13 @@ import itertools
 from operator import itemgetter
 
 from ckeditor.widgets import CKEditorWidget
-
 from django.contrib import admin
-
-from django.db.models import Q
-
+from django.db.models import Q, Count
+from django.template.defaultfilters import striptags
 from django.utils.encoding import smart_text
+from django.utils.translation import ugettext_lazy as _
 
 from . import models
-from organizations.models import Facility
 
 DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
                         models.Membership.Roles.MANAGER)
@@ -27,7 +25,7 @@ def get_memberships_by_role(membership_queryset):
     return memberships_by_role
 
 
-def get_cached_memberships(user):
+def get_cached_memberships(user, roles=DEFAULT_FILTER_ROLES):
     user_memberships = getattr(user, '__memberships', None)
     if not user_memberships:
         user_memberships = {
@@ -36,7 +34,14 @@ def get_cached_memberships(user):
                 user.account.organization_set),
         }
         setattr(user, '__memberships', user_memberships)
-    return user_memberships
+
+    user_orgs = list(itertools.chain.from_iterable(
+        user_memberships['organizations'][role] for role in roles))
+
+    user_facilities = list(itertools.chain.from_iterable(
+        user_memberships['facilities'][role] for role in roles))
+
+    return user_orgs, user_facilities
 
 
 def filter_queryset_by_membership(qs, user,
@@ -50,17 +55,12 @@ def filter_queryset_by_membership(qs, user,
     if user.is_superuser:
         return qs
 
-    user_memberships = get_cached_memberships(user)
-    user_orgs = itertools.chain.from_iterable(
-        user_memberships['organizations'][role] for role in roles)
-
-    user_facilities = itertools.chain.from_iterable(
-        user_memberships['facilities'][role] for role in roles)
+    user_orgs, user_facilities = get_cached_memberships(user, roles)
 
     if qs.model == models.Organization:
-        return qs.filter(pk__in=user_orgs)
+        qs = qs.filter(pk__in=user_orgs)
     elif qs.model == models.Facility:
-        return qs.filter(
+        qs = qs.filter(
             Q(pk__in=user_facilities) |
             Q(organization_id__in=user_orgs)
         )
@@ -69,24 +69,66 @@ def filter_queryset_by_membership(qs, user,
             facility_filter_fk = 'facility'
 
         if organization_filter_fk:
-            return qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
-        else:
-            return qs.filter(
+            qs = qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
+        elif facility_filter_fk:
+            qs = qs.filter(
                 Q(**{facility_filter_fk + '_id__in': user_facilities}) |
                 Q(**{facility_filter_fk + '__organization_id__in': user_orgs})
             )
+    return qs
 
 
 class MembershipFilteredAdmin(admin.ModelAdmin):
     facility_filter_fk = 'facility'
     widgets = None
 
+    def get_readonly_fields(self, request, obj=None):
+        readonly = super(MembershipFilteredAdmin, self).get_readonly_fields(
+            request=request, obj=obj)
+        if request.user.is_superuser:
+            return readonly
+        else:
+            if not ('facility' in readonly and 'organization' in readonly):
+                user_orgs, user_facilities = get_cached_memberships(
+                    request.user)
+                if len(user_facilities) <= 1 and hasattr(obj, 'facility') \
+                        and 'facility' not in readonly:
+                    readonly += ('facility',)
+                if len(user_orgs) <= 1 and hasattr(obj, 'organization') \
+                        and 'organization' not in readonly:
+                    readonly += ('organization',)
+        return readonly
+
+    def get_list_display(self, request):
+        list_display = list(
+            super(MembershipFilteredAdmin, self).get_list_display(request))
+        if request.user.is_superuser:
+            return list_display
+        if 'facility' in list_display or 'organization' in list_display:
+            user_orgs, user_facilities = get_cached_memberships(request.user)
+            if len(user_facilities) <= 1 and 'facility' in list_display:
+                list_display.remove('facility')
+            if len(user_orgs) <= 1 and 'organization' in list_display:
+                list_display.remove('organization')
+        return list_display
+
+    def get_list_display_links(self, request, list_display):
+        list_display_links = list(
+            super(MembershipFilteredAdmin, self).get_list_display_links(request,
+                                                                        list_display))
+        return filter(lambda i: i in list_display, list_display_links)
+
+    def get_edit_link(self, obj):
+        return _(u'edit')
+
+    get_edit_link.short_description = _(u'edit')
+
     def get_form(self, request, obj=None, **kwargs):
         form = super(MembershipFilteredAdmin, self).get_form(
             request, obj, widgets=self.widgets, **kwargs)
 
         if 'facility' in form.base_fields:
-            facilities = Facility.objects.all()
+            facilities = models.Facility.objects.all()
             user_facilities = filter_queryset_by_membership(facilities,
                                                             request.user)
             if len(user_facilities) == 1:
@@ -113,6 +155,11 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
 
 class MembershipFilteredTabularInline(admin.TabularInline):
     facility_filter_fk = 'facility'
+    widgets = None
+
+    def get_formset(self, request, obj=None, **kwargs):
+        return super(MembershipFilteredTabularInline, self).get_formset(
+            request, obj, widgets=self.widgets, **kwargs)
 
     def get_queryset(self, request):
         qs = super(MembershipFilteredTabularInline, self).get_queryset(request)
@@ -133,17 +180,38 @@ class MembershipFilteredTabularInline(admin.TabularInline):
 
 class MembershipFieldListFilter(admin.RelatedFieldListFilter):
     def field_choices(self, field, request, model_admin):
-        qs = filter_queryset_by_membership(field.rel.to.objects.all(),
-                                           request.user)
+        query = field.rel.to.objects.all()
+        query = query.annotate(usage_count=Count(field.related_query_name()))
+        query = query.exclude(usage_count=0)
+        qs = filter_queryset_by_membership(query, request.user)
         return [(x._get_pk_val(), smart_text(x)) for x in qs]
 
 
 @admin.register(models.Organization)
 class OrganizationAdmin(MembershipFilteredAdmin):
+
+    def get_short_description(self, obj):
+        return striptags(obj.short_description)
+
+    get_short_description.short_description = _(u'short description')
+    get_short_description.allow_tags = True
+
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
+    def get_contact_info(self, obj):
+        return striptags(obj.contact_info)
+
+    get_contact_info.short_description = _(u'contact info')
+    get_contact_info.allow_tags = True
+
     list_display = (
         'name',
         'short_description',
-        'description',
+        'get_description',
         'contact_info',
         'address',
     )
@@ -158,12 +226,30 @@ class OrganizationAdmin(MembershipFilteredAdmin):
 
 @admin.register(models.Facility)
 class FacilityAdmin(MembershipFilteredAdmin):
+    def get_short_description(self, obj):
+        return striptags(obj.short_description)
+
+    get_short_description.short_description = _(u'short description')
+    get_short_description.allow_tags = True
+
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
+    def get_contact_info(self, obj):
+        return striptags(obj.contact_info)
+
+    get_contact_info.short_description = _(u'contact info')
+    get_contact_info.allow_tags = True
+
     list_display = (
         'organization',
         'name',
-        'short_description',
-        'description',
-        'contact_info',
+        'get_short_description',
+        'get_description',
+        'get_contact_info',
         'place',
         'address',
         'zip_code',
@@ -176,7 +262,6 @@ class FacilityAdmin(MembershipFilteredAdmin):
     )
     raw_id_fields = ('members',)
     search_fields = ('name',)
-    radio_fields = {"organization": admin.VERTICAL}
     widgets = {
         'short_description': CKEditorWidget(),
         'description': CKEditorWidget(),
@@ -212,10 +297,16 @@ class FacilityMembershipAdmin(MembershipFilteredAdmin):
 
 @admin.register(models.Workplace)
 class WorkplaceAdmin(MembershipFilteredAdmin):
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
     list_display = (
         'facility',
         'name',
-        'description'
+        'get_description'
     )
     list_filter = (
         ('facility', MembershipFieldListFilter),
@@ -230,10 +321,16 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
 
 @admin.register(models.Task)
 class TaskAdmin(MembershipFilteredAdmin):
+    def get_description(self, obj):
+        return striptags(obj.description)
+
+    get_description.short_description = _(u'description')
+    get_description.allow_tags = True
+
     list_display = (
         'facility',
         'name',
-        'description'
+        'get_description'
     )
     list_filter = (
         ('facility', MembershipFieldListFilter),
