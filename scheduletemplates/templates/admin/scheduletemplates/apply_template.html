@@ -62,6 +62,8 @@
             <div>
                 {{ apply_form.apply_for_date }}
 
+                <input type="submit" value="{% trans "Continue" %}"
+                       class="default" name="preview" style="float: initial;">
             </div>
 
             <h3>{% trans "Select shift templates" %}</h3>
@@ -117,7 +119,7 @@
                 </table>
             </div>
             <div class="submit-row">
-                <input type="submit" value="{% trans "Preview shifts to add" %}"
+                <input type="submit" value="{% trans "Continue" %}"
                        class="default" name="preview">
             </div>
     </div>
