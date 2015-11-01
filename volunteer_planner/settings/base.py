@@ -141,8 +141,9 @@ TIME_ZONE = 'Europe/Berlin'
 LANGUAGE_CODE = 'en'
 USE_L10N = True
 LANGUAGES = (
-    ('de', _('German')),
     ('en', _('English')),
+    ('de', _('German')),
+    ('el', _('Greek')),
     ('hu', _('Hungarian')),
     ('sv', _('Swedish')),
 )
