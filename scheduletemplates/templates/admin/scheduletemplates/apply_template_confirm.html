@@ -118,8 +118,10 @@
         </table>
         </p>
         <div class="submit-row">
-            <input type="submit" value="{% trans "Apply selected shifts" %}"
+            <input type="submit" value="{% trans "Apply" %}"
                    class="default" name="confirm">
+            <input type="submit" value="{% trans "Apply and select new date" %}"
+                   class="default" name="confirm_and_repeat">
         </div>
     </form>
 {% endblock %}
