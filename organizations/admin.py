@@ -223,7 +223,7 @@ class OrganizationAdmin(MembershipFilteredAdmin):
         'description': CKEditorWidget(),
         'contact_info': CKEditorWidget(),
     }
-
+    prepopulated_fields = {'slug': ['name']}
 
 @admin.register(models.Facility)
 class FacilityAdmin(MembershipFilteredAdmin):
@@ -268,7 +268,7 @@ class FacilityAdmin(MembershipFilteredAdmin):
         'description': CKEditorWidget(),
         'contact_info': CKEditorWidget(),
     }
-
+    prepopulated_fields = {'slug': ['name']}
 
 @admin.register(models.OrganizationMembership)
 class OrganizationMembershipAdmin(MembershipFilteredAdmin):
@@ -342,3 +342,5 @@ class TaskAdmin(MembershipFilteredAdmin):
     widgets = {
         'description': CKEditorWidget(),
     }
+
+

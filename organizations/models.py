@@ -30,6 +30,8 @@ class Organization(models.Model):
     members = models.ManyToManyField(UserAccount,
                                      through='organizations.OrganizationMembership')
 
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
     class Meta:
         verbose_name = _(u'organization')
         verbose_name_plural = _(u'organizations')
@@ -87,6 +89,8 @@ class Facility(models.Model):
                                 verbose_name=_('latitude'))
     longitude = models.CharField(max_length=30, blank=True,
                                  verbose_name=_('longitude'))
+
+    slug = models.SlugField(verbose_name=_(u'slug'))
 
     class Meta:
         verbose_name = _(u'facility')
