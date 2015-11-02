@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
 from organizations.models import Facility
+from organizations.templatetags.memberships import is_facility_member
 from organizations.views import get_facility_details
 from scheduler.models import Shift
 from scheduler.models import ShiftHelper
@@ -153,7 +154,7 @@ class PlannerView(LoginRequiredMixin, FormView):
         shift_to_join = form.cleaned_data.get("join_shift")
         shift_to_leave = form.cleaned_data.get("leave_shift")
 
-        if shift_to_join:
+        if shift_to_join and is_facility_member(self.request.user, shift_to_join.facility):
 
             conflicts = ShiftHelper.objects.conflicting(shift_to_join,
                                                         user_account=user_account)
@@ -179,6 +180,7 @@ class PlannerView(LoginRequiredMixin, FormView):
                     messages.warning(self.request, _(
                         u'You already signed up for this shift at {date_time}.').format(
                         date_time=shift_helper.joined_shift_at))
+
         elif shift_to_leave:
             try:
                 ShiftHelper.objects.get(user_account=user_account,
@@ -190,7 +192,7 @@ class PlannerView(LoginRequiredMixin, FormView):
             messages.success(self.request, _(
                 u'You successfully left this shift.'))
 
-        user_account.save()
+        # user_account.save()
         return super(PlannerView, self).form_valid(form)
 
     def get_success_url(self):

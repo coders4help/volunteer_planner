@@ -1,6 +1,6 @@
 {% extends "helpdesk_base.html" %}
 
-{% load i18n vpfilters %}
+{% load i18n vpfilters memberships %}
 
 {% block title %}
     {% blocktrans trimmed context "title with facility" with facility_name=facility.name %}
@@ -159,20 +159,25 @@
                                             </td>
 
                                             <td>
-                                                {% if is_assigned %}
-                                                    <button type="submit"
-                                                            name="leave_shift"
-                                                            value="{{ shift.pk }}"
-                                                            class="btn btn-danger delete-button">
-                                                        {% trans "Drop out" %}
-                                                    </button>
-                                                    {% elif slots_left %}
-                                                    <button type="submit"
-                                                            name="join_shift"
-                                                            value="{{ shift.pk }}"
-                                                            class="btn btn-info add-button">
-                                                        {% trans "Sign up" %}!
-                                                    </button>
+                                                {% if shift.members_only and not user|is_facility_member:shift.facility %}
+                                                    {% trans "members only" as members_only_trans %}
+                                                    {{ members_only_trans|title }}
+                                                {% else %}
+                                                    {% if is_assigned %}
+                                                        <button type="submit"
+                                                                name="leave_shift"
+                                                                value="{{ shift.pk }}"
+                                                                class="btn btn-danger delete-button">
+                                                            {% trans "Drop out" %}
+                                                        </button>
+                                                        {% elif slots_left %}
+                                                        <button type="submit"
+                                                                name="join_shift"
+                                                                value="{{ shift.pk }}"
+                                                                class="btn btn-info add-button">
+                                                            {% trans "Sign up" %}!
+                                                        </button>
+                                                    {% endif %}
                                                 {% endif %}
                                             </td>
                                         </tr>

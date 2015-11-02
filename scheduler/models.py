@@ -35,6 +35,11 @@ class Shift(models.Model):
                                      through='ShiftHelper',
                                      related_name='shifts')
 
+    members_only = models.BooleanField(default=False,
+                                       verbose_name=_(u'members only'),
+                                       help_text=_(
+                                           u'allow only members to help'))
+
     objects = managers.ShiftManager()
     open_shifts = managers.OpenShiftManager()
 
