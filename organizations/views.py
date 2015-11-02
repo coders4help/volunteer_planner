@@ -39,6 +39,7 @@ def get_facility_details(facility, shifts):
     shifts_by_date = itertools.groupby(shifts, lambda s: s.starting_time.date())
     return {
         'name': facility.name,
+        'url': facility.get_absolute_url(),
         'news': _serialize_news(NewsEntry.objects.filter(facility=facility)),
         'address_line': address_line,
         'contact_info': facility.contact_info,
@@ -55,8 +56,11 @@ def get_facility_details(facility, shifts):
                            'day': shift_date.day,
                        })
                    } for shift_date, shifts_of_day in shifts_by_date],
-        'organization': {'id': facility.organization.id,
-                         'name': facility.organization.name}
+        'organization': {
+            'id': facility.organization.id,
+            'name': facility.organization.name,
+            'url': facility.organization.get_absolute_url(),
+        }
     }
 
 

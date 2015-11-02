@@ -20,7 +20,7 @@
         </p>
 
         <p>
-            <a href="{% url "facility" facility.organization.id facility.id %}">{% trans "Show details" %}</a>
+            <a href="{{ facility.get_absolute_url }}">{% trans "Show details" %}</a>
         </p>
     </div>
 
