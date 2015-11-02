@@ -12,6 +12,7 @@ from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
 
 from . import models
+from organizations.models import Membership
 
 DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
                         models.Membership.Roles.MANAGER)
@@ -19,6 +20,9 @@ DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
 
 def get_memberships_by_role(membership_queryset):
     memberships_by_role = defaultdict(lambda: [])
+    membership_queryset = membership_queryset.filter(
+        membership__status__gte=Membership.Status.APPROVED
+    )
     qs = membership_queryset.order_by('membership__role') \
         .values_list('membership__role', 'pk')
     for role, group in itertools.groupby(qs, itemgetter(0)):
