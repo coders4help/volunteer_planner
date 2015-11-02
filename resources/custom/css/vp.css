@@ -94,6 +94,10 @@ code {
 }
 
 
+/*
+ Nav bar
+  */
+
 
 
 .dropdown-submenu {
@@ -144,6 +148,13 @@ code {
 .spacer{
     margin-top:35px;
 }
+.blue-batches{
+    color:white;
+    background-color: #338EFF;
+    margin-left:5px;
+}
+
+
 
 .area-filter button {
     margin-right: 6px;

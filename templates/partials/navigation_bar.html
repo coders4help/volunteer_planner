@@ -31,6 +31,7 @@
 
 
                 {% include "partials/switch_language.html" with nav_item_tag="li" %}
+                {% if user.is_staff or user.is_superuser %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                        role="button" aria-haspopup="true"
@@ -38,11 +39,11 @@
                         {% trans "Manage User Access" %}<span class="badge blue-batches">24</span>
                         <span class="caret"></span>
                     </a>
-                    {% if user.is_staff or user.is_superuser %}
+
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#">
-                                {% trans "Pending Approvals" %}
+                                {% trans "Pending Approvals" %} <span class="badge blue-batches">24</span>
                             </a>
                         </li>
                         <li>
@@ -51,7 +52,7 @@
 
 
                     </ul>
-                    {% endif %}
+
 
                 </li>
 
@@ -82,6 +83,7 @@
                     </ul>
 
                 </li>
+            {% endif %}
 
             </ul>
         </div>
