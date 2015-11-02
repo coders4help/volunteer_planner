@@ -7,6 +7,49 @@ from accounts.models import UserAccount
 from scheduler.models import Shift
 
 
+class Membership(models.Model):
+    related_name = None
+
+    class JoinMode:
+        INVITATION_ONLY, APPROVAL_BY_ADMIN, ANYONE = 0, 1, 2
+        CHOICES = (
+            (INVITATION_ONLY, _(u'by invitation')),
+            (APPROVAL_BY_ADMIN, _(u'anyone (approved by manager)')),
+            (ANYONE, _(u'anyone')),
+        )
+
+    class Status:
+        REJECTED, PENDING, APPROVED = 0, 1, 2
+        CHOICES = (
+            (REJECTED, _(u'rejected')),
+            (PENDING, _(u'pending')),
+            (APPROVED, _(u'approved')),
+        )
+
+    class Roles:
+        ADMIN, MANAGER, MEMBER = 0, 1, 2
+        CHOICES = (
+            (ADMIN, _(u'admin')),
+            (MANAGER, _(u'manager')),
+            (MEMBER, _(u'member')),
+        )
+
+    role = models.PositiveSmallIntegerField(choices=Roles.CHOICES,
+                                            default=Roles.MEMBER,
+                                            verbose_name=_(u'role'))
+
+    status = models.PositiveSmallIntegerField(choices=Status.CHOICES,
+                                              default=Status.APPROVED,
+                                              verbose_name=_(u'status'))
+
+    user_account = models.ForeignKey(UserAccount,
+                                     verbose_name=_(u'user account'),
+                                     related_name=related_name)
+
+    class Meta:
+        abstract = True
+
+
 class Organization(models.Model):
     # the name of the organization, ie. "Wilmersdorf hilft"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
@@ -27,10 +70,18 @@ class Organization(models.Model):
 
     # users associated with this organization
     # ie. members, admins, admins
-    members = models.ManyToManyField(UserAccount,
-                                     through='organizations.OrganizationMembership')
+    members = models.ManyToManyField(
+        UserAccount,
+        through='organizations.OrganizationMembership'
+    )
 
     slug = models.SlugField(verbose_name=_(u'slug'))
+
+    join_mode = models.PositiveSmallIntegerField(
+        choices=Membership.JoinMode.CHOICES,
+        default=Membership.JoinMode.INVITATION_ONLY,
+        verbose_name=_(u'join mode'),
+        help_text=_(u'Who can join this organization?'))
 
     class Meta:
         verbose_name = _(u'organization')
@@ -92,6 +143,12 @@ class Facility(models.Model):
 
     slug = models.SlugField(verbose_name=_(u'slug'))
 
+    join_mode = models.PositiveSmallIntegerField(
+        choices=Membership.JoinMode.CHOICES,
+        default=Membership.JoinMode.INVITATION_ONLY,
+        verbose_name=_(u'join mode'),
+        help_text=_(u'Who can join this facility?'))
+
     class Meta:
         verbose_name = _(u'facility')
         verbose_name_plural = _(u'facilities')
@@ -108,41 +165,6 @@ class Facility(models.Model):
 
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
-
-
-class Membership(models.Model):
-    related_name = None
-
-    class Status:
-        REJECTED, PENDING, APPROVED = 0, 1, 2
-        CHOICES = (
-            (REJECTED, _(u'rejected')),
-            (PENDING, _(u'pending')),
-            (APPROVED, _(u'approved')),
-        )
-
-    class Roles:
-        ADMIN, MANAGER, MEMBER = 0, 1, 2
-        CHOICES = (
-            (ADMIN, _(u'admin')),
-            (MANAGER, _(u'manager')),
-            (MEMBER, _(u'member')),
-        )
-
-    role = models.PositiveSmallIntegerField(choices=Roles.CHOICES,
-                                            default=Roles.MEMBER,
-                                            verbose_name=_(u'role'))
-
-    status = models.PositiveSmallIntegerField(choices=Status.CHOICES,
-                                              default=Status.APPROVED,
-                                              verbose_name=_(u'status'))
-
-    user_account = models.ForeignKey(UserAccount,
-                                     verbose_name=_(u'user account'),
-                                     related_name=related_name)
-
-    class Meta:
-        abstract = True
 
 
 class OrganizationMembership(Membership):
