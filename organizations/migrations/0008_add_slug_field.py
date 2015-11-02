@@ -5,6 +5,7 @@ import sys
 
 from django.db import models, migrations
 from django.utils.text import slugify
+from common.migrations import skip
 
 
 def add_slugs(apps, schema_editor):
@@ -16,10 +17,6 @@ def add_slugs(apps, schema_editor):
             instance.slug = slugify(instance.name)
             instance.save()
             sys.stdout.write(u'{} -> {}\n'.format(instance, instance.slug))
-
-
-def skip(*_, **__):
-    pass
 
 
 class Migration(migrations.Migration):

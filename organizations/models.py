@@ -113,6 +113,14 @@ class Facility(models.Model):
 class Membership(models.Model):
     related_name = None
 
+    class Status:
+        REJECTED, PENDING, APPROVED = 0, 1, 2
+        CHOICES = (
+            (REJECTED, _(u'rejected')),
+            (PENDING, _(u'pending')),
+            (APPROVED, _(u'approved')),
+        )
+
     class Roles:
         ADMIN, MANAGER, MEMBER = 0, 1, 2
         CHOICES = (
@@ -121,9 +129,13 @@ class Membership(models.Model):
             (MEMBER, _(u'member')),
         )
 
-    role = models.PositiveIntegerField(choices=Roles.CHOICES,
-                                       default=Roles.MEMBER,
-                                       verbose_name=_(u'role'))
+    role = models.PositiveSmallIntegerField(choices=Roles.CHOICES,
+                                            default=Roles.MEMBER,
+                                            verbose_name=_(u'role'))
+
+    status = models.PositiveSmallIntegerField(choices=Status.CHOICES,
+                                              default=Status.APPROVED,
+                                              verbose_name=_(u'status'))
 
     user_account = models.ForeignKey(UserAccount,
                                      verbose_name=_(u'user account'),
