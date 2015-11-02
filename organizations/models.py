@@ -161,7 +161,8 @@ class Facility(models.Model):
 
     @property
     def address_line(self):
-        return self.address.replace("\n", ", ").strip()
+        # return self.address.replace("\n", ", ").strip()
+        return u', '.join(map(lambda s: s.strip(),self.address.split('\n')))
 
     # TODO: Could this be implemented in a more optimized way?
     @property
