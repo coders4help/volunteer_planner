@@ -4,39 +4,56 @@
 
 {% block helpdesk_content %}
 
-<h1>{{ facility.name }}</h1>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+        </li>
 
-{% if facility.address_line %}
+        <li>
+            <a href="{{ facility.organization.url }}">
+                {{ facility.organization.name }}
+            </a>
+        </li>
+
+        <li class="active">
+            {{ facility.name }}
+        </li>
+
+    </ul>
+
+    <h1>{{ facility.name }}</h1>
+
+    {% if facility.address_line %}
+        <p>
+            {{ facility.address_line }}
+            <a target="_blank" href="{{ facility.google_maps_link }}">→ Google
+                Maps</a>
+        </p>
+    {% endif %}
+
+    {{ facility.contact_info | safe }}
+
+    {{ facility.description | safe }}
+
     <p>
-        {{ facility.address_line }}
-        <a target="_blank" href="{{ facility.google_maps_link }}">→ Google Maps</a>
+        <a href="{{ facility.organization.url }}">{{ facility.organization.name }} </a>
     </p>
-{% endif %}
 
-{{ facility.contact_info | safe }}
+    <h4>{% trans "Open Shifts" %}</h4>
+    <p>
+        {% for shift in facility.shifts %}
+            <a href="{{ shift.link }}">{{ shift.date_string }}</a>
+            <br>
+        {% endfor %}
+    </p>
 
-{{ facility.description | safe }}
-
-<p>
-    {% trans "Operated by: " %}
-    <a href="{% url "organization" facility.organization.id %}">{{ facility.organization.name }}</a>
-</p>
-
-<h4>{% trans "Open Shifts" %}</h4>
-<p>
-    {% for shift in facility.shifts %}
-        <a href="{{ shift.link }}">{{ shift.date_string }}</a>
-        <br>
-    {% endfor %}
-</p>
-
-{% if facility.news %}
-    <h4>{% trans "News" %}</h4>
-    {% for news in facility.news %}
-        <h5>{{ news.title }}</h5>
-        <date><i>{{ news.date }}</i></date>
-        {{ news.text | safe }}
-    {% endfor %}
-{% endif %}
+    {% if facility.news %}
+        <h4>{% trans "News" %}</h4>
+        {% for news in facility.news %}
+            <h5>{{ news.title }}</h5>
+            <date><i>{{ news.date }}</i></date>
+            {{ news.text | safe }}
+        {% endfor %}
+    {% endif %}
 
 {% endblock %}

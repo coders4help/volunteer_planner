@@ -10,6 +10,28 @@
 
 {% block helpdesk_content %}
 
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+        </li>
+
+        <li>
+            <a href="{{ facility.organization.get_absolute_url }}">
+                {{ facility.organization.name }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ facility.get_absolute_url }}">
+                {{ facility.name }}
+            </a>
+        </li>
+
+        <li class="active">
+            {{ schedule_date|date }}
+        </li>
+    </ul>
+
     {% include "partials/alert_messages.html" %}
 
 

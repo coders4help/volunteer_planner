@@ -4,18 +4,29 @@
 
 {% block helpdesk_content %}
 
-<h1>{{ object.name }}</h1>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+        </li>
 
-<p>{{ object.address }}</p>
+        <li class="active">
+            {{ organization.name }}
+        </li>
 
-{{ object.contact_info | safe }}
+    </ul>
 
-{{ object.description | safe }}
+    <h1>{{ object.name }}</h1>
 
-<h2>{% trans "Facilities" %}</h2>
+    <p>{{ object.address }}</p>
 
-{% for facility in object.facilities.all %}
-    {% include 'partials/compact_facility.html' with facility=facility %}
-{% endfor %}
+    {{ object.contact_info | safe }}
+
+    {{ object.description | safe }}
+
+    <h2>{% trans "Facilities" %}</h2>
+
+    {% for facility in object.facilities.all %}
+        {% include 'partials/compact_facility.html' with facility=facility %}
+    {% endfor %}
 
 {% endblock %}
