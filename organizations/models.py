@@ -1,4 +1,5 @@
 # coding: utf-8
+from django.core.urlresolvers import reverse
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -91,6 +92,10 @@ class Organization(models.Model):
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
 
+    def get_absolute_url(self):
+        return reverse('organization',
+                       args=[self.slug])
+
 
 class Facility(models.Model):
     # the organization running this facility
@@ -165,6 +170,10 @@ class Facility(models.Model):
 
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
+
+    def get_absolute_url(self):
+        return reverse('facility',
+                       args=[self.organization.slug, self.slug])
 
 
 class OrganizationMembership(Membership):
