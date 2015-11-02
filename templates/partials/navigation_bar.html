@@ -29,7 +29,31 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
+
                 {% include "partials/switch_language.html" with nav_item_tag="li" %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        {% trans "Manage User Access" %}<span class="badge blue-batches">24</span>
+                        <span class="caret"></span>
+                    </a>
+                    {% if user.is_staff or user.is_superuser %}
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">
+                                {% trans "Pending Approvals" %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">{% trans "Manage Users" %}</a>
+                        </li>
+
+
+                    </ul>
+                    {% endif %}
+
+                </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -58,6 +82,7 @@
                     </ul>
 
                 </li>
+
             </ul>
         </div>
     </div>

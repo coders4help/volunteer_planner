@@ -352,10 +352,6 @@ msgstr ""
 msgid "There are currently no places in need of help."
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:116
-msgid "There are currently no places in need of help."
-msgstr ""
-
 #: non_logged_in_area/templates/privacy_policy.html:10
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
