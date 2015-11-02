@@ -14,7 +14,7 @@ def add_slugs(apps, schema_editor):
 
     for model in (Organization, Facility):
         for instance in model.objects.all():
-            instance.slug = slugify(instance.name)
+            instance.slug = slugify(instance.name) or slugify('{}'.format(instance.id))
             instance.save()
             sys.stdout.write(u'{} -> {}\n'.format(instance, instance.slug))
 
