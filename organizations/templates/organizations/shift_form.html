@@ -7,15 +7,13 @@
 {% block content %}
 
 <form action="" method="post">{% csrf_token %}
-	<h3>Shift</h3>
+    <h3>Shift</h3>
     {{ form.as_p }}
 
-	<h3>Task</h3>
+    <h3>Task</h3>
     {{ task_form.as_p }}
 
     <input type="submit" value="Send message" />
 </form>
-
-
 
 {% endblock %}

@@ -21,6 +21,6 @@ class ShiftForm(forms.ModelForm):
         }
 
 class TaskForm(forms.ModelForm):
-	class Meta:
-		model = Task
-		exclude = []
+    class Meta:
+        model = Task
+        exclude = []
