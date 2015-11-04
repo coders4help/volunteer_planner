@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^shifts/', include('organizations.urls')),
     url(r'^', include('non_logged_in_area.urls')),
 ]
 

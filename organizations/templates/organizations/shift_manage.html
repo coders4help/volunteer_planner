@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+
+{% block content %}
+<div class="">
+    <h1>Manage shifts</h1>
+
+    {% if shifts %}
+    <p>Scheduled shifts for organization '{{ shifts.0.facility.organization }}': </p>
+    <table border="1">
+        <tr>
+            <th>Start</th>
+            <th>End</th>
+            <th>Facility</th>
+            <th>Task</th>
+            <th>Actions</th>
+        </tr>
+        {% for shift in shifts %}
+        <tr>
+            <td>{{ shift.starting_time }}</td>
+            <td>{{ shift.ending_time }}</td>
+            <td>{{ shift.facility }}</td>
+            <td>{{ shift.task }}</td>
+            <td>
+                <a class="btn btn-default btn-sm"
+                    href="#"
+                    role="button">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>        
+    {% else %}
+    <p>No scheduled shifts.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+
