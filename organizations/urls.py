@@ -3,10 +3,10 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
 
-from .views import OrganizationView, FacilityView, shift_management
+from .views import OrganizationView, FacilityView, ShiftManagementView
 
 
 urlpatterns = [
-    url(r'^', shift_management, name="shift_management"),
+    url(r'^', ShiftManagementView.as_view(), name="shift_management"),
 ]
 

@@ -8,20 +8,23 @@
 <div class="">
     <h1>Manage shifts</h1>
 
-    {% if shifts %}
-    <p>Scheduled shifts for organization '{{ shifts.0.facility.organization }}': </p>
-    <table border="1">
+    {% if object_list %}
+    <table class="table table-striped">
         <tr>
-            <th>Start</th>
-            <th>End</th>
-            <th>Facility</th>
+            <th width="15%">Date</th>
+            <th width="5%">Start</th>
+            <th width="5%">End</th>
+            <th width="10%">Organization</th>
+            <th width="10%">Facility</th>
             <th>Task</th>
-            <th>Actions</th>
+            <th width="10%">Actions</th>
         </tr>
-        {% for shift in shifts %}
+        {% for shift in object_list %}
         <tr>
-            <td>{{ shift.starting_time }}</td>
-            <td>{{ shift.ending_time }}</td>
+            <td>{{ shift.starting_time.date }}</td>
+            <td>{{ shift.starting_time.time }}</td>
+            <td>{{ shift.ending_time.time }}</td>
+            <td>{{ shift.facility.organization }}</td>
             <td>{{ shift.facility }}</td>
             <td>{{ shift.task }}</td>
             <td>

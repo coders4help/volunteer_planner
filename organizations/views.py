@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.template.defaultfilters import date
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
 from django.utils.safestring import mark_safe
 
@@ -15,18 +15,24 @@ from scheduler.models import Shift
 from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
 from .models import Organization, Facility
+from volunteer_planner.utils import LoginRequiredMixin
 
 
-@login_required()
-def shift_management(request):
-    current_user = request.user
+class ShiftManagementView(LoginRequiredMixin, ListView):
+    """
+    View which shows a list of open shifts for the managers organization
+    and provides creation/editing/deletion actions.
+    """
+    template_name = "organizations/shift_manage.html"
 
-    # Get all shifts scheduled in future for the organization of the current user
-    open_shifts = Shift.open_shifts.all()
-    open_shifts = filter_queryset_by_membership(open_shifts, current_user)
+    def get_queryset(self):
+        """
+        Get all shifts scheduled in future for the organization of the current user
+        """
+        open_shifts = Shift.open_shifts.all()
+        open_shifts = filter_queryset_by_membership(open_shifts, self.request.user)
 
-    context = {'shifts': open_shifts}
-    return render(request, 'organizations/shift_manage.html', context)
+        return open_shifts
 
 
 class OrganizationView(DetailView):
