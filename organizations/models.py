@@ -95,7 +95,8 @@ class Facility(models.Model):
 
     @property
     def address_line(self):
-        return self.address.replace("\n", ", ").strip()
+        return ', '.join(
+            filter(None, map(lambda s: s.strip(), self.address.splitlines())))
 
     # TODO: Could this be implemented in a more optimized way?
     @property
