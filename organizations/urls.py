@@ -8,8 +8,9 @@ from .views import (OrganizationView, FacilityView,
 
 
 urlpatterns = [
-    url(r'^delete/(?P<pk>\d+)/$', ShiftDeleteView.as_view(),
-        name='shift_delete',),
+    url(r'^(?P<pk>[^/]+)$', OrganizationView.as_view(), name='organization'),
+    url(r'^(?P<orgpk>[^/]+)/facilities/(?P<pk>[^/]+)$', FacilityView.as_view(), name='facility'),
+    url(r'^delete/(?P<pk>\d+)/$', ShiftDeleteView.as_view(), name='shift_delete',),
     url(r'^', ShiftManagementView.as_view(), name="shift_management"),
 ]
 
