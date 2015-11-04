@@ -78,6 +78,20 @@ def filter_queryset_by_membership(qs, user,
             )
     return qs
 
+def is_manager(user, organization, facility):
+    """
+    Returns `True` if the given user is a manager of the organization
+    and facility, otherwise `False`.
+    """
+    memberships = get_cached_memberships(user)
+    user_orgs = memberships[0]
+    user_facilities = memberships[1]
+
+    if (organization in user_orgs and facility in user_facilities):
+        return True
+    else:
+        return False
+
 
 class MembershipFilteredAdmin(admin.ModelAdmin):
     facility_filter_fk = 'facility'

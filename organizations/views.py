@@ -4,13 +4,13 @@ import itertools
 
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.http import Http404
 from django.shortcuts import render
 from django.template.defaultfilters import date
-from django.views.generic import DetailView, ListView
-
+from django.views.generic import DeleteView, DetailView, ListView
 from django.utils.safestring import mark_safe
 
-from organizations.admin import filter_queryset_by_membership
+from organizations.admin import get_cached_memberships, filter_queryset_by_membership, is_manager
 from scheduler.models import Shift
 from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
@@ -33,6 +33,33 @@ class ShiftManagementView(LoginRequiredMixin, ListView):
         open_shifts = filter_queryset_by_membership(open_shifts, self.request.user)
 
         return open_shifts
+
+
+class ShiftDeleteView(DeleteView):
+    """
+    View for the deletion confirmation for a shift.
+    """
+    model = Shift
+    template_name = "organizations/shift_confirm_delete.html"
+
+    def get_object(self, queryset=None):
+        """
+        Make sure that current user is allowed to delete the shift
+        """
+        shift = super(ShiftDeleteView, self).get_object()
+
+        current_user = self.request.user
+        shift_facility = shift.facility
+        shift_organization = shift.facility.organization
+
+        if (is_manager(current_user, shift_organization, shift_facility)
+            or current_user.is_superuser):
+            return shift
+        else:
+            raise Http404
+
+    def get_success_url(self):
+        return reverse("shift_management")
 
 
 class OrganizationView(DetailView):

@@ -29,7 +29,7 @@
             <td>{{ shift.task }}</td>
             <td>
                 <a class="btn btn-default btn-sm"
-                    href="#"
+                    href="{% url 'shift_delete' pk=shift.id %}"
                     role="button">Delete</a>
             </td>
         </tr>

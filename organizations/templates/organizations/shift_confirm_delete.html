@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete shift "{{ object }}"?</p>
+    <input type="submit" value="Confirm" />
+    <a href="{% url "shift_management" %}">Cancel</a>
+</form>
+
+{% endblock %}
+
+
