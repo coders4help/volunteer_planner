@@ -1,6 +1,6 @@
 {% extends "helpdesk_base.html" %}
 
-{% load i18n vpfilters %}
+{% load i18n vpfilters staticfiles %}
 
 {% block title %}
     {% blocktrans trimmed context "title with facility" with facility_name=facility.name %}
@@ -8,11 +8,116 @@
     {% endblocktrans %}
 {% endblock %}
 
+{% block additional_js %}
+    <script src="{% static "momentjs/moment.min.js" %}"></script>
+    {{ block.super }}
+
+    <script src="{% static "visjs/vis.min.js" %}"></script>
+    <script>
+        var now = moment().minutes(0).seconds(0).milliseconds(0);
+        var groupCount = 3;
+        var itemCount = 20;
+
+        // create a data set with groups
+        var groups = new vis.DataSet();
+        var items = new vis.DataSet(
+                {
+                    type: {
+                        start: 'ISODate',
+                        end: 'ISODate'
+                    }
+                }
+        );
+
+        {% regroup shifts by task as shifts_by_task %}
+        {% for shift_by_task in shifts_by_task %}
+            {% with shift_by_task.grouper as task %}
+                groups.add(
+                        {
+                            id: {{ task.id }},
+                            content: '{{ task.name }}',
+                            value: '{{ task.name }}',
+                            subgroupOrder: function (a, b) {
+                                return a.subgroupOrder - b.subgroupOrder;
+                            },
+                            stack: false
+                        }
+                );
+                {% regroup shift_by_task.list by workplace as shifts_by_workplace %}
+                {% for shift_by_workplace in shifts_by_workplace %}
+                    {% with shift_by_workplace.grouper as workplace %}
+
+
+                        {% for shift in shift_by_workplace.list %}
+                            {% with slots_left=shift.volunteer_count|subtract:shift.slots slots_percent=shift.volunteer_count|divide:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
+
+                                items.add({
+                                    id: {{ shift.id }},
+                                    group: {{ task.id }},
+                                    subgroup: '{{ workplace.id|default:"no workplace" }}',
+                                    content: '<a href="#{{ shift.id }}">{{ shift.workplace.name|default:shift.task.name }}<br>{% blocktrans trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }} Uhr{% endblocktrans %}</a>',
+                                    subgroupOrder: '{{ workplace.name }}',
+                                    start: "{{ shift.starting_time|date:"c" }}",
+                                    end: "{{ shift.ending_time|date:"c" }}"
+                                });
+                            {% endwith %}
+                        {% endfor %}
+                    {% endwith %}
+                {% endfor %}
+            {% endwith %}
+        {% endfor %}
+
+
+        // create visualization
+        var container = document.getElementById('timeline');
+
+        startDate = moment('{{ schedule_date|date:"c" }}');
+        endDate = startDate.clone()
+        endDate.add(moment.duration({'days': 1}))
+        var options = {
+            groupOrder: 'value',  // groupOrder can be a property name or a sorting function
+            start: startDate,
+            end: endDate,
+            editable: false,
+            stack: false,
+            moveable: false,
+            orientation: {
+                axis: 'both',
+                item: 'bottom'
+            }
+        };
+
+        var timeline;  //= new vis.Timeline(container);
+
+        $('#timeline').on('shown.bs.collapse', function () {
+            timeline = new vis.Timeline(container);
+            timeline.setOptions(options);
+            timeline.setGroups(groups);
+            timeline.setItems(items);
+            timeline.fit();
+        });
+
+        $('#timeline').on('hidden.bs.collapse', function () {
+            timeline.destroy();
+        });
+
+    </script>
+{% endblock %}
+
+{% block additional_css %}
+    {{ block.super }}
+    <link href="{% static "visjs/vis.min.css" %}" rel="stylesheet">
+
+    <style>
+        *:target, tr:target td {
+            background-color: #FFFDD9;
+        }
+    </style>
+{% endblock %}
+
 {% block helpdesk_content %}
 
     {% include "partials/alert_messages.html" %}
-
-
 
     <div class="row">
         <h2>
@@ -23,9 +128,22 @@
             {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date %}
                 Schedule for {{ schedule_date }}
             {% endblocktrans %}
-        </h3>
-    </div>
 
+        </h3>
+
+        <button class="small fa fa-calendar"
+                role="button"
+                data-toggle="collapse"
+                href="#timeline"
+                aria-expanded="false"
+                aria-controls="timeline">
+            Toggle Schedule
+        </button>
+
+        <div class="collapse" id="timeline">
+
+        </div>
+    </div>
     <form method="POST">
         {% csrf_token %}
 
@@ -40,12 +158,17 @@
                     {% with shift_by_workplace.grouper as workplace %}
 
                         <div class="row">
-                            <h3>
+                            <h3 id="task-{{ task.id }}-{{ workplace.id }}">
                                 {% if workplace %}
-                                    {{ task.name }} - {{ workplace.name }}
+                                    {{ task.name }} -
+                                    {{ workplace.name }}
                                 {% else %}
                                     {{ task.name }}
                                 {% endif %}
+
+                                <a href="#task-{{ task.id }}-{{ workplace.id }}">
+                                    <span class="small fa fa-link"></span>
+                                </a>
                             </h3>
 
                             {% if task.description %}
@@ -62,6 +185,9 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th>
+                                        {% trans "Link" %}
+                                    </th>
                                     <th colspan="2" width="10%">
                                         {% trans "Time" %}
                                     </th>
@@ -73,6 +199,9 @@
                                     </th>
                                 </tr>
                                 <tr>
+                                    <th>
+                                        <span class="fa fa-link"></span>
+                                    </th>
                                     <th width="5%">
                                         {% trans "Start" %}
                                     </th>
@@ -96,7 +225,12 @@
                                 <tbody>
                                 {% for shift in shift_by_workplace.list %}
                                     {% with slots_left=shift.volunteer_count|subtract:shift.slots slots_percent=shift.volunteer_count|divide:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
-                                        <tr>
+
+                                        <tr id="{{ shift.id }}">
+                                            <td>
+                                                <a href="#{{ shift.id }}"
+                                                   class="fa fa-link"></a>
+                                            </td>
                                             <td>
                                                 {{ shift.starting_time|date:"H:i" }}
                                             </td>
@@ -154,6 +288,7 @@
                                                 {% endif %}
                                             </td>
                                         </tr>
+
                                     {% endwith %}
                                 {% endfor %}
                                 </tbody>
