@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+
+{% block content %}
+<div class="">
+    <h1>Manage shifts</h1>
+
+    {% if object_list %}
+    <table class="table table-striped">
+        <tr>
+            <th width="15%">Date</th>
+            <th width="5%">Start</th>
+            <th width="5%">End</th>
+            <th width="10%">Organization</th>
+            <th width="10%">Facility</th>
+            <th>Task</th>
+            <th width="10%">Actions</th>
+        </tr>
+        {% for shift in object_list %}
+        <tr>
+            <td>{{ shift.starting_time.date }}</td>
+            <td>{{ shift.starting_time.time }}</td>
+            <td>{{ shift.ending_time.time }}</td>
+            <td>{{ shift.facility.organization }}</td>
+            <td>{{ shift.facility }}</td>
+            <td>{{ shift.task }}</td>
+            <td>
+                <a class="btn btn-default btn-sm"
+                    href="{% url 'shift_delete' pk=shift.id %}"
+                    role="button">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>        
+    {% else %}
+    <p>No scheduled shifts.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+
