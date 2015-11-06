@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav">
                 {% include "partials/region_selection.html" %}
                 
-                {% if perms.volunteer_planner.delete_shift %}
+                {% if perms.scheduler.delete_shift %}
                 <li>
                     {% url 'shift_management' as shifts_url %}
                     <a href="{{ shifts_url }}" {% if shifts_url in reqeust.path %}class="active"{% endif %}>
