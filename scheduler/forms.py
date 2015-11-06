@@ -20,8 +20,10 @@ class ShiftForm(forms.ModelForm):
         }
         widgets = {
             'workplace': forms.Select({'class': 'form-control'}),
-            'starting_time': widgets.AdminSplitDateTime({'class': 'form-control'}),
-            'ending_time': widgets.AdminSplitDateTime({'class': 'form-control'}),
+            'starting_time': forms.DateTimeInput({'class': 'form-control',
+                                                  'placeholder': 'YYYY-MM-DD HH:MM'}),
+            'ending_time': forms.DateTimeInput({'class': 'form-control',
+                                                'placeholder': 'YYYY-MM-DD HH:MM'}),
             'slots': forms.NumberInput({'class': 'form-control'}),
         }
 

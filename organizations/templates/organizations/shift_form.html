@@ -12,18 +12,17 @@
 
     {# --- Task fields --- #}
     {% for field in task_form %}
-        <div class="row form-group">
+        <div class="row form-group{% if field.errors %} has-error has-feedback{% endif %}">
             <div class="col-xs-12">
             {{ field.label_tag }}
             {% if field.errors %}
-                <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <div class="control-label">
                     <span class="sr-only">Error:</span>
                     {{ field.errors.as_text }}
                 </div>
             {% endif %}
             {% if field.help_text %}
-                <p class="help">{{ field.help_text|safe }}</p>
+                <div class="control-label help">{{ field.help_text|safe }}</div>
             {% endif %}
             {{ field }}
             </div>
@@ -35,19 +34,17 @@
     {# --- Shift fields --- #}
     {% for field in form %}
         {% cycle '<div class="row form-group">' '' %}
-            <div class="col-xs-6">
-            {{ field.label_tag }}
+            <div class="col-xs-6{% if field.errors %} has-error has-feedback{% endif %}">
+            {{ field.label_tag }} {{ field }}
             {% if field.errors %}
-                <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <div class="control-label">
                     <span class="sr-only">Error:</span>
                     {{ field.errors.as_text }}
                 </div>
             {% endif %}
             {% if field.help_text %}
-                <p class="help">{{ field.help_text|safe }}</p>
+                <div class="control-label help">{{ field.help_text|safe }}</div>
             {% endif %}
-            {{ field }}
             </div>
         {% cycle '' '</div>' %}
     {% endfor %}
