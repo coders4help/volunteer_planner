@@ -11,7 +11,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView,
 from django.utils.safestring import mark_safe
 from django.db import transaction
 
-from organizations.admin import get_cached_memberships, filter_queryset_by_membership, is_manager
+from organizations.admin import get_cached_memberships, filter_queryset_by_membership
 from organizations.models import Task
 from scheduler.models import Shift
 from scheduler.forms import TaskForm, ShiftForm
@@ -32,10 +32,16 @@ class ShiftManagementView(LoginRequiredMixin, ListView):
         """
         Get all shifts scheduled in future for the organization of the current user
         """
+        current_user = self.request.user
+        
+        if (not current_user.has_perm('scheduler.delete_shift')):
+            raise Http404
+        
         open_shifts = Shift.open_shifts.all()
-        open_shifts = filter_queryset_by_membership(open_shifts, self.request.user)
+        open_shifts = filter_queryset_by_membership(open_shifts, current_user)
 
         return open_shifts
+
 
 class ShiftViewSaveMixin(LoginRequiredMixin):
     """
@@ -57,6 +63,7 @@ class ShiftViewSaveMixin(LoginRequiredMixin):
 
         return super(ShiftViewSaveMixin, self).form_valid(form)
 
+
 class ShiftCreateView(ShiftViewSaveMixin, CreateView):
     template_name = 'organizations/shift_form.html'
     model = Shift
@@ -70,6 +77,7 @@ class ShiftCreateView(ShiftViewSaveMixin, CreateView):
         else:
             data['task_form'] = TaskForm()
         return data
+
 
 class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
     """
@@ -92,6 +100,7 @@ class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
             data['task_form'] = TaskForm(instance=form.instance.task)
         return data
 
+
 class ShiftDeleteView(DeleteView):
     """
     View for the deletion confirmation for a shift.
@@ -104,19 +113,29 @@ class ShiftDeleteView(DeleteView):
         Make sure that current user is allowed to delete the shift
         """
         shift = super(ShiftDeleteView, self).get_object()
-
         current_user = self.request.user
-        shift_facility = shift.facility
-        shift_organization = shift.facility.organization
-
-        if (is_manager(current_user, shift_organization, shift_facility)
-            or current_user.is_superuser):
+        facility = shift.facility
+        
+        if (self.can_delete_shift(current_user, facility)):
             return shift
         else:
             raise Http404
 
     def get_success_url(self):
         return reverse("shift_management")
+        
+    def can_delete_shift(self, user, facility):
+        """
+        Check if user has the general deletion rights and belongs
+        to the given facility.
+        """
+        if (not user.has_perm('scheduler.delete_shift')):
+            return False
+        user_facilities = get_cached_memberships(user)[1]
+        for facility_id in user_facilities:
+            if facility_id == facility.id:
+                return True
+        return False
 
 
 class OrganizationView(DetailView):
