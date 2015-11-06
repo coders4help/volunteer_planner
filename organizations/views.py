@@ -5,13 +5,16 @@ import itertools
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import date
-from django.views.generic import DeleteView, DetailView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
 from django.utils.safestring import mark_safe
+from django.db import transaction
 
 from organizations.admin import get_cached_memberships, filter_queryset_by_membership, is_manager
+from organizations.models import Task
 from scheduler.models import Shift
+from scheduler.forms import TaskForm, ShiftForm
 from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
 from .models import Organization, Facility
@@ -34,6 +37,60 @@ class ShiftManagementView(LoginRequiredMixin, ListView):
 
         return open_shifts
 
+class ShiftViewSaveMixin(LoginRequiredMixin):
+    """
+    it helps ShiftViews to save Shift and Task models from single request.
+    """
+    def form_valid(self, form):
+        data = self.get_context_data()
+        task_form = data['task_form']
+
+        if not task_form.is_valid():
+            return super(object, self).form_invalid(form)
+
+        with transaction.atomic():
+            task = task_form.save()
+
+            form.instance.task = task
+            form.instance.facility = task.facility
+            self.object = form.save()
+
+        return super(ShiftViewSaveMixin, self).form_valid(form)
+
+class ShiftCreateView(ShiftViewSaveMixin, CreateView):
+    template_name = 'organizations/shift_form.html'
+    model = Shift
+    form_class = ShiftForm
+    success_url = '/shifts/'
+
+    def get_context_data(self, **kwargs):
+        data = super(ShiftCreateView, self).get_context_data(**kwargs)
+        if self.request.method == 'POST':
+            data['task_form'] = TaskForm(self.request.POST)
+        else:
+            data['task_form'] = TaskForm()
+        return data
+
+class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
+    """
+    TODO: access permission needs to be checked before data gets updated in DB.
+    """
+
+    slug_field = 'id'
+    slug_url_kwarg = 'id'
+    template_name = 'organizations/shift_form.html'
+    model = Shift
+    form_class = ShiftForm
+    success_url = '/shifts/'
+
+    def get_context_data(self, **kwargs):
+        data = super(ShiftUpdateView, self).get_context_data(**kwargs)
+        if self.request.method == 'POST':
+            data['task_form'] = TaskForm(self.request.POST)
+        else:
+            form = self.get_form()
+            data['task_form'] = TaskForm(instance=form.instance.task)
+        return data
 
 class ShiftDeleteView(DeleteView):
     """

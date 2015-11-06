@@ -8,6 +8,11 @@
 <div class="">
     <h1>Manage shifts</h1>
 
+    <p>
+        <a class="btn btn-default" href="{% url 'shift_create' %}" role="button">Add Shift
+        </a>
+    </p>
+
     {% if object_list %}
     <table class="table table-striped">
         <tr>
@@ -17,7 +22,7 @@
             <th width="10%">Organization</th>
             <th width="10%">Facility</th>
             <th>Task</th>
-            <th width="10%">Actions</th>
+            <th width="15%">Actions</th>
         </tr>
         {% for shift in object_list %}
         <tr>
@@ -28,6 +33,9 @@
             <td>{{ shift.facility }}</td>
             <td>{{ shift.task }}</td>
             <td>
+                <a class="btn btn-default btn-sm"
+                    href="{% url 'shift_update' pk=shift.id %}"
+                    role="button">Update</a>
                 <a class="btn btn-default btn-sm"
                     href="{% url 'shift_delete' pk=shift.id %}"
                     role="button">Delete</a>
@@ -40,5 +48,3 @@
     {% endif %}
 </div>
 {% endblock %}
-
-
