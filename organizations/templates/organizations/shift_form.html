@@ -5,15 +5,60 @@
 {% block body_class %}helpdesk{% endblock %}
 
 {% block content %}
+<h1 class="">{{ title }}</h1>
+<hr />
 
-<form action="" method="post">{% csrf_token %}
-    <h3>Shift</h3>
-    {{ form.as_p }}
+<form style="width: 50%" action="" method="post">{% csrf_token %}
 
-    <h3>Task</h3>
-    {{ task_form.as_p }}
+    {# --- Task fields --- #}
+    {% for field in task_form %}
+        <div class="row form-group">
+            <div class="col-xs-12">
+            {{ field.label_tag }}
+            {% if field.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{ field.errors.as_text }}
+                </div>
+            {% endif %}
+            {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+            {{ field }}
+            </div>
+        </div>
+    {% endfor %}
 
-    <input type="submit" value="Send message" />
+    <hr />
+
+    {# --- Shift fields --- #}
+    {% for field in form %}
+        {% cycle '<div class="row form-group">' '' %}
+            <div class="col-xs-6">
+            {{ field.label_tag }}
+            {% if field.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{ field.errors.as_text }}
+                </div>
+            {% endif %}
+            {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+            {{ field }}
+            </div>
+        {% cycle '' '</div>' %}
+    {% endfor %}
+
+    <hr />
+
+    {# --- submit/cancel buttons --- #}
+    <div class="row form-group text-right">
+        <input class="btn btn-default" type="submit" value="{{ submit_btn_text }}" name="save" />
+        <a class="btn btn-danger" href="{% url 'shift_management' %}" role="button">Cancel</a>
+    </div>
 </form>
 
 {% endblock %}

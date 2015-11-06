@@ -41,12 +41,26 @@ class ShiftViewSaveMixin(LoginRequiredMixin):
     """
     it helps ShiftViews to save Shift and Task models from single request.
     """
+
+    def get_object(self, queryset=None):
+        shift = super(ShiftViewSaveMixin, self).get_object()
+
+        current_user = self.request.user
+        shift_facility = shift.facility
+        shift_organization = shift.facility.organization
+
+        if (is_manager(current_user, shift_organization, shift_facility)
+            or current_user.is_superuser):
+            return shift
+        else:
+            raise Http404
+
     def form_valid(self, form):
         data = self.get_context_data()
         task_form = data['task_form']
 
         if not task_form.is_valid():
-            return super(object, self).form_invalid(form)
+            return super(ShiftViewSaveMixin, self).form_invalid(form)
 
         with transaction.atomic():
             task = task_form.save()
@@ -69,15 +83,11 @@ class ShiftCreateView(ShiftViewSaveMixin, CreateView):
             data['task_form'] = TaskForm(self.request.POST)
         else:
             data['task_form'] = TaskForm()
+        data['title'] = 'Create new shift'
+        data['submit_btn_text'] = 'Create'
         return data
 
 class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
-    """
-    TODO: access permission needs to be checked before data gets updated in DB.
-    """
-
-    slug_field = 'id'
-    slug_url_kwarg = 'id'
     template_name = 'organizations/shift_form.html'
     model = Shift
     form_class = ShiftForm
@@ -90,6 +100,8 @@ class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
         else:
             form = self.get_form()
             data['task_form'] = TaskForm(instance=form.instance.task)
+        data['title'] = 'Edit shift'
+        data['submit_btn_text'] = 'Save'
         return data
 
 class ShiftDeleteView(DeleteView):
