@@ -2,13 +2,14 @@
 
 import itertools
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import date
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
 from django.utils.safestring import mark_safe
+from django.utils.decorators import method_decorator
 from django.db import transaction
 
 from organizations.admin import get_cached_memberships, filter_queryset_by_membership, is_manager
@@ -37,24 +38,27 @@ class ShiftManagementView(LoginRequiredMixin, ListView):
 
         return open_shifts
 
-class ShiftViewSaveMixin(LoginRequiredMixin):
+class ShiftViewMembershipsRequiredMixin(LoginRequiredMixin):
     """
-    it helps ShiftViews to save Shift and Task models from single request.
+    it checks whether current user is allowed to access the shift.
     """
-
     def get_object(self, queryset=None):
-        shift = super(ShiftViewSaveMixin, self).get_object()
+        shift = super(ShiftViewMembershipsRequiredMixin, self).get_object()
 
         current_user = self.request.user
         shift_facility = shift.facility
         shift_organization = shift.facility.organization
 
-        if (is_manager(current_user, shift_organization, shift_facility)
+        if (is_manager(current_user, shift_organization.id, shift_facility.id)
             or current_user.is_superuser):
             return shift
         else:
             raise Http404
 
+class ShiftViewSaveMixin(ShiftViewMembershipsRequiredMixin):
+    """
+    it helps ShiftViews to save Shift and Task models from single request.
+    """
     def form_valid(self, form):
         data = self.get_context_data()
         task_form = data['task_form']
@@ -72,10 +76,19 @@ class ShiftViewSaveMixin(LoginRequiredMixin):
         return super(ShiftViewSaveMixin, self).form_valid(form)
 
 class ShiftCreateView(ShiftViewSaveMixin, CreateView):
+    """
+    A create viwe for essentially shift creation from Task and Shift formset.
+    See also ShiftUpdateView
+    """
     template_name = 'organizations/shift_form.html'
     model = Shift
     form_class = ShiftForm
     success_url = '/shifts/'
+
+    @method_decorator(permission_required('organizations.add_task'))
+    @method_decorator(permission_required('scheduler.add_shift'))
+    def dispatch(self, *args, **kwargs):
+        return super(ShiftCreateView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         data = super(ShiftCreateView, self).get_context_data(**kwargs)
@@ -88,10 +101,19 @@ class ShiftCreateView(ShiftViewSaveMixin, CreateView):
         return data
 
 class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
+    """
+    A update viwe for modifying Task and Shift formset.
+    See also ShiftCreateView
+    """
     template_name = 'organizations/shift_form.html'
     model = Shift
     form_class = ShiftForm
     success_url = '/shifts/'
+
+    @method_decorator(permission_required('organizations.change_task'))
+    @method_decorator(permission_required('scheduler.change_shift'))
+    def dispatch(self, *args, **kwargs):
+        return super(ShiftUpdateView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         data = super(ShiftUpdateView, self).get_context_data(**kwargs)
@@ -104,28 +126,17 @@ class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
         data['submit_btn_text'] = 'Save'
         return data
 
-class ShiftDeleteView(DeleteView):
+class ShiftDeleteView(ShiftViewMembershipsRequiredMixin, DeleteView):
     """
     View for the deletion confirmation for a shift.
     """
     model = Shift
     template_name = "organizations/shift_confirm_delete.html"
 
-    def get_object(self, queryset=None):
-        """
-        Make sure that current user is allowed to delete the shift
-        """
-        shift = super(ShiftDeleteView, self).get_object()
-
-        current_user = self.request.user
-        shift_facility = shift.facility
-        shift_organization = shift.facility.organization
-
-        if (is_manager(current_user, shift_organization, shift_facility)
-            or current_user.is_superuser):
-            return shift
-        else:
-            raise Http404
+    @method_decorator(permission_required('organizations.delete_task'))
+    @method_decorator(permission_required('scheduler.delete_shift'))
+    def dispatch(self, *args, **kwargs):
+        return super(ShiftDeleteView, self).dispatch(*args, **kwargs)
 
     def get_success_url(self):
         return reverse("shift_management")

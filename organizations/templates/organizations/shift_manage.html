@@ -8,10 +8,12 @@
 <div class="">
     <h1>Manage shifts</h1>
 
+    {% if perms.scheduler.add_shift %}
     <p>
         <a class="btn btn-default" href="{% url 'shift_create' %}" role="button"><i class="fa fa-calendar-plus-o fa-fw"></i> Add Shift
         </a>
     </p>
+    {% endif %}
 
     {% if object_list %}
     <table class="table table-striped">
@@ -33,12 +35,16 @@
             <td>{{ shift.facility }}</td>
             <td>{{ shift.task }}</td>
             <td>
+                {% if perms.scheduler.change_shift %}
                 <a class="btn btn-default btn-sm"
                     href="{% url 'shift_update' pk=shift.id %}"
                     role="button">Update</a>
+                {% endif %}
+                {% if perms.scheduler.delete_shift %}
                 <a class="btn btn-default btn-sm"
                     href="{% url 'shift_delete' pk=shift.id %}"
                     role="button">Delete</a>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
