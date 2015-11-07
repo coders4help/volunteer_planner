@@ -1,7 +1,8 @@
-{% load placestemplatetags vpfilters i18n %}
+{% load placestemplatetags vpfilters i18n cache %}
 
 {% get_places_having_facilities as places %}
 
+{% cache 60 LANGUAGE_CODE %}
 <li class="dropdown">
 
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -108,3 +109,4 @@
 
     </ul>
 </li>
+{% endcache %}

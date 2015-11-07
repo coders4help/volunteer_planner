@@ -4,14 +4,12 @@ import itertools
 
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import date
+from django.utils.safestring import mark_safe
 from django.views.generic import DetailView
 
-from django.utils.safestring import mark_safe
-from django.views.generic.base import TemplateView
-
-from scheduler.models import Shift
-from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
+from news.models import NewsEntry
+from scheduler.models import Shift
 from .models import Organization, Facility
 
 
@@ -27,25 +25,32 @@ class OrganizationView(DetailView):
 class FacilityView(DetailView):
     template_name = 'facility.html'
     model = Facility
+    queryset = Facility.objects.select_related('organization')
 
     def get_context_data(self, **kwargs):
         context = super(FacilityView, self).get_context_data(**kwargs)
         shifts = Shift.open_shifts.filter(facility=self.object)
-        context['facility'] = get_facility_details(self.object, shifts)
         context['object'] = self.object
+        context['facility'] = get_facility_details(self.object, shifts)
 
         return context
 
 
-class PendingApprovalsView(FacilityView):
+class PendingApprovalsView(DetailView):
     """
     This view returns the pending member requests for approval by the shift
     planner for the already logged in
     shift planner of certain facilities.
     """
 
+    model = Facility
     template_name = "approvals.html"
+    queryset = Facility.objects.select_related('organization').prefetch_related(
+        'memberships', 'memberships__user_account',
+        'memberships__user_account__user')
 
+    # def get_context_data(self, **kwargs):
+    #     context = super(PendingApprovalsView, self).get_context_data(**kwargs)
 
 
 def get_facility_details(facility, shifts):
