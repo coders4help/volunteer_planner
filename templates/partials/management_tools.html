@@ -1,0 +1,32 @@
+{% load i18n %}
+
+{% if user.is_staff or user.is_superuser %}
+    {% with user.account.facility_set.all as user_facilities %}
+    {% if user_facilities %}
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle fa fa-wrench" data-toggle="dropdown"
+               role="button" aria-haspopup="true"
+               aria-expanded="false">
+                {% trans "Manage" %}<span
+                    class="badge blue-batches">24</span>
+                <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu">
+
+                {% for facility in user_facilities %}
+                    <li class="dropdown-header">{{ facility.name }}</li>
+                    <li>
+                        <a href="{% url "manage-members" facility.organization.slug facility.slug %}">
+                            {% trans "Members" %} <span
+                                class="badge blue-batches">24</span>
+                        </a>
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+        </li>
+    {% endif %}
+    {% endwith %}
+{% endif %}

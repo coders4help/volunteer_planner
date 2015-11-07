@@ -186,6 +186,8 @@ class PlannerView(LoginRequiredMixin, FormView):
                     and not is_facility_member(self.request.user,
                                                shift_to_join.facility):
 
+                user_account.facility_set
+
                 if not is_membership_pending(user, shift_to_join.facility):
                     mbs, created = FacilityMembership.objects.get_or_create(
                         user_account=user_account,

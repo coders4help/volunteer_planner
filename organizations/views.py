@@ -32,10 +32,12 @@ class FacilityView(DetailView):
         context = super(FacilityView, self).get_context_data(**kwargs)
         shifts = Shift.open_shifts.filter(facility=self.object)
         context['facility'] = get_facility_details(self.object, shifts)
+        context['object'] = self.object
+
         return context
 
 
-class PendingApprovalsView(TemplateView):
+class PendingApprovalsView(FacilityView):
     """
     This view returns the pending member requests for approval by the shift
     planner for the already logged in

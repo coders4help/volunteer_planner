@@ -1,7 +1,79 @@
-{% extends "helpdesk_base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 
-{% block helpdesk_content %}
-<p>Hi ho silver</p>
-{% endblock  %}
+{% block content %}
+
+    {% with object as facility %}
+
+        <div class="row">
+
+            <h2>
+                {% blocktrans trimmed %}
+                    Members in {{ facility }}
+                {% endblocktrans %}
+            </h2>
+
+        </div>
+
+        {% regroup facility.memberships.all by status as memberships_by_status %}
+
+        <div class="row">
+            <h2>
+                {{ facility.name }}
+            </h2>
+            {% for memberships_for_status in memberships_by_status %}
+
+                <h3>{{ memberships_for_status.list.0.get_status_display|title }}</h3>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            {% trans "Username" %}
+                        </th>
+                        <th>
+                            {% trans "Role" %}
+                        </th>
+                        <th>
+                            {% trans "Actions" %}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for membership in memberships_for_status.list %}
+                        <tr>
+                            <td>
+                                {{ membership.user_account.user.username }}
+                            </td>
+                            <td>
+                                {{ membership.get_role_display|title }}
+                            </td>
+                            <td>
+                                {% if membership.status == membership.Status.APPROVED %}
+                                    <span class="fa fa-minus-circle">
+                                        {% trans "Block" %}
+                                    </span>
+                                    {% elif membership.status == membership.Status.PENDING %}
+                                    <span class="fa fa-user-plus">
+                                        {% trans "Accept" %}
+                                    </span> |
+                                    <span class="fa fa-minus-circle">
+                                        {% trans "Block" %}
+                                    </span>
+                                {% endif %}
+                                | <span class="fa fa-remove">
+                                        {% trans "Remove" %}
+                                    </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            {% endfor %}
+
+        </div>
+    {% endwith %}
+{% endblock %}
