@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Translators:
+# Jonna Appelqvist, 2015
 # Jonna Appelqvist, 2015
 # Linnéa Deurell <linnea.deurell@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-29 15:57+0100\n"
-"PO-Revision-Date: 2015-10-28 17:42+0000\n"
-"Last-Translator: Jonna Appelqvist\n"
+"POT-Creation-Date: 2015-11-07 14:11+0100\n"
+"PO-Revision-Date: 2015-11-06 08:55+0000\n"
+"Last-Translator: Maik Hoepfel <m@maikhoepfel.de>\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "E-post"
 msgid "Accounts"
 msgstr "Konton"
 
-#: accounts/models.py:16 organizations/models.py:125
+#: accounts/models.py:16 organizations/models.py:126
 msgid "user account"
 msgstr "Användarkonto"
 
@@ -172,42 +172,42 @@ msgstr ""
 msgid "news entries"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:52
+#: non_logged_in_area/templates/base_non_logged_in.html:56
 #: templates/registration/login.html:3 templates/registration/login.html:10
 msgid "Login"
 msgstr "Logga in"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:55
+#: non_logged_in_area/templates/base_non_logged_in.html:59
 msgid "Start helping"
 msgstr "Börja hjälpa"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:82
+#: non_logged_in_area/templates/base_non_logged_in.html:86
 msgid "Main page"
 msgstr "Startsida"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:85
+#: non_logged_in_area/templates/base_non_logged_in.html:89
 #: non_logged_in_area/templates/faqs.html:5
 msgid "Frequently Asked Questions"
 msgstr "Vanliga frågor"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:88
+#: non_logged_in_area/templates/base_non_logged_in.html:92
 msgid "Contact"
 msgstr "Kontakt"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:91
+#: non_logged_in_area/templates/base_non_logged_in.html:95
 msgid "Imprint"
 msgstr "Om webbplatsen"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:94
+#: non_logged_in_area/templates/base_non_logged_in.html:98
 msgid "Terms of Service"
 msgstr "Användarvillkor"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:97
+#: non_logged_in_area/templates/base_non_logged_in.html:101
 #: non_logged_in_area/templates/privacy_policy.html:6
 msgid "Privacy Policy"
 msgstr "Integritetspolicy"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:104
+#: non_logged_in_area/templates/base_non_logged_in.html:108
 msgid "supported by corporate volunteers from"
 msgstr ""
 
@@ -349,7 +349,7 @@ msgstr "<p>Denna plattform är icke-komersiell och fri från reklam. Ett interna
 
 #: non_logged_in_area/templates/home.html:98
 msgid "You can help at these locations:"
-msgstr "Du kan hjälpa till på dessa platser:"
+msgstr ""
 
 #: non_logged_in_area/templates/home.html:116
 msgid "There are currently no places in need of help."
@@ -616,35 +616,39 @@ msgstr ""
 "Vänligen skriv till <a\n"
 "href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
 
-#: organizations/admin.py:125 organizations/admin.py:127
+#: organizations/admin.py:123 organizations/admin.py:125
 msgid "edit"
 msgstr "Redigera"
 
-#: organizations/models.py:12 organizations/models.py:49
-#: organizations/models.py:181 organizations/models.py:202 places/models.py:20
-#: scheduletemplates/models.py:13
-msgid "name"
-msgstr "Efternamn"
-
+#: organizations/admin.py:197 organizations/admin.py:233
 #: organizations/models.py:17 organizations/models.py:54
 msgid "short description"
 msgstr "Kort beskrivning"
 
+#: organizations/admin.py:203 organizations/admin.py:239
+#: organizations/admin.py:304 organizations/admin.py:328
 #: organizations/models.py:20 organizations/models.py:57
-#: organizations/models.py:184 organizations/models.py:205
+#: organizations/models.py:185 organizations/models.py:206
 msgid "description"
 msgstr "Beskrivning"
 
+#: organizations/admin.py:209 organizations/admin.py:245
 #: organizations/models.py:23 organizations/models.py:60
 msgid "contact info"
 msgstr "Kontaktinformation"
+
+#: organizations/models.py:12 organizations/models.py:49
+#: organizations/models.py:182 organizations/models.py:203 places/models.py:20
+#: scheduletemplates/models.py:13
+msgid "name"
+msgstr "Efternamn"
 
 #: organizations/models.py:26 organizations/models.py:75
 msgid "address"
 msgstr "Adress"
 
 #: organizations/models.py:34 organizations/models.py:45
-#: organizations/models.py:136
+#: organizations/models.py:137
 msgid "organization"
 msgstr "Organisation"
 
@@ -652,8 +656,8 @@ msgstr "Organisation"
 msgid "organizations"
 msgstr "Organisationer"
 
-#: organizations/models.py:39 organizations/models.py:106
-#: organizations/models.py:192 organizations/models.py:213
+#: organizations/models.py:39 organizations/models.py:107
+#: organizations/models.py:193 organizations/models.py:214
 #, python-brace-format
 msgid "{name}"
 msgstr "{name}"
@@ -678,8 +682,8 @@ msgstr "Latitud"
 msgid "longitude"
 msgstr "Longitud"
 
-#: organizations/models.py:92 organizations/models.py:156
-#: organizations/models.py:176 organizations/models.py:198
+#: organizations/models.py:92 organizations/models.py:157
+#: organizations/models.py:177 organizations/models.py:199
 #: scheduler/models.py:27 scheduletemplates/models.py:16
 msgid "facility"
 msgstr "Anläggning"
@@ -688,67 +692,67 @@ msgstr "Anläggning"
 msgid "facilities"
 msgstr "Anläggningar"
 
-#: organizations/models.py:115
+#: organizations/models.py:116
 msgid "admin"
 msgstr "Admin"
 
-#: organizations/models.py:116
+#: organizations/models.py:117
 msgid "manager"
 msgstr "Chef"
 
-#: organizations/models.py:117
+#: organizations/models.py:118
 msgid "member"
 msgstr "Medlem"
 
-#: organizations/models.py:122
+#: organizations/models.py:123
 msgid "role"
 msgstr "Ställning"
 
-#: organizations/models.py:141
+#: organizations/models.py:142
 msgid "organization member"
 msgstr "Organisationsmedlem"
 
-#: organizations/models.py:142
+#: organizations/models.py:143
 msgid "organization members"
 msgstr "Organisationsmedlemmar"
 
-#: organizations/models.py:146
+#: organizations/models.py:147
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
-msgstr "{username} vid {organization_name} ({user_role})"
+msgstr ""
 
-#: organizations/models.py:162
+#: organizations/models.py:163
 msgid "facility member"
 msgstr "Anläggningsmedlem"
 
-#: organizations/models.py:163
+#: organizations/models.py:164
 msgid "facility members"
 msgstr "Anläggningsmedlemmar"
 
-#: organizations/models.py:167
+#: organizations/models.py:168
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
-msgstr "{username} vid {facility_name} ({user_role})"
+msgstr ""
 
-#: organizations/models.py:187 scheduler/models.py:22
+#: organizations/models.py:188 scheduler/models.py:22
 #: scheduletemplates/models.py:40
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr "Arbetsplats"
 
-#: organizations/models.py:188
+#: organizations/models.py:189
 msgid "workplaces"
 msgstr "Arbetsplatser"
 
-#: organizations/models.py:208 scheduler/models.py:20
+#: organizations/models.py:209 scheduler/models.py:20
 #: scheduletemplates/models.py:37
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "Uppgift"
 
-#: organizations/models.py:209
+#: organizations/models.py:210
 msgid "tasks"
 msgstr "Uppgifter"
 
@@ -810,8 +814,8 @@ msgstr "Platser"
 msgid "number of volunteers"
 msgstr "Antal volontärer"
 
-#: scheduler/admin.py:42
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
+#: scheduler/admin.py:44
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
 msgstr "Volontärer"
 
@@ -827,14 +831,14 @@ msgstr "Antal volontärer som behövs"
 #: scheduler/models.py:29 scheduletemplates/admin.py:33
 #: scheduletemplates/models.py:44
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr "Starttid"
 
 #: scheduler/models.py:31 scheduletemplates/admin.py:36
 #: scheduletemplates/models.py:47
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr "Sluttid"
 
@@ -842,7 +846,7 @@ msgstr "Sluttid"
 msgid "shift"
 msgstr "Pass"
 
-#: scheduler/models.py:43 scheduletemplates/admin.py:278
+#: scheduler/models.py:43 scheduletemplates/admin.py:282
 msgid "shifts"
 msgstr "Pass"
 
@@ -901,58 +905,67 @@ msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
 msgstr "Schema för %(facility_name)s"
 
-#: scheduler/templates/helpdesk_single.html:23
+#: scheduler/templates/helpdesk_single.html:58
+#, python-format
+msgid "%(starting_time)s - %(ending_time)s Uhr"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:128
 #, python-format
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
 msgstr "Schema för %(schedule_date)s"
 
-#: scheduler/templates/helpdesk_single.html:66
+#: scheduler/templates/helpdesk_single.html:189
+msgid "Link"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:192
 msgid "Time"
 msgstr "Tid"
 
-#: scheduler/templates/helpdesk_single.html:69
+#: scheduler/templates/helpdesk_single.html:195
 msgid "Helpers"
 msgstr "Hjälpare"
 
-#: scheduler/templates/helpdesk_single.html:77
+#: scheduler/templates/helpdesk_single.html:206
 msgid "Start"
 msgstr "Början"
 
-#: scheduler/templates/helpdesk_single.html:80
+#: scheduler/templates/helpdesk_single.html:209
 msgid "End"
 msgstr "Slut"
 
-#: scheduler/templates/helpdesk_single.html:83
+#: scheduler/templates/helpdesk_single.html:212
 msgid "Required"
 msgstr "Behov"
 
-#: scheduler/templates/helpdesk_single.html:86
+#: scheduler/templates/helpdesk_single.html:215
 msgid "Status"
 msgstr "Status"
 
-#: scheduler/templates/helpdesk_single.html:89
+#: scheduler/templates/helpdesk_single.html:218
 msgid "Users"
 msgstr "Användare"
 
-#: scheduler/templates/helpdesk_single.html:92
+#: scheduler/templates/helpdesk_single.html:221
 msgid "You"
 msgstr "Du"
 
-#: scheduler/templates/helpdesk_single.html:114
+#: scheduler/templates/helpdesk_single.html:248
 #, python-format
 msgid "%(slots_left)s more"
 msgstr "%(slots_left)s till"
 
-#: scheduler/templates/helpdesk_single.html:118
+#: scheduler/templates/helpdesk_single.html:252
 msgid "Covered"
 msgstr "Täckt"
 
-#: scheduler/templates/helpdesk_single.html:145
+#: scheduler/templates/helpdesk_single.html:279
 msgid "Drop out"
 msgstr "Lämna pass"
 
-#: scheduler/templates/helpdesk_single.html:152
+#: scheduler/templates/helpdesk_single.html:286
 msgid "Sign up"
 msgstr "Delta"
 
@@ -965,25 +978,13 @@ msgid ""
 "leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:\n"
 "\n"
 "%(shift_title)s, %(location)s\n"
-"%(from_date)s von %(from_time)s bis %(to_time)s\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n"
 "\n"
 "Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.\n"
 "\n"
 "Liebe Grüße vom Volunteer Planner\n"
 "volunteer-planner.org\n"
 msgstr ""
-"\n"
-"Hej,\n"
-"\n"
-"tyvärr har följande ställts in av de ansvariga:\n"
-"\n"
-"%(shift_title)s, %(location)s\n"
-"%(from_date)s från %(from_time)s till %(to_time)s\n"
-"\n"
-"Detta är ett automatiskt genererat e-postmeddelande. Vid frågor ber vi dig kontakta boendet direkt på deras angivna e-postadress. Adressen hittar du under boendebeskrivningen.\n"
-"\n"
-"Med vänliga hälsningar från Volunteer Planner\n"
-"volunteer-planner.org\n"
 
 #: scheduler/templates/shift_modification_notification.html:1
 #, python-format
@@ -994,11 +995,11 @@ msgid ""
 "wir mussten die folgende Schicht zeitlich anpassen:\n"
 "\n"
 "%(shift_title)s, %(location)s\n"
-"%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s\n"
+"%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s Uhr\n"
 "\n"
 "Die neuen Schichtzeiten sind:\n"
 "\n"
-"%(from_date)s von %(from_time)s bis %(to_time)s\n"
+"%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n"
 "\n"
 "Wenn Sie zur neuen Uhrzeit unglücklicher Weise nicht mehr helfen kännen, bitten\n"
 "wir Sie, sich im Volunteer-Planner aus dieser Schicht auszutragen, damit jemand\n"
@@ -1011,80 +1012,59 @@ msgid ""
 "Liebe Grüße vom Volunteer Planner\n"
 "volunteer-planner.org\n"
 msgstr ""
-"\n"
-"Hej,\n"
-"\n"
-"tiden för följande pass har ändrats:\n"
-"\n"
-"%(shift_title)s, %(location)s\n"
-"%(old_from_date)s från %(old_from_time)s till %(old_to_time)s\n"
-"\n"
-"Den nya tiden för passet är:\n"
-"\n"
-"%(from_date)s från %(from_time)s till %(to_time)s\n"
-"\n"
-"Om den nya tiden inte skulle passa dig, ber vi dig att avanmäla dig från passet via volunteer-planner. På så sätt får någon annan möjlighet att hjälpa till. Vi hoppas att du i sådana fall snabbt hittar ett nytt pass att hjälpa till på. Tack så mycket :)\n"
-"\n"
-"Detta är ett automatiskt genererat e-postmeddelande. Vid frågor ber vi dig\n"
-"kontakta boendet direkt på deras angivna e-postadress.\n"
-"Adressen hittar du under \n"
-"boendebeskrivningen.\n"
-"\n"
-"Med vänliga hälsningar från Volunteer Planner\n"
-"volunteer-planner.org\n"
 
-#: scheduler/views.py:149
+#: scheduler/views.py:143
 msgid "The submitted data was invalid."
 msgstr "Den angivna informationen är ogiltig."
 
-#: scheduler/views.py:156
+#: scheduler/views.py:150
 msgid "User account does not exist."
 msgstr "Användarkontot finns inte."
 
-#: scheduler/views.py:171
+#: scheduler/views.py:165
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Vi kan inte lägga till dig till detta pass, då du redan är anmäld till ett annat pass vid samma tidpunkt:"
 
-#: scheduler/views.py:183
+#: scheduler/views.py:177
 msgid "You were successfully added to this shift."
 msgstr "Du har nu lagts till detta pass."
 
-#: scheduler/views.py:186
+#: scheduler/views.py:180
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Du har redan anmält dig till detta pass den {date_time}."
 
-#: scheduler/views.py:197
+#: scheduler/views.py:191
 msgid "You successfully left this shift."
 msgstr "Du har nu avanmält dig från detta pass."
 
-#: scheduletemplates/admin.py:178
+#: scheduletemplates/admin.py:176
 #, python-brace-format
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
 msgstr[0] "Ett pass existerar redan den {date}"
 msgstr[1] "{num_shifts} pass existerar redan den {date}"
 
-#: scheduletemplates/admin.py:233
+#: scheduletemplates/admin.py:231
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
 msgstr[0] "{num_shifts} pass har lagts till den {date}"
 msgstr[1] "{num_shifts} pass har lagts till den {date}"
 
-#: scheduletemplates/admin.py:242
+#: scheduletemplates/admin.py:243
 msgid "Something didn't work. Sorry about that."
 msgstr "Oj! Vi ber om ursäkt, men något gick fel."
 
-#: scheduletemplates/admin.py:272
+#: scheduletemplates/admin.py:276
 msgid "slots"
 msgstr "Platser"
 
-#: scheduletemplates/admin.py:284
+#: scheduletemplates/admin.py:288
 msgid "from"
 msgstr "från"
 
-#: scheduletemplates/admin.py:297
+#: scheduletemplates/admin.py:301
 msgid "to"
 msgstr "till"
 
@@ -1130,12 +1110,12 @@ msgid "Apply Template"
 msgstr "Använd utkast"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:36
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
 msgstr "utan arbetsplats"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:37
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
 msgstr "Använd"
 
@@ -1143,22 +1123,28 @@ msgstr "Använd"
 msgid "Select a date"
 msgstr "Välj ett datum"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:67
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:65
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:122
+msgid "Continue"
+msgstr ""
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:69
 msgid "Select shift templates"
 msgstr "Välj byt utkast"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:120
-msgid "Preview shifts to add"
-msgstr "Förhandsvisa pass att lägga till"
-
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
-#, python-format
-msgid "Please review and confirm shifts to create on %(localized_date)s for %(facility_name)s"
+#, fuzzy
+#| msgid "Please review and confirm shifts to create on %(localized_date)s for %(facility_name)s"
+msgid "Please review and confirm shifts to create"
 msgstr "Vänligen granska och bekräfta pass att lägga till den %(localized_date)s för %(facility_name)s"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:121
-msgid "Apply selected shifts"
-msgstr "Använd valda pass"
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:122
+msgid "Apply"
+msgstr ""
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:124
+msgid "Apply and select new date"
+msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save and apply template"
@@ -1457,17 +1443,21 @@ msgid "The two password fields didn't match."
 msgstr "De två lösenordsfälten stämmer inte överens."
 
 #: volunteer_planner/settings/base.py:144
-msgid "German"
-msgstr "Tyska"
-
-#: volunteer_planner/settings/base.py:145
 msgid "English"
 msgstr "Engelska"
 
+#: volunteer_planner/settings/base.py:145
+msgid "German"
+msgstr "Tyska"
+
 #: volunteer_planner/settings/base.py:146
+msgid "Greek"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:147
 msgid "Hungarian"
 msgstr "Ungerska"
 
-#: volunteer_planner/settings/base.py:147
+#: volunteer_planner/settings/base.py:148
 msgid "Swedish"
 msgstr "Svenska"
