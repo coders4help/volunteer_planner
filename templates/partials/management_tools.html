@@ -1,32 +1,39 @@
-{% load i18n %}
+{% load i18n memberships vpfilters %}
 
 {% if user.is_staff or user.is_superuser %}
     {% with user.account.facility_set.all as user_facilities %}
-    {% if user_facilities %}
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle fa fa-wrench" data-toggle="dropdown"
-               role="button" aria-haspopup="true"
-               aria-expanded="false">
-                {% trans "Manage" %}<span
-                    class="badge blue-batches">24</span>
-                <span class="caret"></span>
-            </a>
+        {% if user_facilities %}
+            {% with user|get_pending_membership_approvals as pending_approvals %}
 
-            <ul class="dropdown-menu">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle fa fa-wrench"
+                       data-toggle="dropdown"
+                       role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        {% trans "Manage" %}<span
+                            class="badge blue-batches fa fa-user-plus">{{ pending_approvals.total }}</span>
+                        <span class="caret"></span>
+                    </a>
 
-                {% for facility in user_facilities %}
-                    <li class="dropdown-header">{{ facility.name }}</li>
-                    <li>
-                        <a href="{% url "manage-members" facility.organization.slug facility.slug %}">
-                            {% trans "Members" %} <span
-                                class="badge blue-batches">24</span>
-                        </a>
-                    </li>
+                    <ul class="dropdown-menu">
 
-                {% endfor %}
+                        {% for facility in user_facilities %}
+                            <li class="dropdown-header">{{ facility.name }}</li>
+                            <li>
+                                <a href="{% url "manage-members" facility.organization.slug facility.slug %}">
+                                    {% trans "Members" %}
+                            <span
+                                    class="badge blue-batches fa fa-user-plus">
+                                {{ pending_approvals.facilities|get:facility.id }}
+                            </span>
+                                </a>
+                            </li>
 
-            </ul>
-        </li>
-    {% endif %}
+                        {% endfor %}
+
+                    </ul>
+                </li>
+            {% endwith %}
+        {% endif %}
     {% endwith %}
 {% endif %}
