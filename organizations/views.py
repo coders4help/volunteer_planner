@@ -12,7 +12,7 @@ from django.utils.safestring import mark_safe
 from django.utils.decorators import method_decorator
 from django.db import transaction
 
-from organizations.admin import get_cached_memberships, filter_queryset_by_membership, is_manager
+from organizations.admin import get_cached_memberships, filter_queryset_by_membership
 from organizations.models import Task
 from scheduler.models import Shift
 from scheduler.forms import TaskForm, ShiftForm, ShiftFormSet
@@ -43,17 +43,21 @@ class ShiftViewMembershipsRequiredMixin(LoginRequiredMixin):
     it checks whether current user is allowed to access the shift.
     """
     def get_object(self, queryset=None):
+        """
+        checks if user belongs to the facility and has admin or manager right
+        """
         shift = super(ShiftViewMembershipsRequiredMixin, self).get_object()
+        user = self.request.user
 
-        current_user = self.request.user
-        shift_facility = shift.facility
-        shift_organization = shift.facility.organization
+        # it allows staff/superuser to edit anyways, uncomment it if necessary
+        #if user.is_staff or user.is_superuser:
+        #    return shift
 
-        if (is_manager(current_user, shift_organization.id, shift_facility.id)
-            or current_user.is_superuser):
+        _, users_facility_membership = get_cached_memberships(user)
+        if shift.facility.id in users_facility_membership:
             return shift
-        else:
-            raise Http404
+
+        raise Http404
 
 class ShiftCreateView(ShiftViewMembershipsRequiredMixin, CreateView):
     """
@@ -140,7 +144,6 @@ class ShiftDeleteView(ShiftViewMembershipsRequiredMixin, DeleteView):
     model = Shift
     template_name = "organizations/shift_confirm_delete.html"
 
-    @method_decorator(permission_required('organizations.delete_task'))
     @method_decorator(permission_required('scheduler.delete_shift'))
     def dispatch(self, *args, **kwargs):
         return super(ShiftDeleteView, self).dispatch(*args, **kwargs)
