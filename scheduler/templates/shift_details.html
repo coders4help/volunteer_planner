@@ -74,6 +74,20 @@
         </h1>
     </form>
 
+    {% if shift.members_only and not user|is_facility_member:shift.facility %}
+        <div class="alert alert-warning fade in">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            <span class="pull-right">
+            <button type="submit"
+                    name="leave_shift"
+                    value="{{ shift.pk }}"
+                    class="btn btn-success fa fa-user-plus">
+                Join
+            </button>
+                </span>
+        </div>
+    {% endif %}
+
     {% csrf_token %}
     {% with slots_left=shift.volunteer_count|subtract:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
 
@@ -132,9 +146,9 @@
         <br/>
 
         {% if shift.workplace %}
-        <span class="fa  fa-map-marker">&nbsp;
+            <span class="fa  fa-map-marker">&nbsp;
         </span>
-        <br/>
+            <br/>
         {% endif %}
 
     </p>

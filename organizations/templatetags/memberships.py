@@ -21,7 +21,9 @@ def is_facility_member(user, facility, role=None):
 
 @register.filter
 def is_membership_pending(user, facility):
-    return FacilityMembership.objects.filter(facility=facility, user_account__user_id=user.id, status=Membership.Status.PENDING).exists()
+    return FacilityMembership.objects.filter(facility=facility,
+                                             user_account__user_id=user.id,
+                                             status=Membership.Status.PENDING).exists()
 
 
 @register.filter

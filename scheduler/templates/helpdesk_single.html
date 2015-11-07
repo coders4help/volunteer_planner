@@ -318,7 +318,6 @@
                                                     {% trans "Sign up" as signup_button_label %}
 
                                                     {% if shift.members_only %}
-                                                        {% trans "Members only" as members_only_button_label %}
                                                         {% if user|is_facility_member:shift.facility %}
                                                             <button type="submit"
                                                                     name="join_shift"
@@ -326,7 +325,22 @@
                                                                     class="btn btn-info fa fa-unlock">
                                                                 &nbsp;{{ signup_button_label|title }}
                                                             </button>
+                                                        {% elif user|is_membership_pending:shift.facility %}
+                                                            {% trans "Membership pending" as membership_pending_label %}
+                                                            <button type="submit"
+                                                                    class="btn btn-info fa fa-hourglass"
+                                                                    disabled>
+                                                                &nbsp;{{ membership_pending_label|title }}
+                                                            </button>
+                                                            {% elif user|is_membership_rejected:shift.facility %}
+                                                            {% trans "Membership rejected" as membership_rejected_label %}
+                                                            <button type="submit"
+                                                                    class="btn btn-default fa fa-minus-circle disabled"
+                                                                    disabled>
+                                                                &nbsp;{{ membership_rejected_label|title }}
+                                                            </button>
                                                         {% else %}
+                                                            {% trans "Become member" as members_only_button_label %}
                                                             <button type="submit"
                                                                     name="join_shift"
                                                                     value="{{ shift.pk }}"
@@ -345,9 +359,10 @@
                                                     {% endif %}
                                                 {% else %}
                                                     <button type="submit"
-                                                            class="btn btn-default fa fa-minus-circle disabled" disabled>
-                                                            &nbsp;Shift full
-                                                        </button>
+                                                            class="btn btn-default fa fa-minus-circle disabled"
+                                                            disabled>
+                                                        &nbsp;{% trans "Covered" %}
+                                                    </button>
                                                 {% endif %}
                                             </td>
                                         </tr>

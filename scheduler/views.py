@@ -9,15 +9,15 @@ from django.contrib import messages
 from django.core.serializers.json import DjangoJSONEncoder
 from django.core.urlresolvers import reverse
 from django.db.models import Count
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, FormView, DetailView
 
 from accounts.models import UserAccount
-from organizations.models import Facility
-from organizations.templatetags.memberships import is_facility_member
+from organizations.models import Facility, FacilityMembership
+from organizations.templatetags.memberships import is_facility_member, \
+    is_membership_pending
 from organizations.views import get_facility_details
 from scheduler.models import Shift
 from scheduler.models import ShiftHelper
@@ -170,8 +170,9 @@ class PlannerView(LoginRequiredMixin, FormView):
         return super(PlannerView, self).form_invalid(form)
 
     def form_valid(self, form):
+        user = self.request.user
         try:
-            user_account = self.request.user.account
+            user_account = UserAccount.objects.get(user=user)
         except UserAccount.DoesNotExist:
             messages.warning(self.request, _(u'User account does not exist.'))
             return super(PlannerView, self).form_valid(form)
@@ -181,12 +182,23 @@ class PlannerView(LoginRequiredMixin, FormView):
 
         if shift_to_join:
 
-            if shift_to_join.members_only and not is_facility_member(
-                    self.request.user, shift_to_join.facility):
-                # # TODO: implement redirect to join facility
-                # template_name = 'reserved_shift.html'
-                # return render_to_response(template_name, context=dict(shift=shift_to_join, user=self.request.user))
-                return HttpResponseRedirect(shift_to_join.get_absolute_url())
+            if shift_to_join.members_only \
+                    and not is_facility_member(self.request.user,
+                                               shift_to_join.facility):
+
+                if not is_membership_pending(user, shift_to_join.facility):
+                    mbs, created = FacilityMembership.objects.get_or_create(
+                        user_account=user_account,
+                        facility=shift_to_join.facility, defaults=dict(
+                            status=FacilityMembership.Status.PENDING,
+                            role=FacilityMembership.Roles.MEMBER
+                        )
+                    )
+                    if created:
+                        messages.success(self.request, _(
+                            u'A membership request has been sent.'))
+                return super(PlannerView, self).form_valid(form)
+                        # return HttpResponseRedirect(shift_to_join.get_absolute_url())
 
             conflicts = ShiftHelper.objects.conflicting(shift_to_join,
                                                         user_account=user_account)
