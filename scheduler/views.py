@@ -1,19 +1,19 @@
 # coding: utf-8
 
-from datetime import date
-import logging
-import json
 import itertools
+import json
+import logging
+from datetime import date
 
+from django.contrib import messages
 from django.core.serializers.json import DjangoJSONEncoder
 from django.core.urlresolvers import reverse
-from django.contrib import messages
 from django.db.models import Count
-from django.utils.safestring import mark_safe
-from django.views.generic import TemplateView, FormView, DetailView
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import TemplateView, FormView, DetailView
 
 from accounts.models import UserAccount
 from organizations.models import Facility
@@ -21,8 +21,8 @@ from organizations.templatetags.memberships import is_facility_member
 from organizations.views import get_facility_details
 from scheduler.models import Shift
 from scheduler.models import ShiftHelper
-from .forms import RegisterForShiftForm
 from volunteer_planner.utils import LoginRequiredMixin
+from .forms import RegisterForShiftForm
 
 logger = logging.getLogger(__name__)
 
@@ -111,6 +111,30 @@ class GeographicHelpdeskView(DetailView):
         return context
 
 
+class ShiftDetailView(LoginRequiredMixin, FormView):
+    template_name = 'shift_details.html'
+    form_class = RegisterForShiftForm
+
+    def get_context_data(self, **kwargs):
+        context = super(ShiftDetailView, self).get_context_data(**kwargs)
+
+        schedule_date = date(int(self.kwargs['year']),
+                             int(self.kwargs['month']),
+                             int(self.kwargs['day']))
+        shift = Shift.objects.on_shiftdate(schedule_date).annotate(
+            volunteer_count=Count('helpers')).get(
+            facility__slug=self.kwargs['facility_slug'],
+            id=self.kwargs['shift_id'])
+        context['shift'] = shift
+        return context
+
+    def get_success_url(self):
+        """
+        Redirect to the same page.
+        """
+        return reverse('shift_details', kwargs=self.kwargs)
+
+
 class PlannerView(LoginRequiredMixin, FormView):
     """
     View that gets shown to volunteers when they browse a specific day.
@@ -126,7 +150,8 @@ class PlannerView(LoginRequiredMixin, FormView):
         schedule_date = date(int(self.kwargs['year']),
                              int(self.kwargs['month']),
                              int(self.kwargs['day']))
-        facility = get_object_or_404(Facility, pk=self.kwargs['pk'])
+        facility = get_object_or_404(Facility,
+                                     slug=self.kwargs['facility_slug'])
 
         shifts = Shift.objects.filter(facility=facility)
         shifts = shifts.on_shiftdate(schedule_date)
@@ -154,7 +179,14 @@ class PlannerView(LoginRequiredMixin, FormView):
         shift_to_join = form.cleaned_data.get("join_shift")
         shift_to_leave = form.cleaned_data.get("leave_shift")
 
-        if shift_to_join and is_facility_member(self.request.user, shift_to_join.facility):
+        if shift_to_join:
+
+            if shift_to_join.members_only and not is_facility_member(
+                    self.request.user, shift_to_join.facility):
+                # # TODO: implement redirect to join facility
+                # template_name = 'reserved_shift.html'
+                # return render_to_response(template_name, context=dict(shift=shift_to_join, user=self.request.user))
+                return HttpResponseRedirect(shift_to_join.get_absolute_url())
 
             conflicts = ShiftHelper.objects.conflicting(shift_to_join,
                                                         user_account=user_account)
@@ -192,7 +224,6 @@ class PlannerView(LoginRequiredMixin, FormView):
             messages.success(self.request, _(
                 u'You successfully left this shift.'))
 
-        # user_account.save()
         return super(PlannerView, self).form_valid(form)
 
     def get_success_url(self):

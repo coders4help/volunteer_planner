@@ -243,7 +243,7 @@
                                     <th>
                                         {% trans "Users" %}
                                     </th>
-                                    <th width="10%">
+                                    <th width="20%">
                                         {% trans "You" %}
                                     </th>
                                 </tr>
@@ -259,18 +259,6 @@
                                                    class="fa fa-link"></a>
                                             </td>
                                             <td>
-                                                {% if shift.members_only %}
-                                                    {% if user|is_facility_member:shift.facility %}
-                                                    <div style="position:absolute; margin-left:-65px">
-                                                        <i class="fa fa-unlock"></i>
-                                                    </div>
-                                                     {% else %}
-                                                        <div style="position:absolute; margin-left:-65px">
-                                                            <i class="fa fa-lock"></i>
-                                                        </div>
-                                                    {% endif %}
-
-                                                {% endif %}
                                                 {{ shift.starting_time|date:"H:i" }}
                                             </td>
                                             <td>
@@ -278,6 +266,10 @@
                                             </td>
                                             <td>
                                                 {{ shift.slots }}
+                                                {% if shift.members_only %}
+                                                    &nbsp;
+                                                    <span class="fa fa-lock">&nbsp;</span>
+                                                {% endif %}
                                             </td>
 
                                             <td>
@@ -294,74 +286,69 @@
                                             </td>
 
                                             <td>
-                                                {% for volunteer in shift.helpers.all %}
+                                                {% if shift.members_only and not user|is_facility_member:shift.facility %}
+                                                    {# <span class="fa fa-lock">&nbsp;{% trans "Members only" %}</span> #}
+                                                {% else %}
+                                                    {% for volunteer in shift.helpers.all %}
+                                                        {% if volunteer.user == request.user %}
+                                                            <u><strong>{{ volunteer.user.username }}</strong></u>
+                                                        {% else %}
+                                                            {{ volunteer.user.username }}
+                                                        {% endif %}
 
-                                                    {% if volunteer.user == request.user %}
-                                                        <u><strong>{{ volunteer.user.username }}</strong></u>
-                                                    {% else %}
-                                                        {{ volunteer.user.username }}
-                                                    {% endif %}
-
-
-                                                    {% if not forloop.last %}
-                                                        ,
-                                                    {% endif %}
-                                                {% endfor %}
+                                                        {% if not forloop.last %}
+                                                            ,
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
                                             </td>
 
                                             <td>
-                                            {% if shift.members_only %}
+                                                {% if is_assigned %}
+                                                    {% trans "Drop out" as dropout_button_label %}
 
-                                                {% if user|is_membership_pending:shift.facility %}
-                                                 <button type="button" class="btn btn-info">
-                                                            {% trans "waiting for approval" as waiting %}
-                                                            <i class="fa fa-clock-o"></i> {{ waiting|title }}
-                                                        </button>
-                                                {% elif shift.members_only and not user|is_facility_member:shift.facility and user|is_membership_rejected:shift.facility %}
-                                                      <button type="button" class="btn btn-danger">
-                                                            {% trans "member request rejected" as members_only_trans %}
-                                                            <i class="fa fa-minus-circle"></i> {{ members_only_trans|title }}
-                                                        </button>
-                                                {% elif shift.members_only and not user|is_facility_member:shift.facility and not user|is_membership_pending:shift.facility and not user|is_membership_rejected:shift.facility  %}
-                                                        <button type="button" class="btn btn-warning">
-                                                            {% trans "request access" as members_only_trans %}
-                                                            <i class="fa fa-key"></i> {{ members_only_trans|title }}
-                                                        </button>
+                                                    <button type="submit"
+                                                            name="leave_shift"
+                                                            value="{{ shift.pk }}"
+                                                            class="btn btn-danger delete-button fa fa-remove">
+                                                        &nbsp;{{ dropout_button_label|title }}
+                                                    </button>
 
-                                                {% elif slots_left and user|is_facility_member:shift.facility and not is_assigned %}
+                                                    {% elif slots_left %}
+                                                    {% trans "Sign up" as signup_button_label %}
+
+                                                    {% if shift.members_only %}
+                                                        {% trans "Members only" as members_only_button_label %}
+                                                        {% if user|is_facility_member:shift.facility %}
+                                                            <button type="submit"
+                                                                    name="join_shift"
+                                                                    value="{{ shift.pk }}"
+                                                                    class="btn btn-info fa fa-unlock">
+                                                                &nbsp;{{ signup_button_label|title }}
+                                                            </button>
+                                                        {% else %}
+                                                            <button type="submit"
+                                                                    name="join_shift"
+                                                                    value="{{ shift.pk }}"
+                                                                    class="btn btn-warning fa fa-lock">
+                                                                &nbsp;{{ members_only_button_label|title }}
+                                                            </button>
+                                                        {% endif %}
+
+                                                    {% else %}
                                                         <button type="submit"
                                                                 name="join_shift"
                                                                 value="{{ shift.pk }}"
-                                                                class="btn btn-info add-button">
-                                                            {% trans "Sign up" %}!
+                                                                class="btn btn-info fa fa-check">
+                                                            &nbsp;{{ signup_button_label|title }}
                                                         </button>
-                                                {% elif is_assigned  %}
-                                                        <button type="submit"
-                                                                name="leave_shift"
-                                                                value="{{ shift.pk }}"
-                                                                class="btn btn-danger delete-button">
-                                                            {% trans "click here to drop out" %}
-                                                        </button>
-                                                {% endif %}
-                                            {% else %}
-                                                {% if is_assigned  %}
-                                                    <p>Here</p>
-                                                        <button type="submit"
-                                                                name="leave_shift"
-                                                                value="{{ shift.pk }}"
-                                                                class="btn btn-danger delete-button">
-                                                            {% trans "click here to drop out" %}
-                                                        </button>
-                                                {% elif slots_left %}
-                                                        <button type="submit"
-                                                                name="join_shift"
-                                                                value="{{ shift.pk }}"
-                                                                class="btn btn-info add-button">
-                                                            {% trans "Sign up" %}!
+                                                    {% endif %}
+                                                {% else %}
+                                                    <button type="submit"
+                                                            class="btn btn-default fa fa-minus-circle disabled" disabled>
+                                                            &nbsp;Shift full
                                                         </button>
                                                 {% endif %}
-                                            {% endif %}
-
                                             </td>
                                         </tr>
 

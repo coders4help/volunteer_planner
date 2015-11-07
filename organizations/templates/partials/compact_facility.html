@@ -33,7 +33,7 @@
             <p>
                 {% for shifts_on_day in shifts_by_day %}
                     {% with shifts_on_day.grouper as shift_date %}
-                        <a href="{% url 'planner_by_facility' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                        <a href="{% url 'planner_by_facility' facility_slug=facility.slug year=shift_date.year month=shift_date.month day=shift_date.day %}">
                             {{ shift_date|date }}
                         </a>
                         <br/>

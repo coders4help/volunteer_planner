@@ -62,7 +62,7 @@ def get_facility_details(facility, shifts):
         'shifts': [{
                        'date_string': date(shift_date),
                        'link': reverse('planner_by_facility', kwargs={
-                           'pk': facility.pk,
+                           'facility_slug': facility.slug,
                            'year': shift_date.year,
                            'month': shift_date.month,
                            'day': shift_date.day,

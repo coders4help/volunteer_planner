@@ -87,7 +87,7 @@
                                                     {% regroup shifts_in_facility.list by starting_time.date as shifts_by_time %}
                                                     {% for shift_time in shifts_by_time %}
                                                         {% with shift_time.grouper as shift_date %}
-                                                            <a href="{% url 'planner_by_facility' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                                                            <a href="{% url 'planner_by_facility' facility_slug=facility.slug year=shift_date.year month=shift_date.month day=shift_date.day %}">
                                                                 {{ shift_date|date }}
                                                             </a>
                                                             <br/>

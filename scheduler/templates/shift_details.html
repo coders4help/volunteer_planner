@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action="">
+
+    <button>Cancel</button>
+</form>
+
+</body>
+</html>
+
+
+{% extends "helpdesk_base.html" %}
+
+{% load i18n vpfilters staticfiles memberships %}
+
+{% block title %}
+    {% blocktrans trimmed context "title with facility" with facility_name=facility.name %}
+        Schedule for {{ facility_name }}
+    {% endblocktrans %}
+{% endblock %}
+
+{% block helpdesk_content %}
+
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+        </li>
+
+        <li>
+            <a href="{{ shift.facility.organization.get_absolute_url }}">
+                {{ shift.facility.organization.name }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ shift.facility.get_absolute_url }}">
+                {{ shift.facility.name }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'planner_by_facility' facility_slug=shift.facility.slug year=shift.starting_time.year month=shift.starting_time.month day=shift.starting_time.day %}">
+                {{ shift.starting_time.date|date }}
+            </a>
+        </li>
+
+        <li class="active">
+            {{ shift.task }}{{ shift.workplace|yes:' - '|add:shift.workplace.name }}
+        </li>
+    </ul>
+
+    {% include "partials/alert_messages.html" %}
+
+    <h2>
+        {{ shift.facility.name }}
+    </h2>
+
+
+    <form method="POST">
+        <h1>
+            {% if shift.members_only %}
+                <span class="fa fa-lock">&nbsp;
+                    {{ shift.task }}{{ shift.workplace|yes:' - '|add:shift.workplace.name }}</span>
+            {% else %}
+                {{ shift.task }}{{ shift.workplace|yes:' - '|add:shift.workplace.name }}
+            {% endif %}
+        </h1>
+    </form>
+
+    {% csrf_token %}
+    {% with slots_left=shift.volunteer_count|subtract:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
+
+        {% if is_assigned %}
+            {% trans "Drop out" as dropout_button_label %}
+
+            <button type="submit"
+                    name="leave_shift"
+                    value="{{ shift.pk }}"
+                    class="btn btn-danger delete-button fa fa-user-minus">
+                {{ dropout_button_label|title }}
+            </button>
+
+            {% elif slots_left %}
+            {% trans "Sign up" as signup_button_label %}
+
+            {% if shift.members_only %}
+                {% trans "Members only" as members_only_button_label %}
+                {% if user|is_facility_member:shift.facility %}
+                    <button type="submit"
+                            name="join_shift"
+                            value="{{ shift.pk }}"
+                            class="btn btn-info fa fa-unlock">
+                        {{ signup_button_label|title }}
+                    </button>
+                {% else %}
+                    <button type="submit"
+                            name="join_shift"
+                            value="{{ shift.pk }}"
+                            class="btn btn-warning fa fa-lock">
+                        {{ members_only_button_label|title }}
+                    </button>
+                {% endif %}
+
+            {% else %}
+                <button type="submit"
+                        name="join_shift"
+                        value="{{ shift.pk }}"
+                        class="btn btn-info fa fa-user-plus">
+                    {{ signup_button_label|title }}
+                </button>
+            {% endif %}
+        {% else %}
+            {% trans "Covered" %}
+        {% endif %}
+    {% endwith %}
+    <p class="fa fa-group">
+        <span class="fa fa-group">&nbsp;
+            {{ shift.volunteer_count }}/{{ shift.slots }}</span>
+        <br/>
+        <span class="fa fa-calendar">&nbsp;
+            {{ shift.starting_time.date|date }}</span>
+        <br/>
+        <span class="fa fa-clock-o">&nbsp;
+            {{ shift.starting_time|time }} - {{ shift.ending_time|time }}</span>
+        <br/>
+
+        {% if shift.workplace %}
+        <span class="fa  fa-map-marker">&nbsp;
+        </span>
+        <br/>
+        {% endif %}
+
+    </p>
+{% endblock %}
+
+
