@@ -7,6 +7,7 @@ from django.template.defaultfilters import date
 from django.views.generic import DetailView
 
 from django.utils.safestring import mark_safe
+from django.views.generic.base import TemplateView
 
 from scheduler.models import Shift
 from news.models import NewsEntry
@@ -32,6 +33,17 @@ class FacilityView(DetailView):
         shifts = Shift.open_shifts.filter(facility=self.object)
         context['facility'] = get_facility_details(self.object, shifts)
         return context
+
+
+class PendingApprovalsView(TemplateView):
+    """
+    This view returns the pending member requests for approval by the shift
+    planner for the already logged in
+    shift planner of certain facilities.
+    """
+
+    template_name = "approvals.html"
+
 
 
 def get_facility_details(facility, shifts):
