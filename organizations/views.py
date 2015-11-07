@@ -15,7 +15,7 @@ from django.db import transaction
 from organizations.admin import get_cached_memberships, filter_queryset_by_membership, is_manager
 from organizations.models import Task
 from scheduler.models import Shift
-from scheduler.forms import TaskForm, ShiftForm
+from scheduler.forms import TaskForm, ShiftForm, ShiftFormSet
 from news.models import NewsEntry
 from google_tools.templatetags.google_links import google_maps_directions
 from .models import Organization, Facility
@@ -55,34 +55,15 @@ class ShiftViewMembershipsRequiredMixin(LoginRequiredMixin):
         else:
             raise Http404
 
-class ShiftViewSaveMixin(ShiftViewMembershipsRequiredMixin):
+class ShiftCreateView(ShiftViewMembershipsRequiredMixin, CreateView):
     """
-    it helps ShiftViews to save Shift and Task models from single request.
-    """
-    def form_valid(self, form):
-        data = self.get_context_data()
-        task_form = data['task_form']
-
-        if not task_form.is_valid():
-            return super(ShiftViewSaveMixin, self).form_invalid(form)
-
-        with transaction.atomic():
-            task = task_form.save()
-
-            form.instance.task = task
-            form.instance.facility = task.facility
-            self.object = form.save()
-
-        return super(ShiftViewSaveMixin, self).form_valid(form)
-
-class ShiftCreateView(ShiftViewSaveMixin, CreateView):
-    """
-    A create viwe for essentially shift creation from Task and Shift formset.
+    A create view for essentially shift creation from Task and Shift formset.
     See also ShiftUpdateView
     """
     template_name = 'organizations/shift_form.html'
-    model = Shift
-    form_class = ShiftForm
+    model = Task
+    form_class = TaskForm
+    formset_class = ShiftFormSet
     success_url = '/shifts/'
 
     @method_decorator(permission_required('organizations.add_task'))
@@ -90,20 +71,43 @@ class ShiftCreateView(ShiftViewSaveMixin, CreateView):
     def dispatch(self, *args, **kwargs):
         return super(ShiftCreateView, self).dispatch(*args, **kwargs)
 
+    def form_valid(self, form):
+        """
+        if task form is valid, try to save it along with shifts entered.
+        """
+        self.object = form.save()
+
+        formset = self.get_formset()
+        if not formset.is_valid():
+            return super(ShiftCreateView, self).form_invalid(form)
+        formset.instance = self.object
+        for shift_form in formset:
+            shift = shift_form.save(commit=False)
+            shift.facility = formset.instance.facility
+        formset.save()
+
+        return super(ShiftCreateView, self).form_valid(form)
+
+    def get_formset(self):
+        if self.request.method == 'POST':
+            return self.formset_class(self.request.POST)
+        else:
+            return self.formset_class()
+
     def get_context_data(self, **kwargs):
         data = super(ShiftCreateView, self).get_context_data(**kwargs)
-        if self.request.method == 'POST':
-            data['task_form'] = TaskForm(self.request.POST)
-        else:
-            data['task_form'] = TaskForm()
-        data['title'] = 'Create new shift'
-        data['submit_btn_text'] = 'Create'
+        data.update({'task_form': self.get_form(),
+                     'shift_formset': self.get_formset(),
+                     'title': 'Create new shift',
+                     'submit_btn_text': 'Create'})
         return data
 
-class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
+class ShiftUpdateView(ShiftViewMembershipsRequiredMixin, UpdateView):
     """
-    A update viwe for modifying Task and Shift formset.
-    See also ShiftCreateView
+    An update view for editing shift
+
+    Unlike ShiftCreateView, this class doesn't actually use a formset, because
+    this view is specificially for editing a certain shift by design.
     """
     template_name = 'organizations/shift_form.html'
     model = Shift
@@ -115,15 +119,18 @@ class ShiftUpdateView(ShiftViewSaveMixin, UpdateView):
     def dispatch(self, *args, **kwargs):
         return super(ShiftUpdateView, self).dispatch(*args, **kwargs)
 
+    def get_readonly_taskform(self):
+        task_form = TaskForm(instance=self.object.task)
+        for boundfield in task_form:
+            boundfield.field.widget.attrs['readonly'] = True
+        return task_form
+
     def get_context_data(self, **kwargs):
         data = super(ShiftUpdateView, self).get_context_data(**kwargs)
-        if self.request.method == 'POST':
-            data['task_form'] = TaskForm(self.request.POST)
-        else:
-            form = self.get_form()
-            data['task_form'] = TaskForm(instance=form.instance.task)
-        data['title'] = 'Edit shift'
-        data['submit_btn_text'] = 'Save'
+        data.update({'task_form': self.get_readonly_taskform(),
+                     'shift_formset': [self.get_form()],
+                     'title': 'Edit shift',
+                     'submit_btn_text': 'Save'})
         return data
 
 class ShiftDeleteView(ShiftViewMembershipsRequiredMixin, DeleteView):

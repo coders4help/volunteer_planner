@@ -39,3 +39,8 @@ class TaskForm(forms.ModelForm):
             'name': forms.TextInput({'class': 'form-control'}),
             'description': forms.Textarea({'class': 'form-control'}),
         }
+
+ShiftFormSet = forms.inlineformset_factory(Task, Shift,
+                                           form=ShiftForm, extra=2,
+                                           min_num=1, validate_min=True,
+                                           can_delete=False)

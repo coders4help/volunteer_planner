@@ -8,7 +8,7 @@
 <h1 class="">{{ title }}</h1>
 <hr />
 
-<form style="width: 50%" action="" method="post">{% csrf_token %}
+<form style="width: 75%" action="" method="post">{% csrf_token %}
 
     {# --- Task fields --- #}
     {% for field in task_form %}
@@ -32,21 +32,27 @@
     <hr />
 
     {# --- Shift fields --- #}
-    {% for field in form %}
-        {% cycle '<div class="row form-group">' '' %}
-            <div class="col-xs-6{% if field.errors %} has-error has-feedback{% endif %}">
-            {{ field.label_tag }} {{ field }}
-            {% if field.errors %}
-                <div class="control-label">
-                    <span class="sr-only">Error:</span>
-                    {{ field.errors.as_text }}
-                </div>
-            {% endif %}
-            {% if field.help_text %}
-                <div class="control-label help">{{ field.help_text|safe }}</div>
+    {{ shift_formset.management_form }}
+
+    {% for shift_form in shift_formset %}
+        <div class="row form-group">
+        {% for field in shift_form %}
+            <div class="col-xs-3{% if field.errors %} has-error has-feedback{% endif %}">
+            {% if not field.is_hidden %}
+                <small>{{ field.label_tag }}</small> {{ field }}
+                {% if field.errors %}
+                    <div class="control-label">
+                        <span class="sr-only">Error:</span>
+                        {{ field.errors.as_text }}
+                    </div>
+                {% endif %}
+                {% if field.help_text %}
+                    <div class="control-label help">{{ field.help_text|safe }}</div>
+                {% endif %}
             {% endif %}
             </div>
-        {% cycle '' '</div>' %}
+        {% endfor %}
+        </div>
     {% endfor %}
 
     <hr />
