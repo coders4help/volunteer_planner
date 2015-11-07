@@ -2,19 +2,15 @@
 
 Volunteer Planner is a platform to schedule shifts of volunteers. Volunteers register at the platform and choose shifts.
  The admin of the website can easily add new organizations, places and shifts. The software has a location based 
- hierarchy (country / region / area / city) and has a hierarchy of organizations (organization / facility / workplace) 
- - it can be used for a variety of purposes.
+ hierarchy (country / region / area / city) and has a hierarchy of organizations (organizations, facilities, tasks and
+  workplaces) - it can be used for a variety of purposes.
 
 ## Status
-The software is usable and is used for production use. 
-
-One instance of the software is currently used to schedule shifts for volunteers to help refugees in Germany:
- http://www.volunteer-planner.org
-
+The project is currently running at https://volunteer-planner.org/.
 
 ## Work in progress
 There are some feature requests to be implemented in the future.
-The software currently needs a decentralized administration of the shifts, it is one of the main goals of the current 
+The software currently needs a centralized administration of the shifts, but it is one of the main goals of the current 
 development to empower organizations to schedule shifts for their facilities on their own.
 
 If you are interested to join the development team, just make pull requests or come to a meeting in Berlin/Germany: 
@@ -23,9 +19,9 @@ http://www.meetup.com/de/coders4help/
 ## System context
 **User**: The volunteers and administrators just need a (modern) web browser to use the volunteer-planner application.
 
-**Developer**: Developers need a unix-based system, a python development environment (see project setup) and specific 
-versions of external libraries (see /requirements directory, t). Development can be done with a sqlite databases, there 
-is no need to run and configure postgres or mysql.
+**Developer**: Developers need a python development environment (see project setup) and specific versions of external 
+libraries (see /requirements directory, t). Development can be done with a sqlite databases, there is no need to run 
+and configure postgres or mysql.
 
 **Server**: For production use you need a Python ready web server, for example uWSGI as web server for the Python WSGI 
 with nginx as proxy server visible to the end user (volunteers and administrators). You also need a MySQL or PostgreSQL 
