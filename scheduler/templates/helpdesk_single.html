@@ -328,7 +328,7 @@
                                                         {% elif user|is_membership_pending:shift.facility %}
                                                             {% trans "Membership pending" as membership_pending_label %}
                                                             <button type="submit"
-                                                                    class="btn btn-info fa fa-hourglass"
+                                                                    class="btn btn-default fa fa-hourglass disabled"
                                                                     disabled>
                                                                 &nbsp;{{ membership_pending_label|title }}
                                                             </button>
