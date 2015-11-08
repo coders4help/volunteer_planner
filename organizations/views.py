@@ -12,7 +12,7 @@ from google_tools.templatetags.google_links import google_maps_directions
 from news.models import NewsEntry
 from organizations.admin import filter_queryset_by_membership
 from scheduler.models import Shift
-from .models import Organization, Facility, Membership, FacilityMembership
+from .models import Organization, Facility, FacilityMembership
 
 
 class OrganizationView(DetailView):
@@ -72,6 +72,7 @@ def managing_members_view(request):
         if action == "accept":
             membership.status = membership.Status.APPROVED
             membership.save()
+
 
     return {'result': "successful"}
 
