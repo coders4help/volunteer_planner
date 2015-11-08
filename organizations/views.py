@@ -1,12 +1,17 @@
 # coding=utf-8
 
 import itertools
+
 from django.contrib.admin.views.decorators import staff_member_required
+from django.core.mail import EmailMessage
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import date
+from django.template.loader import get_template
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import DetailView
 from django_ajax.decorators import ajax
+
 from accounts.models import UserAccount
 from google_tools.templatetags.google_links import google_maps_directions
 from news.models import NewsEntry
@@ -55,13 +60,43 @@ class PendingApprovalsView(DetailView):
     #     context = super(PendingApprovalsView, self).get_context_data(**kwargs)
 
 
+def send_membership_approved_notification(membership, approved_by):
+    to = membership.user_account.user.email
+
+    try:
+        template = get_template('emails/membership_approved.txt')
+        context = {
+            "username": membership.user_account.user.username,
+            "facility_name": membership.facility.name,
+        }
+        message = template.render(context)
+        subject = _(u'volunteer-planner.org: Membership approved')
+
+        from_email = approved_by.email or "Volunteer-Planner.org <noreply@volunteer-planner.org>"
+        reply_to = (from_email,)
+
+        addresses = (to,)
+
+        mail = EmailMessage(subject=subject,
+                            body=message,
+                            to=addresses,
+                            from_email=from_email,
+                            reply_to=reply_to)
+
+        mail.send()
+    except:
+        raise
+
+
 @ajax
 @staff_member_required
 def managing_members_view(request):
     facility = Facility.objects.get(id=int(request.POST.get('facility_id')))
-    user_account_id = UserAccount.objects.get(id=int(request.POST.get('user_account_id')))
+    user_account_id = UserAccount.objects.get(
+        id=int(request.POST.get('user_account_id')))
     action = request.POST.get('action')
-    membership = filter_queryset_by_membership(FacilityMembership.objects.all(), request.user) \
+    membership = filter_queryset_by_membership(FacilityMembership.objects.all(),
+                                               request.user) \
         .get(facility=facility, user_account=user_account_id)
     if action == "remove":
         membership.delete()
@@ -72,6 +107,8 @@ def managing_members_view(request):
         if action == "accept":
             membership.status = membership.Status.APPROVED
             membership.save()
+            send_membership_approved_notification(membership,
+                                                  approved_by=request.user)
 
 
     return {'result': "successful"}
