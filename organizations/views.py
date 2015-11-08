@@ -1,19 +1,16 @@
 # coding=utf-8
 
 import itertools
-
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import date
 from django.utils.safestring import mark_safe
 from django.views.generic import DetailView
-
 from django_ajax.decorators import ajax
-
 from accounts.models import UserAccount
 from google_tools.templatetags.google_links import google_maps_directions
-
 from news.models import NewsEntry
+from organizations.admin import filter_queryset_by_membership
 from scheduler.models import Shift
 from .models import Organization, Facility, Membership, FacilityMembership
 
@@ -64,24 +61,18 @@ def managing_members_view(request):
     facility = Facility.objects.get(id=int(request.POST.get('facility_id')))
     user_account_id = UserAccount.objects.get(id=int(request.POST.get('user_account_id')))
     action = request.POST.get('action')
-    membership = FacilityMembership.objects.get(facility=facility, user_account=user_account_id)
-    if membership.Status.PENDING:
+    membership = filter_queryset_by_membership(
+        FacilityMembership.objects.get(facility=facility, user_account=user_account_id))
+    if action == "remove":
+        membership.delete()
+    elif membership.status == membership.Status.PENDING:
         if action == "accept":
             membership.status = membership.Status.APPROVED
             membership.save()
         elif action == "reject":
             membership.status = membership.Status.REJECTED
             membership.save()
-        elif action == "remove":
-            membership.delete()
-
-
-    if (membership.Status.APPROVED or membership.Status.REJECTED) \
-        and action == "remove":
-        membership.delete()
-
     return {'result': "successful"}
-
 
 
 def get_facility_details(facility, shifts):
