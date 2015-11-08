@@ -61,8 +61,8 @@ def managing_members_view(request):
     facility = Facility.objects.get(id=int(request.POST.get('facility_id')))
     user_account_id = UserAccount.objects.get(id=int(request.POST.get('user_account_id')))
     action = request.POST.get('action')
-    membership = filter_queryset_by_membership(
-        FacilityMembership.objects.get(facility=facility, user_account=user_account_id), request.user)
+    membership = filter_queryset_by_membership(FacilityMembership.objects.all(), request.user) \
+        .get(facility=facility, user_account=user_account_id)
     if action == "remove":
         membership.delete()
     if action == "reject":
