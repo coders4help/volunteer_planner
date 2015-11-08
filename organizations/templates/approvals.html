@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n staticfiles %}
+
+{% block additional_js %}
+    <script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
+    <script src="{% static "custom/js/manage_user.js" %}"></script>
+{% endblock %}
 
 {% block content %}
 
@@ -26,7 +31,7 @@
 
                 <h3>{{ memberships_for_status.list.0.get_status_display|title }}</h3>
 
-                <table class="table table-striped">
+                <table class="table table-striped" id="manageMembership">
                     <thead>
                     <tr>
                         <th>
@@ -44,7 +49,9 @@
 
                     {% for membership in memberships_for_status.list %}
                         <tr>
-                            <td>
+                            <td class="manage-member" data-facitlity-id="{{ facility.pk }}"
+                                data-account-id="{{ membership.user_account.pk }}">
+
                                 {{ membership.user_account.user.username }}
                             </td>
                             <td>
@@ -52,20 +59,20 @@
                             </td>
                             <td>
                                 {% if membership.status == membership.Status.APPROVED %}
-                                    <span class="fa fa-minus-circle">
+                                    <span data-action="remove" class="fa fa-minus-circle action">
                                         {% trans "Block" %}
                                     </span>
                                     {% elif membership.status == membership.Status.PENDING %}
-                                    <span class="fa fa-user-plus">
+                                    <span data-action="accept" class="fa fa-user-plus action">
                                         {% trans "Accept" %}
                                     </span> |
-                                    <span class="fa fa-minus-circle">
+                                    <span data-action="reject" class="fa fa-minus-circle action">
                                         {% trans "Block" %}
                                     </span>
                                 {% endif %}
-                                | <span class="fa fa-remove">
+                                | <spanv data-action="remove" class="fa fa-remove action">
                                         {% trans "Remove" %}
-                                    </span>
+                                    </spanv>
                             </td>
                         </tr>
                     {% endfor %}
@@ -77,3 +84,5 @@
         </div>
     {% endwith %}
 {% endblock %}
+
+

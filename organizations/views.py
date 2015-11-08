@@ -2,15 +2,20 @@
 
 import itertools
 
+from django.contrib.admin.views.decorators import staff_member_required
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import date
 from django.utils.safestring import mark_safe
 from django.views.generic import DetailView
 
+from django_ajax.decorators import ajax
+
+from accounts.models import UserAccount
 from google_tools.templatetags.google_links import google_maps_directions
+
 from news.models import NewsEntry
 from scheduler.models import Shift
-from .models import Organization, Facility
+from .models import Organization, Facility, Membership, FacilityMembership
 
 
 class OrganizationView(DetailView):
@@ -51,6 +56,29 @@ class PendingApprovalsView(DetailView):
 
     # def get_context_data(self, **kwargs):
     #     context = super(PendingApprovalsView, self).get_context_data(**kwargs)
+
+
+@ajax
+@staff_member_required
+def managing_members_view(request):
+    facility = Facility.objects.get(id=int(request.POST.get('facility_id')))
+    user_account_id = UserAccount.objects.get(id=int(request.POST.get('user_account_id')))
+    action = request.POST.get('action')
+    membership = FacilityMembership.objects.get(facility=facility, user_account=user_account_id)
+    if membership.Status.PENDING:
+        if action == "approved":
+            membership.status = membership.Status.APPROVED
+        elif action == "reject":
+            membership.status = membership.Status.REJECTED
+        elif action == "remove":
+            membership.delete()
+
+    if membership.Status.APPROVED or membership.Status.REJECTED \
+        and action == "remove":
+        membership.delete()
+
+    return {'result': "successful"}
+
 
 
 def get_facility_details(facility, shifts):

@@ -24,7 +24,9 @@
                                     {% trans "Members" %}
                             <span
                                     class="badge blue-batches fa fa-user-plus">
+                                {% if pending_approvals.facilities  %}
                                 {{ pending_approvals.facilities|get:facility.id }}
+                                {% endif %}
                             </span>
                                 </a>
                             </li>
