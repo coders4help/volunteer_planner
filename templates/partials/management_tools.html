@@ -10,8 +10,12 @@
                        data-toggle="dropdown"
                        role="button" aria-haspopup="true"
                        aria-expanded="false">
-                        {% trans "Manage" %}<span
-                            class="badge blue-batches fa fa-user-plus">{{ pending_approvals.total }}</span>
+                        {% trans "Manage" %}
+
+                        {% if pending_approvals.total > 0 %}
+                            <span class="badge blue-batches fa fa-user-plus">{{ pending_approvals.total }}</span>
+                        {% endif %}
+
                         <span class="caret"></span>
                     </a>
 
@@ -22,17 +26,14 @@
                             <li>
                                 <a href="{% url "manage-members" facility.organization.slug facility.slug %}">
                                     {% trans "Members" %}
-                            <span
-                                    class="badge blue-batches fa fa-user-plus">
-                                {% if pending_approvals.facilities  %}
-                                {{ pending_approvals.facilities|get:facility.id }}
-                                {% endif %}
-                            </span>
+                                    {% if pending_approvals.facilities and pending_approvals.facilities|get:facility.id > 0 %}
+                                        <span class="badge blue-batches fa fa-user-plus">
+                                            {{ pending_approvals.facilities|get:facility.id }}
+                                        </span>
+                                    {% endif %}
                                 </a>
                             </li>
-
                         {% endfor %}
-
                     </ul>
                 </li>
             {% endwith %}
