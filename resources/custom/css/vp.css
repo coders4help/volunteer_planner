@@ -154,7 +154,9 @@ code {
     margin-left:5px;
 }
 
-
+.action{
+    cursor: pointer;
+}
 
 .area-filter button {
     margin-right: 6px;
