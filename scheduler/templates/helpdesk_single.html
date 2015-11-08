@@ -244,7 +244,7 @@
                                             <td>
                                         <span style="color:{% if slots_left %}red{% else %}green{% endif %};">
 
-                                            {% if slots_left %}
+                                            {% if slots_left > 0 %}
                                                 {% blocktrans trimmed %}
                                                     {{ slots_left }} more
                                                 {% endblocktrans %}
@@ -278,12 +278,20 @@
                                                             class="btn btn-danger delete-button">
                                                         {% trans "Drop out" %}
                                                     </button>
-                                                    {% elif slots_left %}
+                                                    {% elif slots_left > 0 %}
                                                     <button type="submit"
                                                             name="join_shift"
                                                             value="{{ shift.pk }}"
                                                             class="btn btn-info add-button">
                                                         {% trans "Sign up" %}!
+                                                    </button>
+                                                {% else %}
+                                                    <button type="submit"
+                                                            name="join_shift"
+                                                            value="{{ shift.pk }}"
+                                                            class="btn btn-disabled"
+                                                            disabled>
+                                                        {% trans "Covered" %}
                                                     </button>
                                                 {% endif %}
                                             </td>

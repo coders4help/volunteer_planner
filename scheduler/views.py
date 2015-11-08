@@ -169,6 +169,10 @@ class PlannerView(LoginRequiredMixin, FormView):
                 messages.warning(self.request,
                                  mark_safe(u'{}<br/>{}'.format(error_message,
                                                                message_list)))
+            elif shift_to_join.slots - shift_to_join.volunteer_count <= 0:
+                error_message = _(
+                    u'We can\'t add you to this shift because there are no more slots left.')
+                messages.warning(self.request, error_message)
             else:
                 shift_helper, created = ShiftHelper.objects.get_or_create(
                     user_account=user_account, shift=shift_to_join)
@@ -190,7 +194,7 @@ class PlannerView(LoginRequiredMixin, FormView):
             messages.success(self.request, _(
                 u'You successfully left this shift.'))
 
-        user_account.save()
+        # user_account.save()
         return super(PlannerView, self).form_valid(form)
 
     def get_success_url(self):
