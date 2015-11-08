@@ -82,42 +82,29 @@
 
             <div id="footer-nav">
                 <ul>
-                    <li>
+                     <li>
                         <a href="{% url 'home' %}">{% trans "Main page" %}</a>
                     </li>
                     <li>
-                        <a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a>
+                        <a href="/impressum/">{% trans "Imprint"%}</a>
                     </li>
                     <li>
-                        <a href="">{% trans "Contact" %}</a>
+                        <a href="/about/">{% trans "About"%}</a>
                     </li>
                     <li>
-                        <a href="">{% trans "Imprint"%}</a>
+                        <a href="/unterstuetzer/">{% trans "Supporter"%}</a>
                     </li>
                     <li>
-                        <a href="">{% trans "Terms of Service"%} </a>
+                        <a href="/presse/">{% trans "Press"%}</a>
                     </li>
                     <li>
-                        <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>
+                        <a href="/kontakt/">{% trans "Contact" %}</a>
+                    </li>
+                    <li>
+                        <a href="/faq-new/">{% trans "F.A.Q." %}</a>
                     </li>
                 </ul>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <br>
-                    <p>{% trans "supported by corporate volunteers from" %}</p>
-                    <a href="http://www.freshmilk.de" target="_blank">
-                        <img height="20" width="auto" src="/static/images/freshmilknettv.png" alt="Freshmilk NetTV GmbH">
-                    </a>&nbsp;
-                    <a href="http://www.uhura.de" target="_blank">
-                        <img height="25" width="auto" src="/static/images/uhura.png" alt="Uhura Creative Media GmbH">
-                    </a>
-{#                    <a href="http://www.prezi.com"><img src="" alt="Prezi.com"></a>#}
-{#                    <a href="http://www.salesforce.com"><img src="" alt="salesforce.com"></a>#}
-                </div>
-            </div>
-
-
         </div>
         <!-- // .inset -->
     </div>
