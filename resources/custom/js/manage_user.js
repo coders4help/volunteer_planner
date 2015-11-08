@@ -12,10 +12,8 @@ $(function () {
         }
         ajaxPost('/orgs/manage_ajax/', data, function (content) {
             //onSuccess
-            alert(content);
+            location.reload();
         })
-
-        console.log(data)
     })
 
 });

@@ -59,7 +59,7 @@
                             </td>
                             <td>
                                 {% if membership.status == membership.Status.APPROVED %}
-                                    <span data-action="remove" class="fa fa-minus-circle action">
+                                    <span data-action="reject" class="fa fa-minus-circle action">
                                         {% trans "Block" %}
                                     </span>
                                     {% elif membership.status == membership.Status.PENDING %}

@@ -66,14 +66,17 @@ def managing_members_view(request):
     action = request.POST.get('action')
     membership = FacilityMembership.objects.get(facility=facility, user_account=user_account_id)
     if membership.Status.PENDING:
-        if action == "approved":
+        if action == "accept":
             membership.status = membership.Status.APPROVED
+            membership.save()
         elif action == "reject":
             membership.status = membership.Status.REJECTED
+            membership.save()
         elif action == "remove":
             membership.delete()
 
-    if membership.Status.APPROVED or membership.Status.REJECTED \
+
+    if (membership.Status.APPROVED or membership.Status.REJECTED) \
         and action == "remove":
         membership.delete()
 
