@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-05 22:36+0100\n"
+"POT-Creation-Date: 2015-11-07 14:11+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -169,42 +169,42 @@ msgstr ""
 msgid "news entries"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:52
+#: non_logged_in_area/templates/base_non_logged_in.html:56
 #: templates/registration/login.html:3 templates/registration/login.html:10
 msgid "Login"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:55
+#: non_logged_in_area/templates/base_non_logged_in.html:59
 msgid "Start helping"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:82
+#: non_logged_in_area/templates/base_non_logged_in.html:86
 msgid "Main page"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:85
+#: non_logged_in_area/templates/base_non_logged_in.html:89
 #: non_logged_in_area/templates/faqs.html:5
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:88
+#: non_logged_in_area/templates/base_non_logged_in.html:92
 msgid "Contact"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:91
+#: non_logged_in_area/templates/base_non_logged_in.html:95
 msgid "Imprint"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:94
+#: non_logged_in_area/templates/base_non_logged_in.html:98
 msgid "Terms of Service"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:97
+#: non_logged_in_area/templates/base_non_logged_in.html:101
 #: non_logged_in_area/templates/privacy_policy.html:6
 msgid "Privacy Policy"
 msgstr ""
 
-#: non_logged_in_area/templates/base_non_logged_in.html:104
+#: non_logged_in_area/templates/base_non_logged_in.html:108
 msgid "supported by corporate volunteers from"
 msgstr ""
 
@@ -713,7 +713,7 @@ msgstr ""
 #: organizations/models.py:188 scheduler/models.py:22
 #: scheduletemplates/models.py:40
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr ""
 
@@ -724,7 +724,7 @@ msgstr ""
 #: organizations/models.py:209 scheduler/models.py:20
 #: scheduletemplates/models.py:37
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr ""
 
@@ -791,7 +791,7 @@ msgid "number of volunteers"
 msgstr ""
 
 #: scheduler/admin.py:44
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
 msgstr ""
 
@@ -807,14 +807,14 @@ msgstr ""
 #: scheduler/models.py:29 scheduletemplates/admin.py:33
 #: scheduletemplates/models.py:44
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr ""
 
 #: scheduler/models.py:31 scheduletemplates/admin.py:36
 #: scheduletemplates/models.py:47
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr ""
 
@@ -881,58 +881,67 @@ msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:23
+#: scheduler/templates/helpdesk_single.html:58
+#, python-format
+msgid "%(starting_time)s - %(ending_time)s Uhr"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:128
 #, python-format
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:66
+#: scheduler/templates/helpdesk_single.html:189
+msgid "Link"
+msgstr ""
+
+#: scheduler/templates/helpdesk_single.html:192
 msgid "Time"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:69
+#: scheduler/templates/helpdesk_single.html:195
 msgid "Helpers"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:77
+#: scheduler/templates/helpdesk_single.html:206
 msgid "Start"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:80
+#: scheduler/templates/helpdesk_single.html:209
 msgid "End"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:83
+#: scheduler/templates/helpdesk_single.html:212
 msgid "Required"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:86
+#: scheduler/templates/helpdesk_single.html:215
 msgid "Status"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:89
+#: scheduler/templates/helpdesk_single.html:218
 msgid "Users"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:92
+#: scheduler/templates/helpdesk_single.html:221
 msgid "You"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:114
+#: scheduler/templates/helpdesk_single.html:248
 #, python-format
 msgid "%(slots_left)s more"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:118
+#: scheduler/templates/helpdesk_single.html:252
 msgid "Covered"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:145
+#: scheduler/templates/helpdesk_single.html:279
 msgid "Drop out"
 msgstr ""
 
-#: scheduler/templates/helpdesk_single.html:152
+#: scheduler/templates/helpdesk_single.html:286
 msgid "Sign up"
 msgstr ""
 
@@ -1077,12 +1086,12 @@ msgid "Apply Template"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:36
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:37
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
 msgstr ""
 
@@ -1100,15 +1109,14 @@ msgid "Select shift templates"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
-#, python-format
-msgid "Please review and confirm shifts to create on %(localized_date)s for %(facility_name)s"
+msgid "Please review and confirm shifts to create"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:121
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:122
 msgid "Apply"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:123
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:124
 msgid "Apply and select new date"
 msgstr ""
 
