@@ -23,3 +23,4 @@ selenium==2.47.3
 sqlparse==0.1.16
 traitlets==4.0.0
 xlwt==1.0.0
+djangoajax==2.2.15

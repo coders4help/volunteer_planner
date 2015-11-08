@@ -58,6 +58,7 @@ class ShiftAdmin(MembershipFilteredAdmin):
     search_fields = ('id', 'task__name',)
     list_filter = (
         ('facility', MembershipFieldListFilter),
+        'members_only',
         'starting_time',
         'ending_time'
     )

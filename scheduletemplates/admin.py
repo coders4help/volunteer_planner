@@ -225,7 +225,8 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                         ending_time=starting_time + template.duration,
                         task=template.task,
                         workplace=template.workplace,
-                        slots=template.slots)
+                        slots=template.slots,
+                        members_only=template.members_only)
 
                 messages.success(request, ungettext_lazy(
                     u'{num_shifts} shift was added to {date}',

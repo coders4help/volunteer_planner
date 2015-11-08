@@ -63,7 +63,7 @@
                                             <div class="col-md-8">
                                                 <h3>{{ facility.name }}</h3>
                                                 {% if facility.address %}
-                                                    <h5>{{ address_line }}
+                                                    <h5>{{ facility.address_line }}
                                                         <a href="{{ facility.address_line|google_maps_directions }}"
                                                            target="_blank">
                                                             &rarr; {% trans "Show on Google Maps" %}
@@ -71,6 +71,10 @@
                                                     </h5>
                                                 {% endif %}
                                                 <p>{{ facility.description|safe }}</p>
+
+                                                <p>
+                                                    <a href="{{ facility.get_absolute_url }}">{% trans "Show details" %}</a>
+                                                </p>
                                             </div>
 
                                             <div class="pull-right">
@@ -83,7 +87,7 @@
                                                     {% regroup shifts_in_facility.list by starting_time.date as shifts_by_time %}
                                                     {% for shift_time in shifts_by_time %}
                                                         {% with shift_time.grouper as shift_date %}
-                                                            <a href="{% url 'planner_by_facility' pk=facility.pk year=shift_date.year month=shift_date.month day=shift_date.day %}">
+                                                            <a href="{% url 'planner_by_facility' facility_slug=facility.slug year=shift_date.year month=shift_date.month day=shift_date.day %}">
                                                                 {{ shift_date|date }}
                                                             </a>
                                                             <br/>
