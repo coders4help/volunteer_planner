@@ -1,112 +1,125 @@
 {% load placestemplatetags vpfilters i18n cache %}
 
-{% get_places_having_facilities as places %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% cache 60 LANGUAGE_CODE %}
-<li class="dropdown">
 
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        {% if breadcrumps %}
-            {% with breadcrumps.flattened|last as last_breadcrump %}
-                {{ last_breadcrump.name }}
-            {% endwith %}
-        {% else %}
-            {% trans "Regions" %}
-        {% endif %}
-        <span class="caret"></span>
-    </a>
+    {% get_places_having_facilities as places %}
 
-    <ul role="menu" class="dropdown-menu">
+    <li class="dropdown">
 
-        {% regroup places by area.region.country as places_by_country %}
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+           aria-haspopup="true" aria-expanded="false">
+            {% if breadcrumps %}
+                {% with breadcrumps.flattened|last as last_breadcrump %}
+                    {{ last_breadcrump.name }}
+                {% endwith %}
+            {% else %}
+                {% trans "Regions" %}
+            {% endif %}
+            <span class="caret"></span>
+        </a>
 
-        {% for place_in_country in places_by_country %}
-            <li class="menu-item dropdown dropdown-submenu {{ breadcrumps.country|eq:place_in_country.grouper|yes:"active" }}">
-                <a href="{{ place_in_country.grouper.get_absolute_url }}">
-                    {{ place_in_country.grouper.name }}
-                    <span class="caret-right"></span>
-                </a>
-                <ul class="dropdown-menu">
+        <ul role="menu" class="dropdown-menu">
 
-                    {% regroup place_in_country.list by area.region as places_by_region %}
+            {% regroup places by area.region.country as places_by_country %}
 
-                    {% for place_in_region in places_by_region %}
+            {% for place_in_country in places_by_country %}
+                <li class="menu-item dropdown dropdown-submenu
+                        {{ breadcrumps.country|eq:place_in_country.grouper|yes:"active" }}">
+                    <a href="{{ place_in_country.grouper.get_absolute_url }}">
+                        {{ place_in_country.grouper.name }}
+                        <span class="caret-right"></span>
+                    </a>
+                    <ul class="dropdown-menu">
 
-                        <li class="menu-item dropdown dropdown-submenu {{ breadcrumps.region|eq:place_in_region.grouper|yes:"active" }}">
+                        {% regroup place_in_country.list by area.region as places_by_region %}
 
-                            <a href="{{ place_in_region.grouper.get_absolute_url }}">
-                                {{ place_in_region.grouper.name }}
-                            </a>
+                        {% for place_in_region in places_by_region %}
 
-                            <ul class="dropdown-menu">
+                            <li class="menu-item dropdown dropdown-submenu
+                                    {{ breadcrumps.region|eq:place_in_region.grouper|yes:"active" }}">
 
-                                {% regroup place_in_region.list by area as places_by_area %}
+                                <a href="{{ place_in_region.grouper.get_absolute_url }}">
+                                    {{ place_in_region.grouper.name }}
+                                </a>
 
-                                {% if places_by_area|length == 1 %}
+                                <ul class="dropdown-menu">
 
-                                    {% for place in places_by_area.0.list %}
-                                        <li class="menu-item {{ breadcrumps.place|eq:place|yes:"active" }}">
-                                            <a href="{{ place.get_absolute_url }}">
-                                                {% if place.area.name == place_in_region.grouper.name %}
-                                                    {{ place.name }}
-                                                {% else %}
-                                                    {{ place.area.name }}&nbsp;{{ place.name }}
-                                                {% endif %}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
+                                    {% regroup place_in_region.list by area as places_by_area %}
 
-                                {% else %}
+                                    {% if places_by_area|length == 1 %}
 
-                                    {% for place_in_area in places_by_area %}
-
-                                        {% if place_in_area.list|length == 1 %}
-
-                                            {% with place_in_area.list.0 as place %}
-                                                <li class="menu-item {{ breadcrumps.place|eq:place|yes:"active" }}">
-                                                    <a href="{{ place.get_absolute_url }}">
-                                                        {% if place.area.name == place.name %}
-                                                            {{ place.name }}
-                                                        {% else %}
-                                                            {{ place.area.name }}&nbsp;{{ place.name }}
-                                                        {% endif %}
-                                                    </a>
-                                                </li>
-                                            {% endwith %}
-
-                                        {% else %}
-
-                                            <li class="menu-item {{ breadcrumps.area|eq:place_in_area.grouper|yes:"active" }}">
-                                                <a href="#">
-                                                    {{ place_in_area.grouper.name }}
+                                        {% for place in places_by_area.0.list %}
+                                            <li class="menu-item
+                                                    {{ breadcrumps.place|eq:place|yes:"active" }}">
+                                                <a href="{{ place.get_absolute_url }}">
+                                                    {% if place.area.name == place_in_region.grouper.name %}
+                                                        {{ place.name }}
+                                                    {% else %}
+                                                        {{ place.area.name }}
+                                                        &nbsp;{{ place.name }}
+                                                    {% endif %}
                                                 </a>
-                                                <ul class="dropdown-menu">
-                                                    {% for place in place_in_area.list %}
-                                                        <li class="menu-item {{ breadcrumps.place|eq:place|yes:"active" }}">
-                                                            <a href="{{ place.get_absolute_url }}">
-                                                                {{ place.name }}
-                                                            </a>
-                                                        </li>
-                                                    {% endfor %}
-                                                </ul>
                                             </li>
+                                        {% endfor %}
 
-                                        {% endif %}
+                                    {% else %}
 
-                                    {% endfor %}
+                                        {% for place_in_area in places_by_area %}
 
-                                {% endif %}
+                                            {% if place_in_area.list|length == 1 %}
 
-                            </ul>
-                        </li>
+                                                {% with place_in_area.list.0 as place %}
+                                                    <li class="menu-item
+                                                            {{ breadcrumps.place|eq:place|yes:"active" }}">
+                                                        <a href="{{ place.get_absolute_url }}">
+                                                            {% if place.area.name == place.name %}
+                                                                {{ place.name }}
+                                                            {% else %}
+                                                                {{ place.area.name }}
+                                                                &nbsp;
+                                                                {{ place.name }}
+                                                            {% endif %}
+                                                        </a>
+                                                    </li>
+                                                {% endwith %}
 
-                    {% endfor %}
+                                            {% else %}
 
-                </ul>
-            </li>
+                                                <li class="menu-item
+                                                        {{ breadcrumps.area|eq:place_in_area.grouper|yes:"active" }}">
+                                                    <a href="#">
+                                                        {{ place_in_area.grouper.name }}
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        {% for place in place_in_area.list %}
+                                                            <li class="menu-item
+                                                                    {{ breadcrumps.place|eq:place|yes:"active" }}">
+                                                                <a href="{{ place.get_absolute_url }}">
+                                                                    {{ place.name }}
+                                                                </a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
 
-        {% endfor %}
+                                            {% endif %}
 
-    </ul>
-</li>
+                                        {% endfor %}
+
+                                    {% endif %}
+
+                                </ul>
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+                </li>
+
+            {% endfor %}
+
+        </ul>
+    </li>
 {% endcache %}
