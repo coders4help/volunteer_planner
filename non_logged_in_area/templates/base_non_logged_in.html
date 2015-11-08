@@ -80,28 +80,33 @@
 
             <hr/>
 
-            <div id="footer-nav">
-                <ul>
-                    <li>
-                        <a href="{% url 'home' %}">{% trans "Main page" %}</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a>
-                    </li>
-                    <li>
-                        <a href="">{% trans "Contact" %}</a>
-                    </li>
-                    <li>
-                        <a href="">{% trans "Imprint"%}</a>
-                    </li>
-                    <li>
-                        <a href="">{% trans "Terms of Service"%} </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>
-                    </li>
-                </ul>
-            </div>
+
+            {% comment %}
+                {# TODO #}
+                <div id="footer-nav">
+                    <ul>
+                        <li>
+                            <a href="{% url 'home' %}">{% trans "Main page" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a>
+                        </li>
+                        <li>
+                            <a href="">{% trans "Contact" %}</a>
+                        </li>
+                        <li>
+                            <a href="">{% trans "Imprint"%}</a>
+                        </li>
+                        <li>
+                            <a href="">{% trans "Terms of Service"%} </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>
+                        </li>
+                    </ul>
+                </div>
+            {% endcomment %}
+
             <div class="row">
                 <div class="col-md-12">
                     <br>
