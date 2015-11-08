@@ -62,7 +62,7 @@ def managing_members_view(request):
     user_account_id = UserAccount.objects.get(id=int(request.POST.get('user_account_id')))
     action = request.POST.get('action')
     membership = filter_queryset_by_membership(
-        FacilityMembership.objects.get(facility=facility, user_account=user_account_id))
+        FacilityMembership.objects.get(facility=facility, user_account=user_account_id), request.user)
     if action == "remove":
         membership.delete()
     elif membership.status == membership.Status.PENDING:
