@@ -22,5 +22,4 @@ six==1.7.3
 selenium==2.47.3
 sqlparse==0.1.16
 traitlets==4.0.0
-wsgiref==0.1.2
 xlwt==1.0.0
