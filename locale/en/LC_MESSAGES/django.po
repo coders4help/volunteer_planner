@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-08 22:38+0100\n"
+"POT-Creation-Date: 2015-11-08 23:26+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -136,22 +136,25 @@ msgstr ""
 msgid "Main page"
 msgstr ""
 
-msgid "Frequently Asked Questions"
+msgid "Imprint"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Supporter"
+msgstr ""
+
+msgid "Press"
 msgstr ""
 
 msgid "Contact"
 msgstr ""
 
-msgid "Imprint"
+msgid "F.A.Q."
 msgstr ""
 
-msgid "Terms of Service"
-msgstr ""
-
-msgid "Privacy Policy"
-msgstr ""
-
-msgid "supported by corporate volunteers from"
+msgid "Frequently Asked Questions"
 msgstr ""
 
 msgctxt "FAQ Q1"
@@ -265,6 +268,9 @@ msgid "You can help at these locations:"
 msgstr ""
 
 msgid "There are currently no places in need of help."
+msgstr ""
+
+msgid "Privacy Policy"
 msgstr ""
 
 msgctxt "Privacy Policy Sec1"
@@ -474,10 +480,52 @@ msgstr ""
 msgid "contact info"
 msgstr ""
 
+msgid "by invitation"
+msgstr ""
+
+msgid "anyone (approved by manager)"
+msgstr ""
+
+msgid "anyone"
+msgstr ""
+
+msgid "rejected"
+msgstr ""
+
+msgid "pending"
+msgstr ""
+
+msgid "approved"
+msgstr ""
+
+msgid "admin"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "member"
+msgstr ""
+
+msgid "role"
+msgstr ""
+
+msgid "status"
+msgstr ""
+
 msgid "name"
 msgstr ""
 
 msgid "address"
+msgstr ""
+
+msgid "slug"
+msgstr ""
+
+msgid "join mode"
+msgstr ""
+
+msgid "Who can join this organization?"
 msgstr ""
 
 msgid "organization"
@@ -505,22 +553,13 @@ msgstr ""
 msgid "longitude"
 msgstr ""
 
+msgid "Who can join this facility?"
+msgstr ""
+
 msgid "facility"
 msgstr ""
 
 msgid "facilities"
-msgstr ""
-
-msgid "admin"
-msgstr ""
-
-msgid "manager"
-msgstr ""
-
-msgid "member"
-msgstr ""
-
-msgid "role"
 msgstr ""
 
 msgid "organization member"
@@ -555,7 +594,36 @@ msgstr ""
 msgid "tasks"
 msgstr ""
 
-msgid "Operated by: "
+#, python-format
+msgid "Members in %(facility)s"
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
+
+#, python-format
+msgid "Hello %(username)s,"
+msgstr ""
+
+#, python-format
+msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
+msgstr ""
+
+msgid ""
+"Yours,\n"
+"the volunteer-planner.org Team"
+msgstr ""
+
+msgid "Helpdesk"
 msgstr ""
 
 msgid "Open Shifts"
@@ -570,7 +638,7 @@ msgstr ""
 msgid "Show details"
 msgstr ""
 
-msgid "slug"
+msgid "volunteer-planner.org: Membership approved"
 msgstr ""
 
 msgid "country"
@@ -612,6 +680,12 @@ msgstr ""
 msgid "ending time"
 msgstr ""
 
+msgid "members only"
+msgstr ""
+
+msgid "allow only members to help"
+msgstr ""
+
 msgid "shift"
 msgstr ""
 
@@ -651,9 +725,6 @@ msgid "see more"
 msgstr ""
 
 msgid "open shifts"
-msgstr ""
-
-msgid "Helpdesk"
 msgstr ""
 
 #, python-format
@@ -710,6 +781,15 @@ msgstr ""
 msgid "Sign up"
 msgstr ""
 
+msgid "Membership pending"
+msgstr ""
+
+msgid "Membership rejected"
+msgstr ""
+
+msgid "Become member"
+msgstr ""
+
 #, python-format
 msgid ""
 "\n"
@@ -725,6 +805,9 @@ msgid ""
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "Members only"
 msgstr ""
 
 #, python-format
@@ -754,6 +837,9 @@ msgid "The submitted data was invalid."
 msgstr ""
 
 msgid "User account does not exist."
+msgstr ""
+
+msgid "A membership request has been sent."
 msgstr ""
 
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
@@ -893,6 +979,12 @@ msgstr ""
 
 #, python-format
 msgid "Questions? Get in touch: %(mailto_link)s"
+msgstr ""
+
+msgid "Manage"
+msgstr ""
+
+msgid "Members"
 msgstr ""
 
 msgid "Toggle navigation"
