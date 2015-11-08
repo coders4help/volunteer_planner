@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-08 21:59+0100\n"
+"POT-Creation-Date: 2015-11-08 22:38+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -474,52 +474,10 @@ msgstr ""
 msgid "contact info"
 msgstr ""
 
-msgid "by invitation"
-msgstr ""
-
-msgid "anyone (approved by manager)"
-msgstr ""
-
-msgid "anyone"
-msgstr ""
-
-msgid "rejected"
-msgstr ""
-
-msgid "pending"
-msgstr ""
-
-msgid "approved"
-msgstr ""
-
-msgid "admin"
-msgstr ""
-
-msgid "manager"
-msgstr ""
-
-msgid "member"
-msgstr ""
-
-msgid "role"
-msgstr ""
-
-msgid "status"
-msgstr ""
-
 msgid "name"
 msgstr ""
 
 msgid "address"
-msgstr ""
-
-msgid "slug"
-msgstr ""
-
-msgid "join mode"
-msgstr ""
-
-msgid "Who can join this organization?"
 msgstr ""
 
 msgid "organization"
@@ -547,13 +505,22 @@ msgstr ""
 msgid "longitude"
 msgstr ""
 
-msgid "Who can join this facility?"
-msgstr ""
-
 msgid "facility"
 msgstr ""
 
 msgid "facilities"
+msgstr ""
+
+msgid "admin"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "member"
+msgstr ""
+
+msgid "role"
 msgstr ""
 
 msgid "organization member"
@@ -588,36 +555,7 @@ msgstr ""
 msgid "tasks"
 msgstr ""
 
-#, python-format
-msgid "Members in %(facility)s"
-msgstr ""
-
-msgid "Role"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Block"
-msgstr ""
-
-msgid "Accept"
-msgstr ""
-
-#, python-format
-msgid "Hello %(username)s,"
-msgstr ""
-
-#, python-format
-msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
-msgstr ""
-
-msgid ""
-"Yours,\n"
-"the volunteer-planner.org Team"
-msgstr ""
-
-msgid "Helpdesk"
+msgid "Operated by: "
 msgstr ""
 
 msgid "Open Shifts"
@@ -632,7 +570,7 @@ msgstr ""
 msgid "Show details"
 msgstr ""
 
-msgid "volunteer-planner.org: Membership approved"
+msgid "slug"
 msgstr ""
 
 msgid "country"
@@ -672,12 +610,6 @@ msgid "starting time"
 msgstr ""
 
 msgid "ending time"
-msgstr ""
-
-msgid "members only"
-msgstr ""
-
-msgid "allow only members to help"
 msgstr ""
 
 msgid "shift"
@@ -721,13 +653,16 @@ msgstr ""
 msgid "open shifts"
 msgstr ""
 
+msgid "Helpdesk"
+msgstr ""
+
 #, python-format
 msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
 msgstr ""
 
 #, python-format
-msgid "%(starting_time)s - %(ending_time)s Uhr"
+msgid "%(starting_time)s - %(ending_time)s"
 msgstr ""
 
 #, python-format
@@ -775,58 +710,44 @@ msgstr ""
 msgid "Sign up"
 msgstr ""
 
-msgid "Membership pending"
-msgstr ""
-
-msgid "Membership rejected"
-msgstr ""
-
-msgid "Become member"
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to cancel the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"This is an automaticly generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
-"Hallo,\n"
+"Hello,\n"
 "\n"
-"leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:\n"
-"\n"
-"%(shift_title)s, %(location)s\n"
-"%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n"
-"\n"
-"Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.\n"
-"\n"
-"Liebe Grüße vom Volunteer Planner\n"
-"volunteer-planner.org\n"
-msgstr ""
-
-msgid "Members only"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"Hallo,\n"
-"\n"
-"wir mussten die folgende Schicht zeitlich anpassen:\n"
+"we're sorry, but we had to change the times of the following shift at request of the organizer:\n"
 "\n"
 "%(shift_title)s, %(location)s\n"
-"%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s Uhr\n"
+"%(old_from_date)s from %(old_from_time)s to %(old_to_time)s o'clock\n"
 "\n"
-"Die neuen Schichtzeiten sind:\n"
+"The new shift times are:\n"
 "\n"
-"%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
 "\n"
-"Wenn Sie zur neuen Uhrzeit unglücklicher Weise nicht mehr helfen kännen, bitten\n"
-"wir Sie, sich im Volunteer-Planner aus dieser Schicht auszutragen, damit jemand\n"
-"anderes die Chance erhält, zu unterstützen. Vielen Dank :)\n"
+"If you can not help at the new times any longer, please cancel your attendance at volunteer-planner.org.\n"
 "\n"
-"Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich\n"
-"bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben\n"
-"ist.\n"
+"This is an automaticly generated e-mail. If you have any questions, please contact the facility directly.\n"
 "\n"
-"Liebe Grüße vom Volunteer Planner\n"
-"volunteer-planner.org\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
 msgstr ""
 
 msgid "The submitted data was invalid."
@@ -835,10 +756,10 @@ msgstr ""
 msgid "User account does not exist."
 msgstr ""
 
-msgid "A membership request has been sent."
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr ""
 
-msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
+msgid "We can't add you to this shift because there are no more slots left."
 msgstr ""
 
 msgid "You were successfully added to this shift."
@@ -919,8 +840,7 @@ msgstr ""
 msgid "Select shift templates"
 msgstr ""
 
-#, python-format
-msgid "Please review and confirm shifts to create on %(localized_date)s for %(facility_name)s"
+msgid "Please review and confirm shifts to create"
 msgstr ""
 
 msgid "Apply"
@@ -975,12 +895,6 @@ msgstr ""
 msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr ""
 
-msgid "Manage"
-msgstr ""
-
-msgid "Members"
-msgstr ""
-
 msgid "Toggle navigation"
 msgstr ""
 
@@ -1028,6 +942,45 @@ msgstr ""
 
 msgctxt "Login link text on activation success page"
 msgid "You can login here."
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "Your volunteer-planner.org registration"
 msgstr ""
 
 msgid "Your username and password didn't match. Please try again."

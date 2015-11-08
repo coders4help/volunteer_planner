@@ -8,9 +8,6 @@
     {% endblocktrans %}
 {% endblock %}
 
-
-
-
 {% block additional_js %}
     <script src="{% static "momentjs/moment.min.js" %}"></script>
     {{ block.super }}
@@ -58,7 +55,7 @@
                                     id: {{ shift.id }},
                                     group: {{ task.id }},
                                     subgroup: '{{ workplace.id|default:"no workplace" }}',
-                                    content: '<a href="#{{ shift.id }}">{{ shift.workplace.name|default:shift.task.name }} ({{ shift.volunteer_count }}/{{ shift.slots }})<br>{% blocktrans trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }} Uhr{% endblocktrans %}</a>',
+                                    content: '<a href="#{{ shift.id }}">{{ shift.workplace.name|default:shift.task.name }} ({{ shift.volunteer_count }}/{{ shift.slots }})<br>{% blocktrans trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }}{% endblocktrans %}</a>',
                                     subgroupOrder: '{{ workplace.name }}',
                                     start: "{{ shift.starting_time|date:"c" }}",
                                     end: "{{ shift.ending_time|date:"c" }}"
@@ -275,7 +272,7 @@
                                             <td>
                                         <span style="color:{% if slots_left %}red{% else %}green{% endif %};">
 
-                                            {% if slots_left %}
+                                            {% if slots_left > 0 %}
                                                 {% blocktrans trimmed %}
                                                     {{ slots_left }} more
                                                 {% endblocktrans %}
@@ -314,7 +311,7 @@
                                                         &nbsp;{{ dropout_button_label|title }}
                                                     </button>
 
-                                                    {% elif slots_left %}
+                                                    {% elif slots_left > 0 %}
                                                     {% trans "Sign up" as signup_button_label %}
 
                                                     {% if shift.members_only %}

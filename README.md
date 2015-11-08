@@ -1,10 +1,34 @@
 # volunteer-planner.org
 
-A platform to schedule shifts of volunteers. 
+Volunteer Planner is a platform to schedule shifts of volunteers. Volunteers register at the platform and choose shifts.
+ The admin of the website can easily add new organizations, places and shifts. The software has a location based 
+ hierarchy (country / region / area / city) and has a hierarchy of organizations (organizations, facilities, tasks and
+  workplaces) - it can be used for a variety of purposes.
 
-**TODO**: Add general project description and goals, ie. link to wiki.
+## Status
+The project is currently running at https://volunteer-planner.org/.
 
-## Project Setup
+## Work in progress
+There are some feature requests to be implemented in the future.
+The software currently needs a centralized administration of the shifts, but it is one of the main goals of the current 
+development to empower organizations to schedule shifts for their facilities on their own.
+
+If you are interested to join the development team, just make pull requests or come to a meeting in Berlin/Germany: 
+http://www.meetup.com/de/coders4help/
+
+## System context
+**User**: The volunteers and administrators just need a (modern) web browser to use the volunteer-planner application.
+
+**Developer**: Developers need a python development environment (see project setup) and specific versions of external 
+libraries (see /requirements directory, t). Development can be done with a sqlite databases, there is no need to run 
+and configure postgres or mysql.
+
+**Server**: For production use you need a Python ready web server, for example uWSGI as web server for the Python WSGI 
+with nginx as proxy server visible to the end user (volunteers and administrators). You also need a MySQL or PostgreSQL 
+database.
+
+
+## Project setup for development
 
 ### 0. Prerequisites (Ubuntu 14.04 example) 
 
@@ -61,7 +85,8 @@ If you have questions concerning our workflow please read the
 
 #### 2.1. Create a virtual env
 
-Create an virtualenv (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/)):
+Create an virtualenv (follow the installation guide at [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/) 
+to install virtualenvwrapper):
     
     $ mkvirtualenv vp
 
@@ -159,14 +184,15 @@ the superuser you created earlier (in case you don't see an error page here).
 
 ### Create Dummy Data
 
-run management command " python manage.py create_dummy_data 5 --flush True " with activated virtualenv to get 5 days of dummy data and delete tables in advance.
+Run management command " python manage.py create_dummy_data 5 --flush True " with activated virtualenv to get 5 days of 
+dummy data and delete tables in advance.
 
 The number (5 in the above example) creates 5 days dummy data count from today.
 If you just use "python manage.py create_dummy_data 5" without --flush it is NOT deleting data before putting new data in.
 
 ### Running Tests
 
-Feature PR should be accompanied by appropriate test. We have unit and integration tests that
+Feature pull requests should be accompanied by appropriate tests. We have unit and integration tests that
 are run with `py.test`, and functional/behave tests that are run with `selenium`.
 
 To run unit tests, run the following command (with your virtual env activated, see 3.)

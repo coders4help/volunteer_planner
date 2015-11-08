@@ -19,10 +19,11 @@
     <div id="content-main">
 
     <h2>
-        {% blocktrans trimmed with localized_date=selected_date|localize facility_name=schedule_template.facility.name %}
-            Please review and confirm shifts to create on {{ localized_date }}
-            for {{ facility_name }}
-        {% endblocktrans %}
+        {% trans "Please review and confirm shifts to create" %}:
+    </h2>
+    <h2>
+        {{ selected_date|date }}<br/>
+        {{ schedule_template.facility.name }}
     </h2>
 
     <form method="post">
