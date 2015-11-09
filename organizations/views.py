@@ -80,12 +80,11 @@ def managing_members_view(request, **kwargs):
                 send_membership_approved_notification(membership,
                                                       approved_by=request.user)
 
-    except Exception as ex:
-        return HttpResponseForbidden({
-            'result': 'error',
-            'error': ex if settings.DEBUG else _(u'An error ocurred during updating the membership.')
-        })
-    return {'result': "successasdasdasd"}
+    except Exception:
+        if settings.DEBUG:
+            raise
+        return HttpResponseForbidden()
+    return {'result': "sucess"}
 
 
 class ManageFacilityMembersView(DetailView):
