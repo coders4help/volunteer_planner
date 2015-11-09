@@ -2,9 +2,11 @@
 
 import itertools
 
+from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import EmailMessage
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseForbidden
 from django.template.defaultfilters import date
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
@@ -43,7 +45,50 @@ class FacilityView(DetailView):
         return context
 
 
-class PendingApprovalsView(DetailView):
+@ajax
+@staff_member_required
+def managing_members_view(request, **kwargs):
+    try:
+        facilities_managed_by_user = filter_queryset_by_membership(
+            Facility.objects.all(),
+            request.user,
+            skip_superuser=False)
+
+        facilities = facilities_managed_by_user.filter(
+            organization__slug=kwargs['organization__slug'],
+            slug=kwargs['slug']
+        )
+
+        facility = facilities.get()
+
+        user_account_id = request.POST.get('user_account_id')
+
+        action = request.POST.get('action')
+
+        membership = FacilityMembership.objects.get(facility=facility,
+                                                    user_account__id=user_account_id)
+
+        if action == "remove":
+            membership.delete()
+        if action == "reject":
+            membership.status = membership.Status.REJECTED
+            membership.save()
+        elif membership.status == membership.Status.PENDING:
+            if action == "accept":
+                membership.status = membership.Status.APPROVED
+                membership.save()
+                send_membership_approved_notification(membership,
+                                                      approved_by=request.user)
+
+    except Exception as ex:
+        return HttpResponseForbidden({
+            'result': 'error',
+            'error': ex if settings.DEBUG else _(u'An error ocurred during updating the membership.')
+        })
+    return {'result': "successasdasdasd"}
+
+
+class ManageFacilityMembersView(DetailView):
     """
     This view returns the pending member requests for approval by the shift
     planner for the already logged in
@@ -52,12 +97,17 @@ class PendingApprovalsView(DetailView):
 
     model = Facility
     template_name = "approvals.html"
-    queryset = Facility.objects.select_related('organization').prefetch_related(
-        'memberships', 'memberships__user_account',
-        'memberships__user_account__user')
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(PendingApprovalsView, self).get_context_data(**kwargs)
+    def get_queryset(self):
+        qs = super(ManageFacilityMembersView, self).get_queryset()
+        qs = qs.select_related('organization')
+        qs = qs.prefetch_related(
+            'memberships',
+            'memberships__user_account',
+            'memberships__user_account__user')
+        return filter_queryset_by_membership(qs,
+                                             self.request.user,
+                                             skip_superuser=False)
 
 
 def send_membership_approved_notification(membership, approved_by):
@@ -82,36 +132,9 @@ def send_membership_approved_notification(membership, approved_by):
                             to=addresses,
                             from_email=from_email,
                             reply_to=reply_to)
-
         mail.send()
     except:
         raise
-
-
-@ajax
-@staff_member_required
-def managing_members_view(request):
-    facility = Facility.objects.get(id=int(request.POST.get('facility_id')))
-    user_account_id = UserAccount.objects.get(
-        id=int(request.POST.get('user_account_id')))
-    action = request.POST.get('action')
-    membership = filter_queryset_by_membership(FacilityMembership.objects.all(),
-                                               request.user) \
-        .get(facility=facility, user_account=user_account_id)
-    if action == "remove":
-        membership.delete()
-    if action == "reject":
-        membership.status = membership.Status.REJECTED
-        membership.save()
-    elif membership.status == membership.Status.PENDING:
-        if action == "accept":
-            membership.status = membership.Status.APPROVED
-            membership.save()
-            send_membership_approved_notification(membership,
-                                                  approved_by=request.user)
-
-
-    return {'result': "successful"}
 
 
 def get_facility_details(facility, shifts):
