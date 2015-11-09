@@ -4,7 +4,33 @@
 
 {% block additional_js %}
     <script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
-    <script src="{% static "custom/js/manage_user.js" %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#manageMembership .action').on('click', function () {
+                var data = {
+                    user_account_id: $(this).parents('td').siblings('.manage-member').attr('data-account-id'),
+                    facility_id: $(this).parents('td').siblings('.manage-member').attr('data-facitlity-id'),
+                    action: $(this).attr('data-action')
+                };
+
+                function onError(content) {
+                    if (content.status == 403) {
+                        alert('{% trans "Error" %}\n{% trans "You are not allowed to do this." %}');
+                    }
+                }
+
+                function onComplete(content) {
+                    location.reload();
+                }
+
+                ajaxPost('{% url "manage-members-ajax" facility.organization.slug facility.slug  %}', data, null, {
+                    onError: onError,
+                    onComplete: onComplete
+                });
+            })
+
+        });
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -49,7 +75,8 @@
 
                     {% for membership in memberships_for_status.list %}
                         <tr>
-                            <td class="manage-member" data-facitlity-id="{{ facility.pk }}"
+                            <td class="manage-member"
+                                data-facitlity-id="{{ facility.pk }}"
                                 data-account-id="{{ membership.user_account.pk }}">
 
                                 {{ membership.user_account.user.username }}
@@ -61,18 +88,18 @@
                                 {% if membership.status == membership.Status.APPROVED %}
                                     <span data-action="reject" class="fa fa-minus-circle action">
                                         {% trans "Block" %}
-                                    </span>
-                                    {% elif membership.status == membership.Status.PENDING %}
+                                    </span>&nbsp;|&nbsp;
+                                {% elif membership.status == membership.Status.PENDING %}
                                     <span data-action="accept" class="fa fa-user-plus action">
                                         {% trans "Accept" %}
-                                    </span> |
+                                    </span>&nbsp;|&nbsp;
                                     <span data-action="reject" class="fa fa-minus-circle action">
                                         {% trans "Block" %}
-                                    </span>
+                                    </span>&nbsp;|&nbsp;
                                 {% endif %}
-                                | <spanv data-action="remove" class="fa fa-remove action">
-                                        {% trans "Remove" %}
-                                    </spanv>
+                                <span data-action="remove" class="fa fa-remove action">
+                                    {% trans "Remove" %}
+                                </span>
                             </td>
                         </tr>
                     {% endfor %}
