@@ -1,5 +1,8 @@
 # coding=utf-8
+from django.conf import settings
 from django.core.management.base import BaseCommand
+
+from datetime import date, timedelta
 
 from registration.models import RegistrationProfile
 
@@ -7,27 +10,19 @@ from registration.models import RegistrationProfile
 class Command(BaseCommand):
     help = 'Cleanup expired registrations'
 
-    OPT_SIMULATE = 'dry-run'
-
-    def add_arguments(self, parser):
-        parser.add_argument(''.join(['--', self.OPT_SIMULATE]),
-                            action='store_true',
-                            dest=self.OPT_SIMULATE,
-                            default=False,
-                            help='Only print registrations that would be deleted')
-
     def handle(self, *args, **options):
-        self.stdout.write('Deleting expired user registrations')
-        dry_run = True if self.OPT_SIMULATE in options and options[
-            self.OPT_SIMULATE] else False
-        if dry_run:
-            user_count, reg_profile_count = 0, 0
-            for profile in RegistrationProfile.objects.select_related(
-                    'user').exclude(user__is_active=True):
-                if profile.activation_key_expired():
-                    user_count += 1
-                    reg_profile_count += 1
-            print "Would delete {} User and {} RegistrationProfile objects".format(
-                user_count, reg_profile_count)
-        else:
-            RegistrationProfile.objects.delete_expired_users()
+        profiles = RegistrationProfile.objects \
+            .exclude(activation_key=RegistrationProfile.ACTIVATED) \
+            .prefetch_related('user', 'user__account') \
+            .exclude(user__is_active=True) \
+            .filter(user__date_joined__lt=(date.today() - timedelta(settings.ACCOUNT_ACTIVATION_DAYS)))
+
+        if settings.DEBUG:
+            self.stderr.write(u'SQL: {}'.format(profiles.query))
+
+        for profile in profiles:
+            if hasattr(profile, 'user'):
+                if hasattr(profile.user, 'account'):
+                    profile.user.account.delete()
+                profile.user.delete()
+            profile.delete()

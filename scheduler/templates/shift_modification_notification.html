@@ -1,23 +1,20 @@
-{% load i18n %}{% blocktrans with shift_title=shift.task.name location=shift.location.name from_date=shift.starting_time.date from_time=shift.starting_time.time to_time=shift.ending_time.time old_from_date=shift.starting_time.date old_from_time=shift.starting_time.time old_to_time=shift.ending_time.time %}
-Hallo,
+{% load i18n %}{% blocktrans with shift_title=shift.task.name.strip|safe location=shift.facility.name.strip|safe from_date=shift.starting_time.date|date from_time=shift.starting_time.time to_time=shift.ending_time.time old_from_date=old.starting_time.date|date old_from_time=old.starting_time.time old_to_time=old.ending_time.time %}
+Hello,
 
-wir mussten die folgende Schicht zeitlich anpassen:
+we're sorry, but we had to change the times of the following shift at request of the organizer:
 
 {{ shift_title }}, {{ location }}
-{{ old_from_date }} von {{ old_from_time }} bis {{ old_to_time }}
+{{ old_from_date }} from {{ old_from_time }} to {{ old_to_time }} o'clock
 
-Die neuen Schichtzeiten sind:
+The new shift times are:
 
-{{ from_date }} von {{ from_time }} bis {{ to_time }}
+{{ from_date }} from {{ from_time }} to {{ to_time }} o'clock
 
-Wenn Sie zur neuen Uhrzeit unglücklicher Weise nicht mehr helfen kännen, bitten
-wir Sie, sich im Volunteer-Planner aus dieser Schicht auszutragen, damit jemand
-anderes die Chance erhält, zu unterstützen. Vielen Dank :)
+If you can not help at the new times any longer, please cancel your attendance at volunteer-planner.org.
 
-Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich
-bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben
-ist.
+This is an automaticly generated e-mail. If you have any questions, please contact the facility directly.
 
-Liebe Grüße vom Volunteer Planner
-volunteer-planner.org
+Yours,
+
+the volunteer-planner.org team
 {% endblocktrans %}
