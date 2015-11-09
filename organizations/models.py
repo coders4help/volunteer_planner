@@ -96,7 +96,19 @@ class Organization(models.Model):
                        args=[self.slug])
 
 
+
+
+
 class Facility(models.Model):
+
+    class TimelineViewMode:
+        DISABLED, COLLAPSED, ENABLED = 0, 1, 2
+        CHOICES = (
+            (DISABLED, _(u'disabled')),
+            (COLLAPSED, _(u'enabled (collapsed)')),
+            (ENABLED, _(u'enabled')),
+        )
+
     # the organization running this facility
     organization = models.ForeignKey('organizations.Organization',
                                      verbose_name=_('organization'),
@@ -147,6 +159,11 @@ class Facility(models.Model):
 
     slug = models.SlugField(verbose_name=_(u'slug'))
 
+    timeline_enabled = models.PositiveSmallIntegerField(
+        choices=TimelineViewMode.CHOICES,
+        default=TimelineViewMode.COLLAPSED,
+        verbose_name=_(u'Schedule View'))
+
     join_mode = models.PositiveSmallIntegerField(
         choices=Membership.JoinMode.CHOICES,
         default=Membership.JoinMode.INVITATION_ONLY,
@@ -157,6 +174,8 @@ class Facility(models.Model):
         verbose_name = _(u'facility')
         verbose_name_plural = _(u'facilities')
         ordering = ('organization', 'place', 'name',)
+
+
 
     @property
     def address_line(self):

@@ -8,108 +8,129 @@
     {% endblocktrans %}
 {% endblock %}
 
-{% block additional_js %}
-    <script src="{% static "momentjs/moment.min.js" %}"></script>
-    {{ block.super }}
-    <script src="{% static "visjs/vis.min.js" %}"></script>
-    <script>
-        var now = moment().minutes(0).seconds(0).milliseconds(0);
-        var groupCount = 3;
-        var itemCount = 20;
+{% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
 
-        // create a data set with groups
-        var groups = new vis.DataSet();
-        var items = new vis.DataSet(
-                {
-                    type: {
-                        start: 'ISODate',
-                        end: 'ISODate'
+    {% block additional_js %}
+        <script src="{% static "momentjs/moment.min.js" %}"></script>
+        {{ block.super }}
+        <script src="{% static "visjs/vis.min.js" %}"></script>
+        <script>
+            var now = moment().minutes(0).seconds(0).milliseconds(0);
+            var groupCount = 3;
+            var itemCount = 20;
+
+            // create a data set with groups
+            var groups = new vis.DataSet();
+            var items = new vis.DataSet(
+                    {
+                        type: {
+                            start: 'ISODate',
+                            end: 'ISODate'
+                        }
                     }
+            );
+
+            {% regroup shifts by task as shifts_by_task %}
+            {% for shift_by_task in shifts_by_task %}
+                {% with shift_by_task.grouper as task %}
+
+
+                    groups.add(
+                            {
+                                id: {{ task.id }},
+                                content: '{{ task.name }}',
+                                value: '{{ task.name }}',
+                                subgroupOrder: function (a, b) {
+                                    return a.subgroupOrder - b.subgroupOrder;
+                                },
+                                stack: false
+                            }
+                    );
+                    {% regroup shift_by_task.list by workplace as shifts_by_workplace %}
+                    {% for shift_by_workplace in shifts_by_workplace %}
+                        {% with shift_by_workplace.grouper as workplace %}
+
+                            {% for shift in shift_by_workplace.list %}
+                                {% with slots_left=shift.volunteer_count|subtract:shift.slots slots_percent=shift.volunteer_count|divide:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
+
+                                    items.add({
+                                        id: {{ shift.id }},
+                                        group: {{ task.id }},
+                                        subgroup: '{{ workplace.id|default:"no workplace" }}',
+                                        content: '<a href="#{{ shift.id }}">{{ shift.workplace.name|default:shift.task.name }} ({{ shift.volunteer_count }}/{{ shift.slots }})<br>{% blocktrans trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }}{% endblocktrans %}</a>',
+                                        subgroupOrder: '{{ workplace.name }}',
+                                        start: "{{ shift.starting_time|date:"c" }}",
+                                        end: "{{ shift.ending_time|date:"c" }}"
+                                    });
+                                {% endwith %}
+                            {% endfor %}
+                        {% endwith %}
+                    {% endfor %}
+                {% endwith %}
+            {% endfor %}
+
+
+            // create visualization
+            var container = document.getElementById('timeline');
+
+            startDate = moment('{{ schedule_date|date:"c" }}');
+            endDate = startDate.clone()
+            endDate.add(moment.duration({'days': 1}))
+            var options = {
+                groupOrder: 'value',  // groupOrder can be a property name or a sorting function
+                start: startDate,
+                end: endDate,
+                editable: false,
+                stack: false,
+                moveable: false,
+                orientation: {
+                    axis: 'both',
+                    item: 'bottom'
                 }
-        );
+            };
 
-        {% regroup shifts by task as shifts_by_task %}
-        {% for shift_by_task in shifts_by_task %}
-            {% with shift_by_task.grouper as task %}
+            var timeline;  //= new vis.Timeline(container);
+
+            function showTimeline() {
+                timeline = new vis.Timeline(container);
+                timeline.setOptions(options);
+                timeline.setGroups(groups);
+                timeline.setItems(items);
+                timeline.fit({animation: false});
+            }
+
+            $('#timeline').on('shown.bs.collapse', function () {
+                showTimeline();
+            });
 
 
-                groups.add(
-                        {
-                            id: {{ task.id }},
-                            content: '{{ task.name }}',
-                            value: '{{ task.name }}',
-                            subgroupOrder: function (a, b) {
-                                return a.subgroupOrder - b.subgroupOrder;
-                            },
-                            stack: false
+            $('#timeline').on('hidden.bs.collapse', function () {
+                timeline.destroy();
+            });
+
+            {% if facility.timeline_enabled > facility.TimelineViewMode.COLLAPSED %}
+                $(function () {
+                            $('#timeline').collapse("show");
                         }
                 );
-                {% regroup shift_by_task.list by workplace as shifts_by_workplace %}
-                {% for shift_by_workplace in shifts_by_workplace %}
-                    {% with shift_by_workplace.grouper as workplace %}
+            {% endif %}
 
-                        {% for shift in shift_by_workplace.list %}
-                            {% with slots_left=shift.volunteer_count|subtract:shift.slots slots_percent=shift.volunteer_count|divide:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
-
-                                items.add({
-                                    id: {{ shift.id }},
-                                    group: {{ task.id }},
-                                    subgroup: '{{ workplace.id|default:"no workplace" }}',
-                                    content: '<a href="#{{ shift.id }}">{{ shift.workplace.name|default:shift.task.name }} ({{ shift.volunteer_count }}/{{ shift.slots }})<br>{% blocktrans trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }}{% endblocktrans %}</a>',
-                                    subgroupOrder: '{{ workplace.name }}',
-                                    start: "{{ shift.starting_time|date:"c" }}",
-                                    end: "{{ shift.ending_time|date:"c" }}"
-                                });
-                            {% endwith %}
-                        {% endfor %}
-                    {% endwith %}
-                {% endfor %}
-            {% endwith %}
-        {% endfor %}
-
-
-        // create visualization
-        var container = document.getElementById('timeline');
-
-        startDate = moment('{{ schedule_date|date:"c" }}');
-        endDate = startDate.clone()
-        endDate.add(moment.duration({'days': 1}))
-        var options = {
-            groupOrder: 'value',  // groupOrder can be a property name or a sorting function
-            start: startDate,
-            end: endDate,
-            editable: false,
-            stack: false,
-            moveable: false,
-            orientation: {
-                axis: 'both',
-                item: 'bottom'
-            }
-        };
-
-        var timeline;  //= new vis.Timeline(container);
-
-        $('#timeline').on('shown.bs.collapse', function () {
-            timeline = new vis.Timeline(container);
-            timeline.setOptions(options);
-            timeline.setGroups(groups);
-            timeline.setItems(items);
-            timeline.fit();
-        });
-
-
-        $('#timeline').on('hidden.bs.collapse', function () {
-            timeline.destroy();
-        });
-
-    </script>
-{% endblock %}
+        </script>
+    {% endblock %}
+{% endif %}
 
 {% block additional_css %}
     {{ block.super }}
-    <link href="{% static "visjs/vis.min.css" %}" rel="stylesheet">
+    {% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
+        <link href="{% static "visjs/vis.min.css" %}" rel="stylesheet">
+    {% endif %}
 
     <style>
+        .collapsing {
+            -webkit-transition: none;
+            transition: none;
+        }
+
         *:target, tr:target td {
             background-color: #FFFDD9;
         }
@@ -154,18 +175,22 @@
 
         </h3>
 
-        <button class="small fa fa-calendar"
-                role="button"
-                data-toggle="collapse"
-                href="#timeline"
-                aria-expanded="false"
-                aria-controls="timeline">
-            Toggle Schedule
-        </button>
+        {% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
+            <button class="small fa fa-calendar"
+                    role="button"
+                    data-toggle="collapse"
+                    href="#timeline"
+                    aria-expanded="false"
+                    aria-controls="timeline">
+                {% trans "Toggle Schedule" %}
+            </button>
 
-        <div class="collapse" id="timeline">
+            {% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
+                <div id="timeline" class="collapse">
 
-        </div>
+                </div>
+            {% endif %}
+        {% endif %}
     </div>
     <form method="POST">
         {% csrf_token %}
