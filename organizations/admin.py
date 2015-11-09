@@ -52,12 +52,13 @@ def get_cached_memberships(user, roles=DEFAULT_FILTER_ROLES):
 def filter_queryset_by_membership(qs, user,
                                   facility_filter_fk=None,
                                   organization_filter_fk=None,
-                                  roles=DEFAULT_FILTER_ROLES):
+                                  roles=DEFAULT_FILTER_ROLES,
+                                  skip_superuser=True):
     if facility_filter_fk and organization_filter_fk:
         raise Exception(
             'facility_filter_fk and organization_filter_fk are mutually exclusive.')
 
-    if user.is_superuser:
+    if skip_superuser and user.is_superuser:
         return qs
 
     user_orgs, user_facilities = get_cached_memberships(user, roles)
