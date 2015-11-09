@@ -75,7 +75,7 @@ class Organization(models.Model):
         through='organizations.OrganizationMembership'
     )
 
-    slug = models.SlugField(verbose_name=_(u'slug'))
+    slug = models.SlugField(max_length=80, verbose_name=_(u'slug'))
 
     join_mode = models.PositiveSmallIntegerField(
         choices=Membership.JoinMode.CHOICES,
@@ -157,7 +157,7 @@ class Facility(models.Model):
     longitude = models.CharField(max_length=30, blank=True,
                                  verbose_name=_('longitude'))
 
-    slug = models.SlugField(verbose_name=_(u'slug'))
+    slug = models.SlugField(max_length=80, verbose_name=_(u'slug'))
 
     timeline_enabled = models.PositiveSmallIntegerField(
         choices=TimelineViewMode.CHOICES,
