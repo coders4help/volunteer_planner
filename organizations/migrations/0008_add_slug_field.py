@@ -14,7 +14,7 @@ def add_slugs(apps, schema_editor):
 
     for model in (Organization, Facility):
         for instance in model.objects.all():
-            instance.slug = slugify(instance.name) or slugify('{}'.format(instance.id))
+            instance.slug = slugify(instance.name)[:70] or slugify('{}'.format(instance.id))
             instance.save()
             sys.stdout.write(u'{} -> {}\n'.format(instance, instance.slug))
 
@@ -28,12 +28,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='facility',
             name='slug',
-            field=models.SlugField(null=True, verbose_name='slug', blank=True),
+            field=models.SlugField(max_length=80, null=True, verbose_name='slug', blank=True),
         ),
         migrations.AddField(
             model_name='organization',
             name='slug',
-            field=models.SlugField(null=True, verbose_name='slug', blank=True),
+            field=models.SlugField(max_length=80, null=True, verbose_name='slug', blank=True),
         ),
 
         migrations.RunPython(add_slugs, skip),
@@ -41,11 +41,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='facility',
             name='slug',
-            field=models.SlugField(verbose_name='slug'),
+            field=models.SlugField(max_length=80, verbose_name='slug'),
         ),
         migrations.AlterField(
             model_name='organization',
             name='slug',
-            field=models.SlugField(verbose_name='slug'),
+            field=models.SlugField(max_length=80, verbose_name='slug'),
         ),
     ]
