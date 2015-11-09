@@ -28,5 +28,5 @@ class HomeView(TemplateView):
             facility_count=0).prefetch_related('areas', 'areas__region').all()
         context['facilities'] = Facility.objects.select_related('place',
                                                                 'place__area',
-                                                                'place__area__region').all()
+                                                                'place__area__region').order_by('place').all()
         return context

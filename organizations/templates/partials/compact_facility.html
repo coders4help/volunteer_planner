@@ -1,4 +1,4 @@
-{% load i18n google_links %}
+{% load i18n osm_links %}
 
 <div class="row">
     <div class="col-md-8">
@@ -7,7 +7,7 @@
         {% if facility.address %}
             <p>
                 {{ facility.address_line }}
-                <a target="_blank" href="{{ facility.address_line|google_maps_directions }}">→ Google Maps</a>
+                <a target="_blank" href="{{ facility.address_line|osm_search }}">→ Show on map</a>
             </p>
         {% endif %}
 

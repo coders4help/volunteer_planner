@@ -5,9 +5,8 @@ from volunteer_planner.settings.local import *
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'volunteer',
-        'HOST': '',
-        'USER': 'postgres',
-        'PASSWORD': '',
+        'NAME': os.environ.get('DATABASE_NAME', 'volunteer_planner'),
+        'PASSWORD': os.environ.get('DATABASE_PW', 'volunteer_planner'),
+        'USER': os.environ.get('DB_USER', 'vp'),
     }
 }

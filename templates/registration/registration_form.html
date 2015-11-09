@@ -2,32 +2,61 @@
 {% load i18n %}
 {% block title %}{% trans "Register for an account" %}{% endblock %}
 {% block content %}
-<div class="col-md-1"></div>
+<h1 class="align-left">{% trans "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner." %} </h2>
+<br>
+    <div class="col-md-1"></div>
 <div class="col-md-3 form-container ">
     <h1 class="align-right">volunteer-planner.org</h1>
-    <h2 class="align-right">{% trans "Registration" %}</h2>
+    <h2 class="align-right">{% trans "Create a new account" %}</h2>
 </div>
+
 <div class="col-md-3 border-left form-container">
     {{ form.non_field_errors }}
 
     <form method='post' action=''>{% csrf_token %}
-        <div class="form-group ">
+        <div class="form-group {% if form.email.errors %}has-error{% endif %}">
             {% for email_error in form.email.errors %}
                 <div class="alert alert-danger" role="alert">{{ email_error }}</div>
             {% endfor %}
-            <input type="email" class="form-control" placeholder="{% trans "Email" %}" name="email">
+            <input type="email"
+                   class="form-control"
+                   placeholder="{% trans "Email" %}"
+                   name="email"
+                   value="{{ form.cleaned_data.email }}">
+             <p class="help-block">{% trans "Volunteer-Planner and shelters will send you emails concerning your shifts." %}</p>
         </div>
-        <div class="form-group {%  if form.username.errors %} has-error{% endif %}">
-            <label {%  if form.username.errors %} style="color:red"{% endif %} for="Username">{%  if form.username.errors %} {% trans "Username already exists. Please choose a different username." %} {% endif %}</label>
-            <input class="form-control " id="Username" placeholder="{% trans "Username" %}" name="username">
-        <p class="help-block">{% trans "Don't use spaces or special characters" %}</p>
+
+        <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+            <label {% if form.username.errors %}style="color:red"{% endif %} for="Username">
+                {% if form.username.errors %}{% trans "Username already exists. Please choose a different username." %}
+                {% endif %}</label>
+            <input class="form-control"
+                   id="Username"
+                   placeholder="{% trans "Username" %}"
+                   name="username"
+                   value="{{ form.cleaned_data.username }}">
+            <p class="help-block">{% trans "Your username will be visible to other users. Don't use spaces or special characters." %}</p>
         </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="{% trans "Password" %}" name="password1">
+
+        <div class="form-group">
+            <input type="password"
+                   class="form-control"
+                   placeholder="{% trans "Password" %}"
+                   name="password1"
+                   value="{{ form.cleaned_data.password1 }}">
+        </div>
+
+        <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+            <label {% if form.password2.errors %}style="color:red"{% endif %}
+                   for="password2">{% if form.password2.errors %}{% trans "The two password fields didn't match." %}{% endif %}</label>
+            <input type="password"
+                   class="form-control"
+                   placeholder="{% trans "Repeat password" %}"
+                   id="password2"
+                   name="password2"
+                   value="{{ form.cleaned_data.password2 }}">
           </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="{% trans "Repeat password" %}" name="password2">
-          </div>
+
         <button type="submit" class="btn btn-primary align-left">{% trans "Sign-up" %}</button>
     </form>
 </div>
