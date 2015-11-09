@@ -274,6 +274,10 @@ li.check-icon:before {
   color: #fff;
 }
 
+#footer-nav{
+  z-index: 1;
+}
+
 #footer-nav ul {
   list-style: none;
   margin: 0;

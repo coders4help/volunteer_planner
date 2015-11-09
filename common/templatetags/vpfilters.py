@@ -49,3 +49,8 @@ def yes(lhs, rhs, default=""):
 @register.filter
 def no(lhs, rhs, default=""):
     return rhs if not lhs else default
+
+
+@register.filter
+def get(obj, key):
+    return obj[key]

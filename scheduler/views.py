@@ -1,30 +1,28 @@
 # coding: utf-8
 
-from datetime import date
-import logging
-import json
 import itertools
+import json
+import logging
+from datetime import date
 
+from django.contrib import messages
 from django.core.serializers.json import DjangoJSONEncoder
 from django.core.urlresolvers import reverse
-from django.contrib import messages
 from django.db.models import Count
-from django.utils.safestring import mark_safe
-from django.views.generic import TemplateView, FormView, DetailView
 from django.shortcuts import get_object_or_404
-
-from django.template.defaultfilters import date as date_filter
-
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import TemplateView, FormView, DetailView
 
 from accounts.models import UserAccount
-from organizations.models import Facility
-from news.models import News
+from organizations.models import Facility, FacilityMembership
+from organizations.templatetags.memberships import is_facility_member, \
+    is_membership_pending
+from organizations.views import get_facility_details
 from scheduler.models import Shift
-from google_tools.templatetags.google_links import google_maps_directions
 from scheduler.models import ShiftHelper
-from .forms import RegisterForShiftForm
 from volunteer_planner.utils import LoginRequiredMixin
+from .forms import RegisterForShiftForm
 
 logger = logging.getLogger(__name__)
 
@@ -48,30 +46,21 @@ def get_open_shifts():
     return shifts
 
 
-def getNewsFacility(facility):
-    news_query = News.objects.filter(facility=facility)
-    news = []
-    if news_query:
-
-        for item in news_query:
-            news.append({
-                'title': item.title,
-                'date': item.creation_date,
-                'text': item.text
-            })
-    return news
-
-
 class HelpDesk(LoginRequiredMixin, TemplateView):
     """
     Facility overview. First view that a volunteer gets redirected to when they log in.
     """
     template_name = "helpdesk.html"
 
+    @staticmethod
+    def serialize_news(news_entries):
+        return [dict(title=news_entry.title,
+                     date=news_entry.creation_date,
+                     text=news_entry.text) for news_entry in news_entries]
+
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
         open_shifts = get_open_shifts()
-
         shifts_by_facility = itertools.groupby(open_shifts,
                                                lambda s: s.facility)
 
@@ -79,28 +68,9 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         used_places = set()
 
         for facility, shifts_at_facility in shifts_by_facility:
-            address_line = facility.address_line if facility.address else None
-            shifts_by_date = itertools.groupby(shifts_at_facility,
-                                               lambda s: s.starting_time.date())
             used_places.add(facility.place.area)
-            facility_list.append({
-                'name': facility.name,
-                'news': getNewsFacility(facility),
-                'address_line': address_line,
-                'google_maps_link': google_maps_directions(
-                    address_line) if address_line else None,
-                'description': mark_safe(facility.description),
-                'area_slug': facility.place.area.slug,
-                'shifts': [{
-                               'date_string': date_filter(shift_date),
-                               'link': reverse('planner_by_facility', kwargs={
-                                   'pk': facility.pk,
-                                   'year': shift_date.year,
-                                   'month': shift_date.month,
-                                   'day': shift_date.day,
-                               })
-                           } for shift_date, shifts_of_day in shifts_by_date]
-            })
+            facility_list.append(
+                get_facility_details(facility, shifts_at_facility))
 
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
@@ -141,6 +111,30 @@ class GeographicHelpdeskView(DetailView):
         return context
 
 
+class ShiftDetailView(LoginRequiredMixin, FormView):
+    template_name = 'shift_details.html'
+    form_class = RegisterForShiftForm
+
+    def get_context_data(self, **kwargs):
+        context = super(ShiftDetailView, self).get_context_data(**kwargs)
+
+        schedule_date = date(int(self.kwargs['year']),
+                             int(self.kwargs['month']),
+                             int(self.kwargs['day']))
+        shift = Shift.objects.on_shiftdate(schedule_date).annotate(
+            volunteer_count=Count('helpers')).get(
+            facility__slug=self.kwargs['facility_slug'],
+            id=self.kwargs['shift_id'])
+        context['shift'] = shift
+        return context
+
+    def get_success_url(self):
+        """
+        Redirect to the same page.
+        """
+        return reverse('shift_details', kwargs=self.kwargs)
+
+
 class PlannerView(LoginRequiredMixin, FormView):
     """
     View that gets shown to volunteers when they browse a specific day.
@@ -156,7 +150,8 @@ class PlannerView(LoginRequiredMixin, FormView):
         schedule_date = date(int(self.kwargs['year']),
                              int(self.kwargs['month']),
                              int(self.kwargs['day']))
-        facility = get_object_or_404(Facility, pk=self.kwargs['pk'])
+        facility = get_object_or_404(Facility,
+                                     slug=self.kwargs['facility_slug'])
 
         shifts = Shift.objects.filter(facility=facility)
         shifts = shifts.on_shiftdate(schedule_date)
@@ -175,8 +170,9 @@ class PlannerView(LoginRequiredMixin, FormView):
         return super(PlannerView, self).form_invalid(form)
 
     def form_valid(self, form):
+        user = self.request.user
         try:
-            user_account = self.request.user.account
+            user_account = UserAccount.objects.get(user=user)
         except UserAccount.DoesNotExist:
             messages.warning(self.request, _(u'User account does not exist.'))
             return super(PlannerView, self).form_valid(form)
@@ -185,6 +181,25 @@ class PlannerView(LoginRequiredMixin, FormView):
         shift_to_leave = form.cleaned_data.get("leave_shift")
 
         if shift_to_join:
+
+            if shift_to_join.members_only \
+                    and not is_facility_member(self.request.user,
+                                               shift_to_join.facility):
+
+                user_account.facility_set
+
+                if not is_membership_pending(user, shift_to_join.facility):
+                    mbs, created = FacilityMembership.objects.get_or_create(
+                        user_account=user_account,
+                        facility=shift_to_join.facility, defaults=dict(
+                            status=FacilityMembership.Status.PENDING,
+                            role=FacilityMembership.Roles.MEMBER
+                        )
+                    )
+                    if created:
+                        messages.success(self.request, _(
+                            u'A membership request has been sent.'))
+                return super(PlannerView, self).form_valid(form)
 
             conflicts = ShiftHelper.objects.conflicting(shift_to_join,
                                                         user_account=user_account)
@@ -214,6 +229,7 @@ class PlannerView(LoginRequiredMixin, FormView):
                     messages.warning(self.request, _(
                         u'You already signed up for this shift at {date_time}.').format(
                         date_time=shift_helper.joined_shift_at))
+
         elif shift_to_leave:
             try:
                 ShiftHelper.objects.get(user_account=user_account,
@@ -225,7 +241,6 @@ class PlannerView(LoginRequiredMixin, FormView):
             messages.success(self.request, _(
                 u'You successfully left this shift.'))
 
-        # user_account.save()
         return super(PlannerView, self).form_valid(form)
 
     def get_success_url(self):

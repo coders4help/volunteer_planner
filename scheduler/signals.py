@@ -2,10 +2,10 @@
 import logging
 from datetime import datetime, timedelta
 
-from django.template.defaultfilters import time as date_filter
 from django.core.mail import EmailMessage
 from django.db.models.signals import pre_delete, pre_save
 from django.dispatch import receiver
+from django.template.defaultfilters import time as date_filter
 from django.template.loader import render_to_string
 
 from scheduler.models import Shift

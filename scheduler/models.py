@@ -1,11 +1,11 @@
 # coding: utf-8
 from datetime import time
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
-from organizations.models import Facility
 from places.models import Country, Region, Area, Place
 from . import managers
 
@@ -35,6 +35,11 @@ class Shift(models.Model):
     helpers = models.ManyToManyField('accounts.UserAccount',
                                      through='ShiftHelper',
                                      related_name='shifts')
+
+    members_only = models.BooleanField(default=False,
+                                       verbose_name=_(u'members only'),
+                                       help_text=_(
+                                           u'allow only members to help'))
 
     objects = managers.ShiftManager()
     open_shifts = managers.OpenShiftManager()
@@ -68,6 +73,14 @@ class Shift(models.Model):
             facility=self.facility.name,
             start=localize(self.starting_time),
             end=localize(self.ending_time))
+
+    def get_absolute_url(self):
+        return reverse('shift_details',
+                       kwargs=dict(facility_slug=self.facility.slug,
+                                   year=self.starting_time.year,
+                                   month=self.starting_time.month,
+                                   day=self.starting_time.day,
+                                   shift_id=self.id))
 
 
 class ShiftHelper(models.Model):

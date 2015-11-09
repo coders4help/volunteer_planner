@@ -1,1 +1,1 @@
-Registrierung bei volunteer-planner.org
+{% load i18n %}{% trans "Your volunteer-planner.org registration" %}

@@ -8,9 +8,11 @@ from django.contrib import admin
 from django.db.models import Q, Count
 from django.template.defaultfilters import striptags
 from django.utils.encoding import smart_text
+
 from django.utils.translation import ugettext_lazy as _
 
 from . import models
+from organizations.models import Membership
 
 DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
                         models.Membership.Roles.MANAGER)
@@ -18,6 +20,9 @@ DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
 
 def get_memberships_by_role(membership_queryset):
     memberships_by_role = defaultdict(lambda: [])
+    membership_queryset = membership_queryset.filter(
+        membership__status__gte=Membership.Status.APPROVED
+    )
     qs = membership_queryset.order_by('membership__role') \
         .values_list('membership__role', 'pk')
     for role, group in itertools.groupby(qs, itemgetter(0)):
@@ -47,12 +52,13 @@ def get_cached_memberships(user, roles=DEFAULT_FILTER_ROLES):
 def filter_queryset_by_membership(qs, user,
                                   facility_filter_fk=None,
                                   organization_filter_fk=None,
-                                  roles=DEFAULT_FILTER_ROLES):
+                                  roles=DEFAULT_FILTER_ROLES,
+                                  skip_superuser=True):
     if facility_filter_fk and organization_filter_fk:
         raise Exception(
             'facility_filter_fk and organization_filter_fk are mutually exclusive.')
 
-    if user.is_superuser:
+    if skip_superuser and user.is_superuser:
         return qs
 
     user_orgs, user_facilities = get_cached_memberships(user, roles)
@@ -222,7 +228,7 @@ class OrganizationAdmin(MembershipFilteredAdmin):
         'description': CKEditorWidget(),
         'contact_info': CKEditorWidget(),
     }
-
+    prepopulated_fields = {'slug': ['name']}
 
 @admin.register(models.Facility)
 class FacilityAdmin(MembershipFilteredAdmin):
@@ -267,7 +273,7 @@ class FacilityAdmin(MembershipFilteredAdmin):
         'description': CKEditorWidget(),
         'contact_info': CKEditorWidget(),
     }
-
+    prepopulated_fields = {'slug': ['name']}
 
 @admin.register(models.OrganizationMembership)
 class OrganizationMembershipAdmin(MembershipFilteredAdmin):
@@ -341,3 +347,5 @@ class TaskAdmin(MembershipFilteredAdmin):
     widgets = {
         'description': CKEditorWidget(),
     }
+
+

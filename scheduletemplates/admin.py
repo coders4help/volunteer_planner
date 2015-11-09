@@ -109,9 +109,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
 
     def response_change(self, request, obj):
         if "_save_and_apply" in request.POST:
-            redirect_url = reverse('admin:apply_schedule_template',
-                                   args=(obj._get_pk_val(),))
-            return HttpResponseRedirect(redirect_url)
+            return redirect('admin:apply_schedule_template', obj._get_pk_val())
         return super(ScheduleTemplateAdmin, self).response_change(request, obj)
 
     def apply_schedule_template(self, request, pk):
@@ -217,7 +215,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                     context)
 
             # Phase 3: Create shifts
-            elif request.POST.get('confirm'):
+            elif request.POST.get('confirm') or request.POST.get('confirm_and_repeat'):
                 for template in selected_shift_templates:
                     starting_time = datetime.combine(apply_date,
                                                      template.starting_time)
@@ -227,7 +225,8 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                         ending_time=starting_time + template.duration,
                         task=template.task,
                         workplace=template.workplace,
-                        slots=template.slots)
+                        slots=template.slots,
+                        members_only=template.members_only)
 
                 messages.success(request, ungettext_lazy(
                     u'{num_shifts} shift was added to {date}',
@@ -235,15 +234,21 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                     len(id_list)).format(
                     num_shifts=len(id_list),
                     date=localize(apply_date)))
-                return redirect(
-                    'admin:scheduletemplates_scheduletemplate_change', pk)
+                if request.POST.get('confirm'):
+                    return redirect(
+                        'admin:scheduletemplates_scheduletemplate_change', pk)
+                else:
+                    return redirect('admin:apply_schedule_template', pk)
             else:
                 messages.error(request, _(
                     u'Something didn\'t work. Sorry about that.').format(
                     len(id_list),
                     localize(apply_date)))
-                return redirect(
-                    'admin:scheduletemplates_scheduletemplate_change', pk)
+                if request.POST.get('confirm'):
+                    return redirect(
+                        'admin:scheduletemplates_scheduletemplate_change', pk)
+                else:
+                    return redirect('admin:apply_schedule_template', pk)
 
     def get_urls(self):
         urls = super(ScheduleTemplateAdmin, self).get_urls()
