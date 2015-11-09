@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-08 23:26+0100\n"
-"PO-Revision-Date: 2015-11-08 22:26+0000\n"
+"POT-Creation-Date: 2015-11-10 18:15+0100\n"
+"PO-Revision-Date: 2015-11-10 17:20+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -151,19 +151,19 @@ msgid "Imprint"
 msgstr "Impressum"
 
 msgid "About"
-msgstr ""
+msgstr "Über Uns"
 
 msgid "Supporter"
-msgstr ""
+msgstr "Unterstützer"
 
 msgid "Press"
-msgstr ""
+msgstr "Presse"
 
 msgid "Contact"
 msgstr "Kontakt"
 
 msgid "F.A.Q."
-msgstr ""
+msgstr "F.A.Q."
 
 msgid "Frequently Asked Questions"
 msgstr "Häufig gestellte Fragen"
@@ -205,14 +205,14 @@ msgstr "Kein Problem. Logge dich wieder ein, suche deine gewählte Schicht und t
 
 msgctxt "FAQ Q3"
 msgid "Are there more shelters coming into volunteer-planner?"
-msgstr "Kommen weitere Flüchtlingsunterkünfte hinzu?"
+msgstr "Kommen weitere Flüchtlingseinrichtungen hinzu?"
 
 #, python-format
 msgctxt "FAQ A3"
 msgid ""
 "Yes! If you are a volunteer worker in a refugee shelter and they also want "
 "to use volunteer-planner please contact us via %(email_url)s."
-msgstr "Ja! Falls du in einer Flüchtlingsunterkunft aktiv bist, die ebenfalls diese Plattform nutzen möchte, bitte kontaktiere uns per %(email_url)s"
+msgstr "Ja! Falls du in einer Flüchtlingseinrichtung aktiv bist, die ebenfalls diese Plattform nutzen möchte, bitte kontaktiere uns per %(email_url)s"
 
 msgctxt "FAQ Q4"
 msgid "I registered but I didn't get any activation link. What can I do?"
@@ -269,7 +269,7 @@ msgid "Organize volunteers!"
 msgstr "Freiwillige organisieren!"
 
 msgid "Register a shelter and organize volunteers"
-msgstr "Registriere eine Unterkunft und organisiere Freiwillige"
+msgstr "Registriere eine Einrichtung und organisiere Freiwillige"
 
 msgid "Places to help"
 msgstr "Orte zum Helfen"
@@ -296,10 +296,10 @@ msgid ""
 msgstr "<p>Die Plattform ist werbefrei und gemeinnützig. Ein internationales Team von Helfern vor Ort, Programmierern, Projektmanagern und Designern helfen freiwillig und unentgeltlich um den volunteer-planner voranzubringen.</p>"
 
 msgid "You can help at these locations:"
-msgstr ""
+msgstr "Du kannst in folgenden Einrichtungen helfen:"
 
 msgid "There are currently no places in need of help."
-msgstr ""
+msgstr "Es gibt derzeit keine Einrichtungen, die Hilfe brauchen."
 
 msgid "Privacy Policy"
 msgstr "Privatsphäre"
@@ -551,14 +551,14 @@ msgid ""
 "                    or coordinating persons by an auto-mailer\n"
 "                    every morning\n"
 "                "
-msgstr "\nSchichtpläne können an Security-Personal weitergegeben werden, falls in der Unterkunft der Einlass reguliert ist."
+msgstr "\nSchichtpläne können an Security-Personal weitergegeben werden, falls in der Einrichtung der Einlass reguliert ist."
 
 msgid ""
 "\n"
 "                the more shelters and camps are organized with us, the more volunteers are joining\n"
 "                    and all facilities will benefit from a common pool of motivated volunteers\n"
 "                "
-msgstr "\nJe mehr Unterkünfte, die Plattform nutzen, desto bekannter wird sie. Je bekannter sie wird, desto mehr Freiwillige werden darauf aufmerksam und bieten ihre Unterstützung an."
+msgstr "\nJe mehr Einrichtungen die Plattform nutzen, desto bekannter wird sie. Je bekannter sie wird, desto mehr Freiwillige werden darauf aufmerksam und bieten ihre Unterstützung an."
 
 msgid "for free without costs"
 msgstr "kostenlos"
@@ -572,7 +572,7 @@ msgid ""
 "        volunteer-planner tries to solve this problem! <br>\n"
 "        </p>\n"
 "            "
-msgstr "\n<p>Sehr viele Menschen wollen helfen. Das ist super! Leider ist oft nicht klar, wie wann und wo geholfen werden kann. Das möchten wir ändern! Über volunteer-planner.org können die Koordinator_innen der Flüchtlingsunterkünfte übersichtlich auflisten wo wann welche Hilfe benötigt wird. Freiwillige können dann auf einem Blick sehen wie sie helfen können und sich sofort für eine Schicht eintragen</p>"
+msgstr "\n<p>Sehr viele Menschen wollen helfen. Das ist super! Leider ist oft nicht klar, wie wann und wo geholfen werden kann. Das möchten wir ändern! Über volunteer-planner.org können die Koordinator_innen der Flüchtlingseinrichtungen übersichtlich auflisten wo wann welche Hilfe benötigt wird. Freiwillige können dann auf einem Blick sehen wie sie helfen können und sich sofort für eine Schicht eintragen</p>"
 
 msgid "for free, ad free"
 msgstr "Kostenlos. Werbefrei."
@@ -607,22 +607,22 @@ msgid "contact info"
 msgstr "Kontaktinfo"
 
 msgid "by invitation"
-msgstr ""
+msgstr "auf Einladung"
 
 msgid "anyone (approved by manager)"
-msgstr ""
+msgstr "jeder (genehmigt vom Manager)"
 
 msgid "anyone"
-msgstr ""
+msgstr "jeder"
 
 msgid "rejected"
-msgstr ""
+msgstr "abgelehnt"
 
 msgid "pending"
-msgstr ""
+msgstr "ausstehend"
 
 msgid "approved"
-msgstr ""
+msgstr "genehmigt"
 
 msgid "admin"
 msgstr "Admin"
@@ -637,7 +637,7 @@ msgid "role"
 msgstr "Rolle"
 
 msgid "status"
-msgstr ""
+msgstr "Status"
 
 msgid "name"
 msgstr "Name"
@@ -649,10 +649,10 @@ msgid "slug"
 msgstr "Slug"
 
 msgid "join mode"
-msgstr ""
+msgstr "Zugangstyp"
 
 msgid "Who can join this organization?"
-msgstr ""
+msgstr "Wer kann der Organisation beitreten?"
 
 msgid "organization"
 msgstr "Organisation"
@@ -663,6 +663,15 @@ msgstr "Organisationen"
 #, python-brace-format
 msgid "{name}"
 msgstr "{name}"
+
+msgid "disabled"
+msgstr "deaktiviert"
+
+msgid "enabled (collapsed)"
+msgstr "aktiviert (verborgen)"
+
+msgid "enabled"
+msgstr "aktiviert"
 
 msgid "place"
 msgstr "Ort"
@@ -679,8 +688,11 @@ msgstr "Breite"
 msgid "longitude"
 msgstr "Länge"
 
+msgid "timeline"
+msgstr "Zeitstrahl"
+
 msgid "Who can join this facility?"
-msgstr ""
+msgstr "Wer kann der Einrichtung beitreten?"
 
 msgid "facility"
 msgstr "Einrichtung"
@@ -696,7 +708,7 @@ msgstr "Organisationsmitglieder"
 
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
-msgstr ""
+msgstr "{username} bei {organization_name} ({user_role})"
 
 msgid "facility member"
 msgstr "Einrichtungsmitglied"
@@ -706,7 +718,7 @@ msgstr "Einrichtungsmitglieder"
 
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
-msgstr ""
+msgstr "{username} bei {facility_name} ({user_role})"
 
 msgid "workplace"
 msgstr "Arbeitsplatz"
@@ -721,35 +733,19 @@ msgid "tasks"
 msgstr "Aufgaben"
 
 #, python-format
-msgid "Members in %(facility)s"
-msgstr ""
-
-msgid "Role"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Block"
-msgstr ""
-
-msgid "Accept"
-msgstr ""
-
-#, python-format
 msgid "Hello %(username)s,"
-msgstr ""
+msgstr "Hallo %(username)s,"
 
 #, python-format
 msgid ""
 "Your membership request at %(facility_name)s was approved. You now may sign "
 "up for restricted shifts at this facility."
-msgstr ""
+msgstr "Dein Antrag auf Mitgliedschaft in der Einrichtung %(facility_name)s wurde bestätigt! Du kannst Dich ab sofort für zugangsbeschränkte Schichten eintragen. "
 
 msgid ""
 "Yours,\n"
 "the volunteer-planner.org Team"
-msgstr ""
+msgstr "Dein Volunteer-Planner.org Team"
 
 msgid "Helpdesk"
 msgstr "Helpdesk"
@@ -760,6 +756,28 @@ msgstr "Offene Schichten"
 msgid "News"
 msgstr "Nachrichten"
 
+msgid "Error"
+msgstr "Fehler"
+
+msgid "You are not allowed to do this."
+msgstr "Du hast nicht die benötigten Berechtigungen um diese Aktion auszuführen."
+
+#, python-format
+msgid "Members in %(facility)s"
+msgstr "Mitglieder in %(facility)s"
+
+msgid "Role"
+msgstr "Rolle"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Block"
+msgstr "Blockiert"
+
+msgid "Accept"
+msgstr "Akzeptiert"
+
 msgid "Facilities"
 msgstr "Einrichtungen"
 
@@ -767,7 +785,7 @@ msgid "Show details"
 msgstr "Details anzeigen"
 
 msgid "volunteer-planner.org: Membership approved"
-msgstr ""
+msgstr "volunteer-planner.org: Mitgliedschaft bestätigt"
 
 msgid "country"
 msgstr "Land"
@@ -809,10 +827,10 @@ msgid "ending time"
 msgstr "Ende"
 
 msgid "members only"
-msgstr ""
+msgstr "Zugangsbeschränkt"
 
 msgid "allow only members to help"
-msgstr ""
+msgstr "erlaube nur Mitglieder zu helfen"
 
 msgid "shift"
 msgstr "Schicht"
@@ -862,15 +880,18 @@ msgstr "Schichtplan für %(facility_name)s"
 
 #, python-format
 msgid "%(starting_time)s - %(ending_time)s"
-msgstr ""
+msgstr "%(starting_time)s - %(ending_time)s"
 
 #, python-format
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
 msgstr "Schichtplan für den %(schedule_date)s"
 
+msgid "Toggle Timeline"
+msgstr "Zeitstrahl anzeigen"
+
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 msgid "Time"
 msgstr "Zeit"
@@ -910,13 +931,13 @@ msgid "Sign up"
 msgstr "Mitmachen"
 
 msgid "Membership pending"
-msgstr ""
+msgstr "Anfrage wird geprüft"
 
 msgid "Membership rejected"
-msgstr ""
+msgstr "Mitgliedsanfrage zurückgewiesen"
 
 msgid "Become member"
-msgstr ""
+msgstr "Werde Mitglied"
 
 #, python-format
 msgid ""
@@ -933,10 +954,10 @@ msgid ""
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
-msgstr ""
+msgstr "\nHallo,\n\nleider müssen wir folgende Schicht im Auftrag der Verantwortlichen absagen:\n\n%(shift_title)s, %(location)s\n%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n\nDies ist eine automatische Email. Wenn Du Fragen hast, wende Dich bitte direkt an die Verantwortlichen Kontaktpersonen, die in der Beschreibung der Schicht angegeben sind.\n\nLiebe Grüße,\n\nDein volunteer-planner.org-Team\n"
 
 msgid "Members only"
-msgstr ""
+msgstr "Zugangsbeschränkt"
 
 #, python-format
 msgid ""
@@ -959,7 +980,7 @@ msgid ""
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
-msgstr ""
+msgstr "\nHallo,\n\nleider müssen wir folgende Schicht im Auftrag der Verantwortlichen zeitlich anpassen:\n\n%(shift_title)s, %(location)s\n%(old_from_date)s von %(old_from_time)s bis %(old_to_time)s Uhr\n\nDie neuen Schichtzeiten lauten:\n%(from_date)s von %(from_time)s bis %(to_time)s Uhr\n\nWenn Du zu den neuen Zeiten nicht mehr helfen kannst oder willst, bitten wir Dich, Deine Teilnahme rechtzeitig auf volunteer-planner.org abzusagen, damit jemand anderes die Möglichkeit bekommt, teilzunehmen.\n\nDies ist eine automatische Email. Wenn Du Fragen hast, wende Dich bitte direkt an die Verantwortlichen Kontaktpersonen, die in der Beschreibung der Schicht angegeben sind.\n\nLiebe Grüße,\n\nDein volunteer-planner.org-Team\n"
 
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
@@ -968,7 +989,7 @@ msgid "User account does not exist."
 msgstr "Benutzerkonto existiert nicht."
 
 msgid "A membership request has been sent."
-msgstr ""
+msgstr "Ein Antrag auf Mitgliedschaft wurde gestellt."
 
 msgid ""
 "We can't add you to this shift because you've already agreed to other shifts"
@@ -976,7 +997,7 @@ msgid ""
 msgstr "Wir konnten Dich nicht für die Schicht eintragen, da Du zur gleichen Zeit schon an mindestens einer anderen teilnimmst:"
 
 msgid "We can't add you to this shift because there are no more slots left."
-msgstr ""
+msgstr "Wir können Dich nicht zu dieser Schicht hinzufügen, da alle Plätze bereits belegt sind."
 
 msgid "You were successfully added to this shift."
 msgstr "Du hast Dich erfolgreich für die Schicht angemeldet."
@@ -1051,19 +1072,19 @@ msgid "Select a date"
 msgstr "Wähle ein Datum"
 
 msgid "Continue"
-msgstr ""
+msgstr "weiter"
 
 msgid "Select shift templates"
 msgstr "Schichtvorlagen auswählen"
 
 msgid "Please review and confirm shifts to create"
-msgstr ""
+msgstr "Bitte kontrolliere und bestätige die Schichten zum erstellen"
 
 msgid "Apply"
-msgstr ""
+msgstr "anwenden"
 
 msgid "Apply and select new date"
-msgstr ""
+msgstr "anwenden und neues Datum wählen"
 
 msgid "Save and apply template"
 msgstr "Vorlage speichern und anwenden"
@@ -1114,10 +1135,10 @@ msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr "Fragen? Schreib' uns: %(mailto_link)s"
 
 msgid "Manage"
-msgstr ""
+msgstr "Verwaltung"
 
 msgid "Members"
-msgstr ""
+msgstr "Mitglieder"
 
 msgid "Toggle navigation"
 msgstr "Navigation umschalten"
@@ -1190,7 +1211,7 @@ msgid ""
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
-msgstr ""
+msgstr "\nHallo %(user)s,\n\nvielen Dank, dass du helfen möchtest! Nur noch ein kleiner Schritt und Du kannst loslegen. \n\nBitte schließe Deine Registrierung beim volunteer-planner.org ab, indem Du Deine E-Mailadresse durche einen Klick auf folgenden Link bestätigst: \n\n<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n\nDieser Link wird nach %(expiration_days)s Tagen ungültig.\n\nVielen Dank,\n\nDein Team vom Volunteer Planner\n"
 
 #, python-format
 msgid ""
@@ -1208,10 +1229,10 @@ msgid ""
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
-msgstr ""
+msgstr "\nHallo %(user)s,\n\nvielen Dank, dass du helfen möchtest! Nur noch ein kleiner Schritt und Du kannst loslegen. \n\nBitte schließe Deine Registrierung beim volunteer-planner.org ab, indem Du Deine E-Mailadresse durche einen Klick auf folgenden Link bestätigst: \n\nhttp://%(site_domain)s%(activation_key_url)s\n\nDieser Link wird nach %(expiration_days)s Tagen ungültig.\n\nVielen Dank,\n\nDein Team vom Volunteer Planner\n"
 
 msgid "Your volunteer-planner.org registration"
-msgstr ""
+msgstr "Dein Benutzeraccount bei volunteer-planner.org"
 
 msgid "Your username and password didn't match. Please try again."
 msgstr "Benutzername und Passort ungültig. Bitte versuche es erneut."
@@ -1342,7 +1363,7 @@ msgid "German"
 msgstr "Deutsch"
 
 msgid "Greek"
-msgstr ""
+msgstr "Griechisch"
 
 msgid "Hungarian"
 msgstr "Ungarisch"
