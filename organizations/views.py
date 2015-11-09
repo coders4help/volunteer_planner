@@ -96,7 +96,7 @@ class ManageFacilityMembersView(DetailView):
     """
 
     model = Facility
-    template_name = "approvals.html"
+    template_name = "manage_members.html"
 
     def get_queryset(self):
         qs = super(ManageFacilityMembersView, self).get_queryset()
