@@ -1,5 +1,5 @@
 {% extends "admin/change_form.html" %}
-{% load i18n l10n admin_urls staticfiles %}
+{% load vpfilters i18n l10n admin_urls staticfiles %}
 
 {% block extrahead %}
     {{ block.super }}
@@ -55,6 +55,7 @@
             {% trans "workplace" as workplace_trans %}
             {% trans "starting time" as starting_trans %}
             {% trans "ending time" as ending_trans %}
+            {% trans "members only" as members_only_trans %}
             {% regroup shift_templates by task as shifts_by_task %}
 
             <h3>{% trans "Select a date" %} </h3>
@@ -62,6 +63,8 @@
             <div>
                 {{ apply_form.apply_for_date }}
 
+                <input type="submit" value="{% trans "Continue" %}"
+                       class="default" name="preview" style="float: initial;">
             </div>
 
             <h3>{% trans "Select shift templates" %}</h3>
@@ -88,6 +91,7 @@
                             </tr>
                             <tr>
                                 <th> {{ apply_trans|title }}</th>
+                                <th> {{ members_only_trans|title }}</th>
                                 <th> {{ num_trans|title }}</th>
                                 <th> {{ task_trans|title }}</th>
                                 <th> {{ workplace_trans|title }}</th>
@@ -103,6 +107,7 @@
                                                value="{{ shift.id }}"
                                                id="{{ shift.id }}"
                                                checked></td>
+                                    <td>{{ shift.members_only|yes:members_only_trans|title }}</td>
                                     <td>{{ shift.slots }}</td>
                                     <td>{{ shift.task.name }}</td>
                                     <td>
@@ -117,7 +122,7 @@
                 </table>
             </div>
             <div class="submit-row">
-                <input type="submit" value="{% trans "Preview shifts to add" %}"
+                <input type="submit" value="{% trans "Continue" %}"
                        class="default" name="preview">
             </div>
     </div>

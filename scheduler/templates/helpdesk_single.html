@@ -1,6 +1,6 @@
 {% extends "helpdesk_base.html" %}
 
-{% load i18n vpfilters %}
+{% load i18n vpfilters staticfiles memberships %}
 
 {% block title %}
     {% blocktrans trimmed context "title with facility" with facility_name=facility.name %}
@@ -8,11 +8,160 @@
     {% endblocktrans %}
 {% endblock %}
 
+{% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
+
+    {% block additional_js %}
+        <script src="{% static "momentjs/moment.min.js" %}"></script>
+        {{ block.super }}
+        <script src="{% static "visjs/vis.min.js" %}"></script>
+        <script>
+            var now = moment().minutes(0).seconds(0).milliseconds(0);
+            var groupCount = 3;
+            var itemCount = 20;
+
+            // create a data set with groups
+            var groups = new vis.DataSet();
+            var items = new vis.DataSet(
+                    {
+                        type: {
+                            start: 'ISODate',
+                            end: 'ISODate'
+                        }
+                    }
+            );
+
+            {% regroup shifts by task as shifts_by_task %}
+            {% for shift_by_task in shifts_by_task %}
+                {% with shift_by_task.grouper as task %}
+
+
+                    groups.add(
+                            {
+                                id: {{ task.id }},
+                                content: '{{ task.name }}',
+                                value: '{{ task.name }}',
+                                subgroupOrder: function (a, b) {
+                                    return a.subgroupOrder - b.subgroupOrder;
+                                },
+                                stack: false
+                            }
+                    );
+                    {% regroup shift_by_task.list by workplace as shifts_by_workplace %}
+                    {% for shift_by_workplace in shifts_by_workplace %}
+                        {% with shift_by_workplace.grouper as workplace %}
+
+                            {% for shift in shift_by_workplace.list %}
+                                {% with slots_left=shift.volunteer_count|subtract:shift.slots slots_percent=shift.volunteer_count|divide:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
+
+                                    items.add({
+                                        id: {{ shift.id }},
+                                        group: {{ task.id }},
+                                        subgroup: '{{ workplace.id|default:"no workplace" }}',
+                                        content: '<a href="#{{ shift.id }}">{{ shift.workplace.name|default:shift.task.name }} ({{ shift.volunteer_count }}/{{ shift.slots }})<br>{% blocktrans trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }}{% endblocktrans %}</a>',
+                                        subgroupOrder: '{{ workplace.name }}',
+                                        start: "{{ shift.starting_time|date:"c" }}",
+                                        end: "{{ shift.ending_time|date:"c" }}"
+                                    });
+                                {% endwith %}
+                            {% endfor %}
+                        {% endwith %}
+                    {% endfor %}
+                {% endwith %}
+            {% endfor %}
+
+
+            // create visualization
+            var container = document.getElementById('timeline');
+
+            startDate = moment('{{ schedule_date|date:"c" }}');
+            endDate = startDate.clone()
+            endDate.add(moment.duration({'days': 1}))
+            var options = {
+                groupOrder: 'value',  // groupOrder can be a property name or a sorting function
+                start: startDate,
+                end: endDate,
+                editable: false,
+                stack: false,
+                moveable: false,
+                orientation: {
+                    axis: 'both',
+                    item: 'bottom'
+                }
+            };
+
+            var timeline;  //= new vis.Timeline(container);
+
+            function showTimeline() {
+                timeline = new vis.Timeline(container);
+                timeline.setOptions(options);
+                timeline.setGroups(groups);
+                timeline.setItems(items);
+                timeline.fit({animation: false});
+            }
+
+            $('#timeline').on('shown.bs.collapse', function () {
+                showTimeline();
+            });
+
+
+            $('#timeline').on('hidden.bs.collapse', function () {
+                timeline.destroy();
+            });
+
+            {% if facility.timeline_enabled > facility.TimelineViewMode.COLLAPSED %}
+                $(function () {
+                            $('#timeline').collapse("show");
+                        }
+                );
+            {% endif %}
+
+        </script>
+    {% endblock %}
+{% endif %}
+
+{% block additional_css %}
+    {{ block.super }}
+    {% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
+        <link href="{% static "visjs/vis.min.css" %}" rel="stylesheet">
+    {% endif %}
+
+    <style>
+        .collapsing {
+            -webkit-transition: none;
+            transition: none;
+        }
+
+        *:target, tr:target td {
+            background-color: #FFFDD9;
+        }
+    </style>
+{% endblock %}
+
 {% block helpdesk_content %}
 
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+        </li>
+
+        <li>
+            <a href="{{ facility.organization.get_absolute_url }}">
+                {{ facility.organization.name }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ facility.get_absolute_url }}">
+                {{ facility.name }}
+            </a>
+        </li>
+
+        <li class="active">
+            {{ schedule_date|date }}
+        </li>
+    </ul>
+
     {% include "partials/alert_messages.html" %}
-
-
 
     <div class="row">
         <h2>
@@ -23,9 +172,26 @@
             {% blocktrans trimmed context "title with date" with schedule_date=schedule_date|date %}
                 Schedule for {{ schedule_date }}
             {% endblocktrans %}
-        </h3>
-    </div>
 
+        </h3>
+
+        {% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
+            <button class="small fa fa-calendar"
+                    role="button"
+                    data-toggle="collapse"
+                    href="#timeline"
+                    aria-expanded="false"
+                    aria-controls="timeline">
+                {% trans "Toggle Schedule" %}
+            </button>
+
+            {% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
+                <div id="timeline" class="collapse">
+
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
     <form method="POST">
         {% csrf_token %}
 
@@ -40,12 +206,17 @@
                     {% with shift_by_workplace.grouper as workplace %}
 
                         <div class="row">
-                            <h3>
+                            <h3 id="task-{{ task.id }}-{{ workplace.id }}">
                                 {% if workplace %}
-                                    {{ task.name }} - {{ workplace.name }}
+                                    {{ task.name }} -
+                                    {{ workplace.name }}
                                 {% else %}
                                     {{ task.name }}
                                 {% endif %}
+
+                                <a href="#task-{{ task.id }}-{{ workplace.id }}">
+                                    <span class="small fa fa-link"></span>
+                                </a>
                             </h3>
 
                             {% if task.description %}
@@ -62,6 +233,9 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th>
+                                        {% trans "Link" %}
+                                    </th>
                                     <th colspan="2" width="10%">
                                         {% trans "Time" %}
                                     </th>
@@ -73,6 +247,9 @@
                                     </th>
                                 </tr>
                                 <tr>
+                                    <th>
+                                        <span class="fa fa-link"></span>
+                                    </th>
                                     <th width="5%">
                                         {% trans "Start" %}
                                     </th>
@@ -88,7 +265,7 @@
                                     <th>
                                         {% trans "Users" %}
                                     </th>
-                                    <th width="10%">
+                                    <th width="20%">
                                         {% trans "You" %}
                                     </th>
                                 </tr>
@@ -96,7 +273,13 @@
                                 <tbody>
                                 {% for shift in shift_by_workplace.list %}
                                     {% with slots_left=shift.volunteer_count|subtract:shift.slots slots_percent=shift.volunteer_count|divide:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
-                                        <tr>
+
+
+                                        <tr id="{{ shift.id }}">
+                                            <td>
+                                                <a href="#{{ shift.id }}"
+                                                   class="fa fa-link"></a>
+                                            </td>
                                             <td>
                                                 {{ shift.starting_time|date:"H:i" }}
                                             </td>
@@ -105,12 +288,16 @@
                                             </td>
                                             <td>
                                                 {{ shift.slots }}
+                                                {% if shift.members_only %}
+                                                    &nbsp;
+                                                    <span class="fa fa-lock">&nbsp;</span>
+                                                {% endif %}
                                             </td>
 
                                             <td>
                                         <span style="color:{% if slots_left %}red{% else %}green{% endif %};">
 
-                                            {% if slots_left %}
+                                            {% if slots_left > 0 %}
                                                 {% blocktrans trimmed %}
                                                     {{ slots_left }} more
                                                 {% endblocktrans %}
@@ -121,39 +308,87 @@
                                             </td>
 
                                             <td>
-                                                {% for volunteer in shift.helpers.all %}
+                                                {% if shift.members_only and not user|is_facility_member:shift.facility %}
+                                                    {# <span class="fa fa-lock">&nbsp;{% trans "Members only" %}</span> #}
+                                                {% else %}
+                                                    {% for volunteer in shift.helpers.all %}
+                                                        {% if volunteer.user == request.user %}
+                                                            <u><strong>{{ volunteer.user.username }}</strong></u>
+                                                        {% else %}
+                                                            {{ volunteer.user.username }}
+                                                        {% endif %}
 
-                                                    {% if volunteer.user == request.user %}
-                                                        <u><strong>{{ volunteer.user.username }}</strong></u>
-                                                    {% else %}
-                                                        {{ volunteer.user.username }}
-                                                    {% endif %}
-
-
-                                                    {% if not forloop.last %}
-                                                        ,
-                                                    {% endif %}
-                                                {% endfor %}
+                                                        {% if not forloop.last %}
+                                                            ,
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
                                             </td>
 
                                             <td>
                                                 {% if is_assigned %}
+                                                    {% trans "Drop out" as dropout_button_label %}
+
                                                     <button type="submit"
                                                             name="leave_shift"
                                                             value="{{ shift.pk }}"
-                                                            class="btn btn-danger delete-button">
-                                                        {% trans "Drop out" %}
+                                                            class="btn btn-danger delete-button fa fa-remove">
+                                                        &nbsp;{{ dropout_button_label|title }}
                                                     </button>
-                                                    {% elif slots_left %}
+
+                                                    {% elif slots_left > 0 %}
+                                                    {% trans "Sign up" as signup_button_label %}
+
+                                                    {% if shift.members_only %}
+                                                        {% if user|is_facility_member:shift.facility %}
+                                                            <button type="submit"
+                                                                    name="join_shift"
+                                                                    value="{{ shift.pk }}"
+                                                                    class="btn btn-info fa fa-unlock">
+                                                                &nbsp;{{ signup_button_label|title }}
+                                                            </button>
+                                                        {% elif user|is_membership_pending:shift.facility %}
+                                                            {% trans "Membership pending" as membership_pending_label %}
+                                                            <button type="submit"
+                                                                    class="btn btn-default fa fa-hourglass disabled"
+                                                                    disabled>
+                                                                &nbsp;{{ membership_pending_label|title }}
+                                                            </button>
+                                                            {% elif user|is_membership_rejected:shift.facility %}
+                                                            {% trans "Membership rejected" as membership_rejected_label %}
+                                                            <button type="submit"
+                                                                    class="btn btn-default fa fa-minus-circle disabled"
+                                                                    disabled>
+                                                                &nbsp;{{ membership_rejected_label|title }}
+                                                            </button>
+                                                        {% else %}
+                                                            {% trans "Become member" as members_only_button_label %}
+                                                            <button type="submit"
+                                                                    name="join_shift"
+                                                                    value="{{ shift.pk }}"
+                                                                    class="btn btn-warning fa fa-lock">
+                                                                &nbsp;{{ members_only_button_label|title }}
+                                                            </button>
+                                                        {% endif %}
+
+                                                    {% else %}
+                                                        <button type="submit"
+                                                                name="join_shift"
+                                                                value="{{ shift.pk }}"
+                                                                class="btn btn-info fa fa-check">
+                                                            &nbsp;{{ signup_button_label|title }}
+                                                        </button>
+                                                    {% endif %}
+                                                {% else %}
                                                     <button type="submit"
-                                                            name="join_shift"
-                                                            value="{{ shift.pk }}"
-                                                            class="btn btn-info add-button">
-                                                        {% trans "Sign up" %}!
+                                                            class="btn btn-default fa fa-minus-circle disabled"
+                                                            disabled>
+                                                        &nbsp;{% trans "Covered" %}
                                                     </button>
                                                 {% endif %}
                                             </td>
                                         </tr>
+
                                     {% endwith %}
                                 {% endfor %}
                                 </tbody>

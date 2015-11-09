@@ -12,3 +12,9 @@ db.sqlite3
 /htmlcov
 /.coverage
 *.log
+.cache
+<<<<<<< Updated upstream
+=======
+fabfile.py
+/var
+>>>>>>> Stashed changes

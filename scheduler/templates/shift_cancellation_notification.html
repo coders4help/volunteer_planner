@@ -1,13 +1,14 @@
-{% load i18n %}{% blocktrans with shift_title=shift.task.name location=shift.location.name from_date=shift.starting_time.date from_time=shift.starting_time.time to_time=shift.ending_time.time %}
-Hallo,
+{% load i18n %}{% blocktrans with shift_title=shift.task.name.strip|safe location=shift.facility.name.strip|safe from_date=shift.starting_time.date|date from_time=shift.starting_time.time to_time=shift.ending_time.time %}
+Hello,
 
-leider musste auf Wunsch der Zuständigen die folgende Schicht abgesagt werden:
+we're sorry, but we had to cancel the following shift at request of the organizer:
 
 {{ shift_title }}, {{ location }}
-{{ from_date }} von {{ from_time }} bis {{ to_time }}
+{{ from_date }} from {{ from_time }} to {{ to_time }} o'clock
 
-Dies hier ist eine automatisch generierte Email. Bei Fragen, wenden Sie sich bitte an die Emailadresse, die bei den Unterkünften in der Beschreibung angegeben ist.
+This is an automaticly generated e-mail. If you have any questions, please contact the facility directly.
 
-Liebe Grüße vom Volunteer Planner
-volunteer-planner.org
+Yours,
+
+the volunteer-planner.org team
 {% endblocktrans %}

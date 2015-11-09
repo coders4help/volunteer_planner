@@ -15,13 +15,19 @@
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/static/bootstrap4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Font-Awesome -->
+    <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="/static/css/custom.css" rel="stylesheet">
     <!-- Webfonts -->
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
           rel='stylesheet' type='text/css'>
+
+    {% block additional_header %}
+        <meta property="og:image" content="/static/images/volunteer-planner-logo.png" />
+    {% endblock %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,12 +42,16 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+
     {# There's a issue with Nexus 4 not working with the collapsible hamburger in BS4 #}
     <a class="navbar-brand" href="{% url 'home' %}">
         <img src={% static "images/volunteer-planner-logo.png" %}>
     </a>
 
     <div class="pull-right">
+
+		{% include "../templates/partials/switch_language.html" with nav_item_tag="span" %}
+
         <a href="{% url 'auth_login' %}" class="btn btn-secondary">
             {% trans "Login" %}
                 </a>
@@ -72,27 +82,29 @@
 
             <div id="footer-nav">
                 <ul>
-                    <li>
+                     <li>
                         <a href="{% url 'home' %}">{% trans "Main page" %}</a>
                     </li>
                     <li>
-                        <a href="{% url 'faqs' %}">{% trans "Frequently Asked Questions" %}</a>
+                        <a href="/impressum/">{% trans "Imprint"%}</a>
                     </li>
                     <li>
-                        <a href="">{% trans "Contact" %}</a>
+                        <a href="/about/">{% trans "About"%}</a>
                     </li>
                     <li>
-                        <a href="">{% trans "Imprint"%}</a>
+                        <a href="/unterstuetzer/">{% trans "Supporter"%}</a>
                     </li>
                     <li>
-                        <a href="">{% trans "Terms of Service"%} </a>
+                        <a href="/presse/">{% trans "Press"%}</a>
                     </li>
                     <li>
-                        <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>
+                        <a href="/kontakt/">{% trans "Contact" %}</a>
+                    </li>
+                    <li>
+                        <a href="/faq-new/">{% trans "F.A.Q." %}</a>
                     </li>
                 </ul>
             </div>
-
         </div>
         <!-- // .inset -->
     </div>

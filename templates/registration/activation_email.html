@@ -1,11 +1,16 @@
-{% url 'registration_activate' activation_key as activation_key_url %}
-Hallo {{ user }},
+{% load i18n %}{% url 'registration_activate' activation_key as activation_key_url %}
+{% blocktrans with site_domain=site.domain %}
+Hello {{ user }},
 
-vielen Dank, dass Du helfen willst! Nur noch einen Schritt, dann kannst Du Dich für die Freiwilligendienste anmelden!
+thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!
 
-Bitte klicke auf den folgenden Link um die Registrierung Deines Benutzerkontos abzuschließen.
-Dieser Link ist für {{ expiration_days }} Tage gültig.
+Please click the following link to finish your registration at volunteer-planner.org:
 
-<a href ="http://{{site.domain}}{{ activation_key_url }}">http://{{site.domain}}{{ activation_key_url }}</a>
+<a href ="http://{{site_domain}}{{ activation_key_url }}">http://{{site_domain}}{{ activation_key_url }}</a>
 
-Dein Freiwilligen-Team zur Unterstützung der Geflüchteten
+This link will expire in {{ expiration_days }} days.
+
+Yours,
+
+the volunteer-planner.org team
+{% endblocktrans %}

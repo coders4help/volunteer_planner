@@ -1,0 +1,27 @@
+{% extends request.user.is_authenticated|yesno:"base.html,base_non_logged_in.html" %}
+
+{% load i18n %}
+
+{% if flatpage.extra_style %}
+    {% block additional_css %}
+        {{ block.super }}
+        <style>
+            {{ flatpage.extra_style.css|safe }}
+        </style>
+    {% endblock %}
+{% endif %}
+
+{% block title %}
+    {{ flatpage.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {{ flatpage.content }}
+
+    {% if perms.flatpages.can_change_page %}
+        <hr/>
+        <a href="{% url 'admin:flatpages_flatpage_change' flatpage.id %}">{% trans "Edit this page" %}</a>
+    {% endif %}
+
+{% endblock %}
+

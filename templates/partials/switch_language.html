@@ -1,0 +1,34 @@
+{% load i18n vpfilters %}
+
+<script>
+function switch_language(lang_code) {
+	$('#language_code').attr('value', lang_code);
+	$('#language_form').submit();
+}
+</script>
+
+{% get_current_language as LANGUAGE_CODE %}
+<form id="language_form" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+	<input name="next" type="hidden" value="{{ redirect_to }}" />
+	<input id="language_code" name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
+</form>
+
+<{{ nav_item_tag }} class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		<i class="fa fa-globe"></i>
+		{% get_language_info for LANGUAGE_CODE as language_code %}
+		{{ language_code.name_local }}
+		<span class="caret"></span>
+	</a>
+	<ul role="menu" class="dropdown-menu">
+	  {% get_available_languages as LANGUAGES %}
+	  {% get_language_info_list for LANGUAGES as languages %}
+	  {% for language in languages %}
+		<li class='menu-item dropdown-item {{ language.code|eq:LANGUAGE_CODE|yes:"active" }}'>
+			<a href="" onclick="switch_language('{{ language.code }}');return false;">
+			  {{ language.name_local }} ({{ language.code }})
+			</a>
+		</li>
+	  {% endfor %}
+	</ul>
+</{{ nav_item_tag }}>

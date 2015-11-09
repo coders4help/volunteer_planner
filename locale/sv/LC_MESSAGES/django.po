@@ -1,0 +1,1344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Christoph, 2015
+# Jonna Appelqvist, 2015
+# Jonna Appelqvist, 2015
+# Linnéa Deurell <linnea.deurell@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: volunteer-planner.org\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-08 23:26+0100\n"
+"PO-Revision-Date: 2015-11-08 22:26+0000\n"
+"Last-Translator: Christoph\n"
+"Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "first name"
+msgstr "Förnamn"
+
+msgid "email"
+msgstr "E-post"
+
+msgid "Accounts"
+msgstr "Konton"
+
+msgid "user account"
+msgstr "Användarkonto"
+
+msgid "user accounts"
+msgstr "Användarkonton"
+
+msgid "Save"
+msgstr "Spara"
+
+msgid "Username"
+msgstr "Användarnamn"
+
+msgid "First name"
+msgstr "Förnamn"
+
+msgid "Last name"
+msgstr "Efternamn"
+
+msgid "Email"
+msgstr "E-postadress"
+
+msgid "Edit Account"
+msgstr "Hantera konto"
+
+msgid "additional CSS"
+msgstr "ytterligare CSS"
+
+msgid "translation"
+msgstr "Översättning"
+
+msgid "translations"
+msgstr "Översättningar"
+
+msgid "No translation available"
+msgstr "Ingen översättning tillgänglig"
+
+msgid "additional style"
+msgstr "ytterligare stilar"
+
+msgid "additional flat page style"
+msgstr ""
+
+msgid "additional flat page styles"
+msgstr ""
+
+msgid "flat page"
+msgstr ""
+
+msgid "language"
+msgstr "Språk"
+
+msgid "title"
+msgstr "Rubrik"
+
+msgid "content"
+msgstr "Innehåll"
+
+msgid "flat page translation"
+msgstr ""
+
+msgid "flat page translations"
+msgstr ""
+
+msgid "View on site"
+msgstr "Visa på sida"
+
+msgid "Remove"
+msgstr "Ta bort"
+
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "Lägg till annan %(verbose_name)s"
+
+msgid "Edit this page"
+msgstr "Redigera denna sida"
+
+#, python-brace-format
+msgctxt "maps search url pattern"
+msgid "https://www.google.com/maps/place/{location}"
+msgstr "https://www.google.com/maps/place/{location}"
+
+#, python-brace-format
+msgctxt "maps directions url pattern"
+msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
+msgstr "https://www.google.com/maps/dir/{departure}/{destination}/"
+
+msgid "subtitle"
+msgstr "Underrubrik"
+
+msgid "articletext"
+msgstr "Artikeltext"
+
+msgid "creation date"
+msgstr "Datum"
+
+msgid "news entry"
+msgstr ""
+
+msgid "news entries"
+msgstr ""
+
+msgid "Login"
+msgstr "Logga in"
+
+msgid "Start helping"
+msgstr "Börja hjälpa"
+
+msgid "Main page"
+msgstr "Startsida"
+
+msgid "Imprint"
+msgstr "Om webbplatsen"
+
+msgid "About"
+msgstr ""
+
+msgid "Supporter"
+msgstr ""
+
+msgid "Press"
+msgstr ""
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "F.A.Q."
+msgstr ""
+
+msgid "Frequently Asked Questions"
+msgstr "Vanliga frågor"
+
+msgctxt "FAQ Q1"
+msgid "How does volunteer-planner work?"
+msgstr "Hur fungerar volunteer-planner?"
+
+msgctxt "FAQ A1.1"
+msgid "Create an account."
+msgstr "Skapa ett konto."
+
+msgctxt "FAQ A1.2"
+msgid ""
+"Confirm your email address by clicking the activation link you've been sent."
+msgstr "Bekräfta din e-postadress genom att klicka på länken i mejlet vi skickat till dig."
+
+msgctxt "FAQ A1.3"
+msgid "Log in."
+msgstr "Logga in."
+
+msgctxt "FAQ A1.4"
+msgid "Choose a place to help and a shift and sign up to help."
+msgstr "Välj en plats och ett pass och anmäl dig för att hjälpa till."
+
+msgctxt "FAQ A1.5"
+msgid "Get there on time and start helping out."
+msgstr "Kom i tid och börja hjälpa till."
+
+msgctxt "FAQ Q2"
+msgid "How can I unsubscribe from a shift?"
+msgstr "Hur kan jag avanmäla mig från ett pass?"
+
+msgctxt "FAQ A2"
+msgid ""
+"No problem. Log-in again look for the shift you planned to do and "
+"unsubscribe. Then other volunteers can again subscribe."
+msgstr "Inga problem. Logga in igen och avanmäl dig på samma ställe som du anmälde dig till passet. Därmed får andra volontärer möjlighet att anmäla sig istället."
+
+msgctxt "FAQ Q3"
+msgid "Are there more shelters coming into volunteer-planner?"
+msgstr "Kommer det att komma upp fler boenden på volunteer-planner?"
+
+#, python-format
+msgctxt "FAQ A3"
+msgid ""
+"Yes! If you are a volunteer worker in a refugee shelter and they also want "
+"to use volunteer-planner please contact us via %(email_url)s."
+msgstr "Ja! Om du är volontär på ett flyktingboende som skulle vilja använda sig av volunteer-planner, kontakta oss via %(email_url)s.  "
+
+msgctxt "FAQ Q4"
+msgid "I registered but I didn't get any activation link. What can I do?"
+msgstr "Jag har registrerat mig men inte fått någon aktiveringslänk. Vad kan jag göra?"
+
+msgctxt "FAQ A4"
+msgid ""
+"Please look into your email-spam folder. If you can't find something please "
+"wait another 30 minutes. Email delivery can sometimes take longer."
+msgstr "Vänligen kontrollera mappen för skräppost i din e-post. Om du inte hittar mejlet där, ber vi dig vänta i 30 minuter. Ibland kan det dröja lite längre innan det kommer fram."
+
+msgctxt "FAQ Q5"
+msgid "Do I have to be vaccinated to help at the camps/shelters?"
+msgstr "Behöver jag vara vaccinerad för att hjälpa till vid förläggningar/boenden?"
+
+msgctxt "FAQ A5"
+msgid ""
+"You are not supposed to be vaccinated. BUT: Where there are a lot of people "
+"deseases can flourish better."
+msgstr "Det krävs inte att du är vaccinerad. Men det kan rekommenderas, då sjukdomar sprids lättare på platser där många människor lever tätt inpå varandra."
+
+msgctxt "FAQ Q6"
+msgid "Who is volunteer-planner.org?"
+msgstr "Vilka är volunteer-planner.org?"
+
+msgctxt "FAQ A6"
+msgid ""
+"We are Coders4Help, a group of international volunteering programmers, "
+"designers and projectmanagers."
+msgstr "Vi är Coders4Help, en internationell volontärgrupp bestående av programmerare, designers och projektledare."
+
+msgctxt "FAQ Q7"
+msgid "How can I help you?"
+msgstr "Hur kan jag hjälpa er?"
+
+msgid "Facebook site"
+msgstr "Facebook"
+
+#, python-format
+msgctxt "FAQ A7"
+msgid ""
+"Currently we need help to translate, write texts and create awesome designs."
+" Want to help? Write a message on our %(facebook_link)s or send an "
+"%(email_url)s."
+msgstr "Just nu behöver vi hjälp med översättning, att skriva texter och skapa grym design. Vill du hjälpa till? Skriv ett meddelande till oss på %(facebook_link)s eller skicka ett %(email_url)s."
+
+msgid "I want to help!"
+msgstr "Jag vill hjälpa till!"
+
+msgid "Register and see where you can help"
+msgstr "Registrera dig och se var du kan hjälpa till"
+
+msgid "Organize volunteers!"
+msgstr "Organisera volontärer!"
+
+msgid "Register a shelter and organize volunteers"
+msgstr "Registrera ett boende och organisera volontärer"
+
+msgid "Places to help"
+msgstr "Platser att hjälpa till på"
+
+msgid "Registered Volunteers"
+msgstr "Registrerade volontärer"
+
+msgid "Worked Hours"
+msgstr "Arbetade timmar"
+
+msgid "What is it all about?"
+msgstr "Vad går det ut på?"
+
+msgid ""
+"You are a volunteer and want to help refugees? Volunteer-Planner.org shows "
+"you where, when and how to help directly in the field."
+msgstr "Vill du bli volontär och hjälpa flyktingar? Volunteer-planner.org visar dig när, var och hur du kan hjälpa till direkt där det behövs.  "
+
+msgid ""
+"<p>This platform is non-commercial and ads-free. An international team of "
+"field workers, programmers, project managers and designers are volunteering "
+"for this project and bring in their professional experience to make a "
+"difference.</p>"
+msgstr "<p>Denna plattform är icke-komersiell och fri från reklam. Ett internationellt team av fältarbetare, programmerare, projektledare och designers arbetar ideellt med detta projekt, för att med sin samlade yrkeserfarenhet göra skillnad.</p>"
+
+msgid "You can help at these locations:"
+msgstr ""
+
+msgid "There are currently no places in need of help."
+msgstr ""
+
+msgid "Privacy Policy"
+msgstr "Integritetspolicy"
+
+msgctxt "Privacy Policy Sec1"
+msgid "Scope"
+msgstr "Tillämpningsområde"
+
+msgctxt "Privacy Policy Sec1 P1"
+msgid ""
+"This privacy policy informs the user of the collection and use of personal "
+"data on this website (herein after \"the service\") by the service provider,"
+" the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
+msgstr "Vår integritetspolicy informerar användaren av denna webbsida (nedan kallat \"tjänsten\") om hur personliga uppgifter behandlas och sparas av tillhandahållaren av tjänsten, Benefit e.V (Wollankstr. 2, 13187 Berlin)."
+
+msgctxt "Privacy Policy Sec1 P2"
+msgid ""
+"The legal basis for the privacy policy are the German Data Protection Act "
+"(Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act "
+"(Telemediengesetz, TMG)."
+msgstr "Alla personliga uppgifter sparas och hanteras enligt den tyska personuppgiftslagen (Bundesdatenschutzgesetz, BDSG) och den tyska lagen för elektronisk kommunikation (Telemediengesetz, TMG)."
+
+msgctxt "Privacy Policy Sec2"
+msgid "Access data / server log files"
+msgstr "Tillgång till uppgifter / serverlogg"
+
+msgctxt "Privacy Policy Sec2 P1"
+msgid ""
+"The service provider (or the provider of his webspace) collects data on "
+"every access to the service and stores this access data in so-called server "
+"log files. Access data includes the name of the website that is being "
+"visited, which files are being accessed, the date and time of access, "
+"transfered data, notification of successful access, the type and version "
+"number of the user's web browser, the user's operating system, the referrer "
+"URL (i.e., the website the user visited previously), the user's IP address, "
+"and the name of the user's Internet provider."
+msgstr "Tillhandahållaren av tjänsten (alternativt tillhandahållaren av denna webbsida) samlar in uppgifter vid användande av tjänsten och lagrar dessa uppgifter i en s.k. serverlogg. Användaruppgifter inkluderar: namn på begärd webbsida, vilka filer som används, datum och tid för användande, överförd datamängd, avisering om framgångsrik användning och användarens webbläsartyp/version, operativsystem, HTTP-referenten (dvs. användarens senast besökta webbsida), IP-adress och internetleverantör."
+
+msgctxt "Privacy Policy Sec2 P2"
+msgid ""
+"The service provider uses the server log files for statistical purposes and "
+"for the operation, the security, and the enhancement of the provided service"
+" only. However, the service provider reserves the right to reassess the log "
+"files at any time if specific indications for an illegal use of the service "
+"exist."
+msgstr "Tillhandahållaren av tjänsten använder uppgifterna i serverloggen enbart i statistisk syfte och för den tillhandahållna tjänstens drift, säkerhet, och förbättring. Vid konkreta misstankar om olaglig användning av tjänsten reserverar sig tillhandahållaren av tjänsten för rätten att se över uppgifterna i serverloggen."
+
+msgctxt "Privacy Policy Sec3"
+msgid "Use of personal data"
+msgstr "Användande av personuppgifter"
+
+msgctxt "Privacy Policy Sec3 P1"
+msgid ""
+"Personal data is information which can be used to identify a person, i.e., "
+"all data that can be traced back to a specific person. Personal data "
+"includes the name, the e-mail address, or the telephone number of a user. "
+"Even data on personal preferences, hobbies, memberships, or visited websites"
+" counts as personal data."
+msgstr "Personliga uppgifter är information som kan användas för att identifiera en person, d.v.s. all information som kan härledas till en specifik individ: till exempel namn, e-postadress eller en användares telefonnummer. Även uppgifter om personliga preferenser, intressen, medlemsskap eller besökta webbsidor räknas som personliga uppgifter."
+
+msgctxt "Privacy Policy Sec3 P2"
+msgid ""
+"The service provider collects, uses, and shares personal data with third "
+"parties only if he is permitted by law to do so or if the user has given his"
+" permission."
+msgstr "Personuppgifter samlas in, används och delas av tillhandahållaren av tjänsten med tredje part i strikt enlighet med lagen, eller med användarens tillåtelse."
+
+msgctxt "Privacy Policy Sec4"
+msgid "Contact"
+msgstr "Kontakt"
+
+msgctxt "Privacy Policy Sec4 P1"
+msgid ""
+"When contacting the service provider (e.g. via e-mail or using a web contact"
+" form), the data provided by the user is stored for processing the inquiry "
+"and for answering potential follow-up inquiries in the future."
+msgstr "Vid kontakt med tillhandahållaren av tjänsten (t.ex. via e-post eller kontaktformulär) sparas användarens angivna uppgifter för att behandla förfrågan och besvara eventuella följdförfrågningar."
+
+msgctxt "Privacy Policy Sec5"
+msgid "Cookies"
+msgstr "Cookies"
+
+msgctxt "Privacy Policy Sec5 P1"
+msgid ""
+"Cookies are small files that are being stored on the user's device (personal"
+" computer, smartphone, or the like) with information specific to that "
+"device. They can be used for various purposes: Cookies may be used to "
+"improve the user experience (e.g. by storing and, hence, \"remembering\" "
+"login credentials). Cookies may also be used to collect statistical data "
+"that allows the service provider to analyse the user's usage of the website,"
+" aiming to improve the service."
+msgstr "Cookies är små filer som sparas på en enhet (personlig dator, smartphone o.dyl.). Dessa filer innehåller information specifik för just den enheten och kan användas i olika syften: Cookies får användas för att förbättra användarupplevelsen (t.ex. genom att spara och därigenom \"minnas\" inloggningsuppgifter). Cookies får också användas till att samla in statistisk information som tillåter leverantören att analysera hur webbsidan används och därigenom kunna förbättra tjänsten."
+
+msgctxt "Privacy Policy Sec5 P2"
+msgid ""
+"The user can customize the use of cookies. Most web browsers offer settings "
+"to restrict or even completely prevent the storing of cookies. However, the "
+"service provider notes that such restrictions may have a negative impact on "
+"the user experience and the functionality of the website."
+msgstr "Användaren kan själv reglera vilka cookies som ska användas. De flesta webbläsare erbjuder möjligheten att ändra i inställningarna, så att cookies delvis eller helt nekas. Om cookie-funktionen stängs av kan dock webbsidans användarupplevelse och funktionalitet påverkas negativt."
+
+#, python-format
+msgctxt "Privacy Policy Sec5 P3"
+msgid ""
+"The user can manage the use of cookies from many online advertisers by "
+"visiting either the US-american website %(us_url)s or the European website "
+"%(eu_url)s."
+msgstr "Användaren kan hantera cookies som används av många online-annonsörer genom att besöka den amerikanska webbsidan %(us_url)s eller den europeiska webbsidan %(eu_url)s."
+
+msgctxt "Privacy Policy Sec6"
+msgid "Registration"
+msgstr "Registrering"
+
+msgctxt "Privacy Policy Sec6 P1"
+msgid ""
+"The data provided by the user during registration allows for the usage of "
+"the service. The service provider may inform the user via e-mail about "
+"information relevant to the service or the registration, such as information"
+" on changes, which the service undergoes, or technical information (see also"
+" next section)."
+msgstr "De uppgifter som användaren angivit vid registreringen beviljar användandet av tjänsten. Tillhandahållaren av tjänsten får via e-post kontakta användaren med, för tjänsten eller registreringen, relevant information. Sådan information omfattar ändringar av tjänsten eller teknisk information (se även nästa avsnitt)."
+
+msgctxt "Privacy Policy Sec6 P2"
+msgid ""
+"The registration and user profile forms show which data is being collected "
+"and stored. They include - but are not limited to - the user's first name, "
+"last name, and e-mail address."
+msgstr "Vilka personuppgifter som sparas framkommer av de uppgifter som måste anges vid registreringen och som sedan kan hanteras under användarprofilen. Däribland ingår, men det är inte begränsat till, användarens förnamn, efternamn och e-postadress."
+
+msgctxt "Privacy Policy Sec7"
+msgid "E-mail notifications / Newsletter"
+msgstr "Avisering via e-post / Nyhetsbrev"
+
+msgctxt "Privacy Policy Sec7 P1"
+msgid ""
+"When registering an account with the service, the user gives permission to "
+"receive e-mail notifications as well as newsletter e-mails."
+msgstr "När ett användarkonto skapas godkänner användaren att denne skickas aviseringar och nyhetsbrev via e-post."
+
+msgctxt "Privacy Policy Sec7 P2"
+msgid ""
+"E-mail notifications inform the user of certain events that relate to the "
+"user's use of the service. With the newsletter, the service provider sends "
+"the user general information about the provider and his offered service(s)."
+msgstr "Med e-postaviseringar får användaren information om särskilda aktiviteter, baserad på användarens nyttjande av tjänsten. I nyhetsbrevet får användaren allmän information om leverantören och dennes tillhandahållna tjänst(er). "
+
+msgctxt "Privacy Policy Sec7 P3"
+msgid ""
+"If the user wishes to revoke his permission to receive e-mails, he needs to "
+"delete his user account."
+msgstr "Om användaren inte skulle vilja motta e-post måste han eller hon radera sitt användarkonto."
+
+msgctxt "Privacy Policy Sec8"
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+msgctxt "Privacy Policy Sec8 P1"
+msgid ""
+"This website uses Google Analytics, a web analytics service provided by "
+"Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text "
+"files placed on the user's device, to help the website analyze how users use"
+" the site. The information generated by the cookie about the user's use of "
+"the website will be transmitted to and stored by Google on servers in the "
+"United States."
+msgstr "Denna webbsida använder sig av Google Analytics, en webbanalystjänst från Google Inc. (\"Google\"). Google Analytics använder sig av s.k. \"cookies\", textfiler som sparas på användarens enhet för att analysera hur webbsidan används. Den användarinformation som genereras av en cookie skickas och sparas på Googles servrar i USA."
+
+msgctxt "Privacy Policy Sec8 P2"
+msgid ""
+"In case IP-anonymisation is activated on this website, the user's IP address"
+" will be truncated within the area of Member States of the European Union or"
+" other parties to the Agreement on the European Economic Area. Only in "
+"exceptional cases the whole IP address will be first transfered to a Google "
+"server in the USA and truncated there. The IP-anonymisation is active on "
+"this website."
+msgstr "Om anonym IP-adress är aktiverad på denna webbsida kommer användarens IP-adress att förkortas inom området för den Europeiska unionens medlemsstater eller andra avtalsparter inom det Europeiska ekonomiska samarbetsområdet. Endast i särskilda undantagsfall kommer IP-adressen i sin helhet att överföras till en Google-server i USA och förkortas där. IP-anonymisering är aktiverad på denna webbsida."
+
+msgctxt "Privacy Policy Sec8 P3"
+msgid ""
+"Google will use this information on behalf of the operator of this website "
+"for the purpose of evaluating your use of the website, compiling reports on "
+"website activity for website operators and providing them other services "
+"relating to website activity and internet usage."
+msgstr "Google använder denna information i syfte att utvärdera hur du använder webbsidan, att sammanställa aktivitetsrapporter till webbsidans ägare och tillhandahålla ägaren ytterligare tjänster i samband med aktiviteter på webbsidan och internetanvändning."
+
+#, python-format
+msgctxt "Privacy Policy Sec8 P4"
+msgid ""
+"The IP-address, that the user's browser conveys within the scope of Google "
+"Analytics, will not be associated with any other data held by Google. The "
+"user may refuse the use of cookies by selecting the appropriate settings on "
+"his browser, however it is to be noted that if the user does this he may not"
+" be able to use the full functionality of this website. He can also opt-out "
+"from being tracked by Google Analytics with effect for the future by "
+"downloading and installing Google Analytics Opt-out Browser Addon for his "
+"current web browser: %(optout_plugin_url)s."
+msgstr "IP-adressen som skickas av användarens webbläsare inom tillämpningsområdet för Google Analytics kommer inte att länkas samman med annan data som innehas av Google. Användaren kan motsätta sig användandet av cookies genom att ändra inställningarna i webbläsaren. Observera att det i detta fall kan leda till en försämring av webbsidans funktionalitet. Användaren kan även begära att undantas från att bli spårad av Google Analytics med framtida verkan genom att ladda ner och installera ett inaktiverings-add-on, Google Analytics Opt-out Browser Add-on, för den nuvarande webbläsaren: %(optout_plugin_url)s."
+
+msgid "click this link"
+msgstr "klicka på denna länk"
+
+#, python-format
+msgctxt "Privacy Policy Sec8 P5"
+msgid ""
+"As an alternative to the browser Addon or within browsers on mobile devices,"
+" the user can %(optout_javascript)s in order to opt-out from being tracked "
+"by Google Analytics within this website in the future (the opt-out applies "
+"only for the browser in which the user sets it and within this domain). An "
+"opt-out cookie will be stored on the user's device, which means that the "
+"user will have to click this link again, if he deletes his cookies."
+msgstr "Som ett alternativ till en webbläsar-add-on eller för webbläsare i mobila enheter kan användaren %(optout_javascript)s för att, vid framtida användande av webbsidan, välja att lägga till ett undantag från spårning av Google Analytics (detta undantag gäller endast för den webbläsare som ställts in på sådant sätt och för denna domän). En s.k. \"opt-out cookie\" kommer att sparas på användarens enhet. Om användaren skulle rensa alla sina cookies innebär detta att denne måste lägga till undantaget via ovanstående länk på nytt.  "
+
+msgctxt "Privacy Policy Sec9"
+msgid "Revocation, Changes, Corrections, and Updates"
+msgstr "Återkallelser, ändringar, rättelser och uppdateringar"
+
+msgctxt "Privacy Policy Sec9 P1"
+msgid ""
+"The user has the right to be informed upon application and free of charge, "
+"which personal data about him has been stored. Additionally, the user can "
+"ask for the correction of uncorrect data, as well as for the suspension or "
+"even deletion of his personal data as far as there is no legal obligation to"
+" retain that data."
+msgstr "Användaren har vid tillämpning av cookies rätt till att kostnadsfritt bli informerad om vilka personliga uppgifter som sparats. Användaren kan även begära att felaktiga uppgifter rättas, eller att lagringen av dennes personliga uppgifter upphävs eller raderas, såvitt det inte finns någon laglig grund till att lagra uppgifterna."
+
+msgctxt "Privacy Policy Credit"
+msgid ""
+"Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
+msgstr "Baserad på förlagan till policy för integritetsskydd av advokat Thomas Schwenke – I LAW it"
+
+msgid "advantages"
+msgstr "fördelar"
+
+msgid "save time"
+msgstr "spara tid"
+
+msgid "improve selforganization of the volunteers"
+msgstr "förbättra självorganiseringen av volontärer"
+
+msgid ""
+"\n"
+"                    volunteers split themselves up more effectively into shifts,\n"
+"                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
+"                "
+msgstr "\nvolontärer fördelar sig mellan pass mer effektivt,\nhjälpare kan på egen hand enkelt få en överblick över var det finns för få som hjälper till"
+
+msgid ""
+"\n"
+"                    shift plans can be given to the security personnel\n"
+"                    or coordinating persons by an auto-mailer\n"
+"                    every morning\n"
+"                "
+msgstr "\nscheman för pass kan ges till säkerhetspersonalen\neller samordnande personer via automatiskt e-postutskick\nvarje morgon"
+
+msgid ""
+"\n"
+"                the more shelters and camps are organized with us, the more volunteers are joining\n"
+"                    and all facilities will benefit from a common pool of motivated volunteers\n"
+"                "
+msgstr "\nju fler boenden och förläggningar som använder sig av plattformen, ju kändare blir den.\nJu kändare den blir, desto fler frivilliga kommer att upptäcka den och kunna hjälpa till"
+
+msgid "for free without costs"
+msgstr "kostnadsfritt"
+
+msgid "The right help at the right time at the right place"
+msgstr "Rätt hjälp i rätt tid och på rätt plats"
+
+msgid ""
+"\n"
+"        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.\n"
+"        volunteer-planner tries to solve this problem! <br>\n"
+"        </p>\n"
+"            "
+msgstr "\n<p>Många människor vill hjälpa till! Men ofta är det inte enkelt att veta hur, var och när det behövs.\nvolunteer-planner vill lösa detta problem!\n<p> "
+
+msgid "for free, ad free"
+msgstr "Kostnadsfritt. Reklamfritt."
+
+msgid ""
+"\n"
+"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"            "
+msgstr "\n<p> Denna plattform är skapad av ett team frivilliga hjälpare, yrkesverksamma inom områdena programvaruutveckling, projektledning, design\noch marknadsföring. Den är gjord med öppen källkod och får inte användas i kommersiellt syfte. Privatuppgifter (e-postadress, profilinformation o.s.v.) ges inte vidare till tredje part.</p>"
+
+msgid "contact us!"
+msgstr "Kontakta oss!"
+
+msgid ""
+"\n"
+"                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
+"                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                    "
+msgstr "\n...kanske med ett bifogat utkast över de pass du vill se på volunteer-planner.\nVänligen skriv till <a\nhref=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
+
+msgid "edit"
+msgstr "Redigera"
+
+msgid "short description"
+msgstr "Kort beskrivning"
+
+msgid "description"
+msgstr "Beskrivning"
+
+msgid "contact info"
+msgstr "Kontaktinformation"
+
+msgid "by invitation"
+msgstr ""
+
+msgid "anyone (approved by manager)"
+msgstr ""
+
+msgid "anyone"
+msgstr ""
+
+msgid "rejected"
+msgstr ""
+
+msgid "pending"
+msgstr ""
+
+msgid "approved"
+msgstr ""
+
+msgid "admin"
+msgstr "Admin"
+
+msgid "manager"
+msgstr "Chef"
+
+msgid "member"
+msgstr "Medlem"
+
+msgid "role"
+msgstr "Ställning"
+
+msgid "status"
+msgstr ""
+
+msgid "name"
+msgstr "Namn"
+
+msgid "address"
+msgstr "Adress"
+
+msgid "slug"
+msgstr ""
+
+msgid "join mode"
+msgstr ""
+
+msgid "Who can join this organization?"
+msgstr ""
+
+msgid "organization"
+msgstr "Organisation"
+
+msgid "organizations"
+msgstr "Organisationer"
+
+#, python-brace-format
+msgid "{name}"
+msgstr "{name}"
+
+msgid "place"
+msgstr "Plats"
+
+msgid "postal code"
+msgstr "Postnummer"
+
+msgid "Show on map of all facilities"
+msgstr "Visa på karta över alla anläggningar"
+
+msgid "latitude"
+msgstr "Latitud"
+
+msgid "longitude"
+msgstr "Longitud"
+
+msgid "Who can join this facility?"
+msgstr ""
+
+msgid "facility"
+msgstr "Anläggning"
+
+msgid "facilities"
+msgstr "Anläggningar"
+
+msgid "organization member"
+msgstr "Organisationsmedlem"
+
+msgid "organization members"
+msgstr "Organisationsmedlemmar"
+
+#, python-brace-format
+msgid "{username} at {organization_name} ({user_role})"
+msgstr ""
+
+msgid "facility member"
+msgstr "Anläggningsmedlem"
+
+msgid "facility members"
+msgstr "Anläggningsmedlemmar"
+
+#, python-brace-format
+msgid "{username} at {facility_name} ({user_role})"
+msgstr ""
+
+msgid "workplace"
+msgstr "Arbetsplats"
+
+msgid "workplaces"
+msgstr "Arbetsplatser"
+
+msgid "task"
+msgstr "Uppgift"
+
+msgid "tasks"
+msgstr "Uppgifter"
+
+#, python-format
+msgid "Members in %(facility)s"
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
+
+#, python-format
+msgid "Hello %(username)s,"
+msgstr ""
+
+#, python-format
+msgid ""
+"Your membership request at %(facility_name)s was approved. You now may sign "
+"up for restricted shifts at this facility."
+msgstr ""
+
+msgid ""
+"Yours,\n"
+"the volunteer-planner.org Team"
+msgstr ""
+
+msgid "Helpdesk"
+msgstr "Support"
+
+msgid "Open Shifts"
+msgstr "Lediga pass"
+
+msgid "News"
+msgstr "Nyheter"
+
+msgid "Facilities"
+msgstr "Boenden"
+
+msgid "Show details"
+msgstr "Visa detaljer"
+
+msgid "volunteer-planner.org: Membership approved"
+msgstr ""
+
+msgid "country"
+msgstr "Land"
+
+msgid "countries"
+msgstr "Länder"
+
+msgid "region"
+msgstr "Region"
+
+msgid "regions"
+msgstr "Regioner"
+
+msgid "area"
+msgstr "Område"
+
+msgid "areas"
+msgstr "Områden"
+
+msgid "places"
+msgstr "Platser"
+
+msgid "number of volunteers"
+msgstr "Antal volontärer"
+
+msgid "volunteers"
+msgstr "Volontärer"
+
+msgid "Scheduler"
+msgstr "Schemaläggare"
+
+msgid "number of needed volunteers"
+msgstr "Antal volontärer som behövs"
+
+msgid "starting time"
+msgstr "Starttid"
+
+msgid "ending time"
+msgstr "Sluttid"
+
+msgid "members only"
+msgstr ""
+
+msgid "allow only members to help"
+msgstr ""
+
+msgid "shift"
+msgstr "Pass"
+
+msgid "shifts"
+msgstr "Pass"
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "nästa dag"
+msgstr[1] "efter {number_of_days} dagar"
+
+msgid "shift helper"
+msgstr "Passhjälpare"
+
+msgid "shift helpers"
+msgstr "Passhjälpare"
+
+msgid "Show on Google Maps"
+msgstr "Visa i Google Maps"
+
+msgctxt "helpdesk shifts heading"
+msgid "shifts"
+msgstr "Pass"
+
+#, python-format
+msgid "There are no upcoming shifts available for %(geographical_name)s."
+msgstr "Det finns inga kommande pass lediga för %(geographical_name)s."
+
+msgid "You can help in the following facilities"
+msgstr "Du kan hjälpa till på följande platser"
+
+msgid "filter"
+msgstr "filter"
+
+msgid "see more"
+msgstr "se mer"
+
+msgid "open shifts"
+msgstr "Lediga pass"
+
+#, python-format
+msgctxt "title with facility"
+msgid "Schedule for %(facility_name)s"
+msgstr "Schema för %(facility_name)s"
+
+#, python-format
+msgid "%(starting_time)s - %(ending_time)s"
+msgstr ""
+
+#, python-format
+msgctxt "title with date"
+msgid "Schedule for %(schedule_date)s"
+msgstr "Schema för %(schedule_date)s"
+
+msgid "Link"
+msgstr ""
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Helpers"
+msgstr "Hjälpare"
+
+msgid "Start"
+msgstr "Början"
+
+msgid "End"
+msgstr "Slut"
+
+msgid "Required"
+msgstr "Behov"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Users"
+msgstr "Användare"
+
+msgid "You"
+msgstr "Du"
+
+#, python-format
+msgid "%(slots_left)s more"
+msgstr "%(slots_left)s till"
+
+msgid "Covered"
+msgstr "Täckt"
+
+msgid "Drop out"
+msgstr "Lämna pass"
+
+msgid "Sign up"
+msgstr "Delta"
+
+msgid "Membership pending"
+msgstr ""
+
+msgid "Membership rejected"
+msgstr ""
+
+msgid "Become member"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to cancel the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"This is an automaticly generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "Members only"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to change the times of the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s from %(old_from_time)s to %(old_to_time)s o'clock\n"
+"\n"
+"The new shift times are:\n"
+"\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"If you can not help at the new times any longer, please cancel your attendance at volunteer-planner.org.\n"
+"\n"
+"This is an automaticly generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "The submitted data was invalid."
+msgstr "Den angivna informationen är ogiltig."
+
+msgid "User account does not exist."
+msgstr "Användarkontot finns inte."
+
+msgid "A membership request has been sent."
+msgstr ""
+
+msgid ""
+"We can't add you to this shift because you've already agreed to other shifts"
+" at the same time:"
+msgstr "Vi kan inte lägga till dig till detta pass, då du redan är anmäld till ett annat pass vid samma tidpunkt:"
+
+msgid "We can't add you to this shift because there are no more slots left."
+msgstr ""
+
+msgid "You were successfully added to this shift."
+msgstr "Du har nu lagts till detta pass."
+
+#, python-brace-format
+msgid "You already signed up for this shift at {date_time}."
+msgstr "Du har redan anmält dig till detta pass den {date_time}."
+
+msgid "You successfully left this shift."
+msgstr "Du har nu avanmält dig från detta pass."
+
+#, python-brace-format
+msgid "A shift already exists at {date}"
+msgid_plural "{num_shifts} shifts already exists at {date}"
+msgstr[0] "Ett pass existerar redan den {date}"
+msgstr[1] "{num_shifts} pass existerar redan den {date}"
+
+#, python-brace-format
+msgid "{num_shifts} shift was added to {date}"
+msgid_plural "{num_shifts} shifts were added to {date}"
+msgstr[0] "{num_shifts} pass har lagts till den {date}"
+msgstr[1] "{num_shifts} pass har lagts till den {date}"
+
+msgid "Something didn't work. Sorry about that."
+msgstr "Oj! Vi ber om ursäkt, men något gick fel."
+
+msgid "slots"
+msgstr "Platser"
+
+msgid "from"
+msgstr "från"
+
+msgid "to"
+msgstr "till"
+
+msgid "schedule templates"
+msgstr "Utkast till scheman"
+
+msgid "schedule template"
+msgstr "Utkast till schema"
+
+msgid "days"
+msgstr "dagar"
+
+msgid "shift templates"
+msgstr "byt utkast"
+
+msgid "shift template"
+msgstr "byt utkast"
+
+#, python-brace-format
+msgid "{task_name} - {workplace_name}"
+msgstr "{task_name} - {workplace_name}"
+
+#, python-brace-format
+msgid "{task_name}"
+msgstr "{task_name}"
+
+msgid "Home"
+msgstr "Hem"
+
+msgid "Apply Template"
+msgstr "Använd utkast"
+
+msgid "no workplace"
+msgstr "utan arbetsplats"
+
+msgid "apply"
+msgstr "Använd"
+
+msgid "Select a date"
+msgstr "Välj ett datum"
+
+msgid "Continue"
+msgstr ""
+
+msgid "Select shift templates"
+msgstr "Välj byt utkast"
+
+msgid "Please review and confirm shifts to create"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Apply and select new date"
+msgstr ""
+
+msgid "Save and apply template"
+msgstr "Spara och använd utkast"
+
+msgid "Delete"
+msgstr "Radera"
+
+msgid "Save as new"
+msgstr "Spara som ny"
+
+msgid "Save and add another"
+msgstr "Spara och lägg till ny"
+
+msgid "Save and continue editing"
+msgstr "Spara och fortsätt redigera"
+
+msgid "Delete?"
+msgstr "Radera?"
+
+msgid "Change"
+msgstr "Ändra"
+
+msgid "last name"
+msgstr "Efternamn"
+
+msgid "position"
+msgstr "Ställning"
+
+msgid "organisation"
+msgstr "Organisation"
+
+#, python-format
+msgctxt "shift today title"
+msgid "Schedule for %(organization_name)s on %(date)s"
+msgstr "Schema för %(organization_name)s den %(date)s"
+
+msgid "All data is private and not supposed to be given away!"
+msgstr "Samtliga uppgifter behandlas konfidentiellt och får inte lämnas ut till tredje part!"
+
+#, python-format
+msgid ""
+"from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers"
+" have signed up:"
+msgstr "Följande %(volunteer_count)s volontärer har anmält sig från klockan %(start_time)s till %(end_time)s:"
+
+#, python-format
+msgid "Questions? Get in touch: %(mailto_link)s"
+msgstr "Frågor? Hör av dig: %(mailto_link)s"
+
+msgid "Manage"
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Toggle navigation"
+msgstr "Växla navigering"
+
+msgid "FAQ"
+msgstr "Vanliga frågor"
+
+msgid "Account"
+msgstr "Konto"
+
+msgid "Help"
+msgstr "Hjälp"
+
+msgid "Logout"
+msgstr "Logga ut"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Regions"
+msgstr "Regioner"
+
+msgid "Activation complete"
+msgstr "Aktivering slutförd"
+
+msgid "Activation problem"
+msgstr "Problem vid aktivering"
+
+msgctxt ""
+"login link title in registration confirmation success text 'You may now "
+"%(login_link)s'"
+msgid "login"
+msgstr "Logga in"
+
+#, python-format
+msgid ""
+"Thanks %(account)s, activation complete! You may now %(login_link)s using "
+"the username and password you set at registration."
+msgstr "Tack %(account)s, aktiveringen är slutförd! Du kan nu %(login_link)s med ditt användarnamn och lösenord. "
+
+msgid ""
+"Oops &ndash; Either you activated your account already, or the activation "
+"key is invalid or has expired."
+msgstr "Hoppsan &ndash; Antingen har du redan aktiverat ditt konto, eller har du använt dig av en ogiltig eller utgången aktiveringsnyckel."
+
+msgid "Activation successful!"
+msgstr "Aktiveringen har slutförts! "
+
+msgctxt "Activation successful page"
+msgid "Thank you for signing up."
+msgstr "Tack för att du registrerat dig."
+
+msgctxt "Login link text on activation success page"
+msgid "You can login here."
+msgstr "Här kan du logga in."
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "Your volunteer-planner.org registration"
+msgstr ""
+
+msgid "Your username and password didn't match. Please try again."
+msgstr "Ditt användarnamn och lösenord stämmer inte överens. Vänligen försök igen."
+
+msgid "Password"
+msgstr "Lösenord"
+
+msgid "Forgot your password?"
+msgstr "Glömt ditt lösenord?"
+
+msgid "Help and sign-up"
+msgstr "Logga in och hjälp till"
+
+msgid "Password changed"
+msgstr "Lösenord ändrat"
+
+msgid "Password successfully changed!"
+msgstr "Lösenordet har nu ändrats!"
+
+msgid "Change Password"
+msgstr "Ändra lösenord"
+
+msgid "Email address"
+msgstr "E-postadress"
+
+msgid "Change password"
+msgstr "Ändra lösenord"
+
+msgid "Password reset complete"
+msgstr "Lösenordet har återställts"
+
+msgctxt "login link title reset password complete page"
+msgid "log in"
+msgstr "Logga in"
+
+#, python-format
+msgctxt "reset password complete page"
+msgid "Your password has been reset! You may now %(login_link)s again."
+msgstr "Ditt lösenord har återställts! Du kan nu %(login_link)s igen."
+
+msgid "Enter new password"
+msgstr "Ange nytt lösenord"
+
+msgid "Enter your new password below to reset your password"
+msgstr "För att återställa lösenordet anger du ditt nya lösenord nedan"
+
+msgid "Password reset"
+msgstr "Lösenord återställt"
+
+msgid "We sent you an email with a link to reset your password."
+msgstr "Vi har skickat ett mejl till dig med en länk för att återställa ditt lösenord. "
+
+msgid "Please check your email and click the link to continue."
+msgstr "Kontrollera din e-post och klicka på länken för att fortsätta."
+
+#, python-format
+msgid ""
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site.  If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+"\n"
+"To reset your password, please click the following link, or copy and paste it\n"
+"into your web browser:"
+msgstr "Du får detta mejl för att du (eller någon som utger sig för att vara du)\nbegärt att återställa ditt lösenord på %(domain)s sida. Om du inte\nvill återställa ditt lösenord kan du bortse från detta meddelande.\n\nKlicka på följande länk för att återställa ditt lösenord, eller kopiera och klistra in länken\ni din webbläsare:"
+
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+"\n"
+"Best regards,\n"
+"%(site_name)s Management\n"
+msgstr "\nSkulle du ha glömt ditt användarnamn, så är det: %(username)s\n\nVänliga hälsningar,\n%(site_name)s team\n"
+
+msgid "Reset password"
+msgstr "Återställ lösenord"
+
+msgid "No Problem! We'll send you instructions on how to reset your password."
+msgstr "Inga problem! Vi skickar dig instruktioner för hur du återställer ditt lösenord."
+
+msgid "Activation email sent"
+msgstr "Ett aktiveringsmejl har skickats"
+
+msgid "An activation mail will be sent to you email address."
+msgstr "Ett aktiveringsmejl kommer att skickas till din e-postadress."
+
+msgid ""
+"Please confirm registration with the link in the email. If you haven't "
+"received it in 10 minutes, look for it in your spam folder."
+msgstr "Vänligen bekräfta registreringen genom att klicka på länken i mejlet. Om du inte mottagit ett mejl inom 10 minuter, titta efter i mappen för skräppost. "
+
+msgid "Register for an account"
+msgstr "Skapa ett konto"
+
+msgid "Registration"
+msgstr "Anmälan"
+
+msgid "Username already exists. Please choose a different username."
+msgstr "Användarnamnet finns redan. Vänligen välj ett annat användarnamn."
+
+msgid "Don't use spaces or special characters"
+msgstr "Använd inte mellanrum eller specialtecken"
+
+msgid "Repeat password"
+msgstr "Upprepa lösenord"
+
+msgid "Sign-up"
+msgstr "Skapa konto"
+
+msgid "This field is required."
+msgstr "Detta fält är nödvändigt."
+
+msgid ""
+"Enter a valid username. This value may contain only letters, numbers and "
+"@/./+/-/_ characters."
+msgstr "Ange ett giltigt användarnamn. Det får endast bestå av bokstäver, siffror och följande tecken: @/./+/-/_. "
+
+msgid "A user with that username already exists."
+msgstr "Det finns redan en användare med det här användarnamnet."
+
+msgid "The two password fields didn't match."
+msgstr "De två lösenordsfälten stämmer inte överens."
+
+msgid "English"
+msgstr "Engelska"
+
+msgid "German"
+msgstr "Tyska"
+
+msgid "Greek"
+msgstr ""
+
+msgid "Hungarian"
+msgstr "Ungerska"
+
+msgid "Swedish"
+msgstr "Svenska"

@@ -1,0 +1,32 @@
+{% extends "helpdesk_base.html" %}
+
+{% load i18n %}
+
+{% block helpdesk_content %}
+
+    <ul class="breadcrumb">
+        <li>
+            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+        </li>
+
+        <li class="active">
+            {{ organization.name }}
+        </li>
+
+    </ul>
+
+    <h1>{{ object.name }}</h1>
+
+    <p>{{ object.address }}</p>
+
+    {{ object.contact_info | safe }}
+
+    {{ object.description | safe }}
+
+    <h2>{% trans "Facilities" %}</h2>
+
+    {% for facility in object.facilities.all %}
+        {% include 'partials/compact_facility.html' with facility=facility %}
+    {% endfor %}
+
+{% endblock %}
