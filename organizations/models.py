@@ -1,10 +1,53 @@
 # coding: utf-8
-
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
 from scheduler.models import Shift
+
+
+class Membership(models.Model):
+    related_name = None
+
+    class JoinMode:
+        INVITATION_ONLY, APPROVAL_BY_ADMIN, ANYONE = 0, 1, 2
+        CHOICES = (
+            (INVITATION_ONLY, _(u'by invitation')),
+            (APPROVAL_BY_ADMIN, _(u'anyone (approved by manager)')),
+            (ANYONE, _(u'anyone')),
+        )
+
+    class Status:
+        REJECTED, PENDING, APPROVED = 0, 1, 2
+        CHOICES = (
+            (REJECTED, _(u'rejected')),
+            (PENDING, _(u'pending')),
+            (APPROVED, _(u'approved')),
+        )
+
+    class Roles:
+        ADMIN, MANAGER, MEMBER = 0, 1, 2
+        CHOICES = (
+            (ADMIN, _(u'admin')),
+            (MANAGER, _(u'manager')),
+            (MEMBER, _(u'member')),
+        )
+
+    role = models.PositiveSmallIntegerField(choices=Roles.CHOICES,
+                                            default=Roles.MEMBER,
+                                            verbose_name=_(u'role'))
+
+    status = models.PositiveSmallIntegerField(choices=Status.CHOICES,
+                                              default=Status.APPROVED,
+                                              verbose_name=_(u'status'))
+
+    user_account = models.ForeignKey(UserAccount,
+                                     verbose_name=_(u'user account'),
+                                     related_name=related_name)
+
+    class Meta:
+        abstract = True
 
 
 class Organization(models.Model):
@@ -27,8 +70,18 @@ class Organization(models.Model):
 
     # users associated with this organization
     # ie. members, admins, admins
-    members = models.ManyToManyField(UserAccount,
-                                     through='organizations.OrganizationMembership')
+    members = models.ManyToManyField(
+        UserAccount,
+        through='organizations.OrganizationMembership'
+    )
+
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    join_mode = models.PositiveSmallIntegerField(
+        choices=Membership.JoinMode.CHOICES,
+        default=Membership.JoinMode.INVITATION_ONLY,
+        verbose_name=_(u'join mode'),
+        help_text=_(u'Who can join this organization?'))
 
     class Meta:
         verbose_name = _(u'organization')
@@ -37,6 +90,10 @@ class Organization(models.Model):
 
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
+
+    def get_absolute_url(self):
+        return reverse('organization',
+                       args=[self.slug])
 
 
 class Facility(models.Model):
@@ -88,6 +145,14 @@ class Facility(models.Model):
     longitude = models.CharField(max_length=30, blank=True,
                                  verbose_name=_('longitude'))
 
+    slug = models.SlugField(verbose_name=_(u'slug'))
+
+    join_mode = models.PositiveSmallIntegerField(
+        choices=Membership.JoinMode.CHOICES,
+        default=Membership.JoinMode.INVITATION_ONLY,
+        verbose_name=_(u'join mode'),
+        help_text=_(u'Who can join this facility?'))
+
     class Meta:
         verbose_name = _(u'facility')
         verbose_name_plural = _(u'facilities')
@@ -95,7 +160,8 @@ class Facility(models.Model):
 
     @property
     def address_line(self):
-        return self.address.replace("\n", ", ").strip()
+        return ', '.join(
+            filter(None, map(lambda s: s.strip(), self.address.splitlines())))
 
     # TODO: Could this be implemented in a more optimized way?
     @property
@@ -105,28 +171,9 @@ class Facility(models.Model):
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
 
-
-class Membership(models.Model):
-    related_name = None
-
-    class Roles:
-        ADMIN, MANAGER, MEMBER = 0, 1, 2
-        CHOICES = (
-            (ADMIN, _(u'admin')),
-            (MANAGER, _(u'manager')),
-            (MEMBER, _(u'member')),
-        )
-
-    role = models.PositiveIntegerField(choices=Roles.CHOICES,
-                                       default=Roles.MEMBER,
-                                       verbose_name=_(u'role'))
-
-    user_account = models.ForeignKey(UserAccount,
-                                     verbose_name=_(u'user account'),
-                                     related_name=related_name)
-
-    class Meta:
-        abstract = True
+    def get_absolute_url(self):
+        return reverse('facility',
+                       args=[self.organization.slug, self.slug])
 
 
 class OrganizationMembership(Membership):

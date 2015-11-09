@@ -48,6 +48,7 @@ THIRD_PARTY_APPS = (
 
     'accounts.apps.RegistrationConfig',
     'rest_framework',
+    'django_ajax'
 )
 
 LOCAL_APPS = (

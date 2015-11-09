@@ -34,7 +34,7 @@ class ShiftTemplate(models.Model):
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
     task = models.ForeignKey('organizations.Task',
-                             verbose_name=_(u'task'),)
+                             verbose_name=_(u'task'), )
 
     workplace = models.ForeignKey('organizations.Workplace',
                                   verbose_name=_(u'workplace'),
@@ -50,8 +50,12 @@ class ShiftTemplate(models.Model):
     days = models.PositiveIntegerField(verbose_name=_(u'days'),
                                        default=0)
 
-    objects = managers.ShiftTemplateManager()
+    members_only = models.BooleanField(default=False,
+                                       verbose_name=_(u'members only'),
+                                       help_text=_(
+                                           u'allow only members to help'))
 
+    objects = managers.ShiftTemplateManager()
 
     class Meta:
         ordering = ('schedule_template',)

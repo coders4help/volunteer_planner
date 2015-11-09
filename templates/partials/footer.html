@@ -2,21 +2,22 @@
 <footer class="footer">
     <div class="container">
         <p class="text-muted text-center">
+
+            <a href="{% url 'home' %}">{% trans "Main page" %}</a> &bullet;
+            <a href="/impressum/">{% trans "Imprint" %}</a> &bullet;
+            <a href="/about/">{% trans "About" %}</a> &bullet;
+            <a href="/unterstuetzer/">{% trans "Supporter" %}</a> &bullet;
+            <a href="/presse/">{% trans "Press" %}</a> &bullet;
+            <a href="/kontakt/">{% trans "Contact" %}</a> &bullet;
+            <a href="/faq-new/">{% trans "F.A.Q." %}</a> &bullet;
             &copy; 2015 volunteer-planner.org &bullet;
-            <a href="https://github.com/volunteer-planner/volunteer_planner">GitHub</a> &bullet;
+            <a href="https://github.com/coders4help/volunteer_planner">GitHub</a> &bullet;
 
 
             {% blocktrans trimmed with mailto_link='<a href="mailto:support@volunteer-planner.org">support@volunteer-planner.org</a>' %}
                 Questions? Get in touch: {{ mailto_link }}
             {% endblocktrans %}
 
-            {% comment %}
-                {# TODO #}
-                <a href="#">{% trans "Imprint" %}</a> &bullet;
-                <a href="#">{% trans "Terms of Service" %}</a> &bullet;
-                <a href="#">{% trans "Contact" %}</a> &bullet;
-                <a href="#">{% trans "F.A.Q." %}</a>
-            {% endcomment %}
         </p>
     </div>
 </footer>

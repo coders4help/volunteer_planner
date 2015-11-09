@@ -1,5 +1,5 @@
 {% extends "admin/change_form.html" %}
-{% load i18n l10n admin_urls staticfiles %}
+{% load vpfilters i18n l10n admin_urls staticfiles %}
 
 {% block breadcrumbs %}
     <div class="breadcrumbs">
@@ -19,9 +19,11 @@
     <div id="content-main">
 
     <h2>
-    {% blocktrans trimmed with localized_date=selected_date|localize facility_name=schedule_template.facility.name %}
-        Please review and confirm shifts to create on {{ localized_date }} for {{ facility_name }}
-    {% endblocktrans %}
+        {% trans "Please review and confirm shifts to create" %}:
+    </h2>
+    <h2>
+        {{ selected_date|date }}<br/>
+        {{ schedule_template.facility.name }}
     </h2>
 
     <form method="post">
@@ -40,12 +42,7 @@
         {% trans "workplace" as workplace_trans %}
         {% trans "starting time" as starting_trans %}
         {% trans "ending time" as ending_trans %}
-
-        <h3>
-
-
-
-        </h3>
+        {% trans "members only" as members_only_trans %}
 
         {% regroup combined_shifts by task as shifts_by_task %}
 
@@ -71,6 +68,7 @@
                     </tr>
                     <tr>
                         <th></th>
+                        <th> {{ members_only_trans|title }}</th>
                         <th> {{ num_trans|title }}</th>
                         <th> {{ task_trans|title }}</th>
                         <th> {{ workplace_trans|title }}</th>
@@ -85,11 +83,10 @@
                             <tr style="background-color:
                                     {{ is_template|yesno:"#EEFFEE,#FFFDD9" }};">
                                 <td>
-                                    {% if is_template %}
-                                        <strong>&rarr;</strong>
-                                    {% else %}
-
-                                    {% endif %}
+                                    {{ is_template|yes:"<strong>&rarr;</strong>" }}
+                                </td>
+                                <td>
+                                    {{ shift.members_only|yes:members_only_trans|title }}
                                 </td>
                                 <td>
                                     {% if not is_template %}
