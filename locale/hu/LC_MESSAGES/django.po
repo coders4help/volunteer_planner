@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-08 23:26+0100\n"
-"PO-Revision-Date: 2015-11-08 22:26+0000\n"
+"POT-Creation-Date: 2015-11-10 18:15+0100\n"
+"PO-Revision-Date: 2015-11-10 17:15+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -660,6 +660,15 @@ msgstr ""
 msgid "{name}"
 msgstr ""
 
+msgid "disabled"
+msgstr ""
+
+msgid "enabled (collapsed)"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
 msgid "place"
 msgstr "hely"
 
@@ -674,6 +683,9 @@ msgstr "szélességi fok"
 
 msgid "longitude"
 msgstr "hosszúsági fok"
+
+msgid "timeline"
+msgstr ""
 
 msgid "Who can join this facility?"
 msgstr ""
@@ -717,22 +729,6 @@ msgid "tasks"
 msgstr ""
 
 #, python-format
-msgid "Members in %(facility)s"
-msgstr ""
-
-msgid "Role"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Block"
-msgstr ""
-
-msgid "Accept"
-msgstr ""
-
-#, python-format
 msgid "Hello %(username)s,"
 msgstr ""
 
@@ -754,6 +750,28 @@ msgid "Open Shifts"
 msgstr ""
 
 msgid "News"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "You are not allowed to do this."
+msgstr ""
+
+#, python-format
+msgid "Members in %(facility)s"
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "Accept"
 msgstr ""
 
 msgid "Facilities"
@@ -864,6 +882,9 @@ msgstr ""
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
 msgstr "%(schedule_date)s beosztás"
+
+msgid "Toggle Timeline"
+msgstr ""
 
 msgid "Link"
 msgstr ""

@@ -162,7 +162,7 @@ class Facility(models.Model):
     timeline_enabled = models.PositiveSmallIntegerField(
         choices=TimelineViewMode.CHOICES,
         default=TimelineViewMode.COLLAPSED,
-        verbose_name=_(u'Schedule View'))
+        verbose_name=_(u'timeline'))
 
     join_mode = models.PositiveSmallIntegerField(
         choices=Membership.JoinMode.CHOICES,
