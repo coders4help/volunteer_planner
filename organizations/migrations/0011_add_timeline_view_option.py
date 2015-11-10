@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='facility',
             name='timeline_enabled',
-            field=models.PositiveSmallIntegerField(default=1, verbose_name='Schedule View', choices=[(0, 'disabled'), (1, 'enabled (collapsed)'), (2, 'enabled')]),
+            field=models.PositiveSmallIntegerField(default=1, verbose_name='timeline', choices=[(0, 'disabled'), (1, 'enabled (collapsed)'), (2, 'enabled')]),
         ),
     ]
