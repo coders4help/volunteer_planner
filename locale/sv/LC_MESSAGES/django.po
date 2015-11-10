@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-08 23:26+0100\n"
-"PO-Revision-Date: 2015-11-08 22:26+0000\n"
+"POT-Creation-Date: 2015-11-10 18:15+0100\n"
+"PO-Revision-Date: 2015-11-10 17:15+0000\n"
 "Last-Translator: Christoph\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -657,6 +657,15 @@ msgstr "Organisationer"
 msgid "{name}"
 msgstr "{name}"
 
+msgid "disabled"
+msgstr ""
+
+msgid "enabled (collapsed)"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
 msgid "place"
 msgstr "Plats"
 
@@ -671,6 +680,9 @@ msgstr "Latitud"
 
 msgid "longitude"
 msgstr "Longitud"
+
+msgid "timeline"
+msgstr ""
 
 msgid "Who can join this facility?"
 msgstr ""
@@ -714,22 +726,6 @@ msgid "tasks"
 msgstr "Uppgifter"
 
 #, python-format
-msgid "Members in %(facility)s"
-msgstr ""
-
-msgid "Role"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Block"
-msgstr ""
-
-msgid "Accept"
-msgstr ""
-
-#, python-format
 msgid "Hello %(username)s,"
 msgstr ""
 
@@ -752,6 +748,28 @@ msgstr "Lediga pass"
 
 msgid "News"
 msgstr "Nyheter"
+
+msgid "Error"
+msgstr ""
+
+msgid "You are not allowed to do this."
+msgstr ""
+
+#, python-format
+msgid "Members in %(facility)s"
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
 
 msgid "Facilities"
 msgstr "Boenden"
@@ -861,6 +879,9 @@ msgstr ""
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
 msgstr "Schema för %(schedule_date)s"
+
+msgid "Toggle Timeline"
+msgstr ""
 
 msgid "Link"
 msgstr ""
