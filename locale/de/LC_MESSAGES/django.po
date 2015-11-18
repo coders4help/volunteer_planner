@@ -1235,7 +1235,7 @@ msgid "Your volunteer-planner.org registration"
 msgstr "Dein Benutzeraccount bei volunteer-planner.org"
 
 msgid "Your username and password didn't match. Please try again."
-msgstr "Benutzername und Passort ungültig. Bitte versuche es erneut."
+msgstr "Benutzername und Passwort ungültig. Bitte versuche es erneut."
 
 msgid "Password"
 msgstr "Passwort"
@@ -1311,7 +1311,7 @@ msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
 msgid "No Problem! We'll send you instructions on how to reset your password."
-msgstr "Kein Problem! Wir schicken Dir eine E-Mail mit der Anleitung wie Du Dein Passort zurücksetzen kannst."
+msgstr "Kein Problem! Wir schicken Dir eine E-Mail mit der Anleitung wie Du Dein Passwort zurücksetzen kannst."
 
 msgid "Activation email sent"
 msgstr "Aktivierungsemail wurde versandt"
