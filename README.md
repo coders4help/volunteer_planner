@@ -184,11 +184,14 @@ the superuser you created earlier (in case you don't see an error page here).
 
 ### Create Dummy Data
 
-Run management command " python manage.py create_dummy_data 5 --flush True " with activated virtualenv to get 5 days of 
-dummy data and delete tables in advance.
+Run management command
+
+    ./manage.py create_dummy_data 5 --flush True
+
+with activated virtualenv to get 5 days of dummy data and delete tables in advance.
 
 The number (5 in the above example) creates 5 days dummy data count from today.
-If you just use "python manage.py create_dummy_data 5" without --flush it is NOT deleting data before putting new data in.
+If you just use `./manage.py create_dummy_data 5` without `--flush` it is NOT deleting data before putting new data in.
 
 ### Running Tests
 
