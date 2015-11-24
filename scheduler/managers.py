@@ -11,7 +11,7 @@ from places import models as place_models
 class ShiftQuerySet(models.QuerySet):
     def on_shiftdate(self, shiftdate):
         next_day = datetime.combine(shiftdate + timedelta(days=1), time.min)
-        return self.filter(starting_time__gte=shiftdate,
+        return self.filter(ending_time__gte=shiftdate,
                            starting_time__lt=next_day)
 
     def at_place(self, place):
