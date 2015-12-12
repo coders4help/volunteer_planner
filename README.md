@@ -115,6 +115,10 @@ or, if you intend to use MySQL locally, install
 *Note*: `/path/to/volunteer_planner.git` means the path of your local clone of the 
 GitHub project. Replace it accordingly with the actual path.
 
+Install DjangoAjax
+
+    pip install djangoajax
+
 #### 2.3 Setup your virtualenv `postactivate` hook (optional)
 
 This step is optional but recommended. 
