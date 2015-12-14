@@ -10,13 +10,11 @@ from organizations.models import Membership
 
 
 def approve_all(apps, _):
-    OrganizationMembership = apps.get_model('organizations',
-                                            'OrganizationMembership')
-    FacilityMembership = apps.get_model('organizations',
-                                        'FacilityMembership')
+    organizationMembershipModel = apps.get_model('organizations', 'OrganizationMembership')
+    facilityMembershipModel = apps.get_model('organizations', 'FacilityMembership')
 
-    OrganizationMembership.objects.update(status=Membership.Status.APPROVED)
-    FacilityMembership.objects.update(status=Membership.Status.APPROVED)
+    organizationMembershipModel.objects.update(status=Membership.Status.APPROVED)
+    facilityMembershipModel.objects.update(status=Membership.Status.APPROVED)
 
 
 class Migration(migrations.Migration):

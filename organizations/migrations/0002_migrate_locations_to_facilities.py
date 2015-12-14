@@ -5,10 +5,10 @@ from django.db import migrations
 
 
 def migrate_locations(apps, schema_editor):
-    Location = apps.get_model('scheduler', 'Location')
-    Organization = apps.get_model('organizations', 'Organization')
-    Facility = apps.get_model('organizations', 'Facility')
-    Need = apps.get_model('scheduler', 'Need')
+    locationModel = apps.get_model('scheduler', 'Location')
+    organizationModel = apps.get_model('organizations', 'Organization')
+    facilityModel = apps.get_model('organizations', 'Facility')
+    needModel = apps.get_model('scheduler', 'Need')
 
     def merged_address(location):
         return u"{}\n{}".format(location.street,
@@ -16,7 +16,7 @@ def migrate_locations(apps, schema_editor):
                                                 location.city).strip())
 
     def make_org_from_location(location):
-        org = Organization()
+        org = organizationModel()
         org.id = location.id
         org.name = location.name
         org.short_description = ""
@@ -27,10 +27,10 @@ def migrate_locations(apps, schema_editor):
         org.save()
         return org
 
-    for location in Location.objects.all():
+    for location in locationModel.objects.all():
 
         org = make_org_from_location(location)
-        facility = Facility()
+        facility = facilityModel()
         facility.id = location.id
         facility.organization = org
         facility.name = location.name
@@ -45,7 +45,7 @@ def migrate_locations(apps, schema_editor):
         facility.show_on_map = facility.latitude and facility.longitude
         facility.save()
 
-    for need in Need.objects.all():
+    for need in needModel.objects.all():
 
         need.facility_id = need.location_id
         need.save()

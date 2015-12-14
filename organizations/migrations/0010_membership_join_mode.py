@@ -8,14 +8,12 @@ from organizations.models import Membership
 
 
 def add_default_join_mode(apps, _):
-    OrganizationMembership = apps.get_model('organizations',
-                                            'OrganizationMembership')
+    organizationMembershipModel = apps.get_model('organizations', 'OrganizationMembership')
 
-    FacilityMembership = apps.get_model('organizations',
-                                        'FacilityMembership')
+    facilityMembershipModel = apps.get_model('organizations', 'FacilityMembership')
 
-    OrganizationMembership.objects.update(status=Membership.Status.APPROVED)
-    FacilityMembership.objects.update(status=Membership.Status.APPROVED)
+    organizationMembershipModel.objects.update(status=Membership.Status.APPROVED)
+    facilityMembershipModel.objects.update(status=Membership.Status.APPROVED)
 
 
 class Migration(migrations.Migration):
