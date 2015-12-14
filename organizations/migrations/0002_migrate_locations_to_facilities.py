@@ -50,6 +50,7 @@ def migrate_locations(apps, schema_editor):
         need.facility_id = need.location_id
         need.save()
 
+
 def skip(_, __):
     pass
 

@@ -70,7 +70,7 @@ LOCAL_APPS = (
     'content'
 )
 
-INSTALLED_APPS = DJANGO_APPS +  LOCAL_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

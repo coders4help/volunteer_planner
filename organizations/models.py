@@ -96,9 +96,6 @@ class Organization(models.Model):
                        args=[self.slug])
 
 
-
-
-
 class Facility(models.Model):
 
     class TimelineViewMode:
@@ -174,8 +171,6 @@ class Facility(models.Model):
         verbose_name = _(u'facility')
         verbose_name_plural = _(u'facilities')
         ordering = ('organization', 'place', 'name',)
-
-
 
     @property
     def address_line(self):

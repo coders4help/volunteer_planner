@@ -15,7 +15,6 @@ class UserAccountAdmin(admin.ModelAdmin):
     get_user_first_name.short_description = _(u'first name')
     get_user_first_name.admin_order_field = 'user__first_name'
 
-
     def get_user_last_name(self, obj):
         return obj.user.last_name
 

@@ -26,6 +26,7 @@ def migrate_topics(apps, schema_editor):
         shift.task = task
         shift.save()
 
+
 def skip(_, __):
     pass
 
