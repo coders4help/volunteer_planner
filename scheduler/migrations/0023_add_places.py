@@ -6,25 +6,25 @@ from django.utils.text import slugify
 
 
 def add_places(apps, schema_editor):
-    Country = apps.get_model('places', 'Country')
-    Region = apps.get_model('places', 'Region')
-    Area = apps.get_model('places', 'Area')
-    Place = apps.get_model('places', 'Place')
-    Location = apps.get_model('scheduler', 'Location')
+    country_model = apps.get_model('places', 'Country')
+    region_model = apps.get_model('places', 'Region')
+    area_model = apps.get_model('places', 'Area')
+    place_model = apps.get_model('places', 'Place')
+    location_model = apps.get_model('scheduler', 'Location')
 
-    germany, _ = Country.objects.get_or_create(name='Deutschland',
+    germany, _ = country_model.objects.get_or_create(name='Deutschland',
                                                defaults=dict(slug=slugify('Deutschland')))
 
-    for location in Location.objects.all():
+    for location in location_model.objects.all():
 
         city = location.city
-        region, _ = Region.objects.get_or_create(name=city,
+        region, _ = region_model.objects.get_or_create(name=city,
                                                  defaults=dict(slug=slugify(city),
                                                                country=germany))
-        area, _ = Area.objects.get_or_create(name=city,
+        area, _ = area_model.objects.get_or_create(name=city,
                                              defaults=dict(slug=slugify(city),
                                                            region=region))
-        place, _ = Place.objects.get_or_create(name=city,
+        place, _ = place_model.objects.get_or_create(name=city,
                                                defaults=dict(slug=slugify(city),
                                                              area=area))
 
@@ -34,8 +34,8 @@ def add_places(apps, schema_editor):
 
 
 def remove_places(apps, schema_editor):
-    Location = apps.get_model('scheduler', 'Location')
-    for location in Location.objects.all():
+    location_model = apps.get_model('scheduler', 'Location')
+    for location in location_model.objects.all():
         location.city = location.place.name
 
 

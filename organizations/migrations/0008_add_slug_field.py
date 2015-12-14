@@ -9,10 +9,10 @@ from common.migrations import skip
 
 
 def add_slugs(apps, schema_editor):
-    Organization = apps.get_model('organizations', 'Organization')
-    Facility = apps.get_model('organizations', 'Facility')
+    organization_model = apps.get_model('organizations', 'Organization')
+    facility_model = apps.get_model('organizations', 'Facility')
 
-    for model in (Organization, Facility):
+    for model in (organization_model, facility_model):
         for instance in model.objects.all():
             instance.slug = slugify(instance.name)[:80] or slugify('{}'.format(instance.id))
             instance.save()
