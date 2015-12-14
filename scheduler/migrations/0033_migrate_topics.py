@@ -5,22 +5,22 @@ from django.db import migrations
 
 
 def migrate_topics(apps, schema_editor):
-    shiftModel = apps.get_model('scheduler', 'Shift')
-    workplaceModel = apps.get_model('organizations', 'Workplace')
-    taskModel = apps.get_model('organizations', 'Task')
+    Shift = apps.get_model('scheduler', 'Shift')
+    Workplace = apps.get_model('organizations', 'Workplace')
+    Task = apps.get_model('organizations', 'Task')
 
-    for shift in shiftModel.objects.select_related('topic', 'facility'):
+    for shift in Shift.objects.select_related('topic', 'facility'):
         facility = shift.facility
         topic = shift.topic
 
         if shift.topic.workplace:
-            workplace, _ = workplaceModel.objects.get_or_create(
+            workplace, _ = Workplace.objects.get_or_create(
                 facility=facility,
                 name=topic.workplace)
             shift.workplace = workplace
 
         defaults = dict(description=topic.description)
-        task, _ = taskModel.objects.get_or_create(facility=facility,
+        task, _ = Task.objects.get_or_create(facility=facility,
                                              name=topic.title,
                                              defaults=defaults)
         shift.task = task
