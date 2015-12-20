@@ -1,0 +1,17 @@
+{% extends "base_non_logged_in.html" %}
+{% load i18n %}
+
+{% block title %} Volunteer Planner - {% trans "Server error" %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+		<h1>{% trans "Server Error <em>(500)</em>" %}</h1>
+		<p>
+		{% blocktrans trimmed %}
+			There's been an error. It's been reported to the site administrators via 
+			email and should be fixed shortly. Thanks for your patience.
+		{% endblocktrans %}
+		</p>
+        </div>
+    </div>
+{% endblock %}
