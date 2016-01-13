@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'api',
     'google_tools',
+    'osm_tools',
     'accounts.apps.AccountsConfig',
     'organizations',
     'common',

@@ -32,7 +32,7 @@
 
 {% endblock %}
 
-{% load google_links i18n %}
+{% load osm_links i18n %}
 {% block content %}
 
         <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
@@ -63,7 +63,7 @@
                                         <div class="col-md-8">
                                             <h5>
                                                 {{ facility.address_line }}
-                                                <a target="_blank" ng-href="{{ facility.google_maps_link }}">→ Google Maps</a>
+                                                <a target="_blank" ng-href="{{ facility.osm_link }}">→ Show on map</a>
                                             </h5>
                                             <p ng-bind-html="facility.description"></p>
                                             <a ng-href="{{ facility.url }}">{% endverbatim %}{% trans "Show details" %}{% verbatim %}</a>
