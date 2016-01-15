@@ -15,7 +15,9 @@
         {% endif %}
 
         {% for shifts in shifts_today %}
-            <li class="list-group-item list-group-item-info">{{ shifts.shift }}</li>
+            <li class="list-group-item list-group-item-info">{{ shifts.shift }}
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+            </li>
         {% endfor %}
     </ul>
 
@@ -27,7 +29,9 @@
         {% endif %}
 
         {% for shifts in shifts_tomorrow %}
-            <li class="list-group-item list-group-item-info">{{ shifts.shift }}</li>
+            <li class="list-group-item list-group-item-info">{{ shifts.shift }}
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+            </li>
         {% endfor %}
     </ul>
 
@@ -39,7 +43,9 @@
         {% endif %}
 
         {% for shifts in shifts_day_after_tomorrow %}
-            <li class="list-group-item list-group-item-info">{{ shifts.shift }}</li>
+            <li class="list-group-item list-group-item-info">{{ shifts.shift }}
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+            </li>
         {% endfor %}
     </ul>
 
@@ -51,7 +57,10 @@
         {% endif %}
 
         {% for shifts in shifts_further_future %}
-            <li class="list-group-item list-group-item-info">{{ shifts.shift }}</li>
+            <li class="list-group-item list-group-item-info">{{ shifts.shift }}
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+            </li>
+
         {% endfor %}
     </ul>
     <a href="{% url 'shift_list_done' %}" class="btn btn-default">{% trans 'Show my work shifts in the past' %}</a>
