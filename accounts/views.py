@@ -71,7 +71,7 @@ def shift_list_done(request):
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
-    shifts_past =shifthelper.filter(shift__ending_time__lt=date.today()).order_by("shift__starting_time")
+    shifts_past =shifthelper.filter(shift__ending_time__lt=date.today()).order_by("shift__starting_time").reverse()
 
     return render(request, 'shift_list_done.html', {'user': user,
                                                     'shifts_past': shifts_past})
