@@ -91,16 +91,25 @@ def shift_list_active(request):
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
-    shifts_today = shifthelper.filter(shift__ending_time__day=date.today().day)
-    shifts_tomorrow = shifthelper.filter(shift__ending_time__day=date.today().day+1)
-    shifts_day_after_tomorrow = shifthelper.filter(shift__ending_time__day=date.today().day+2)
-    shifts_further_future = shifthelper.filter(shift__ending_time__gt=date.today() + timedelta(days=3))
-
+    shifts_today = shifthelper\
+        .filter(shift__starting_time__day=date.today().day)\
+        .order_by("shift__starting_time")
+    shifts_tomorrow = shifthelper\
+        .filter(shift__starting_time__day=date.today().day+1)\
+        .order_by("shift__starting_time")
+    shifts_day_after_tomorrow = shifthelper\
+        .filter(shift__starting_time__day=date.today().day+2)\
+        .order_by("shift__starting_time")
+    shifts_further_future = shifthelper\
+        .filter(shift__starting_time__gt=date.today() + timedelta(days=3))\
+        .order_by("shift__starting_time")
+        
     return render(request, 'shift_list.html', {'user': user,
                                                'shifts_today': shifts_today,
                                                'shifts_tomorrow': shifts_tomorrow,
                                                'shifts_day_after_tomorrow': shifts_day_after_tomorrow,
                                                'shifts_further_future': shifts_further_future})
+
 
 @login_required()
 def shift_list_done(request):
@@ -112,7 +121,7 @@ def shift_list_done(request):
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
-    shifts_past =shifthelper.filter(shift__ending_time__lt=date.today())
+    shifts_past =shifthelper.filter(shift__ending_time__lt=date.today()).order_by("shift__starting_time")
 
     return render(request, 'shift_list_done.html', {'user': user,
                                                     'shifts_past': shifts_past})
