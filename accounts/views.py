@@ -45,7 +45,7 @@ def account_delete_final(request):
     user.username = random_string()
     user.first_name = "Deleted"
     user.last_name = "User"
-    request.user.email = random_string(24)+"@yy.yy"
+    user.email = random_string(24)+"@yy.yy"
     user.password = random_string(20)
     user.is_active = False
     user.save()
