@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block body_class %}helpdesk{% endblock %}
+
+{% block content %}
+<div class="col-md-8 col-md-offset-2">
+
+    <ul class="list-group">
+        {% if shifts_past.count > 0  %}
+            {% trans 'My work shifts in the past:' %}
+        {% else %}
+            {% trans 'No work shifts in the past days yet.' %}
+        {% endif %}
+
+        {% for shifts in shifts_past %}
+            <li class="list-group-item list-group-item-info">{{ shifts.shift }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'shift_list_active' %}" class="btn btn-default">{% trans 'Show my work shifts in the future' %}</a>
+</div>
+{% endblock %}
