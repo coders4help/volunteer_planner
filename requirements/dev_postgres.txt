@@ -1,2 +1,2 @@
 -r dev.txt
-MySQL-python==1.2.5
+psycopg2==2.6.1
