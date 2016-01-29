@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-27 21:07+0100\n"
+"POT-Creation-Date: 2016-01-29 09:22+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -37,33 +37,110 @@ msgstr ""
 msgid "user accounts"
 msgstr ""
 
+#: accounts/templates/shift_list.html:12
+msgid "My shifts today:"
+msgstr ""
+
+#: accounts/templates/shift_list.html:14
+msgid "No shifts today."
+msgstr ""
+
+#: accounts/templates/shift_list.html:19 accounts/templates/shift_list.html:33
+#: accounts/templates/shift_list.html:47 accounts/templates/shift_list.html:61
+msgid "Show this work shift"
+msgstr ""
+
+#: accounts/templates/shift_list.html:26
+msgid "My shifts tomorrow:"
+msgstr ""
+
+#: accounts/templates/shift_list.html:28
+msgid "No shifts tomorrow."
+msgstr ""
+
+#: accounts/templates/shift_list.html:40
+msgid "My shifts the day after tomorrow:"
+msgstr ""
+
+#: accounts/templates/shift_list.html:42
+msgid "No shifts the day after tomorrow."
+msgstr ""
+
+#: accounts/templates/shift_list.html:54
+msgid "Further shifts:"
+msgstr ""
+
+#: accounts/templates/shift_list.html:56
+msgid "No further shifts."
+msgstr ""
+
+#: accounts/templates/shift_list.html:66
+msgid "Show my work shifts in the past"
+msgstr ""
+
+#: accounts/templates/shift_list_done.html:12
+msgid "My work shifts in the past:"
+msgstr ""
+
+#: accounts/templates/shift_list_done.html:14
+msgid "No work shifts in the past days yet."
+msgstr ""
+
+#: accounts/templates/shift_list_done.html:21
+msgid "Show my work shifts in the future"
+msgstr ""
+
+#: accounts/templates/user_account_delete.html:10
+#: accounts/templates/user_detail.html:10
+#: organizations/templates/manage_members.html:64
+#: templates/registration/login.html:23
+#: templates/registration/registration_form.html:35
+msgid "Username"
+msgstr ""
+
+#: accounts/templates/user_account_delete.html:11
+#: accounts/templates/user_detail.html:11
+msgid "First name"
+msgstr ""
+
+#: accounts/templates/user_account_delete.html:12
+#: accounts/templates/user_detail.html:12
+msgid "Last name"
+msgstr ""
+
+#: accounts/templates/user_account_delete.html:13
+#: accounts/templates/user_detail.html:13
+#: templates/registration/registration_form.html:23
+msgid "Email"
+msgstr ""
+
+#: accounts/templates/user_account_delete.html:15
+msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
+msgstr ""
+
+#: accounts/templates/user_account_delete.html:16
+msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
+msgstr ""
+
+#: accounts/templates/user_account_delete.html:18
+msgid "Delete Account (no additional warning)"
+msgstr ""
+
 #: accounts/templates/user_account_edit.html:12
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save"
 msgstr ""
 
-#: accounts/templates/user_detail.html:10
-#: organizations/templates/manage_members.html:64
-#: templates/registration/login.html:23
-#: templates/registration/registration_form.html:33
-msgid "Username"
-msgstr ""
-
-#: accounts/templates/user_detail.html:11
-msgid "First name"
-msgstr ""
-
-#: accounts/templates/user_detail.html:12
-msgid "Last name"
-msgstr ""
-
-#: accounts/templates/user_detail.html:13
-#: templates/registration/registration_form.html:21
-msgid "Email"
-msgstr ""
-
 #: accounts/templates/user_detail.html:16
 msgid "Edit Account"
+msgstr ""
+
+#: accounts/templates/user_detail.html:17
+msgid "Delete Account"
+msgstr ""
+
+#: accounts/templates/user_detail_deleted.html:6
+msgid "Your user account has been deleted."
 msgstr ""
 
 #: content/admin.py:15 content/admin.py:16 content/models.py:15
@@ -137,18 +214,6 @@ msgstr ""
 
 #: content/templates/flatpages/default.html:23
 msgid "Edit this page"
-msgstr ""
-
-#: google_tools/templatetags/google_links.py:17
-#, python-brace-format
-msgctxt "maps search url pattern"
-msgid "https://www.google.com/maps/place/{location}"
-msgstr ""
-
-#: google_tools/templatetags/google_links.py:27
-#, python-brace-format
-msgctxt "maps directions url pattern"
-msgid "https://www.google.com/maps/dir/{departure}/{destination}/"
 msgstr ""
 
 #: news/models.py:17
@@ -751,12 +816,12 @@ msgstr ""
 msgid "Helpdesk"
 msgstr ""
 
-#: organizations/templates/facility.html:42
+#: organizations/templates/facility.html:41
 #: organizations/templates/partials/compact_facility.html:31
 msgid "Open Shifts"
 msgstr ""
 
-#: organizations/templates/facility.html:51
+#: organizations/templates/facility.html:50
 #: scheduler/templates/helpdesk.html:71
 msgid "News"
 msgstr ""
@@ -803,6 +868,12 @@ msgstr ""
 
 #: organizations/views.py:122
 msgid "volunteer-planner.org: Membership approved"
+msgstr ""
+
+#: osm_tools/templatetags/osm_links.py:17
+#, python-brace-format
+msgctxt "maps search url pattern"
+msgid "https://www.openstreetmap.org/search?query={location}"
 msgstr ""
 
 #: places/models.py:69 places/models.py:84
@@ -899,7 +970,7 @@ msgid "shift helpers"
 msgstr ""
 
 #: scheduler/templates/geographic_helpdesk.html:69
-msgid "Show on Google Maps"
+msgid "Show on map"
 msgstr ""
 
 #: scheduler/templates/geographic_helpdesk.html:81
@@ -1280,15 +1351,19 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:50
+#: templates/partials/navigation_bar.html:51
+msgid "My work shifts"
+msgstr ""
+
+#: templates/partials/navigation_bar.html:56
 msgid "Help"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:53
+#: templates/partials/navigation_bar.html:59
 msgid "Logout"
 msgstr ""
 
-#: templates/partials/navigation_bar.html:57
+#: templates/partials/navigation_bar.html:63
 msgid "Admin"
 msgstr ""
 
@@ -1379,7 +1454,7 @@ msgid "Your username and password didn't match. Please try again."
 msgstr ""
 
 #: templates/registration/login.html:26
-#: templates/registration/registration_form.html:42
+#: templates/registration/registration_form.html:44
 msgid "Password"
 msgstr ""
 
@@ -1499,32 +1574,36 @@ msgstr ""
 msgid "Register for an account"
 msgstr ""
 
-#: templates/registration/registration_form.html:8
-msgid "Registration"
+#: templates/registration/registration_form.html:5
+msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
 msgstr ""
 
-#: templates/registration/registration_form.html:24
+#: templates/registration/registration_form.html:10
+msgid "Create a new account"
+msgstr ""
+
+#: templates/registration/registration_form.html:26
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-#: templates/registration/registration_form.html:29
+#: templates/registration/registration_form.html:31
 msgid "Username already exists. Please choose a different username."
 msgstr ""
 
-#: templates/registration/registration_form.html:36
+#: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
 
-#: templates/registration/registration_form.html:49
+#: templates/registration/registration_form.html:51
 #: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: templates/registration/registration_form.html:52
+#: templates/registration/registration_form.html:54
 msgid "Repeat password"
 msgstr ""
 
-#: templates/registration/registration_form.html:58
+#: templates/registration/registration_form.html:60
 msgid "Sign-up"
 msgstr ""
 
@@ -1540,22 +1619,22 @@ msgstr ""
 msgid "A user with that username already exists."
 msgstr ""
 
-#: volunteer_planner/settings/base.py:145
+#: volunteer_planner/settings/base.py:146
 msgid "English"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:146
+#: volunteer_planner/settings/base.py:147
 msgid "German"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:147
+#: volunteer_planner/settings/base.py:148
 msgid "Greek"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:148
+#: volunteer_planner/settings/base.py:149
 msgid "Hungarian"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:149
+#: volunteer_planner/settings/base.py:150
 msgid "Swedish"
 msgstr ""
