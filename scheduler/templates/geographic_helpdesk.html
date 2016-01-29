@@ -1,6 +1,6 @@
 {% extends "helpdesk_base.html" %}
 
-{% load i18n vpfilters google_links %}
+{% load i18n vpfilters osm_links %}
 
 {% block helpdesk_content %}
 
@@ -64,9 +64,9 @@
                                                 <h3>{{ facility.name }}</h3>
                                                 {% if facility.address %}
                                                     <h5>{{ facility.address_line }}
-                                                        <a href="{{ facility.address_line|google_maps_directions }}"
+                                                        <a href="{{ facility.address_line|osm_search }}"
                                                            target="_blank">
-                                                            &rarr; {% trans "Show on Google Maps" %}
+                                                            &rarr; {% trans "Show on map" %}
                                                         </a>
                                                     </h5>
                                                 {% endif %}

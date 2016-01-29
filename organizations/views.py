@@ -15,7 +15,7 @@ from django.views.generic import DetailView
 from django_ajax.decorators import ajax
 
 from accounts.models import UserAccount
-from google_tools.templatetags.google_links import google_maps_directions
+from osm_tools.templatetags.osm_links import osm_search
 from news.models import NewsEntry
 from organizations.admin import filter_queryset_by_membership
 from scheduler.models import Shift
@@ -145,8 +145,7 @@ def get_facility_details(facility, shifts):
         'news': _serialize_news(NewsEntry.objects.filter(facility=facility)),
         'address_line': address_line,
         'contact_info': facility.contact_info,
-        'google_maps_link': google_maps_directions(
-            address_line) if address_line else None,
+        'osm_link': osm_search(address_line) if address_line else None,
         'description': mark_safe(facility.description),
         'area_slug': facility.place.area.slug,
         'shifts': [{

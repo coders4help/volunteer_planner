@@ -230,6 +230,7 @@ class OrganizationAdmin(MembershipFilteredAdmin):
     }
     prepopulated_fields = {'slug': ['name']}
 
+
 @admin.register(models.Facility)
 class FacilityAdmin(MembershipFilteredAdmin):
     def get_short_description(self, obj):
@@ -274,6 +275,7 @@ class FacilityAdmin(MembershipFilteredAdmin):
         'contact_info': CKEditorWidget(),
     }
     prepopulated_fields = {'slug': ['name']}
+
 
 @admin.register(models.OrganizationMembership)
 class OrganizationMembershipAdmin(MembershipFilteredAdmin):

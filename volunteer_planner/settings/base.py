@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'api',
     'google_tools',
+    'osm_tools',
     'accounts.apps.AccountsConfig',
     'organizations',
     'common',
@@ -70,7 +71,7 @@ LOCAL_APPS = (
     'content'
 )
 
-INSTALLED_APPS = DJANGO_APPS +  LOCAL_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

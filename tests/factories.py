@@ -50,15 +50,18 @@ class PlaceFactory(factory.DjangoModelFactory):
 
 
 class OrganizationFactory(factory.DjangoModelFactory):
-    name = "Rathaus W"
+    name = factory.Sequence(lambda n: 'Organization ' + str(n))
+    slug = factory.Sequence(lambda n: 'org_' + str(n))
 
     class Meta:
         model = organization_models.Organization
-        django_get_or_create = ['name', ]
+        django_get_or_create = ['name']
 
 
 class FacilityFactory(factory.DjangoModelFactory):
-    name = "Rathaus W"
+    name = factory.Sequence(lambda n: 'Facility ' + str(n))
+    slug = factory.Sequence(lambda n: 'facility' + str(n))
+
     place = factory.SubFactory(PlaceFactory)
     organization = factory.SubFactory(OrganizationFactory)
 

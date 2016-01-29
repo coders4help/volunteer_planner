@@ -12,9 +12,8 @@ from registration.models import RegistrationProfile
 from django.contrib.auth.models import User
 from accounts.models import UserAccount
 
-from tests.factories import ShiftHelperFactory
 from organizations.models import Facility, Workplace, Task
-from tests.factories import ShiftFactory, FacilityFactory, PlaceFactory
+from tests.factories import ShiftHelperFactory, ShiftFactory, FacilityFactory, PlaceFactory, OrganizationFactory
 from scheduler.models import Shift
 from places.models import Region, Area, Place, Country
 
@@ -84,13 +83,19 @@ class Command(BaseCommand):
         for i in range(0, 10):
             places.append(PlaceFactory.create())
 
+        organizations = list()
+        for i in range(0, 4):
+            organizations.append(OrganizationFactory.create())
+
         # create shifts for number of days
         for day in range(0, options['days'][0]):
             for i in range(2, 23):
+                place = places[random.randint(0, len(places) - 1)]
+                organization = organizations[random.randint(0, len(organizations) - 1)]
                 facility = FacilityFactory.create(
-                    name="Shelter" + str(random.randint(0, 9)),
-                    place=places[random.randint(0, len(places) - 1)],
-                    description=LOREM
+                    description=LOREM,
+                    place=place,
+                    organization=organization
                 )
                 shift = ShiftFactory.create(
                     starting_time=gen_date(hour=i - 1, day=day),

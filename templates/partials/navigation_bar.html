@@ -21,10 +21,7 @@
                 {% include "partials/region_selection.html" %}
 
                 <li>
-                    {% url 'faq' as faq_url %}
-                    <a href="{{ faq_url }}" {% if faq_url in reqeust.path %}class="active"{% endif %}>
-                        {% trans "FAQ" %}
-                    </a>
+                    {% include "partials/faq_link.html" %}
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -49,6 +46,12 @@
                                 {% trans "Account" %}
                             </a>
                         </li>
+                        <li>
+                            <a href="{% url 'shift_list_active' %}">
+                                {% trans "My work shifts" %}
+                            </a>
+                        </li>
+
                         <li>
                             <a href="mailto:support@volunteer-planner.org">{% trans "Help" %}</a>
                         </li>

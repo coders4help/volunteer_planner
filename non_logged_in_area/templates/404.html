@@ -1,0 +1,13 @@
+{% extends 'base_non_logged_in.html' %}
+{% load i18n %}
+
+{% block title %} Volunteer Planner - 404{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+		<h2>{% trans "Page not found" %}</h2>
+		<pre>{{ request_path }}</pre>
+		<p>{% trans "We're sorry, but the requested page could not be found." %}</p>
+        </div>
+    </div>
+{% endblock %}
