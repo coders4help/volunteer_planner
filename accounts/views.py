@@ -16,7 +16,6 @@ from scheduler.models import ShiftHelper
 from accounts.models import UserAccount
 
 
-
 @login_required()
 def user_account_detail(request):
     """
@@ -80,6 +79,7 @@ class AccountDeleteView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
 
 @login_required()
 def shift_list_active(request):

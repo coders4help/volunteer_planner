@@ -11,7 +11,7 @@ ACTIVATED = u"ALREADY_ACTIVATED"
 
 def move_user_needs(apps, schema_editor):
     old_registration_model = apps.get_model("registration_history",
-                                          'OldRegistrationProfile')
+                                            'OldRegistrationProfile')
     user_account_model = apps.get_model("accounts", "UserAccount")
     shift_helper_model = apps.get_model("scheduler", "ShiftHelper")
 

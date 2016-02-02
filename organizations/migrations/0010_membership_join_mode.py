@@ -9,10 +9,10 @@ from organizations.models import Membership
 
 def add_default_join_mode(apps, _):
     organization_membership_model = apps.get_model('organizations',
-                                            'OrganizationMembership')
+                                                   'OrganizationMembership')
 
     facility_membership_model = apps.get_model('organizations',
-                                        'FacilityMembership')
+                                               'FacilityMembership')
 
     organization_membership_model.objects.update(status=Membership.Status.APPROVED)
     facility_membership_model.objects.update(status=Membership.Status.APPROVED)
