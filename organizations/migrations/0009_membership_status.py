@@ -11,9 +11,9 @@ from organizations.models import Membership
 
 def approve_all(apps, _):
     organization_membership_model = apps.get_model('organizations',
-                                            'OrganizationMembership')
+                                                   'OrganizationMembership')
     facility_membership_model = apps.get_model('organizations',
-                                        'FacilityMembership')
+                                               'FacilityMembership')
 
     organization_membership_model.objects.update(status=Membership.Status.APPROVED)
     facility_membership_model.objects.update(status=Membership.Status.APPROVED)
