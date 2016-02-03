@@ -24,12 +24,12 @@ class ExcelRenderer:
                        .format(facility, organization),
                        footer=u'Jedwede Weitergabe der Daten an Dritte ist verboten!\n&F (&P/&N)')
 
-        colnames = [u'#', u'Vorname', u'Nachname',
-                    u'Von', u'Bis', u'ID', u'RK', u'FZ']
-        colwidths = [5, 25, 25,
-                     10, 10, 3, 3, 3]
-        colstyle = [style_right, style_left, style_left,
-                    style_center, style_center, style_center, style_center, style_center]
+        colnames = [u'#', u'Vorname', u'Nachname', u'Von', u'Bis',
+                    u'ID', u'RK', u'FZ', u'Teilnehmer', u'Plätze']
+        colwidths = [5, 25, 25, 10, 10,
+                     3, 3, 3, 12, 12]
+        colstyle = [style_right, style_left, style_left, style_center, style_center,
+                    style_center, style_center, style_center, style_right, style_right]
 
         cur_line = 0
 
@@ -58,6 +58,8 @@ class ExcelRenderer:
             ws.write(cur_line, 0, u'{} - {} ({}/{})'.format(shift.starting_time.strftime(shift_time_full_format),
                                                             shift.ending_time.strftime(end_fmt),
                                                             shift.volunteer_count, shift.slots))
+            ws.write(cur_line, 8, shift.volunteer_count)
+            ws.write(cur_line, 9, shift.slots)
             cur_line += 1
 
             for volunteer in shift.helpers.all():
