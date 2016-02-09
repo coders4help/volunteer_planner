@@ -1139,7 +1139,7 @@ msgstr "Schichtplan für den %(schedule_date)s"
 
 #: scheduler/templates/helpdesk_single.html:185
 msgid "Toggle Timeline"
-msgstr "Zeitstrahl anzeigen"
+msgstr "Zeitstrahl ein-/ausblenden"
 
 #: scheduler/templates/helpdesk_single.html:237
 msgid "Link"
