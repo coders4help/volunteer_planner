@@ -17,9 +17,38 @@ class ExcelRenderer:
     def __init__(self):
         pass
 
+    @staticmethod
+    def get_sheet(wb, name, header=None, footer=None):
+        ws = wb.add_sheet(name)
+        ws.set_panes_frozen(True)
+        ws.set_horz_split_pos(1)
+        ws.set_remove_splits(True)
+        ws.set_show_grid(True)
+        ws.set_print_grid(True)
+        ws.set_portrait(True)
+
+        ws.set_top_margin(1.15)
+        ws.set_bottom_margin(0.6)
+        if header is not None:
+            ws.header_str = header
+        if footer is not None:
+            ws.footer_str = footer
+        return ws
+
+    @staticmethod
+    def write_user_line(ws, cur, i, volunteer, style):
+        first_name = volunteer.user.first_name if volunteer.user.first_name else volunteer.user.username + ': '
+        last_name = volunteer.user.last_name
+        # '-' are supposed to be replaced by indication of user property status, once they're implemented:
+        # "id_verified", "health_card" & "penal clearance certificate"
+        # '' are intentionally empty, it's entering and leaving time fields, filled manually
+        for cidx, val in enumerate([i, first_name, last_name, '', '', '-', '-', '-']):
+            ws.write(cur, cidx, val, style[cidx])
+        ws.row(cur).set_style(style_1cm)
+
     def generate_shift_overview(self, organization, facility, shifts, filename):
         wb = xlwt.Workbook()
-        ws = get_sheet(wb, u'Anmeldungen',
+        ws = ExcelRenderer.get_sheet(wb, u'Anmeldungen',
                        header=u'Schichtplan für {}\n{}\n'u'Jedwede Weitergabe der Daten an Dritte ist verboten!'
                        .format(facility, organization),
                        footer=u'Jedwede Weitergabe der Daten an Dritte ist verboten!\n&F (&P/&N)')
@@ -64,37 +93,8 @@ class ExcelRenderer:
 
             for volunteer in shift.helpers.all():
                 log.debug(u'Writing user line: %s', volunteer.user.username)
-                write_user_line(ws, cur_line, i, volunteer, colstyle)
+                ExcelRenderer.write_user_line(ws, cur_line, i, volunteer, colstyle)
                 cur_line += 1
                 i += 1
 
         wb.save(filename)
-
-
-def get_sheet(wb, name, header=None, footer=None):
-    ws = wb.add_sheet(name)
-    ws.set_panes_frozen(True)
-    ws.set_horz_split_pos(1)
-    ws.set_remove_splits(True)
-    ws.set_show_grid(True)
-    ws.set_print_grid(True)
-    ws.set_portrait(True)
-
-    ws.set_top_margin(1.15)
-    ws.set_bottom_margin(0.6)
-    if header is not None:
-        ws.header_str = header
-    if footer is not None:
-        ws.footer_str = footer
-    return ws
-
-
-def write_user_line(ws, cur, i, volunteer, style):
-    first_name = volunteer.user.first_name if volunteer.user.first_name else volunteer.user.username + ': '
-    last_name = volunteer.user.last_name
-    # '-' are supposed to be replaced by indication of user property status, once they're implemented:
-    # "id_verified", "health_card" & "penal clearance certificate"
-    # '' are intentionally empty, it's entering and leaving time fields, filled manually
-    for cidx, val in enumerate([i, first_name, last_name, '', '', '-', '-', '-']):
-        ws.write(cur, cidx, val, style[cidx])
-    ws.row(cur).set_style(style_1cm)
