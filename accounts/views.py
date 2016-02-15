@@ -44,6 +44,7 @@ def account_delete_final(request):
     (regarding to django documentation setting inactive is preferred to deleting an account.)
 
     :param request: http request
+    :return http response of user_detail_deleted-template that confirms deletion.
     """
     user = models.User.objects.get_by_natural_key(request.user.username)
     user.username = random_string()
@@ -86,8 +87,10 @@ def shift_list_active(request):
     """
     Delivers the list of shifts, a user has signed up for today and the future.
 
-    :param request:
-    :return:
+    :param request: http request
+    :return: http response of rendered shift_list-template and user-shifts,
+        ie.: user, shifts_today, shifts_tomorrow, shifts_day_after_tomorrow,
+        shifts_further_future.
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
@@ -116,8 +119,9 @@ def shift_list_done(request):
     """
     Delivers the list of shifts, a user has signed up in the past (starting from yesterday).
 
-    :param request:
-    :return:
+    :param request: http request
+    :return: http response of rendered shift_list_done-template and user-date,
+        ie.: user and shifts_past.
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
