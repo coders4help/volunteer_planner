@@ -23,6 +23,14 @@ from .models import Organization, Facility, FacilityMembership
 
 
 class OrganizationView(DetailView):
+    ''' Class-based view to show details of an organization and related
+        facilities.
+    
+    Inherits from django generic DetailView. Overrides get_queryset to get
+        facilities which belong to organization via
+        queryset.prefetch_related().
+    
+    '''
     template_name = 'organization.html'
     model = Organization
 
@@ -32,6 +40,14 @@ class OrganizationView(DetailView):
 
 
 class FacilityView(DetailView):
+    ''' Class-based view to show details of a facility plus news
+        and open shifts for that facility.
+    
+    Inherits from django generic DetailView. Overrides
+        get_context_data(self, **kwargs) to get open shifts for that facility.
+        Calls get_facility_details(facility, shifts) to get details of
+        that facility.
+    '''
     template_name = 'facility.html'
     model = Facility
     queryset = Facility.objects.select_related('organization')
