@@ -84,8 +84,7 @@ class Shift(models.Model):
 
 
 class ShiftHelper(models.Model):
-    user_account = models.ForeignKey('accounts.UserAccount',
-                                     related_name='shift_helpers')
+    user_account = models.ForeignKey('accounts.UserAccount', related_name='shift_helpers')
     shift = models.ForeignKey('scheduler.Shift', related_name='shift_helpers')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
