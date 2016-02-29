@@ -11,8 +11,31 @@ from . import managers
 
 
 class Shift(models.Model):
-    """
-    This is the primary instance to create shifts
+    """ A Shift is a time period for the work on a task at a workplace of a 
+        certain facility (see organizations). Users register themselves for 
+        shifts, but there can be more than one slot for a shift, ie. there
+        can be more than one user for a shift.
+        
+    fields:
+        slots - depending on how many volunteers are needed to fulfill the
+            task
+        task - foreign key to organizations-Task
+        workplace - foreign key to organizations-Workplace
+        facility - foreign key to organizations-Facility
+        starting_time
+        ending_time
+        helpers - many2many to accounts-UserAccount, realized through
+            ShiftHelper
+        members_only - if only members are allowed to help
+    
+    The manager is extended via managers.ShiftManager.
+    A second manager open_shifts is set to managers.OpenShiftManager.
+    
+    Defines three properties:
+        days
+        duration
+        localized_display_ending_time
+    
     """
 
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
@@ -84,6 +107,18 @@ class Shift(models.Model):
 
 
 class ShiftHelper(models.Model):
+    """ A user registered for a shift. There is a many2many relationship
+        between shift and user. ShiftHelper is the data structure realizing
+        this relationship.
+    
+    fields:
+    user_account - foreign key to accounts.UserAccount
+    shift - foreign key to Shift
+    joined_shift_at - datetime with auto_now_add set True, ie. a timestamp
+        for when the user registered for the shift
+        
+    Manager is set to managers.ShiftHelperManager. 
+    """
     user_account = models.ForeignKey('accounts.UserAccount',
                                      related_name='shift_helpers')
     shift = models.ForeignKey('scheduler.Shift', related_name='shift_helpers')
