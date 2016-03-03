@@ -157,6 +157,7 @@ def get_facility_details(facility, shifts):
     shifts_by_date = itertools.groupby(shifts, lambda s: s.starting_time.date())
     return {
         'name': facility.name,
+        'slug': facility.slug,
         'url': facility.get_absolute_url(),
         'news': _serialize_news(NewsEntry.objects.filter(facility=facility)),
         'address_line': address_line,
@@ -177,7 +178,9 @@ def get_facility_details(facility, shifts):
             'id': facility.organization.id,
             'name': facility.organization.name,
             'url': facility.organization.get_absolute_url(),
-        }
+        },
+        'lat': float(facility.latitude) if facility.show_on_map else None,
+        'lng': float(facility.longitude) if facility.show_on_map else None,
     }
 
 

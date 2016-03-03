@@ -1,33 +1,42 @@
 {% extends "base.html" %}
 
-
 {% block html_attributes %} ng-app="vpWidgets"{% endblock %}
 
 {% block additional_js %}
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.js">
     <!-- TODO: Conditional for Languages -->
     <script src="//code.angularjs.org/1.2.5/i18n/angular-locale_de-de.js"></script>
     <!--<script src="//code.angularjs.org/1.2.5/i18n/angular-locale_en-gb.js"></script>-->
+    <script src="http://cdn.rawgit.com/nmccready/angular-simple-logger/0.1.5/dist/angular-simple-logger.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="http://angular-ui.github.io/ui-leaflet/dist/ui-leaflet.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 
     <script>
-        angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
-                .controller('ShiftWidgetCtrl', function($scope) {
-                    // this rather should be done through an nice REST api
-                    $scope.facilities = {{ facility_json | safe }};
-                    $scope.areas = {{ areas_json | safe }};
-                    $scope.selectedAreas = [];
-                    $scope.toggleArea = function (area) {
-                        if ($scope.selectedAreas.indexOf(area) > -1) {
-                            $scope.selectedAreas.splice($scope.selectedAreas.indexOf(area),1);
-                        } else {
-                            $scope.selectedAreas.push(area);
-                        }
-                    }
-                });
-
+        angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize', 'ui-leaflet'])
+               .controller('ShiftWidgetCtrl', ['$scope', '$filter', 'leafletData',
+                   function($scope, $filter) {
+                   angular.extend($scope, {
+                       // this rather should be done through an nice REST api
+                       facilities: {{ facility_json | safe }},
+                       selectedFacilities: {},
+                       areas: {{ areas_json | safe }},
+                       selectedAreaSlugs: [],
+                       updateSelectedAreas: function() {
+                           $scope.selectedAreaSlugs = $filter('filter')($scope.areas, {selected: true})
+                               .map(function(a) { return a.slug });
+                           $scope.selectedFacilities = $filter('filter')($scope.facilities, $scope.facilityFilter)
+                               .reduce(function(m, f) { m[f.slug] = f; return m; }, {});
+                       },
+                       facilityFilter: function(facility, idx, arr) {
+                           return $scope.selectedAreaSlugs.length == 0 || $scope.selectedAreaSlugs.indexOf(facility.area_slug) > -1
+                       },
+                   });
+               }]);
     </script>
 
 {% endblock %}
@@ -35,25 +44,26 @@
 {% load osm_links i18n %}
 {% block content %}
 
+
         <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
             <h2>{% trans "You can help in the following facilities" %}</h2>
+            <leaflet markers="selectedFacilities" width="640px" height="480px"></leaflet>
+
             {% verbatim %}
                 <hr>
                 <div class="col-md12">
                     {% endverbatim %}<span>{% trans "filter" %}:</span>{% verbatim %}
                     <label class="area-filter" ng-repeat="area in areas">
                         <input type="checkbox" value="{{ area.name }}"
-
-                            class=""
-                            ng-click="toggleArea(area.slug)"
-                            ng-class="{ 'fddf': selectedAreas.indexOf(area.slug) > -1 }"
+                            ng-click="updateSelectedAreas()"
+                            ng-model="area.selected"
                             >{{ area.name }}
                     </label>
                 </div>
 
                 <div class="area-accordions row">
                     <div class="col-md-12">
-                        <div ng-repeat="facility in facilities" ng-show="selectedAreas.indexOf(facility.area_slug) > -1 || selectedAreas.length == 0">
+                        <div ng-repeat="facility in facilities" ng-show="facilityFilter(facility)">
                             <accordion>
                                 <accordion-group panel-class="panel-primary">
                                     <accordion-heading>
