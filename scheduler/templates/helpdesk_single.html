@@ -280,12 +280,32 @@
                                                 <a href="#{{ shift.id }}"
                                                    class="fa fa-link"></a>
                                             </td>
-                                            <td>
-                                                {{ shift.starting_time|date:"H:i" }}
-                                            </td>
-                                            <td>
-                                                {{ shift.ending_time|date:"H:i" }}
-                                            </td>
+
+                                            {% comment "" %}
+                                            "The following if/else is necessary for shifts spanning over midnight. Otherwise it is not
+                                                possible to differentiate between shifts starting today and shifts
+                                                starting yesterday:"
+                                            {% endcomment %}
+
+                                            {% if shift.starting_time|date == shift.ending_time|date %}
+                                                <td>
+                                                    {{ shift.starting_time|date:"H:i"}}
+                                                </td>
+                                                <td>
+                                                    {{ shift.ending_time|date:"H:i" }}
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                    {{ shift.starting_time|date}}
+                                                    {{ shift.starting_time|date:"H:i"}}
+                                                </td>
+                                                <td>
+                                                    {{ shift.ending_time|date}}
+                                                    {{ shift.ending_time|date:"H:i" }}
+                                                </td>
+                                            {% endif %}
+
+
                                             <td>
                                                 {{ shift.slots }}
                                                 {% if shift.members_only %}
