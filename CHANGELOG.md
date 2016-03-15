@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - CHANGELOG is now Markdown
 - better alignment of page
+- additional information: If shifts span over midnight there is need of additional information to differentiate between shifts that start today and shifts that started yesterday. In these cases the date is shown in the field where the time is shown. 
 
 ### Fixed
 - some PEP8 fixes of the source code
