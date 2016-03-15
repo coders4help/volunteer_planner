@@ -7,9 +7,11 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - CHANGELOG is now Markdown
+- better alignment of page
 
 ### Fixed
 - some PEP8 fixes of the source code
+- corrected wrong email for onboarding
 
 ### Removed
 
