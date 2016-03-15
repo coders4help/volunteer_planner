@@ -35,16 +35,15 @@
 {% load osm_links i18n %}
 {% block content %}
 
-        <div ng-cloak class="area-filter row" ng-controller="ShiftWidgetCtrl">
+        <div ng-cloak ng-controller="ShiftWidgetCtrl">
             <h2>{% trans "You can help in the following facilities" %}</h2>
             {% verbatim %}
                 <hr>
-                <div class="col-md12">
+                <div>
                     {% endverbatim %}<span>{% trans "filter" %}:</span>{% verbatim %}
                     <label class="area-filter" ng-repeat="area in areas">
                         <input type="checkbox" value="{{ area.name }}"
 
-                            class=""
                             ng-click="toggleArea(area.slug)"
                             ng-class="{ 'fddf': selectedAreas.indexOf(area.slug) > -1 }"
                             >{{ area.name }}
