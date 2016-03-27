@@ -13,8 +13,5 @@ db.sqlite3
 /.coverage
 *.log
 .cache
-<<<<<<< Updated upstream
-=======
 fabfile.py
 /var
->>>>>>> Stashed changes
