@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 ### Added
 - new docstrings to source code
+- enhancements to the excel document that is sent to shift managers (also refactoring of the shiftmailer)
 
 ### Changed
 - CHANGELOG is now Markdown
