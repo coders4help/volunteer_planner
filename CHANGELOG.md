@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 - new docstrings to source code
 - enhancements to the excel document that is sent to shift managers
 - support for Docker containers for the test/development environment
+- Some Javascript files from different CDN are now included in Volunteer Planner distribution. 
 
 ### Changed
 - CHANGELOG is now Markdown
@@ -13,13 +14,17 @@ All notable changes to this project will be documented in this file.
 - additional information: If shifts span over midnight there is need of additional information to differentiate between shifts that start today and shifts that started yesterday. In these cases the date is shown in the field where the time is shown. 
 - Refactoring of the shiftmailer and Excelgenerator
 - fixed issue 360: From field of emails is now DEFAULT_FROM_EMAIL and not anymore the fake from email of the shift manager.
+- Refactor: only one repository for static files (both repositories have been merged)
+- All used CSS and Javascript files are delivered by Volunteer Planner (instead of using some CDNs)
 
 ### Fixed
 - some PEP8 fixes of the source code
 - corrected wrong email for onboarding
 - removed hardcoded email from the source code, use settings file instead
+- removed one hardcoded link on image
 
 ### Removed
+- static repository in non-logged-in-area was removed
 
 
 ## [3.0.1] - 2016-01-09
