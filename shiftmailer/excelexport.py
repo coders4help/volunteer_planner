@@ -56,7 +56,7 @@ class GenerateExcelSheet:
                     "Anbei die Liste zum Dienstplan der Freiwilligen.\nDies ist ein Service von volunteer-planner.org"
         mail.subject = "Dienstplan fuer den " + self.shifts[0].starting_time.strftime("%d.%m.%Y") + \
                        " der Freiwilligen in der Unterkunft " + self.shifts[0].facility.name
-        mail.from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
+        mail.from_email = "noreply@Volunteer-Planner.org <noreply@volunteer-planner.org>"
         mail.to = [str(self.mailer.email)]
         if attachment is not None:
             mail.attach_file(path=attachment, mimetype='application/vnd.ms-excel')
