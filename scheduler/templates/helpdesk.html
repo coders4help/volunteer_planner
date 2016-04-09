@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 
 {% block html_attributes %} ng-app="vpWidgets"{% endblock %}
 
 {% block additional_js %}
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.js"></script>
+    <script src="{% static "angularjs/1.4.7/angular.min.js" %}"></script>
+    <script src="{% static "angularjs/1.4.7/angular-sanitize.js" %}"></script>
     <!-- TODO: Conditional for Languages -->
-    <script src="//code.angularjs.org/1.2.5/i18n/angular-locale_de-de.js"></script>
-    <!--<script src="//code.angularjs.org/1.2.5/i18n/angular-locale_en-gb.js"></script>-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+    <script src="{% static "angularjs/1.2.5/i18n/angular-locale_de-de.js" %}"></script>
+    <!--<script src="{% static "angularjs/1.2.5/i18n/angular-locale_en-gb.js" %}"></script></script>-->
+    <script src="{% static "angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js" %}"></script>
+    <script src="{% static "angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js" %}"></script>
 
     <script>
         angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
