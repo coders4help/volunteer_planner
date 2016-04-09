@@ -18,6 +18,7 @@ from shiftmailer.excelexport import ExcelRenderer
 def facility():
     return FacilityFactory.build()
 
+
 @pytest.fixture
 def shifts(monkeypatch):
 
@@ -25,7 +26,8 @@ def shifts(monkeypatch):
     for shift_helper in shift_helpers:
         monkeypatch.setattr(shift_helper.shift, "volunteer_count", 2, False)
 
-    return [ shift_helper.shift for shift_helper in shift_helpers ]
+    return [shift_helper.shift for shift_helper in shift_helpers]
+
 
 @pytest.mark.django_db
 class TestExcelRenderer:
@@ -34,4 +36,4 @@ class TestExcelRenderer:
         filename = str(tmpdir.join("test.xls"))
         sut = ExcelRenderer()
         file = sut.generate_shift_overview(facility.organization, facility, shifts, filename)
-        #assert 'h' in x
+        # assert 'h' in x

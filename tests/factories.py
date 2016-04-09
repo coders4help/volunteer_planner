@@ -88,8 +88,8 @@ class ShiftFactory(factory.DjangoModelFactory):
     task = factory.SubFactory(TaskFactory)
     facility = factory.SubFactory(FacilityFactory)
 
-    starting_time = datetime(2016,2,13,19,0)
-    ending_time = datetime(2016,2,13,20,0)
+    starting_time = datetime(2016, 2, 13, 19, 0)
+    ending_time = datetime(2016, 2, 13, 20, 0)
     slots = 10
 
 

@@ -49,9 +49,9 @@ class ExcelRenderer:
     def generate_shift_overview(self, organization, facility, shifts, filename):
         wb = xlwt.Workbook()
         ws = ExcelRenderer.get_sheet(wb, u'Anmeldungen',
-                       header=u'Schichtplan für {}\n{}\n'u'Jedwede Weitergabe der Daten an Dritte ist verboten!'
+                                     header=u'Schichtplan für {}\n{}\n'u'Jedwede Weitergabe der Daten an Dritte ist verboten!'
                        .format(facility, organization),
-                       footer=u'Jedwede Weitergabe der Daten an Dritte ist verboten!\n&F (&P/&N)')
+                                     footer=u'Jedwede Weitergabe der Daten an Dritte ist verboten!\n&F (&P/&N)')
 
         colnames = [u'#', u'Vorname', u'Nachname', u'Von', u'Bis',
                     u'ID', u'RK', u'FZ', u'Teilnehmer', u'Plätze']
