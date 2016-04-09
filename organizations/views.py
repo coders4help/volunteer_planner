@@ -137,8 +137,8 @@ def send_membership_approved_notification(membership, approved_by):
         message = template.render(context)
         subject = _(u'volunteer-planner.org: Membership approved')
 
-        from_email = "noreply@Volunteer-Planner.org <noreply@volunteer-planner.org>"
-        reply_to = "noreply@Volunteer-Planner.org <noreply@volunteer-planner.org>"
+        from_email = settings.DEFAULT_FROM_EMAIL
+        reply_to = settings.DEFAULT_FROM_EMAIL
 
         addresses = (to,)
 
