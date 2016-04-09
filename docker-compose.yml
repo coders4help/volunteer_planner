@@ -1,0 +1,25 @@
+db:
+  image: mysql
+  # image: postgres
+  environment:
+    MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    MYSQL_DATABASE: volunteer_planner
+    MYSQL_USER: vp
+    MYSQL_PASSWORD: volunteer_planner
+
+    # POSTGRES_DB: volunteer_planner
+    # POSTGRES_USER: vp
+    # POSTGRES_PASSWORD: volunteer_planner
+
+web:
+  build: .
+  command: python manage.py runserver 0.0.0.0:8000
+  volumes:
+    - .:/code
+  ports:
+    - "8000:8000"
+  links:
+    - db
+  environment:
+    DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
+    # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
