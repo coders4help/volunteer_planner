@@ -3,6 +3,7 @@ import logging
 import os
 import tempfile
 
+from django.conf import settings
 from django.core.mail.message import EmailMessage
 from excel_renderer import ExcelRenderer
 
@@ -56,7 +57,7 @@ class GenerateExcelSheet:
                     "Anbei die Liste zum Dienstplan der Freiwilligen.\nDies ist ein Service von volunteer-planner.org"
         mail.subject = "Dienstplan fuer den " + self.shifts[0].starting_time.strftime("%d.%m.%Y") + \
                        " der Freiwilligen in der Unterkunft " + self.shifts[0].facility.name
-        mail.from_email = "Volunteer-Planner.org <noreply@volunteer-planner.org>"
+        mail.from_email = settings.DEFAULT_FROM_EMAIL
         mail.to = [str(self.mailer.email)]
         if attachment is not None:
             mail.attach_file(path=attachment, mimetype='application/vnd.ms-excel')
