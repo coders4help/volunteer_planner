@@ -20,14 +20,14 @@
     <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/custom.css" rel="stylesheet">
+    <link href="/static/non-logged-in-css/custom.css" rel="stylesheet">
     <!-- Webfonts -->
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
           rel='stylesheet' type='text/css'>
 
     {% block additional_header %}
         <meta property="og:image"
-              content="/static/images/volunteer-planner-logo.png"/>
+              content="/static/img/non-logged-in-area/volunteer-planner-logo.png"/>
     {% endblock %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -46,7 +46,7 @@
 
     {# There's a issue with Nexus 4 not working with the collapsible hamburger in BS4 #}
     <a class="navbar-brand" href="{% url 'home' %}">
-        <img src={% static "images/volunteer-planner-logo.png" %}>
+        <img src={% static "img/non-logged-in-area/volunteer-planner-logo.png" %}>
     </a>
 
     <div class="pull-right">
