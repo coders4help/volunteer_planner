@@ -4,12 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 ### Added
 - new docstrings to source code
-- enhancements to the excel document that is sent to shift managers (also refactoring of the shiftmailer)
+- enhancements to the excel document that is sent to shift managers
+- support for Docker containers for the test/development environment
 
 ### Changed
 - CHANGELOG is now Markdown
 - better alignment of page
 - additional information: If shifts span over midnight there is need of additional information to differentiate between shifts that start today and shifts that started yesterday. In these cases the date is shown in the field where the time is shown. 
+- Refactoring of the shiftmailer and Excelgenerator
 
 ### Fixed
 - some PEP8 fixes of the source code
