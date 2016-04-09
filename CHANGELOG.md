@@ -25,7 +25,9 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 - static repository in non-logged-in-area was removed
-
+- application api removed (not used and no plans for usage)
+- application registration removed (since 03.10.15 not in use and no function anymore)
+- application stats removed (since 01.10.15 not in use and no function anymore)
 
 ## [3.0.1] - 2016-01-09
 ### Added
