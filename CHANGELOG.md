@@ -3,43 +3,43 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
-- new docstrings to source code
 - enhancements to the excel document that is sent to shift managers
-- support for Docker containers for the test/development environment
 - Some Javascript files from different CDN are now included in Volunteer Planner distribution. 
+- [development] new docstrings to source code
+- [development] support for Docker containers for the test/development environment
 
 ### Changed
-- CHANGELOG is now Markdown
-- better alignment of page
-- additional information: If shifts span over midnight there is need of additional information to differentiate between shifts that start today and shifts that started yesterday. In these cases the date is shown in the field where the time is shown. 
-- Refactoring of the shiftmailer and Excelgenerator
+- [UI] better alignment of page
+- [UI] Additional information - if shifts span over midnight there is need of additional information to differentiate between shifts that start today and shifts that started yesterday. In these cases the date is shown in the field where the time is shown. 
 - fixed issue 360: From field of emails is now DEFAULT_FROM_EMAIL and not anymore the fake from email of the shift manager.
-- Refactor: only one repository for static files (both repositories have been merged)
 - All used CSS and Javascript files are delivered by Volunteer Planner (instead of using some CDNs)
+- [development] CHANGELOG is now Markdown
+- [development] Refactoring of the shiftmailer and Excelgenerator
+- [development] Refactor: only one repository for static files (both repositories have been merged)
 
 ### Fixed
-- some PEP8 fixes of the source code
-- corrected wrong email for onboarding
-- removed hardcoded email from the source code, use settings file instead
-- removed one hardcoded link on image
+- UI: corrected wrong email for onboarding
+- [development] some PEP8 fixes of the source code
+- [development] removed hardcoded email from the source code, use settings file instead
+- [development] removed one hardcoded link on image
 
 ### Removed
 - static repository in non-logged-in-area was removed
-- application api removed (not used and no plans for usage)
-- application registration removed (since 03.10.15 not in use and no function anymore)
-- application stats removed (since 01.10.15 not in use and no function anymore)
+- [development] application api removed (not used and no plans for usage)
+- [development] application registration_history removed (since 03.10.15 not in use and no function anymore)
+- [development] application stats removed (since 01.10.15 not in use and no function anymore)
 
 ## [3.0.1] - 2016-01-09
 ### Added
-- UI: User can her history of work shifts
-- UI: User can see upcoming shifts (the shifts she signed up for)
+- [UI] User can her history of work shifts
+- [UI] User can see upcoming shifts (the shifts she signed up for)
 - Delete user: User can delete her account - the data is anonymized
 - Social Impact Lab was added as supporter
 
 ### Changed
 - updated translations and wording
-- UI/Account creation: There is now an explicit message on account creation form explaining what happens here. (users often mistake the creation form for the login form)
-- UI/Account creation: The help texts have been improved
+- [UI] Account creation: There is now an explicit message on account creation form explaining what happens here. (users often mistake the creation form for the login form)
+- [UI] Account creation: The help texts have been improved
 - Maps: Google Maps links have been removed, Openstreetmap links have been added
 - several static information webpages (e.g FAQ) have been migrated from static html sites to django-flatpages
 - Do not throw away user entered data during registration (It is fairly frustrating for new users to have te re-enter e-mail
