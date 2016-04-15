@@ -126,7 +126,6 @@ class ManageFacilityMembersView(DetailView):
 
 
 def send_membership_approved_notification(membership, approved_by):
-    to = membership.user_account.user.email
 
     try:
         template = get_template('emails/membership_approved.txt')
@@ -138,7 +137,8 @@ def send_membership_approved_notification(membership, approved_by):
         subject = _(u'volunteer-planner.org: Membership approved')
 
         from_email = settings.DEFAULT_FROM_EMAIL
-        reply_to = settings.DEFAULT_FROM_EMAIL
+        reply_to = approved_by.email
+        to = membership.user_account.user.email
 
         addresses = (to,)
 

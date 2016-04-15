@@ -21,6 +21,10 @@ def send_email_notifications(sender, instance, **kwargs):
 
     This needed to be done quickly. Please use a proper email template,
     add some error handling, some sane max recipient handling, tests, etc.
+
+    Also: No try/except
+
+    sender : request.user
     """
     shift = instance
     if shift.ending_time >= datetime.now():
@@ -31,14 +35,15 @@ def send_email_notifications(sender, instance, **kwargs):
                                    dict(shift=shift))
 
         from_email = settings.DEFAULT_FROM_EMAIL
-
+        reply_to = sender.email
         addresses = shift.helpers.values_list('user__email', flat=True)
 
         if addresses:
             mail = EmailMessage(subject=subject, body=message,
                                 to=['support@volunteer-planner.org'],
                                 from_email=from_email,
-                                bcc=addresses)
+                                bcc=addresses,
+                                reply_to=reply_to)
             mail.send()
 
 
