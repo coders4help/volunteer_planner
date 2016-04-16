@@ -42,7 +42,7 @@ class ExcelRenderer:
         # '-' are supposed to be replaced by indication of user property status, once they're implemented:
         # "id_verified", "health_card" & "penal clearance certificate"
         # '' are intentionally empty, it's entering and leaving time fields, filled manually
-        for cidx, val in enumerate([i, first_name, last_name, '', '', '-', '-', '-']):
+        for cidx, val in enumerate([i, first_name, last_name, '', '', ]):
             ws.write(cur, cidx, val, style[cidx])
         ws.row(cur).set_style(style_1cm)
 
@@ -54,9 +54,9 @@ class ExcelRenderer:
                                      footer=u'Jedwede Weitergabe der Daten an Dritte ist verboten!\n&F (&P/&N)')
 
         colnames = [u'#', u'Vorname', u'Nachname', u'Von', u'Bis',
-                    u'ID', u'RK', u'FZ', u'Teilnehmer', u'Plätze']
+                    u'Teilnehmer', u'Plätze']
         colwidths = [5, 25, 25, 5, 5,
-                     3, 3, 3, 10, 10]
+                     12, 12]
         colstyle = [style_right, style_left, style_left, style_center, style_center,
                     style_center, style_center, style_center, style_right, style_right]
 
@@ -87,8 +87,8 @@ class ExcelRenderer:
             ws.write(cur_line, 0, u'{} - {} ({}/{})'.format(shift.starting_time.strftime(shift_time_full_format),
                                                             shift.ending_time.strftime(end_fmt),
                                                             shift.volunteer_count, shift.slots))
-            ws.write(cur_line, 8, shift.volunteer_count)
-            ws.write(cur_line, 9, shift.slots)
+            ws.write(cur_line, 5, shift.volunteer_count)
+            ws.write(cur_line, 6, shift.slots)
             cur_line += 1
 
             for volunteer in shift.helpers.all():
