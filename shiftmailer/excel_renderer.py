@@ -55,8 +55,8 @@ class ExcelRenderer:
 
         colnames = [u'#', u'Vorname', u'Nachname', u'Von', u'Bis',
                     u'ID', u'RK', u'FZ', u'Teilnehmer', u'Plätze']
-        colwidths = [5, 25, 25, 10, 10,
-                     3, 3, 3, 12, 12]
+        colwidths = [5, 25, 25, 5, 5,
+                     3, 3, 3, 10, 10]
         colstyle = [style_right, style_left, style_left, style_center, style_center,
                     style_center, style_center, style_center, style_right, style_right]
 
