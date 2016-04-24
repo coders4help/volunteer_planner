@@ -30,6 +30,7 @@ logger = logging.getLogger(__name__)
 def get_open_shifts():
     shifts = Shift.open_shifts.all()
     shifts = shifts.select_related('facility',
+                                   'facility__organization',
                                    'facility__place',
                                    'facility__place__area',
                                    'facility__place__area__region',
