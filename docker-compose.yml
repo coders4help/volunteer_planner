@@ -1,25 +1,48 @@
-db:
-  image: mysql
-  # image: postgres
-  environment:
-    MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-    MYSQL_DATABASE: volunteer_planner
-    MYSQL_USER: vp
-    MYSQL_PASSWORD: volunteer_planner
+version: '2'
 
-    # POSTGRES_DB: volunteer_planner
-    # POSTGRES_USER: vp
-    # POSTGRES_PASSWORD: volunteer_planner
+volumes:
+  data_volume:
 
-web:
-  build: .
-  command: python manage.py runserver 0.0.0.0:8000
-  volumes:
-    - .:/code
-  ports:
-    - "8000:8000"
-  links:
-    - db
-  environment:
-    DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
-    # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
+services:
+  db:
+    image: mysql
+    # image: postgres
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: volunteer_planner
+      MYSQL_USER: vp
+      MYSQL_PASSWORD: volunteer_planner
+
+      # POSTGRES_DB: volunteer_planner
+      # POSTGRES_USER: vp
+      # POSTGRES_PASSWORD: volunteer_planner
+    volumes:
+      - data_volume:/var/lib/mysql
+    hostname: db
+    mem_limit: 1G
+    #cpuset: "0"
+
+  web:
+    build: .
+    entrypoint: ["/usr/local/bin/python", "manage.py"]
+    command: ["runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/opt/vpcode
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    environment:
+      DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
+      # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
+    hostname: web
+    mem_limit: 1G
+    cap_add:
+      - ALL
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - NET_RAW
+      - SYS_PTRACE
+      - SYS_TIME
+    #cpuset: "1"

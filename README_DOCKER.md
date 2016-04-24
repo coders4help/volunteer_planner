@@ -26,14 +26,13 @@ Run `docker-compose up db`, and wait for the initialization to be over. You can 
 
 #### 2.3 Initalize the web container and run migrate management command to setup non-existing tables 
 
-    $ docker-compose run web python manage.py migrate
+    $ docker-compose run --rm web migrate
 
-#### 3.3 Add a superuser
+#### 2.4 Add a superuser
 
-    $ docker-compose run web python manage.py createsuperuser
+    $ docker-compose run --rm web createsuperuser --username admin --email admin@localhost
 
-You will be asked for username, email and password (twice). Remember that
-username and password.
+You will be asked for password twice. Remember that password.
 
 ### 3. Run the server
 
@@ -45,12 +44,12 @@ Try opening http://localhost:8000/ in your browser. If you want to shutdown you 
 ## Create dummy data
 If you want to create dummy data you can run:
 
-    $ docker-compose run web python manage.py create_dummy_data 5 --flush True
+    $ docker-compose run --rm web create_dummy_data 5 --flush True
 
-with activated virtualenv to get 5 days of dummy data and delete tables in advance.
+to get 5 days of dummy data and delete tables in advance.
 
 The number (5 in the above example) creates 5 days dummy data count from today.
-If you just use `./manage.py create_dummy_data 5` without `--flush` it is NOT deleting data before putting new data in.
+If you just use `create_dummy_data 5` without `--flush True` it is NOT deleting data before putting new data in.
 
 
 
