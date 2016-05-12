@@ -1,9 +1,9 @@
 # volunteer-planner.org Docker
 An easy setup for using the Volunteer-Planner in a development or test environment is to user Docker.
-The Docker configuration files are included in the git package of volunteer-planner. 
+The Docker configuration files are included in the git package of volunteer-planner.
 
 **Do not use this setup for production environments**.
-The web container is not secure. If you want to use docker for production you have to exchange the webserver in the web 
+The web container is not secure. If you want to use docker for production you have to exchange the webserver in the web
 container.
 
 ## Project setup for development
@@ -24,7 +24,7 @@ related parts, and commenting out the MySQL related ones.
 
 Run `docker-compose up db`, and wait for the initialization to be over. You can now kill the container with `CTRL-c`.
 
-#### 2.3 Initalize the web container and run migrate management command to setup non-existing tables 
+#### 2.3 Initalize the web container and run migrate management command to setup non-existing tables
 
     $ docker-compose run --rm web migrate
 
@@ -50,6 +50,3 @@ to get 5 days of dummy data and delete tables in advance.
 
 The number (5 in the above example) creates 5 days dummy data count from today.
 If you just use `create_dummy_data 5` without `--flush True` it is NOT deleting data before putting new data in.
-
-
-
