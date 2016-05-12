@@ -40,6 +40,34 @@ You will be asked for password twice. Remember that password.
 
 Try opening http://localhost:8000/ in your browser. If you want to shutdown you can start the shutdown of the containers with `CTRL-c`.
 
+### 4. Switch database
+
+#### 4.1 Stop all running services
+
+To stop all eventually running servics, please execute the command
+
+    $ docker-compose stop
+
+#### 4.2 Modify configuration
+
+Adjust the configuration in ```docker-compose.yml``` to reflect your desired
+database type. Look for all "MySQL" or "PostgreSQL" comments to find all locations you need to switch.
+
+#### 4.3 Recreate containers
+
+To switch the database one needs to recreate used containers.
+The DB container needs to be started from a different image, using different configuration and volume.
+The Web container needs to use different Django settings, while startup.
+
+One has to forcibly remove the current containers and create new ones.
+The final step is to update-initialize the database.
+
+    $ docker-compose rm -a -v -f
+    $ docker-compose create --force-recreate
+    $ docker-compose start db
+    $ docker-compose run --rm web migrate
+
+If you haven't created the superuser in the new database environment, you need to execute the command from above to create it.
 
 ## Create dummy data
 If you want to create dummy data you can run:
