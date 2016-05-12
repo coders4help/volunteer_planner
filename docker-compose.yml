@@ -20,6 +20,7 @@ services:
       - data_volume:/var/lib/mysql
     hostname: db
     mem_limit: 1G
+    memswap_limit: 2G
     #cpuset: "0"
 
   web:
@@ -30,19 +31,12 @@ services:
       - .:/opt/vpcode
     ports:
       - "8000:8000"
-    links:
+    depends_on:
       - db
     environment:
       DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
       # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
     hostname: web
     mem_limit: 1G
-    cap_add:
-      - ALL
-    cap_drop:
-      - NET_ADMIN
-      - SYS_ADMIN
-      - NET_RAW
-      - SYS_PTRACE
-      - SYS_TIME
+    memswap_limit: 2G
     #cpuset: "1"
