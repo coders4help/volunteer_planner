@@ -1,4 +1,5 @@
 # coding: utf-8
+import logging
 from datetime import time
 
 from django.urls import reverse
@@ -8,6 +9,9 @@ from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
 from places.models import Country, Region, Area, Place
 from . import managers
+
+
+logger = logging.getLogger(__name__)
 
 
 class Shift(models.Model):
@@ -38,7 +42,8 @@ class Shift(models.Model):
 
     """
 
-    slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+    # PositiveIntegerField instead of custom validation
+    slots = models.PositiveIntegerField(verbose_name=_(u'number of needed volunteers'))
 
     task = models.ForeignKey("organizations.Task",
                              models.PROTECT,
