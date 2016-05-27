@@ -35,13 +35,14 @@ services:
 
   web:
     build: .
-    entrypoint: ["/usr/local/bin/python", "manage.py"]
+    # Attention, we're checking if database container is available before starting django, unless NO_CHECK env is set
+    entrypoint: ["/django-entrypoint.sh"]
     command: ["runserver", "0.0.0.0:8000"]
     volumes:
       - .:/opt/vpcode
     ports:
       - "8000:8000"
-    depends_on:
+    links:
       - db
     environment:
       ### MySQL ###

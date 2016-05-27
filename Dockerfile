@@ -14,5 +14,8 @@ RUN apk update && apk add musl-dev mariadb mariadb-libs mariadb-dev postgresql p
     apk del --purge gcc mariadb-dev mariadb musl-dev && \
     /bin/rm -rf /var/cache/apk/*
 
+ADD django-entrypoint.sh /
+RUN chmod 0755 /django-entrypoint.sh
+
 USER ${user}
 CMD ["/bin/sh"]
