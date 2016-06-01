@@ -33,7 +33,7 @@ Run `docker-compose up db`, and wait for the initialization to be over. You can 
     $ docker-compose run --entrypoint=python --rm web manage.py createsuperuser --username admin --email admin@localhost
 
 You will be asked for password twice. Remember that password.
-(Sorry for the lengthy command line, but out work to make the Django app shut down properly removes it's TTY access when using the default entrypoint.)
+(Sorry for the lengthy command line, but our work to make the Django app shut down properly removes it's TTY access when using the default entrypoint.)
 
 ### 3. Run the server
 
