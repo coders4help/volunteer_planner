@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from datetime import timedelta, datetime, time
 
 from django.db import models

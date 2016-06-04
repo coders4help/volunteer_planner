@@ -5,6 +5,10 @@ from django import forms
 from ckeditor.widgets import CKEditorWidget
 
 from . import models
+from organizations.admin import (
+    MembershipFilteredAdmin,
+    MembershipFieldListFilter
+)
 
 
 class NewsAdminForm(forms.ModelForm):
@@ -16,7 +20,7 @@ class NewsAdminForm(forms.ModelForm):
 
 
 @admin.register(models.NewsEntry)
-class NewsAdmin(admin.ModelAdmin):
+class NewsAdmin(MembershipFilteredAdmin):
     form = NewsAdminForm
 
     list_display = (
@@ -28,7 +32,16 @@ class NewsAdmin(admin.ModelAdmin):
         'organization'
     )
     list_filter = (
-        'facility',
-        'organization'
+        ('facility', MembershipFieldListFilter),
+        ('organization', MembershipFieldListFilter)
     )
     readonly_fields = ('slug',)
+    search_fields = ('title', 'subtitle')
+
+    def get_queryset(self, request):
+        return (
+            super(NewsAdmin, self)
+            .get_queryset(request)
+            .select_related('organization', 'facility')
+            .prefetch_related('organization', 'facility')
+        )
