@@ -4,6 +4,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
+import managers
+
 
 class NewsEntry(models.Model):
     """
@@ -34,6 +36,8 @@ class NewsEntry(models.Model):
                                      related_name='news_entries',
                                      null=True,
                                      blank=True)
+
+    facility_news = managers.NewsEntryManager()
 
     class Meta:
         verbose_name = _('news entry')

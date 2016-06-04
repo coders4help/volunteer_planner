@@ -55,8 +55,11 @@ class FacilityView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(FacilityView, self).get_context_data(**kwargs)
         shifts = Shift.open_shifts.filter(facility=self.object)
+        news = NewsEntry.facility_news.for_facilities(
+            [facility for facility, tmp in (itertools.groupby(shifts, lambda s: s.facility))]
+        ).all()
         context['object'] = self.object
-        context['facility'] = get_facility_details(self.object, shifts)
+        context['facility'] = get_facility_details(self.object, shifts, news)  # FIXME
 
         return context
 
@@ -152,13 +155,13 @@ def send_membership_approved_notification(membership, approved_by):
         raise
 
 
-def get_facility_details(facility, shifts):
+def get_facility_details(facility, shifts, news_entries):
     address_line = facility.address_line if facility.address else None
     shifts_by_date = itertools.groupby(shifts, lambda s: s.starting_time.date())
     return {
         'name': facility.name,
         'url': facility.get_absolute_url(),
-        'news': _serialize_news(NewsEntry.objects.filter(facility=facility)),
+        'news': _serialize_news(news_entries.filter_by_facility(facility)),
         'address_line': address_line,
         'contact_info': facility.contact_info,
         'osm_link': osm_search(address_line) if address_line else None,

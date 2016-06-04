@@ -1,5 +1,7 @@
 # coding: utf-8
 
+import itertools
+
 from datetime import timedelta, datetime, time
 
 from django.db import models
@@ -62,7 +64,7 @@ ShiftManager = models.Manager.from_queryset(ShiftQuerySet)
 
 
 class OpenShiftManager(ShiftManager):
-    """ Manager for Shift. Overwrites get_queryset with a filter on QuerySet 
+    """ Manager for Shift. Overwrites get_queryset with a filter on QuerySet
         that holds all shifts that end now or in the future.
     """
     def get_queryset(self):
