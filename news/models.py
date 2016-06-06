@@ -37,7 +37,7 @@ class NewsEntry(models.Model):
                                      null=True,
                                      blank=True)
 
-    facility_news = managers.NewsEntryManager()
+    objects = managers.NewsEntryManager()
 
     class Meta:
         verbose_name = _('news entry')

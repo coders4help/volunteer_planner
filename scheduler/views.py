@@ -66,7 +66,7 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         shifts_by_facility = list(itertools.groupby(open_shifts,
                                                lambda s: s.facility))
 
-        news = NewsEntry.facility_news.for_facilities([facility for facility, tmp in shifts_by_facility]).all()
+        news = NewsEntry.objects.for_facilities([facility for facility, tmp in shifts_by_facility]).all()
         facility_list = []
         used_places = set()
 

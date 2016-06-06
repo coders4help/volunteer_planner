@@ -55,7 +55,7 @@ class FacilityView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(FacilityView, self).get_context_data(**kwargs)
         shifts = Shift.open_shifts.filter(facility=self.object)
-        news = NewsEntry.facility_news.for_facilities(
+        news = NewsEntry.objects.for_facilities(
             [facility for facility, tmp in (itertools.groupby(shifts, lambda s: s.facility))]
         ).all()
         context['object'] = self.object
