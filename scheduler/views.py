@@ -63,14 +63,13 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
         open_shifts = get_open_shifts()
-        shifts_by_facility = list(itertools.groupby(open_shifts,
-                                               lambda s: s.facility))
 
-        news = NewsEntry.objects.for_facilities([facility for facility, tmp in shifts_by_facility]).all()
+        news = NewsEntry.objects.for_facilities(
+            [facility for facility, tmp in itertools.groupby(open_shifts, lambda s: s.facility)]).all()
         facility_list = []
         used_places = set()
 
-        for facility, shifts_at_facility in shifts_by_facility:
+        for facility, shifts_at_facility in itertools.groupby(open_shifts, lambda s: s.facility):
             used_places.add(facility.place.area)
             facility_list.append(
                 get_facility_details(facility, shifts_at_facility, news))
