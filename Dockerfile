@@ -9,7 +9,7 @@ RUN addgroup -g 1000 ${user} && \
 
 ADD requirements/*.txt ${vpbasedir}
 
-RUN apk update && apk add musl-dev mariadb mariadb-libs mariadb-dev postgresql postgresql-dev gcc && \
+RUN apk update && apk add musl-dev mariadb mariadb-client-libs mariadb-libs mariadb-dev postgresql postgresql-dev gcc && \
     pip install -r dev_mysql.txt -r dev_postgres.txt && \
     apk del --purge gcc mariadb-dev mariadb musl-dev && \
     /bin/rm -rf /var/cache/apk/*
