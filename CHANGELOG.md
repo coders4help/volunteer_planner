@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 ### Added
 - enhancements to the excel document that is sent to shift managers
-- Some Javascript files from different CDN are now included in Volunteer Planner distribution. 
+- Some javascript files from different CDN are now included in Volunteer Planner distribution. 
+- [development] .editorconfig (PEP8 style)
 - [development] new docstrings to source code
 - [development] support for Docker containers for the test/development environment
 
