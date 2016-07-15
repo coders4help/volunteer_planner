@@ -4,7 +4,9 @@ python: "2.7"
 
 env: DJANGO_SETTINGS_MODULE=volunteer_planner.settings.tests
 
-install: "pip install -r requirements/dev.txt"
+install:
+  - travis_retry make sys_reqs
+  - travis_retry pip install -U -r requirements/dev.txt
 
 # Fire up a webserver for Selenium
 before_script:
