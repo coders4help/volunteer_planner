@@ -94,17 +94,23 @@ def shift_list_active(request):
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
-    shifts_today = shifthelper\
-        .filter(shift__starting_time__day=date.today().day)\
+    shifts_today = shifthelper \
+        .filter(shift__starting_time__day=date.today().day,
+                shift__starting_time__month=date.today().month,
+                shift__starting_time__year=date.today().year) \
         .order_by("shift__starting_time")
-    shifts_tomorrow = shifthelper\
-        .filter(shift__starting_time__day=date.today().day+1)\
+    shifts_tomorrow = shifthelper \
+        .filter(shift__starting_time__day=date.today().day + 1,
+                shift__starting_time__month=date.today().month,
+                shift__starting_time__year=date.today().year) \
         .order_by("shift__starting_time")
-    shifts_day_after_tomorrow = shifthelper\
-        .filter(shift__starting_time__day=date.today().day+2)\
+    shifts_day_after_tomorrow = shifthelper \
+        .filter(shift__starting_time__day=date.today().day + 2,
+                shift__starting_time__month=date.today().month,
+                shift__starting_time__year=date.today().year) \
         .order_by("shift__starting_time")
-    shifts_further_future = shifthelper\
-        .filter(shift__starting_time__gt=date.today() + timedelta(days=3))\
+    shifts_further_future = shifthelper \
+        .filter(shift__starting_time__gt=date.today() + timedelta(days=3)) \
         .order_by("shift__starting_time")
         
     return render(request, 'shift_list.html', {'user': user,
