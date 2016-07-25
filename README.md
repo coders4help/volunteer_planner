@@ -87,7 +87,9 @@ If you have questions concerning our workflow please read the
 
 #### 2.1. Create a virtual env
 
-Please refer to the canonical [virtualenv guide](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for installation.
+Please refer to the canonical [virtualenv guide](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for installation. We suggest you create a virtualenv named vp - so you can easily switch to your environment via 
+
+    workon vp
 
 #### 2.2 Installing required python packages
 
