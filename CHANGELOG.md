@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - UI: corrected wrong email for onboarding
+- fixed issue 373: Shifts in shift history/future shifts are now shown correctly
 - [development] some PEP8 fixes of the source code
 - [development] removed hardcoded email from the source code, use settings file instead
 - [development] removed one hardcoded link on image
