@@ -1,7 +1,7 @@
 # volunteer-planner.org
 
 Volunteer Planner is a platform to schedule shifts of volunteers. Volunteers register at the platform and choose shifts.
- The admin of the website can easily add new organizations, places and shifts. The software has a location based 
+ The admin of the website can easily add new organizations, places and shifts. The software has a location based
  hierarchy (country / region / area / city) and has a hierarchy of organizations (organizations, facilities, tasks and
   workplaces) - it can be used for a variety of purposes.
 
@@ -10,33 +10,35 @@ The project is currently running at https://volunteer-planner.org/.
 
 ## Work in progress
 There are some feature requests to be implemented in the future.
-The software currently needs a centralized administration of the shifts, but it is one of the main goals of the current 
+The software currently needs a centralized administration of the shifts, but it is one of the main goals of the current
 development to empower organizations to schedule shifts for their facilities on their own.
 
-If you are interested to join the development team, just make pull requests or come to a meeting in Berlin/Germany: 
+If you are interested to join the development team, just make pull requests or come to a meeting in Berlin/Germany:
 http://www.meetup.com/de/coders4help/
 
 ## System context
 **User**: The volunteers and administrators just need a (modern) web browser to use the volunteer-planner application.
 
-**Developer**: Developers need a python development environment (see project setup) and specific versions of external 
-libraries (see /requirements directory, t). Development can be done with a sqlite databases, there is no need to run 
+**Developer**: Developers need a python development environment (see project setup) and specific versions of external
+libraries (see /requirements directory, t). Development can be done with a sqlite databases, there is no need to run
 and configure postgres or mysql.
 
-**Server**: For production use you need a Python ready web server, for example uWSGI as web server for the Python WSGI 
-with nginx as proxy server visible to the end user (volunteers and administrators). You also need a MySQL or PostgreSQL 
+**Server**: For production use you need a Python ready web server, for example uWSGI as web server for the Python WSGI
+with nginx as proxy server visible to the end user (volunteers and administrators). You also need a MySQL or PostgreSQL
 database.
 
 
 ## Project setup for development
 
-### 0. Prerequisites (Ubuntu 14.04 example) 
+Note. It is also possible to get moving fast with our [Docker installation guide.](https://github.com/coders4help/volunteer_planner/blob/develop/README_DOCKER.md)
+
+### 0. Prerequisites (Ubuntu 14.04 example)
 
 If your machine is setup to work on Django projects, you might skip this step.
 
 #### 0.1 Installing required OS packages
 
-    sudo apt-get install python-dev python-pip git npm
+    make sys_base
 
 This will install Python libraries and Git.
 
@@ -44,11 +46,11 @@ This will install Python libraries and Git.
 
 Using MySQL locally for development is optional.
 
-#### 0.2.1 Installing MySQL (optional) 
+#### 0.2.1 Installing MySQL (optional)
 
 If you are going to use a local MySQL server, additionally install
 
-    sudo apt-get install libmysqlclient-dev mysql-client mysql-server
+    make sys_mysql
 
 This will install MySQL server, it will ask you to set a root password
 [ROOT_PASSWORD] for the MySQL server, if you haven't already set up MySQL in the
@@ -57,10 +59,10 @@ past. Remember the password.
 #### 0.2.2 Creating a local MySQL database and user (optional)
 
 Open the MySQL shell
- 
+
     mysql -u root -p
 
-and execute following queries to setup the DB 
+and execute following queries to setup the DB
 
     CREATE DATABASE volunteer_planner;
     GRANT ALL PRIVILEGES ON volunteer_planner.* to vp identified by 'volunteer_planner';
@@ -78,30 +80,19 @@ Please fork us on GitHub and clone your fork
 
 Please do Pull Requests against the [`develop` branch](https://github.com/volunteer-planner/volunteer_planner/tree/develop).
 
-If you have questions concerning our workflow please read the 
+If you have questions concerning our workflow please read the
 [Development Rules wiki page](https://github.com/volunteer-planner/volunteer_planner/wiki/DevelopmentRules).
 
 ### 2. Setup your virtual environment
 
 #### 2.1. Create a virtual env
 
-Create an virtualenv (follow the installation guide at [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/) 
-to install virtualenvwrapper):
-    
-    $ mkvirtualenv vp
-
-*Note*: using `vp` as your virtualenv's name is a recommendation, not a requirement.
-
-The virtual environment should be enabled afterwards. 
-For starting/continuing working on the project using the virtualenv, 
-activate the virtual env using
-
-    $ workon vp
+Please refer to the canonical [virtualenv guide](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for installation.
 
 #### 2.2 Installing required python packages
 
 Update pip
- 
+
     pip install -U pip
 
 For a local sqlite DB install
@@ -112,19 +103,19 @@ or, if you intend to use MySQL locally, install
 
     pip install -r /path/to/volunteer_planner.git/requirements/dev_mysql.txt
 
-*Note*: `/path/to/volunteer_planner.git` means the path of your local clone of the 
+*Note*: `/path/to/volunteer_planner.git` means the path of your local clone of the
 GitHub project. Replace it accordingly with the actual path.
 
 #### 2.3 Setup your virtualenv `postactivate` hook (optional)
 
-This step is optional but recommended. 
+This step is optional but recommended.
 
-Every time, a virtualenv is activated with virtualenvwrappers' `workon` command, 
-a `postactivate` script is executed. This comes in handy to autmatically setup 
-a projects' environment variables and automate some reoccuring tasks. 
-For more details on virtualenvwrapper hooks, see [virtualenvwrapper: Per-User Customization](http://virtualenvwrapper.readthedocs.org/en/latest/scripts.html). 
+Every time, a virtualenv is activated with virtualenvwrappers' `workon` command,
+a `postactivate` script is executed. This comes in handy to autmatically setup
+a projects' environment variables and automate some reoccuring tasks.
+For more details on virtualenvwrapper hooks, see [virtualenvwrapper: Per-User Customization](http://virtualenvwrapper.readthedocs.org/en/latest/scripts.html).
 
-You might consider to use this example `postactivate` script 
+You might consider to use this example `postactivate` script
 (located at `$VIRTUAL_ENV/bin/postactivate`)
 
     #!/bin/bash
@@ -144,23 +135,23 @@ When you prefer to use MySQL locally, you'll probably need to use the settings m
 
 #### 2.3.2 Setup your local environment (optional)
 
-Also, if you need to use non-default settings values, setting (exporting) the 
-environment variables in your virtualenvs' `postactivate` hook is a good place 
-if you're not using an IDE to configure your environment variables. 
+Also, if you need to use non-default settings values, setting (exporting) the
+environment variables in your virtualenvs' `postactivate` hook is a good place
+if you're not using an IDE to configure your environment variables.
 
 ### 3. Initialize the database with Django
 
 Activate your env and change dir to your local forks' git repository (if not done yet).
- 
+
     workon vp
     cd /path/to/volunteer_planner.git
 
-#### 3.1 Run migrate management command to setup non-existing tables 
-    
+#### 3.1 Run migrate management command to setup non-existing tables
+
     ./manage.py migrate
 
 ### 3.2 Add a superuser
-    
+
     ./manage.py createsuperuser
 
 You will be asked for username, email and password (twice). Remember that
@@ -206,7 +197,7 @@ If you want to generate a coverage report as well, run
 
     $ py.test --cov=. --cov-report html --cov-report term-missing --no-cov-on-fail -v
 
-This generates a nice HTML coverage page, to poke around which can be found at `/path/to/volunteer_planner.git/htmlcov/index.html`. 
+This generates a nice HTML coverage page, to poke around which can be found at `/path/to/volunteer_planner.git/htmlcov/index.html`.
 
 *Note*: The directory `htmlcov` is git-ignored.
 
@@ -220,7 +211,7 @@ We use [Transifex (tx)](https://www.transifex.com/coders4help/volunteer-planner/
 
 #### General notes
 
-* Please read 
+* Please read
     * [Django 1.8: Internationalization and localization](https://docs.djangoproject.com/en/1.8/topics/i18n/)
     * [Django 1.8: Translations](https://docs.djangoproject.com/en/1.8/topics/i18n/translation/)
 * Please avoid internationalized strings / messages containing HTML markup. This makes the site layout depending on the translators and them getting the markup right; it's error prone and hardly maintainable when the page's layout changes.
@@ -233,8 +224,8 @@ We use [Transifex (tx)](https://www.transifex.com/coders4help/volunteer-planner/
 2. Update the po files `./manage.py makemessages --no-wrap --no-obsolete -l en`
    The options are intended to make the output more git-friendly.
 3. Push the updated translations to git. **Do not intend to translate in the local .po files, any changes here will be overwritten when translations are pulled from [tx](https://www.transifex.com/coders4help/volunteer-planner/).**
-4. Transifex will automatically update the source strings via github once a day and make them available for translation. 
-4.1. If necessary, translation managers (meaning VP's Transifex project admins) can update the source language manually using the tx client command `tx push -s django`. 
+4. Transifex will automatically update the source strings via github once a day and make them available for translation.
+4.1. If necessary, translation managers (meaning VP's Transifex project admins) can update the source language manually using the tx client command `tx push -s django`.
 5. Translators will then translate on [VP's Transifex project](https://www.transifex.com/coders4help/volunteer-planner/)
 6. When new translations are available on Transifex `tx pull` will update the local .po files with translations from TX
 7. `./manage.py makemessages --no-wrap --no-obsolete` will reformat po files in a more readable single-line message string format
