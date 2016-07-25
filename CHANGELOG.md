@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - [development] .editorconfig (PEP8 style)
 - [development] new docstrings to source code
 - [development] support for Docker containers for the test/development environment
+- [development] makefile for base and mysql installations
 
 ### Changed
 - [UI] better alignment of page
@@ -17,12 +18,14 @@ All notable changes to this project will be documented in this file.
 - [development] CHANGELOG is now Markdown
 - [development] Refactoring of the shiftmailer and Excelgenerator
 - [development] Refactor: only one repository for static files (both repositories have been merged)
+- [development] better README
 
 ### Fixed
 - UI: corrected wrong email for onboarding
 - [development] some PEP8 fixes of the source code
 - [development] removed hardcoded email from the source code, use settings file instead
 - [development] removed one hardcoded link on image
+- [development] .travis.yml fixups
 
 ### Removed
 - static repository in non-logged-in-area was removed
