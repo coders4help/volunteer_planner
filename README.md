@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/coders4help/volunteer_planner.svg?branch=master)](https://travis-ci.org/coders4help/volunteer_planner)
+
 # volunteer-planner.org
 
 Volunteer Planner is a platform to schedule shifts of volunteers. Volunteers register at the platform and choose shifts.
