@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - [development] new docstrings to source code
 - [development] support for Docker containers for the test/development environment
 - [development] makefile for base and mysql installations
+- [development] travis badge added for readme.md
 
 ### Changed
 - [UI] better alignment of page
