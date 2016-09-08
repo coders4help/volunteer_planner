@@ -64,6 +64,9 @@
                             {% trans "Username" %}
                         </th>
                         <th>
+                            {% trans "Email" %}
+                        </th>
+                        <th>
                             {% trans "Role" %}
                         </th>
                         <th>
@@ -80,6 +83,11 @@
                                 data-account-id="{{ membership.user_account.pk }}">
 
                                 {{ membership.user_account.user.username }}
+                            </td>
+                            <td>
+                                <a href="mailto:{{ membership.user_account.user.email }}">
+                                    {{ membership.user_account.user.email }}
+                                </a>
                             </td>
                             <td>
                                 {{ membership.get_role_display|title }}
