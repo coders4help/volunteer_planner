@@ -13,8 +13,8 @@ class ShiftQuerySet(models.QuerySet):
         Shift objects.
     """
     def on_shiftdate(self, shiftdate):
-        """ Shifts that end on or after shiftdate and begin before or on 
-            shiftdate. That means shifts that intersect with the day of 
+        """ Shifts that end on or after shiftdate and begin before or on
+            shiftdate. That means shifts that intersect with the day of
             shiftdate.
         """
         next_day = datetime.combine(shiftdate + timedelta(days=1), time.min)
@@ -62,7 +62,7 @@ ShiftManager = models.Manager.from_queryset(ShiftQuerySet)
 
 
 class OpenShiftManager(ShiftManager):
-    """ Manager for Shift. Overwrites get_queryset with a filter on QuerySet 
+    """ Manager for Shift. Overwrites get_queryset with a filter on QuerySet
         that holds all shifts that end now or in the future.
     """
     def get_queryset(self):
@@ -72,20 +72,24 @@ class OpenShiftManager(ShiftManager):
 
 
 class ShiftHelperManager(models.Manager):
-    """ Manager for ShiftHelper. Defines one method for filtering the 
+    """ Manager for ShiftHelper. Defines one method for filtering the
         QuerySet on conflicting shifts.
     """
     def conflicting(self, shift, user_account=None, grace=timedelta(hours=1)):
-        """ Filters QuerySet of ShiftHelper objects by selecting those that 
+        """ Filters QuerySet of ShiftHelper objects by selecting those that
             intersect with respect to time.
-            
+
             :param shift
-            :param user_account - default is None (-Does a default value for 
+            :param user_account - default is None (-Does a default value for
                     user make sense in that connection?)
             :param grace - some "buffer" which reduces the time of the shift.
                     default is 1 hour
         """
         grace = grace or timedelta(0)
+
+        # correct grace for short shifts, otherwise a user could join two concurrent 1-hour-shifts
+        if shift.duration <= grace:
+            grace = shift.duration / 2
         graced_start = shift.starting_time + grace
         graced_end = shift.ending_time - grace
 
