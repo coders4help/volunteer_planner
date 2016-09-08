@@ -86,10 +86,6 @@ class ShiftHelperManager(models.Manager):
                     default is 1 hour
         """
         grace = grace or timedelta(0)
-
-        # correct grace for short shifts, otherwise a user could join two concurrent 1-hour-shifts
-        if shift.duration <= grace:
-            grace = shift.duration / 2
         graced_start = shift.starting_time + grace
         graced_end = shift.ending_time - grace
 
