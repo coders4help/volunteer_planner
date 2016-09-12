@@ -4,6 +4,7 @@ from datetime import timedelta, datetime, time
 
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
 
 from places import models as place_models
 
@@ -75,7 +76,8 @@ class ShiftHelperManager(models.Manager):
     """ Manager for ShiftHelper. Defines one method for filtering the
         QuerySet on conflicting shifts.
     """
-    def conflicting(self, shift, user_account=None, grace=timedelta(hours=1)):
+
+    def conflicting(self, shift, user_account=None, grace=settings.DEFAULT_SHIFT_CONFLICT_GRACE):
         """ Filters QuerySet of ShiftHelper objects by selecting those that
             intersect with respect to time.
 

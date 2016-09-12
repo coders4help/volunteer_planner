@@ -1,5 +1,6 @@
 # coding=utf-8
 from .base import *
+from datetime import timedelta
 
 DEBUG = os.environ.get('BETA', False)
 
@@ -42,3 +43,5 @@ CACHES = {
 
 GOOGLE_SITE_VERIFICATION = '-BN1vuSIqe1vJNe8hS5_6iLvtpJrefGpMIAA1ogCoLQ'
 GOOGLE_ANALYTICS_TRACKING_ID = 'UA-66642441-1'
+
+DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
