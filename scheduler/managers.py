@@ -98,8 +98,14 @@ class ShiftHelperManager(models.Manager):
         if user_account:
             query_set = query_set.filter(user_account=user_account)
 
-        query_set = query_set.exclude(shift__starting_time__lt=graced_start,
-                                      shift__ending_time__lte=graced_start)
-        query_set = query_set.exclude(shift__starting_time__gte=graced_end,
-                                      shift__ending_time__gte=graced_end)
-        return query_set
+        soft_conflict_query_set = query_set.exclude(shift__starting_time__lt=shift.starting_time,
+                                                    shift__ending_time__lte=shift.starting_time)
+        soft_conflict_query_set = soft_conflict_query_set.exclude(shift__starting_time__gte=shift.ending_time,
+                                                                  shift__ending_time__gte=shift.ending_time)
+
+        hard_conflict_query_set = query_set.exclude(shift__starting_time__lt=graced_start,
+                                                    shift__ending_time__lte=graced_start)
+        hard_conflict_query_set = hard_conflict_query_set.exclude(shift__starting_time__gte=graced_end,
+                                                                  shift__ending_time__gte=graced_end)
+
+        return hard_conflict_query_set, soft_conflict_query_set
