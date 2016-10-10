@@ -39,6 +39,10 @@ class ShiftTestCase(TestCase):
         ShiftHelper.objects.create(user_account=self.user_account,
                                    shift=self.evening_shift)
 
+        self.short_shift = create_shift(1, 2)
+        ShiftHelper.objects.create(user_account=self.user_account,
+                                   shift=self.short_shift)
+
     def test_non_conflict_tight_fitting(self):
         shift = create_shift(12, 18)
         assert ShiftHelper.objects.conflicting(shift=shift).count() == 0
@@ -109,6 +113,13 @@ class ShiftTestCase(TestCase):
     def test_conflict_around_no_grace(self):
         shift = create_shift(8, 13)
         assert ShiftHelper.objects.conflicting(shift=shift).count() == 1
+
+    def test_conflict_grace_equals_duration(self):
+        shift = create_shift(9, 12)
+        assert ShiftHelper.objects.conflicting(shift=shift,
+                                               grace=shift.duration).count() == 1
+
+        assert ShiftHelper.objects.conflicting(shift=self.short_shift).count() == 1
 
 
 class FacilityTestCase(TestCase):
