@@ -1,0 +1,55 @@
+version: '2'
+
+volumes:
+  ### MySQL ###
+  data_volume_mysql:
+  config_volume_mysql:
+  ### PostgreSQL ###
+  # data_volume_pg:
+
+services:
+  db:
+    ### MySQL ###
+    image: tarzan79/alpine-mysql
+    ### PostgreSQL ###
+    # image: kiasaki/alpine-postgres
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_DATABASE: volunteer_planner
+      MYSQL_USER: vp
+      MYSQL_PASSWORD: volunteer_planner
+
+      POSTGRES_DB: volunteer_planner
+      POSTGRES_USER: vp
+      POSTGRES_PASSWORD: volunteer_planner
+    volumes:
+      ### MySQL ###
+      - data_volume_mysql:/var/lib/mysql
+      - config_volume_mysql:/etc/mysql
+      ### PostgreSQL ###
+      # - data_volume_pg:/var/lib/postgresql/data
+    hostname: db
+    mem_limit: 1G
+    memswap_limit: 2G
+    #cpuset: "0"
+
+  web:
+    build: .
+    # Attention, we're checking if database container is available before starting django, unless NO_CHECK env is set
+    entrypoint: ["/django-entrypoint.sh"]
+    command: ["runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/opt/vpcode
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    environment:
+      ### MySQL ###
+      DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
+      ### PostgreSQL ###
+      # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
+    hostname: web
+    mem_limit: 1G
+    memswap_limit: 2G
+    #cpuset: "1"

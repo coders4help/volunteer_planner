@@ -23,6 +23,14 @@ from .models import Organization, Facility, FacilityMembership
 
 
 class OrganizationView(DetailView):
+    ''' Class-based view to show details of an organization and related
+        facilities.
+    
+    Inherits from django generic DetailView. Overrides get_queryset to get
+        facilities which belong to organization via
+        queryset.prefetch_related().
+    
+    '''
     template_name = 'organization.html'
     model = Organization
 
@@ -32,6 +40,14 @@ class OrganizationView(DetailView):
 
 
 class FacilityView(DetailView):
+    ''' Class-based view to show details of a facility plus news
+        and open shifts for that facility.
+    
+    Inherits from django generic DetailView. Overrides
+        get_context_data(self, **kwargs) to get open shifts for that facility.
+        Calls get_facility_details(facility, shifts) to get details of
+        that facility.
+    '''
     template_name = 'facility.html'
     model = Facility
     queryset = Facility.objects.select_related('organization')
@@ -110,7 +126,6 @@ class ManageFacilityMembersView(DetailView):
 
 
 def send_membership_approved_notification(membership, approved_by):
-    to = membership.user_account.user.email
 
     try:
         template = get_template('emails/membership_approved.txt')
@@ -121,8 +136,9 @@ def send_membership_approved_notification(membership, approved_by):
         message = template.render(context)
         subject = _(u'volunteer-planner.org: Membership approved')
 
-        from_email = approved_by.email or "Volunteer-Planner.org <noreply@volunteer-planner.org>"
-        reply_to = (from_email,)
+        from_email = settings.DEFAULT_FROM_EMAIL
+        reply_to = approved_by.email
+        to = membership.user_account.user.email
 
         addresses = (to,)
 

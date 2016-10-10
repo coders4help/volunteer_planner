@@ -1,5 +1,6 @@
 # coding: utf-8
 import string
+from datetime import datetime
 
 import factory
 from django.contrib.auth.models import User
@@ -60,7 +61,7 @@ class OrganizationFactory(factory.DjangoModelFactory):
 
 class FacilityFactory(factory.DjangoModelFactory):
     name = factory.Sequence(lambda n: 'Facility ' + str(n))
-    slug = factory.Sequence(lambda n: 'facility' + str(n))
+    slug = factory.Sequence(lambda n: 'facility_' + str(n))
 
     place = factory.SubFactory(PlaceFactory)
     organization = factory.SubFactory(OrganizationFactory)
@@ -74,8 +75,9 @@ class TaskFactory(factory.DjangoModelFactory):
     class Meta:
         model = organization_models.Task
 
-    name = "Küchenhilfe"
-    description = "Teller waschen"
+    name = factory.Sequence(lambda n: 'Task ' + str(n))
+    description = factory.Sequence(lambda n: 'task ' + str(n))
+
     facility = factory.SubFactory(FacilityFactory)
 
 
@@ -86,6 +88,8 @@ class ShiftFactory(factory.DjangoModelFactory):
     task = factory.SubFactory(TaskFactory)
     facility = factory.SubFactory(FacilityFactory)
 
+    starting_time = datetime(2016, 2, 13, 19, 0)
+    ending_time = datetime(2016, 2, 13, 20, 0)
     slots = 10
 
 
@@ -96,8 +100,7 @@ class UserFactory(factory.DjangoModelFactory):
     username = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
     first_name = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
     last_name = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
-    password = factory.PostGenerationMethodCall('set_password',
-                                                'defaultpassword')
+    password = factory.PostGenerationMethodCall('set_password', 'defaultpassword')
     email = factory.LazyAttribute(lambda o: '%s@example.com' % o.last_name)
 
 
@@ -114,3 +117,4 @@ class ShiftHelperFactory(factory.DjangoModelFactory):
         django_get_or_create = ['shift']
 
     user_account = factory.SubFactory(UserAccountFactory)
+    shift = factory.SubFactory(ShiftFactory)

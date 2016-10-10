@@ -201,17 +201,20 @@ class PlannerView(LoginRequiredMixin, FormView):
                             u'A membership request has been sent.'))
                 return super(PlannerView, self).form_valid(form)
 
-            conflicts = ShiftHelper.objects.conflicting(shift_to_join,
-                                                        user_account=user_account)
-            conflicted_shifts = [shift_helper.shift for shift_helper in
-                                 conflicts]
+            hard_conflicts, graced_conflicts = ShiftHelper.objects.conflicting(shift_to_join,
+                                                                               user_account=user_account)
+            hard_conflicted_shifts = [shift_helper.shift for shift_helper in
+                                      hard_conflicts]
 
-            if conflicted_shifts:
+            soft_conflicted_shifts = [shift_helper.shift for shift_helper in
+                                      graced_conflicts]
+
+            if hard_conflicted_shifts:
                 error_message = _(
                     u'We can\'t add you to this shift because you\'ve already agreed to other shifts at the same time:')
                 message_list = u'<ul>{}</ul>'.format('\n'.join(
                     [u'<li>{}</li>'.format(conflict) for conflict in
-                     conflicted_shifts]))
+                     hard_conflicted_shifts]))
                 messages.warning(self.request,
                                  mark_safe(u'{}<br/>{}'.format(error_message,
                                                                message_list)))
@@ -225,6 +228,17 @@ class PlannerView(LoginRequiredMixin, FormView):
                 if created:
                     messages.success(self.request, _(
                         u'You were successfully added to this shift.'))
+
+                    if soft_conflicted_shifts:
+                        warning_message = _(
+                            u'The shift you joined overlaps with other shifts you already joined. Please check for \
+                            conflicts:')
+                        message_list = u'<ul>{}</ul>'.format('\n'.join(
+                            [u'<li>{}</li>'.format(conflict) for conflict in
+                             soft_conflicted_shifts]))
+                        messages.warning(self.request,
+                                         mark_safe(u'{}<br/>{}'.format(warning_message,
+                                                                       message_list)))
                 else:
                     messages.warning(self.request, _(
                         u'You already signed up for this shift at {date_time}.').format(

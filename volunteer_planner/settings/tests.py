@@ -1,4 +1,5 @@
 from .base import *
+from datetime import timedelta
 
 # Settings for running our tests
 
@@ -17,3 +18,5 @@ DATABASES = {
 }
 
 SECRET_KEY = 'Kitten like fish'
+
+DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)

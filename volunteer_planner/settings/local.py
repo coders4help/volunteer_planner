@@ -1,5 +1,6 @@
 # coding=utf-8
 from .base import *
+from datetime import timedelta
 
 DEBUG = True
 INTERNAL_IPS = ('127.0.0.1',)
@@ -86,3 +87,5 @@ if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'local')
 LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'de')
+
+DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)

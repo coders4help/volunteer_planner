@@ -16,7 +16,6 @@ from scheduler.models import ShiftHelper
 from accounts.models import UserAccount
 
 
-
 @login_required()
 def user_account_detail(request):
     """
@@ -45,6 +44,7 @@ def account_delete_final(request):
     (regarding to django documentation setting inactive is preferred to deleting an account.)
 
     :param request: http request
+    :return http response of user_detail_deleted-template that confirms deletion.
     """
     user = models.User.objects.get_by_natural_key(request.user.username)
     user.username = random_string()
@@ -81,27 +81,36 @@ class AccountDeleteView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+
 @login_required()
 def shift_list_active(request):
     """
     Delivers the list of shifts, a user has signed up for today and the future.
 
-    :param request:
-    :return:
+    :param request: http request
+    :return: http response of rendered shift_list-template and user-shifts,
+        ie.: user, shifts_today, shifts_tomorrow, shifts_day_after_tomorrow,
+        shifts_further_future.
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
-    shifts_today = shifthelper\
-        .filter(shift__starting_time__day=date.today().day)\
+    shifts_today = shifthelper \
+        .filter(shift__starting_time__day=date.today().day,
+                shift__starting_time__month=date.today().month,
+                shift__starting_time__year=date.today().year) \
         .order_by("shift__starting_time")
-    shifts_tomorrow = shifthelper\
-        .filter(shift__starting_time__day=date.today().day+1)\
+    shifts_tomorrow = shifthelper \
+        .filter(shift__starting_time__day=date.today().day + 1,
+                shift__starting_time__month=date.today().month,
+                shift__starting_time__year=date.today().year) \
         .order_by("shift__starting_time")
-    shifts_day_after_tomorrow = shifthelper\
-        .filter(shift__starting_time__day=date.today().day+2)\
+    shifts_day_after_tomorrow = shifthelper \
+        .filter(shift__starting_time__day=date.today().day + 2,
+                shift__starting_time__month=date.today().month,
+                shift__starting_time__year=date.today().year) \
         .order_by("shift__starting_time")
-    shifts_further_future = shifthelper\
-        .filter(shift__starting_time__gt=date.today() + timedelta(days=3))\
+    shifts_further_future = shifthelper \
+        .filter(shift__starting_time__gt=date.today() + timedelta(days=3)) \
         .order_by("shift__starting_time")
         
     return render(request, 'shift_list.html', {'user': user,
@@ -116,12 +125,13 @@ def shift_list_done(request):
     """
     Delivers the list of shifts, a user has signed up in the past (starting from yesterday).
 
-    :param request:
-    :return:
+    :param request: http request
+    :return: http response of rendered shift_list_done-template and user-date,
+        ie.: user and shifts_past.
     """
     user = request.user
     shifthelper = ShiftHelper.objects.filter(user_account=UserAccount.objects.get(user=user))
-    shifts_past =shifthelper.filter(shift__ending_time__lt=date.today()).order_by("shift__starting_time").reverse()
+    shifts_past = shifthelper.filter(shift__ending_time__lt=date.today()).order_by("shift__starting_time").reverse()
 
     return render(request, 'shift_list_done.html', {'user': user,
                                                     'shifts_past': shifts_past})

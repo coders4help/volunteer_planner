@@ -1,0 +1,3 @@
+libmysqlclient-dev
+mysql-client
+mysql-server

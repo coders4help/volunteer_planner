@@ -47,12 +47,10 @@ THIRD_PARTY_APPS = (
     # A prettier theme
 
     'accounts.apps.RegistrationConfig',
-    'rest_framework',
     'django_ajax'
 )
 
 LOCAL_APPS = (
-    'api',
     'google_tools',
     'osm_tools',
     'accounts.apps.AccountsConfig',
@@ -61,10 +59,8 @@ LOCAL_APPS = (
     'scheduler',
     'blueprint',
     'shiftmailer',
-    'stats',
     'places',
     'non_logged_in_area',
-    'registration_history',
     'scheduletemplates',
     'news',
     'notifications',
