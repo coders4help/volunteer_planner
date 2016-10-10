@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+
+## [3.1.0] - 2016-10-10]
+### Added
 - [UI] Display a warning when joining overlapping shifts #395
 - [UI] shift managers can see the e-mail address of approved and pending facility members to contact them
 - enhancements to the excel document that is sent to shift managers
