@@ -3,6 +3,7 @@
 from datetime import timedelta, datetime
 
 from django.test import TestCase
+from django.conf import settings
 
 from organizations.models import Facility
 from scheduler.models import Shift, ShiftHelper
@@ -21,6 +22,12 @@ def create_shift(start_hour, end_hour, facility=None):
     if facility:
         create_args['facility'] = facility
     return ShiftFactory.create(**create_args)
+
+
+def assert_shift_conflict_count(shift, hard_conflict_count, soft_conflict_count, grace=settings.DEFAULT_SHIFT_CONFLICT_GRACE):
+    hard_conflicting_shifts, soft_conflicting_shifts = ShiftHelper.objects.conflicting(shift=shift, grace=grace)
+    assert hard_conflicting_shifts.count() == hard_conflict_count
+    assert soft_conflicting_shifts.count() == soft_conflict_count
 
 
 class ShiftTestCase(TestCase):
@@ -45,81 +52,76 @@ class ShiftTestCase(TestCase):
 
     def test_non_conflict_tight_fitting(self):
         shift = create_shift(12, 18)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 0
+        assert_shift_conflict_count(shift, 0, 0)
 
     def test_non_conflict_gap_after(self):
         shift = create_shift(12, 17)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 0
+        assert_shift_conflict_count(shift, 0, 0)
 
     def test_non_conflict_gap_before(self):
         shift = create_shift(13, 18)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 0
+        assert_shift_conflict_count(shift, 0, 0)
 
     def test_non_conflict_tight_fitting_no_grace(self):
         shift = create_shift(12, 18)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=None).count() == 0
+        assert_shift_conflict_count(shift, 0, 0, None)
 
     def test_non_conflict_gap_after_no_grace(self):
         shift = create_shift(12, 17)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=None).count() == 0
+        assert_shift_conflict_count(shift, 0, 0, None)
 
     def test_non_conflict_gap_before_no_grace(self):
         shift = create_shift(13, 18)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=None).count() == 0
+        assert_shift_conflict_count(shift, 0, 0, None)
 
     def test_non_conflict_gaps(self):
         shift = create_shift(13, 17)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 0
+        assert_shift_conflict_count(shift, 0, 0)
 
     def test_non_conflict_gaps_no_grace(self):
         shift = create_shift(13, 17)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=None).count() == 0
+        assert_shift_conflict_count(shift, 0, 0, None)
 
     def test_conflict_at_beginning(self):
         shift = create_shift(8, 11)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 1
+        assert_shift_conflict_count(shift, 1, 1)
 
     def test_conflict_at_beginning_no_grace(self):
         shift = create_shift(9, 11)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=None).count() == 1
+        assert_shift_conflict_count(shift, 1, 1, None)
 
     def test_conflict_at_end(self):
         shift = create_shift(10, 15)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 1
+        assert_shift_conflict_count(shift, 1, 1)
 
     def test_conflict_at_end_no_grace(self):
         shift = create_shift(11, 15)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=None).count() == 1
+        assert_shift_conflict_count(shift, 1, 1, None)
 
     def test_conflict_within(self):
         shift = create_shift(10, 11)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 1
+        assert_shift_conflict_count(shift, 1, 1)
 
     def test_conflict_within_no_grace(self):
         shift = create_shift(9, 12)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=None).count() == 1
+        assert_shift_conflict_count(shift, 1, 1, None)
 
     def test_conflict_around(self):
         shift = create_shift(8, 13)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 1
+        assert_shift_conflict_count(shift, 1, 1)
 
     def test_conflict_around_no_grace(self):
         shift = create_shift(8, 13)
-        assert ShiftHelper.objects.conflicting(shift=shift).count() == 1
+        assert_shift_conflict_count(shift, 1, 1)
 
     def test_conflict_grace_equals_duration(self):
         shift = create_shift(9, 12)
-        assert ShiftHelper.objects.conflicting(shift=shift,
-                                               grace=shift.duration).count() == 1
+        assert_shift_conflict_count(shift, 1, 1, shift.duration)
+        assert_shift_conflict_count(self.short_shift, 1, 1)
 
-        assert ShiftHelper.objects.conflicting(shift=self.short_shift).count() == 1
+    def test_conflict_soft_only(self):
+        shift = create_shift(11, 13)
+        assert_shift_conflict_count(shift, 0, 1)
 
 
 class FacilityTestCase(TestCase):

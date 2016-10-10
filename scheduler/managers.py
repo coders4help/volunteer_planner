@@ -4,6 +4,7 @@ from datetime import timedelta, datetime, time
 
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
 
 from places import models as place_models
 
@@ -75,7 +76,8 @@ class ShiftHelperManager(models.Manager):
     """ Manager for ShiftHelper. Defines one method for filtering the
         QuerySet on conflicting shifts.
     """
-    def conflicting(self, shift, user_account=None, grace=timedelta(hours=1)):
+
+    def conflicting(self, shift, user_account=None, grace=settings.DEFAULT_SHIFT_CONFLICT_GRACE):
         """ Filters QuerySet of ShiftHelper objects by selecting those that
             intersect with respect to time.
 
@@ -98,8 +100,14 @@ class ShiftHelperManager(models.Manager):
         if user_account:
             query_set = query_set.filter(user_account=user_account)
 
-        query_set = query_set.exclude(shift__starting_time__lt=graced_start,
-                                      shift__ending_time__lte=graced_start)
-        query_set = query_set.exclude(shift__starting_time__gte=graced_end,
-                                      shift__ending_time__gte=graced_end)
-        return query_set
+        soft_conflict_query_set = query_set.exclude(shift__starting_time__lt=shift.starting_time,
+                                                    shift__ending_time__lte=shift.starting_time)
+        soft_conflict_query_set = soft_conflict_query_set.exclude(shift__starting_time__gte=shift.ending_time,
+                                                                  shift__ending_time__gte=shift.ending_time)
+
+        hard_conflict_query_set = query_set.exclude(shift__starting_time__lt=graced_start,
+                                                    shift__ending_time__lte=graced_start)
+        hard_conflict_query_set = hard_conflict_query_set.exclude(shift__starting_time__gte=graced_end,
+                                                                  shift__ending_time__gte=graced_end)
+
+        return hard_conflict_query_set, soft_conflict_query_set
