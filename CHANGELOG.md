@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 ### Fixed
+- fix #398: deleting a non-past shift failed hard when trying to gather information about email about to be sent 
 
 ### Removed
 
