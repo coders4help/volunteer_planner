@@ -3,8 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
+*added french translation
+*added portuguese translation (not fully translated yet)
+*added turkish translation (not fully translated yet)
 
 ### Changed
+*updated all existing translations (massive improvements in translation)
 
 ### Fixed
 - fix #398: deleting a non-past shift failed hard when trying to gather information about email about to be sent 
