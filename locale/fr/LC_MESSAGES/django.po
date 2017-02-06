@@ -3,99 +3,98 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Caroline Elis <caroline@adazylla.de>, 2015
 # Christoph, 2015
-# Christoph, 2015
-# Christoph, 2015
-# Julia Biro <juliabiro@gmail.com>, 2015
-# Nagy László, 2015
-# Nagy László, 2015
-# Péter Gerner <pgerner@gmail.com>, 2015
+# Dolfeus <dolfeus@sfr.fr>, 2016
+# helene bernard <helene.bernard35@gmail.com>, 2016
+# johannes lacher <johannes@lacher.cc>, 2015
+# maud nalpas <maud.nalpas@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-06 20:47+0100\n"
-"PO-Revision-Date: 2016-01-29 08:23+0000\n"
-"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
-"Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
-"Language: hu\n"
+"PO-Revision-Date: 2016-12-08 20:50+0000\n"
+"Last-Translator: Dolfeus <dolfeus@sfr.fr>\n"
+"Language-Team: French (http://www.transifex.com/coders4help/volunteer-planner/language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: accounts/admin.py:15 accounts/admin.py:21 shiftmailer/models.py:9
 msgid "first name"
-msgstr ""
+msgstr "Nom"
 
 #: accounts/admin.py:27 shiftmailer/models.py:13
 msgid "email"
-msgstr "e-mail"
+msgstr "Courrier électronique"
 
 #: accounts/apps.py:8 accounts/apps.py:16
 msgid "Accounts"
-msgstr ""
+msgstr "Compte utilisateur"
 
 #: accounts/models.py:16 organizations/models.py:59
 msgid "user account"
-msgstr "felhasználói fiók"
+msgstr "Nom d'utilisateur"
 
 #: accounts/models.py:17
 msgid "user accounts"
-msgstr "felhasználói fiókok"
+msgstr "Compte utilisateur"
 
 #: accounts/templates/shift_list.html:12
 msgid "My shifts today:"
-msgstr ""
+msgstr "Mon créneaux aujourd'hui"
 
 #: accounts/templates/shift_list.html:14
 msgid "No shifts today."
-msgstr ""
+msgstr "Pas de créneaux aujourd’hui"
 
 #: accounts/templates/shift_list.html:19 accounts/templates/shift_list.html:33
 #: accounts/templates/shift_list.html:47 accounts/templates/shift_list.html:61
 msgid "Show this work shift"
-msgstr ""
+msgstr "Plus de créneaux"
 
 #: accounts/templates/shift_list.html:26
 msgid "My shifts tomorrow:"
-msgstr ""
+msgstr "Mes créneaux demain"
 
 #: accounts/templates/shift_list.html:28
 msgid "No shifts tomorrow."
-msgstr ""
+msgstr "Pas de créneaux demain"
 
 #: accounts/templates/shift_list.html:40
 msgid "My shifts the day after tomorrow:"
-msgstr ""
+msgstr "Mes créneaux après demain"
 
 #: accounts/templates/shift_list.html:42
 msgid "No shifts the day after tomorrow."
-msgstr ""
+msgstr "Pas de créneaux après demain"
 
 #: accounts/templates/shift_list.html:54
 msgid "Further shifts:"
-msgstr ""
+msgstr "Plus de créneau"
 
 #: accounts/templates/shift_list.html:56
 msgid "No further shifts."
-msgstr ""
+msgstr "Ne pas proposer de créneaux supplémentaires "
 
 #: accounts/templates/shift_list.html:66
 msgid "Show my work shifts in the past"
-msgstr ""
+msgstr "Créneaux plus tôt"
 
 #: accounts/templates/shift_list_done.html:12
 msgid "My work shifts in the past:"
-msgstr ""
+msgstr "Créneaux éffectués"
 
 #: accounts/templates/shift_list_done.html:14
 msgid "No work shifts in the past days yet."
-msgstr ""
+msgstr "Pas de créneaux éffectués"
 
 #: accounts/templates/shift_list_done.html:21
 msgid "Show my work shifts in the future"
-msgstr ""
+msgstr "Mes créneaux futurs"
 
 #: accounts/templates/user_account_delete.html:10
 #: accounts/templates/user_detail.html:10
@@ -103,267 +102,269 @@ msgstr ""
 #: templates/registration/login.html:23
 #: templates/registration/registration_form.html:35
 msgid "Username"
-msgstr "Felhasználónév"
+msgstr "Nom d'utilisateur"
 
 #: accounts/templates/user_account_delete.html:11
 #: accounts/templates/user_detail.html:11
 msgid "First name"
-msgstr "Keresztnév"
+msgstr "Prénom"
 
 #: accounts/templates/user_account_delete.html:12
 #: accounts/templates/user_detail.html:12
 msgid "Last name"
-msgstr "Vezetéknév"
+msgstr "Nom de famille"
 
 #: accounts/templates/user_account_delete.html:13
 #: accounts/templates/user_detail.html:13
 #: organizations/templates/manage_members.html:67
 #: templates/registration/registration_form.html:23
 msgid "Email"
-msgstr "E-mail"
+msgstr "Courrier électronique"
 
 #: accounts/templates/user_account_delete.html:15
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
-msgstr ""
+msgstr "Si vous supprimez votre compte, cette information sera rendu anonyme et il ne vous sera plus possible de vous connecter à Volunteer-Planner."
 
 #: accounts/templates/user_account_delete.html:16
 msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
-msgstr ""
+msgstr "Il est impossible de récupérer cette information. Vous devez créer un nouveau compte si vous voulez de nouveau faire du bénévolat."
 
 #: accounts/templates/user_account_delete.html:18
 msgid "Delete Account (no additional warning)"
-msgstr ""
+msgstr "Supprimer le compte (sans confirmation supplémentaire)"
 
 #: accounts/templates/user_account_edit.html:12
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save"
-msgstr "Mentés"
+msgstr "Sauvegarder"
 
 #: accounts/templates/user_detail.html:16
 msgid "Edit Account"
-msgstr "Fiók szerkesztése"
+msgstr "Modifier le compte"
 
 #: accounts/templates/user_detail.html:17
 msgid "Delete Account"
-msgstr ""
+msgstr "Supprimer le compte"
 
 #: accounts/templates/user_detail_deleted.html:6
 msgid "Your user account has been deleted."
-msgstr ""
+msgstr "Votre compte a été supprimé"
 
 #: content/admin.py:15 content/admin.py:16 content/models.py:15
 msgid "additional CSS"
-msgstr ""
+msgstr "CSS supplémentaire"
 
 #: content/admin.py:23
 msgid "translation"
-msgstr ""
+msgstr "Traduction"
 
 #: content/admin.py:24 content/admin.py:63
 msgid "translations"
-msgstr ""
+msgstr "Traductions"
 
 #: content/admin.py:58
 msgid "No translation available"
-msgstr ""
+msgstr "Traduction indisponible"
 
 #: content/models.py:12
 msgid "additional style"
-msgstr ""
+msgstr "Style supplémentaire "
 
 #: content/models.py:18
 msgid "additional flat page style"
-msgstr ""
+msgstr "Style supplémentaire pour la page statique"
 
 #: content/models.py:19
 msgid "additional flat page styles"
-msgstr ""
+msgstr "Styles supplémentaires pour la page statique"
 
 #: content/models.py:25
 msgid "flat page"
-msgstr ""
+msgstr "Page statique"
 
 #: content/models.py:28
 msgid "language"
-msgstr ""
+msgstr "Langue"
 
 #: content/models.py:32 news/models.py:14
 msgid "title"
-msgstr "cím"
+msgstr "Titre"
 
 #: content/models.py:36
 msgid "content"
-msgstr ""
+msgstr "Contenu"
 
 #: content/models.py:46
 msgid "flat page translation"
-msgstr ""
+msgstr "Traduction de la page statique"
 
 #: content/models.py:47
 msgid "flat page translations"
-msgstr ""
+msgstr "Traductions de la page statique"
 
 #: content/templates/flatpages/additional_flat_page_style_inline.html:12
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:33
 msgid "View on site"
-msgstr ""
+msgstr "Voir sur le site"
 
 #: content/templates/flatpages/additional_flat_page_style_inline.html:32
 #: organizations/templates/manage_members.html:109
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
 msgid "Remove"
-msgstr ""
+msgstr "Supprimer"
 
 #: content/templates/flatpages/additional_flat_page_style_inline.html:33
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:80
 #, python-format
 msgid "Add another %(verbose_name)s"
-msgstr ""
+msgstr "Ajouter un autre %(verbose_name)s"
 
 #: content/templates/flatpages/default.html:23
 msgid "Edit this page"
-msgstr ""
+msgstr "Modifier cette page"
 
 #: news/models.py:17
 msgid "subtitle"
-msgstr "alcím"
+msgstr "Sous-titre"
 
 #: news/models.py:21
 msgid "articletext"
-msgstr ""
+msgstr "Texte de l'article"
 
 #: news/models.py:26
 msgid "creation date"
-msgstr ""
+msgstr "Date de création"
 
 #: news/models.py:39
 msgid "news entry"
-msgstr ""
+msgstr "Article"
 
 #: news/models.py:40
 msgid "news entries"
-msgstr ""
+msgstr "Articles"
 
 #: non_logged_in_area/templates/404.html:8
 msgid "Page not found"
-msgstr ""
+msgstr "Page introuvable"
 
 #: non_logged_in_area/templates/404.html:10
 msgid "We're sorry, but the requested page could not be found."
-msgstr ""
+msgstr "Nous sommes désolé mais la page demandée est introuvable."
 
 #: non_logged_in_area/templates/500.html:4
 msgid "Server error"
-msgstr ""
+msgstr "Erreur serveur"
 
 #: non_logged_in_area/templates/500.html:8
 msgid "Server Error <em>(500)</em>"
-msgstr ""
+msgstr "Erreur serveur <em>(500)</em>"
 
 #: non_logged_in_area/templates/500.html:10
+#, fuzzy
+#| msgid "There's been an error. It's been reported to the site administrators via email and should be fixed shortly. Thanks for your patience."
 msgid "There's been an error. I should be fixed shortly. Thanks for your patience."
-msgstr ""
+msgstr "Une erreur est survenue. Les administrateurs du site en ont été informé par E-mail et cela devrait être réglé rapidement. Merci pour votre patience."
 
 #: non_logged_in_area/templates/base_non_logged_in.html:57
 #: templates/registration/login.html:3 templates/registration/login.html:10
 msgid "Login"
-msgstr "Bejelentkezés"
+msgstr "Connexion"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:60
 msgid "Start helping"
-msgstr "Kezdődhet a segítségnyújtás"
+msgstr "Offrir son aide"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:87
 #: templates/partials/footer.html:6
 msgid "Main page"
-msgstr "Kezdőoldal"
+msgstr "Page principale"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:90
 #: templates/partials/footer.html:7
 msgid "Imprint"
-msgstr "Impresszum"
+msgstr "Avertissement"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:93
 #: templates/partials/footer.html:8
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:96
 #: templates/partials/footer.html:9
 msgid "Supporter"
-msgstr ""
+msgstr "Soutiens"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:99
 #: templates/partials/footer.html:10
 msgid "Press"
-msgstr ""
+msgstr "Presse"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:102
 #: templates/partials/footer.html:11
 msgid "Contact"
-msgstr "Kapcsolat"
+msgstr "Contact"
 
 #: non_logged_in_area/templates/base_non_logged_in.html:105
 #: templates/partials/faq_link.html:2
 msgid "FAQ"
-msgstr "GYIK"
+msgstr "F.A.Q."
 
 #: non_logged_in_area/templates/home.html:25
 msgid "I want to help!"
-msgstr "Szeretnék segíteni!"
+msgstr "Je veux aider !"
 
 #: non_logged_in_area/templates/home.html:27
 msgid "Register and see where you can help"
-msgstr "Regisztrálj, és válaszd ki miben tudsz segíteni!"
+msgstr "Inscrivez-vous et découvrer où vous pouvez aider"
 
 #: non_logged_in_area/templates/home.html:32
 msgid "Organize volunteers!"
-msgstr "Szervezz önkénteseket!"
+msgstr "Proposer du bénévolat !"
 
 #: non_logged_in_area/templates/home.html:34
 msgid "Register a shelter and organize volunteers"
-msgstr "Regisztrájl egy helyszínt és szervezz oda önkénteseket!"
+msgstr "Inscrire un refuge et proposer du bénévolat "
 
 #: non_logged_in_area/templates/home.html:48
 msgid "Places to help"
-msgstr "Segítségre váró helyszínek"
+msgstr "Lieux pour aider"
 
 #: non_logged_in_area/templates/home.html:55
 msgid "Registered Volunteers"
-msgstr "Regisztrált önkéntesek"
+msgstr "Inscription des volontaires"
 
 #: non_logged_in_area/templates/home.html:62
 msgid "Worked Hours"
-msgstr "Munkaórák"
+msgstr "Heures travaillées"
 
 #: non_logged_in_area/templates/home.html:74
 msgid "What is it all about?"
-msgstr "Miről szól ez az egész?"
+msgstr "Qu'est ce qu'un agenda de bénévolat ?"
 
 #: non_logged_in_area/templates/home.html:77
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
-msgstr "Önkéntesként segítenél a menedékkérőknek? A Volunteer-Planner.org megmutatja, hol, mikor és hogyan segíthetsz."
+msgstr "Vous êtes bénévole et voulez aider des réfugiés ? Volunteer-Planner.org vous montre où, quand et comment aider directement sur le terrain."
 
 #: non_logged_in_area/templates/home.html:85
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
-msgstr ""
+msgstr "<p>Cette plateforme est non-commerciale et sans publicités. Une équipe internationale d'acteurs de terrain, programmeurs, gestionnaires de projet et designers s'investissent bénévolement dans ce projet et y apportent leur expérience professionnelle pour faire la différence.<p>"
 
 #: non_logged_in_area/templates/home.html:98
 msgid "You can help at these locations:"
-msgstr ""
+msgstr "Vous pouvez aider à ces endroits :"
 
 #: non_logged_in_area/templates/home.html:116
 msgid "There are currently no places in need of help."
-msgstr ""
+msgstr "Il n'y a pour le moment aucun lieu où aider."
 
 #: non_logged_in_area/templates/privacy_policy.html:6
 msgid "Privacy Policy"
-msgstr "Magánszféra"
+msgstr "Politique de confidentialité"
 
 #: non_logged_in_area/templates/privacy_policy.html:10
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
-msgstr ""
+msgstr "Rayon d'action"
 
 #: non_logged_in_area/templates/privacy_policy.html:16
 msgctxt "Privacy Policy Sec1 P1"
@@ -378,7 +379,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:29
 msgctxt "Privacy Policy Sec2"
 msgid "Access data / server log files"
-msgstr ""
+msgstr "Données d'accès / fichiers journaux des serveurs"
 
 #: non_logged_in_area/templates/privacy_policy.html:35
 msgctxt "Privacy Policy Sec2 P1"
@@ -393,7 +394,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:48
 msgctxt "Privacy Policy Sec3"
 msgid "Use of personal data"
-msgstr ""
+msgstr "Utilisation des données personnelles"
 
 #: non_logged_in_area/templates/privacy_policy.html:54
 msgctxt "Privacy Policy Sec3 P1"
@@ -408,7 +409,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr "Kapcsolat"
+msgstr "Contact"
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
@@ -418,7 +419,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:81
 msgctxt "Privacy Policy Sec5"
 msgid "Cookies"
-msgstr ""
+msgstr "Cookies"
 
 #: non_logged_in_area/templates/privacy_policy.html:87
 msgctxt "Privacy Policy Sec5 P1"
@@ -439,7 +440,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
-msgstr "Regisztráció"
+msgstr "Inscription"
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
@@ -454,7 +455,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:124
 msgctxt "Privacy Policy Sec7"
 msgid "E-mail notifications / Newsletter"
-msgstr ""
+msgstr "Notifications par E-mail / Newsletter"
 
 #: non_logged_in_area/templates/privacy_policy.html:130
 msgctxt "Privacy Policy Sec7 P1"
@@ -474,7 +475,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:148
 msgctxt "Privacy Policy Sec8"
 msgid "Google Analytics"
-msgstr ""
+msgstr "Google Analytics"
 
 #: non_logged_in_area/templates/privacy_policy.html:154
 msgctxt "Privacy Policy Sec8 P1"
@@ -499,7 +500,7 @@ msgstr ""
 
 #: non_logged_in_area/templates/privacy_policy.html:174
 msgid "click this link"
-msgstr ""
+msgstr "cliquer sur ce lien"
 
 #: non_logged_in_area/templates/privacy_policy.html:175
 #, python-format
@@ -510,7 +511,7 @@ msgstr ""
 #: non_logged_in_area/templates/privacy_policy.html:183
 msgctxt "Privacy Policy Sec9"
 msgid "Revocation, Changes, Corrections, and Updates"
-msgstr ""
+msgstr "Révocation, Modification, Corrections et Mises à jours"
 
 #: non_logged_in_area/templates/privacy_policy.html:189
 msgctxt "Privacy Policy Sec9 P1"
@@ -524,15 +525,15 @@ msgstr ""
 
 #: non_logged_in_area/templates/shelters_need_help.html:20
 msgid "advantages"
-msgstr ""
+msgstr "Avantages"
 
 #: non_logged_in_area/templates/shelters_need_help.html:22
 msgid "save time"
-msgstr ""
+msgstr "Gagner du temps"
 
 #: non_logged_in_area/templates/shelters_need_help.html:23
 msgid "improve selforganization of the volunteers"
-msgstr ""
+msgstr "Améliore l'auto-organisation des bénévoles"
 
 #: non_logged_in_area/templates/shelters_need_help.html:26
 msgid ""
@@ -541,6 +542,9 @@ msgid ""
 "                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
 "                "
 msgstr ""
+"\n"
+"les bénévoles se répartissent les créneaux avec plus d'efficacité,\n"
+"les manques temporaires peuvent plus facilement être anticipés par les bénévoles eux-même"
 
 #: non_logged_in_area/templates/shelters_need_help.html:32
 msgid ""
@@ -558,14 +562,17 @@ msgid ""
 "                    and all facilities will benefit from a common pool of motivated volunteers\n"
 "                "
 msgstr ""
+"\n"
+"plus il y a de refuges et de camps organisés avec nous, plus il y a de bénévoles qui nous rejoignent\n"
+"et tous les établissements bénéficient d'un ensemble de bénévoles motivés"
 
 #: non_logged_in_area/templates/shelters_need_help.html:45
 msgid "for free without costs"
-msgstr ""
+msgstr "gratuitement"
 
 #: non_logged_in_area/templates/shelters_need_help.html:51
 msgid "The right help at the right time at the right place"
-msgstr ""
+msgstr "Le soutient nécessaire au bon endroit au bon moment"
 
 #: non_logged_in_area/templates/shelters_need_help.html:52
 msgid ""
@@ -575,10 +582,14 @@ msgid ""
 "        </p>\n"
 "            "
 msgstr ""
+"\n"
+"<p>Beaucoup de gens veulent aider ! Mais souvent, ce n'est pas facile de voir où, quand et comment l'on peut aider.\n"
+"volunteer-planner essaie de résoudre ce problème ! <br>\n"
+"</p>"
 
 #: non_logged_in_area/templates/shelters_need_help.html:60
 msgid "for free, ad free"
-msgstr ""
+msgstr "gratuitement, sans publicités"
 
 #: non_logged_in_area/templates/shelters_need_help.html:61
 msgid ""
@@ -587,234 +598,247 @@ msgid ""
 "        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
+"\n"
+"<p>La plateforme a été construite par un groupe bénévole de professionnels dans les milieux du développement logiciel, de la gestion de projets, du design et du marketing. Le code est open-source pour un usage non-commercial.\n"
+"Les données privées (adresse E-mail, données du profil, etc...) ne sont communiqués à aucune tierce-partie.</p>"
 
 #: non_logged_in_area/templates/shelters_need_help.html:69
 msgid "contact us!"
-msgstr ""
+msgstr "Contactez-nous !"
 
 #: non_logged_in_area/templates/shelters_need_help.html:72
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
+#| "                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+#| "                    "
 msgid ""
 "\n"
 "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
 "                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 msgstr ""
+"\n"
+"...éventuellement en joignant un brouillon des créneaux que voudriez proposer sur volunteer-planner.  Écrire à <a href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
 
 #: organizations/admin.py:128 organizations/admin.py:130
 msgid "edit"
-msgstr ""
+msgstr "Modifier"
 
 #: organizations/admin.py:202 organizations/admin.py:239
 #: organizations/models.py:79 organizations/models.py:148
 msgid "short description"
-msgstr ""
+msgstr "Courte description"
 
 #: organizations/admin.py:208 organizations/admin.py:245
 #: organizations/admin.py:311 organizations/admin.py:335
 #: organizations/models.py:82 organizations/models.py:151
 #: organizations/models.py:291 organizations/models.py:316
 msgid "description"
-msgstr "leírás"
+msgstr "Description"
 
 #: organizations/admin.py:214 organizations/admin.py:251
 #: organizations/models.py:85 organizations/models.py:154
 msgid "contact info"
-msgstr ""
+msgstr "Infos de contact"
 
 #: organizations/models.py:29
 msgid "by invitation"
-msgstr ""
+msgstr "Par invitation"
 
 #: organizations/models.py:30
 msgid "anyone (approved by manager)"
-msgstr ""
+msgstr "Tout le monde (approuvé par un manager)"
 
 #: organizations/models.py:31
 msgid "anyone"
-msgstr ""
+msgstr "Tout le monde"
 
 #: organizations/models.py:37
 msgid "rejected"
-msgstr ""
+msgstr "Rejeté"
 
 #: organizations/models.py:38
 msgid "pending"
-msgstr ""
+msgstr "En attente"
 
 #: organizations/models.py:39
 msgid "approved"
-msgstr ""
+msgstr "Approuvé"
 
 #: organizations/models.py:45
 msgid "admin"
-msgstr ""
+msgstr "Administrateur"
 
 #: organizations/models.py:46
 msgid "manager"
-msgstr ""
+msgstr "Manager"
 
 #: organizations/models.py:47
 msgid "member"
-msgstr ""
+msgstr "Membre"
 
 #: organizations/models.py:52
 msgid "role"
-msgstr ""
+msgstr "Rôle"
 
 #: organizations/models.py:56
 msgid "status"
-msgstr ""
+msgstr "Status"
 
 #: organizations/models.py:74 organizations/models.py:143
 #: organizations/models.py:288 organizations/models.py:313 places/models.py:20
 #: scheduletemplates/models.py:13
 msgid "name"
-msgstr "név"
+msgstr "Nom"
 
 #: organizations/models.py:88 organizations/models.py:169
 msgid "address"
-msgstr "cím"
+msgstr "Adresse"
 
 #: organizations/models.py:97 organizations/models.py:185 places/models.py:21
 msgid "slug"
-msgstr "slug"
+msgstr "Identifiant unique"
 
 #: organizations/models.py:102 organizations/models.py:195
 msgid "join mode"
-msgstr ""
+msgstr "Mode d'accès"
 
 #: organizations/models.py:103
 msgid "Who can join this organization?"
-msgstr ""
+msgstr "Qui peut rejoindre cette organisation ?"
 
 #: organizations/models.py:106 organizations/models.py:139
 #: organizations/models.py:232
 msgid "organization"
-msgstr ""
+msgstr "Organisation"
 
 #: organizations/models.py:107
 msgid "organizations"
-msgstr ""
+msgstr "Organisations"
 
 #: organizations/models.py:111 organizations/models.py:214
 #: organizations/models.py:299 organizations/models.py:324
 #, python-brace-format
 msgid "{name}"
-msgstr ""
+msgstr "{name}"
 
 #: organizations/models.py:132
 msgid "disabled"
-msgstr ""
+msgstr "Désactivé"
 
 #: organizations/models.py:133
 msgid "enabled (collapsed)"
-msgstr ""
+msgstr "Activé (masqué)"
 
 #: organizations/models.py:134
 msgid "enabled"
-msgstr ""
+msgstr "Activé"
 
 #: organizations/models.py:165 places/models.py:132
 msgid "place"
-msgstr "hely"
+msgstr "Lieu"
 
 #: organizations/models.py:174
 msgid "postal code"
-msgstr "irányítószám"
+msgstr "Code postal"
 
 #: organizations/models.py:179
 msgid "Show on map of all facilities"
-msgstr ""
+msgstr "Afficher sur la carte de tous les établissements"
 
 #: organizations/models.py:181
 msgid "latitude"
-msgstr "szélességi fok"
+msgstr "Latitude"
 
 #: organizations/models.py:183
 msgid "longitude"
-msgstr "hosszúsági fok"
+msgstr "Longitude"
 
 #: organizations/models.py:190
 msgid "timeline"
-msgstr ""
+msgstr "historique"
 
 #: organizations/models.py:196
 msgid "Who can join this facility?"
-msgstr ""
+msgstr "Qui peut rejoindre cet établissement ?"
 
 #: organizations/models.py:199 organizations/models.py:258
 #: organizations/models.py:283 organizations/models.py:309
 #: scheduler/models.py:51 scheduletemplates/models.py:16
 msgid "facility"
-msgstr ""
+msgstr "Etablissement"
 
 #: organizations/models.py:200
 msgid "facilities"
-msgstr ""
+msgstr "Etablissements"
 
 #: organizations/models.py:237
 msgid "organization member"
-msgstr ""
+msgstr "Membre de l'organisation"
 
 #: organizations/models.py:238
 msgid "organization members"
-msgstr ""
+msgstr "Membres de l'organisation"
 
 #: organizations/models.py:242
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
-msgstr ""
+msgstr "{username} à {organization_name} ({user_role})"
 
 #: organizations/models.py:264
 msgid "facility member"
-msgstr ""
+msgstr "Membre de l'établissement"
 
 #: organizations/models.py:265
 msgid "facility members"
-msgstr ""
+msgstr "Membres de l'établissement"
 
 #: organizations/models.py:269
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
-msgstr ""
+msgstr "{username} à {facility_name} ({user_role})"
 
 #: organizations/models.py:294 scheduler/models.py:46
 #: scheduletemplates/models.py:40
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
-msgstr ""
+msgstr "Lieu de travail"
 
 #: organizations/models.py:295
 msgid "workplaces"
-msgstr ""
+msgstr "Lieux de travail"
 
 #: organizations/models.py:319 scheduler/models.py:44
 #: scheduletemplates/models.py:37
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
-msgstr ""
+msgstr "Tâche"
 
 #: organizations/models.py:320
 msgid "tasks"
-msgstr ""
+msgstr "Tâches"
 
 #: organizations/templates/emails/membership_approved.txt:2
 #, python-format
 msgid "Hello %(username)s,"
-msgstr ""
+msgstr "Bonjour %(username)s,"
 
 #: organizations/templates/emails/membership_approved.txt:6
 #, python-format
 msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
-msgstr ""
+msgstr "Votre demande d'inscription à %(facility_name)s a été approuvé. Vous pouvez maintenant vous inscrire aux créneaux à accès restreint de cet établissement."
 
 #: organizations/templates/emails/membership_approved.txt:10
 msgid ""
 "Yours,\n"
 "the volunteer-planner.org Team"
 msgstr ""
+"Bien à vous,\n"
+"l'équipe de volunteer-planner.org"
 
 #: organizations/templates/facility.html:9
 #: organizations/templates/organization.html:9
@@ -822,281 +846,281 @@ msgstr ""
 #: scheduler/templates/helpdesk_single.html:144
 #: scheduler/templates/shift_details.html:33
 msgid "Helpdesk"
-msgstr "Helpdes"
+msgstr "Bureau du bénévolat"
 
 #: organizations/templates/facility.html:41
 #: organizations/templates/partials/compact_facility.html:31
 msgid "Open Shifts"
-msgstr ""
+msgstr "Ouvrir la liste de créneaux"
 
 #: organizations/templates/facility.html:50
 #: scheduler/templates/helpdesk.html:70
 msgid "News"
-msgstr ""
+msgstr "Nouvelles"
 
 #: organizations/templates/manage_members.html:18
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: organizations/templates/manage_members.html:18
 msgid "You are not allowed to do this."
-msgstr ""
+msgstr "Vous n'êtes pas autorisé à faire ça."
 
 #: organizations/templates/manage_members.html:43
 #, python-format
 msgid "Members in %(facility)s"
-msgstr ""
+msgstr "Membres de %(facility)s"
 
 #: organizations/templates/manage_members.html:70
 msgid "Role"
-msgstr ""
+msgstr "Rôle"
 
 #: organizations/templates/manage_members.html:73
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: organizations/templates/manage_members.html:98
 #: organizations/templates/manage_members.html:105
 msgid "Block"
-msgstr ""
+msgstr "Blocker"
 
 #: organizations/templates/manage_members.html:102
 msgid "Accept"
-msgstr ""
+msgstr "Accepter"
 
 #: organizations/templates/organization.html:26
 msgid "Facilities"
-msgstr ""
+msgstr "Etablissements"
 
 #: organizations/templates/partials/compact_facility.html:23
 #: scheduler/templates/geographic_helpdesk.html:76
 #: scheduler/templates/helpdesk.html:68
 msgid "Show details"
-msgstr ""
+msgstr "Afficher les détails"
 
 #: organizations/views.py:137
 msgid "volunteer-planner.org: Membership approved"
-msgstr ""
+msgstr "volunteer-planner.org : inscription approuvée"
 
 #: osm_tools/templatetags/osm_links.py:17
 #, python-brace-format
 msgctxt "maps search url pattern"
 msgid "https://www.openstreetmap.org/search?query={location}"
-msgstr ""
+msgstr "https://www.openstreetmap.org/search?query={location}"
 
 #: places/models.py:69 places/models.py:84
 msgid "country"
-msgstr "ország"
+msgstr "Pays"
 
 #: places/models.py:70
 msgid "countries"
-msgstr "országok"
+msgstr "Pays"
 
 #: places/models.py:87 places/models.py:106
 msgid "region"
-msgstr "régió"
+msgstr "Région"
 
 #: places/models.py:88
 msgid "regions"
-msgstr "régiók"
+msgstr "Régions"
 
 #: places/models.py:109 places/models.py:129
 msgid "area"
-msgstr "terület"
+msgstr "Zone"
 
 #: places/models.py:110
 msgid "areas"
-msgstr "területek"
+msgstr "Zones"
 
 #: places/models.py:133
 msgid "places"
-msgstr "helyek"
+msgstr "Lieux"
 
 #: scheduler/admin.py:28
 msgid "number of volunteers"
-msgstr ""
+msgstr "Nombre de bénévoles"
 
 #: scheduler/admin.py:44
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
-msgstr ""
+msgstr "Bénévoles"
 
 #: scheduler/apps.py:8
 msgid "Scheduler"
-msgstr "Ütemező"
+msgstr "Auteur du plan d'équipe"
 
 #: scheduler/models.py:41 scheduletemplates/models.py:34
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
 msgid "number of needed volunteers"
-msgstr "a szükséges önkéntesek száma"
+msgstr " Nombre de volontaires nécessaires"
 
 #: scheduler/models.py:53 scheduletemplates/admin.py:33
 #: scheduletemplates/models.py:44
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
-msgstr "kezdés ideje"
+msgstr "Heure de début"
 
 #: scheduler/models.py:55 scheduletemplates/admin.py:36
 #: scheduletemplates/models.py:47
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
-msgstr "befejezés ideje"
+msgstr "Heure de fin d'activités"
 
 #: scheduler/models.py:63 scheduletemplates/models.py:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:58
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
 msgid "members only"
-msgstr ""
+msgstr "Uniquement les membres"
 
 #: scheduler/models.py:65 scheduletemplates/models.py:56
 msgid "allow only members to help"
-msgstr ""
+msgstr "Permettre uniquement aux membres d'aider"
 
 #: scheduler/models.py:71
 msgid "shift"
-msgstr "műszak"
+msgstr "Créneau"
 
 #: scheduler/models.py:72 scheduletemplates/admin.py:283
 msgid "shifts"
-msgstr "műszakok"
+msgstr "Créneaux"
 
 #: scheduler/models.py:86 scheduletemplates/models.py:77
 #, python-brace-format
 msgid "the next day"
 msgid_plural "after {number_of_days} days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "demain"
+msgstr[1] "dans {number_of_days} jours"
 
 #: scheduler/models.py:130
 msgid "shift helper"
-msgstr "beosztásban segítő"
+msgstr "bénévole inscrit pour le créneau"
 
 #: scheduler/models.py:131
 msgid "shift helpers"
-msgstr "beosztásban segítők"
+msgstr "bénévoles inscrits pour le créneau"
 
 #: scheduler/templates/geographic_helpdesk.html:69
 msgid "Show on map"
-msgstr ""
+msgstr "Montrer sur la carte"
 
 #: scheduler/templates/geographic_helpdesk.html:81
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
-msgstr "beosztás"
+msgstr "Créneaux"
 
 #: scheduler/templates/geographic_helpdesk.html:113
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
-msgstr "Új beosztások a/az %(geographical_name)s helyszínen."
+msgstr "Il n'y a pas de créneau disponible à %(geographical_name)s."
 
 #: scheduler/templates/helpdesk.html:39
 msgid "You can help in the following facilities"
-msgstr ""
+msgstr "Vous pouvez aider dans les établissements suivants"
 
 #: scheduler/templates/helpdesk.html:43
 msgid "filter"
-msgstr ""
+msgstr "Filtrer"
 
 #: scheduler/templates/helpdesk.html:59
 msgid "see more"
-msgstr ""
+msgstr "voir"
 
 #: scheduler/templates/helpdesk.html:82
 msgid "open shifts"
-msgstr "üres beosztás"
+msgstr "Créneaux en libres accès"
 
 #: scheduler/templates/helpdesk_single.html:6
 #: scheduler/templates/shift_details.html:24
 #, python-format
 msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
-msgstr ""
+msgstr "Calendrier pour %(facility_name)s"
 
 #: scheduler/templates/helpdesk_single.html:60
 #, python-format
 msgid "%(starting_time)s - %(ending_time)s"
-msgstr ""
+msgstr "%(starting_time)s - %(ending_time)s"
 
 #: scheduler/templates/helpdesk_single.html:172
 #, python-format
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
-msgstr "%(schedule_date)s beosztás"
+msgstr "Calendrier pour le %(schedule_date)s"
 
 #: scheduler/templates/helpdesk_single.html:185
 msgid "Toggle Timeline"
-msgstr ""
+msgstr "Afficher l'historique"
 
 #: scheduler/templates/helpdesk_single.html:237
 msgid "Link"
-msgstr ""
+msgstr "Lien"
 
 #: scheduler/templates/helpdesk_single.html:240
 msgid "Time"
-msgstr "Időpont"
+msgstr "Heure"
 
 #: scheduler/templates/helpdesk_single.html:243
 msgid "Helpers"
-msgstr "Segítők"
+msgstr "Bénévoles"
 
 #: scheduler/templates/helpdesk_single.html:254
 msgid "Start"
-msgstr "Kezdés"
+msgstr "Début"
 
 #: scheduler/templates/helpdesk_single.html:257
 msgid "End"
-msgstr "Vége"
+msgstr "Fin"
 
 #: scheduler/templates/helpdesk_single.html:260
 msgid "Required"
-msgstr "Szükséges"
+msgstr "Nécessaire"
 
 #: scheduler/templates/helpdesk_single.html:263
 msgid "Status"
-msgstr "Állapot"
+msgstr "Status"
 
 #: scheduler/templates/helpdesk_single.html:266
 msgid "Users"
-msgstr "Felhasználók"
+msgstr "Utilisateurs"
 
 #: scheduler/templates/helpdesk_single.html:269
 msgid "You"
-msgstr "Te"
+msgstr "Vous"
 
 #: scheduler/templates/helpdesk_single.html:321
 #, python-format
 msgid "%(slots_left)s more"
-msgstr "%(slots_left)s szabadon"
+msgstr "%(slots_left)s restant"
 
 #: scheduler/templates/helpdesk_single.html:325
 #: scheduler/templates/helpdesk_single.html:406
 #: scheduler/templates/shift_details.html:134
 msgid "Covered"
-msgstr "Betöltve"
+msgstr "Couvert"
 
 #: scheduler/templates/helpdesk_single.html:350
 #: scheduler/templates/shift_details.html:95
 msgid "Drop out"
-msgstr "Elvet"
+msgstr "Abandonner"
 
 #: scheduler/templates/helpdesk_single.html:360
 #: scheduler/templates/shift_details.html:105
 msgid "Sign up"
-msgstr "Regisztráció"
+msgstr "S'inscrire"
 
 #: scheduler/templates/helpdesk_single.html:371
 msgid "Membership pending"
-msgstr ""
+msgstr "Inscription en attente de validation"
 
 #: scheduler/templates/helpdesk_single.html:378
 msgid "Membership rejected"
-msgstr ""
+msgstr "Inscription rejetée"
 
 #: scheduler/templates/helpdesk_single.html:385
 msgid "Become member"
-msgstr ""
+msgstr "Devenir membre"
 
 #: scheduler/templates/shift_cancellation_notification.html:1
 #, python-format
@@ -1115,10 +1139,22 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Bonjour,\n"
+"nous sommes désolé, mais nous avons du annuler les créneaux suivants suite à la demande des organisateurs :\n"
+"\n"
+" %(shift_title)s, %(location)s\n"
+" %(from_date)s de %(from_time)s à %(to_time)s\n"
+"\n"
+"Ceci est un e-mail généré automatiquement. Pour toute question, contacter le l'établissement directement.\n"
+"\n"
+"Bien à vous,\n"
+"\n"
+"l'équipe de volunteer-planner.org\n"
 
 #: scheduler/templates/shift_details.html:108
 msgid "Members only"
-msgstr ""
+msgstr "Membres uniquement"
 
 #: scheduler/templates/shift_modification_notification.html:1
 #, python-format
@@ -1143,30 +1179,49 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Bonjour,\n"
+"\n"
+"nous sommes désolés mais nous avons du changer les horaires du créneau suivants à la demande des organisateurs :\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s de %(old_from_time)s à %(old_to_time)s\n"
+"\n"
+"Les nouveaux horaires du créneau suivant sont :\n"
+"\n"
+"%(from_date)s de %(from_time)s à %(to_time)s\n"
+"\n"
+"Si vous ne pouvez pas aider aux nouveaux horaires, merci d'annuler votre venue sur volunteer-planner.org\n"
+"\n"
+"Ceci est un e-mail généré automatiquement. Pour toute question, contacter le l'établissement directement.\n"
+"\n"
+"Bien à vous,\n"
+"\n"
+"l'équipe de volunteer-planner.org\n"
 
 #: scheduler/views.py:169
 msgid "The submitted data was invalid."
-msgstr "A megadott adat érvénytelen volt."
+msgstr "Les données fournies ne sont pas valables."
 
 #: scheduler/views.py:177
 msgid "User account does not exist."
-msgstr "Ez a felhasználói azonosító nem létezik."
+msgstr "Ce compte utilisateur n'existe pas."
 
 #: scheduler/views.py:201
 msgid "A membership request has been sent."
-msgstr ""
+msgstr "Une demande d'inscription a été envoyé."
 
 #: scheduler/views.py:214
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
-msgstr "Nem tudunk ehhez a beosztáshoz hozzáadni, mert ebben az időben egy másik beosztásban már szerepelsz."
+msgstr "Nous ne pouvons pas vous inscrire sur ce créneau car vous en avez déjà accepté un autre aux mêmes horaires :"
 
 #: scheduler/views.py:223
 msgid "We can't add you to this shift because there are no more slots left."
-msgstr ""
+msgstr "Nous ne pouvons pas vous ajouter à ce créneau car il est complet."
 
 #: scheduler/views.py:230
 msgid "You were successfully added to this shift."
-msgstr "Sikeresen hozzáadtunk ehhez a beosztáshoz."
+msgstr "Vous êtes bien inscrit à cette équipe (sur ce créneau)."
 
 #: scheduler/views.py:234
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for                             conflicts:"
@@ -1175,249 +1230,249 @@ msgstr ""
 #: scheduler/views.py:244
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
-msgstr "Erre a műszakra {date_time}-kor már jelentkeztél."
+msgstr "Vous êtes déjà inscrit pour ce créneau à {date_time}."
 
 #: scheduler/views.py:256
 msgid "You successfully left this shift."
-msgstr "Sikeresen kiléptél a beosztásból"
+msgstr "Vous avez abandonné ce créneau."
 
 #: scheduletemplates/admin.py:176
 #, python-brace-format
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Un créneau existe déjà le {date}"
+msgstr[1] "{num_shifts} créneaux existent déjà le {date}"
 
 #: scheduletemplates/admin.py:232
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{num_shifts} créneau a été ajouté le {date}"
+msgstr[1] "{num_shifts} créneaux ont été ajouté le {date}"
 
 #: scheduletemplates/admin.py:244
 msgid "Something didn't work. Sorry about that."
-msgstr ""
+msgstr "Quelque chose à dysfonctionné. Veuillez nous en excuser."
 
 #: scheduletemplates/admin.py:277
 msgid "slots"
-msgstr ""
+msgstr "opportunités"
 
 #: scheduletemplates/admin.py:289
 msgid "from"
-msgstr ""
+msgstr "de"
 
 #: scheduletemplates/admin.py:302
 msgid "to"
-msgstr ""
+msgstr "à"
 
 #: scheduletemplates/models.py:21
 msgid "schedule templates"
-msgstr ""
+msgstr "modèles de calendrier"
 
 #: scheduletemplates/models.py:22 scheduletemplates/models.py:30
 msgid "schedule template"
-msgstr ""
+msgstr "modèle de calendrier"
 
 #: scheduletemplates/models.py:50
 msgid "days"
-msgstr ""
+msgstr "jours"
 
 #: scheduletemplates/models.py:62
 msgid "shift templates"
-msgstr ""
+msgstr "modèles de créneaux"
 
 #: scheduletemplates/models.py:63
 msgid "shift template"
-msgstr ""
+msgstr "modèle de créneau"
 
 #: scheduletemplates/models.py:97
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
-msgstr ""
+msgstr "{task_name} - {workplace_name}"
 
 #: scheduletemplates/models.py:101
 #, python-brace-format
 msgid "{task_name}"
-msgstr ""
+msgstr "{task_name}"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:32
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
 msgid "Home"
-msgstr "Kezdőlap"
+msgstr "Accueil"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:40
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:46
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
 msgid "Apply Template"
-msgstr ""
+msgstr "Appliquer le modèle"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
-msgstr ""
+msgstr "pas de lieu de travail"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
-msgstr "kiválaszt"
+msgstr "appliquer"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:61
 msgid "Select a date"
-msgstr ""
+msgstr "Sélectionner une date"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:66
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:125
 msgid "Continue"
-msgstr ""
+msgstr "Continuer"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:70
 msgid "Select shift templates"
-msgstr ""
+msgstr "Choisir les modèles de créneaux"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
 msgid "Please review and confirm shifts to create"
-msgstr ""
+msgstr "Vérifier et confirmer les créneaux à créer"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:118
 msgid "Apply"
-msgstr ""
+msgstr "Appliquer"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:120
 msgid "Apply and select new date"
-msgstr ""
+msgstr "Appliquer et choisir une nouvelle date"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save and apply template"
-msgstr ""
+msgstr "Sauvegarder et appliquer le modèle"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:4
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:5
 msgid "Save as new"
-msgstr ""
+msgstr "Sauvegarder comme nouveau"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:6
 msgid "Save and add another"
-msgstr ""
+msgstr "Sauvegarder et en ajouter un autre"
 
 #: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:7
 msgid "Save and continue editing"
-msgstr ""
+msgstr "Sauvegarder et continuer à modifier."
 
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:17
 msgid "Delete?"
-msgstr ""
+msgstr "Supprimer?"
 
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
 msgid "Change"
-msgstr ""
+msgstr "Changer"
 
 #: shiftmailer/models.py:10
 msgid "last name"
-msgstr ""
+msgstr "Nom"
 
 #: shiftmailer/models.py:11
 msgid "position"
-msgstr "pozíció"
+msgstr "Position"
 
 #: shiftmailer/models.py:12
 msgid "organisation"
-msgstr "szervezet"
+msgstr "Organisation"
 
 #: shiftmailer/templates/shifts_today.html:1
 #, python-format
 msgctxt "shift today title"
 msgid "Schedule for %(organization_name)s on %(date)s"
-msgstr "A %(organization_name)s csoport beosztása %(date)s-n"
+msgstr "Calendrier pour %(organization_name)s le %(date)s"
 
 #: shiftmailer/templates/shifts_today.html:6
 msgid "All data is private and not supposed to be given away!"
-msgstr "Minden adat bizalmas és nem adható tovább!"
+msgstr "Toutes les données sont privées et ne doivent pas être partagées."
 
 #: shiftmailer/templates/shifts_today.html:15
 #, python-format
 msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
-msgstr "%(start_time)s-tól %(end_time)s-ig %(volunteer_count)s önkéntes irtakozott fel:"
+msgstr "de %(start_time)s à %(end_time)s, les %(volunteer_count)s bénévoles suivants se sont inscrit :"
 
 #: templates/partials/footer.html:17
 #, python-format
 msgid "Questions? Get in touch: %(mailto_link)s"
-msgstr "Kérdések? Tedd fel itt: %(mailto_link)s"
+msgstr "Des questions ? Contactez-nous : %(mailto_link)s"
 
 #: templates/partials/management_tools.html:13
 msgid "Manage"
-msgstr ""
+msgstr "Organiser"
 
 #: templates/partials/management_tools.html:28
 msgid "Members"
-msgstr ""
+msgstr "Membres"
 
 #: templates/partials/navigation_bar.html:11
 msgid "Toggle navigation"
-msgstr "Navigáció átváltása"
+msgstr "Afficher la barre de navigation"
 
 #: templates/partials/navigation_bar.html:46
 msgid "Account"
-msgstr "Azonosító"
+msgstr "Compte"
 
 #: templates/partials/navigation_bar.html:51
 msgid "My work shifts"
-msgstr ""
+msgstr "Mes créneaux"
 
 #: templates/partials/navigation_bar.html:56
 msgid "Help"
-msgstr "Segítség"
+msgstr "Aide"
 
 #: templates/partials/navigation_bar.html:59
 msgid "Logout"
-msgstr "Kijelentkezés"
+msgstr "Déconnexion"
 
 #: templates/partials/navigation_bar.html:63
 msgid "Admin"
-msgstr "adminisztrátor"
+msgstr "Administration"
 
 #: templates/partials/region_selection.html:18
 msgid "Regions"
-msgstr "Régió"
+msgstr "Régions"
 
 #: templates/registration/activate.html:5
 msgid "Activation complete"
-msgstr "Az aktiváció kész."
+msgstr "Activation terminée"
 
 #: templates/registration/activate.html:7
 msgid "Activation problem"
-msgstr "Probléma van az aktivációval."
+msgstr "Activation échouée"
 
 #: templates/registration/activate.html:15
 msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
-msgstr "bejelentkezhetsz"
+msgstr "Connexion"
 
 #: templates/registration/activate.html:17
 #, python-format
 msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
-msgstr "Üdv %(account)s, az aktiválás rendben megtörtént! Most már %(login_link)s, a korábban megadott felhasználói nevet és jelszót használva."
+msgstr "Merci %(account)s, inscription validée ! Vous pouvez maintenant %(login_link)s en utilisant le nom d'utilisateur le mot de passe définit lors de l'inscription."
 
 #: templates/registration/activate.html:25
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
-msgstr "Hoppá &ndash; Ön már vagy előzőleg aktiválta a felhasználói fiókját, vagy az aktivációs kulcs érvénytelen, vagy lejárt."
+msgstr "Oups &ndash ; soit votre compte a déjà été activé, ou la clef d'activation est soit invalide, soit expirée."
 
 #: templates/registration/activation_complete.html:3
 msgid "Activation successful!"
-msgstr "Az aktiválás sikerült!"
+msgstr "Inscription validée"
 
 #: templates/registration/activation_complete.html:9
 msgctxt "Activation successful page"
 msgid "Thank you for signing up."
-msgstr "Köszönjük a regisztrációt!"
+msgstr "Merci pour votre inscription."
 
 #: templates/registration/activation_complete.html:12
 msgctxt "Login link text on activation success page"
 msgid "You can login here."
-msgstr "Itt lehet bejelentkezni."
+msgstr "Vous pouvez vous connecter ici."
 
 #: templates/registration/activation_email.html:2
 #, python-format
@@ -1437,6 +1492,20 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Bonjour %(user)s,\n"
+"\n"
+"merci beaucoup pour votre volonté d'aider ! Plus qu'une dernière étape et vous serez prêt à devenir bénévole !\n"
+"\n"
+"Cliquer sur le lien suivant pour finaliser votre inscription à volunteer-planner.org :\n"
+"\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+"Le lien expirera dans %(expiration_days)s jours.\n"
+"\n"
+"Bien à vous,\n"
+"\n"
+"l'équipe de volunteer-planner.org\n"
 
 #: templates/registration/activation_email.txt:2
 #, python-format
@@ -1456,88 +1525,102 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Bonjour %(user)s,\n"
+"\n"
+"merci beaucoup pour votre volonté d'aider ! Plus qu'une dernière étape et vous serez prêt à devenir bénévole !\n"
+"\n"
+"Cliquer sur le lien suivant pour finaliser votre inscription à volunteer-planner.org :\n"
+"\n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+"Le lien expirera dans %(expiration_days)s jours.\n"
+"\n"
+"Bien à vous,\n"
+"\n"
+"l'équipe de volunteer-planner.org\n"
 
 #: templates/registration/activation_email_subject.txt:1
 msgid "Your volunteer-planner.org registration"
-msgstr ""
+msgstr "Votre inscription à volunteer-planner.org"
 
 #: templates/registration/login.html:15
 msgid "Your username and password didn't match. Please try again."
-msgstr "A felhasználónév és a jelszó nem megfelelő. Próbálja újra."
+msgstr "Votre nom d'utilisateur et le mot de passe ne correspondent pas aux informations archivées. Veuillez essayer de nouveau."
 
 #: templates/registration/login.html:26
 #: templates/registration/registration_form.html:44
 msgid "Password"
-msgstr "Jelszó"
+msgstr "Mot de passe"
 
 #: templates/registration/login.html:36
 #: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
-msgstr "Elfelejtette a jelszavát?"
+msgstr "Mot de passe oublié ?"
 
 #: templates/registration/login.html:40
 msgid "Help and sign-up"
-msgstr "Segíts és regisztrálj!"
+msgstr "Aider et s'inscrire"
 
 #: templates/registration/password_change_done.html:3
 msgid "Password changed"
-msgstr "A jelszó megváltozott"
+msgstr "Le mot de passe a été modifié"
 
 #: templates/registration/password_change_done.html:7
 msgid "Password successfully changed!"
-msgstr "A jelszót sikeresen megváltoztatta!"
+msgstr "Le mot de passe a été modifié"
 
 #: templates/registration/password_change_form.html:3
 #: templates/registration/password_change_form.html:6
 msgid "Change Password"
-msgstr "Jelszó megváltoztatása"
+msgstr "Modifiez votre mot de passe"
 
 #: templates/registration/password_change_form.html:11
 #: templates/registration/password_change_form.html:13
 #: templates/registration/password_reset_form.html:12
 #: templates/registration/password_reset_form.html:14
 msgid "Email address"
-msgstr "E-mail cím"
+msgstr "Courrier électronique"
 
 #: templates/registration/password_change_form.html:15
 #: templates/registration/password_reset_confirm.html:13
 msgid "Change password"
-msgstr "Jelszó megváltoztatása"
+msgstr "Modifiez votre mot de passe"
 
 #: templates/registration/password_reset_complete.html:3
 msgid "Password reset complete"
-msgstr "A jelszó-visszaállítás kész."
+msgstr "Réinitialisation du mot de passe terminée"
 
 #: templates/registration/password_reset_complete.html:8
 msgctxt "login link title reset password complete page"
 msgid "log in"
-msgstr "Bejelentkezés"
+msgstr "Se connecter"
 
 #: templates/registration/password_reset_complete.html:10
 #, python-format
 msgctxt "reset password complete page"
 msgid "Your password has been reset! You may now %(login_link)s again."
-msgstr "Visszaállítottuk a jelszót. A %(login_link)s linken újra bejelentkezhetsz."
+msgstr "Votre mot de passe a été réinitialisé ! Vous pouvez maintenant %(login_link)s à nouveau."
 
 #: templates/registration/password_reset_confirm.html:3
 msgid "Enter new password"
-msgstr "Adjon meg új jelszót"
+msgstr "Saisissez un nouveau mot de passe"
 
 #: templates/registration/password_reset_confirm.html:6
 msgid "Enter your new password below to reset your password"
-msgstr "Írja be az új jelszavát alább, hogy visszaállítsa a jelszavát."
+msgstr "Saisis ton adresse courriel ci-dessous pour réinitialiser ton mot de passe. "
 
 #: templates/registration/password_reset_done.html:3
 msgid "Password reset"
-msgstr "Jelszó visszaállítás"
+msgstr "Réinitialisation du mot de passe"
 
 #: templates/registration/password_reset_done.html:6
 msgid "We sent you an email with a link to reset your password."
-msgstr "Elküldtünk önnek egy e-mailt egy hivatkozással, amivel visszaállíthatja a jelszavát."
+msgstr "Nous venons de vous envoyer un courriel comportant un lien pour rétablir votre mot de passe."
 
 #: templates/registration/password_reset_done.html:7
 msgid "Please check your email and click the link to continue."
-msgstr "Kérem, ellenőrizze az e-mailjét és kattintson a hivatkozásra a folytatáshoz."
+msgstr "Veuillez consulter votre courrier électronique et cliquer sur le lien afin de continuer."
 
 #: templates/registration/password_reset_email.html:3
 #, python-format
@@ -1549,16 +1632,10 @@ msgid ""
 "To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
 msgstr ""
-"Ezt az e-mailt azért kapta, mert ön (vagy valaki az ön nevében)\n"
+"Vous recevez cet email car vous (ou un imposteur) avez demandé la réinitialisation de votre mot de passe sur le site %(domain)s.\n"
+"Si vous ne souhaitez pas réinitialisé votre mot de passe, ignorez ce message.\n"
 "\n"
-"azt ön jelszavának a visszaállítását kérte a %(domain)s weboldalon. Ha nem szeretné\n"
-"\n"
-"visszaállítani a jelszavát, kérem hagyja figyelmen kívül ezt az üzenetet.\n"
-"\n"
-"\n"
-"\n"
-"A jelszava visszaállításához kattintson a következő hivatkozásra, vagy másolja ki és illessze be\n"
-"a böngészőjébe:"
+"Pour réinitialiser votre mot de passe, cliquez sur le lien suivant ou copiez-collez le dans votre navigateur :"
 
 #: templates/registration/password_reset_email.html:12
 #, python-format
@@ -1570,92 +1647,90 @@ msgid ""
 "%(site_name)s Management\n"
 msgstr ""
 "\n"
-"A felhasználóneve, ha esetleg elfelejtette volna: %(username)s\n"
+"Votre nom d´utilisateur, au cas où vous l´ayez oublié : %(username)s\n"
 "\n"
+"Cordialement\n"
 "\n"
-"\n"
-"Üdvözlettel,\n"
-"\n"
-"%(site_name)s management\n"
+"L'équipe de %(site_name)s\n"
 
 #: templates/registration/password_reset_form.html:3
 #: templates/registration/password_reset_form.html:16
 msgid "Reset password"
-msgstr "Jelszó visszaállítása"
+msgstr "Réinitialisation du mot de passe."
 
 #: templates/registration/password_reset_form.html:7
 msgid "No Problem! We'll send you instructions on how to reset your password."
-msgstr "Semmi gond! Elküldjük önnek, hogy hogyan állíthatja vissza a jelszavát."
+msgstr "Pas de problème ! Nous vous enverrons les instructions pour réinitialiser votre mot de passe. "
 
 #: templates/registration/registration_complete.html:3
 msgid "Activation email sent"
-msgstr "Az akitváló e-mailt elküldtük!"
+msgstr "Mail de confirmation envoyé"
 
 #: templates/registration/registration_complete.html:7
 #: tests/registration/test_registration.py:145
 msgid "An activation mail will be sent to you email address."
-msgstr "A regisztrációt aktiváló e-mailt küldünk az e-mail címedre."
+msgstr "Un mail de confirmation va vous être envoyé"
 
 #: templates/registration/registration_complete.html:13
 msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
-msgstr "Erősítsd meg a regisztrációs szándékodat az e-malben kapott linkre kattintva. Ha nem kapsz e-mailt, nézd meg a levélszemetet tartalmazó könyvtárat 10 perc múlva."
+msgstr "Veuillez confirmer votre inscription en cliquant sur le lien que vous allez recevoir par mail. Si vous ne l'avez pas reçu dans 10 minutes, veuillez consulter vos spams"
 
 #: templates/registration/registration_form.html:3
 msgid "Register for an account"
-msgstr "Felhasználói regisztráció"
+msgstr "Créer un compte utilisateur"
 
 #: templates/registration/registration_form.html:5
 msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
-msgstr ""
+msgstr "Ici vous pouvez créer un compte utilisateur. Si vous êtes déjà inscrit, veuillez cliquer en haut à droite pour vous connecter. "
 
 #: templates/registration/registration_form.html:10
 msgid "Create a new account"
-msgstr ""
+msgstr "Créer un nouveau compte utilisateur"
 
 #: templates/registration/registration_form.html:26
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr ""
+msgstr "Volunteer-Planner et les refuges vous enverront des mails concernant vos créneaux."
 
 #: templates/registration/registration_form.html:31
 msgid "Username already exists. Please choose a different username."
-msgstr "Már létezik ez a felhasználói név. Kérjük, válassz egy másikat!"
+msgstr "Le nom d'utilisateur existe déjà. Merci d'en choisir un autre."
 
 #: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr ""
+msgstr "Attention le nom d'utilisateur est visible pour les autres utilisateurs. Veillez à ne pas utiliser d'espaces ou de signes spéciaux. "
 
 #: templates/registration/registration_form.html:51
 #: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
-msgstr "A két jelszó nem egyezik!"
+msgstr "Les deux mot de passe entrés diffèrent."
 
 #: templates/registration/registration_form.html:54
 msgid "Repeat password"
-msgstr "Ismételd meg a jelszót"
+msgstr "Répéter le mot de passe"
 
 #: templates/registration/registration_form.html:60
 msgid "Sign-up"
-msgstr "Regisztráció"
+msgstr "Inscrire"
 
 #: tests/registration/test_registration.py:43
 msgid "This field is required."
-msgstr "Kötelezően megadandó érték."
+msgstr "Le champs est obligatoire"
 
 #: tests/registration/test_registration.py:82
 msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Egy érvényes felhasználói nevet adj meg, ami betüből, számból és a következő karakterekből állhat: @/./+/-/_ "
+msgstr "Veuillez choisir un nom d'utilisateur valable. Les signes spéciaux autorisés sont : @/./+/-/_"
 
 #: tests/registration/test_registration.py:110
 msgid "A user with that username already exists."
-msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
+msgstr "Il existe déjà un compte sous ce nom d'utilisateur."
 
 #: volunteer_planner/settings/base.py:142
 msgid "English"
-msgstr "Angol"
+msgstr "Anglais"
 
 #: volunteer_planner/settings/base.py:143
 msgid "German"
-msgstr "Német"
+msgstr "Allemand"
 
 #: volunteer_planner/settings/base.py:144
 msgid "French"
@@ -1663,15 +1738,15 @@ msgstr ""
 
 #: volunteer_planner/settings/base.py:145
 msgid "Greek"
-msgstr ""
+msgstr "Grec"
 
 #: volunteer_planner/settings/base.py:146
 msgid "Hungarian"
-msgstr "Magyar"
+msgstr "Hongrois"
 
 #: volunteer_planner/settings/base.py:147
 msgid "Swedish"
-msgstr ""
+msgstr "Suédois"
 
 #: volunteer_planner/settings/base.py:148
 msgid "Portuguese"

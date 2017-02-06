@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 16:20+0200\n"
+"POT-Creation-Date: 2017-02-06 20:47+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -1633,13 +1633,25 @@ msgid "German"
 msgstr ""
 
 #: volunteer_planner/settings/base.py:144
-msgid "Greek"
+msgid "French"
 msgstr ""
 
 #: volunteer_planner/settings/base.py:145
-msgid "Hungarian"
+msgid "Greek"
 msgstr ""
 
 #: volunteer_planner/settings/base.py:146
+msgid "Hungarian"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:147
 msgid "Swedish"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:148
+msgid "Portuguese"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:149
+msgid "Turkish"
 msgstr ""

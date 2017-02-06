@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christoph, 2015
 # Jonna Appelqvist, 2015
@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-29 09:22+0100\n"
+"POT-Creation-Date: 2017-02-06 20:47+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accounts/admin.py:15 accounts/admin.py:21 shiftmailer/models.py:9
@@ -33,7 +33,7 @@ msgstr "e-post"
 msgid "Accounts"
 msgstr "Konton"
 
-#: accounts/models.py:16 organizations/models.py:46
+#: accounts/models.py:16 organizations/models.py:59
 msgid "user account"
 msgstr "användarkonto"
 
@@ -114,20 +114,17 @@ msgstr "Efternamn"
 
 #: accounts/templates/user_account_delete.html:13
 #: accounts/templates/user_detail.html:13
+#: organizations/templates/manage_members.html:67
 #: templates/registration/registration_form.html:23
 msgid "Email"
 msgstr "E-postadress"
 
 #: accounts/templates/user_account_delete.html:15
-msgid ""
-"If you delete your account, this information will be anonymized, and its not"
-" possible for you to log into Volunteer-Planner anymore."
+msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr ""
 
 #: accounts/templates/user_account_delete.html:16
-msgid ""
-"Its not possible to recover this information. If you want to work as "
-"volunteer again, you will have to create a new account."
+msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
 msgstr ""
 
 #: accounts/templates/user_account_delete.html:18
@@ -209,7 +206,7 @@ msgid "View on site"
 msgstr "Visa på sida"
 
 #: content/templates/flatpages/additional_flat_page_style_inline.html:32
-#: organizations/templates/manage_members.html:101
+#: organizations/templates/manage_members.html:109
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
 msgid "Remove"
 msgstr "Ta bort"
@@ -261,9 +258,7 @@ msgid "Server Error <em>(500)</em>"
 msgstr ""
 
 #: non_logged_in_area/templates/500.html:10
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"email and should be fixed shortly. Thanks for your patience."
+msgid "There's been an error. I should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: non_logged_in_area/templates/base_non_logged_in.html:57
@@ -343,17 +338,11 @@ msgid "What is it all about?"
 msgstr "Vad går det ut på?"
 
 #: non_logged_in_area/templates/home.html:77
-msgid ""
-"You are a volunteer and want to help refugees? Volunteer-Planner.org shows "
-"you where, when and how to help directly in the field."
+msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr "Vill du bli volontär och hjälpa flyktingar? Volunteer-planner.org visar hur, var och när din hjälp behövs.  "
 
 #: non_logged_in_area/templates/home.html:85
-msgid ""
-"<p>This platform is non-commercial and ads-free. An international team of "
-"field workers, programmers, project managers and designers are volunteering "
-"for this project and bring in their professional experience to make a "
-"difference.</p>"
+msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
 msgstr "<p>Denna plattform är icke-komersiell och fri från reklam. Ett internationellt team av fältarbetare, programmerare, projektledare och designers arbetar ideellt med volunteer-planner, för att med sin samlade yrkeserfarenhet göra skillnad.</p>"
 
 #: non_logged_in_area/templates/home.html:98
@@ -375,18 +364,12 @@ msgstr "Tillämpningsområde"
 
 #: non_logged_in_area/templates/privacy_policy.html:16
 msgctxt "Privacy Policy Sec1 P1"
-msgid ""
-"This privacy policy informs the user of the collection and use of personal "
-"data on this website (herein after \"the service\") by the service provider,"
-" the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
+msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
 msgstr "Vår integritetspolicy informerar användaren av denna webbsida (nedan kallat \"tjänsten\") om hur personliga uppgifter behandlas och sparas av tillhandahållaren av tjänsten, Benefit e.V (Wollankstr. 2, 13187 Berlin)."
 
 #: non_logged_in_area/templates/privacy_policy.html:21
 msgctxt "Privacy Policy Sec1 P2"
-msgid ""
-"The legal basis for the privacy policy are the German Data Protection Act "
-"(Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act "
-"(Telemediengesetz, TMG)."
+msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
 msgstr "Alla personliga uppgifter sparas och hanteras enligt den tyska personuppgiftslagen (Bundesdatenschutzgesetz, BDSG) och den tyska lagen för elektronisk kommunikation (Telemediengesetz, TMG)."
 
 #: non_logged_in_area/templates/privacy_policy.html:29
@@ -396,25 +379,12 @@ msgstr "Tillgång till uppgifter / serverlogg"
 
 #: non_logged_in_area/templates/privacy_policy.html:35
 msgctxt "Privacy Policy Sec2 P1"
-msgid ""
-"The service provider (or the provider of his webspace) collects data on "
-"every access to the service and stores this access data in so-called server "
-"log files. Access data includes the name of the website that is being "
-"visited, which files are being accessed, the date and time of access, "
-"transfered data, notification of successful access, the type and version "
-"number of the user's web browser, the user's operating system, the referrer "
-"URL (i.e., the website the user visited previously), the user's IP address, "
-"and the name of the user's Internet provider."
+msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
 msgstr "Tillhandahållaren av tjänsten (alternativt tillhandahållaren av denna webbsida) samlar in uppgifter vid användande av tjänsten och lagrar dessa uppgifter i en s.k. serverlogg. Användaruppgifter inkluderar: namn på begärd webbsida, vilka filer som används, datum och tid för användande, överförd datamängd, avisering om framgångsrik användning och användarens webbläsartyp/version, operativsystem, HTTP-referenten (dvs. användarens senast besökta webbsida), IP-adress och internetleverantör."
 
 #: non_logged_in_area/templates/privacy_policy.html:40
 msgctxt "Privacy Policy Sec2 P2"
-msgid ""
-"The service provider uses the server log files for statistical purposes and "
-"for the operation, the security, and the enhancement of the provided service"
-" only. However, the service provider reserves the right to reassess the log "
-"files at any time if specific indications for an illegal use of the service "
-"exist."
+msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
 msgstr "Tillhandahållaren av tjänsten använder uppgifterna i serverloggen enbart i statistisk syfte och för den tillhandahållna tjänstens drift, säkerhet, och förbättring. Vid konkreta misstankar om olaglig användning av tjänsten reserverar sig tillhandahållaren av tjänsten för rätten att se över uppgifterna i serverloggen."
 
 #: non_logged_in_area/templates/privacy_policy.html:48
@@ -424,20 +394,12 @@ msgstr "Hantering av personuppgifter"
 
 #: non_logged_in_area/templates/privacy_policy.html:54
 msgctxt "Privacy Policy Sec3 P1"
-msgid ""
-"Personal data is information which can be used to identify a person, i.e., "
-"all data that can be traced back to a specific person. Personal data "
-"includes the name, the e-mail address, or the telephone number of a user. "
-"Even data on personal preferences, hobbies, memberships, or visited websites"
-" counts as personal data."
+msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
 msgstr "Personliga uppgifter är information som kan användas för att identifiera en person, d.v.s. all information som kan härledas till en specifik individ: till exempel namn, e-postadress eller en användares telefonnummer. Även uppgifter om personliga preferenser, intressen, medlemsskap eller besökta webbsidor räknas som personliga uppgifter."
 
 #: non_logged_in_area/templates/privacy_policy.html:59
 msgctxt "Privacy Policy Sec3 P2"
-msgid ""
-"The service provider collects, uses, and shares personal data with third "
-"parties only if he is permitted by law to do so or if the user has given his"
-" permission."
+msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
 msgstr "Personuppgifter samlas in, används och delas av tillhandahållaren av tjänsten med tredje part i strikt enlighet med lagen, eller med användarens tillåtelse."
 
 #: non_logged_in_area/templates/privacy_policy.html:67
@@ -447,10 +409,7 @@ msgstr "Kontakt"
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
-msgid ""
-"When contacting the service provider (e.g. via e-mail or using a web contact"
-" form), the data provided by the user is stored for processing the inquiry "
-"and for answering potential follow-up inquiries in the future."
+msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
 msgstr "Vid kontakt med tillhandahållaren av tjänsten (t.ex. via e-post eller kontaktformulär) sparas användarens angivna uppgifter för att behandla förfrågan och besvara eventuella följdförfrågningar."
 
 #: non_logged_in_area/templates/privacy_policy.html:81
@@ -460,32 +419,18 @@ msgstr "Cookies"
 
 #: non_logged_in_area/templates/privacy_policy.html:87
 msgctxt "Privacy Policy Sec5 P1"
-msgid ""
-"Cookies are small files that are being stored on the user's device (personal"
-" computer, smartphone, or the like) with information specific to that "
-"device. They can be used for various purposes: Cookies may be used to "
-"improve the user experience (e.g. by storing and, hence, \"remembering\" "
-"login credentials). Cookies may also be used to collect statistical data "
-"that allows the service provider to analyse the user's usage of the website,"
-" aiming to improve the service."
+msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
 msgstr "Cookies är små filer som sparas på en enhet (personlig dator, smartphone o.dyl.). Dessa filer innehåller information specifik för just den enheten och kan användas i olika syften: Cookies får användas för att förbättra användarupplevelsen (t.ex. genom att spara och därigenom \"minnas\" inloggningsuppgifter). Cookies får också användas till att samla in statistisk information som tillåter leverantören att analysera hur webbsidan används och därigenom kunna förbättra tjänsten."
 
 #: non_logged_in_area/templates/privacy_policy.html:92
 msgctxt "Privacy Policy Sec5 P2"
-msgid ""
-"The user can customize the use of cookies. Most web browsers offer settings "
-"to restrict or even completely prevent the storing of cookies. However, the "
-"service provider notes that such restrictions may have a negative impact on "
-"the user experience and the functionality of the website."
+msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
 msgstr "Användaren kan själv reglera vilka cookies som ska användas. De flesta webbläsare erbjuder möjligheten att ändra i inställningarna, så att cookies delvis eller helt nekas. Om cookie-funktionen stängs av kan dock webbsidans användarupplevelse och funktionalitet påverkas negativt."
 
 #: non_logged_in_area/templates/privacy_policy.html:97
 #, python-format
 msgctxt "Privacy Policy Sec5 P3"
-msgid ""
-"The user can manage the use of cookies from many online advertisers by "
-"visiting either the US-american website %(us_url)s or the European website "
-"%(eu_url)s."
+msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
 msgstr "Användaren kan hantera cookies som används av många online-annonsörer genom att besöka den amerikanska webbsidan %(us_url)s eller den europeiska webbsidan %(eu_url)s."
 
 #: non_logged_in_area/templates/privacy_policy.html:105
@@ -495,20 +440,12 @@ msgstr "Registrering"
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
-msgid ""
-"The data provided by the user during registration allows for the usage of "
-"the service. The service provider may inform the user via e-mail about "
-"information relevant to the service or the registration, such as information"
-" on changes, which the service undergoes, or technical information (see also"
-" next section)."
+msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
 msgstr "De uppgifter som användaren angivit vid registreringen beviljar användandet av tjänsten. Tillhandahållaren av tjänsten får via e-post kontakta användaren med, för tjänsten eller registreringen, relevant information. Sådan information omfattar ändringar av tjänsten eller teknisk information (se även nästa avsnitt)."
 
 #: non_logged_in_area/templates/privacy_policy.html:116
 msgctxt "Privacy Policy Sec6 P2"
-msgid ""
-"The registration and user profile forms show which data is being collected "
-"and stored. They include - but are not limited to - the user's first name, "
-"last name, and e-mail address."
+msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
 msgstr "Vilka personuppgifter som sparas framkommer av de uppgifter som måste anges vid registreringen och som sedan kan hanteras under användarprofilen. Däribland ingår, men det är inte begränsat till, användarens förnamn, efternamn och e-postadress."
 
 #: non_logged_in_area/templates/privacy_policy.html:124
@@ -518,24 +455,17 @@ msgstr "Avisering via e-post / Nyhetsbrev"
 
 #: non_logged_in_area/templates/privacy_policy.html:130
 msgctxt "Privacy Policy Sec7 P1"
-msgid ""
-"When registering an account with the service, the user gives permission to "
-"receive e-mail notifications as well as newsletter e-mails."
+msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
 msgstr "När ett användarkonto skapas godkänner användaren att denne skickas aviseringar och nyhetsbrev via e-post."
 
 #: non_logged_in_area/templates/privacy_policy.html:135
 msgctxt "Privacy Policy Sec7 P2"
-msgid ""
-"E-mail notifications inform the user of certain events that relate to the "
-"user's use of the service. With the newsletter, the service provider sends "
-"the user general information about the provider and his offered service(s)."
+msgid "E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s)."
 msgstr "Med e-postaviseringar får användaren information om särskilda aktiviteter, baserad på användarens nyttjande av tjänsten. I nyhetsbrevet får användaren allmän information om leverantören och dennes tillhandahållna tjänst(er). "
 
 #: non_logged_in_area/templates/privacy_policy.html:140
 msgctxt "Privacy Policy Sec7 P3"
-msgid ""
-"If the user wishes to revoke his permission to receive e-mails, he needs to "
-"delete his user account."
+msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
 msgstr "Om användaren inte skulle vilja motta e-post måste han eller hon radera sitt användarkonto."
 
 #: non_logged_in_area/templates/privacy_policy.html:148
@@ -545,47 +475,23 @@ msgstr "Google Analytics"
 
 #: non_logged_in_area/templates/privacy_policy.html:154
 msgctxt "Privacy Policy Sec8 P1"
-msgid ""
-"This website uses Google Analytics, a web analytics service provided by "
-"Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text "
-"files placed on the user's device, to help the website analyze how users use"
-" the site. The information generated by the cookie about the user's use of "
-"the website will be transmitted to and stored by Google on servers in the "
-"United States."
+msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
 msgstr "Denna webbsida använder sig av Google Analytics, en webbanalystjänst från Google Inc. (\"Google\"). Google Analytics använder sig av s.k. \"cookies\", textfiler som sparas på användarens enhet för att analysera hur webbsidan används. Den användarinformation som genereras av en cookie skickas och sparas på Googles servrar i USA."
 
 #: non_logged_in_area/templates/privacy_policy.html:159
 msgctxt "Privacy Policy Sec8 P2"
-msgid ""
-"In case IP-anonymisation is activated on this website, the user's IP address"
-" will be truncated within the area of Member States of the European Union or"
-" other parties to the Agreement on the European Economic Area. Only in "
-"exceptional cases the whole IP address will be first transfered to a Google "
-"server in the USA and truncated there. The IP-anonymisation is active on "
-"this website."
+msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
 msgstr "Om anonym IP-adress är aktiverad på denna webbsida kommer användarens IP-adress att förkortas inom området för den Europeiska unionens medlemsstater eller andra avtalsparter inom det Europeiska ekonomiska samarbetsområdet. Endast i särskilda undantagsfall kommer IP-adressen i sin helhet att överföras till en Google-server i USA och förkortas där. IP-anonymisering är aktiverad på denna webbsida."
 
 #: non_logged_in_area/templates/privacy_policy.html:164
 msgctxt "Privacy Policy Sec8 P3"
-msgid ""
-"Google will use this information on behalf of the operator of this website "
-"for the purpose of evaluating your use of the website, compiling reports on "
-"website activity for website operators and providing them other services "
-"relating to website activity and internet usage."
+msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
 msgstr "Google använder denna information i syfte att utvärdera hur du använder webbsidan, att sammanställa aktivitetsrapporter till webbsidans ägare och tillhandahålla ägaren ytterligare tjänster i samband med aktiviteter på webbsidan och internetanvändning."
 
 #: non_logged_in_area/templates/privacy_policy.html:169
 #, python-format
 msgctxt "Privacy Policy Sec8 P4"
-msgid ""
-"The IP-address, that the user's browser conveys within the scope of Google "
-"Analytics, will not be associated with any other data held by Google. The "
-"user may refuse the use of cookies by selecting the appropriate settings on "
-"his browser, however it is to be noted that if the user does this he may not"
-" be able to use the full functionality of this website. He can also opt-out "
-"from being tracked by Google Analytics with effect for the future by "
-"downloading and installing Google Analytics Opt-out Browser Addon for his "
-"current web browser: %(optout_plugin_url)s."
+msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
 msgstr "IP-adressen som skickas av användarens webbläsare inom tillämpningsområdet för Google Analytics kommer inte att länkas samman med annan data som innehas av Google. Användaren kan motsätta sig användandet av cookies genom att ändra inställningarna i webbläsaren. Observera att det i detta fall kan leda till en försämring av webbsidans funktionalitet. Användaren kan även begära att undantas från att bli spårad av Google Analytics med framtida verkan genom att ladda ner och installera ett inaktiverings-add-on, Google Analytics Opt-out Browser Add-on, för den nuvarande webbläsaren: %(optout_plugin_url)s."
 
 #: non_logged_in_area/templates/privacy_policy.html:174
@@ -595,13 +501,7 @@ msgstr "klicka på denna länk"
 #: non_logged_in_area/templates/privacy_policy.html:175
 #, python-format
 msgctxt "Privacy Policy Sec8 P5"
-msgid ""
-"As an alternative to the browser Addon or within browsers on mobile devices,"
-" the user can %(optout_javascript)s in order to opt-out from being tracked "
-"by Google Analytics within this website in the future (the opt-out applies "
-"only for the browser in which the user sets it and within this domain). An "
-"opt-out cookie will be stored on the user's device, which means that the "
-"user will have to click this link again, if he deletes his cookies."
+msgid "As an alternative to the browser Addon or within browsers on mobile devices, the user can %(optout_javascript)s in order to opt-out from being tracked by Google Analytics within this website in the future (the opt-out applies only for the browser in which the user sets it and within this domain). An opt-out cookie will be stored on the user's device, which means that the user will have to click this link again, if he deletes his cookies."
 msgstr "Som ett alternativ till en webbläsar-add-on eller för webbläsare i mobila enheter kan användaren %(optout_javascript)s för att, vid framtida användande av webbsidan, välja att lägga till ett undantag från spårning av Google Analytics (detta undantag gäller endast för den webbläsare som ställts in på sådant sätt och för denna domän). En s.k. \"opt-out cookie\" kommer att sparas på användarens enhet. Om användaren skulle rensa alla sina cookies innebär detta att denne måste lägga till undantaget via ovanstående länk på nytt.  "
 
 #: non_logged_in_area/templates/privacy_policy.html:183
@@ -611,18 +511,12 @@ msgstr "Återkallelser, ändringar, rättelser och uppdateringar"
 
 #: non_logged_in_area/templates/privacy_policy.html:189
 msgctxt "Privacy Policy Sec9 P1"
-msgid ""
-"The user has the right to be informed upon application and free of charge, "
-"which personal data about him has been stored. Additionally, the user can "
-"ask for the correction of uncorrect data, as well as for the suspension or "
-"even deletion of his personal data as far as there is no legal obligation to"
-" retain that data."
+msgid "The user has the right to be informed upon application and free of charge, which personal data about him has been stored. Additionally, the user can ask for the correction of uncorrect data, as well as for the suspension or even deletion of his personal data as far as there is no legal obligation to retain that data."
 msgstr "Användaren har vid tillämpning av cookies rätt till att kostnadsfritt bli informerad om vilka personliga uppgifter som sparats. Användaren kan även begära att felaktiga uppgifter rättas, eller att lagringen av dennes personliga uppgifter upphävs eller raderas, såvitt det inte finns någon laglig grund till att lagra uppgifterna."
 
 #: non_logged_in_area/templates/privacy_policy.html:198
 msgctxt "Privacy Policy Credit"
-msgid ""
-"Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
+msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
 msgstr "Baserad på förlagan till policy för integritetsskydd av advokat Thomas Schwenke – I LAW it"
 
 #: non_logged_in_area/templates/shelters_need_help.html:20
@@ -643,7 +537,10 @@ msgid ""
 "                    volunteers split themselves up more effectively into shifts,\n"
 "                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
 "                "
-msgstr "\nvolontärer fördelar sig effektivt mellan pass,\npå egen hand kan hjälpare snabbt få en överblick över var det finns behov av hjälp och därigenom motverka underbemannade pass"
+msgstr ""
+"\n"
+"volontärer fördelar sig effektivt mellan pass,\n"
+"på egen hand kan hjälpare snabbt få en överblick över var det finns behov av hjälp och därigenom motverka underbemannade pass"
 
 #: non_logged_in_area/templates/shelters_need_help.html:32
 msgid ""
@@ -652,7 +549,11 @@ msgid ""
 "                    or coordinating persons by an auto-mailer\n"
 "                    every morning\n"
 "                "
-msgstr "\nvid reglerat inträde på en anläggning, kan scheman för pass ges till säkerhetspersonalen\neller skickas till samordnande personer via ett automatiskt e-postutskick\nvarje morgon"
+msgstr ""
+"\n"
+"vid reglerat inträde på en anläggning, kan scheman för pass ges till säkerhetspersonalen\n"
+"eller skickas till samordnande personer via ett automatiskt e-postutskick\n"
+"varje morgon"
 
 #: non_logged_in_area/templates/shelters_need_help.html:39
 msgid ""
@@ -660,7 +561,10 @@ msgid ""
 "                the more shelters and camps are organized with us, the more volunteers are joining\n"
 "                    and all facilities will benefit from a common pool of motivated volunteers\n"
 "                "
-msgstr "\nju fler boenden och förläggningar som använder sig av plattformen, desto kändare blir vi.\nJu kändare vi blir, desto fler frivilliga kommer hitta till volunteer-planner.org och kunna erbjuda sin hjälp"
+msgstr ""
+"\n"
+"ju fler boenden och förläggningar som använder sig av plattformen, desto kändare blir vi.\n"
+"Ju kändare vi blir, desto fler frivilliga kommer hitta till volunteer-planner.org och kunna erbjuda sin hjälp"
 
 #: non_logged_in_area/templates/shelters_need_help.html:45
 msgid "for free without costs"
@@ -677,7 +581,11 @@ msgid ""
 "        volunteer-planner tries to solve this problem! <br>\n"
 "        </p>\n"
 "            "
-msgstr "\n<p>Många människor vill erbjuda sin hjälp. Det är glädjande, men det är ofta inte helt enkelt att veta hur, var och när det behövs.\ndet vill vi ändra på! Över volunteer-planner.org kan ansvarig personal på en flyktingförläggning översiktligt koordinera var och när en viss typ av hjälp behövs. Frivilliga får på så sätt information om hur de kan hjälpa och kan anmäla sig till pass\n<p> "
+msgstr ""
+"\n"
+"<p>Många människor vill erbjuda sin hjälp. Det är glädjande, men det är ofta inte helt enkelt att veta hur, var och när det behövs.\n"
+"det vill vi ändra på! Över volunteer-planner.org kan ansvarig personal på en flyktingförläggning översiktligt koordinera var och när en viss typ av hjälp behövs. Frivilliga får på så sätt information om hur de kan hjälpa och kan anmäla sig till pass\n"
+"<p> "
 
 #: non_logged_in_area/templates/shelters_need_help.html:60
 msgid "for free, ad free"
@@ -689,217 +597,230 @@ msgid ""
 "        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
 "        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
-msgstr "\n<p> Denna plattform är skapad av ett team frivilliga hjälpare, yrkesverksamma inom områdena ideellt arbete, programvaruutveckling, projektledning, design\noch marknadsföring. Sidan är gjord med öppen källkod och får inte användas i kommersiellt syfte. Privatuppgifter (e-postadress, profilinformation o.s.v.) ges inte vidare till tredje part.</p>"
+msgstr ""
+"\n"
+"<p> Denna plattform är skapad av ett team frivilliga hjälpare, yrkesverksamma inom områdena ideellt arbete, programvaruutveckling, projektledning, design\n"
+"och marknadsföring. Sidan är gjord med öppen källkod och får inte användas i kommersiellt syfte. Privatuppgifter (e-postadress, profilinformation o.s.v.) ges inte vidare till tredje part.</p>"
 
 #: non_logged_in_area/templates/shelters_need_help.html:69
 msgid "contact us!"
 msgstr "Kontakta oss!"
 
 #: non_logged_in_area/templates/shelters_need_help.html:72
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
+#| "                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+#| "                    "
 msgid ""
 "\n"
 "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
-"                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
-msgstr "\n...kanske med ett bifogat utkast över de pass du vill se på volunteer-planner.\nVänligen skriv till <a\nhref=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
+msgstr ""
+"\n"
+"...kanske med ett bifogat utkast över de pass du vill se på volunteer-planner.\n"
+"Vänligen skriv till <a\n"
+"href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
 
 #: organizations/admin.py:128 organizations/admin.py:130
 msgid "edit"
 msgstr "redigera"
 
 #: organizations/admin.py:202 organizations/admin.py:239
-#: organizations/models.py:60 organizations/models.py:120
+#: organizations/models.py:79 organizations/models.py:148
 msgid "short description"
 msgstr "kort beskrivning"
 
 #: organizations/admin.py:208 organizations/admin.py:245
 #: organizations/admin.py:311 organizations/admin.py:335
-#: organizations/models.py:63 organizations/models.py:123
-#: organizations/models.py:245 organizations/models.py:266
+#: organizations/models.py:82 organizations/models.py:151
+#: organizations/models.py:291 organizations/models.py:316
 msgid "description"
 msgstr "beskrivning"
 
 #: organizations/admin.py:214 organizations/admin.py:251
-#: organizations/models.py:66 organizations/models.py:126
+#: organizations/models.py:85 organizations/models.py:154
 msgid "contact info"
 msgstr "kontaktinformation"
 
-#: organizations/models.py:16
+#: organizations/models.py:29
 msgid "by invitation"
 msgstr "genom inbjudan"
 
-#: organizations/models.py:17
+#: organizations/models.py:30
 msgid "anyone (approved by manager)"
 msgstr "alla (med godkännande av platschef)"
 
-#: organizations/models.py:18
+#: organizations/models.py:31
 msgid "anyone"
 msgstr "alla"
 
-#: organizations/models.py:24
+#: organizations/models.py:37
 msgid "rejected"
 msgstr "nekad"
 
-#: organizations/models.py:25
+#: organizations/models.py:38
 msgid "pending"
 msgstr "behandlas"
 
-#: organizations/models.py:26
+#: organizations/models.py:39
 msgid "approved"
 msgstr "godkänd"
 
-#: organizations/models.py:32
+#: organizations/models.py:45
 msgid "admin"
 msgstr "admin"
 
-#: organizations/models.py:33
+#: organizations/models.py:46
 msgid "manager"
 msgstr "chef"
 
-#: organizations/models.py:34
+#: organizations/models.py:47
 msgid "member"
 msgstr "medlem"
 
-#: organizations/models.py:39
+#: organizations/models.py:52
 msgid "role"
 msgstr "ställning"
 
-#: organizations/models.py:43
+#: organizations/models.py:56
 msgid "status"
 msgstr "status"
 
-#: organizations/models.py:55 organizations/models.py:115
-#: organizations/models.py:242 organizations/models.py:263 places/models.py:20
+#: organizations/models.py:74 organizations/models.py:143
+#: organizations/models.py:288 organizations/models.py:313 places/models.py:20
 #: scheduletemplates/models.py:13
 msgid "name"
 msgstr "namn"
 
-#: organizations/models.py:69 organizations/models.py:141
+#: organizations/models.py:88 organizations/models.py:169
 msgid "address"
 msgstr "adress"
 
-#: organizations/models.py:78 organizations/models.py:157 places/models.py:21
+#: organizations/models.py:97 organizations/models.py:185 places/models.py:21
 msgid "slug"
 msgstr "slug"
 
-#: organizations/models.py:83 organizations/models.py:167
+#: organizations/models.py:102 organizations/models.py:195
 msgid "join mode"
 msgstr "typ av tillträde"
 
-#: organizations/models.py:84
+#: organizations/models.py:103
 msgid "Who can join this organization?"
 msgstr "Vem kan gå med i organisationen?"
 
-#: organizations/models.py:87 organizations/models.py:111
-#: organizations/models.py:197
+#: organizations/models.py:106 organizations/models.py:139
+#: organizations/models.py:232
 msgid "organization"
 msgstr "organisation"
 
-#: organizations/models.py:88
+#: organizations/models.py:107
 msgid "organizations"
 msgstr "organisationer"
 
-#: organizations/models.py:92 organizations/models.py:186
-#: organizations/models.py:253 organizations/models.py:274
+#: organizations/models.py:111 organizations/models.py:214
+#: organizations/models.py:299 organizations/models.py:324
 #, python-brace-format
 msgid "{name}"
 msgstr "{name}"
 
-#: organizations/models.py:104
+#: organizations/models.py:132
 msgid "disabled"
 msgstr "inaktiverad"
 
-#: organizations/models.py:105
+#: organizations/models.py:133
 msgid "enabled (collapsed)"
 msgstr "aktiverad (dold)"
 
-#: organizations/models.py:106
+#: organizations/models.py:134
 msgid "enabled"
 msgstr "aktiverad"
 
-#: organizations/models.py:137 places/models.py:132
+#: organizations/models.py:165 places/models.py:132
 msgid "place"
 msgstr "plats"
 
-#: organizations/models.py:146
+#: organizations/models.py:174
 msgid "postal code"
 msgstr "postnummer"
 
-#: organizations/models.py:151
+#: organizations/models.py:179
 msgid "Show on map of all facilities"
 msgstr "Visa på karta över alla anläggningar"
 
-#: organizations/models.py:153
+#: organizations/models.py:181
 msgid "latitude"
 msgstr "latitud"
 
-#: organizations/models.py:155
+#: organizations/models.py:183
 msgid "longitude"
 msgstr "longitud"
 
-#: organizations/models.py:162
+#: organizations/models.py:190
 msgid "timeline"
 msgstr "tidsplan"
 
-#: organizations/models.py:168
+#: organizations/models.py:196
 msgid "Who can join this facility?"
 msgstr "Vem kan ansluta sig till denna anläggning?"
 
-#: organizations/models.py:171 organizations/models.py:217
-#: organizations/models.py:237 organizations/models.py:259
-#: scheduler/models.py:28 scheduletemplates/models.py:16
+#: organizations/models.py:199 organizations/models.py:258
+#: organizations/models.py:283 organizations/models.py:309
+#: scheduler/models.py:51 scheduletemplates/models.py:16
 msgid "facility"
 msgstr "anläggning"
 
-#: organizations/models.py:172
+#: organizations/models.py:200
 msgid "facilities"
 msgstr "anläggningar"
 
-#: organizations/models.py:202
+#: organizations/models.py:237
 msgid "organization member"
 msgstr "organisationsmedlem"
 
-#: organizations/models.py:203
+#: organizations/models.py:238
 msgid "organization members"
 msgstr "organisationsmedlemmar"
 
-#: organizations/models.py:207
+#: organizations/models.py:242
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr "{username} vid {organization_name} ({user_role})"
 
-#: organizations/models.py:223
+#: organizations/models.py:264
 msgid "facility member"
 msgstr "anläggningsmedlem"
 
-#: organizations/models.py:224
+#: organizations/models.py:265
 msgid "facility members"
 msgstr "anläggningsmedlemmar"
 
-#: organizations/models.py:228
+#: organizations/models.py:269
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr "{username} vid {facility_name} ({user_role})"
 
-#: organizations/models.py:248 scheduler/models.py:23
+#: organizations/models.py:294 scheduler/models.py:46
 #: scheduletemplates/models.py:40
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr "arbetsplats"
 
-#: organizations/models.py:249
+#: organizations/models.py:295
 msgid "workplaces"
 msgstr "arbetsplatser"
 
-#: organizations/models.py:269 scheduler/models.py:21
+#: organizations/models.py:319 scheduler/models.py:44
 #: scheduletemplates/models.py:37
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "uppgift"
 
-#: organizations/models.py:270
+#: organizations/models.py:320
 msgid "tasks"
 msgstr "uppgifter"
 
@@ -910,9 +831,7 @@ msgstr "Hej %(username)s,"
 
 #: organizations/templates/emails/membership_approved.txt:6
 #, python-format
-msgid ""
-"Your membership request at %(facility_name)s was approved. You now may sign "
-"up for restricted shifts at this facility."
+msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
 msgstr "Ditt medlemsskap hos %(facility_name)s har godkänts. Du kan nu anmäla dig till pass med restriktioner hos denna förläggning."
 
 #: organizations/templates/emails/membership_approved.txt:10
@@ -935,7 +854,7 @@ msgid "Open Shifts"
 msgstr "Lediga pass"
 
 #: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:71
+#: scheduler/templates/helpdesk.html:70
 msgid "News"
 msgstr "Nyheter"
 
@@ -952,20 +871,20 @@ msgstr "Du har inte befogenhet att genomföra denna åtgärd."
 msgid "Members in %(facility)s"
 msgstr "Medlemmar i %(facility)s"
 
-#: organizations/templates/manage_members.html:67
+#: organizations/templates/manage_members.html:70
 msgid "Role"
 msgstr "Ställning"
 
-#: organizations/templates/manage_members.html:70
+#: organizations/templates/manage_members.html:73
 msgid "Actions"
 msgstr "Åtgärder"
 
-#: organizations/templates/manage_members.html:90
-#: organizations/templates/manage_members.html:97
+#: organizations/templates/manage_members.html:98
+#: organizations/templates/manage_members.html:105
 msgid "Block"
 msgstr "Blockera"
 
-#: organizations/templates/manage_members.html:94
+#: organizations/templates/manage_members.html:102
 msgid "Accept"
 msgstr "Godkänn"
 
@@ -975,11 +894,11 @@ msgstr "Anläggningar"
 
 #: organizations/templates/partials/compact_facility.html:23
 #: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:69
+#: scheduler/templates/helpdesk.html:68
 msgid "Show details"
 msgstr "Visa detaljer"
 
-#: organizations/views.py:122
+#: organizations/views.py:137
 msgid "volunteer-planner.org: Membership approved"
 msgstr "volunteer-planner.org: medlemsskap godkänt"
 
@@ -1030,55 +949,55 @@ msgstr "volontärer"
 msgid "Scheduler"
 msgstr "Schemaläggare"
 
-#: scheduler/models.py:18 scheduletemplates/models.py:34
+#: scheduler/models.py:41 scheduletemplates/models.py:34
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
 msgid "number of needed volunteers"
 msgstr "antal volontärer som behövs"
 
-#: scheduler/models.py:30 scheduletemplates/admin.py:33
+#: scheduler/models.py:53 scheduletemplates/admin.py:33
 #: scheduletemplates/models.py:44
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr "starttid"
 
-#: scheduler/models.py:32 scheduletemplates/admin.py:36
+#: scheduler/models.py:55 scheduletemplates/admin.py:36
 #: scheduletemplates/models.py:47
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr "sluttid"
 
-#: scheduler/models.py:40 scheduletemplates/models.py:54
+#: scheduler/models.py:63 scheduletemplates/models.py:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:58
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
 msgid "members only"
 msgstr "endast medlemmar"
 
-#: scheduler/models.py:42 scheduletemplates/models.py:56
+#: scheduler/models.py:65 scheduletemplates/models.py:56
 msgid "allow only members to help"
 msgstr "tillåt endast medlemmar att hjälpa"
 
-#: scheduler/models.py:48
+#: scheduler/models.py:71
 msgid "shift"
 msgstr "pass"
 
-#: scheduler/models.py:49 scheduletemplates/admin.py:283
+#: scheduler/models.py:72 scheduletemplates/admin.py:283
 msgid "shifts"
 msgstr "pass"
 
-#: scheduler/models.py:63 scheduletemplates/models.py:77
+#: scheduler/models.py:86 scheduletemplates/models.py:77
 #, python-brace-format
 msgid "the next day"
 msgid_plural "after {number_of_days} days"
 msgstr[0] "nästa dag"
 msgstr[1] "efter {number_of_days} dagar"
 
-#: scheduler/models.py:95
+#: scheduler/models.py:130
 msgid "shift helper"
 msgstr "passhjälpare"
 
-#: scheduler/models.py:96
+#: scheduler/models.py:131
 msgid "shift helpers"
 msgstr "passhjälpare"
 
@@ -1104,11 +1023,11 @@ msgstr "Du kan hjälpa på följande platser"
 msgid "filter"
 msgstr "filter"
 
-#: scheduler/templates/helpdesk.html:60
+#: scheduler/templates/helpdesk.html:59
 msgid "see more"
 msgstr "se mer"
 
-#: scheduler/templates/helpdesk.html:83
+#: scheduler/templates/helpdesk.html:82
 msgid "open shifts"
 msgstr "lediga pass"
 
@@ -1170,36 +1089,36 @@ msgstr "Användare"
 msgid "You"
 msgstr "Du"
 
-#: scheduler/templates/helpdesk_single.html:301
+#: scheduler/templates/helpdesk_single.html:321
 #, python-format
 msgid "%(slots_left)s more"
 msgstr "%(slots_left)s kvar"
 
-#: scheduler/templates/helpdesk_single.html:305
-#: scheduler/templates/helpdesk_single.html:386
+#: scheduler/templates/helpdesk_single.html:325
+#: scheduler/templates/helpdesk_single.html:406
 #: scheduler/templates/shift_details.html:134
 msgid "Covered"
 msgstr "Täckt"
 
-#: scheduler/templates/helpdesk_single.html:330
+#: scheduler/templates/helpdesk_single.html:350
 #: scheduler/templates/shift_details.html:95
 msgid "Drop out"
 msgstr "Lämna pass"
 
-#: scheduler/templates/helpdesk_single.html:340
+#: scheduler/templates/helpdesk_single.html:360
 #: scheduler/templates/shift_details.html:105
 msgid "Sign up"
 msgstr "Delta"
 
-#: scheduler/templates/helpdesk_single.html:351
+#: scheduler/templates/helpdesk_single.html:371
 msgid "Membership pending"
 msgstr "Medlemsskap behandlas"
 
-#: scheduler/templates/helpdesk_single.html:358
+#: scheduler/templates/helpdesk_single.html:378
 msgid "Membership rejected"
 msgstr "Medlemsskap avslaget"
 
-#: scheduler/templates/helpdesk_single.html:365
+#: scheduler/templates/helpdesk_single.html:385
 msgid "Become member"
 msgstr "Bli medlem"
 
@@ -1261,26 +1180,28 @@ msgstr "Användarkontot finns inte."
 msgid "A membership request has been sent."
 msgstr "En förfrågan om medlemsskap har skickats."
 
-#: scheduler/views.py:211
-msgid ""
-"We can't add you to this shift because you've already agreed to other shifts"
-" at the same time:"
+#: scheduler/views.py:214
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Vi kan inte lägga till dig till detta pass, då du redan är anmäld till ett annat pass vid samma tidpunkt:"
 
-#: scheduler/views.py:220
+#: scheduler/views.py:223
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr "Du kan inte delta på detta pass, då det inte finns några lediga platser."
 
-#: scheduler/views.py:227
+#: scheduler/views.py:230
 msgid "You were successfully added to this shift."
 msgstr "Du har nu blivit tillagd till detta pass."
 
-#: scheduler/views.py:230
+#: scheduler/views.py:234
+msgid "The shift you joined overlaps with other shifts you already joined. Please check for                             conflicts:"
+msgstr ""
+
+#: scheduler/views.py:244
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Du har redan anmält dig till detta pass den {date_time}."
 
-#: scheduler/views.py:242
+#: scheduler/views.py:256
 msgid "You successfully left this shift."
 msgstr "Du kommer inte längre att delta i detta pass."
 
@@ -1442,9 +1363,7 @@ msgstr "Samtliga uppgifter behandlas konfidentiellt och får inte lämnas ut til
 
 #: shiftmailer/templates/shifts_today.html:15
 #, python-format
-msgid ""
-"from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers"
-" have signed up:"
+msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
 msgstr "från klockan %(start_time)s till %(end_time)s har följande %(volunteer_count)s volontärer anmält sig:"
 
 #: templates/partials/footer.html:17
@@ -1497,23 +1416,17 @@ msgid "Activation problem"
 msgstr "Problem vid aktivering"
 
 #: templates/registration/activate.html:15
-msgctxt ""
-"login link title in registration confirmation success text 'You may now "
-"%(login_link)s'"
+msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
 msgstr "logga in"
 
 #: templates/registration/activate.html:17
 #, python-format
-msgid ""
-"Thanks %(account)s, activation complete! You may now %(login_link)s using "
-"the username and password you set at registration."
+msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
 msgstr "Tack %(account)s, aktiveringen är slutförd! Du kan nu %(login_link)s med ditt användarnamn och lösenord. "
 
 #: templates/registration/activate.html:25
-msgid ""
-"Oops &ndash; Either you activated your account already, or the activation "
-"key is invalid or has expired."
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 msgstr "Hoppsan &ndash; Antingen har du redan aktiverat ditt konto, eller har du använt dig av en ogiltig eller utgången aktiveringsnyckel."
 
 #: templates/registration/activation_complete.html:3
@@ -1547,7 +1460,21 @@ msgid ""
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
-msgstr "\nHallå %(user)s,\n\nvi är glada över att du vill hjälpa! Bara ett steg återstår innan du kan börja volontärjobba!\n\nKlicka på följande länk för att slutföra din registrering hos volunteer-planner.org: \n\n<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a> \n\nLänken är giltig i %(expiration_days)s dagar. \n\nBästa hälsningar,\n\nditt volunteer-planner.org team\n"
+msgstr ""
+"\n"
+"Hallå %(user)s,\n"
+"\n"
+"vi är glada över att du vill hjälpa! Bara ett steg återstår innan du kan börja volontärjobba!\n"
+"\n"
+"Klicka på följande länk för att slutföra din registrering hos volunteer-planner.org: \n"
+"\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a> \n"
+"\n"
+"Länken är giltig i %(expiration_days)s dagar. \n"
+"\n"
+"Bästa hälsningar,\n"
+"\n"
+"ditt volunteer-planner.org team\n"
 
 #: templates/registration/activation_email.txt:2
 #, python-format
@@ -1566,7 +1493,21 @@ msgid ""
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
-msgstr "\nHallå %(user)s,\n\ntack så mycket för att du vill hjälpa! Bara ett steg återstår innan du kan börja volontärjobba!\n\nKlicka på följande länk för att slutföra din registrering hos volunteer-planner.org:\n\nhttp://%(site_domain)s%(activation_key_url)s\n\nLänken är giltig i %(expiration_days)s dagar.\n\nBästa hälsningar,\n\nditt volunteer-planner.org team\n"
+msgstr ""
+"\n"
+"Hallå %(user)s,\n"
+"\n"
+"tack så mycket för att du vill hjälpa! Bara ett steg återstår innan du kan börja volontärjobba!\n"
+"\n"
+"Klicka på följande länk för att slutföra din registrering hos volunteer-planner.org:\n"
+"\n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+"Länken är giltig i %(expiration_days)s dagar.\n"
+"\n"
+"Bästa hälsningar,\n"
+"\n"
+"ditt volunteer-planner.org team\n"
 
 #: templates/registration/activation_email_subject.txt:1
 msgid "Your volunteer-planner.org registration"
@@ -1659,7 +1600,13 @@ msgid ""
 "\n"
 "To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
-msgstr "Du får detta mejl för att du (eller någon som utger sig för att vara du)\nbegärt att återställa ditt lösenord på %(domain)s sida. Om du inte\nvill återställa lösenordet kan du bortse från detta meddelande.\n\nKlicka på följande länk för att återställa ditt lösenord, eller kopiera och klistra in länken\ni din webbläsare:"
+msgstr ""
+"Du får detta mejl för att du (eller någon som utger sig för att vara du)\n"
+"begärt att återställa ditt lösenord på %(domain)s sida. Om du inte\n"
+"vill återställa lösenordet kan du bortse från detta meddelande.\n"
+"\n"
+"Klicka på följande länk för att återställa ditt lösenord, eller kopiera och klistra in länken\n"
+"i din webbläsare:"
 
 #: templates/registration/password_reset_email.html:12
 #, python-format
@@ -1669,7 +1616,12 @@ msgid ""
 "\n"
 "Best regards,\n"
 "%(site_name)s Management\n"
-msgstr "\nSkulle du ha glömt ditt användarnamn, så är det: %(username)s\n\nVänliga hälsningar,\n%(site_name)s team\n"
+msgstr ""
+"\n"
+"Skulle du ha glömt ditt användarnamn, så är det: %(username)s\n"
+"\n"
+"Vänliga hälsningar,\n"
+"%(site_name)s team\n"
 
 #: templates/registration/password_reset_form.html:3
 #: templates/registration/password_reset_form.html:16
@@ -1690,9 +1642,7 @@ msgid "An activation mail will be sent to you email address."
 msgstr "Ett aktiveringsmejl kommer att skickas till din e-postadress."
 
 #: templates/registration/registration_complete.html:13
-msgid ""
-"Please confirm registration with the link in the email. If you haven't "
-"received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Vänligen bekräfta registreringen genom att klicka på länken i mejlet. Om du inte mottagit ett mejl inom 10 minuter, titta efter i mappen för skräppost. "
 
 #: templates/registration/registration_form.html:3
@@ -1700,9 +1650,7 @@ msgid "Register for an account"
 msgstr "Skapa ett konto"
 
 #: templates/registration/registration_form.html:5
-msgid ""
-"You can create a new user account here. If you already have a user account "
-"click on LOGIN in the upper right corner."
+msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
 msgstr ""
 
 #: templates/registration/registration_form.html:10
@@ -1710,8 +1658,7 @@ msgid "Create a new account"
 msgstr ""
 
 #: templates/registration/registration_form.html:26
-msgid ""
-"Volunteer-Planner and shelters will send you emails concerning your shifts."
+msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
 #: templates/registration/registration_form.html:31
@@ -1719,9 +1666,7 @@ msgid "Username already exists. Please choose a different username."
 msgstr "Användarnamnet finns redan. Vänligen välj ett annat användarnamn."
 
 #: templates/registration/registration_form.html:38
-msgid ""
-"Your username will be visible to other users. Don't use spaces or special "
-"characters."
+msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
 
 #: templates/registration/registration_form.html:51
@@ -1742,31 +1687,41 @@ msgid "This field is required."
 msgstr "Detta fält är nödvändigt."
 
 #: tests/registration/test_registration.py:82
-msgid ""
-"Enter a valid username. This value may contain only letters, numbers and "
-"@/./+/-/_ characters."
+msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Ange ett giltigt användarnamn. Det får endast bestå av bokstäver, siffror och följande tecken: @/./+/-/_. "
 
 #: tests/registration/test_registration.py:110
 msgid "A user with that username already exists."
 msgstr "Det finns redan en användare med det här användarnamnet."
 
-#: volunteer_planner/settings/base.py:146
+#: volunteer_planner/settings/base.py:142
 msgid "English"
 msgstr "Engelska"
 
-#: volunteer_planner/settings/base.py:147
+#: volunteer_planner/settings/base.py:143
 msgid "German"
 msgstr "Tyska"
 
-#: volunteer_planner/settings/base.py:148
+#: volunteer_planner/settings/base.py:144
+msgid "French"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:145
 msgid "Greek"
 msgstr "Grekiska"
 
-#: volunteer_planner/settings/base.py:149
+#: volunteer_planner/settings/base.py:146
 msgid "Hungarian"
 msgstr "Ungerska"
 
-#: volunteer_planner/settings/base.py:150
+#: volunteer_planner/settings/base.py:147
 msgid "Swedish"
 msgstr "Svenska"
+
+#: volunteer_planner/settings/base.py:148
+msgid "Portuguese"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:149
+msgid "Turkish"
+msgstr ""

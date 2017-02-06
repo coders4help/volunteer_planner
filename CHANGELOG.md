@@ -3,6 +3,29 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+## [3.1.1] - 2017-02-06
+### Added
+*added french translation
+*added portuguese translation (not fully translated yet)
+*added turkish translation (not fully translated yet)
+
+### Changed
+*updated all existing translations (massive improvements in translation)
+
+### Fixed
+- fix #398: deleting a non-past shift failed hard when trying to gather information about email about to be sent
+
+### Removed
+
+## [3.1.0] - 2016-10-10
+### Added
 - [UI] Display a warning when joining overlapping shifts #395
 - [UI] shift managers can see the e-mail address of approved and pending facility members to contact them
 - enhancements to the excel document that is sent to shift managers
