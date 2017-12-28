@@ -2,17 +2,17 @@ version: '2'
 
 volumes:
   ### MySQL ###
-  data_volume_mysql:
-  config_volume_mysql:
+  # data_volume_mysql:
+  # config_volume_mysql:
   ### PostgreSQL ###
-  # data_volume_pg:
+  data_volume_pg:
 
 services:
   db:
     ### MySQL ###
-    image: tarzan79/alpine-mysql
+    # image: tarzan79/alpine-mysql
     ### PostgreSQL ###
-    # image: kiasaki/alpine-postgres
+    image: postgres:9-alpine
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
       MYSQL_DATABASE: volunteer_planner
@@ -24,10 +24,10 @@ services:
       POSTGRES_PASSWORD: volunteer_planner
     volumes:
       ### MySQL ###
-      - data_volume_mysql:/var/lib/mysql
-      - config_volume_mysql:/etc/mysql
+      # - data_volume_mysql:/var/lib/mysql
+      # - config_volume_mysql:/etc/mysql
       ### PostgreSQL ###
-      # - data_volume_pg:/var/lib/postgresql/data
+      - data_volume_pg:/var/lib/postgresql/data
     hostname: db
     mem_limit: 1G
     memswap_limit: 2G
@@ -46,9 +46,9 @@ services:
       - db
     environment:
       ### MySQL ###
-      DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
+      # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
       ### PostgreSQL ###
-      # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
+      DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
     hostname: web
     mem_limit: 1G
     memswap_limit: 2G

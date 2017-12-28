@@ -16,7 +16,7 @@ ADMINS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
         'NAME': os.environ['DATABASE_NAME'],
         'PASSWORD': os.environ['DATABASE_PW'],
         'USER': os.environ['DATABASE_USER']
