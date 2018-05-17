@@ -13,7 +13,7 @@ services:
   db:
     ### PostgreSQL ###
     image: vp_pg:latest
-    build: 
+    build:
       context: docker/db/
       args:
         - DATABASE_NAME
@@ -40,7 +40,7 @@ services:
 
   django:
     image: vp_django:latest
-    build: 
+    build:
       context: .
       args:
         - vpbasedir=${VP_BASE_DIR:-/opt/vp}
@@ -88,7 +88,7 @@ services:
 
   web:
     image: vp_web:latest
-    build: 
+    build:
       context: docker/web/
       args:
         - vpbasedir=${VP_BASE_DIR:-/opt/vp}

@@ -41,6 +41,6 @@ fi
 
 "${@}" &
 pid=$!
-wait 
+wait
 
 exit 0
