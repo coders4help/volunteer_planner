@@ -6,6 +6,7 @@ django-ckeditor==4.5.0
 django-compressor==1.4
 django-extensions==1.5.7
 django-registration-redux==1.2
+django-uwsgi==0.2.1
 Django==1.8.4
 djangocms-admin-style==0.2.8
 ipdb==0.8.1
@@ -15,7 +16,7 @@ path.py==7.6.1
 pexpect==3.3
 pickleshare==0.5
 python-dateutil==2.4.2
-python-memcached==1.57
+python3-memcached==1.51
 simplegeneric==0.8.1
 six==1.7.3
 selenium==2.47.3

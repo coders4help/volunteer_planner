@@ -47,7 +47,8 @@ THIRD_PARTY_APPS = (
     # A prettier theme
 
     'accounts.apps.RegistrationConfig',
-    'django_ajax'
+    'django_ajax',
+    'django_uwsgi',
 )
 
 LOCAL_APPS = (

@@ -11,26 +11,26 @@ STATIC_ROOT = os.environ['STATIC_ROOT']
 PREPEND_WWW = False
 
 ADMINS = (
-    ('VP Admin', os.environ['ADMIN_EMAIL']),
+    ('VP Admin', os.environ.get('ADMIN_EMAIL', None)),
 )
 
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
         'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
-        'NAME': os.environ['DATABASE_NAME'],
-        'PASSWORD': os.environ['DATABASE_PW'],
-        'USER': os.environ['DATABASE_USER']
+        'NAME': os.environ.get('DATABASE_NAME', None),
+        'PASSWORD': os.environ.get('DATABASE_PW', None),
+        'USER': os.environ.get('DATABASE_USER', None)
     }
 }
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'volunteer-planner.org,www.volunteer-planner.org').split()
 SECRET_KEY = os.environ['SECRET_KEY']
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
-COMMUNICATION_SENDER_MAIL = os.environ['SENDER_EMAIL']
-DEFAULT_FROM_EMAIL = os.environ['FROM_EMAIL']
-CONTACT_MAIL = [os.environ['CONTACT_EMAIL']]
-SERVER_EMAIL = os.environ['SERVER_EMAIL']
+COMMUNICATION_SENDER_MAIL = os.environ.get('SENDER_EMAIL', None)
+DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL', None),
+CONTACT_MAIL = [os.environ.get('CONTACT_EMAIL', None)],
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL', None)
 EMAIL_HOST = os.environ.get('SMTP_HOST', 'localhost')
 EMAIL_PORT = os.environ.get('SMTP_PORT', 25)
 EMAIL_USER = os.environ.get('SMTP_USER', None)

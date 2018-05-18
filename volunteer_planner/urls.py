@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^helpdesk/', include('scheduler.urls')),
     url(r'^orgs/', include('organizations.urls')),
     url(r'^places/', include('scheduler.place_urls')),
+    url(r'^admin/uwsgi/', include('django_uwsgi.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),

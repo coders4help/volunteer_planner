@@ -37,6 +37,14 @@ services:
     hostname: db
     mem_limit: 1G
     memswap_limit: 2G
+    stop_grace_period: 30s
+
+    healthcheck:
+        test: ["CMD", "psql", "-1wXnqx", "-U", "postgres", "-c", "SELECT 1 AS check"]
+        interval: 30s
+        timeout: 5s
+        retries: 2
+        start_period: 10s
 
   django:
     image: vp_django:latest
@@ -50,10 +58,18 @@ services:
     hostname: django
     mem_limit: 1G
     memswap_limit: 2G
+    stop_grace_period: 15s
+
+    healthcheck:
+      test: ["CMD-SHELL", "uwsgi --connect-and-read /run/vp/stats 2>&1 | jq -cMe '.workers[0].accepting | select(. >= 0)'"]
+      interval: 10s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
 
     environment:
       DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.production}
-      STATIC_ROOT: ${VP_BASE_DIR:-/opt/vp}/static
+      #STATIC_ROOT: ${VP_BASE_DIR:-/opt/vp}/static
       ### PostgreSQL ###
       ### Make POstgreSQL the docker default ###
       DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql_psycopg2}
@@ -86,6 +102,9 @@ services:
     ##  ### PostgreSQL ###
     ##  DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
 
+    volumes:
+        - .:/opt/vp
+
   web:
     image: vp_web:latest
     build:
@@ -100,3 +119,10 @@ services:
     hostname: web
     mem_limit: 32M
     memswap_limit: 128M
+
+    healthcheck:
+        test: ["CMD", "curl", "--fail-early", "--silent", "-I", "-o", "/dev/null", "-w", "{\"http_status\":%{http_code},\"duration\":%{time_total}}", "http://localhost:8181/"]
+        interval: 15s
+        timeout: 5s
+        retries: 1
+        start_period: 5s
