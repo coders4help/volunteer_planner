@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='need',
             name='location',
-            field=models.ForeignKey(default=1, to='scheduler.Location'),
+            field=models.ForeignKey(default=1, to='scheduler.Location', on_delete=models.CASCADE),
             preserve_default=False,
         ),
     ]

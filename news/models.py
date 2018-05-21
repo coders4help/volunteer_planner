@@ -26,11 +26,13 @@ class NewsEntry(models.Model):
                                      verbose_name=_("creation date"))
 
     facility = models.ForeignKey('organizations.Facility',
+                                 models.CASCADE,
                                  related_name='news_entries',
                                  null=True,
                                  blank=True)
 
     organization = models.ForeignKey('organizations.Organization',
+                                     models.CASCADE,
                                      related_name='news_entries',
                                      null=True,
                                      blank=True)
@@ -48,3 +50,6 @@ class NewsEntry(models.Model):
 
     def __unicode__(self):
         return u'{}'.format(self.title)
+
+    def __str__(self):
+        return self.__unicode__()

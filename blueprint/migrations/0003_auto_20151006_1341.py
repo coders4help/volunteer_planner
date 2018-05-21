@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='blueprintcreator',
             name='location',
-            field=models.ForeignKey(verbose_name='location', to='scheduler.Location'),
+            field=models.ForeignKey(verbose_name='location', to='scheduler.Location', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='blueprintcreator',
@@ -52,6 +52,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='needblueprint',
             name='topic',
-            field=models.ForeignKey(verbose_name='topic', to='scheduler.Topics'),
+            field=models.ForeignKey(verbose_name='topic', to='scheduler.Topics', on_delete=models.CASCADE),
         ),
     ]

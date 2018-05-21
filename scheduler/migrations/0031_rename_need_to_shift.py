@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='shifthelper',
             name='need',
-            field=models.ForeignKey(related_name='shift_helpers', to='scheduler.Shift'),
+            field=models.ForeignKey(related_name='shift_helpers', to='scheduler.Shift', on_delete=models.CASCADE),
         ),
         migrations.RenameField(
             model_name='shifthelper',

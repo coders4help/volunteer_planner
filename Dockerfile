@@ -4,6 +4,7 @@ ARG vpbasedir=/opt/vp/
 ARG DJANGO_SETTINGS_MODULE=volunteer_planner.settings.production
 ARG SECRET_KEY=local
 ARG DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+ARG BETA=""
 ARG django_static_root=${vpbasedir}/static
 
 ENV PYTHONUNBUFFERED=1 user=vp
@@ -19,23 +20,32 @@ RUN addgroup -g 1000 ${user} && \
 
 ADD ./requirements ${vpbasedir}/requirements
 
-RUN apk add --no-cache --virtual .build-deps \
-	gcc \
-	musl-dev \
-	postgresql-dev \
-	python3-dev \
-	&& \
-    apk add --no-cache \
+RUN apk update && \
+    apk add --virtual .build-deps \
+        gcc \
+        jpeg-dev \
+        musl-dev \
+        postgresql-dev \
+        python3-dev \
+        zlib-dev \
+        && \
+    apk add \
         gettext \
-	gettext-lang \
-	jq \
+        gettext-lang \
+        jpeg \
+        jq \
         postgresql \
-	uwsgi \
-	uwsgi-python3 \
-	&& \
+        uwsgi \
+        uwsgi-python3 \
+        zlib \
+        && \
     pip3 install --upgrade --quiet pip setuptools && \
-    pip3 install -r requirements/postgres.txt && \
-    pip3 install --upgrade --quiet uwsgitop && \
+    pip3 install -r requirements/postgres.txt ${BETA:+-r requirements/dev.txt} && \
+    pip3 install --upgrade --quiet \
+        uwsgitop \
+        https://github.com/unbit/django-uwsgi/archive/master.zip \
+        https://github.com/yprez/django-logentry-admin/archive/master.zip \
+        && \
     apk del --purge .build-deps && \
     /bin/rm -rf /var/cache/apk/* /root/.cache
 

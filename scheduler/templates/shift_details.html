@@ -146,8 +146,9 @@
         <br/>
 
         {% if shift.workplace %}
-            <span class="fa  fa-map-marker">&nbsp;
-        </span>
+            <span class="fa fa-map-marker">
+            {{ shift.facility.place }}
+            </span>
             <br/>
         {% endif %}
 

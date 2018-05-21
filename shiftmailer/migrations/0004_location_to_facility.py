@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='mailer',
             name='location',
-            field=models.ForeignKey(verbose_name='facility', to='organizations.Facility'),
+            field=models.ForeignKey(verbose_name='facility', to='organizations.Facility', on_delete=models.CASCADE),
         ),
         migrations.RenameField(
             model_name='mailer',
@@ -25,6 +25,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='mailer',
             name='facility',
-            field=models.ForeignKey(to='organizations.Facility'),
+            field=models.ForeignKey(to='organizations.Facility', on_delete=models.CASCADE),
         ),
     ]

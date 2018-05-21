@@ -5,7 +5,7 @@ import itertools
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import EmailMessage
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseForbidden
 from django.template.defaultfilters import date
 from django.template.loader import get_template
@@ -25,11 +25,11 @@ from .models import Organization, Facility, FacilityMembership
 class OrganizationView(DetailView):
     ''' Class-based view to show details of an organization and related
         facilities.
-    
+
     Inherits from django generic DetailView. Overrides get_queryset to get
         facilities which belong to organization via
         queryset.prefetch_related().
-    
+
     '''
     template_name = 'organization.html'
     model = Organization
@@ -42,7 +42,7 @@ class OrganizationView(DetailView):
 class FacilityView(DetailView):
     ''' Class-based view to show details of a facility plus news
         and open shifts for that facility.
-    
+
     Inherits from django generic DetailView. Overrides
         get_context_data(self, **kwargs) to get open shifts for that facility.
         Calls get_facility_details(facility, shifts) to get details of

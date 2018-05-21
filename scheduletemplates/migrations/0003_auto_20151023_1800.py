@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='shifttemplate',
             name='task',
-            field=models.ForeignKey(verbose_name='task', to='organizations.Task'),
+            field=models.ForeignKey(verbose_name='task', to='organizations.Task', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='shifttemplate',
             name='workplace',
-            field=models.ForeignKey(verbose_name='workplace', blank=True, to='organizations.Workplace', null=True),
+            field=models.ForeignKey(verbose_name='workplace', blank=True, to='organizations.Workplace', null=True, on_delete=models.SET_NULL),
         ),
     ]

@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 class BreadcrumpablePlaceManager(models.Manager):
@@ -57,6 +57,9 @@ class BreadcrumpablePlaceModel(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.name)
 
+    def __str__(self):
+        return self.__unicode__()
+
 
 class Country(BreadcrumpablePlaceModel):
     """
@@ -80,6 +83,7 @@ class Region(BreadcrumpablePlaceModel):
     PARENT_MODEL = Country
 
     country = models.ForeignKey(Country,
+                                models.PROTECT,
                                 related_name='regions',
                                 verbose_name=_('country'))
 
@@ -102,7 +106,9 @@ class Area(BreadcrumpablePlaceModel):
     PARENT_FIELD = 'region'
     PARENT_MODEL = Region
 
-    region = models.ForeignKey(Region, related_name='areas',
+    region = models.ForeignKey(Region,
+                               models.PROTECT,
+                               related_name='areas',
                                verbose_name=_('region'))
 
     class Meta:
@@ -125,6 +131,7 @@ class Place(BreadcrumpablePlaceModel):
     PARENT_MODEL = Area
 
     area = models.ForeignKey(Area,
+                             models.PROTECT,
                              related_name='places',
                              verbose_name=_('area'))
 

@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255, verbose_name=b'Titel')),
                 ('subtitle', models.CharField(max_length=255, verbose_name=b'Untertitel')),
                 ('text', models.TextField(max_length=20055, verbose_name=b'Artikeltext')),
-                ('location', models.ForeignKey(to='scheduler.Location')),
+                ('location', models.ForeignKey(to='scheduler.Location', on_delete=models.CASCADE)),
             ],
         ),
     ]

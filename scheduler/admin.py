@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.contrib import admin
 from django.db.models import Count
+from django.utils.html import format_html, mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from . import models
@@ -31,15 +32,15 @@ class ShiftAdmin(MembershipFilteredAdmin):
     def get_volunteer_names(self, obj):
         def _format_username(user):
             full_name = user.get_full_name()
-            username = u'{}<br><strong>{}</strong>'.format(user.username,
-                                                           user.email)
+            username = format_html(u'{}<br><strong>{}</strong>',
+                                   user.username, user.email)
             if full_name:
-                username = u'{} / {}'.format(full_name, username)
-            return u'<li>{}</li>'.format(username)
+                username = format_html(u'{} / {}', full_name, username)
+            return format_html(u'<li>{}</li>', username)
 
-        return u"<ul>{}</ul>".format(
-            u"\n".join(_format_username(volunteer.user) for volunteer in
-                       obj.helpers.all()))
+        return format_html(u"<ul>{}</ul>", mark_safe(u"\n".join(
+                _format_username(volunteer.user) for volunteer in
+                obj.helpers.all())))
 
     get_volunteer_names.short_description = _(u'volunteers')
     get_volunteer_names.allow_tags = True

@@ -13,6 +13,7 @@ class ScheduleTemplate(models.Model):
     name = models.CharField(max_length=256, verbose_name=_('name'))
 
     facility = models.ForeignKey('organizations.Facility',
+                                 models.CASCADE,
                                  verbose_name=_(u'facility'),
                                  related_name='schedule_templates')
 
@@ -24,9 +25,13 @@ class ScheduleTemplate(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.name)
 
+    def __str__(self):
+        return self.__unicode__()
+
 
 class ShiftTemplate(models.Model):
     schedule_template = models.ForeignKey('scheduletemplates.ScheduleTemplate',
+                                          models.CASCADE,
                                           verbose_name=_('schedule template'),
                                           related_name='shift_templates'
                                           )
@@ -34,9 +39,11 @@ class ShiftTemplate(models.Model):
     slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
 
     task = models.ForeignKey('organizations.Task',
+                             models.CASCADE,
                              verbose_name=_(u'task'), )
 
     workplace = models.ForeignKey('organizations.Workplace',
+                                  models.CASCADE,
                                   verbose_name=_(u'workplace'),
                                   null=True,
                                   blank=True)
@@ -99,6 +106,9 @@ class ShiftTemplate(models.Model):
                 workplace_name=self.workplace.name)
         else:
             return _(u"{task_name}").format(task_name=self.task.name)
+
+    def __str__(self):
+        return self.__unicode__()
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):

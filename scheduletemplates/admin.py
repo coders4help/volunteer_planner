@@ -5,7 +5,7 @@ from django.utils import formats
 from django import forms
 from django.conf.urls import url
 from django.contrib import admin, messages
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db.models import Min, Count, Sum
 from django.forms import DateInput, TimeInput
 from django.http import HttpResponseRedirect
@@ -22,9 +22,8 @@ from organizations.admin import (MembershipFilteredAdmin,
                                  filter_queryset_by_membership)
 from scheduler import models as scheduler_models
 
-
 class ShiftTemplateForm(forms.ModelForm):
-    time_formats = formats.get_format('TIME_INPUT_FORMATS') + ('%H', '%H%M')
+    time_formats = formats.get_format('TIME_INPUT_FORMATS') + ['%H', '%H%M']
 
     class Meta:
         model = models.ShiftTemplate
@@ -59,7 +58,7 @@ JQUERYUI_FORMAT_MAPPING = {
 
 
 def translate_date_format(format_string, mappings=JQUERYUI_FORMAT_MAPPING):
-    for k, v in mappings.iteritems():
+    for k, v in mappings.items():
         format_string = format_string.replace(k, v)
     return format_string
 
@@ -333,7 +332,7 @@ class ShiftTemplateAdmin(MembershipFilteredAdmin):
     def get_field_queryset(self, db, db_field, request):
         qs = super(ShiftTemplateAdmin, self).get_field_queryset(
             db, db_field, request)
-        if db_field.rel.to == models.ScheduleTemplate:
-            qs = qs or db_field.rel.to.objects.all()
+        if db_field.remote_field.model == models.ScheduleTemplate:
+            qs = qs or db_field.remote_field.model.objects.all()
             qs = filter_queryset_by_membership(qs, request.user)
         return qs

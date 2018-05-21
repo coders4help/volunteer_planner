@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='need',
             name='topic',
-            field=models.ForeignKey(verbose_name='help type', to='scheduler.Topics', help_text='HELP_TYPE_HELP'),
+            field=models.ForeignKey(verbose_name='help type', to='scheduler.Topics', help_text='HELP_TYPE_HELP', on_delete=models.CASCADE),
         ),
     ]

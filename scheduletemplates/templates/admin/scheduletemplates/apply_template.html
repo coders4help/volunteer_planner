@@ -7,7 +7,6 @@
     <script>
         $(function () {
             $("#{{ apply_form.apply_for_date.auto_id }}").datepicker({
-                firstDay: 1,
                 defaultDate: +1,
                 minDate: +0,
                 monthNames: gettext('January February March April May June July August September October November December').split(' '),
@@ -125,6 +124,6 @@
                 <input type="submit" value="{% trans "Continue" %}"
                        class="default" name="preview">
             </div>
+        </form>
     </div>
-    </form>
 {% endblock %}

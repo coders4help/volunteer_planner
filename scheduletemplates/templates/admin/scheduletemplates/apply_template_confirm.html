@@ -46,8 +46,7 @@
 
         {% regroup combined_shifts by task as shifts_by_task %}
 
-        <p>
-
+        <div>
         <table>
             {% for shifts_for_task in shifts_by_task %}
 
@@ -113,7 +112,7 @@
                 {% endfor %}
             {% endfor %}
         </table>
-        </p>
+        </div>
         <div class="submit-row">
             <input type="submit" value="{% trans "Apply" %}"
                    class="default" name="confirm">
@@ -121,4 +120,5 @@
                    class="default" name="confirm_and_repeat">
         </div>
     </form>
+    </div>
 {% endblock %}
