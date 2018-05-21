@@ -1,5 +1,8 @@
 # coding: utf-8
+from datetime import datetime
+from django import forms
 from django.contrib import admin
+from django.core.exceptions import ValidationError
 from django.db.models import Count
 from django.utils.html import format_html, mark_safe
 from django.utils.translation import ugettext_lazy as _
@@ -11,8 +14,38 @@ from organizations.admin import (
 )
 
 
+class ShiftAdminForm(forms.ModelForm):
+    class Meta:
+        model = models.Shift
+        fields = '__all__'
+
+    def clean(self):
+        """Validation of shift data, to prevent non-sense values to be entered"""
+        # Check start and end times to be reasonable
+        start = self.cleaned_data.get('starting_time')
+        end = self.cleaned_data.get('ending_time')
+
+        # No times, no joy
+        if not start:
+            self.add_error('starting_time', ValidationError(_('No start time given')))
+        if not end:
+            self.add_error('ending_time', ValidationError(_('No end time given')))
+
+        # There is no known reason to modify shifts in the past
+        if start:
+            now = datetime.now()
+            if start < now:
+                self.add_error('starting_time', ValidationError(_('Start time in the past')))
+            if end and not end > start:
+                self.add_error('ending_time', ValidationError(_('End time not after start time')))
+
+        return self.cleaned_data
+
+
 @admin.register(models.Shift)
 class ShiftAdmin(MembershipFilteredAdmin):
+    form = ShiftAdminForm
+
     def get_queryset(self, request):
         qs = super(ShiftAdmin, self).get_queryset(request)
         qs = qs.annotate(volunteer_count=Count('helpers'))
