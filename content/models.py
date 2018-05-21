@@ -8,6 +8,7 @@ from django.contrib.flatpages.models import FlatPage
 
 class FlatPageExtraStyle(models.Model):
     flatpage = models.OneToOneField(FlatPage,
+                                    models.CASCADE,
                                     related_name='extra_style',
                                     verbose_name=_('additional style'),
                                     )
@@ -21,6 +22,7 @@ class FlatPageExtraStyle(models.Model):
 
 class FlatPageTranslation(models.Model):
     flatpage = models.ForeignKey(FlatPage,
+                                 models.CASCADE,
                                  related_name='translations',
                                  verbose_name=_('flat page'),
                                  )

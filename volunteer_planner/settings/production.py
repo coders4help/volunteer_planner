@@ -1,4 +1,5 @@
 # coding=utf-8
+
 from .base import *
 from datetime import timedelta
 
@@ -11,30 +12,30 @@ STATIC_ROOT = os.environ['STATIC_ROOT']
 PREPEND_WWW = False
 
 ADMINS = (
-    ('VP Admin', os.environ['ADMIN_EMAIL']),
+    ('VP Admin', os.environ.get('ADMIN_EMAIL')),
 )
 
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
         'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
-        'NAME': os.environ['DATABASE_NAME'],
-        'PASSWORD': os.environ['DATABASE_PW'],
-        'USER': os.environ['DATABASE_USER']
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'PASSWORD': os.environ.get('DATABASE_PW'),
+        'USER': os.environ.get('DATABASE_USER')
     }
 }
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'volunteer-planner.org,www.volunteer-planner.org').split()
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'volunteer-planner.org,www.volunteer-planner.org').split(sep=',') + ['localhost']
 SECRET_KEY = os.environ['SECRET_KEY']
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
-COMMUNICATION_SENDER_MAIL = os.environ['SENDER_EMAIL']
-DEFAULT_FROM_EMAIL = os.environ['FROM_EMAIL']
-CONTACT_MAIL = [os.environ['CONTACT_EMAIL']]
-SERVER_EMAIL = os.environ['SERVER_EMAIL']
+COMMUNICATION_SENDER_MAIL = os.environ.get('SENDER_EMAIL')
+DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL'),
+CONTACT_MAIL = [os.environ.get('CONTACT_EMAIL')],
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL')
 EMAIL_HOST = os.environ.get('SMTP_HOST', 'localhost')
-EMAIL_PORT = os.environ.get('SMTP_PORT', 25)
-EMAIL_USER = os.environ.get('SMTP_USER', None)
-EMAIL_PASS = os.environ.get('SMTP_PASS', None)
+EMAIL_PORT = int(os.environ.get('SMTP_PORT', 25))
+EMAIL_USER = os.environ.get('SMTP_USER')
+EMAIL_PASS = os.environ.get('SMTP_PASS')
 EMAIL_USE_TLS = False
 
 CACHES = {
@@ -45,3 +46,14 @@ CACHES = {
 }
 
 DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
+
+if DEBUG:
+    INSTALLED_APPS += (
+        'debug_toolbar',
+    )
+
+    MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ] + MIDDLEWARE
+
+    INTERNAL_IPS = ['127.0.0.1', '172.20.0.1']

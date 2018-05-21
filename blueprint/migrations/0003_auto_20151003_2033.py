@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='blueprintcreator',
             name='location',
-            field=models.ForeignKey(verbose_name='facility', to='organizations.Facility'),
+            field=models.ForeignKey(verbose_name='facility', to='organizations.Facility', on_delete=models.CASCADE),
         ),
         migrations.RenameField(
             model_name='blueprintcreator',

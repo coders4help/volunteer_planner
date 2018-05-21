@@ -60,7 +60,7 @@ class Command(BaseCommand):
     @factory.django.mute_signals(signals.pre_delete)
     def handle(self, *args, **options):
         if options['flush']:
-            print "delete all data in app tables"
+            print('delete all data in app tables')
             RegistrationProfile.objects.all().delete()
 
             Shift.objects.all().delete()

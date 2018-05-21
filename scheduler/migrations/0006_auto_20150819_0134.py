@@ -34,18 +34,19 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='need',
             name='location',
-            field=models.ForeignKey(verbose_name=b'Ort', to='scheduler.Location'),
+            field=models.ForeignKey(verbose_name=b'Ort', to='scheduler.Location', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='need',
             name='time_period_from',
-            field=models.ForeignKey(related_name='time_from', verbose_name=b'Anfangszeit', to='scheduler.TimePeriods'),
+            field=models.ForeignKey(related_name='time_from', verbose_name=b'Anfangszeit', to='scheduler.TimePeriods', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='need',
             name='topic',
             field=models.ForeignKey(verbose_name=b'Hilfetyp', to='scheduler.Topics',
                                     help_text='Jeder Hilfetyp hat so viele Planelemente wie es Arbeitsschichten geben '
-                                              'soll. Dies ist EINE Arbeitsschicht f\xfcr einen bestimmten Tag'),
+                                              'soll. Dies ist EINE Arbeitsschicht f\xfcr einen bestimmten Tag',
+                                    on_delete=models.CASCADE),
         ),
     ]

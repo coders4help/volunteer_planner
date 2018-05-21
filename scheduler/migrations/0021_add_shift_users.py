@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('joined_shift_at', models.DateTimeField(auto_now_add=True)),
-                ('need', models.ForeignKey(related_name='shift_helpers', to='scheduler.Need')),
-                ('user_account', models.ForeignKey(related_name='shift_helpers', to='accounts.UserAccount')),
+                ('need', models.ForeignKey(related_name='shift_helpers', to='scheduler.Need', on_delete=models.CASCADE)),
+                ('user_account', models.ForeignKey(related_name='shift_helpers', to='accounts.UserAccount', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'shift helper',

@@ -13,6 +13,5 @@ db.sqlite3
 /.coverage
 *.log
 .cache
-fabfile.py
 /var
 .env

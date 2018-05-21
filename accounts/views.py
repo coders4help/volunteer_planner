@@ -6,7 +6,7 @@ from django.contrib.auth import logout
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import UpdateView
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.auth import models
 
 from datetime import date, timedelta
@@ -112,7 +112,7 @@ def shift_list_active(request):
     shifts_further_future = shifthelper \
         .filter(shift__starting_time__gt=date.today() + timedelta(days=3)) \
         .order_by("shift__starting_time")
-        
+
     return render(request, 'shift_list.html', {'user': user,
                                                'shifts_today': shifts_today,
                                                'shifts_tomorrow': shifts_tomorrow,

@@ -122,7 +122,7 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
         list_display_links = list(
             super(MembershipFilteredAdmin, self).get_list_display_links(request,
                                                                         list_display))
-        return filter(lambda i: i in list_display, list_display_links)
+        return list(filter(lambda i: i in list_display, list_display_links))
 
     def get_edit_link(self, obj):
         return _(u'edit')
@@ -150,11 +150,11 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
     def get_field_queryset(self, db, db_field, request):
         qs = super(MembershipFilteredAdmin, self).get_field_queryset(
             db, db_field, request)
-        if db_field.rel.to in (models.Facility,
+        if db_field.remote_field.model in (models.Facility,
                                models.Organization,
                                models.Task,
                                models.Workplace):
-            qs = qs or db_field.rel.to.objects.all()
+            qs = qs or db_field.remote_field.model.objects.all()
             qs = filter_queryset_by_membership(qs, request.user)
         return qs
 
@@ -175,18 +175,18 @@ class MembershipFilteredTabularInline(admin.TabularInline):
     def get_field_queryset(self, db, db_field, request):
         qs = super(MembershipFilteredTabularInline, self).get_field_queryset(
             db, db_field, request)
-        if db_field.rel.to in (models.Facility,
+        if db_field.remote_field.model in (models.Facility,
                                models.Organization,
                                models.Task,
                                models.Workplace):
-            qs = qs or db_field.rel.to.objects.all()
+            qs = qs or db_field.remote_field.model.objects.all()
             qs = filter_queryset_by_membership(qs, request.user)
         return qs
 
 
 class MembershipFieldListFilter(admin.RelatedFieldListFilter):
     def field_choices(self, field, request, model_admin):
-        query = field.rel.to.objects.all()
+        query = field.remote_field.model.objects.all()
         query = query.annotate(usage_count=Count(field.related_query_name()))
         query = query.exclude(usage_count=0)
         qs = filter_queryset_by_membership(query, request.user)
@@ -283,9 +283,11 @@ class OrganizationMembershipAdmin(MembershipFilteredAdmin):
         'user_account',
         'organization',
         'role',
+        'status',
     )
     list_filter = (
         ('organization', MembershipFieldListFilter),
+        'status',
     )
     raw_id_fields = ('user_account',)
 
@@ -293,12 +295,14 @@ class OrganizationMembershipAdmin(MembershipFilteredAdmin):
 @admin.register(models.FacilityMembership)
 class FacilityMembershipAdmin(MembershipFilteredAdmin):
     list_display = (
-        'role',
         'user_account',
-        'facility'
+        'facility',
+        'role',
+        'status',
     )
     list_filter = (
         ('facility', MembershipFieldListFilter),
+        'status',
     )
     raw_id_fields = ('user_account',)
 

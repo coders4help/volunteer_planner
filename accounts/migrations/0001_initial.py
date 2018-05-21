@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='UserAccount',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('user', models.OneToOneField(related_name='account', to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(related_name='account', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'user account',

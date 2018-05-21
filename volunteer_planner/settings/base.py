@@ -47,7 +47,10 @@ THIRD_PARTY_APPS = (
     # A prettier theme
 
     'accounts.apps.RegistrationConfig',
-    'django_ajax'
+    'django_ajax',
+    'django_extensions',
+    'django_uwsgi',
+    'logentry_admin',
 )
 
 LOCAL_APPS = (
@@ -69,16 +72,15 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -102,7 +104,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'google_tools.context_processors.google_tools_config'
+                'google_tools.context_processors.google_tools_config',
+                'non_logged_in_area.context_processors.current_site',
             ],
         },
     },

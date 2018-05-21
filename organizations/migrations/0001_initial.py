@@ -37,8 +37,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Admin'), (1, 'Manager'), (2, 'Member')])),
-                ('facility', models.ForeignKey(related_name='memberships', verbose_name='facility', to='organizations.Facility')),
-                ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount')),
+                ('facility', models.ForeignKey(related_name='memberships', verbose_name='facility', to='organizations.Facility', on_delete=models.CASCADE)),
+                ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ('facility', 'role', 'user_account'),
@@ -67,8 +67,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('role', models.PositiveIntegerField(default=2, verbose_name='role', choices=[(0, 'Admin'), (1, 'Manager'), (2, 'Member')])),
-                ('organization', models.ForeignKey(related_name='memberships', verbose_name='organization', to='organizations.Organization')),
-                ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount')),
+                ('organization', models.ForeignKey(related_name='memberships', verbose_name='organization', to='organizations.Organization', on_delete=models.CASCADE)),
+                ('user_account', models.ForeignKey(verbose_name='user account', to='accounts.UserAccount', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ('organization', 'role', 'user_account'),
@@ -89,11 +89,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='facility',
             name='organization',
-            field=models.ForeignKey(related_name='facilities', verbose_name='organization', to='organizations.Organization'),
+            field=models.ForeignKey(related_name='facilities', verbose_name='organization', to='organizations.Organization', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='facility',
             name='place',
-            field=models.ForeignKey(related_name='facilities', verbose_name='place', to='places.Place'),
+            field=models.ForeignKey(related_name='facilities', verbose_name='place', to='places.Place', on_delete=models.CASCADE),
         ),
     ]

@@ -1,2 +1,2 @@
--r dev.txt
+-r _base.txt
 psycopg2==2.7.4

@@ -26,13 +26,15 @@ class Migration(migrations.Migration):
             model_name='newsentry',
             name='facility',
             field=models.ForeignKey(related_name='news_entries', blank=True,
-                                    to='organizations.Facility', null=True),
+                                    to='organizations.Facility', null=True,
+                                    on_delete=models.SET_NULL),
         ),
         migrations.AlterField(
             model_name='newsentry',
             name='organization',
             field=models.ForeignKey(related_name='news_entries', blank=True,
-                                    to='organizations.Organization', null=True),
+                                    to='organizations.Organization', null=True,
+                                    on_delete=models.SET_NULL),
         ),
         migrations.AlterField(
             model_name='newsentry',

@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=255, verbose_name=b'Name der Vorlage')),
-                ('location', models.ForeignKey(verbose_name=b'Ort', to='scheduler.Location')),
+                ('location', models.ForeignKey(verbose_name=b'Ort', to='scheduler.Location', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'Vorlage',
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('from_time', models.CharField(max_length=5, verbose_name=b'Uhrzeit von')),
                 ('to_time', models.CharField(max_length=5, verbose_name=b'Uhrzeit bis')),
-                ('topic', models.ForeignKey(verbose_name=b'Hilfetyp', to='scheduler.Topics')),
+                ('topic', models.ForeignKey(verbose_name=b'Hilfetyp', to='scheduler.Topics', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'Schicht Vorlage',

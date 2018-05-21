@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='place',
             name='area',
-            field=models.ForeignKey(related_name='places', verbose_name='area', to='places.Area'),
+            field=models.ForeignKey(related_name='places', verbose_name='area', to='places.Area', on_delete=models.CASCADE),
         ),
     ]

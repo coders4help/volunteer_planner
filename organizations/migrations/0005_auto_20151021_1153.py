@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='facilitymembership',
             name='facility',
-            field=models.ForeignKey(related_query_name=b'membership', related_name='memberships', verbose_name='facility', to='organizations.Facility'),
+            field=models.ForeignKey(related_query_name=b'membership', related_name='memberships', verbose_name='facility', to='organizations.Facility', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='facilitymembership',
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='organizationmembership',
             name='organization',
-            field=models.ForeignKey(related_query_name=b'membership', related_name='memberships', verbose_name='organization', to='organizations.Organization'),
+            field=models.ForeignKey(related_query_name=b'membership', related_name='memberships', verbose_name='organization', to='organizations.Organization', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='organizationmembership',
