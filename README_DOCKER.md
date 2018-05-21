@@ -20,9 +20,9 @@ By default, the application will be using MySQL. If you prefer PostgreSQL, edit
 the `Dockerfile` and `docker-compose.yml` files, uncommenting the PostgreSQL
 related parts, and commenting out the MySQL related ones.
 
-#### 2.1 Initialize the DB container
+#### 2.1 Initialize docker network, volumes and the DB container
 
-Run `docker-compose up db`, and wait for the initialization to be over. You can now kill the container with `CTRL-c`.
+Execute `docker-compose up --no-start db`.
 
 #### 2.3 Initalize the web container and run migrate management command to setup non-existing tables
 

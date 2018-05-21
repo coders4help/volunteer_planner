@@ -17,9 +17,20 @@ shutdown() {
 
 trap shutdown TERM INT QUIT
 
-if [ -z ${NO_CHECK} ]
+# determine about-to-run proccess
+if [ -z "${1}" ]
 then
-    /usr/local/bin/python manage.py check_db_connection
+    set -- /usr/sbin/uwsgi --ini uwsgi.ini --single-interpreter --need-app
+elif [ "${1:0:1}" = "/" ]
+then
+    exec "${@}"
+else
+    set -- /usr/local/bin/python manage.py "${@}"
+fi
+
+if [ -z "${NO_CHECK}" ]
+then
+    /usr/local/bin/python manage.py check_db_connection --sleep 5 --count 5
     retval=$?
 
     if [ 0 -ne ${retval} ]
@@ -28,7 +39,7 @@ then
     fi
 fi
 
-/usr/local/bin/python manage.py $@ &
+"${@}" &
 pid=$!
 wait
 
