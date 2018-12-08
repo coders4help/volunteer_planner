@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/coders4help/volunteer_planner.svg?branch=master)](https://travis-ci.org/coders4help/volunteer_planner)
-
-# volunteer-planner.org
+# Volunteer Planner
 
 Volunteer Planner is a platform to schedule shifts of volunteers. Volunteers register at the platform and choose shifts.
  The admin of the website can easily add new organizations, places and shifts. The software has a location based
@@ -8,14 +6,14 @@ Volunteer Planner is a platform to schedule shifts of volunteers. Volunteers reg
   workplaces) - it can be used for a variety of purposes.
 
 ## Status
-The project is currently running at https://volunteer-planner.org/.
+This code was used from 2015 to 2018 at volunteer-planner.org
 
 ## Work in progress
 There are some feature requests to be implemented in the future.
 The software currently needs a centralized administration of the shifts, but it is one of the main goals of the current
 development to empower organizations to schedule shifts for their facilities on their own.
 
-If you are interested to join the development team, just make pull requests or come to a meeting in Berlin/Germany:
+If you are interested to join contact the former development team, just make pull requests or come to a meeting in Berlin/Germany:
 http://www.meetup.com/de/coders4help/
 
 ## System context
