@@ -1,5 +1,5 @@
 #FROM python:3.6-alpine3.7
-FROM alpine:3.7
+FROM alpine:3.10
 ARG vpbasedir=/opt/vp/
 ARG DJANGO_SETTINGS_MODULE=volunteer_planner.settings.production
 ARG SECRET_KEY=local
@@ -36,7 +36,10 @@ RUN apk update && \
         jq \
         postgresql \
         uwsgi \
+        uwsgi-cache \
+        uwsgi-http \
         uwsgi-python3 \
+        uwsgi-transformation_gzip \
         zlib \
         && \
     pip3 install --upgrade --quiet pip setuptools && \
@@ -54,7 +57,9 @@ RUN chmod 0755 /django-entrypoint.sh
 
 USER ${user}
 ADD --chown=1000:1000 ./ ${vpbasedir}
-RUN python3 manage.py compilemessages --no-color && \
-    python3 manage.py collectstatic --clear --noinput --verbosity 0
+RUN python3 manage.py compilemessages --no-color --traceback --verbosity 0 && \
+    echo "Translations compiled" && \
+    python3 manage.py collectstatic --clear --no-input --traceback --verbosity 0 && \
+    echo "Static files collected"
 
 ENTRYPOINT [ "/django-entrypoint.sh" ]

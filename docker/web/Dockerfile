@@ -1,4 +1,4 @@
-FROM nginx:1.13-alpine
+FROM nginx:1.17-alpine
 ARG vpbasedir=/opt/vp
 RUN mkdir -p /opt/vp/static && \
     apk update && \

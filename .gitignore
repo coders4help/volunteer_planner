@@ -15,3 +15,5 @@ db.sqlite3
 .cache
 /var
 .env
+.ash_history
+.python_history

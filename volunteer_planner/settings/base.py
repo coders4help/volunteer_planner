@@ -87,9 +87,10 @@ MIDDLEWARE = [
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, 'resources'),
-)
+]
+STATICFILES_STORAGE = 'common.static_file_compressor.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 
 TEMPLATES = [
@@ -165,3 +166,7 @@ CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.j
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DATE_FORMAT = "l, d.m.Y"
+
+INCLUDE_REGISTER_URL = True
+INCLUDE_AUTH_URLS = True
+REGISTRATION_FORM = "registration.forms.RegistrationFormUniqueEmail"

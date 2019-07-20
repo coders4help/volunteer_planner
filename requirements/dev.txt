@@ -1,11 +1,11 @@
 -r _base.txt
-coverage==4.5.1
-django-debug-toolbar==1.9.1
-factory-boy==2.5.2
-gunicorn==19.8.1
+coverage==4.5.3
+django-debug-toolbar==2.0
+factory-boy==2.12.0
+gunicorn==19.9.0
 pytest-cache==1.0
-pytest-cov==2.5.1
-pytest-django==3.2.1
-pytest==3.5.1
-transifex-client==0.13.3
-whitenoise==4.0b4
+pytest-cov==2.7.1
+pytest-django==3.5.1
+pytest==5.0.1
+transifex-client==0.13.6
+whitenoise==4.1.3

@@ -54,6 +54,8 @@ services:
         - vpbasedir=${VP_BASE_DIR:-/opt/vp}
     links:
       - db
+    ports:
+      - "8001:8181"
 
     hostname: django
     mem_limit: 1G

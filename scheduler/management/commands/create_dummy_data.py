@@ -51,8 +51,6 @@ class Command(BaseCommand):
 
     args = ""
 
-    option_list = BaseCommand.option_list
-
     def add_arguments(self, parser):
         parser.add_argument('days', nargs='+', type=int)
         parser.add_argument('--flush')

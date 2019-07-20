@@ -2,14 +2,10 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.views.generic import TemplateView
 from content.views import translated_flatpage
-from registration.backends.default.views import RegistrationView
-from registration.forms import RegistrationFormUniqueEmail
 
 urlpatterns = [
-    url(r'^auth/register/$', RegistrationView.as_view(form_class=RegistrationFormUniqueEmail), name='registration_register'),
-    url(r'^auth/', include('registration.backends.default.urls')),
+    url(r'^auth/', include('registration.backends.admin_approval.urls')),
     url(r'^account/', include('accounts.urls')),
     url(r'^helpdesk/', include('scheduler.urls')),
     url(r'^orgs/', include('organizations.urls')),
