@@ -39,8 +39,6 @@ RUN apk update && \
         uwsgi-cache \
         uwsgi-http \
         uwsgi-python3 \
-        uwsgi-transformation_gzip \
-        zlib \
         && \
     pip3 install --upgrade --quiet pip setuptools && \
     pip3 install -r requirements/postgres.txt ${BETA:+-r requirements/dev.txt} && \
