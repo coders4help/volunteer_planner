@@ -26,11 +26,11 @@ Execute `docker-compose up --no-start db`.
 
 #### 2.3 Initalize the web container and run migrate management command to setup non-existing tables
 
-    $ docker-compose run --rm web migrate
+    $ docker-compose run --rm django migrate
 
 #### 2.4 Add a superuser
 
-    $ docker-compose run --entrypoint=python --rm web manage.py createsuperuser --username admin --email admin@localhost
+    $ docker-compose run --entrypoint=python --rm django manage.py createsuperuser --username admin --email admin@localhost
 
 You will be asked for password twice. Remember that password.
 (Sorry for the lengthy command line, but our work to make the Django app shut down properly removes it's TTY access when using the default entrypoint.)
@@ -66,14 +66,14 @@ The final step is to update-initialize the database.
     $ docker-compose rm -a -v -f
     $ docker-compose create --force-recreate
     $ docker-compose start db
-    $ docker-compose run --rm web migrate
+    $ docker-compose run --rm django migrate
 
 If you haven't created the superuser in the new database environment, you need to execute the command from above to create it.
 
 ## Create dummy data
 If you want to create dummy data you can run:
 
-    $ docker-compose run --rm web create_dummy_data 5 --flush True
+    $ docker-compose run --rm django create_dummy_data 5 --flush True
 
 to get 5 days of dummy data and delete tables in advance.
 
