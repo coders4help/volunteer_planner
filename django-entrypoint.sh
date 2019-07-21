@@ -39,7 +39,7 @@ done
 case "${1}x" in
     /*)
 	echo "Absolute command given. Replacing Entrypoint with ${*}" >&2
-	exec "${@}"
+	exec ${@}
 	# if we reach here, something wicked happened, therefore we exit
 	exit 1
 	;;
@@ -73,6 +73,7 @@ echo "Waiting for children to finish." >&2
 while [ 0 -eq ${_exit} ]
 do
     wait
+    _exit=1
 done
 
 echo "End of entrypoint. Bye." >&2
