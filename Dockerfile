@@ -40,13 +40,8 @@ RUN apk update && \
         uwsgi-http \
         uwsgi-python3 \
         && \
-    pip3 install --upgrade --quiet pip setuptools && \
+    pip3 install --upgrade --quiet pip setuptools uwsgitop && \
     pip3 install -r requirements/postgres.txt ${BETA:+-r requirements/dev.txt} && \
-    pip3 install --upgrade --quiet \
-        uwsgitop \
-        https://github.com/unbit/django-uwsgi/archive/master.zip \
-        https://github.com/yprez/django-logentry-admin/archive/master.zip \
-        && \
     apk del --purge .build-deps && \
     /bin/rm -rf /var/cache/apk/* /root/.cache
 

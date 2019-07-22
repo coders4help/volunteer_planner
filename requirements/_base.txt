@@ -5,6 +5,7 @@ django-appconf==1.0.3
 django-ckeditor==5.7.1
 django-compressor==2.3
 django-extensions==2.2.1
+django-logentry-admin==1.0.4
 django-registration-redux==2.6
 django-uwsgi==0.2.2
 Django==2.2.3
