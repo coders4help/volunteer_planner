@@ -13,7 +13,7 @@ from scheduler.models import Shift
 register = template.Library()
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_facility_count():
     """
     Returns the number of total volunteer hours worked.
@@ -21,7 +21,7 @@ def get_facility_count():
     return Facility.objects.filter().count()
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_volunteer_number():
     """
     Returns the number of active volunteer accounts (accounts are active).
@@ -29,7 +29,7 @@ def get_volunteer_number():
     return User.objects.filter(is_active=True).count()
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_volunteer_deleted_number():
     """
     Returns the number of deleted volunteer accounts (accounts are inactive and anonymized)
@@ -37,7 +37,7 @@ def get_volunteer_deleted_number():
     return User.objects.filter(is_active=False).count()
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_volunteer_hours():
     """
     Returns the number of total volunteer hours worked.
@@ -52,7 +52,7 @@ def get_volunteer_hours():
     return hours
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_volunteer_stats():
     """
     Returns all statistics concerning users, facilities and their shifts.

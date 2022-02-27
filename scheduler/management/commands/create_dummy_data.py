@@ -51,8 +51,6 @@ class Command(BaseCommand):
 
     args = ""
 
-    option_list = BaseCommand.option_list
-
     def add_arguments(self, parser):
         parser.add_argument('days', nargs='+', type=int)
         parser.add_argument('--flush')
@@ -60,7 +58,7 @@ class Command(BaseCommand):
     @factory.django.mute_signals(signals.pre_delete)
     def handle(self, *args, **options):
         if options['flush']:
-            print "delete all data in app tables"
+            print('delete all data in app tables')
             RegistrationProfile.objects.all().delete()
 
             Shift.objects.all().delete()

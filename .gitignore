@@ -13,5 +13,7 @@ db.sqlite3
 /.coverage
 *.log
 .cache
-fabfile.py
 /var
+.env
+.ash_history
+.python_history

@@ -6,8 +6,11 @@ import logging
 from datetime import date
 
 from django.contrib import messages
+from django.contrib.admin.models import LogEntry, DELETION
+from django.contrib.contenttypes.models import ContentType
 from django.core.serializers.json import DjangoJSONEncoder
-from django.core.urlresolvers import reverse
+from django.http import Http404
+from django.urls import reverse
 from django.db.models import Count
 from django.shortcuts import get_object_or_404
 from django.utils.safestring import mark_safe
@@ -121,10 +124,13 @@ class ShiftDetailView(LoginRequiredMixin, FormView):
         schedule_date = date(int(self.kwargs['year']),
                              int(self.kwargs['month']),
                              int(self.kwargs['day']))
-        shift = Shift.objects.on_shiftdate(schedule_date).annotate(
-            volunteer_count=Count('helpers')).get(
-            facility__slug=self.kwargs['facility_slug'],
-            id=self.kwargs['shift_id'])
+        try:
+            shift = Shift.objects.on_shiftdate(schedule_date).annotate(
+                volunteer_count=Count('helpers')).get(
+                facility__slug=self.kwargs['facility_slug'],
+                id=self.kwargs['shift_id'])
+        except Shift.DoesNotExist:
+            raise Http404()
         context['shift'] = shift
         return context
 
@@ -186,8 +192,6 @@ class PlannerView(LoginRequiredMixin, FormView):
                     and not is_facility_member(self.request.user,
                                                shift_to_join.facility):
 
-                user_account.facility_set
-
                 if not is_membership_pending(user, shift_to_join.facility):
                     mbs, created = FacilityMembership.objects.get_or_create(
                         user_account=user_account,
@@ -246,8 +250,17 @@ class PlannerView(LoginRequiredMixin, FormView):
 
         elif shift_to_leave:
             try:
-                ShiftHelper.objects.get(user_account=user_account,
-                                        shift=shift_to_leave).delete()
+                sh = ShiftHelper.objects.get(user_account=user_account, shift=shift_to_leave)
+                LogEntry.objects.log_action(
+                    user_id=user.id,
+                    content_type_id=ContentType.objects.get_for_model(ShiftHelper).id,
+                    object_id=sh.id,
+                    object_repr='User "{user}" @ shift "{shift}"'.format(user=user, shift=shift_to_leave),
+                    action_flag=DELETION,
+                    change_message='Initially joined at {}'.format(sh.joined_shift_at.isoformat()),
+
+                )
+                sh.delete()
             except ShiftHelper.DoesNotExist:
                 # just catch the exception,
                 # user seems not to have signed up for this shift

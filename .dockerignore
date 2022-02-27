@@ -1,0 +1,9 @@
+.git
+.idea
+.tx
+.env
+*.yml
+.*ignore
+*.log
+
+**/*.pyc

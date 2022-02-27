@@ -1,2 +1,2 @@
 -r dev.txt
-psycopg2==2.6.1
+psycopg2==2.8.3

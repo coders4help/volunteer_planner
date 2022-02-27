@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('css', models.TextField(verbose_name='additional CSS', blank=True)),
-                ('flatpage', models.OneToOneField(related_name='extra_style', verbose_name='additional style', to='flatpages.FlatPage')),
+                ('flatpage', models.OneToOneField(related_name='extra_style', verbose_name='additional style', to='flatpages.FlatPage', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'additional flat page style',
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('language', models.CharField(max_length=20, verbose_name='language', choices=[(b'de', 'German'), (b'en', 'English'), (b'hu', 'Hungarian'), (b'sv', 'Swedish')])),
                 ('title', models.CharField(max_length=200, verbose_name='title', blank=True)),
                 ('content', models.TextField(verbose_name='content', blank=True)),
-                ('flatpage', models.ForeignKey(related_name='translations', verbose_name='flat page', to='flatpages.FlatPage')),
+                ('flatpage', models.ForeignKey(related_name='translations', verbose_name='flat page', to='flatpages.FlatPage', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'flat page translation',

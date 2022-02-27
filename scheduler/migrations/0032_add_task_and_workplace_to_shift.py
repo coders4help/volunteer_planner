@@ -15,11 +15,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='shift',
             name='task',
-            field=models.ForeignKey(verbose_name='task', to='organizations.Task', null=True),
+            field=models.ForeignKey(verbose_name='task', to='organizations.Task', null=True, on_delete=models.SET_NULL),
         ),
         migrations.AddField(
             model_name='shift',
             name='workplace',
-            field=models.ForeignKey(verbose_name='workplace', to='organizations.Workplace', null=True, blank=True),
+            field=models.ForeignKey(verbose_name='workplace', to='organizations.Workplace', null=True, blank=True, on_delete=models.SET_NULL),
         ),
     ]

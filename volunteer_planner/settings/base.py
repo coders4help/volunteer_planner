@@ -47,7 +47,10 @@ THIRD_PARTY_APPS = (
     # A prettier theme
 
     'accounts.apps.RegistrationConfig',
-    'django_ajax'
+    'django_ajax',
+    'django_extensions',
+    'django_uwsgi',
+    'logentry_admin',
 )
 
 LOCAL_APPS = (
@@ -69,25 +72,25 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, 'resources'),
-)
+]
+STATICFILES_STORAGE = 'common.static_file_compressor.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 
 TEMPLATES = [
@@ -102,7 +105,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'google_tools.context_processors.google_tools_config'
+                'google_tools.context_processors.google_tools_config',
+                'non_logged_in_area.context_processors.current_site',
             ],
         },
     },
@@ -162,3 +166,7 @@ CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.j
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DATE_FORMAT = "l, d.m.Y"
+
+INCLUDE_REGISTER_URL = True
+INCLUDE_AUTH_URLS = True
+REGISTRATION_FORM = "registration.forms.RegistrationFormUniqueEmail"

@@ -19,6 +19,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='need',
             name='time_period_from',
-            field=models.ForeignKey(related_name='time_from', verbose_name='time from', to='scheduler.TimePeriods'),
+            field=models.ForeignKey(related_name='time_from', verbose_name='time from', to='scheduler.TimePeriods', on_delete=models.CASCADE),
         ),
     ]

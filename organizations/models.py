@@ -1,5 +1,5 @@
 # coding: utf-8
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -9,18 +9,18 @@ from scheduler.models import Shift
 
 class Membership(models.Model):
     """ Abstract base class for memberships of users.
-    
+
     Defines three choices lists: JoinMode, Status and Roles.
-    
+
     JoinMode contains Invitation only, Approval by admin and Anyone.
     Status contains Rejected, Peding and Approved.
     Roles contains Admin, Manager and Member.
-    
+
     Has fields: role, status and user_account.
     Role makes use of choices list Role, status of status.
     user_account is a foreign-key to User-account.
     """
-    
+
     related_name = None
 
     class JoinMode:
@@ -56,6 +56,7 @@ class Membership(models.Model):
                                               verbose_name=_(u'status'))
 
     user_account = models.ForeignKey(UserAccount,
+                                     models.CASCADE,
                                      verbose_name=_(u'user account'),
                                      related_name=related_name)
 
@@ -65,10 +66,10 @@ class Membership(models.Model):
 
 class Organization(models.Model):
     """ Organizations organize the work at the facilities.
-    
+
     Has fields: name, short description, description, contact info, address,
         members (many2many relationship through OrganizationMembership),
-        slug and join mode (choices list join_mode of abstract class Membership). 
+        slug and join mode (choices list join_mode of abstract class Membership).
     """
     # the name of the organization, ie. "Wilmersdorf hilft"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
@@ -110,6 +111,9 @@ class Organization(models.Model):
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
 
+    def __str__(self):
+        return self.__unicode__()
+
     def get_absolute_url(self):
         return reverse('organization',
                        args=[self.slug])
@@ -118,13 +122,13 @@ class Organization(models.Model):
 class Facility(models.Model):
     """ Facilities are the places where the voluntary work is done,
     mainly where refugees live or administrative places.
-    
+
     Has fields: organization (org. that is running the fac.,foreign-key to organization),
         name, short description, description, contact info,
         members (User account many2many Facility),
         place, adress, zip-code, show_on_map, latitude, longitude, slug,
         timeline enabled and join mode.
-    """ 
+    """
 
     class TimelineViewMode:
         DISABLED, COLLAPSED, ENABLED = 0, 1, 2
@@ -136,6 +140,7 @@ class Facility(models.Model):
 
     # the organization running this facility
     organization = models.ForeignKey('organizations.Organization',
+                                     models.CASCADE,
                                      verbose_name=_('organization'),
                                      related_name='facilities')
 
@@ -160,6 +165,7 @@ class Facility(models.Model):
 
     # the geographical location of the faciltiy
     place = models.ForeignKey("places.Place",
+                              models.CASCADE,
                               null=False,
                               related_name='facilities',
                               verbose_name=_('place'))
@@ -213,6 +219,9 @@ class Facility(models.Model):
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
 
+    def __str__(self):
+        return self.__unicode__()
+
     def get_absolute_url(self):
         return reverse('facility',
                        args=[self.organization.slug, self.slug])
@@ -220,15 +229,16 @@ class Facility(models.Model):
 
 class OrganizationMembership(Membership):
     """ Users membership of organizations.
-    
+
     Inherits from Membership which has a foreign key to user account.
     Has a foreign key field to Organization,
         so this is the many2many model of the m2m relationship user accounts/organization.
     """
-    
+
     related_name = 'organizations'
 
     organization = models.ForeignKey(Organization,
+                                     models.CASCADE,
                                      verbose_name=_(u'organization'),
                                      related_name='memberships',
                                      related_query_name='membership')
@@ -244,10 +254,13 @@ class OrganizationMembership(Membership):
             organization_name=self.organization.name,
             user_role=self.role)
 
+    def __str__(self):
+        return self.__unicode__()
+
 
 class FacilityMembership(Membership):
     """ Users membership of facilities.
-    
+
     Inherits from Membership which has a foreign key to user account.
     Has a foreign key field to Facility,
         so this is the many2many model of the m2m relationship user accounts/facility.
@@ -255,6 +268,7 @@ class FacilityMembership(Membership):
     related_name = 'facilities'
 
     facility = models.ForeignKey(Facility,
+                                 models.CASCADE,
                                  verbose_name=_(u'facility'),
                                  related_name='memberships',
                                  related_query_name='membership'
@@ -271,15 +285,19 @@ class FacilityMembership(Membership):
             facility_name=self.facility.name,
             user_role=self.role)
 
+    def __str__(self):
+        return self.__unicode__()
+
 
 class Workplace(models.Model):
     """ Workplaces are places at the facilities, where work is done,
         eg. kitchen or clothing store.
-    
+
     Has foreign key to facility, name and description.
     """
     # the facility the workplace belongs to
     facility = models.ForeignKey('Facility',
+                                 models.CASCADE,
                                  verbose_name=_(u"facility"),
                                  related_name='workplaces'
                                  )
@@ -298,14 +316,18 @@ class Workplace(models.Model):
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
 
+    def __str__(self):
+        return self.__unicode__()
+
 
 class Task(models.Model):
     """ Tasks that are to be done at the facilities.
-    
+
     Has foreign key to facility, name and description.
     """
     # the facility the task belongs to
     facility = models.ForeignKey('Facility',
+                                 models.CASCADE,
                                  verbose_name=_(u"facility"),
                                  related_name='tasks')
 
@@ -322,3 +344,6 @@ class Task(models.Model):
 
     def __unicode__(self):
         return _(u"{name}").format(name=self.name)
+
+    def __str__(self):
+        return self.__unicode__()

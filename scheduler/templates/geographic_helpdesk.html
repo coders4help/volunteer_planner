@@ -65,7 +65,7 @@
                                                 {% if facility.address %}
                                                     <h5>{{ facility.address_line }}
                                                         <a href="{{ facility.address_line|osm_search }}"
-                                                           target="_blank">
+                                                           target="_blank" rel="noreferrer">
                                                             &rarr; {% trans "Show on map" %}
                                                         </a>
                                                     </h5>

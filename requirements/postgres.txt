@@ -1,0 +1,2 @@
+-r _base.txt
+psycopg2==2.8.3

@@ -1,3 +1,4 @@
+{% load i18n %}
 {% blocktrans trimmed context "shift today title" with organization_name=mail.organization date=shifts.0.starting_time|date:"d.m.Y" %}
     Schedule for {{ organization_name }} on {{ date }}
 {% endblocktrans %}
