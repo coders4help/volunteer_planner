@@ -5,7 +5,8 @@ from django.contrib import admin
 from content.views import translated_flatpage
 
 urlpatterns = [
-    url(r'^auth/', include('registration.backends.admin_approval.urls')),
+    # url(r'^auth/', include('registration.backends.admin_approval.urls')),
+    url(r'^auth/', include('registration.backends.default.urls')),
     url(r'^account/', include('accounts.urls')),
     url(r'^helpdesk/', include('scheduler.urls')),
     url(r'^orgs/', include('organizations.urls')),
