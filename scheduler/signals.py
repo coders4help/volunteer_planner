@@ -37,12 +37,12 @@ def send_email_notifications(sender, instance, **kwargs):
 
             from_email = settings.DEFAULT_FROM_EMAIL
             # TODO Find a way to identify current manager or give facility an e-mail address
-            reply_to = ['support@volunteer-planner.org']
+            reply_to = ['kontakt@volunteer-planner.org']
             addresses = shift.helpers.values_list('user__email', flat=True)
 
             if addresses:
                 mail = EmailMessage(subject=subject, body=message,
-                                    to=['support@volunteer-planner.org'],
+                                    to=['kontakt@volunteer-planner.org'],
                                     from_email=from_email,
                                     bcc=addresses,
                                     reply_to=reply_to)
@@ -88,7 +88,7 @@ def notify_users_shift_change(sender, instance, **kwargs):
             if addresses:
                 mail = EmailMessage(subject=subject,
                                     body=message,
-                                    to=['support@volunteer-planner.org'],
+                                    to=['kontakt@volunteer-planner.org'],
                                     from_email=from_email,
                                     bcc=addresses)
                 logger.info(
