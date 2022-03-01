@@ -38,6 +38,9 @@ EMAIL_USER = os.environ.get('SMTP_USER')
 EMAIL_PASS = os.environ.get('SMTP_PASS')
 EMAIL_USE_TLS = False
 
+SESSION_COOKI_AGE = 28 * 24 * 3600
+SESSION_COOKIE_SECURE = True
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
