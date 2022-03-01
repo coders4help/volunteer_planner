@@ -20,7 +20,7 @@
 
         <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
             <div class="form-group">
-                <input class="form-control" placeholder="{% trans "Username" %}" name="username">
+                <input class="form-control" placeholder="{% trans "Username" %}" name="username" autofocus>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="{% trans "Password" %}" name="password">
