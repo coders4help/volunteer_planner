@@ -74,7 +74,7 @@ services:
       #STATIC_ROOT: ${VP_BASE_DIR:-/opt/vp}/static
       ### PostgreSQL ###
       ### Make POstgreSQL the docker default ###
-      DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql_psycopg2}
+      DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
       DATABASE_HOST: db
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USER: ${DATABASE_USER}

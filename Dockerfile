@@ -3,7 +3,7 @@ FROM alpine:3.10
 ARG vpbasedir=/opt/vp/
 ARG DJANGO_SETTINGS_MODULE=volunteer_planner.settings.production
 ARG SECRET_KEY=local
-ARG DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+ARG DATABASE_ENGINE=django.db.backends.postgresql
 ARG BETA=""
 ARG django_static_root=${vpbasedir}/static
 
