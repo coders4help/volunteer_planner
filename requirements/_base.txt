@@ -16,7 +16,7 @@ ipython==7.32.0
 path.py==12.0.1
 pexpect==4.7.0
 pickleshare==0.7.5
-Pillow==6.1.0
+Pillow==9.0.1
 python-dateutil==2.8.0
 python3-memcached==1.51
 simplegeneric==0.8.1
