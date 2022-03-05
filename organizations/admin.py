@@ -26,7 +26,7 @@ def get_memberships_by_role(membership_queryset):
     qs = membership_queryset.order_by('membership__role') \
         .values_list('membership__role', 'pk')
     for role, group in itertools.groupby(qs, itemgetter(0)):
-        memberships_by_role[role] = map(itemgetter(1), group)
+        memberships_by_role[role] = list(map(itemgetter(1), group))
     return memberships_by_role
 
 
