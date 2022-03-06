@@ -71,22 +71,26 @@ def filter_queryset_by_membership(qs, user,
             Q(pk__in=user_facilities) |
             Q(organization_id__in=user_orgs)
         )
-    elif qs.model == shiftmodels.ShiftHelper:
-        qs = qs.filter(
-            Q(**{'shift__' + facility_filter_fk + '_id__in': user_facilities}) |
-            Q(**{'shift__' + facility_filter_fk + '__organization_id__in': user_orgs})
-        )
     else:
         if facility_filter_fk is None and organization_filter_fk is None:
             facility_filter_fk = 'facility'
 
-        if organization_filter_fk:
-            qs = qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
-        elif facility_filter_fk:
+        if qs.model == models.OrganizationMembership:
+            if organization_filter_fk:
+                qs = qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
+        elif qs.model == shiftmodels.ShiftHelper:
             qs = qs.filter(
-                Q(**{facility_filter_fk + '_id__in': user_facilities}) |
-                Q(**{facility_filter_fk + '__organization_id__in': user_orgs})
+                Q(**{'shift__' + facility_filter_fk + '_id__in': user_facilities}) |
+                Q(**{'shift__' + facility_filter_fk + '__organization_id__in': user_orgs})
             )
+        else:
+            if organization_filter_fk:
+                qs = qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
+            elif facility_filter_fk:
+                qs = qs.filter(
+                    Q(**{facility_filter_fk + '_id__in': user_facilities}) |
+                    Q(**{facility_filter_fk + '__organization_id__in': user_orgs})
+                )
     return qs
 
 
