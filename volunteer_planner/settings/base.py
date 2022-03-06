@@ -131,7 +131,10 @@ LOGGING = {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': True,
+            # if logging handlers above are added/edited, re-evaluate 'propagate'.
+            # for now: don't propagate, because it sends every ERROR e-mail twice,
+            # because 'django.request' and it's parent 'django' use 'mail_admins'.
+            'propagate': False,
         },
     }
 }
