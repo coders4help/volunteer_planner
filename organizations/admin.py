@@ -12,6 +12,7 @@ from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
 
 from . import models
+from scheduler import models as shiftmodels
 from organizations.models import Membership
 
 DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
@@ -69,6 +70,11 @@ def filter_queryset_by_membership(qs, user,
         qs = qs.filter(
             Q(pk__in=user_facilities) |
             Q(organization_id__in=user_orgs)
+        )
+    elif qs.model == shiftmodels.ShiftHelper:
+        qs = qs.filter(
+            Q(**{'shift__' + facility_filter_fk + '_id__in': user_facilities}) |
+            Q(**{'shift__' + facility_filter_fk + '__organization_id__in': user_orgs})
         )
     else:
         if facility_filter_fk is None and organization_filter_fk is None:
