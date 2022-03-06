@@ -625,7 +625,7 @@ msgid ""
 msgstr ""
 "\n"
 "                    .....am besten schon mit einem Entwurf eines Schichtenplans an  <a\n"
-"                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 
 #: organizations/admin.py:128 organizations/admin.py:130

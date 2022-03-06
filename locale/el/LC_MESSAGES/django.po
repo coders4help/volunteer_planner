@@ -623,7 +623,7 @@ msgid ""
 msgstr ""
 "\n"
 "                    ...ίσως με ένα συνημμένο πρόχειρο σημείωμα των βαρδιών που θέλετε να δείτε στον  volunteer-planner. Παρακαλούμε γράψτε στο <a\n"
-"                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 
 #: organizations/admin.py:128 organizations/admin.py:130

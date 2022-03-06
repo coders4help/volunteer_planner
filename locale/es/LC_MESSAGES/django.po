@@ -622,7 +622,7 @@ msgid ""
 msgstr ""
 "\n"
 "...tal vez con un borrador adjunto de los turnos que quiere ver en volunteer-planner. Por favor escriba a <a\n"
-"href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
+"href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
 
 #: organizations/admin.py:128 organizations/admin.py:130
 msgid "edit"
