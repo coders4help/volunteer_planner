@@ -2,6 +2,9 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic import RedirectView
+
 from content.views import translated_flatpage
 
 urlpatterns = [
@@ -15,6 +18,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))),
     url(r'^', include('non_logged_in_area.urls')),
 ]
 
