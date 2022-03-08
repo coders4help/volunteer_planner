@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         profiles = RegistrationProfile.objects \
-            .exclude(activation_key=RegistrationProfile.ACTIVATED) \
+            .exclude(activated=True) \
             .prefetch_related('user', 'user__account') \
             .exclude(user__is_active=True) \
             .filter(user__date_joined__lt=(date.today() - timedelta(settings.ACCOUNT_ACTIVATION_DAYS)))
