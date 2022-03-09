@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import os
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
@@ -49,7 +49,6 @@ THIRD_PARTY_APPS = (
     'accounts.apps.RegistrationConfig',
     'django_ajax',
     'django_extensions',
-    'django_uwsgi',
     'logentry_admin',
 )
 

@@ -10,7 +10,7 @@ from django.http import HttpResponseForbidden
 from django.template.defaultfilters import date
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView
 from django_ajax.decorators import ajax
 

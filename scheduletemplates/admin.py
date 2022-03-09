@@ -3,7 +3,7 @@ from datetime import timedelta, datetime, time
 
 from django.utils import formats
 from django import forms
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib import admin, messages
 from django.urls import reverse
 from django.db.models import Min, Count, Sum
@@ -13,7 +13,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _, ungettext_lazy
+from django.utils.translation import gettext_lazy as _
 
 from . import models
 from organizations.admin import (MembershipFilteredAdmin,
@@ -252,7 +252,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
     def get_urls(self):
         urls = super(ScheduleTemplateAdmin, self).get_urls()
         custom_urls = [
-            url(r'^(?P<pk>.+)/apply/$',
+            re_path(r'^(?P<pk>.+)/apply/$',
                 self.admin_site.admin_view(self.apply_schedule_template),
                 name='apply_schedule_template'),
         ]
