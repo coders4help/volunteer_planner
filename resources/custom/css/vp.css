@@ -203,3 +203,7 @@ code {
 .panel-primary{
     border:none;
 }
+
+.nav-up {
+    top: -50px;
+}

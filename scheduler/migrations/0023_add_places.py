@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
             name='place',
             field=models.ForeignKey(related_name='locations',
                                     verbose_name='place',
-                                    to='places.Place', null=True),
+                                    to='places.Place', null=True, on_delete=models.SET_NULL),
         ),
         migrations.RunPython(add_places, remove_places),
         migrations.AlterField(
@@ -66,6 +66,7 @@ class Migration(migrations.Migration):
             name='place',
             field=models.ForeignKey(related_name='locations',
                                     verbose_name='place',
-                                    to='places.Place'),
+                                    to='places.Place',
+                                    on_delete=models.CASCADE),
         ),
     ]

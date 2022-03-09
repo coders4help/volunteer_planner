@@ -19,11 +19,11 @@
     <!-- Font-Awesome -->
     <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
 
+    <!-- Google Font -->
+    <link href="{% static "googlefonts/css/source-sans-pro.css" %}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="/static/non-logged-in-css/custom.css" rel="stylesheet">
-    <!-- Webfonts -->
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
-          rel='stylesheet' type='text/css'>
 
     {% block additional_header %}
         <meta property="og:image"
@@ -51,7 +51,7 @@
 
     <div class="pull-right">
 
-		{% include "../templates/partials/switch_language.html" with nav_item_tag="span" %}
+		{% include "partials/switch_language.html" with nav_item_tag="span" %}
 
         <a href="{% url 'auth_login' %}" class="btn btn-secondary">
             {% trans "Login" %}

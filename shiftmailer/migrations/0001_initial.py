@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('position', models.CharField(max_length=255, verbose_name=b'Position')),
                 ('organization', models.CharField(max_length=255, verbose_name=b'Organisation')),
                 ('email', models.EmailField(max_length=254, verbose_name=b'Email')),
-                ('location', models.ForeignKey(to='scheduler.Location')),
+                ('location', models.ForeignKey(to='scheduler.Location', on_delete=models.CASCADE)),
             ],
         ),
     ]

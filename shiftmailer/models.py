@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Mailer(models.Model):
-    facility = models.ForeignKey("organizations.Facility")
+    facility = models.ForeignKey("organizations.Facility", models.CASCADE)
     first_name = models.CharField(verbose_name=_("first name"), max_length=255)
     last_name = models.CharField(verbose_name=_("last name"), max_length=255)
     position = models.CharField(verbose_name=_("position"), max_length=255)
@@ -14,3 +14,6 @@ class Mailer(models.Model):
 
     def __unicode__(self):
         return u'{} ({})'.format(self.organization, self.facility.name)
+
+    def __str__(self):
+        return self.__unicode__()

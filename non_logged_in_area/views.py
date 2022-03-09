@@ -4,7 +4,7 @@ import logging
 from django.db.models.aggregates import Count
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from organizations.models import Facility
 from places.models import Region
 
@@ -15,7 +15,7 @@ class HomeView(TemplateView):
     template_name = "base_non_logged_in.html"
 
     def get(self, request, *args, **kwargs):
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             return HttpResponseRedirect(reverse('helpdesk'))
         context = self.get_context_data(**kwargs)
         return self.render_to_response(context)

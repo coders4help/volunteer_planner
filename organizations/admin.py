@@ -12,6 +12,7 @@ from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
 
 from . import models
+from scheduler import models as shiftmodels
 from organizations.models import Membership
 
 DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN,
@@ -26,7 +27,7 @@ def get_memberships_by_role(membership_queryset):
     qs = membership_queryset.order_by('membership__role') \
         .values_list('membership__role', 'pk')
     for role, group in itertools.groupby(qs, itemgetter(0)):
-        memberships_by_role[role] = map(itemgetter(1), group)
+        memberships_by_role[role] = list(map(itemgetter(1), group))
     return memberships_by_role
 
 
@@ -74,13 +75,22 @@ def filter_queryset_by_membership(qs, user,
         if facility_filter_fk is None and organization_filter_fk is None:
             facility_filter_fk = 'facility'
 
-        if organization_filter_fk:
-            qs = qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
-        elif facility_filter_fk:
+        if qs.model == models.OrganizationMembership:
+            if organization_filter_fk:
+                qs = qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
+        elif qs.model == shiftmodels.ShiftHelper:
             qs = qs.filter(
-                Q(**{facility_filter_fk + '_id__in': user_facilities}) |
-                Q(**{facility_filter_fk + '__organization_id__in': user_orgs})
+                Q(**{'shift__' + facility_filter_fk + '_id__in': user_facilities}) |
+                Q(**{'shift__' + facility_filter_fk + '__organization_id__in': user_orgs})
             )
+        else:
+            if organization_filter_fk:
+                qs = qs.filter(**{organization_filter_fk + '_id__in': user_orgs})
+            elif facility_filter_fk:
+                qs = qs.filter(
+                    Q(**{facility_filter_fk + '_id__in': user_facilities}) |
+                    Q(**{facility_filter_fk + '__organization_id__in': user_orgs})
+                )
     return qs
 
 
@@ -122,7 +132,7 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
         list_display_links = list(
             super(MembershipFilteredAdmin, self).get_list_display_links(request,
                                                                         list_display))
-        return filter(lambda i: i in list_display, list_display_links)
+        return list(filter(lambda i: i in list_display, list_display_links))
 
     def get_edit_link(self, obj):
         return _(u'edit')
@@ -150,11 +160,11 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
     def get_field_queryset(self, db, db_field, request):
         qs = super(MembershipFilteredAdmin, self).get_field_queryset(
             db, db_field, request)
-        if db_field.rel.to in (models.Facility,
+        if db_field.remote_field.model in (models.Facility,
                                models.Organization,
                                models.Task,
                                models.Workplace):
-            qs = qs or db_field.rel.to.objects.all()
+            qs = qs or db_field.remote_field.model.objects.all()
             qs = filter_queryset_by_membership(qs, request.user)
         return qs
 
@@ -175,18 +185,18 @@ class MembershipFilteredTabularInline(admin.TabularInline):
     def get_field_queryset(self, db, db_field, request):
         qs = super(MembershipFilteredTabularInline, self).get_field_queryset(
             db, db_field, request)
-        if db_field.rel.to in (models.Facility,
+        if db_field.remote_field.model in (models.Facility,
                                models.Organization,
                                models.Task,
                                models.Workplace):
-            qs = qs or db_field.rel.to.objects.all()
+            qs = qs or db_field.remote_field.model.objects.all()
             qs = filter_queryset_by_membership(qs, request.user)
         return qs
 
 
 class MembershipFieldListFilter(admin.RelatedFieldListFilter):
     def field_choices(self, field, request, model_admin):
-        query = field.rel.to.objects.all()
+        query = field.remote_field.model.objects.all()
         query = query.annotate(usage_count=Count(field.related_query_name()))
         query = query.exclude(usage_count=0)
         qs = filter_queryset_by_membership(query, request.user)
@@ -283,9 +293,11 @@ class OrganizationMembershipAdmin(MembershipFilteredAdmin):
         'user_account',
         'organization',
         'role',
+        'status',
     )
     list_filter = (
         ('organization', MembershipFieldListFilter),
+        'status',
     )
     raw_id_fields = ('user_account',)
 
@@ -293,12 +305,14 @@ class OrganizationMembershipAdmin(MembershipFilteredAdmin):
 @admin.register(models.FacilityMembership)
 class FacilityMembershipAdmin(MembershipFilteredAdmin):
     list_display = (
-        'role',
         'user_account',
-        'facility'
+        'facility',
+        'role',
+        'status',
     )
     list_filter = (
         ('facility', MembershipFieldListFilter),
+        'status',
     )
     raw_id_fields = ('user_account',)
 

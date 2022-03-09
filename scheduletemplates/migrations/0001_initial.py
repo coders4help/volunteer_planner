@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=256, verbose_name='name')),
-                ('facility', models.ForeignKey(related_name='schedule_templates', verbose_name='facility', to='organizations.Facility')),
+                ('facility', models.ForeignKey(related_name='schedule_templates', verbose_name='facility', to='organizations.Facility', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ('facility',),
@@ -32,9 +32,9 @@ class Migration(migrations.Migration):
                 ('starting_time', models.TimeField(verbose_name='starting time', db_index=True)),
                 ('ending_time', models.TimeField(verbose_name='ending time', db_index=True)),
                 ('days', models.PositiveIntegerField(default=0, verbose_name='days')),
-                ('schedule_template', models.ForeignKey(related_name='shift_templates', verbose_name='schedule template', to='scheduletemplates.ScheduleTemplate')),
-                ('task', models.ForeignKey(related_name='+', verbose_name='task', to='organizations.Task')),
-                ('workplace', models.ForeignKey(related_name='+', verbose_name='workplace', blank=True, to='organizations.Workplace', null=True)),
+                ('schedule_template', models.ForeignKey(related_name='shift_templates', verbose_name='schedule template', to='scheduletemplates.ScheduleTemplate', on_delete=models.CASCADE)),
+                ('task', models.ForeignKey(related_name='+', verbose_name='task', to='organizations.Task', on_delete=models.CASCADE)),
+                ('workplace', models.ForeignKey(related_name='+', verbose_name='workplace', blank=True, to='organizations.Workplace', null=True, on_delete=models.SET_NULL)),
             ],
         ),
     ]

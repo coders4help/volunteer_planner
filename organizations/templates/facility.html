@@ -26,7 +26,7 @@
     {% if facility.address_line %}
         <p>
             {{ facility.address_line }}
-            <a target="_blank" href="{{ facility.osm_link }}">→ Show on map</a>
+            <a target="_blank" rel="noreferrer" href="{{ facility.osm_link }}">→ {% trans "Show on map" %}</a>
         </p>
     {% endif %}
 

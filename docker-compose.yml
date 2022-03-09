@@ -1,55 +1,130 @@
-version: '2'
+version: '2.3'
+# inspiration by https://github.com/dockerfiles/django-uwsgi-nginx
 
 volumes:
   ### MySQL ###
-  data_volume_mysql:
-  config_volume_mysql:
+  # data_volume_mysql:
+  # config_volume_mysql:
   ### PostgreSQL ###
-  # data_volume_pg:
+  data_volume_pg:
+  backup_volume_pg:
 
 services:
   db:
-    ### MySQL ###
-    image: tarzan79/alpine-mysql
     ### PostgreSQL ###
-    # image: kiasaki/alpine-postgres
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-      MYSQL_DATABASE: volunteer_planner
-      MYSQL_USER: vp
-      MYSQL_PASSWORD: volunteer_planner
+    image: vp_pg:latest
+    build:
+      context: docker/db/
+      args:
+        - DATABASE_NAME
+        - DATABASE_USER
+        - DATABASE_PW
+    ### MySQL ###
+    # image: tarzan79/alpine-mysql
+    ##environment:
+    ##  MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    ##  MYSQL_DATABASE: volunteer_planner
+    ##  MYSQL_USER: vp
+    ##  MYSQL_PASSWORD: volunteer_planner
 
-      POSTGRES_DB: volunteer_planner
-      POSTGRES_USER: vp
-      POSTGRES_PASSWORD: volunteer_planner
     volumes:
       ### MySQL ###
-      - data_volume_mysql:/var/lib/mysql
-      - config_volume_mysql:/etc/mysql
+      # - data_volume_mysql:/var/lib/mysql
+      # - config_volume_mysql:/etc/mysql
       ### PostgreSQL ###
-      # - data_volume_pg:/var/lib/postgresql/data
+      - data_volume_pg:/var/lib/postgresql/data
+      - backup_volume_pg:/pg_backup
     hostname: db
     mem_limit: 1G
     memswap_limit: 2G
-    #cpuset: "0"
+    stop_grace_period: 30s
 
-  web:
-    build: .
-    # Attention, we're checking if database container is available before starting django, unless NO_CHECK env is set
-    entrypoint: ["/django-entrypoint.sh"]
-    command: ["runserver", "0.0.0.0:8000"]
-    volumes:
-      - .:/opt/vpcode
-    ports:
-      - "8000:8000"
+    healthcheck:
+        test: ["CMD", "psql", "-1wXnqx", "-U", "postgres", "-c", "SELECT 1 AS check"]
+        interval: 30s
+        timeout: 5s
+        retries: 2
+        start_period: 10s
+
+  django:
+    image: vp_django:latest
+    build:
+      context: .
+      args:
+        - vpbasedir=${VP_BASE_DIR:-/opt/vp}
     links:
       - db
-    environment:
-      ### MySQL ###
-      DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
-      ### PostgreSQL ###
-      # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
-    hostname: web
+    ports:
+      - "8001:8181"
+
+    hostname: django
     mem_limit: 1G
     memswap_limit: 2G
-    #cpuset: "1"
+    stop_grace_period: 15s
+
+    healthcheck:
+      test: ["CMD-SHELL", "uwsgi --connect-and-read /run/vp/stats 2>&1 | jq -cMe '.workers[0].accepting | select(. >= 0)'"]
+      interval: 10s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+
+    environment:
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.production}
+      #STATIC_ROOT: ${VP_BASE_DIR:-/opt/vp}/static
+      ### PostgreSQL ###
+      ### Make POstgreSQL the docker default ###
+      DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
+      DATABASE_HOST: db
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PW: ${DATABASE_PW}
+      ### Django settings ###
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS-localhost}
+      SECRET_KEY: ${SECRET_KEY:?Please set djangos SECRET_KEY in .env or build environment}
+      ### VP settings ###
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
+      SENDER_EMAIL: ${SENDER_EMAIL:-admin@localhost}
+      FROM_EMAIL: ${FROM_EMAIL:-admin@localhost}
+      SERVER_EMAIL: ${SERVER_EMAIL:-admin@localhost}
+      CONTACT_EMAIL: ${CONTACT_EMAIL:-admin@localhost}
+      EMAIL_BACKEND: ${EMAIL_BACKEND:-django.core.mail.backends.console.EmailBackend}
+      SMTP_HOST: ${SMTP_HOST:-localhost}
+      SMTP_PORT: ${SMTP_PORT:-25}
+      ### Attention, we're checking if database container is available before starting django, unless NO_CHECK env is set
+      NO_CHECK:
+    ##command: ["runserver", "0.0.0.0:8000"]
+    ##volumes:
+    ##  - .:/opt/vpcode
+    ##ports:
+    ##  - "8000:8000"
+    ##environment:
+    ##  ### MySQL ###
+    ##  # DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_mysql"
+    ##  ### PostgreSQL ###
+    ##  DJANGO_SETTINGS_MODULE: "volunteer_planner.settings.docker_postgres"
+
+    volumes:
+        - .:/opt/vp
+
+  web:
+    image: vp_web:latest
+    build:
+      context: docker/web/
+      args:
+        - vpbasedir=${VP_BASE_DIR:-/opt/vp}
+    links:
+      - django
+    ports:
+      - "8000:8181"
+
+    hostname: web
+    mem_limit: 32M
+    memswap_limit: 128M
+
+    healthcheck:
+        test: ["CMD", "curl", "--fail-early", "--silent", "-I", "-o", "/dev/null", "-w", "{\"http_status\":%{http_code},\"duration\":%{time_total}}", "http://localhost:8181/"]
+        interval: 15s
+        timeout: 5s
+        retries: 1
+        start_period: 5s

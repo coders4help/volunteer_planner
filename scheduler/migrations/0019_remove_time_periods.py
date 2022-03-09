@@ -74,7 +74,8 @@ class Migration(migrations.Migration):
                                     verbose_name='time from',
                                     to='scheduler.TimePeriods',
                                     null=True,
-                                    default=1
+                                    default=1,
+                                    on_delete=models.SET_DEFAULT
                                     ),
         ),
         migrations.AlterField(
@@ -83,7 +84,8 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(related_name='time_to',
                                     to='scheduler.TimePeriods',
                                     null=True,
-                                    default=1),
+                                    default=1,
+                                    on_delete=models.SET_DEFAULT),
         ),
 
         migrations.RunPython(skip, _restore_time_periods),

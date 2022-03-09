@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='need',
             name='facility',
-            field=models.ForeignKey(verbose_name='facility', to='organizations.Facility', null=True),
+            field=models.ForeignKey(verbose_name='facility', to='organizations.Facility', null=True, on_delete=models.CASCADE),
         ),
     ]

@@ -6,6 +6,7 @@ import datetime
 
 import factory
 from django.core.management.base import BaseCommand
+from django.db import transaction
 from django.db.models import signals
 from registration.models import RegistrationProfile
 
@@ -51,57 +52,56 @@ class Command(BaseCommand):
 
     args = ""
 
-    option_list = BaseCommand.option_list
-
     def add_arguments(self, parser):
         parser.add_argument('days', nargs='+', type=int)
         parser.add_argument('--flush')
 
     @factory.django.mute_signals(signals.pre_delete)
     def handle(self, *args, **options):
-        if options['flush']:
-            print "delete all data in app tables"
-            RegistrationProfile.objects.all().delete()
+        with transaction.atomic():
+            if options['flush']:
+                print('delete all data in app tables')
+                RegistrationProfile.objects.all().delete()
 
-            Shift.objects.all().delete()
-            Task.objects.all().delete()
-            Workplace.objects.all().delete()
-            Facility.objects.all().delete()
+                Shift.objects.all().delete()
+                Task.objects.all().delete()
+                Workplace.objects.all().delete()
+                Facility.objects.all().delete()
 
-            UserAccount.objects.all().delete()
+                UserAccount.objects.all().delete()
 
-            # delete geographic information
-            Country.objects.all().delete()
-            Region.objects.all().delete()
-            Area.objects.all().delete()
-            Place.objects.all().delete()
+                # delete geographic information
+                Place.objects.all().delete()
+                Area.objects.all().delete()
+                Region.objects.all().delete()
+                Country.objects.all().delete()
 
-            User.objects.filter().exclude(is_superuser=True).delete()
+                User.objects.filter().exclude(is_superuser=True).delete()
 
-        # create regional data
-        places = list()
-        for i in range(0, 10):
-            places.append(PlaceFactory.create())
+            # create regional data
+            places = list()
+            for i in range(0, 10):
+                places.append(PlaceFactory.create())
 
-        organizations = list()
-        for i in range(0, 4):
-            organizations.append(OrganizationFactory.create())
+            organizations = list()
+            for i in range(0, 4):
+                organizations.append(OrganizationFactory.create())
 
-        # create shifts for number of days
-        for day in range(0, options['days'][0]):
-            for i in range(2, 23):
-                place = places[random.randint(0, len(places) - 1)]
-                organization = organizations[random.randint(0, len(organizations) - 1)]
-                facility = FacilityFactory.create(
-                    description=LOREM,
-                    place=place,
-                    organization=organization
-                )
-                shift = ShiftFactory.create(
-                    starting_time=gen_date(hour=i - 1, day=day),
-                    ending_time=gen_date(hour=i, day=day),
-                    facility=facility
-                )
-                # assign random volunteer for each shift
-                reg_user = ShiftHelperFactory.create(shift=shift)
-                reg_user.save()
+            # create shifts for number of days
+            for day in range(0, options['days'][0]):
+                for i in range(2, 23):
+                    place = places[random.randint(0, len(places) - 1)]
+                    organization = organizations[random.randint(0, len(organizations) - 1)]
+                    facility = FacilityFactory.create(
+                        description=LOREM,
+                        place=place,
+                        organization=organization
+                    )
+                    shift = ShiftFactory.create(
+                        starting_time=gen_date(hour=i - 1, day=day),
+                        ending_time=gen_date(hour=i, day=day),
+                        facility=facility
+                    )
+                    # assign random volunteer for each shift
+                    reg_user = ShiftHelperFactory.create(shift=shift)
+                    reg_user.save()

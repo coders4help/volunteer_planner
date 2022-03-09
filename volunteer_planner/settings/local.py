@@ -15,7 +15,6 @@ DATABASES = {
 
 INSTALLED_APPS += (
     'debug_toolbar',
-    'django_extensions'
 )
 
 # CACHE CONFIGURATION
@@ -28,7 +27,7 @@ CACHES = {
 }
 # END CACHE CONFIGURATION
 
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 

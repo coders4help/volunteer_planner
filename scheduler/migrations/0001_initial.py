@@ -38,23 +38,23 @@ class Migration(migrations.Migration):
             name='Volunteers',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('interests', models.ForeignKey(to='scheduler.Topics')),
-                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
+                ('interests', models.ForeignKey(to='scheduler.Topics', on_delete=models.CASCADE)),
+                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
         ),
         migrations.AddField(
             model_name='need',
             name='time_period_from',
-            field=models.ForeignKey(related_name='time_from', to='scheduler.TimePeriods'),
+            field=models.ForeignKey(related_name='time_from', to='scheduler.TimePeriods', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='need',
             name='time_period_to',
-            field=models.ForeignKey(related_name='time_to', to='scheduler.TimePeriods'),
+            field=models.ForeignKey(related_name='time_to', to='scheduler.TimePeriods', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='need',
             name='topic',
-            field=models.ForeignKey(to='scheduler.Topics'),
+            field=models.ForeignKey(to='scheduler.Topics', on_delete=models.CASCADE),
         ),
     ]

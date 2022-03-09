@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='need',
             name='location',
-            field=models.ForeignKey(verbose_name='location', to='scheduler.Location'),
+            field=models.ForeignKey(verbose_name='location', to='scheduler.Location', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='need',
@@ -28,11 +28,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='need',
             name='time_period_from',
-            field=models.ForeignKey(related_name='time_from', verbose_name='time_from', to='scheduler.TimePeriods'),
+            field=models.ForeignKey(related_name='time_from', verbose_name='time_from', to='scheduler.TimePeriods', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='need',
             name='topic',
-            field=models.ForeignKey(verbose_name='helptype', to='scheduler.Topics', help_text='helptype_text'),
+            field=models.ForeignKey(verbose_name='helptype', to='scheduler.Topics', help_text='helptype_text', on_delete=models.CASCADE),
         ),
     ]

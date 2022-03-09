@@ -1,7 +1,8 @@
 # coding: utf-8
+import logging
 from datetime import time
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.formats import localize
 from django.utils.translation import ugettext_lazy as _, ungettext_lazy
@@ -10,12 +11,15 @@ from places.models import Country, Region, Area, Place
 from . import managers
 
 
+logger = logging.getLogger(__name__)
+
+
 class Shift(models.Model):
-    """ A Shift is a time period for the work on a task at a workplace of a 
-        certain facility (see organizations). Users register themselves for 
+    """ A Shift is a time period for the work on a task at a workplace of a
+        certain facility (see organizations). Users register themselves for
         shifts, but there can be more than one slot for a shift, ie. there
         can be more than one user for a shift.
-        
+
     fields:
         slots - depending on how many volunteers are needed to fulfill the
             task
@@ -27,27 +31,31 @@ class Shift(models.Model):
         helpers - many2many to accounts-UserAccount, realized through
             ShiftHelper
         members_only - if only members are allowed to help
-    
+
     The manager is extended via managers.ShiftManager.
     A second manager open_shifts is set to managers.OpenShiftManager.
-    
+
     Defines three properties:
         days
         duration
         localized_display_ending_time
-    
+
     """
 
-    slots = models.IntegerField(verbose_name=_(u'number of needed volunteers'))
+    # PositiveIntegerField instead of custom validation
+    slots = models.PositiveIntegerField(verbose_name=_(u'number of needed volunteers'))
 
     task = models.ForeignKey("organizations.Task",
+                             models.PROTECT,
                              verbose_name=_(u'task'))
     workplace = models.ForeignKey("organizations.Workplace",
+                                  models.PROTECT,
                                   verbose_name=_(u'workplace'),
                                   null=True,
                                   blank=True)
 
     facility = models.ForeignKey('organizations.Facility',
+                                 models.PROTECT,
                                  verbose_name=_(u'facility'))
 
     starting_time = models.DateTimeField(verbose_name=_('starting time'),
@@ -97,6 +105,9 @@ class Shift(models.Model):
             start=localize(self.starting_time),
             end=localize(self.ending_time))
 
+    def __str__(self):
+        return self.__unicode__()
+
     def get_absolute_url(self):
         return reverse('shift_details',
                        kwargs=dict(facility_slug=self.facility.slug,
@@ -110,18 +121,21 @@ class ShiftHelper(models.Model):
     """ A user registered for a shift. There is a many2many relationship
         between shift and user. ShiftHelper is the data structure realizing
         this relationship.
-    
+
     fields:
     user_account - foreign key to accounts.UserAccount
     shift - foreign key to Shift
     joined_shift_at - datetime with auto_now_add set True, ie. a timestamp
         for when the user registered for the shift
-        
-    Manager is set to managers.ShiftHelperManager. 
+
+    Manager is set to managers.ShiftHelperManager.
     """
     user_account = models.ForeignKey('accounts.UserAccount',
+                                     models.CASCADE,
                                      related_name='shift_helpers')
-    shift = models.ForeignKey('scheduler.Shift', related_name='shift_helpers')
+    shift = models.ForeignKey('scheduler.Shift',
+                              models.CASCADE,
+                              related_name='shift_helpers')
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
     objects = managers.ShiftHelperManager()
@@ -134,3 +148,6 @@ class ShiftHelper(models.Model):
     def __unicode__(self):
         return u"{} on {}".format(self.user_account.user.username,
                                   self.shift.task)
+
+    def __str__(self):
+        return self.__unicode__()
