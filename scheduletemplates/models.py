@@ -80,8 +80,7 @@ class ShiftTemplate(models.Model):
     @property
     def localized_display_ending_time(self):
         days = self.days if self.ending_time > time.min else 0
-        days_fmt = ungettext_lazy(u'the next day',
-                                  u'after {number_of_days} days', days)
+        days_fmt = _(u'after {number_of_days} days'.format(number_of_days=days))
         days_str = days_fmt.format(
             number_of_days=days) if days else u''
         return u'{time} {days}'.format(time=localize(self.ending_time),
