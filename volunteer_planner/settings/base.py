@@ -150,6 +150,7 @@ LANGUAGES = (
     ('fr', _('French')),
     ('el', _('Greek')),
     ('hu', _('Hungarian')),
+    ('pl', _('Polish')),
     ('pt', _('Portuguese')),
     ('ru', _('Russian')),
     ('sv', _('Swedish')),
