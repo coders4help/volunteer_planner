@@ -1,0 +1,1775 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Anna Dunn, 2022
+msgid ""
+msgstr ""
+"Project-Id-Version: volunteer-planner.org\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-29 09:22+0100\n"
+"PO-Revision-Date: 2022-03-10 13:42+0000\n"
+"Last-Translator: Anna Dunn\n"
+"Language-Team: Russian (http://www.transifex.com/coders4help/volunteer-planner/language/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: accounts/admin.py:15 accounts/admin.py:21 shiftmailer/models.py:9
+msgid "first name"
+msgstr "имя"
+
+#: accounts/admin.py:27 shiftmailer/models.py:13
+msgid "email"
+msgstr "электронная почта"
+
+#: accounts/apps.py:8 accounts/apps.py:16
+msgid "Accounts"
+msgstr "Aккаунты"
+
+#: accounts/models.py:16 organizations/models.py:46
+msgid "user account"
+msgstr "аккаунт пользователя"
+
+#: accounts/models.py:17
+msgid "user accounts"
+msgstr "Aккаунты пользователя"
+
+#: accounts/templates/shift_list.html:12
+msgid "My shifts today:"
+msgstr "Мои смены сегодня"
+
+#: accounts/templates/shift_list.html:14
+msgid "No shifts today."
+msgstr "Сегодня нет смен"
+
+#: accounts/templates/shift_list.html:19 accounts/templates/shift_list.html:33
+#: accounts/templates/shift_list.html:47 accounts/templates/shift_list.html:61
+msgid "Show this work shift"
+msgstr "Показать эту рабочую смену"
+
+#: accounts/templates/shift_list.html:26
+msgid "My shifts tomorrow:"
+msgstr "Мои смены завтра:"
+
+#: accounts/templates/shift_list.html:28
+msgid "No shifts tomorrow."
+msgstr "Завтра никаких смен."
+
+#: accounts/templates/shift_list.html:40
+msgid "My shifts the day after tomorrow:"
+msgstr "Мои смены послезавтра:"
+
+#: accounts/templates/shift_list.html:42
+msgid "No shifts the day after tomorrow."
+msgstr "Никаких смен послезавтра."
+
+#: accounts/templates/shift_list.html:54
+msgid "Further shifts:"
+msgstr "Дальнейшие смены:"
+
+#: accounts/templates/shift_list.html:56
+msgid "No further shifts."
+msgstr "Никаких дальнейших смен"
+
+#: accounts/templates/shift_list.html:66
+msgid "Show my work shifts in the past"
+msgstr "Показать мои рабочие смены в прошлом"
+
+#: accounts/templates/shift_list_done.html:12
+msgid "My work shifts in the past:"
+msgstr "Мои рабочие смены в прошлом"
+
+#: accounts/templates/shift_list_done.html:14
+msgid "No work shifts in the past days yet."
+msgstr "В последние дни еще нет рабочих смен."
+
+#: accounts/templates/shift_list_done.html:21
+msgid "Show my work shifts in the future"
+msgstr "Показать мои рабочие смены в будущем"
+
+#: accounts/templates/user_account_delete.html:10
+#: accounts/templates/user_detail.html:10
+#: organizations/templates/manage_members.html:64
+#: templates/registration/login.html:23
+#: templates/registration/registration_form.html:35
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: accounts/templates/user_account_delete.html:11
+#: accounts/templates/user_detail.html:11
+msgid "First name"
+msgstr "Имя"
+
+#: accounts/templates/user_account_delete.html:12
+#: accounts/templates/user_detail.html:12
+msgid "Last name"
+msgstr "Фамилия"
+
+#: accounts/templates/user_account_delete.html:13
+#: accounts/templates/user_detail.html:13
+#: templates/registration/registration_form.html:23
+msgid "Email"
+msgstr "Электронная почта"
+
+#: accounts/templates/user_account_delete.html:15
+msgid ""
+"If you delete your account, this information will be anonymized, and its not"
+" possible for you to log into Volunteer-Planner anymore."
+msgstr "Если вы удалите свой аккаунт, эта информация будет анонимизирована, и вы больше не сможете войти в Volunteer-Planner."
+
+#: accounts/templates/user_account_delete.html:16
+msgid ""
+"Its not possible to recover this information. If you want to work as "
+"volunteer again, you will have to create a new account."
+msgstr "Восстановить эту информацию невозможно. Если вы хотите снова работать волонтером, вам придется создать новый аккаунт."
+
+#: accounts/templates/user_account_delete.html:18
+msgid "Delete Account (no additional warning)"
+msgstr "Удалить аккаунт (без дополнительного предупреждения)"
+
+#: accounts/templates/user_account_edit.html:12
+#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
+msgid "Save"
+msgstr "Сохранить"
+
+#: accounts/templates/user_detail.html:16
+msgid "Edit Account"
+msgstr "Редактировать аккаунт"
+
+#: accounts/templates/user_detail.html:17
+msgid "Delete Account"
+msgstr "Удалить аккаунт"
+
+#: accounts/templates/user_detail_deleted.html:6
+msgid "Your user account has been deleted."
+msgstr "Ваш аккаунт был удален."
+
+#: content/admin.py:15 content/admin.py:16 content/models.py:15
+msgid "additional CSS"
+msgstr "дополнительный CSS"
+
+#: content/admin.py:23
+msgid "translation"
+msgstr "перевод"
+
+#: content/admin.py:24 content/admin.py:63
+msgid "translations"
+msgstr "переводы"
+
+#: content/admin.py:58
+msgid "No translation available"
+msgstr "Перевод недоступен"
+
+#: content/models.py:12
+msgid "additional style"
+msgstr "дополнительный стиль"
+
+#: content/models.py:18
+msgid "additional flat page style"
+msgstr "дополнительный плоский стиль страницы"
+
+#: content/models.py:19
+msgid "additional flat page styles"
+msgstr "дополнительные стили плоской страницы"
+
+#: content/models.py:25
+msgid "flat page"
+msgstr "плоская страница"
+
+#: content/models.py:28
+msgid "language"
+msgstr "язык"
+
+#: content/models.py:32 news/models.py:14
+msgid "title"
+msgstr "название"
+
+#: content/models.py:36
+msgid "content"
+msgstr "содержание"
+
+#: content/models.py:46
+msgid "flat page translation"
+msgstr "перевод плоской страницы"
+
+#: content/models.py:47
+msgid "flat page translations"
+msgstr "перевод плоских страниц"
+
+#: content/templates/flatpages/additional_flat_page_style_inline.html:12
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:33
+msgid "View on site"
+msgstr "Посмотреть на сайте"
+
+#: content/templates/flatpages/additional_flat_page_style_inline.html:32
+#: organizations/templates/manage_members.html:101
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
+msgid "Remove"
+msgstr "Удалить"
+
+#: content/templates/flatpages/additional_flat_page_style_inline.html:33
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:80
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "Добавить еще %(verbose_name)s"
+
+#: content/templates/flatpages/default.html:23
+msgid "Edit this page"
+msgstr "Редактировать эту страницу"
+
+#: news/models.py:17
+msgid "subtitle"
+msgstr "подзаголовок"
+
+#: news/models.py:21
+msgid "articletext"
+msgstr "текст статьи"
+
+#: news/models.py:26
+msgid "creation date"
+msgstr "Дата создания"
+
+#: news/models.py:39
+msgid "news entry"
+msgstr "новость"
+
+#: news/models.py:40
+msgid "news entries"
+msgstr "Новости"
+
+#: non_logged_in_area/templates/404.html:8
+msgid "Page not found"
+msgstr "Страница не найдена"
+
+#: non_logged_in_area/templates/404.html:10
+msgid "We're sorry, but the requested page could not be found."
+msgstr "Сожалеем, но запрошенная страница не найдена."
+
+#: non_logged_in_area/templates/500.html:4
+msgid "Server error"
+msgstr "Ошибка сервера"
+
+#: non_logged_in_area/templates/500.html:8
+msgid "Server Error <em>(500)</em>"
+msgstr ""
+
+#: non_logged_in_area/templates/500.html:10
+msgid ""
+"There's been an error. It's been reported to the site administrators via "
+"email and should be fixed shortly. Thanks for your patience."
+msgstr "Произошла ошибка. Об этом было сообщено администраторам сайта по электронной почте и должно быть исправлено в ближайшее время. Спасибо за терпеливость."
+
+#: non_logged_in_area/templates/base_non_logged_in.html:57
+#: templates/registration/login.html:3 templates/registration/login.html:10
+msgid "Login"
+msgstr "Вход"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:60
+msgid "Start helping"
+msgstr "Начать помогать"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:87
+#: templates/partials/footer.html:6
+msgid "Main page"
+msgstr "Главная страница"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:90
+#: templates/partials/footer.html:7
+msgid "Imprint"
+msgstr "Отпечаток"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:93
+#: templates/partials/footer.html:8
+msgid "About"
+msgstr "О нас"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:96
+#: templates/partials/footer.html:9
+msgid "Supporter"
+msgstr "Сторонник"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:99
+#: templates/partials/footer.html:10
+msgid "Press"
+msgstr "Пресса"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:102
+#: templates/partials/footer.html:11
+msgid "Contact"
+msgstr "Контакт"
+
+#: non_logged_in_area/templates/base_non_logged_in.html:105
+#: templates/partials/faq_link.html:2
+msgid "FAQ"
+msgstr "Вопросы-Ответы"
+
+#: non_logged_in_area/templates/home.html:25
+msgid "I want to help!"
+msgstr "Я хочу помочь!"
+
+#: non_logged_in_area/templates/home.html:27
+msgid "Register and see where you can help"
+msgstr "Зарегистрируйтесь и узнайте, где вы можете помочь"
+
+#: non_logged_in_area/templates/home.html:32
+msgid "Organize volunteers!"
+msgstr "Организуйте волонтеров!"
+
+#: non_logged_in_area/templates/home.html:34
+msgid "Register a shelter and organize volunteers"
+msgstr "Зарегистрируйте приют и организуйте волонтеров"
+
+#: non_logged_in_area/templates/home.html:48
+msgid "Places to help"
+msgstr "Места, чтобы помочь"
+
+#: non_logged_in_area/templates/home.html:55
+msgid "Registered Volunteers"
+msgstr "Зарегистрированные волонтеры"
+
+#: non_logged_in_area/templates/home.html:62
+msgid "Worked Hours"
+msgstr "Отработанные часы"
+
+#: non_logged_in_area/templates/home.html:74
+msgid "What is it all about?"
+msgstr "О чем это все?"
+
+#: non_logged_in_area/templates/home.html:77
+msgid ""
+"You are a volunteer and want to help refugees? Volunteer-Planner.org shows "
+"you where, when and how to help directly in the field."
+msgstr "Вы волонтер и хотите помочь беженцам? Volunteer-Planner.org покажет вам, где, когда и как помочь непосредственно на местах."
+
+#: non_logged_in_area/templates/home.html:85
+msgid ""
+"<p>This platform is non-commercial and ads-free. An international team of "
+"field workers, programmers, project managers and designers are volunteering "
+"for this project and bring in their professional experience to make a "
+"difference.</p>"
+msgstr "Эта платформа некоммерческая и не содержит рекламы. Международная команда полевых работников, программистов, менеджеров проектов и дизайнеров добровольно участвует в этом проекте и делится своим профессиональным опытом, чтобы изменить ситуацию."
+
+#: non_logged_in_area/templates/home.html:98
+msgid "You can help at these locations:"
+msgstr "Вы можете помочь в следующих местах:"
+
+#: non_logged_in_area/templates/home.html:116
+msgid "There are currently no places in need of help."
+msgstr "В настоящее время мест, нуждающихся в помощи, нет."
+
+#: non_logged_in_area/templates/privacy_policy.html:6
+msgid "Privacy Policy"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:10
+msgctxt "Privacy Policy Sec1"
+msgid "Scope"
+msgstr "Объем"
+
+#: non_logged_in_area/templates/privacy_policy.html:16
+msgctxt "Privacy Policy Sec1 P1"
+msgid ""
+"This privacy policy informs the user of the collection and use of personal "
+"data on this website (herein after \"the service\") by the service provider,"
+" the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:21
+msgctxt "Privacy Policy Sec1 P2"
+msgid ""
+"The legal basis for the privacy policy are the German Data Protection Act "
+"(Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act "
+"(Telemediengesetz, TMG)."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:29
+msgctxt "Privacy Policy Sec2"
+msgid "Access data / server log files"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:35
+msgctxt "Privacy Policy Sec2 P1"
+msgid ""
+"The service provider (or the provider of his webspace) collects data on "
+"every access to the service and stores this access data in so-called server "
+"log files. Access data includes the name of the website that is being "
+"visited, which files are being accessed, the date and time of access, "
+"transfered data, notification of successful access, the type and version "
+"number of the user's web browser, the user's operating system, the referrer "
+"URL (i.e., the website the user visited previously), the user's IP address, "
+"and the name of the user's Internet provider."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:40
+msgctxt "Privacy Policy Sec2 P2"
+msgid ""
+"The service provider uses the server log files for statistical purposes and "
+"for the operation, the security, and the enhancement of the provided service"
+" only. However, the service provider reserves the right to reassess the log "
+"files at any time if specific indications for an illegal use of the service "
+"exist."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:48
+msgctxt "Privacy Policy Sec3"
+msgid "Use of personal data"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:54
+msgctxt "Privacy Policy Sec3 P1"
+msgid ""
+"Personal data is information which can be used to identify a person, i.e., "
+"all data that can be traced back to a specific person. Personal data "
+"includes the name, the e-mail address, or the telephone number of a user. "
+"Even data on personal preferences, hobbies, memberships, or visited websites"
+" counts as personal data."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:59
+msgctxt "Privacy Policy Sec3 P2"
+msgid ""
+"The service provider collects, uses, and shares personal data with third "
+"parties only if he is permitted by law to do so or if the user has given his"
+" permission."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:67
+msgctxt "Privacy Policy Sec4"
+msgid "Contact"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:73
+msgctxt "Privacy Policy Sec4 P1"
+msgid ""
+"When contacting the service provider (e.g. via e-mail or using a web contact"
+" form), the data provided by the user is stored for processing the inquiry "
+"and for answering potential follow-up inquiries in the future."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:81
+msgctxt "Privacy Policy Sec5"
+msgid "Cookies"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:87
+msgctxt "Privacy Policy Sec5 P1"
+msgid ""
+"Cookies are small files that are being stored on the user's device (personal"
+" computer, smartphone, or the like) with information specific to that "
+"device. They can be used for various purposes: Cookies may be used to "
+"improve the user experience (e.g. by storing and, hence, \"remembering\" "
+"login credentials). Cookies may also be used to collect statistical data "
+"that allows the service provider to analyse the user's usage of the website,"
+" aiming to improve the service."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:92
+msgctxt "Privacy Policy Sec5 P2"
+msgid ""
+"The user can customize the use of cookies. Most web browsers offer settings "
+"to restrict or even completely prevent the storing of cookies. However, the "
+"service provider notes that such restrictions may have a negative impact on "
+"the user experience and the functionality of the website."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:97
+#, python-format
+msgctxt "Privacy Policy Sec5 P3"
+msgid ""
+"The user can manage the use of cookies from many online advertisers by "
+"visiting either the US-american website %(us_url)s or the European website "
+"%(eu_url)s."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:105
+msgctxt "Privacy Policy Sec6"
+msgid "Registration"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:111
+msgctxt "Privacy Policy Sec6 P1"
+msgid ""
+"The data provided by the user during registration allows for the usage of "
+"the service. The service provider may inform the user via e-mail about "
+"information relevant to the service or the registration, such as information"
+" on changes, which the service undergoes, or technical information (see also"
+" next section)."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:116
+msgctxt "Privacy Policy Sec6 P2"
+msgid ""
+"The registration and user profile forms show which data is being collected "
+"and stored. They include - but are not limited to - the user's first name, "
+"last name, and e-mail address."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:124
+msgctxt "Privacy Policy Sec7"
+msgid "E-mail notifications / Newsletter"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:130
+msgctxt "Privacy Policy Sec7 P1"
+msgid ""
+"When registering an account with the service, the user gives permission to "
+"receive e-mail notifications as well as newsletter e-mails."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:135
+msgctxt "Privacy Policy Sec7 P2"
+msgid ""
+"E-mail notifications inform the user of certain events that relate to the "
+"user's use of the service. With the newsletter, the service provider sends "
+"the user general information about the provider and his offered service(s)."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:140
+msgctxt "Privacy Policy Sec7 P3"
+msgid ""
+"If the user wishes to revoke his permission to receive e-mails, he needs to "
+"delete his user account."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:148
+msgctxt "Privacy Policy Sec8"
+msgid "Google Analytics"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:154
+msgctxt "Privacy Policy Sec8 P1"
+msgid ""
+"This website uses Google Analytics, a web analytics service provided by "
+"Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text "
+"files placed on the user's device, to help the website analyze how users use"
+" the site. The information generated by the cookie about the user's use of "
+"the website will be transmitted to and stored by Google on servers in the "
+"United States."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:159
+msgctxt "Privacy Policy Sec8 P2"
+msgid ""
+"In case IP-anonymisation is activated on this website, the user's IP address"
+" will be truncated within the area of Member States of the European Union or"
+" other parties to the Agreement on the European Economic Area. Only in "
+"exceptional cases the whole IP address will be first transfered to a Google "
+"server in the USA and truncated there. The IP-anonymisation is active on "
+"this website."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:164
+msgctxt "Privacy Policy Sec8 P3"
+msgid ""
+"Google will use this information on behalf of the operator of this website "
+"for the purpose of evaluating your use of the website, compiling reports on "
+"website activity for website operators and providing them other services "
+"relating to website activity and internet usage."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:169
+#, python-format
+msgctxt "Privacy Policy Sec8 P4"
+msgid ""
+"The IP-address, that the user's browser conveys within the scope of Google "
+"Analytics, will not be associated with any other data held by Google. The "
+"user may refuse the use of cookies by selecting the appropriate settings on "
+"his browser, however it is to be noted that if the user does this he may not"
+" be able to use the full functionality of this website. He can also opt-out "
+"from being tracked by Google Analytics with effect for the future by "
+"downloading and installing Google Analytics Opt-out Browser Addon for his "
+"current web browser: %(optout_plugin_url)s."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:174
+msgid "click this link"
+msgstr "нажмите на эту ссылку"
+
+#: non_logged_in_area/templates/privacy_policy.html:175
+#, python-format
+msgctxt "Privacy Policy Sec8 P5"
+msgid ""
+"As an alternative to the browser Addon or within browsers on mobile devices,"
+" the user can %(optout_javascript)s in order to opt-out from being tracked "
+"by Google Analytics within this website in the future (the opt-out applies "
+"only for the browser in which the user sets it and within this domain). An "
+"opt-out cookie will be stored on the user's device, which means that the "
+"user will have to click this link again, if he deletes his cookies."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:183
+msgctxt "Privacy Policy Sec9"
+msgid "Revocation, Changes, Corrections, and Updates"
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:189
+msgctxt "Privacy Policy Sec9 P1"
+msgid ""
+"The user has the right to be informed upon application and free of charge, "
+"which personal data about him has been stored. Additionally, the user can "
+"ask for the correction of uncorrect data, as well as for the suspension or "
+"even deletion of his personal data as far as there is no legal obligation to"
+" retain that data."
+msgstr ""
+
+#: non_logged_in_area/templates/privacy_policy.html:198
+msgctxt "Privacy Policy Credit"
+msgid ""
+"Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
+msgstr ""
+
+#: non_logged_in_area/templates/shelters_need_help.html:20
+msgid "advantages"
+msgstr "преимущества"
+
+#: non_logged_in_area/templates/shelters_need_help.html:22
+msgid "save time"
+msgstr "экономить время"
+
+#: non_logged_in_area/templates/shelters_need_help.html:23
+msgid "improve selforganization of the volunteers"
+msgstr "улучшить самоорганизацию волонтеров"
+
+#: non_logged_in_area/templates/shelters_need_help.html:26
+msgid ""
+"\n"
+"                    volunteers split themselves up more effectively into shifts,\n"
+"                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
+"                "
+msgstr "\nволонтеры более эффективно распределяются по сменам,\nпомощникам легче предвидеть временные сокращения"
+
+#: non_logged_in_area/templates/shelters_need_help.html:32
+msgid ""
+"\n"
+"                    shift plans can be given to the security personnel\n"
+"                    or coordinating persons by an auto-mailer\n"
+"                    every morning\n"
+"                "
+msgstr "\nпланы смены могут быть переданы персоналу службы безопасности\nили согласование лиц автопочтой\nкаждое утро"
+
+#: non_logged_in_area/templates/shelters_need_help.html:39
+msgid ""
+"\n"
+"                the more shelters and camps are organized with us, the more volunteers are joining\n"
+"                    and all facilities will benefit from a common pool of motivated volunteers\n"
+"                "
+msgstr "\nчем больше у нас организовано приютов и лагерей, тем больше волонтеров присоединяется\nи все объекты выиграют от общего пула мотивированных волонтеров"
+
+#: non_logged_in_area/templates/shelters_need_help.html:45
+msgid "for free without costs"
+msgstr "бесплатно без затрат"
+
+#: non_logged_in_area/templates/shelters_need_help.html:51
+msgid "The right help at the right time at the right place"
+msgstr "Нужная помощь в нужное время в нужном месте"
+
+#: non_logged_in_area/templates/shelters_need_help.html:52
+msgid ""
+"\n"
+"        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.\n"
+"        volunteer-planner tries to solve this problem! <br>\n"
+"        </p>\n"
+"            "
+msgstr "\nМногие хотят помочь! Но зачастую не так просто разобраться, где, когда и как можно помочь.\nvolunteer-planner.org пытается решить эту проблему!"
+
+#: non_logged_in_area/templates/shelters_need_help.html:60
+msgid "for free, ad free"
+msgstr "бесплатно, без рекламы"
+
+#: non_logged_in_area/templates/shelters_need_help.html:61
+msgid ""
+"\n"
+"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"            "
+msgstr "\nПлатформа была создана группой волонтеров-профессионалов в области разработки программного обеспечения, управления проектами, дизайна,\nи маркетинг. Код открыт для некоммерческого использования. Личные данные (адреса электронной почты, данные профиля и т. д.) не будут переданы третьим лицам."
+
+#: non_logged_in_area/templates/shelters_need_help.html:69
+msgid "contact us!"
+msgstr "свяжитесь с нами!"
+
+#: non_logged_in_area/templates/shelters_need_help.html:72
+msgid ""
+"\n"
+"                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
+"                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                    "
+msgstr "\n...возможно, с прикрепленным черновиком смен, которые вы хотите видеть в планировщике волонтеров. Пожалуйста, напишите на onboarding@volunteer-planner.org"
+
+#: organizations/admin.py:128 organizations/admin.py:130
+msgid "edit"
+msgstr "редактировать"
+
+#: organizations/admin.py:202 organizations/admin.py:239
+#: organizations/models.py:60 organizations/models.py:120
+msgid "short description"
+msgstr "Краткое описание"
+
+#: organizations/admin.py:208 organizations/admin.py:245
+#: organizations/admin.py:311 organizations/admin.py:335
+#: organizations/models.py:63 organizations/models.py:123
+#: organizations/models.py:245 organizations/models.py:266
+msgid "description"
+msgstr "описание"
+
+#: organizations/admin.py:214 organizations/admin.py:251
+#: organizations/models.py:66 organizations/models.py:126
+msgid "contact info"
+msgstr "Контактная информация"
+
+#: organizations/models.py:16
+msgid "by invitation"
+msgstr "по приглашению"
+
+#: organizations/models.py:17
+msgid "anyone (approved by manager)"
+msgstr "любой (по согласованию с менеджером)"
+
+#: organizations/models.py:18
+msgid "anyone"
+msgstr "кто угодно"
+
+#: organizations/models.py:24
+msgid "rejected"
+msgstr "отклонен"
+
+#: organizations/models.py:25
+msgid "pending"
+msgstr "в ожидании"
+
+#: organizations/models.py:26
+msgid "approved"
+msgstr "одобрено"
+
+#: organizations/models.py:32
+msgid "admin"
+msgstr "администратор"
+
+#: organizations/models.py:33
+msgid "manager"
+msgstr "менеджер"
+
+#: organizations/models.py:34
+msgid "member"
+msgstr "участник"
+
+#: organizations/models.py:39
+msgid "role"
+msgstr "роль"
+
+#: organizations/models.py:43
+msgid "status"
+msgstr "статус"
+
+#: organizations/models.py:55 organizations/models.py:115
+#: organizations/models.py:242 organizations/models.py:263 places/models.py:20
+#: scheduletemplates/models.py:13
+msgid "name"
+msgstr "имя"
+
+#: organizations/models.py:69 organizations/models.py:141
+msgid "address"
+msgstr "адрес"
+
+#: organizations/models.py:78 organizations/models.py:157 places/models.py:21
+msgid "slug"
+msgstr "слаг"
+
+#: organizations/models.py:83 organizations/models.py:167
+msgid "join mode"
+msgstr "режим присоединения"
+
+#: organizations/models.py:84
+msgid "Who can join this organization?"
+msgstr "Кто может вступить в эту организацию?"
+
+#: organizations/models.py:87 organizations/models.py:111
+#: organizations/models.py:197
+msgid "organization"
+msgstr "организация"
+
+#: organizations/models.py:88
+msgid "organizations"
+msgstr "организации"
+
+#: organizations/models.py:92 organizations/models.py:186
+#: organizations/models.py:253 organizations/models.py:274
+#, python-brace-format
+msgid "{name}"
+msgstr "{имя}"
+
+#: organizations/models.py:104
+msgid "disabled"
+msgstr "Отключено"
+
+#: organizations/models.py:105
+msgid "enabled (collapsed)"
+msgstr "включено (свернуто)"
+
+#: organizations/models.py:106
+msgid "enabled"
+msgstr "включено"
+
+#: organizations/models.py:137 places/models.py:132
+msgid "place"
+msgstr "место"
+
+#: organizations/models.py:146
+msgid "postal code"
+msgstr "Почтовый Код"
+
+#: organizations/models.py:151
+msgid "Show on map of all facilities"
+msgstr "Показать на карте все объекты"
+
+#: organizations/models.py:153
+msgid "latitude"
+msgstr "широта"
+
+#: organizations/models.py:155
+msgid "longitude"
+msgstr "долгота"
+
+#: organizations/models.py:162
+msgid "timeline"
+msgstr "Лента новостей"
+
+#: organizations/models.py:168
+msgid "Who can join this facility?"
+msgstr "Кто может присоединиться к этому объекту?"
+
+#: organizations/models.py:171 organizations/models.py:217
+#: organizations/models.py:237 organizations/models.py:259
+#: scheduler/models.py:28 scheduletemplates/models.py:16
+msgid "facility"
+msgstr "объект"
+
+#: organizations/models.py:172
+msgid "facilities"
+msgstr "объекты"
+
+#: organizations/models.py:202
+msgid "organization member"
+msgstr "член организации"
+
+#: organizations/models.py:203
+msgid "organization members"
+msgstr "члены организации"
+
+#: organizations/models.py:207
+#, python-brace-format
+msgid "{username} at {organization_name} ({user_role})"
+msgstr "{username} в {organization_name} ({user_role})"
+
+#: organizations/models.py:223
+msgid "facility member"
+msgstr "сотрудник объекта"
+
+#: organizations/models.py:224
+msgid "facility members"
+msgstr "сотрудники объекта"
+
+#: organizations/models.py:228
+#, python-brace-format
+msgid "{username} at {facility_name} ({user_role})"
+msgstr "{username} в {facility_name} ({user_role})"
+
+#: organizations/models.py:248 scheduler/models.py:23
+#: scheduletemplates/models.py:40
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
+msgid "workplace"
+msgstr "рабочее место"
+
+#: organizations/models.py:249
+msgid "workplaces"
+msgstr "рабочие места"
+
+#: organizations/models.py:269 scheduler/models.py:21
+#: scheduletemplates/models.py:37
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
+msgid "task"
+msgstr "задание"
+
+#: organizations/models.py:270
+msgid "tasks"
+msgstr "задания"
+
+#: organizations/templates/emails/membership_approved.txt:2
+#, python-format
+msgid "Hello %(username)s,"
+msgstr "Здравствуйте %(username)s,"
+
+#: organizations/templates/emails/membership_approved.txt:6
+#, python-format
+msgid ""
+"Your membership request at %(facility_name)s was approved. You now may sign "
+"up for restricted shifts at this facility."
+msgstr "Ваш запрос на членство в %(facility_name)s был одобрен. Теперь вы можете записаться на ограниченные смены в этом учреждении."
+
+#: organizations/templates/emails/membership_approved.txt:10
+msgid ""
+"Yours,\n"
+"the volunteer-planner.org Team"
+msgstr "С уважением,\nКоманда волонтеров-planner.org"
+
+#: organizations/templates/facility.html:9
+#: organizations/templates/organization.html:9
+#: scheduler/templates/helpdesk_breadcrumps.html:6
+#: scheduler/templates/helpdesk_single.html:144
+#: scheduler/templates/shift_details.html:33
+msgid "Helpdesk"
+msgstr "Служба поддержки"
+
+#: organizations/templates/facility.html:41
+#: organizations/templates/partials/compact_facility.html:31
+msgid "Open Shifts"
+msgstr "Открытые смены"
+
+#: organizations/templates/facility.html:50
+#: scheduler/templates/helpdesk.html:71
+msgid "News"
+msgstr "Новости"
+
+#: organizations/templates/manage_members.html:18
+msgid "Error"
+msgstr "Ошибка"
+
+#: organizations/templates/manage_members.html:18
+msgid "You are not allowed to do this."
+msgstr "Вам не разрешено делать это."
+
+#: organizations/templates/manage_members.html:43
+#, python-format
+msgid "Members in %(facility)s"
+msgstr "Члены в %(facility)s"
+
+#: organizations/templates/manage_members.html:67
+msgid "Role"
+msgstr "Роль"
+
+#: organizations/templates/manage_members.html:70
+msgid "Actions"
+msgstr "Действия"
+
+#: organizations/templates/manage_members.html:90
+#: organizations/templates/manage_members.html:97
+msgid "Block"
+msgstr "Заблокировать "
+
+#: organizations/templates/manage_members.html:94
+msgid "Accept"
+msgstr "Принять"
+
+#: organizations/templates/organization.html:26
+msgid "Facilities"
+msgstr "Объект"
+
+#: organizations/templates/partials/compact_facility.html:23
+#: scheduler/templates/geographic_helpdesk.html:76
+#: scheduler/templates/helpdesk.html:69
+msgid "Show details"
+msgstr "Показать детали"
+
+#: organizations/views.py:122
+msgid "volunteer-planner.org: Membership approved"
+msgstr "волонтер-планнер.org: Членство одобрено"
+
+#: osm_tools/templatetags/osm_links.py:17
+#, python-brace-format
+msgctxt "maps search url pattern"
+msgid "https://www.openstreetmap.org/search?query={location}"
+msgstr "https://www.openstreetmap.org/search?query={location}"
+
+#: places/models.py:69 places/models.py:84
+msgid "country"
+msgstr "страна"
+
+#: places/models.py:70
+msgid "countries"
+msgstr "страны"
+
+#: places/models.py:87 places/models.py:106
+msgid "region"
+msgstr "регион"
+
+#: places/models.py:88
+msgid "regions"
+msgstr "регионы"
+
+#: places/models.py:109 places/models.py:129
+msgid "area"
+msgstr "зона"
+
+#: places/models.py:110
+msgid "areas"
+msgstr "зоны"
+
+#: places/models.py:133
+msgid "places"
+msgstr "места"
+
+#: scheduler/admin.py:28
+msgid "number of volunteers"
+msgstr "число волонтеров"
+
+#: scheduler/admin.py:44
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
+msgid "volunteers"
+msgstr "волонтеры"
+
+#: scheduler/apps.py:8
+msgid "Scheduler"
+msgstr "Планировщик"
+
+#: scheduler/models.py:18 scheduletemplates/models.py:34
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
+msgid "number of needed volunteers"
+msgstr "количество необходимых волонтеров"
+
+#: scheduler/models.py:30 scheduletemplates/admin.py:33
+#: scheduletemplates/models.py:44
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
+msgid "starting time"
+msgstr "время начала"
+
+#: scheduler/models.py:32 scheduletemplates/admin.py:36
+#: scheduletemplates/models.py:47
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
+msgid "ending time"
+msgstr "время окончания"
+
+#: scheduler/models.py:40 scheduletemplates/models.py:54
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:58
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
+msgid "members only"
+msgstr "только для участников"
+
+#: scheduler/models.py:42 scheduletemplates/models.py:56
+msgid "allow only members to help"
+msgstr "разрешить только участникам помогать"
+
+#: scheduler/models.py:48
+msgid "shift"
+msgstr "смена"
+
+#: scheduler/models.py:49 scheduletemplates/admin.py:283
+msgid "shifts"
+msgstr "смены"
+
+#: scheduler/models.py:63 scheduletemplates/models.py:77
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: scheduler/models.py:95
+msgid "shift helper"
+msgstr "помощник по смене"
+
+#: scheduler/models.py:96
+msgid "shift helpers"
+msgstr "помощники смены"
+
+#: scheduler/templates/geographic_helpdesk.html:69
+msgid "Show on map"
+msgstr "Показать на карте"
+
+#: scheduler/templates/geographic_helpdesk.html:81
+msgctxt "helpdesk shifts heading"
+msgid "shifts"
+msgstr "смены"
+
+#: scheduler/templates/geographic_helpdesk.html:113
+#, python-format
+msgid "There are no upcoming shifts available for %(geographical_name)s."
+msgstr "Нет доступных смен для %(geographical_name)s."
+
+#: scheduler/templates/helpdesk.html:39
+msgid "You can help in the following facilities"
+msgstr "Вы можете помочь в следующих объектах"
+
+#: scheduler/templates/helpdesk.html:43
+msgid "filter"
+msgstr "фильтровать"
+
+#: scheduler/templates/helpdesk.html:60
+msgid "see more"
+msgstr "узнать больше"
+
+#: scheduler/templates/helpdesk.html:83
+msgid "open shifts"
+msgstr "открытые смены"
+
+#: scheduler/templates/helpdesk_single.html:6
+#: scheduler/templates/shift_details.html:24
+#, python-format
+msgctxt "title with facility"
+msgid "Schedule for %(facility_name)s"
+msgstr "Расписание для %(facility_name)s"
+
+#: scheduler/templates/helpdesk_single.html:60
+#, python-format
+msgid "%(starting_time)s - %(ending_time)s"
+msgstr "%(starting_time)s - %(ending_time)s"
+
+#: scheduler/templates/helpdesk_single.html:172
+#, python-format
+msgctxt "title with date"
+msgid "Schedule for %(schedule_date)s"
+msgstr "Расписание для %(schedule_date)s"
+
+#: scheduler/templates/helpdesk_single.html:185
+msgid "Toggle Timeline"
+msgstr "Переключить шкалу времени"
+
+#: scheduler/templates/helpdesk_single.html:237
+msgid "Link"
+msgstr "Ссылка"
+
+#: scheduler/templates/helpdesk_single.html:240
+msgid "Time"
+msgstr "Время"
+
+#: scheduler/templates/helpdesk_single.html:243
+msgid "Helpers"
+msgstr "Помощники"
+
+#: scheduler/templates/helpdesk_single.html:254
+msgid "Start"
+msgstr "Начало"
+
+#: scheduler/templates/helpdesk_single.html:257
+msgid "End"
+msgstr "Конец"
+
+#: scheduler/templates/helpdesk_single.html:260
+msgid "Required"
+msgstr "Обязательный"
+
+#: scheduler/templates/helpdesk_single.html:263
+msgid "Status"
+msgstr "Статус"
+
+#: scheduler/templates/helpdesk_single.html:266
+msgid "Users"
+msgstr "Пользователи"
+
+#: scheduler/templates/helpdesk_single.html:269
+msgid "You"
+msgstr "Вы"
+
+#: scheduler/templates/helpdesk_single.html:301
+#, python-format
+msgid "%(slots_left)s more"
+msgstr "%(slots_left)s еще"
+
+#: scheduler/templates/helpdesk_single.html:305
+#: scheduler/templates/helpdesk_single.html:386
+#: scheduler/templates/shift_details.html:134
+msgid "Covered"
+msgstr "Покрытый"
+
+#: scheduler/templates/helpdesk_single.html:330
+#: scheduler/templates/shift_details.html:95
+msgid "Drop out"
+msgstr "Выйти"
+
+#: scheduler/templates/helpdesk_single.html:340
+#: scheduler/templates/shift_details.html:105
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: scheduler/templates/helpdesk_single.html:351
+msgid "Membership pending"
+msgstr "Членство ожидается"
+
+#: scheduler/templates/helpdesk_single.html:358
+msgid "Membership rejected"
+msgstr "Членство отклонено"
+
+#: scheduler/templates/helpdesk_single.html:365
+msgid "Become member"
+msgstr "Стать участником"
+
+#: scheduler/templates/shift_cancellation_notification.html:1
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to cancel the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr "\nЗдравствуйте,\n\nприносим свои извинения, но по просьбе организатора нам пришлось отменить следующую смену:\n\n%(shift_title)s, %(location)s\n%(from_date)sот %(from_time)sдо %(to_time)s часов\n\nЭто автоматически сгенерированное электронное письмо. Если у вас есть какие-либо вопросы, пожалуйста, свяжитесь с учреждением напрямую.\n\nС уважением,\n\nкоманда волонтеров-planner.org\n"
+
+#: scheduler/templates/shift_details.html:108
+msgid "Members only"
+msgstr "Только для участников"
+
+#: scheduler/templates/shift_modification_notification.html:1
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to change the times of the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s from %(old_from_time)s to %(old_to_time)s o'clock\n"
+"\n"
+"The new shift times are:\n"
+"\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"If you can not help at the new times any longer, please cancel your attendance at volunteer-planner.org.\n"
+"\n"
+"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr "\nЗдравствуйте,\n\nприносим свои извинения, но по просьбе организатора нам пришлось изменить время следующей смены:\n\n%(shift_title)s, %(location)s\n%(old_from_date)sот %(old_from_time)s до %(old_to_time)s часов\n\nНовое время смены:\n\n%(from_date)s от %(from_time)s до %(to_time)s часов\n\nЕсли вы больше не можете помогать в новые времена, пожалуйста, отмените свое участие на сайте волонтер-планнер.орг.\n\nЭто автоматически сгенерированное электронное письмо. Если у вас есть какие-либо вопросы, пожалуйста, свяжитесь с учреждением напрямую.\n\nС уважением,\n\nкоманда волонтеров-planner.org\n"
+
+#: scheduler/views.py:169
+msgid "The submitted data was invalid."
+msgstr "Представленные данные недействительны."
+
+#: scheduler/views.py:177
+msgid "User account does not exist."
+msgstr "Аккаунт не существует."
+
+#: scheduler/views.py:201
+msgid "A membership request has been sent."
+msgstr "Заявка на участие отправлена."
+
+#: scheduler/views.py:211
+msgid ""
+"We can't add you to this shift because you've already agreed to other shifts"
+" at the same time:"
+msgstr "Мы не можем добавить вас в эту смену, потому что вы уже согласились на другие смены одновременно:"
+
+#: scheduler/views.py:220
+msgid "We can't add you to this shift because there are no more slots left."
+msgstr "Мы не можем добавить вас в эту смену, так как свободных мест больше нет."
+
+#: scheduler/views.py:227
+msgid "You were successfully added to this shift."
+msgstr "Вы были успешно добавлены в эту смену."
+
+#: scheduler/views.py:230
+#, python-brace-format
+msgid "You already signed up for this shift at {date_time}."
+msgstr "Вы уже записались на эту смену в {date_time}."
+
+#: scheduler/views.py:242
+msgid "You successfully left this shift."
+msgstr "Вы успешно покинули эту смену."
+
+#: scheduletemplates/admin.py:176
+#, python-brace-format
+msgid "A shift already exists at {date}"
+msgid_plural "{num_shifts} shifts already exists at {date}"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: scheduletemplates/admin.py:232
+#, python-brace-format
+msgid "{num_shifts} shift was added to {date}"
+msgid_plural "{num_shifts} shifts were added to {date}"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: scheduletemplates/admin.py:244
+msgid "Something didn't work. Sorry about that."
+msgstr "Что-то не сработало. Извини за это."
+
+#: scheduletemplates/admin.py:277
+msgid "slots"
+msgstr "временные интервалы"
+
+#: scheduletemplates/admin.py:289
+msgid "from"
+msgstr "от"
+
+#: scheduletemplates/admin.py:302
+msgid "to"
+msgstr "до"
+
+#: scheduletemplates/models.py:21
+msgid "schedule templates"
+msgstr "шаблоны графиков"
+
+#: scheduletemplates/models.py:22 scheduletemplates/models.py:30
+msgid "schedule template"
+msgstr "шаблон графика"
+
+#: scheduletemplates/models.py:50
+msgid "days"
+msgstr "дни"
+
+#: scheduletemplates/models.py:62
+msgid "shift templates"
+msgstr "шаблоны смены"
+
+#: scheduletemplates/models.py:63
+msgid "shift template"
+msgstr "шаблон смены"
+
+#: scheduletemplates/models.py:97
+#, python-brace-format
+msgid "{task_name} - {workplace_name}"
+msgstr "{task_name} - {workplace_name}"
+
+#: scheduletemplates/models.py:101
+#, python-brace-format
+msgid "{task_name}"
+msgstr "{task_name}"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:32
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
+msgid "Home"
+msgstr "Домашняя страница"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:40
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:46
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
+msgid "Apply Template"
+msgstr "Применить шаблон"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
+msgid "no workplace"
+msgstr "нет рабочего места"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
+msgid "apply"
+msgstr "Применить"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:61
+msgid "Select a date"
+msgstr "Выберите дату"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:66
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:125
+msgid "Continue"
+msgstr "Продолжать"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:70
+msgid "Select shift templates"
+msgstr "Выберите шаблоны смен"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
+msgid "Please review and confirm shifts to create"
+msgstr "Пожалуйста, проверьте и подтвердите смены, которые вы хотите создать"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:118
+msgid "Apply"
+msgstr "Применить"
+
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:120
+msgid "Apply and select new date"
+msgstr "Применить и выбрать новую дату"
+
+#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
+msgid "Save and apply template"
+msgstr "Сохранить и применить шаблон"
+
+#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:4
+msgid "Delete"
+msgstr "Удалить"
+
+#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:5
+msgid "Save as new"
+msgstr "Сохранить как новый"
+
+#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:6
+msgid "Save and add another"
+msgstr "Сохранить и добавить еще"
+
+#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:7
+msgid "Save and continue editing"
+msgstr "Сохранить и продолжить редактирование"
+
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:17
+msgid "Delete?"
+msgstr "Удалить?"
+
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
+msgid "Change"
+msgstr "Изменить"
+
+#: shiftmailer/models.py:10
+msgid "last name"
+msgstr "Фамилия"
+
+#: shiftmailer/models.py:11
+msgid "position"
+msgstr "должность"
+
+#: shiftmailer/models.py:12
+msgid "organisation"
+msgstr "организация"
+
+#: shiftmailer/templates/shifts_today.html:1
+#, python-format
+msgctxt "shift today title"
+msgid "Schedule for %(organization_name)s on %(date)s"
+msgstr "Расписание для %(organization_name)s на %(date)s"
+
+#: shiftmailer/templates/shifts_today.html:6
+msgid "All data is private and not supposed to be given away!"
+msgstr "Все данные конфиденциальны и не должны разглашаться!"
+
+#: shiftmailer/templates/shifts_today.html:15
+#, python-format
+msgid ""
+"from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers"
+" have signed up:"
+msgstr "от %(start_time)s до %(end_time)s, записались%(volunteer_count)s добровольцев"
+
+#: templates/partials/footer.html:17
+#, python-format
+msgid "Questions? Get in touch: %(mailto_link)s"
+msgstr "Вопросы? Свяжитесь с нами: %(mailto_link)s"
+
+#: templates/partials/management_tools.html:13
+msgid "Manage"
+msgstr "Управлять"
+
+#: templates/partials/management_tools.html:28
+msgid "Members"
+msgstr "Участники"
+
+#: templates/partials/navigation_bar.html:11
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: templates/partials/navigation_bar.html:46
+msgid "Account"
+msgstr "Аккаунт"
+
+#: templates/partials/navigation_bar.html:51
+msgid "My work shifts"
+msgstr "Мои рабочие смены"
+
+#: templates/partials/navigation_bar.html:56
+msgid "Help"
+msgstr "Помощь"
+
+#: templates/partials/navigation_bar.html:59
+msgid "Logout"
+msgstr "Выйти"
+
+#: templates/partials/navigation_bar.html:63
+msgid "Admin"
+msgstr "Администратор"
+
+#: templates/partials/region_selection.html:18
+msgid "Regions"
+msgstr "Регионы"
+
+#: templates/registration/activate.html:5
+msgid "Activation complete"
+msgstr "Активация завершена"
+
+#: templates/registration/activate.html:7
+msgid "Activation problem"
+msgstr "Проблема с активацией"
+
+#: templates/registration/activate.html:15
+msgctxt ""
+"login link title in registration confirmation success text 'You may now "
+"%(login_link)s'"
+msgid "login"
+msgstr "вход"
+
+#: templates/registration/activate.html:17
+#, python-format
+msgid ""
+"Thanks %(account)s, activation complete! You may now %(login_link)s using "
+"the username and password you set at registration."
+msgstr "Спасибо %(account)s, активация завершена! Теперь вы можете использовать имя пользователя и пароль %(login_link)s, указанные при регистрации."
+
+#: templates/registration/activate.html:25
+msgid ""
+"Oops &ndash; Either you activated your account already, or the activation "
+"key is invalid or has expired."
+msgstr "К сожалению, либо вы уже активировали свою учетную запись, либо ключ активации недействителен или срок его действия истек."
+
+#: templates/registration/activation_complete.html:3
+msgid "Activation successful!"
+msgstr "Активация прошла успешно!"
+
+#: templates/registration/activation_complete.html:9
+msgctxt "Activation successful page"
+msgid "Thank you for signing up."
+msgstr "Спасибо за регистрацию."
+
+#: templates/registration/activation_complete.html:12
+msgctxt "Login link text on activation success page"
+msgid "You can login here."
+msgstr "Вы можете войти здесь."
+
+#: templates/registration/activation_email.html:2
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+#: templates/registration/activation_email.txt:2
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr "\nЗдравствуйте %(user)s,\n\nспасибо большое, что хотите помочь! Еще один шаг, и вы будете готовы начать волонтерскую деятельность!\n\nПожалуйста, нажмите на следующую ссылку, чтобы завершить регистрацию на сайте волонтера-planner.org:\n\nhttp://%(site_domain)s%(activation_key_url)s\n\nСрок действия этой ссылки истекает через %(expiration_days)s дней.\n\nС уважением,\n\nкоманда volunteer-planner.org\n"
+
+#: templates/registration/activation_email_subject.txt:1
+msgid "Your volunteer-planner.org registration"
+msgstr "Ваша регистрация на сайте volunteer-planner.org"
+
+#: templates/registration/login.html:15
+msgid "Your username and password didn't match. Please try again."
+msgstr "Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз."
+
+#: templates/registration/login.html:26
+#: templates/registration/registration_form.html:44
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/registration/login.html:36
+#: templates/registration/password_reset_form.html:6
+msgid "Forgot your password?"
+msgstr "Забыли Ваш пароль?"
+
+#: templates/registration/login.html:40
+msgid "Help and sign-up"
+msgstr "Помощь и регистрация"
+
+#: templates/registration/password_change_done.html:3
+msgid "Password changed"
+msgstr "пароль изменен"
+
+#: templates/registration/password_change_done.html:7
+msgid "Password successfully changed!"
+msgstr "Пароль успешно изменен!"
+
+#: templates/registration/password_change_form.html:3
+#: templates/registration/password_change_form.html:6
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: templates/registration/password_change_form.html:11
+#: templates/registration/password_change_form.html:13
+#: templates/registration/password_reset_form.html:12
+#: templates/registration/password_reset_form.html:14
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: templates/registration/password_change_form.html:15
+#: templates/registration/password_reset_confirm.html:13
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: templates/registration/password_reset_complete.html:3
+msgid "Password reset complete"
+msgstr "Сброс пароля завершен"
+
+#: templates/registration/password_reset_complete.html:8
+msgctxt "login link title reset password complete page"
+msgid "log in"
+msgstr "вход"
+
+#: templates/registration/password_reset_complete.html:10
+#, python-format
+msgctxt "reset password complete page"
+msgid "Your password has been reset! You may now %(login_link)s again."
+msgstr "Ваш пароль был сброшен! Теперь вы можете %(login_link)s снова."
+
+#: templates/registration/password_reset_confirm.html:3
+msgid "Enter new password"
+msgstr "Введите новый пароль"
+
+#: templates/registration/password_reset_confirm.html:6
+msgid "Enter your new password below to reset your password"
+msgstr "Введите новый пароль ниже, чтобы сбросить пароль"
+
+#: templates/registration/password_reset_done.html:3
+msgid "Password reset"
+msgstr "Сброс пароля"
+
+#: templates/registration/password_reset_done.html:6
+msgid "We sent you an email with a link to reset your password."
+msgstr "Мы отправили вам электронное письмо со ссылкой для сброса пароля."
+
+#: templates/registration/password_reset_done.html:7
+msgid "Please check your email and click the link to continue."
+msgstr "Пожалуйста, проверьте свою электронную почту и нажмите на ссылку, чтобы продолжить."
+
+#: templates/registration/password_reset_email.html:3
+#, python-format
+msgid ""
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site.  If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+"\n"
+"To reset your password, please click the following link, or copy and paste it\n"
+"into your web browser:"
+msgstr "Вы получили это письмо, потому что вы (или кто-то, кто выдает себя за вас)\nзапросил сброс пароля на сайте %(domain)s. Если вы не\nхотите сбросить пароль, проигнорируйте это сообщение.\n\nЧтобы сбросить пароль, перейдите по следующей ссылке или скопируйте и вставьте ее.\nв ваш веб-браузер:"
+
+#: templates/registration/password_reset_email.html:12
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+"\n"
+"Best regards,\n"
+"%(site_name)s Management\n"
+msgstr "\nВаше имя пользователя, если вы забыли: %(username)s\n\nС наилучшими пожеланиями,\n%(site_name)s Менеджмент\n"
+
+#: templates/registration/password_reset_form.html:3
+#: templates/registration/password_reset_form.html:16
+msgid "Reset password"
+msgstr "Сброс пароля"
+
+#: templates/registration/password_reset_form.html:7
+msgid "No Problem! We'll send you instructions on how to reset your password."
+msgstr "Нет проблем! Мы вышлем вам инструкции по сбросу пароля."
+
+#: templates/registration/registration_complete.html:3
+msgid "Activation email sent"
+msgstr "Электронное письмо с активацией отправлено"
+
+#: templates/registration/registration_complete.html:7
+#: tests/registration/test_registration.py:145
+msgid "An activation mail will be sent to you email address."
+msgstr "На ваш адрес электронной почты будет отправлено письмо с активацией."
+
+#: templates/registration/registration_complete.html:13
+msgid ""
+"Please confirm registration with the link in the email. If you haven't "
+"received it in 10 minutes, look for it in your spam folder."
+msgstr "Пожалуйста, подтвердите регистрацию по ссылке в письме. Если вы не получили его в течение 10 минут, поищите его в папке со спамом."
+
+#: templates/registration/registration_form.html:3
+msgid "Register for an account"
+msgstr "Зарегистрируйте аккаунт"
+
+#: templates/registration/registration_form.html:5
+msgid ""
+"You can create a new user account here. If you already have a user account "
+"click on LOGIN in the upper right corner."
+msgstr "Здесь вы можете создать новую учетную запись пользователя. Если у вас уже есть учетная запись пользователя, нажмите ВХОД в правом верхнем углу."
+
+#: templates/registration/registration_form.html:10
+msgid "Create a new account"
+msgstr "Создать новый аккаунт"
+
+#: templates/registration/registration_form.html:26
+msgid ""
+"Volunteer-Planner and shelters will send you emails concerning your shifts."
+msgstr "Volunteer-Planner и приюты будут отправлять вам электронные письма о ваших сменах."
+
+#: templates/registration/registration_form.html:31
+msgid "Username already exists. Please choose a different username."
+msgstr "Имя пользователя уже занято. Выберите другое имя пользователя."
+
+#: templates/registration/registration_form.html:38
+msgid ""
+"Your username will be visible to other users. Don't use spaces or special "
+"characters."
+msgstr "Ваше имя пользователя будет видно другим пользователям. Не используйте пробелы или специальные символы."
+
+#: templates/registration/registration_form.html:51
+#: tests/registration/test_registration.py:131
+msgid "The two password fields didn't match."
+msgstr "Два поля пароля не совпадают."
+
+#: templates/registration/registration_form.html:54
+msgid "Repeat password"
+msgstr "Повторите пароль"
+
+#: templates/registration/registration_form.html:60
+msgid "Sign-up"
+msgstr "Регистрация"
+
+#: tests/registration/test_registration.py:43
+msgid "This field is required."
+msgstr "Это поле обязательно к заполнению."
+
+#: tests/registration/test_registration.py:82
+msgid ""
+"Enter a valid username. This value may contain only letters, numbers and "
+"@/./+/-/_ characters."
+msgstr "Введите действительное имя пользователя. Это значение может содержать только буквы, цифры и символы @/./+/-/_."
+
+#: tests/registration/test_registration.py:110
+msgid "A user with that username already exists."
+msgstr "Пользователь с таким именем уже существует."
+
+#: volunteer_planner/settings/base.py:146
+msgid "English"
+msgstr "Английский"
+
+#: volunteer_planner/settings/base.py:147
+msgid "German"
+msgstr "Немецкий"
+
+#: volunteer_planner/settings/base.py:148
+msgid "Greek"
+msgstr "Греческий"
+
+#: volunteer_planner/settings/base.py:149
+msgid "Hungarian"
+msgstr "Венгерский"
+
+#: volunteer_planner/settings/base.py:150
+msgid "Swedish"
+msgstr "Шведский"
