@@ -39,7 +39,7 @@ jedi==0.18.1
 matplotlib-inline==0.1.3
 more-itertools==8.12.0
 outcome==1.1.0
-packaging==21.3
+packaging>=20.0
 parse==1.19.0
 parse-type==0.6.0
 parso==0.8.3
