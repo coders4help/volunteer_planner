@@ -70,7 +70,7 @@ requests==2.27.1
 rjsmin==1.2.0
 selenium==4.1.2
 simplegeneric==0.8.1
-six==1.16.0
+six>=1.15.0
 smmap==5.0.0
 sniffio==1.2.0
 sortedcontainers==2.4.0
