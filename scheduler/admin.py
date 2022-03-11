@@ -17,7 +17,6 @@ from organizations.admin import (
 class ShiftAdminForm(forms.ModelForm):
     class Meta:
         model = models.Shift
-        fields = '__all__'
         fields = ['facility', 'slots', 'task', 'workplace', 'starting_time', 'ending_time', 'members_only']
 
     def clean(self):
