@@ -96,6 +96,7 @@ def filter_queryset_by_membership(qs, user,
 
 class MembershipFilteredAdmin(admin.ModelAdmin):
     facility_filter_fk = 'facility'
+    organization_filter_fk = 'organization'
     widgets = None
 
     def get_readonly_fields(self, request, obj=None):
@@ -154,8 +155,13 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         qs = super(MembershipFilteredAdmin, self).get_queryset(request)
+        fac_filter = self.facility_filter_fk
+        org_filter = None
+        if qs.model.__name__.startswith('Organization'):
+            fac_filter = None
+            org_filter = self.organization_filter_fk
         return filter_queryset_by_membership(
-            qs, user=request.user, facility_filter_fk=self.facility_filter_fk)
+            qs, user=request.user, facility_filter_fk=fac_filter, organization_filter_fk=org_filter)
 
     def get_field_queryset(self, db, db_field, request):
         qs = super(MembershipFilteredAdmin, self).get_field_queryset(
