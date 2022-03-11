@@ -1,5 +1,5 @@
 #FROM python:3.6-alpine3.7
-FROM alpine:3.10
+FROM alpine:3.14
 ARG vpbasedir=/opt/vp/
 ARG DJANGO_SETTINGS_MODULE=volunteer_planner.settings.production
 ARG SECRET_KEY=local
