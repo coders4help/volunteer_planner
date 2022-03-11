@@ -35,6 +35,7 @@ RUN apk update && \
         jpeg \
         jq \
         postgresql \
+        py3-pip \
         uwsgi \
         uwsgi-cache \
         uwsgi-http \
