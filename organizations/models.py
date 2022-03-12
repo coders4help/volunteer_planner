@@ -217,7 +217,7 @@ class Facility(models.Model):
         return Shift.open_shifts.filter(facility=self)
 
     def __unicode__(self):
-        return _(u"{name}").format(name=self.name)
+        return u"{name}".format(name=self.name)
 
     def __str__(self):
         return self.__unicode__()
