@@ -10,12 +10,19 @@ CHANGE = "change"
 DELETE = "delete"
 VIEW = "view"
 
+FACILITY_MANAGER_PERMISSIONS = (
+    ("organizations", "Facility", (CHANGE, VIEW)),
+    ("organizations", "FacilityMembership", (ADD, CHANGE, DELETE, VIEW)),
+)
+
+ORGANIZATION_MANAGER_PERMISSIONS = FACILITY_MANAGER_PERMISSIONS + (
+    ("organizations", "Organization", (CHANGE, VIEW)),
+    ("organizations", "OrganizationMembership", (ADD, CHANGE, DELETE, VIEW)),
+)
+
 MANAGER_GROUPS = {
-    FACILITY_MANAGER_GROUPNAME: (),
-    ORGANIZATION_MANAGER_GROUPNAME: (
-        ("organizations", "Organization", (ADD, CHANGE, DELETE, VIEW)),
-        ("organizations", "OrganizationMembership", (ADD, CHANGE, DELETE, VIEW)),
-    ),
+    FACILITY_MANAGER_GROUPNAME: FACILITY_MANAGER_PERMISSIONS,
+    ORGANIZATION_MANAGER_GROUPNAME: ORGANIZATION_MANAGER_PERMISSIONS,
 }
 
 
@@ -50,7 +57,6 @@ def backwards(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("auth", "0011_update_proxy_permissions"),
         ("organizations", "0012_cascade_deletion"),
