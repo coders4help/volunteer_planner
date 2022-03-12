@@ -1,10 +1,17 @@
+import logging
+
 from django.contrib.auth.models import Group
 from django.db import transaction
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
+from django.utils.translation import gettext_lazy as _
+
 from .models import Membership, FacilityMembership, OrganizationMembership
 from .settings import ORGANIZATION_MANAGER_GROUPNAME, FACILITY_MANAGER_GROUPNAME
+
+logger = logging.getLogger(__name__)
+
 
 class MembershipGroupUpdateException(Exception):
     pass
@@ -21,7 +28,22 @@ def update_group_for_user(user_account, membership_set, group_name):
     :return:
     """
     user = user_account.user
-    group = Group.objects.get(name=group_name)
+    try:
+        group = Group.objects.get(name=group_name)
+    except Group.DoesNotExist:
+        logger.error(
+            _(
+                f"User '{user}' manager status of a facility/organization was changed. "
+                f"We tried to automatically update facility/organization manager "
+                f"group '{group_name}' for them, but no such group exists. "
+                f"In order to auto-assign permission groups to de-/resignated facility managers or organization "
+                f"managers, please make sure, to configure the permission group names in your VP installation settings "
+                f'module ORGANIZATION_MANAGER_GROUPNAME (default: "{ORGANIZATION_MANAGER_GROUPNAME}") and '
+                f'FACILITY_MANAGER_GROUPNAME (default: "{FACILITY_MANAGER_GROUPNAME}") exactly as they are '
+                f"named in the database."
+            )
+        )
+        return
 
     if membership_set.filter(role__lt=Membership.Roles.MEMBER).exists():
         user.groups.add(group)
