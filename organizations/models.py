@@ -109,7 +109,7 @@ class Organization(models.Model):
         ordering = ('name',)
 
     def __unicode__(self):
-        return _(u"{name}").format(name=self.name)
+        return u"{name}".format(name=self.name)
 
     def __str__(self):
         return self.__unicode__()
@@ -314,7 +314,7 @@ class Workplace(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{name}").format(name=self.name)
+        return u"{name}".format(name=self.name)
 
     def __str__(self):
         return self.__unicode__()
@@ -343,7 +343,7 @@ class Task(models.Model):
         ordering = ('facility', 'name',)
 
     def __unicode__(self):
-        return _(u"{name}").format(name=self.name)
+        return u"{name}".format(name=self.name)
 
     def __str__(self):
         return self.__unicode__()
