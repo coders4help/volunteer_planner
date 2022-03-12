@@ -114,6 +114,8 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
                 if len(user_orgs) <= 1 and hasattr(obj, 'organization') \
                         and 'organization' not in readonly:
                     readonly += ('organization',)
+        if obj and hasattr(obj, "user_account"):
+            readonly += ('user_account',)
         return readonly
 
     def get_list_display(self, request):
