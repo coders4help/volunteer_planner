@@ -84,6 +84,7 @@ class ShiftAdmin(MembershipFilteredAdmin):
         'facility',
         'starting_time',
         'ending_time',
+        'members_only',
         'slots',
         'get_volunteer_count',
         'get_volunteer_names'
