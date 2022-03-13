@@ -52,7 +52,7 @@ RUN chmod 0755 /django-entrypoint.sh
 
 USER ${user}
 ADD --chown=1000:1000 ./ ${vpbasedir}
-RUN python3 manage.py compilemessages --use-fuzzy --no-color --traceback --verbosity 0 --ignore /usr/lib/python3.9 && \
+RUN python3 manage.py compilemessages --use-fuzzy --no-color --traceback && \
     echo "Translations compiled" && \
     python3 manage.py collectstatic --clear --no-input --traceback --verbosity 0 && \
     echo "Static files collected"
