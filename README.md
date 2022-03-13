@@ -13,7 +13,7 @@ There are some feature requests to be implemented in the future.
 The software currently needs a centralized administration of the shifts, but it is one of the main goals of the current
 development to empower organizations to schedule shifts for their facilities on their own.
 
-If you are interested to join, contact the development team via pull request or create a feature or fix pull request directly.
+If you are interested to contribute, join the [developer Slack channel](https://join.slack.com/t/coders4help/shared_invite/zt-1520v8cef-DytzxhO~ubmTrX0CdVcpxQ) or create a feature or fix pull request directly.
 
 ## System context
 **User**: The volunteers and administrators just need a (modern) web browser to use the volunteer-planner application.
