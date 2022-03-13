@@ -173,3 +173,7 @@ DATE_FORMAT = "l, d.m.Y"
 INCLUDE_REGISTER_URL = True
 INCLUDE_AUTH_URLS = True
 REGISTRATION_FORM = "registration.forms.RegistrationFormUniqueEmail"
+
+FACILITY_MANAGER_GROUPNAME = "Facility Manager"
+ORGANIZATION_MANAGER_GROUPNAME = "Organization Manager"
+
