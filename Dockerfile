@@ -34,6 +34,7 @@ RUN apk update && \
         gettext-lang \
         jpeg \
         jq \
+        git \
         postgresql \
         libffi-dev \
         py3-pip \
