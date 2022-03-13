@@ -17,4 +17,4 @@ db.sqlite3
 .env
 .ash_history
 .python_history
-venv
+.venv

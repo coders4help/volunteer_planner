@@ -9,21 +9,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-06 20:47+0100\n"
+"POT-Creation-Date: 2022-03-12 12:19+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/coders4help/volunteer-planner/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/coders4help/volunteer-planner/"
+"language/el/)\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:15 accounts/admin.py:21 shiftmailer/models.py:9
+#: accounts/admin.py:16 accounts/admin.py:22 shiftmailer/models.py:9
 msgid "first name"
 msgstr "Όνομα"
 
-#: accounts/admin.py:27 shiftmailer/models.py:13
+#: accounts/admin.py:28 shiftmailer/models.py:13
 msgid "email"
 msgstr "Ηλεκτρονική διεύθυνση αλληλογραφίας (email)"
 
@@ -31,11 +32,11 @@ msgstr "Ηλεκτρονική διεύθυνση αλληλογραφίας (em
 msgid "Accounts"
 msgstr "Λογαριασμοί"
 
-#: accounts/models.py:16 organizations/models.py:59
+#: accounts/models.py:17 organizations/models.py:60
 msgid "user account"
 msgstr "Λογαριασμός Χρήστη"
 
-#: accounts/models.py:17
+#: accounts/models.py:18
 msgid "user accounts"
 msgstr "Λογαριασμοί Χρηστών"
 
@@ -118,11 +119,15 @@ msgid "Email"
 msgstr "Email"
 
 #: accounts/templates/user_account_delete.html:15
-msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
+msgid ""
+"If you delete your account, this information will be anonymized, and its not "
+"possible for you to log into Volunteer-Planner anymore."
 msgstr ""
 
 #: accounts/templates/user_account_delete.html:16
-msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
+msgid ""
+"Its not possible to recover this information. If you want to work as "
+"volunteer again, you will have to create a new account."
 msgstr ""
 
 #: accounts/templates/user_account_delete.html:18
@@ -146,7 +151,7 @@ msgstr ""
 msgid "Your user account has been deleted."
 msgstr ""
 
-#: content/admin.py:15 content/admin.py:16 content/models.py:15
+#: content/admin.py:15 content/admin.py:16 content/models.py:16
 msgid "additional CSS"
 msgstr "επιπλέον CSS"
 
@@ -162,39 +167,39 @@ msgstr "μεταφράσεις"
 msgid "No translation available"
 msgstr "Δεν υπάρχει διαθέσιμη μετάφραση"
 
-#: content/models.py:12
+#: content/models.py:13
 msgid "additional style"
 msgstr "επιπλέον στυλ"
 
-#: content/models.py:18
+#: content/models.py:19
 msgid "additional flat page style"
 msgstr "επιπλέον στυλ επίπεδης σελίδας"
 
-#: content/models.py:19
+#: content/models.py:20
 msgid "additional flat page styles"
 msgstr "επιπλέον στυλ επίπεδων σελίδων"
 
-#: content/models.py:25
+#: content/models.py:27
 msgid "flat page"
 msgstr "επίπεδη σελίδα"
 
-#: content/models.py:28
+#: content/models.py:30
 msgid "language"
 msgstr "γλώσσα"
 
-#: content/models.py:32 news/models.py:14
+#: content/models.py:34 news/models.py:14
 msgid "title"
 msgstr "Τίτλος"
 
-#: content/models.py:36
+#: content/models.py:38
 msgid "content"
 msgstr "περιεχόμενο"
 
-#: content/models.py:46
+#: content/models.py:48
 msgid "flat page translation"
 msgstr "μετάφραση επίπεδης σελίδας"
 
-#: content/models.py:47
+#: content/models.py:49
 msgid "flat page translations"
 msgstr "μεταφράσεις επίπεδων σελίδων"
 
@@ -231,11 +236,11 @@ msgstr "Κείμενο του άρθρου"
 msgid "creation date"
 msgstr "Δημιουργήθηκε την"
 
-#: news/models.py:39
+#: news/models.py:41
 msgid "news entry"
 msgstr "εισαγωγή νέων"
 
-#: news/models.py:40
+#: news/models.py:42
 msgid "news entries"
 msgstr "εισαγωγές νέων"
 
@@ -256,7 +261,8 @@ msgid "Server Error <em>(500)</em>"
 msgstr ""
 
 #: non_logged_in_area/templates/500.html:10
-msgid "There's been an error. I should be fixed shortly. Thanks for your patience."
+msgid ""
+"There's been an error. I should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: non_logged_in_area/templates/base_non_logged_in.html:57
@@ -336,12 +342,25 @@ msgid "What is it all about?"
 msgstr "Περί τίνος πρόκειται;"
 
 #: non_logged_in_area/templates/home.html:77
-msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
-msgstr "Είσαι εθελοντής και θέλεις να βοηθήσεις πρόσφυγες; Το Volunteer-Planner.org σου δείχνει πού, πότε και πώς να βοηθήσεις."
+msgid ""
+"You are a volunteer and want to help refugees? Volunteer-Planner.org shows "
+"you where, when and how to help directly in the field."
+msgstr ""
+"Είσαι εθελοντής και θέλεις να βοηθήσεις πρόσφυγες; Το Volunteer-Planner.org "
+"σου δείχνει πού, πότε και πώς να βοηθήσεις."
 
 #: non_logged_in_area/templates/home.html:85
-msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
-msgstr "Αυτή η πλατφόρμα είναι μη εμπορική και χωρίς διαφημίσεις. Μια ομάδα από εργαζόμενους σε χώρους φιλοξενίας, προγραμματιστές, διαχειριστές έργου και σχεδιαστές από διαφορετικές χώρες δουλεύουν για το volunteer-planner εθελοντικά και χρησιμοποιούν την επαγγελματική τους εμπειρία για να μπορέσουν να κάνουν τη διαφορά."
+msgid ""
+"<p>This platform is non-commercial and ads-free. An international team of "
+"field workers, programmers, project managers and designers are volunteering "
+"for this project and bring in their professional experience to make a "
+"difference.</p>"
+msgstr ""
+"Αυτή η πλατφόρμα είναι μη εμπορική και χωρίς διαφημίσεις. Μια ομάδα από "
+"εργαζόμενους σε χώρους φιλοξενίας, προγραμματιστές, διαχειριστές έργου και "
+"σχεδιαστές από διαφορετικές χώρες δουλεύουν για το volunteer-planner "
+"εθελοντικά και χρησιμοποιούν την επαγγελματική τους εμπειρία για να "
+"μπορέσουν να κάνουν τη διαφορά."
 
 #: non_logged_in_area/templates/home.html:98
 msgid "You can help at these locations:"
@@ -362,13 +381,26 @@ msgstr "εύρος"
 
 #: non_logged_in_area/templates/privacy_policy.html:16
 msgctxt "Privacy Policy Sec1 P1"
-msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
-msgstr "Η πολιτική προστασίας προσωπικών δεδομένων που έχουμε ενημερώνει το χρήστη για τη συλλογή και τη χρήση προσωπικών δεδομένων σε αυτή την ιστοσελίδα (στο εξής \"Υπηρεσία\") από τον πάροχο υπηρεσιών, την Benefit e.V. (Wollankstr. 2, 13187 Berlin) "
+msgid ""
+"This privacy policy informs the user of the collection and use of personal "
+"data on this website (herein after \"the service\") by the service provider, "
+"the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
+msgstr ""
+"Η πολιτική προστασίας προσωπικών δεδομένων που έχουμε ενημερώνει το χρήστη "
+"για τη συλλογή και τη χρήση προσωπικών δεδομένων σε αυτή την ιστοσελίδα (στο "
+"εξής \"Υπηρεσία\") από τον πάροχο υπηρεσιών, την Benefit e.V. (Wollankstr. "
+"2, 13187 Berlin) "
 
 #: non_logged_in_area/templates/privacy_policy.html:21
 msgctxt "Privacy Policy Sec1 P2"
-msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
-msgstr "Η νομική βάση της πολιτικής προστασίας προσωπικών δεδομένων είναι η Γερμανικός Νόμος Προστασίας Δεδομένων (Bundesdatenschutzgesetz, BDSG) και ο γερμανικός νόμος τηλεδεδομένων (Telemediengesetz, TMG)"
+msgid ""
+"The legal basis for the privacy policy are the German Data Protection Act "
+"(Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act "
+"(Telemediengesetz, TMG)."
+msgstr ""
+"Η νομική βάση της πολιτικής προστασίας προσωπικών δεδομένων είναι η "
+"Γερμανικός Νόμος Προστασίας Δεδομένων (Bundesdatenschutzgesetz, BDSG) και ο "
+"γερμανικός νόμος τηλεδεδομένων (Telemediengesetz, TMG)"
 
 #: non_logged_in_area/templates/privacy_policy.html:29
 msgctxt "Privacy Policy Sec2"
@@ -377,13 +409,39 @@ msgstr "Δεδομένα πρόσβασης/ αρχεία καταγραφής (
 
 #: non_logged_in_area/templates/privacy_policy.html:35
 msgctxt "Privacy Policy Sec2 P1"
-msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
-msgstr "Ο πάροχος υπηρεσιών (ή ο πάροχος αυτού του ιστοχώρου) συλλέγει δεδομένα σε κάθε πρόσβαση και αποθηκεύει αυτά τα δεδομένα σε αρχεία καταγραφής (log files). Δεδομένα πρόσβασης είναι το όνομα της ιστοσελίδας που επισκέπτεται ο χρήστης, τα αρχεία που ανήγει, η ημερομηνία και ώρα πρόσβασης, η μεταφορά αρχείων, ειδοποίηση επιτυχημένης πρόσβασης, το πρόγραμμα περιήγησης του χρήστη και η έκδοσή του, το λειτουργικό σύστημα του χρήστη,  η ηλεκτρονική διεύθυνση που χρησιμοποίησε ο χρήστης νωρίτερα, η διεύθυνση IP του χρήστη, και ο πάροχος υπηρεσιών Διαδικτύου του χρήστη."
+msgid ""
+"The service provider (or the provider of his webspace) collects data on "
+"every access to the service and stores this access data in so-called server "
+"log files. Access data includes the name of the website that is being "
+"visited, which files are being accessed, the date and time of access, "
+"transfered data, notification of successful access, the type and version "
+"number of the user's web browser, the user's operating system, the referrer "
+"URL (i.e., the website the user visited previously), the user's IP address, "
+"and the name of the user's Internet provider."
+msgstr ""
+"Ο πάροχος υπηρεσιών (ή ο πάροχος αυτού του ιστοχώρου) συλλέγει δεδομένα σε "
+"κάθε πρόσβαση και αποθηκεύει αυτά τα δεδομένα σε αρχεία καταγραφής (log "
+"files). Δεδομένα πρόσβασης είναι το όνομα της ιστοσελίδας που επισκέπτεται ο "
+"χρήστης, τα αρχεία που ανήγει, η ημερομηνία και ώρα πρόσβασης, η μεταφορά "
+"αρχείων, ειδοποίηση επιτυχημένης πρόσβασης, το πρόγραμμα περιήγησης του "
+"χρήστη και η έκδοσή του, το λειτουργικό σύστημα του χρήστη,  η ηλεκτρονική "
+"διεύθυνση που χρησιμοποίησε ο χρήστης νωρίτερα, η διεύθυνση IP του χρήστη, "
+"και ο πάροχος υπηρεσιών Διαδικτύου του χρήστη."
 
 #: non_logged_in_area/templates/privacy_policy.html:40
 msgctxt "Privacy Policy Sec2 P2"
-msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
-msgstr "Ο πάροχος υπηρεσιών χρησιμοποιεί τα αρχεία καταγραφής για στατιστικούς σκοπούς και για τη λειτουργία, την ασφάλεια και τη βελτίωση των υπηρεσιών που παρέχονται αποκλειστικά. Ωστόσο, ο πάροχος έχει το δικαίωμα να επαναξιολογήσει τα αρχεία καταγραφής οποιαδήποτε στιγμή εάν υπάρχουν ενδείξεις για παράνομη χρήση των υπηρεσιών. "
+msgid ""
+"The service provider uses the server log files for statistical purposes and "
+"for the operation, the security, and the enhancement of the provided service "
+"only. However, the service provider reserves the right to reassess the log "
+"files at any time if specific indications for an illegal use of the service "
+"exist."
+msgstr ""
+"Ο πάροχος υπηρεσιών χρησιμοποιεί τα αρχεία καταγραφής για στατιστικούς "
+"σκοπούς και για τη λειτουργία, την ασφάλεια και τη βελτίωση των υπηρεσιών "
+"που παρέχονται αποκλειστικά. Ωστόσο, ο πάροχος έχει το δικαίωμα να "
+"επαναξιολογήσει τα αρχεία καταγραφής οποιαδήποτε στιγμή εάν υπάρχουν "
+"ενδείξεις για παράνομη χρήση των υπηρεσιών. "
 
 #: non_logged_in_area/templates/privacy_policy.html:48
 msgctxt "Privacy Policy Sec3"
@@ -392,13 +450,30 @@ msgstr "Χρήση προσωπικών δεδομένων"
 
 #: non_logged_in_area/templates/privacy_policy.html:54
 msgctxt "Privacy Policy Sec3 P1"
-msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
-msgstr "Προσωπικά δεδομένα είναι οι πληροφορίες που μπορούν να χρησιμοποιηθούν για την αναγνώριση ενός ατόμου, δηλαδή πληροφορίες που μπορούν να οδηγήσουν στο συγκεκριμένο άτομο. Προσωπικά δεδομένα είναι το όνομα, η ηλεκτρονική διεύθυνση ή το τηλέφωνο του χρήστη. Ακόμα και πληροφορίες σχετικά με τις προσωπικές προτιμήσεις, δραστηριότητες ή επισκέψεις σε ιστοσελίδες θεωρούνται προσωπικά δεδομένα."
+msgid ""
+"Personal data is information which can be used to identify a person, i.e., "
+"all data that can be traced back to a specific person. Personal data "
+"includes the name, the e-mail address, or the telephone number of a user. "
+"Even data on personal preferences, hobbies, memberships, or visited websites "
+"counts as personal data."
+msgstr ""
+"Προσωπικά δεδομένα είναι οι πληροφορίες που μπορούν να χρησιμοποιηθούν για "
+"την αναγνώριση ενός ατόμου, δηλαδή πληροφορίες που μπορούν να οδηγήσουν στο "
+"συγκεκριμένο άτομο. Προσωπικά δεδομένα είναι το όνομα, η ηλεκτρονική "
+"διεύθυνση ή το τηλέφωνο του χρήστη. Ακόμα και πληροφορίες σχετικά με τις "
+"προσωπικές προτιμήσεις, δραστηριότητες ή επισκέψεις σε ιστοσελίδες "
+"θεωρούνται προσωπικά δεδομένα."
 
 #: non_logged_in_area/templates/privacy_policy.html:59
 msgctxt "Privacy Policy Sec3 P2"
-msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
-msgstr "Ο πάροχος υπηρεσιών συλλέγει, χρησιμοποιεί και μοιράζεται προσωπικά δεδομένα με τρίτους μόνο εάν επιτρέπεται βάσει νόμου ή εάν ο χρήστης έχει δώσει την άδειά του."
+msgid ""
+"The service provider collects, uses, and shares personal data with third "
+"parties only if he is permitted by law to do so or if the user has given his "
+"permission."
+msgstr ""
+"Ο πάροχος υπηρεσιών συλλέγει, χρησιμοποιεί και μοιράζεται προσωπικά δεδομένα "
+"με τρίτους μόνο εάν επιτρέπεται βάσει νόμου ή εάν ο χρήστης έχει δώσει την "
+"άδειά του."
 
 #: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
@@ -407,8 +482,15 @@ msgstr "Επικοινωνία"
 
 #: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
-msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
-msgstr "Σε περίπτωση επικοινωνίας με τον πάροχο υπηρεσιών (π.χ μέσω email ή χρησιμοποιώντας την ηλεκτρονική φόρμα επικοινωνίας), τα δεδομένα που λαμβάνονται από τον χρήστη αποθηκεύονται για την επεξεργασία του αιτήματος και για την απάντηση αιτημάτων που μπορεί να ακολουθήσουν."
+msgid ""
+"When contacting the service provider (e.g. via e-mail or using a web contact "
+"form), the data provided by the user is stored for processing the inquiry "
+"and for answering potential follow-up inquiries in the future."
+msgstr ""
+"Σε περίπτωση επικοινωνίας με τον πάροχο υπηρεσιών (π.χ μέσω email ή "
+"χρησιμοποιώντας την ηλεκτρονική φόρμα επικοινωνίας), τα δεδομένα που "
+"λαμβάνονται από τον χρήστη αποθηκεύονται για την επεξεργασία του αιτήματος "
+"και για την απάντηση αιτημάτων που μπορεί να ακολουθήσουν."
 
 #: non_logged_in_area/templates/privacy_policy.html:81
 msgctxt "Privacy Policy Sec5"
@@ -417,19 +499,48 @@ msgstr "Cookies"
 
 #: non_logged_in_area/templates/privacy_policy.html:87
 msgctxt "Privacy Policy Sec5 P1"
-msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
-msgstr "Τα Cookies είναι μικρά αρχεία που αποθηκεύονται στη συσκευή του χρήστη (υπολογιστή, smartphone κλπ) με πληροφορίες που αφορούν την συγκεκριμένη συσκευή. Χρησιμοποιούνται για διαφορετικούς σκοπούς: μπορουν να χρησιμοποιηθούν για τη διευκόλυνση του χρήστη (πχ αποθηκεύοντας την εντολή σύνδεσης ). Τα cookies μπορούν επίσης να χρησιμποιηθούν για τη συλλογή στατιστικών δεδομένων που επιτρέπουν στον πάροχο υπηρεσιών να αναλύσει τον τρόπο χρήσης της ιστοσελίδας από τον χρήστη, με σκοπό τη βελτίωση των υπηρεσιών."
+msgid ""
+"Cookies are small files that are being stored on the user's device (personal "
+"computer, smartphone, or the like) with information specific to that device. "
+"They can be used for various purposes: Cookies may be used to improve the "
+"user experience (e.g. by storing and, hence, \"remembering\" login "
+"credentials). Cookies may also be used to collect statistical data that "
+"allows the service provider to analyse the user's usage of the website, "
+"aiming to improve the service."
+msgstr ""
+"Τα Cookies είναι μικρά αρχεία που αποθηκεύονται στη συσκευή του χρήστη "
+"(υπολογιστή, smartphone κλπ) με πληροφορίες που αφορούν την συγκεκριμένη "
+"συσκευή. Χρησιμοποιούνται για διαφορετικούς σκοπούς: μπορουν να "
+"χρησιμοποιηθούν για τη διευκόλυνση του χρήστη (πχ αποθηκεύοντας την εντολή "
+"σύνδεσης ). Τα cookies μπορούν επίσης να χρησιμποιηθούν για τη συλλογή "
+"στατιστικών δεδομένων που επιτρέπουν στον πάροχο υπηρεσιών να αναλύσει τον "
+"τρόπο χρήσης της ιστοσελίδας από τον χρήστη, με σκοπό τη βελτίωση των "
+"υπηρεσιών."
 
 #: non_logged_in_area/templates/privacy_policy.html:92
 msgctxt "Privacy Policy Sec5 P2"
-msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
-msgstr "Ο χρήστης μπορεί να προσαρμόσει τη χρήση των cookies. Τα περισσότερα προγράμματα περιήγησης προσφέρουν στις ρυθμίσεις τους περιορισμούς ή ακόμα και την απαγόρευση αποθήκευσης cookies. Ωστόσο, ο πάροχος υπηρεσιών σημειώνει ότι τέτοιοι περιορισμοί ίσως να επηρεάσουν αρνητικά την εμπειρία του χρήστη και και τη λειτουργικότητα της ιστοσελίδας."
+msgid ""
+"The user can customize the use of cookies. Most web browsers offer settings "
+"to restrict or even completely prevent the storing of cookies. However, the "
+"service provider notes that such restrictions may have a negative impact on "
+"the user experience and the functionality of the website."
+msgstr ""
+"Ο χρήστης μπορεί να προσαρμόσει τη χρήση των cookies. Τα περισσότερα "
+"προγράμματα περιήγησης προσφέρουν στις ρυθμίσεις τους περιορισμούς ή ακόμα "
+"και την απαγόρευση αποθήκευσης cookies. Ωστόσο, ο πάροχος υπηρεσιών "
+"σημειώνει ότι τέτοιοι περιορισμοί ίσως να επηρεάσουν αρνητικά την εμπειρία "
+"του χρήστη και και τη λειτουργικότητα της ιστοσελίδας."
 
 #: non_logged_in_area/templates/privacy_policy.html:97
 #, python-format
 msgctxt "Privacy Policy Sec5 P3"
-msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
-msgstr "Ο χρήστης μπορεί να διαχειριστεί τη χρήση των cookies μέσω διαδικτύου από την αμερικανική ιστοσελίδα %(us_url)s ή την ευρωπαϊκή %(eu_url)s."
+msgid ""
+"The user can manage the use of cookies from many online advertisers by "
+"visiting either the US-american website %(us_url)s or the European website "
+"%(eu_url)s."
+msgstr ""
+"Ο χρήστης μπορεί να διαχειριστεί τη χρήση των cookies μέσω διαδικτύου από "
+"την αμερικανική ιστοσελίδα %(us_url)s ή την ευρωπαϊκή %(eu_url)s."
 
 #: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
@@ -438,13 +549,29 @@ msgstr "Εγγραφή"
 
 #: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
-msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
-msgstr "Τα δεδομένα που δίνει ο χρήστης κατά την εγγραφή επιτρέπουν τη χρήση των υπηρεσιών. Ο πάροχος των υπηρεσιών μπορεί να ενημερώσει τον χρήστη μέσω email σχετικά με πληροφορίες που αφορούν τις υπηρεσίες ή την εγγραφή, όπως για παράδειγμα αλλαγές των υπηρεσιών ή τεχνικές πληροφορίες (δες επόμενη παράγραφο)."
+msgid ""
+"The data provided by the user during registration allows for the usage of "
+"the service. The service provider may inform the user via e-mail about "
+"information relevant to the service or the registration, such as information "
+"on changes, which the service undergoes, or technical information (see also "
+"next section)."
+msgstr ""
+"Τα δεδομένα που δίνει ο χρήστης κατά την εγγραφή επιτρέπουν τη χρήση των "
+"υπηρεσιών. Ο πάροχος των υπηρεσιών μπορεί να ενημερώσει τον χρήστη μέσω "
+"email σχετικά με πληροφορίες που αφορούν τις υπηρεσίες ή την εγγραφή, όπως "
+"για παράδειγμα αλλαγές των υπηρεσιών ή τεχνικές πληροφορίες (δες επόμενη "
+"παράγραφο)."
 
 #: non_logged_in_area/templates/privacy_policy.html:116
 msgctxt "Privacy Policy Sec6 P2"
-msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
-msgstr "Η φόρμα εγγραφής και το προφίλ του χρήστη δείχνουν ποια δεδομένα συκγεντρώνονται και αποθηκεύονται. Σ'αυτά συμπεριλαμβάνονται το ονοματεπώνυμο του χρήστη και η ηλεκτρονική διεύθυνση αλληλογραφίας. "
+msgid ""
+"The registration and user profile forms show which data is being collected "
+"and stored. They include - but are not limited to - the user's first name, "
+"last name, and e-mail address."
+msgstr ""
+"Η φόρμα εγγραφής και το προφίλ του χρήστη δείχνουν ποια δεδομένα "
+"συκγεντρώνονται και αποθηκεύονται. Σ'αυτά συμπεριλαμβάνονται το "
+"ονοματεπώνυμο του χρήστη και η ηλεκτρονική διεύθυνση αλληλογραφίας. "
 
 #: non_logged_in_area/templates/privacy_policy.html:124
 msgctxt "Privacy Policy Sec7"
@@ -453,18 +580,33 @@ msgstr "Ειδοποιήσεις/ ενημερωτικά email- newsletters "
 
 #: non_logged_in_area/templates/privacy_policy.html:130
 msgctxt "Privacy Policy Sec7 P1"
-msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
-msgstr "Κατά τη δημιουργία λογαριασμού με την υπηρεσία ο χρήστης συμφωνεί να δέχεται ειδοποιήσεις μέσω email και ενημερωτικά email/ newsletters."
+msgid ""
+"When registering an account with the service, the user gives permission to "
+"receive e-mail notifications as well as newsletter e-mails."
+msgstr ""
+"Κατά τη δημιουργία λογαριασμού με την υπηρεσία ο χρήστης συμφωνεί να δέχεται "
+"ειδοποιήσεις μέσω email και ενημερωτικά email/ newsletters."
 
 #: non_logged_in_area/templates/privacy_policy.html:135
 msgctxt "Privacy Policy Sec7 P2"
-msgid "E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s)."
-msgstr "Ειδοποιήσεις μέσω email ενημερώνουν τον χρήστη για συγκεκριμένα events που αφορούν τη χρήση των υπηρεσιών. Με τα newsletters ο πάροχος υπηρεσιών στέλνει στο χρήστη γενικές πληροφορίες σχετικά με τον πάροχο και τις προτεινόμενες υπηρεσίες."
+msgid ""
+"E-mail notifications inform the user of certain events that relate to the "
+"user's use of the service. With the newsletter, the service provider sends "
+"the user general information about the provider and his offered service(s)."
+msgstr ""
+"Ειδοποιήσεις μέσω email ενημερώνουν τον χρήστη για συγκεκριμένα events που "
+"αφορούν τη χρήση των υπηρεσιών. Με τα newsletters ο πάροχος υπηρεσιών "
+"στέλνει στο χρήστη γενικές πληροφορίες σχετικά με τον πάροχο και τις "
+"προτεινόμενες υπηρεσίες."
 
 #: non_logged_in_area/templates/privacy_policy.html:140
 msgctxt "Privacy Policy Sec7 P3"
-msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
-msgstr "Εάν ο χρήστης δεν επιθυμεί να δέχεται emails, πρέπει να διαγράψει τον λογαριασμό του."
+msgid ""
+"If the user wishes to revoke his permission to receive e-mails, he needs to "
+"delete his user account."
+msgstr ""
+"Εάν ο χρήστης δεν επιθυμεί να δέχεται emails, πρέπει να διαγράψει τον "
+"λογαριασμό του."
 
 #: non_logged_in_area/templates/privacy_policy.html:148
 msgctxt "Privacy Policy Sec8"
@@ -473,24 +615,74 @@ msgstr "Google Analytics"
 
 #: non_logged_in_area/templates/privacy_policy.html:154
 msgctxt "Privacy Policy Sec8 P1"
-msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
-msgstr "Η ιστοσελίδα χρησιμοποιεί την υπηρεσία Google Analytics, (“Google”). Η υπηρεσία αυτή χρησιμοποιεί \"cookies\", τα οποία είναι αρχεία κειμένου που αποθηκεύονται στη συσκευή του χρήστη για να επιτέψουν στην ιστοσελίδα να αναλύσει τον τρόπο που  οι χρήστες την χρησιμοποιούν . Οι πληροφορίες που δημιουργούνται από τα cookies σχετικά με τη χρήση της ιστοσελίδας από τους χρήστες μεταδίδονται και αποθηκεύονται από την Google σε κεντρικούς υπολογιστές στις ΗΠΑ."
+msgid ""
+"This website uses Google Analytics, a web analytics service provided by "
+"Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text "
+"files placed on the user's device, to help the website analyze how users use "
+"the site. The information generated by the cookie about the user's use of "
+"the website will be transmitted to and stored by Google on servers in the "
+"United States."
+msgstr ""
+"Η ιστοσελίδα χρησιμοποιεί την υπηρεσία Google Analytics, (“Google”). Η "
+"υπηρεσία αυτή χρησιμοποιεί \"cookies\", τα οποία είναι αρχεία κειμένου που "
+"αποθηκεύονται στη συσκευή του χρήστη για να επιτέψουν στην ιστοσελίδα να "
+"αναλύσει τον τρόπο που  οι χρήστες την χρησιμοποιούν . Οι πληροφορίες που "
+"δημιουργούνται από τα cookies σχετικά με τη χρήση της ιστοσελίδας από τους "
+"χρήστες μεταδίδονται και αποθηκεύονται από την Google σε κεντρικούς "
+"υπολογιστές στις ΗΠΑ."
 
 #: non_logged_in_area/templates/privacy_policy.html:159
 msgctxt "Privacy Policy Sec8 P2"
-msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
-msgstr "Σε περίπτωση που ενεργοποιηθεί η ανωνυμοποίηση διευθύνσεων IP στην ιστοσελίδα, η διεύθυνση IP του χρήστη θα περικοπεί στην περιοχή ...........  Μόνο σε εξαιρετικές περιπτώσεις μεταφέρεται αρχικά ολόκληρη η διεύθυνση IP σε έναν server της Google στις ΗΠΑ και ... εκεί. Η IP- ανωνυμοποίηση είναι ενεργή σ'αυτήν την ιστοσελίδα."
+msgid ""
+"In case IP-anonymisation is activated on this website, the user's IP address "
+"will be truncated within the area of Member States of the European Union or "
+"other parties to the Agreement on the European Economic Area. Only in "
+"exceptional cases the whole IP address will be first transfered to a Google "
+"server in the USA and truncated there. The IP-anonymisation is active on "
+"this website."
+msgstr ""
+"Σε περίπτωση που ενεργοποιηθεί η ανωνυμοποίηση διευθύνσεων IP στην "
+"ιστοσελίδα, η διεύθυνση IP του χρήστη θα περικοπεί στην περιοχή ...........  "
+"Μόνο σε εξαιρετικές περιπτώσεις μεταφέρεται αρχικά ολόκληρη η διεύθυνση IP "
+"σε έναν server της Google στις ΗΠΑ και ... εκεί. Η IP- ανωνυμοποίηση είναι "
+"ενεργή σ'αυτήν την ιστοσελίδα."
 
 #: non_logged_in_area/templates/privacy_policy.html:164
 msgctxt "Privacy Policy Sec8 P3"
-msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
-msgstr "Η Google χρησιμοποιεί αυτές τις πληροφορίες για τον website operator με σκοπό την αξιολόγηση της χρήσης της ιστοσελίδας, συγκεντρώνοντας/ επεξεργάζοντας σχετικά με τη δραστηριότητα στην ιστοσελίδα και παρέχοντας διαφορετικές υπηρεσίες σχετικά με τη δραστηριότητα στην ιστοσελίδα και και τη διαδικτυακή χρήση.  "
+msgid ""
+"Google will use this information on behalf of the operator of this website "
+"for the purpose of evaluating your use of the website, compiling reports on "
+"website activity for website operators and providing them other services "
+"relating to website activity and internet usage."
+msgstr ""
+"Η Google χρησιμοποιεί αυτές τις πληροφορίες για τον website operator με "
+"σκοπό την αξιολόγηση της χρήσης της ιστοσελίδας, συγκεντρώνοντας/ "
+"επεξεργάζοντας σχετικά με τη δραστηριότητα στην ιστοσελίδα και παρέχοντας "
+"διαφορετικές υπηρεσίες σχετικά με τη δραστηριότητα στην ιστοσελίδα και και "
+"τη διαδικτυακή χρήση.  "
 
 #: non_logged_in_area/templates/privacy_policy.html:169
 #, python-format
 msgctxt "Privacy Policy Sec8 P4"
-msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
-msgstr "Η διεύθυνση IP, που μεταφέρεται εντός του πεδίου εφαρμογής της Google Analytics, δε σχετίζεται με δεδομένα της Google. Ο χρήστης μπορεί να αρνηθεί τη χρήση cookies επιλέγοντας τις κατάλληλες ρυθμίσεις στο πρόγραμμα περιήγησης που χρησιμοποιεί, ωστόσο πρέπει να σημειωθεί ότι εάν ο χρήστης κάνει αυτήν την επιλογή ίσως να μην έχει τη δυνατότητα πλήρης χρήσης της ιστοσελίδας. Υπάρχει επίσης η δυνατότητα να εξαιρεθεί από την 'παρακολούθηση' Google Analytics κάνοντας εγκατάσταση του Google Analytics Opt-out Browser Addon για το πρόγραμμα περιήγησης που χρησιμοποιεί: %(optout_plugin_url)s."
+msgid ""
+"The IP-address, that the user's browser conveys within the scope of Google "
+"Analytics, will not be associated with any other data held by Google. The "
+"user may refuse the use of cookies by selecting the appropriate settings on "
+"his browser, however it is to be noted that if the user does this he may not "
+"be able to use the full functionality of this website. He can also opt-out "
+"from being tracked by Google Analytics with effect for the future by "
+"downloading and installing Google Analytics Opt-out Browser Addon for his "
+"current web browser: %(optout_plugin_url)s."
+msgstr ""
+"Η διεύθυνση IP, που μεταφέρεται εντός του πεδίου εφαρμογής της Google "
+"Analytics, δε σχετίζεται με δεδομένα της Google. Ο χρήστης μπορεί να αρνηθεί "
+"τη χρήση cookies επιλέγοντας τις κατάλληλες ρυθμίσεις στο πρόγραμμα "
+"περιήγησης που χρησιμοποιεί, ωστόσο πρέπει να σημειωθεί ότι εάν ο χρήστης "
+"κάνει αυτήν την επιλογή ίσως να μην έχει τη δυνατότητα πλήρης χρήσης της "
+"ιστοσελίδας. Υπάρχει επίσης η δυνατότητα να εξαιρεθεί από την "
+"'παρακολούθηση' Google Analytics κάνοντας εγκατάσταση του Google Analytics "
+"Opt-out Browser Addon για το πρόγραμμα περιήγησης που χρησιμοποιεί: "
+"%(optout_plugin_url)s."
 
 #: non_logged_in_area/templates/privacy_policy.html:174
 msgid "click this link"
@@ -499,8 +691,20 @@ msgstr "Κάνε κλικ στον σύνδεσμο"
 #: non_logged_in_area/templates/privacy_policy.html:175
 #, python-format
 msgctxt "Privacy Policy Sec8 P5"
-msgid "As an alternative to the browser Addon or within browsers on mobile devices, the user can %(optout_javascript)s in order to opt-out from being tracked by Google Analytics within this website in the future (the opt-out applies only for the browser in which the user sets it and within this domain). An opt-out cookie will be stored on the user's device, which means that the user will have to click this link again, if he deletes his cookies."
-msgstr "Αντί για την εγκατάστση του browser Addon ο χρήστης μπορεί να %(optout_javascript)s ώστε να εξαιρεθεί από την συλλογή δεδομένων της Google Analytics για αυτήν την ιστοσελίδα (η εξαίρεση ισχύει μόνο for the browser in which the user sets it and within this domain). Ένα opt-out cookie αποθηκεύεται στη συσκευή του χρήστη, που σημαίνει ότι σε περίπτωση που σβηστεί ο χρήστης θα πρέπει να ξαναπατήσει στον σύνδεσμο. "
+msgid ""
+"As an alternative to the browser Addon or within browsers on mobile devices, "
+"the user can %(optout_javascript)s in order to opt-out from being tracked by "
+"Google Analytics within this website in the future (the opt-out applies only "
+"for the browser in which the user sets it and within this domain). An opt-"
+"out cookie will be stored on the user's device, which means that the user "
+"will have to click this link again, if he deletes his cookies."
+msgstr ""
+"Αντί για την εγκατάστση του browser Addon ο χρήστης μπορεί να "
+"%(optout_javascript)s ώστε να εξαιρεθεί από την συλλογή δεδομένων της Google "
+"Analytics για αυτήν την ιστοσελίδα (η εξαίρεση ισχύει μόνο for the browser "
+"in which the user sets it and within this domain). Ένα opt-out cookie "
+"αποθηκεύεται στη συσκευή του χρήστη, που σημαίνει ότι σε περίπτωση που "
+"σβηστεί ο χρήστης θα πρέπει να ξαναπατήσει στον σύνδεσμο. "
 
 #: non_logged_in_area/templates/privacy_policy.html:183
 msgctxt "Privacy Policy Sec9"
@@ -509,13 +713,26 @@ msgstr "Ανάκληση, Αλλαγές, Διορθώσεις και Ενημε
 
 #: non_logged_in_area/templates/privacy_policy.html:189
 msgctxt "Privacy Policy Sec9 P1"
-msgid "The user has the right to be informed upon application and free of charge, which personal data about him has been stored. Additionally, the user can ask for the correction of uncorrect data, as well as for the suspension or even deletion of his personal data as far as there is no legal obligation to retain that data."
-msgstr "Κατόπιν αιτήματος και χωρίς οικονομική επιβάρυνση ο χρήστης έχει το δικαίωμα να ενημερώνεται σχετικά με το ποια προσωπικά δεδομένα έχουν αποθηκευτεί. Επιπλέον, ο χρήστης μπορεί να ζητήσει τη διόρθωση λανθασμένων στοιχείων, όπως επίσης την διαραφή των προσωπικών του δεδομένων, εφόσων δεν υπάρχει νομική υποχρέωση για τη διατήρηση αυτών των δεδομένων."
+msgid ""
+"The user has the right to be informed upon application and free of charge, "
+"which personal data about him has been stored. Additionally, the user can "
+"ask for the correction of uncorrect data, as well as for the suspension or "
+"even deletion of his personal data as far as there is no legal obligation to "
+"retain that data."
+msgstr ""
+"Κατόπιν αιτήματος και χωρίς οικονομική επιβάρυνση ο χρήστης έχει το δικαίωμα "
+"να ενημερώνεται σχετικά με το ποια προσωπικά δεδομένα έχουν αποθηκευτεί. "
+"Επιπλέον, ο χρήστης μπορεί να ζητήσει τη διόρθωση λανθασμένων στοιχείων, "
+"όπως επίσης την διαραφή των προσωπικών του δεδομένων, εφόσων δεν υπάρχει "
+"νομική υποχρέωση για τη διατήρηση αυτών των δεδομένων."
 
 #: non_logged_in_area/templates/privacy_policy.html:198
 msgctxt "Privacy Policy Credit"
-msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
-msgstr "Βασισμένο στο δείγμα κανονισμού προστασίας προσωπικών δεδομένων του δικηγόρου Thomas Schwenke - I LAW it"
+msgid ""
+"Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
+msgstr ""
+"Βασισμένο στο δείγμα κανονισμού προστασίας προσωπικών δεδομένων του "
+"δικηγόρου Thomas Schwenke - I LAW it"
 
 #: non_logged_in_area/templates/shelters_need_help.html:20
 msgid "advantages"
@@ -532,13 +749,16 @@ msgstr "Βελτιώστε την αυτοοργάνωση των εθελοντ
 #: non_logged_in_area/templates/shelters_need_help.html:26
 msgid ""
 "\n"
-"                    volunteers split themselves up more effectively into shifts,\n"
-"                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
+"                    volunteers split themselves up more effectively into "
+"shifts,\n"
+"                    temporary shortcuts can be anticipated by helpers "
+"themselves more easily\n"
 "                "
 msgstr ""
 "\n"
 "                    οι εθελοντές μοιράζονται πιο αποτελεσματικά σε βάρδιες,\n"
-"                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
+"                    temporary shortcuts can be anticipated by helpers "
+"themselves more easily\n"
 "                "
 
 #: non_logged_in_area/templates/shelters_need_help.html:32
@@ -550,19 +770,24 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-"                    το πρόγραμμα βαρδιών μπορεί να δωθεί σε προσωπικό ασφαλείας\n"
+"                    το πρόγραμμα βαρδιών μπορεί να δωθεί σε προσωπικό "
+"ασφαλείας\n"
 "                    ή στους διαχειριστές από ένα αυτόματο email κάθε πρωί"
 
 #: non_logged_in_area/templates/shelters_need_help.html:39
 msgid ""
 "\n"
-"                the more shelters and camps are organized with us, the more volunteers are joining\n"
-"                    and all facilities will benefit from a common pool of motivated volunteers\n"
+"                the more shelters and camps are organized with us, the more "
+"volunteers are joining\n"
+"                    and all facilities will benefit from a common pool of "
+"motivated volunteers\n"
 "                "
 msgstr ""
 "\n"
-"                όσο πιο πολλοί χώροι φιλοξενίας οργανώνονται μαζί μας, τόσο πιο πολλοί εθελοντές εγγράφονται\n"
-"                    και όλοι οι χώροι φιλοξενίας έχουν να κερδίσουν από ένα κοινό σύνολο κινητοποιημένων εθελοντών\n"
+"                όσο πιο πολλοί χώροι φιλοξενίας οργανώνονται μαζί μας, τόσο "
+"πιο πολλοί εθελοντές εγγράφονται\n"
+"                    και όλοι οι χώροι φιλοξενίας έχουν να κερδίσουν από ένα "
+"κοινό σύνολο κινητοποιημένων εθελοντών\n"
 "                "
 
 #: non_logged_in_area/templates/shelters_need_help.html:45
@@ -576,13 +801,15 @@ msgstr "Η κατάλληλη βοήθεια την σωστή στιγμή στ
 #: non_logged_in_area/templates/shelters_need_help.html:52
 msgid ""
 "\n"
-"        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.\n"
+"        <p>Many people want to help! But often it's not so easy to figure "
+"out where, when and how one can help.\n"
 "        volunteer-planner tries to solve this problem! <br>\n"
 "        </p>\n"
 "            "
 msgstr ""
 "\n"
-"        <p>Είναι πολλοί εκείνοι που θέλουν να βοηθήσουν. Όμως συχνά δεν είναι τόσο εύκολο να βρεις κανείς πού, πώς και πότε μπορεί να βοηθήσει.\n"
+"        <p>Είναι πολλοί εκείνοι που θέλουν να βοηθήσουν. Όμως συχνά δεν "
+"είναι τόσο εύκολο να βρεις κανείς πού, πώς και πότε μπορεί να βοηθήσει.\n"
 "        Το volunteer-planner προσπαθεί να λύσει αυτό το πρόβλημα! <br>\n"
 "        </p>\n"
 "            "
@@ -594,14 +821,20 @@ msgstr "Δωρεάν, και χωρίς διαφημίσεις"
 #: non_logged_in_area/templates/shelters_need_help.html:61
 msgid ""
 "\n"
-"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
-"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"        <p>  The platform was build by a group of volunteering professionals "
+"in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. "
+"Private data (emailaddresses, profile data etc.) will be not given to any "
+"third party.</p>\n"
 "            "
 msgstr ""
 "\n"
-"        <p>  Η πλατφόρμα κατασκευάστηκε από μια ομάδα εθελοντών επαγγελματιών από το χώρο της ανάπτυξης λογισμικού, διαχείρισης έργου, \n"
+"        <p>  Η πλατφόρμα κατασκευάστηκε από μια ομάδα εθελοντών "
+"επαγγελματιών από το χώρο της ανάπτυξης λογισμικού, διαχείρισης έργου, \n"
 "\n"
-"σχεδίασης και μάρκετινγκ. Ο κώδικας είναι διαθέσιμος και ανοιχτός για μη εμπορική χρηση. Προσωπικά δεδομένα (email, δεδομένα προφίλ) δεν θα δοθούν σε τρίτους.</p>\n"
+"σχεδίασης και μάρκετινγκ. Ο κώδικας είναι διαθέσιμος και ανοιχτός για μη "
+"εμπορική χρηση. Προσωπικά δεδομένα (email, δεδομένα προφίλ) δεν θα δοθούν σε "
+"τρίτους.</p>\n"
 "            "
 
 #: non_logged_in_area/templates/shelters_need_help.html:69
@@ -612,38 +845,44 @@ msgstr "Επικοινώνησε μαζί μας!"
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
-#| "                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+#| "                    ...maybe with an attached draft of the shifts you "
+#| "want to see on volunteer-planner. Please write to <a\n"
+#| "                            href=\"mailto:neue_unterkunefte@volunteer-"
+#| "planner.org\">onboarding@volunteer-planner.org</a>\n"
 #| "                    "
 msgid ""
 "\n"
-"                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
-"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                    ...maybe with an attached draft of the shifts you want "
+"to see on volunteer-planner. Please write to <a\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org"
+"\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 msgstr ""
 "\n"
-"                    ...ίσως με ένα συνημμένο πρόχειρο σημείωμα των βαρδιών που θέλετε να δείτε στον  volunteer-planner. Παρακαλούμε γράψτε στο <a\n"
-"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                    ...ίσως με ένα συνημμένο πρόχειρο σημείωμα των βαρδιών "
+"που θέλετε να δείτε στον  volunteer-planner. Παρακαλούμε γράψτε στο <a\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org"
+"\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 
-#: organizations/admin.py:128 organizations/admin.py:130
+#: organizations/admin.py:139 organizations/admin.py:141
 msgid "edit"
 msgstr "τροποποίηση"
 
-#: organizations/admin.py:202 organizations/admin.py:239
-#: organizations/models.py:79 organizations/models.py:148
+#: organizations/admin.py:218 organizations/admin.py:255
+#: organizations/models.py:80 organizations/models.py:153
 msgid "short description"
 msgstr "σύντομη περιγραφή"
 
-#: organizations/admin.py:208 organizations/admin.py:245
-#: organizations/admin.py:311 organizations/admin.py:335
-#: organizations/models.py:82 organizations/models.py:151
-#: organizations/models.py:291 organizations/models.py:316
+#: organizations/admin.py:224 organizations/admin.py:261
+#: organizations/admin.py:331 organizations/admin.py:355
+#: organizations/models.py:83 organizations/models.py:156
+#: organizations/models.py:309 organizations/models.py:338
 msgid "description"
 msgstr "περιγραφή"
 
-#: organizations/admin.py:214 organizations/admin.py:251
-#: organizations/models.py:85 organizations/models.py:154
+#: organizations/admin.py:230 organizations/admin.py:267
+#: organizations/models.py:86 organizations/models.py:159
 msgid "contact info"
 msgstr "πληροφορίες επαφής"
 
@@ -691,138 +930,132 @@ msgstr "ρόλος"
 msgid "status"
 msgstr "κατάσταση"
 
-#: organizations/models.py:74 organizations/models.py:143
-#: organizations/models.py:288 organizations/models.py:313 places/models.py:20
-#: scheduletemplates/models.py:13
+#: organizations/models.py:75 organizations/models.py:148
+#: organizations/models.py:306 organizations/models.py:335 places/models.py:20
+#: scheduletemplates/models.py:12
 msgid "name"
 msgstr "όνομα"
 
-#: organizations/models.py:88 organizations/models.py:169
+#: organizations/models.py:89 organizations/models.py:175
 msgid "address"
 msgstr "διεύθυνση"
 
-#: organizations/models.py:97 organizations/models.py:185 places/models.py:21
+#: organizations/models.py:98 organizations/models.py:191 places/models.py:21
 msgid "slug"
 msgstr "slug"
 
-#: organizations/models.py:102 organizations/models.py:195
+#: organizations/models.py:103 organizations/models.py:201
 msgid "join mode"
 msgstr "τρόπος συμμετοχής"
 
-#: organizations/models.py:103
+#: organizations/models.py:104
 msgid "Who can join this organization?"
 msgstr "Ποιός μπορεί να συμμετέχει στον οργανισμό;"
 
-#: organizations/models.py:106 organizations/models.py:139
-#: organizations/models.py:232
+#: organizations/models.py:107 organizations/models.py:144
+#: organizations/models.py:242
 msgid "organization"
 msgstr "οργανισμός"
 
-#: organizations/models.py:107
+#: organizations/models.py:108
 msgid "organizations"
 msgstr "οργανισμοί"
 
-#: organizations/models.py:111 organizations/models.py:214
-#: organizations/models.py:299 organizations/models.py:324
-#, python-brace-format
-msgid "{name}"
-msgstr "{name}"
-
-#: organizations/models.py:132
+#: organizations/models.py:136
 msgid "disabled"
 msgstr "Απενεργοποιημένο"
 
-#: organizations/models.py:133
+#: organizations/models.py:137
 msgid "enabled (collapsed)"
 msgstr "ενεργοποιημένο(σε έκταση)"
 
-#: organizations/models.py:134
+#: organizations/models.py:138
 msgid "enabled"
 msgstr "ενεργοποιημένο"
 
-#: organizations/models.py:165 places/models.py:132
+#: organizations/models.py:171 places/models.py:139
 msgid "place"
 msgstr "Τοποθεσία"
 
-#: organizations/models.py:174
+#: organizations/models.py:180
 msgid "postal code"
 msgstr "ΤΚ"
 
-#: organizations/models.py:179
+#: organizations/models.py:185
 msgid "Show on map of all facilities"
 msgstr "Δες τον χάρτη με όλες τις εγκαταστάσεις"
 
-#: organizations/models.py:181
+#: organizations/models.py:187
 msgid "latitude"
 msgstr "γεωγραφικό πλάτος"
 
-#: organizations/models.py:183
+#: organizations/models.py:189
 msgid "longitude"
 msgstr "γεωγραφικό μήκος"
 
-#: organizations/models.py:190
+#: organizations/models.py:196
 msgid "timeline"
 msgstr "χρονοδιάγραμμα"
 
-#: organizations/models.py:196
+#: organizations/models.py:202
 msgid "Who can join this facility?"
 msgstr "Ποιός μπορεί να συμμετέχει σε αυτή την εγκατάσταση?"
 
-#: organizations/models.py:199 organizations/models.py:258
-#: organizations/models.py:283 organizations/models.py:309
-#: scheduler/models.py:51 scheduletemplates/models.py:16
+#: organizations/models.py:205 organizations/models.py:272
+#: organizations/models.py:301 organizations/models.py:331
+#: scheduler/models.py:59 scheduletemplates/models.py:16
 msgid "facility"
 msgstr "εγκατάσταση"
 
-#: organizations/models.py:200
+#: organizations/models.py:206
 msgid "facilities"
 msgstr "εγκαταστάσεις"
 
-#: organizations/models.py:237
+#: organizations/models.py:247
 msgid "organization member"
 msgstr "μέλος οργανισμού"
 
-#: organizations/models.py:238
+#: organizations/models.py:248
 msgid "organization members"
 msgstr "μέλη οργανισμού"
 
-#: organizations/models.py:242
+#: organizations/models.py:252
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr "{username} στο {organization_name} ({user_role})"
 
-#: organizations/models.py:264
+#: organizations/models.py:278
 msgid "facility member"
 msgstr "μέλος δραστηριοποιούμενο στην εγκατάσταση"
 
-#: organizations/models.py:265
+#: organizations/models.py:279
 msgid "facility members"
 msgstr "μέλη που δραστηριοποιούνται στην εγκατάσταση"
 
-#: organizations/models.py:269
+#: organizations/models.py:283
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr "{username} στο {facility_name} ({user_role})"
 
-#: organizations/models.py:294 scheduler/models.py:46
-#: scheduletemplates/models.py:40
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
+#: organizations/models.py:312 scheduler/models.py:53
+#: scheduletemplates/models.py:46
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr "τοποθεσία εργασίας"
 
-#: organizations/models.py:295
+#: organizations/models.py:313
 msgid "workplaces"
 msgstr "τοποθεσίες εργασιών"
 
-#: organizations/models.py:319 scheduler/models.py:44
-#: scheduletemplates/models.py:37
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
+#: organizations/models.py:341 scheduler/models.py:50
+#: scheduletemplates/models.py:42
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "εργασία"
 
-#: organizations/models.py:320
+#: organizations/models.py:342
 msgid "tasks"
 msgstr "εργασίες"
 
@@ -833,8 +1066,12 @@ msgstr "Γειά σου %(username)s,"
 
 #: organizations/templates/emails/membership_approved.txt:6
 #, python-format
-msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
-msgstr "Η αίτησή σου στο %(facility_name)s εγκρίθηκε. Μπορείς τώρα να εγγραφείς σε κάποιες βάρδιες σε αυτή την εγκατάσταση ."
+msgid ""
+"Your membership request at %(facility_name)s was approved. You now may sign "
+"up for restricted shifts at this facility."
+msgstr ""
+"Η αίτησή σου στο %(facility_name)s εγκρίθηκε. Μπορείς τώρα να εγγραφείς σε "
+"κάποιες βάρδιες σε αυτή την εγκατάσταση ."
 
 #: organizations/templates/emails/membership_approved.txt:10
 msgid ""
@@ -852,13 +1089,18 @@ msgstr ""
 msgid "Helpdesk"
 msgstr "Κέντρο βοήθειας"
 
+#: organizations/templates/facility.html:29
+#: scheduler/templates/geographic_helpdesk.html:69
+msgid "Show on map"
+msgstr ""
+
 #: organizations/templates/facility.html:41
 #: organizations/templates/partials/compact_facility.html:31
 msgid "Open Shifts"
 msgstr "Ακάλυπτες βάρδιες"
 
 #: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:70
+#: scheduler/templates/helpdesk.html:68
 msgid "News"
 msgstr "Νέα"
 
@@ -898,7 +1140,7 @@ msgstr "Εγκαταστάσεις"
 
 #: organizations/templates/partials/compact_facility.html:23
 #: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:68
+#: scheduler/templates/helpdesk.html:66
 msgid "Show details"
 msgstr "Δείξε λεπτομέρειες"
 
@@ -912,39 +1154,57 @@ msgctxt "maps search url pattern"
 msgid "https://www.openstreetmap.org/search?query={location}"
 msgstr ""
 
-#: places/models.py:69 places/models.py:84
+#: places/models.py:72 places/models.py:88
 msgid "country"
 msgstr "χώρα"
 
-#: places/models.py:70
+#: places/models.py:73
 msgid "countries"
 msgstr "χώρες"
 
-#: places/models.py:87 places/models.py:106
+#: places/models.py:91 places/models.py:112
 msgid "region"
 msgstr "νομός"
 
-#: places/models.py:88
+#: places/models.py:92
 msgid "regions"
 msgstr "νομοί"
 
-#: places/models.py:109 places/models.py:129
+#: places/models.py:115 places/models.py:136
 msgid "area"
 msgstr "περιοχή"
 
-#: places/models.py:110
+#: places/models.py:116
 msgid "areas"
 msgstr "περιοχές"
 
-#: places/models.py:133
+#: places/models.py:140
 msgid "places"
 msgstr "Τοποθεσίες"
 
-#: scheduler/admin.py:28
+#: scheduler/admin.py:30
+#, fuzzy
+#| msgid "starting time"
+msgid "No start time given"
+msgstr "Από τις"
+
+#: scheduler/admin.py:32
+msgid "No end time given"
+msgstr ""
+
+#: scheduler/admin.py:38
+msgid "Start time in the past"
+msgstr ""
+
+#: scheduler/admin.py:40
+msgid "End time not after start time"
+msgstr ""
+
+#: scheduler/admin.py:62
 msgid "number of volunteers"
 msgstr "αριθμός εθελοντών"
 
-#: scheduler/admin.py:44
+#: scheduler/admin.py:78
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
 msgstr "Εθελοντές."
@@ -953,61 +1213,50 @@ msgstr "Εθελοντές."
 msgid "Scheduler"
 msgstr "Προγραμματιστής"
 
-#: scheduler/models.py:41 scheduletemplates/models.py:34
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
+#: scheduler/models.py:46 scheduletemplates/models.py:38
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
 msgid "number of needed volunteers"
 msgstr "Αριθμός εθελοντών που χρειάζεσαι"
 
-#: scheduler/models.py:53 scheduletemplates/admin.py:33
-#: scheduletemplates/models.py:44
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
+#: scheduler/models.py:61 scheduletemplates/admin.py:32
+#: scheduletemplates/models.py:50
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr "Από τις"
 
-#: scheduler/models.py:55 scheduletemplates/admin.py:36
-#: scheduletemplates/models.py:47
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
+#: scheduler/models.py:63 scheduletemplates/admin.py:35
+#: scheduletemplates/models.py:53
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr "Μέχρι τις"
 
-#: scheduler/models.py:63 scheduletemplates/models.py:54
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:58
+#: scheduler/models.py:71 scheduletemplates/models.py:60
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
 msgid "members only"
 msgstr "Μόνο μέλη"
 
-#: scheduler/models.py:65 scheduletemplates/models.py:56
+#: scheduler/models.py:73 scheduletemplates/models.py:62
 msgid "allow only members to help"
 msgstr "Επιτρέψτε να βοηθήσουν μόνο μέλη"
 
-#: scheduler/models.py:71
+#: scheduler/models.py:79
 msgid "shift"
 msgstr "Βάρδια"
 
-#: scheduler/models.py:72 scheduletemplates/admin.py:283
+#: scheduler/models.py:80 scheduletemplates/admin.py:282
 msgid "shifts"
 msgstr "Βάρδιες"
 
-#: scheduler/models.py:86 scheduletemplates/models.py:77
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "Την επόμενη μέρα"
-msgstr[1] "Μετά από {number_of_days} μέρες"
-
-#: scheduler/models.py:130
+#: scheduler/models.py:144
 msgid "shift helper"
 msgstr "Εθελοντής βάρδιας"
 
-#: scheduler/models.py:131
+#: scheduler/models.py:145
 msgid "shift helpers"
 msgstr "Εθελοντές της βάρδιας"
-
-#: scheduler/templates/geographic_helpdesk.html:69
-msgid "Show on map"
-msgstr ""
 
 #: scheduler/templates/geographic_helpdesk.html:81
 msgctxt "helpdesk shifts heading"
@@ -1019,19 +1268,19 @@ msgstr "Βάρδιες"
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "Δεν υπάρχουν διαθέσιμες βάρδιες σε:  %(geographical_name)s;"
 
-#: scheduler/templates/helpdesk.html:39
+#: scheduler/templates/helpdesk.html:37
 msgid "You can help in the following facilities"
 msgstr "Μπορείς να βοηθήσεις στις ακόλουθες τοποθεσίες"
 
-#: scheduler/templates/helpdesk.html:43
+#: scheduler/templates/helpdesk.html:41
 msgid "filter"
 msgstr "Φιλτράρισε"
 
-#: scheduler/templates/helpdesk.html:59
+#: scheduler/templates/helpdesk.html:57
 msgid "see more"
 msgstr "Δες περισότερα"
 
-#: scheduler/templates/helpdesk.html:82
+#: scheduler/templates/helpdesk.html:80
 msgid "open shifts"
 msgstr "διαθέσιμες βάρδιες"
 
@@ -1132,12 +1381,14 @@ msgid ""
 "\n"
 "Hello,\n"
 "\n"
-"we're sorry, but we had to cancel the following shift at request of the organizer:\n"
+"we're sorry, but we had to cancel the following shift at request of the "
+"organizer:\n"
 "\n"
 "%(shift_title)s, %(location)s\n"
 "%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
 "\n"
-"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"This is an automatically generated e-mail. If you have any questions, please "
+"contact the facility directly.\n"
 "\n"
 "Yours,\n"
 "\n"
@@ -1154,7 +1405,8 @@ msgid ""
 "\n"
 "Hello,\n"
 "\n"
-"we're sorry, but we had to change the times of the following shift at request of the organizer:\n"
+"we're sorry, but we had to change the times of the following shift at "
+"request of the organizer:\n"
 "\n"
 "%(shift_title)s, %(location)s\n"
 "%(old_from_date)s from %(old_from_time)s to %(old_to_time)s o'clock\n"
@@ -1163,79 +1415,74 @@ msgid ""
 "\n"
 "%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
 "\n"
-"If you can not help at the new times any longer, please cancel your attendance at volunteer-planner.org.\n"
+"If you can not help at the new times any longer, please cancel your "
+"attendance at volunteer-planner.org.\n"
 "\n"
-"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"This is an automatically generated e-mail. If you have any questions, please "
+"contact the facility directly.\n"
 "\n"
 "Yours,\n"
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/views.py:169
+#: scheduler/views.py:175
 msgid "The submitted data was invalid."
 msgstr "Τα δεδομένα είναι μη έγκυρα"
 
-#: scheduler/views.py:177
+#: scheduler/views.py:183
 msgid "User account does not exist."
 msgstr "Ο λογαριασμός χρήστη δεν υπάρχει."
 
-#: scheduler/views.py:201
+#: scheduler/views.py:205
 msgid "A membership request has been sent."
 msgstr "Η αίτηση μέλους εστάλη"
 
-#: scheduler/views.py:214
-msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
-msgstr "Δεν μπορούμε να σε προσθέσουμε σε αυτή τη βάρδια γιατί έχεις ήδη εγγραφεί σε άλλη βάρδια την ίδια μέρα και ώρα. "
+#: scheduler/views.py:218
+msgid ""
+"We can't add you to this shift because you've already agreed to other shifts "
+"at the same time:"
+msgstr ""
+"Δεν μπορούμε να σε προσθέσουμε σε αυτή τη βάρδια γιατί έχεις ήδη εγγραφεί σε "
+"άλλη βάρδια την ίδια μέρα και ώρα. "
 
-#: scheduler/views.py:223
+#: scheduler/views.py:227
 msgid "We can't add you to this shift because there are no more slots left."
-msgstr "Δεν μπορούμε να σας προσθέσουμε σε αυτή τη βάρδια διότι έχει ήδη καλυφθεί."
+msgstr ""
+"Δεν μπορούμε να σας προσθέσουμε σε αυτή τη βάρδια διότι έχει ήδη καλυφθεί."
 
-#: scheduler/views.py:230
+#: scheduler/views.py:234
 msgid "You were successfully added to this shift."
 msgstr "Προστέθηκες με επιτυχία σε αυτή τη βάρδια."
 
-#: scheduler/views.py:234
-msgid "The shift you joined overlaps with other shifts you already joined. Please check for                             conflicts:"
+#: scheduler/views.py:238
+msgid ""
+"The shift you joined overlaps with other shifts you already joined. Please "
+"check for                             conflicts:"
 msgstr ""
 
-#: scheduler/views.py:244
+#: scheduler/views.py:248
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Έχεις ήδη εγγραφεί για αυτή τη βάρδια στις  {date_time}."
 
-#: scheduler/views.py:256
+#: scheduler/views.py:269
 msgid "You successfully left this shift."
 msgstr "Επιτυχής διαγραφή βάρδιας."
 
-#: scheduletemplates/admin.py:176
-#, python-brace-format
-msgid "A shift already exists at {date}"
-msgid_plural "{num_shifts} shifts already exists at {date}"
-msgstr[0] "Υπάρχει ήδη μια βάρδια την {date}"
-msgstr[1] "{num_shifts} βάρδιες υπάρχουν ήδη στις {date}"
-
-#: scheduletemplates/admin.py:232
-#, python-brace-format
-msgid "{num_shifts} shift was added to {date}"
-msgid_plural "{num_shifts} shifts were added to {date}"
-msgstr[0] "{num_shifts} προστέθηκε στην ημερομηνία {date}"
-msgstr[1] "{num_shifts} βάρδιες προστέθηκαν στις {date}"
-
-#: scheduletemplates/admin.py:244
+#: scheduletemplates/admin.py:243
 msgid "Something didn't work. Sorry about that."
 msgstr "Φαίνεται πως κάτι δεν πήγε καλά. Ζητούμε συγγνώμη."
 
-#: scheduletemplates/admin.py:277
+#: scheduletemplates/admin.py:276
 msgid "slots"
 msgstr "Βάρδιες"
 
-#: scheduletemplates/admin.py:289
+#: scheduletemplates/admin.py:288
 msgid "from"
 msgstr "από"
 
-#: scheduletemplates/admin.py:302
+#: scheduletemplates/admin.py:301
 msgid "to"
 msgstr "σε"
 
@@ -1243,63 +1490,68 @@ msgstr "σε"
 msgid "schedule templates"
 msgstr "Προσχέδια προγράμματος"
 
-#: scheduletemplates/models.py:22 scheduletemplates/models.py:30
+#: scheduletemplates/models.py:22 scheduletemplates/models.py:34
 msgid "schedule template"
 msgstr "Προσχέδιο προγράμματος"
 
-#: scheduletemplates/models.py:50
+#: scheduletemplates/models.py:56
 msgid "days"
 msgstr "Ημέρες"
 
-#: scheduletemplates/models.py:62
+#: scheduletemplates/models.py:68
 msgid "shift templates"
 msgstr "Προσχέδια βάρδιας"
 
-#: scheduletemplates/models.py:63
+#: scheduletemplates/models.py:69
 msgid "shift template"
 msgstr "Προσχέδιο βάρδιας"
 
-#: scheduletemplates/models.py:97
+#: scheduletemplates/models.py:83
+#, python-brace-format
+msgid "after {number_of_days} days"
+msgstr ""
+
+#: scheduletemplates/models.py:102
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr "{task_name} - {workplace_name}"
 
-#: scheduletemplates/models.py:101
+#: scheduletemplates/models.py:106
 #, python-brace-format
 msgid "{task_name}"
 msgstr "{task_name}"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:32
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:31
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
 msgid "Home"
 msgstr "Αρχική σελίδα"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:40
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:46
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:45
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
 msgid "Apply Template"
 msgstr "Εφαρμογή προσχεδίου"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:50
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
 msgstr "Χωρίς συγκεκριμένο χώρο εργασίας."
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
 msgstr "Εφαρμογή."
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:61
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:60
 msgid "Select a date"
 msgstr "Επέλεξε ημερομηνία"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:66
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:125
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:65
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:124
 msgid "Continue"
 msgstr "Συνέχισε"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:70
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:69
 msgid "Select shift templates"
 msgstr "Επέλεξε προσχέδια βαρδιών."
 
@@ -1307,11 +1559,11 @@ msgstr "Επέλεξε προσχέδια βαρδιών."
 msgid "Please review and confirm shifts to create"
 msgstr "Έλεγξε και επιβεβαίωσε τις βάρδιες που θα δημιουργηθούν "
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:118
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:117
 msgid "Apply"
 msgstr "Εφαρμογή"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:120
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:119
 msgid "Apply and select new date"
 msgstr "Εφαρμογή και επιλογή νέας ημερομηνίας"
 
@@ -1355,20 +1607,26 @@ msgstr "Θέση"
 msgid "organisation"
 msgstr "οργανισμός"
 
-#: shiftmailer/templates/shifts_today.html:1
+#: shiftmailer/templates/shifts_today.html:2
 #, python-format
 msgctxt "shift today title"
 msgid "Schedule for %(organization_name)s on %(date)s"
 msgstr "Πρόγραμμα για τον %(organization_name)s την  %(date)s"
 
-#: shiftmailer/templates/shifts_today.html:6
+#: shiftmailer/templates/shifts_today.html:7
 msgid "All data is private and not supposed to be given away!"
-msgstr "Όλα τα δεδομένα είναι προσωπικά και δεν σκοπεύουμε να δώσουμε πρόσβαση σε τρίτους!"
+msgstr ""
+"Όλα τα δεδομένα είναι προσωπικά και δεν σκοπεύουμε να δώσουμε πρόσβαση σε "
+"τρίτους!"
 
-#: shiftmailer/templates/shifts_today.html:15
+#: shiftmailer/templates/shifts_today.html:16
 #, python-format
-msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
-msgstr "Από τις %(start_time)s ως τις %(end_time)s έχουν δηλώσει ότι θα έρθουν οι παρακάτω εθελοντές: %(volunteer_count)s "
+msgid ""
+"from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers "
+"have signed up:"
+msgstr ""
+"Από τις %(start_time)s ως τις %(end_time)s έχουν δηλώσει ότι θα έρθουν οι "
+"παρακάτω εθελοντές: %(volunteer_count)s "
 
 #: templates/partials/footer.html:17
 #, python-format
@@ -1420,18 +1678,29 @@ msgid "Activation problem"
 msgstr "Πρόβλημα ενεργοποίησης"
 
 #: templates/registration/activate.html:15
-msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
+msgctxt ""
+"login link title in registration confirmation success text 'You may now "
+"%(login_link)s'"
 msgid "login"
 msgstr "Σύνδεση"
 
 #: templates/registration/activate.html:17
 #, python-format
-msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
-msgstr "Ευχαριστούμε %(account)s, η ενεργοποίηση ολοκληρώθηκε! Μπορείς τώρα να συνδεθείς %(login_link)s χρησιμοποιώντας το όνομα χρήστη και τον κωδικό πρόσβασης που εισήγαγες κατά την εγγραφή σου."
+msgid ""
+"Thanks %(account)s, activation complete! You may now %(login_link)s using "
+"the username and password you set at registration."
+msgstr ""
+"Ευχαριστούμε %(account)s, η ενεργοποίηση ολοκληρώθηκε! Μπορείς τώρα να "
+"συνδεθείς %(login_link)s χρησιμοποιώντας το όνομα χρήστη και τον κωδικό "
+"πρόσβασης που εισήγαγες κατά την εγγραφή σου."
 
 #: templates/registration/activate.html:25
-msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
-msgstr "Οοοοοπ! Ή έχεις ενεργοποιήσει τον λογαριασμό σου ήδη, ή ο κωδικός ενεργοποίησης ή είναι λανθασμένος ή έχει λήξει."
+msgid ""
+"Oops &ndash; Either you activated your account already, or the activation "
+"key is invalid or has expired."
+msgstr ""
+"Οοοοοπ! Ή έχεις ενεργοποιήσει τον λογαριασμό σου ήδη, ή ο κωδικός "
+"ενεργοποίησης ή είναι λανθασμένος ή έχει λήξει."
 
 #: templates/registration/activation_complete.html:3
 msgid "Activation successful!"
@@ -1453,11 +1722,14 @@ msgid ""
 "\n"
 "Hello %(user)s,\n"
 "\n"
-"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"thank you very much that you want to help! Just one more step and you'll be "
+"ready to start volunteering!\n"
 "\n"
-"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"Please click the following link to finish your registration at volunteer-"
+"planner.org:\n"
 "\n"
-"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://"
+"%(site_domain)s%(activation_key_url)s</a>\n"
 "\n"
 "This link will expire in %(expiration_days)s days.\n"
 "\n"
@@ -1468,11 +1740,14 @@ msgstr ""
 "\n"
 "Γειά σου %(user)s,\n"
 "\n"
-"σε ευχαριστούμε πολύ που θέλεις να βοηθήσεις! Ένα βήμα ακόμα και μπορείς να ξεκινήσεις!\n"
+"σε ευχαριστούμε πολύ που θέλεις να βοηθήσεις! Ένα βήμα ακόμα και μπορείς να "
+"ξεκινήσεις!\n"
 "\n"
-"Κάνε κλικ στο ακόλουθο σύνδεσμο για να ολοκληρώσεις την εγγραφή σου στο volunteer-planner.org:\n"
+"Κάνε κλικ στο ακόλουθο σύνδεσμο για να ολοκληρώσεις την εγγραφή σου στο "
+"volunteer-planner.org:\n"
 "\n"
-"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://"
+"%(site_domain)s%(activation_key_url)s</a>\n"
 "\n"
 "Αυτός ο σύνδεσμος ισχύει για %(expiration_days)s μέρες.\n"
 "\n"
@@ -1486,9 +1761,11 @@ msgid ""
 "\n"
 "Hello %(user)s,\n"
 "\n"
-"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"thank you very much that you want to help! Just one more step and you'll be "
+"ready to start volunteering!\n"
 "\n"
-"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"Please click the following link to finish your registration at volunteer-"
+"planner.org:\n"
 "\n"
 "http://%(site_domain)s%(activation_key_url)s\n"
 "\n"
@@ -1501,9 +1778,11 @@ msgstr ""
 "\n"
 "Γειά σου %(user)s,\n"
 "\n"
-"σε ευχαριστούμε πολύ που θέλεις να βοηθήσεις! Ένα ακόμα βήμα και μπορείς να ξεκινήσεις!\n"
+"σε ευχαριστούμε πολύ που θέλεις να βοηθήσεις! Ένα ακόμα βήμα και μπορείς να "
+"ξεκινήσεις!\n"
 "\n"
-"Κάνε κλικ εδώ για να ολοκληρώσεις την εγγραφή σου στο volunteer-planner.org:\n"
+"Κάνε κλικ εδώ για να ολοκληρώσεις την εγγραφή σου στο volunteer-planner."
+"org:\n"
 "\n"
 "http://%(site_domain)s%(activation_key_url)s\n"
 "\n"
@@ -1517,9 +1796,34 @@ msgstr ""
 msgid "Your volunteer-planner.org registration"
 msgstr "Η εγγραφή σου στο volunteer-planner.org"
 
+#: templates/registration/admin_approve_complete_email.html:6
+msgid "admin approval"
+msgstr ""
+
+#: templates/registration/admin_approve_complete_email.html:11
+msgid ""
+"\n"
+"    Your account is now approved. You can \n"
+"    "
+msgstr ""
+
+#: templates/registration/admin_approve_complete_email.html:14
+#, fuzzy
+#| msgctxt "login link title reset password complete page"
+#| msgid "log in"
+msgid "log in."
+msgstr "Σύνδεση"
+
+#: templates/registration/admin_approve_complete_email.txt:2
+msgid ""
+"\n"
+"Your account is now approved. You can log in using the following link\n"
+msgstr ""
+
 #: templates/registration/login.html:15
 msgid "Your username and password didn't match. Please try again."
-msgstr "Το όνομα χρήστη και ο κωδικός πρόσβασής σου δεν ταιριάζουν. Προσπάθησε ξανά."
+msgstr ""
+"Το όνομα χρήστη και ο κωδικός πρόσβασής σου δεν ταιριάζουν. Προσπάθησε ξανά."
 
 #: templates/registration/login.html:26
 #: templates/registration/registration_form.html:44
@@ -1573,7 +1877,8 @@ msgstr "Σύνδεση"
 #, python-format
 msgctxt "reset password complete page"
 msgid "Your password has been reset! You may now %(login_link)s again."
-msgstr "Ο κωδικός πρόσβασης άλλαξε. Μπορείς τώρα να συνδεθείς ξανά %(login_link)s ."
+msgstr ""
+"Ο κωδικός πρόσβασης άλλαξε. Μπορείς τώρα να συνδεθείς ξανά %(login_link)s ."
 
 #: templates/registration/password_reset_confirm.html:3
 msgid "Enter new password"
@@ -1581,7 +1886,8 @@ msgstr "Πληκτρολόγησε καινούριο κωδικό πρόσβα�
 
 #: templates/registration/password_reset_confirm.html:6
 msgid "Enter your new password below to reset your password"
-msgstr "Πληκτρολόγησε τον καινούριο κωδικό πρόσβασης για να αλλάξεις τον παλιό."
+msgstr ""
+"Πληκτρολόγησε τον καινούριο κωδικό πρόσβασης για να αλλάξεις τον παλιό."
 
 #: templates/registration/password_reset_done.html:3
 msgid "Password reset"
@@ -1589,26 +1895,34 @@ msgstr "Αλλαγή κωδικού πρόσβασης"
 
 #: templates/registration/password_reset_done.html:6
 msgid "We sent you an email with a link to reset your password."
-msgstr "Σου στείλαμε email με έναν σύνδεσμο για να αλλάξεις τον κωδικό πρόσβασης. "
+msgstr ""
+"Σου στείλαμε email με έναν σύνδεσμο για να αλλάξεις τον κωδικό πρόσβασης. "
 
 #: templates/registration/password_reset_done.html:7
 msgid "Please check your email and click the link to continue."
-msgstr "Έλεγξε το email σου και κάνε κλικ στον σύνδεσμο που σου στάλθηκε για να συνεχίσεις."
+msgstr ""
+"Έλεγξε το email σου και κάνε κλικ στον σύνδεσμο που σου στάλθηκε για να "
+"συνεχίσεις."
 
 #: templates/registration/password_reset_email.html:3
 #, python-format
 msgid ""
 "You are receiving this email because you (or someone pretending to be you)\n"
-"requested that your password be reset on the %(domain)s site.  If you do not\n"
+"requested that your password be reset on the %(domain)s site.  If you do "
+"not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
-"To reset your password, please click the following link, or copy and paste it\n"
+"To reset your password, please click the following link, or copy and paste "
+"it\n"
 "into your web browser:"
 msgstr ""
-"Λαμβάνεις αυτό το email διότι εσύ (ή κάποιος που προσποιείται ότι είσαι εσύ)\n"
-"ζήτησε να αλλάξει ο κωδικός πρόσβασης στην %(domain)s ιστοσελίδα. Εάν δε θέλεις να αλλάξεις τον κωδικό σου, απλά αγνόησε αυτό το μήνυμα.\n"
+"Λαμβάνεις αυτό το email διότι εσύ (ή κάποιος που προσποιείται ότι είσαι "
+"εσύ)\n"
+"ζήτησε να αλλάξει ο κωδικός πρόσβασης στην %(domain)s ιστοσελίδα. Εάν δε "
+"θέλεις να αλλάξεις τον κωδικό σου, απλά αγνόησε αυτό το μήνυμα.\n"
 "\n"
-"Για να αλλάξεις τον κωδικό σου, κανε κλικ στον παρακάτω σύνδεσμο ή κάνε αντιγραφή και επικόλληση\n"
+"Για να αλλάξεις τον κωδικό σου, κανε κλικ στον παρακάτω σύνδεσμο ή κάνε "
+"αντιγραφή και επικόλληση\n"
 "στο πρόγραμμα περιήγησης που χρησιμοποιείς:"
 
 #: templates/registration/password_reset_email.html:12
@@ -1634,7 +1948,9 @@ msgstr "Αλλαγή κωδικού πρόσβασης"
 
 #: templates/registration/password_reset_form.html:7
 msgid "No Problem! We'll send you instructions on how to reset your password."
-msgstr "Δεν υπάρχει πρόβλημα. Θα σου στείλουμε οδηγίες σχετικά με το πώς να αλλάξεις τον κωδικό πρόσβασης. "
+msgstr ""
+"Δεν υπάρχει πρόβλημα. Θα σου στείλουμε οδηγίες σχετικά με το πώς να αλλάξεις "
+"τον κωδικό πρόσβασης. "
 
 #: templates/registration/registration_complete.html:3
 msgid "Activation email sent"
@@ -1646,15 +1962,22 @@ msgid "An activation mail will be sent to you email address."
 msgstr "Ένα email ενεργοποίησης θα σου σταλεί στην ηλεκτρονική σου διεύθυνση."
 
 #: templates/registration/registration_complete.html:13
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
-msgstr "Επιβεβαίωσε την εγγραφή σου με το λινκ στο email που θα λάβεις. Αν δεν το έχεις λάβει σε 10 λεπτά, έλεγξε τον φάκελο της ενοχλητικής αλληλογραφίας (spam folder)"
+msgid ""
+"Please confirm registration with the link in the email. If you haven't "
+"received it in 10 minutes, look for it in your spam folder."
+msgstr ""
+"Επιβεβαίωσε την εγγραφή σου με το λινκ στο email που θα λάβεις. Αν δεν το "
+"έχεις λάβει σε 10 λεπτά, έλεγξε τον φάκελο της ενοχλητικής αλληλογραφίας "
+"(spam folder)"
 
 #: templates/registration/registration_form.html:3
 msgid "Register for an account"
 msgstr "Κάνε εγγραφή για να αποκτήσεις λογαριασμό"
 
 #: templates/registration/registration_form.html:5
-msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
+msgid ""
+"You can create a new user account here. If you already have a user account "
+"click on LOGIN in the upper right corner."
 msgstr ""
 
 #: templates/registration/registration_form.html:10
@@ -1662,15 +1985,20 @@ msgid "Create a new account"
 msgstr ""
 
 #: templates/registration/registration_form.html:26
-msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
+msgid ""
+"Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
 #: templates/registration/registration_form.html:31
 msgid "Username already exists. Please choose a different username."
-msgstr "Υπάρχει ήδη κάποιος χρήστης με αυτό το όνομα χρήστη. Μπορείς να επιλέξεις κάποιο άλλο;"
+msgstr ""
+"Υπάρχει ήδη κάποιος χρήστης με αυτό το όνομα χρήστη. Μπορείς να επιλέξεις "
+"κάποιο άλλο;"
 
 #: templates/registration/registration_form.html:38
-msgid "Your username will be visible to other users. Don't use spaces or special characters."
+msgid ""
+"Your username will be visible to other users. Don't use spaces or special "
+"characters."
 msgstr ""
 
 #: templates/registration/registration_form.html:51
@@ -1691,41 +2019,55 @@ msgid "This field is required."
 msgstr "Αυτό το πεδίο είναι υποχρεωτικό."
 
 #: tests/registration/test_registration.py:82
-msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Εισήγαγε ένα έγκυρο όνομα χρήστη. Αυτό μπορεί να περιλαμβάνει μόνο γράμματα, αριθμούς και τους χαρακτήρες @/./+/-/_ "
+msgid ""
+"Enter a valid username. This value may contain only letters, numbers and @/./"
+"+/-/_ characters."
+msgstr ""
+"Εισήγαγε ένα έγκυρο όνομα χρήστη. Αυτό μπορεί να περιλαμβάνει μόνο γράμματα, "
+"αριθμούς και τους χαρακτήρες @/./+/-/_ "
 
 #: tests/registration/test_registration.py:110
 msgid "A user with that username already exists."
 msgstr "Υπάρχει ήδη κάποιος χρήστης με αυτό το όνομα χρήστη. "
 
-#: volunteer_planner/settings/base.py:142
+#: volunteer_planner/settings/base.py:148
 msgid "English"
 msgstr "Αγγλικά"
 
-#: volunteer_planner/settings/base.py:143
+#: volunteer_planner/settings/base.py:149
 msgid "German"
 msgstr "Γερμανικά"
 
-#: volunteer_planner/settings/base.py:144
+#: volunteer_planner/settings/base.py:150
 msgid "French"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:145
+#: volunteer_planner/settings/base.py:151
 msgid "Greek"
 msgstr "Ελληνικά"
 
-#: volunteer_planner/settings/base.py:146
+#: volunteer_planner/settings/base.py:152
 msgid "Hungarian"
 msgstr "Ουγγρικά"
 
-#: volunteer_planner/settings/base.py:147
-msgid "Swedish"
-msgstr "Σουηδικά"
+#: volunteer_planner/settings/base.py:153
+#, fuzzy
+#| msgid "English"
+msgid "Polish"
+msgstr "Αγγλικά"
 
-#: volunteer_planner/settings/base.py:148
+#: volunteer_planner/settings/base.py:154
 msgid "Portuguese"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:149
+#: volunteer_planner/settings/base.py:155
+msgid "Russian"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:156
+msgid "Swedish"
+msgstr "Σουηδικά"
+
+#: volunteer_planner/settings/base.py:157
 msgid "Turkish"
 msgstr ""
