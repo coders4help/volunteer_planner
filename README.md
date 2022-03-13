@@ -6,15 +6,14 @@ Volunteer Planner is a platform to schedule shifts of volunteers. Volunteers reg
   workplaces) - it can be used for a variety of purposes.
 
 ## Status
-This code was used from 2015 to 2018 at volunteer-planner.org
+This code has been used from 2015 to 2018 and since March 2022 at volunteer-planner.org.
 
 ## Work in progress
 There are some feature requests to be implemented in the future.
 The software currently needs a centralized administration of the shifts, but it is one of the main goals of the current
 development to empower organizations to schedule shifts for their facilities on their own.
 
-If you are interested to join contact the former development team, just make pull requests or come to a meeting in Berlin/Germany:
-http://www.meetup.com/de/coders4help/
+If you are interested to contribute, join the [developer Slack channel](https://join.slack.com/t/coders4help/shared_invite/zt-1520v8cef-DytzxhO~ubmTrX0CdVcpxQ) or create a feature or fix pull request directly.
 
 ## System context
 **User**: The volunteers and administrators just need a (modern) web browser to use the volunteer-planner application.
