@@ -5,19 +5,35 @@ from django.db import migrations
 from organizations.models import Membership
 from ..settings import FACILITY_MANAGER_GROUPNAME, ORGANIZATION_MANAGER_GROUPNAME
 
-ADD = "add"
-CHANGE = "change"
-DELETE = "delete"
-VIEW = "view"
+VIEW, ADD, CHANGE, DELETE = "view", "add", "change", "delete"
+ALL = (VIEW, ADD, CHANGE, DELETE)
 
 FACILITY_MANAGER_PERMISSIONS = (
-    ("organizations", "Facility", (CHANGE, VIEW)),
-    ("organizations", "FacilityMembership", (ADD, CHANGE, DELETE, VIEW)),
+    ("accounts", "useraccount", (VIEW,)),
+    ("organizations", "facility", (CHANGE, VIEW)),
+    ("organizations", "facilitymembership", ALL),
+    ("organizations", "organization", (VIEW,)),
+    ("organizations", "organizationmembership", (VIEW,)),
+    ("organizations", "task", ALL),
+    ("organizations", "workplace", ALL),
+    ("scheduler", "shift", ALL),
+    ("scheduler", "shifthelper", ALL),
+    ("scheduletemplates", "scheduletemplate", ALL),
+    ("scheduletemplates", "shifttemplate", ALL),
 )
 
 ORGANIZATION_MANAGER_PERMISSIONS = FACILITY_MANAGER_PERMISSIONS + (
-    ("organizations", "Organization", (CHANGE, VIEW)),
-    ("organizations", "OrganizationMembership", (ADD, CHANGE, DELETE, VIEW)),
+    ("accounts", "useraccount", (VIEW,)),
+    ("organizations", "facility", ALL),
+    ("organizations", "facilitymembership", ALL),
+    ("organizations", "organization", (CHANGE, VIEW)),
+    ("organizations", "organizationmembership", ALL),
+    ("organizations", "task", ALL),
+    ("organizations", "workplace", ALL),
+    ("scheduler", "shift", ALL),
+    ("scheduler", "shifthelper", ALL),
+    ("scheduletemplates", "scheduletemplate", ALL),
+    ("scheduletemplates", "shifttemplate", ALL),
 )
 
 MANAGER_GROUPS = {
@@ -32,7 +48,8 @@ def forwards(apps, schema_editor):
     PermissionModel = apps.get_model("auth", "Permission")
 
     for group_name, permissions in MANAGER_GROUPS.items():
-        group, _ = GroupModel.objects.get_or_create(name=group_name)
+        group, created = GroupModel.objects.get_or_create(name=group_name)
+        print(f"  - {group.name}: created group object")
         for app_label, model, actions in permissions:
             content_type = ContentTypeModel.objects.get(app_label=app_label.lower(), model=model.lower())
             for action in actions:
@@ -40,14 +57,21 @@ def forwards(apps, schema_editor):
                     content_type=content_type, codename=f"{action}_{model}".lower()
                 )
                 group.permissions.add(permission)
+                print(f'    - {group.name}: added permission "{permission.name}" ({permission.codename})')
 
     OrganizationMembershipModel = apps.get_model("organizations", "OrganizationMembership")
     for organization_member in OrganizationMembershipModel.objects.filter(role__lt=Membership.Roles.MEMBER):
-        organization_member.user_account.user.groups.add(GroupModel.objects.get(name=ORGANIZATION_MANAGER_GROUPNAME))
+        user = organization_member.user_account.user
+        group = GroupModel.objects.get(name=ORGANIZATION_MANAGER_GROUPNAME)
+        user.groups.add(group)
+        print(f'  - {group.name}: added user "{user.username}" (id: {user.id})')
 
     FacilityMembershipModel = apps.get_model("organizations", "FacilityMembership")
     for facility_member in FacilityMembershipModel.objects.filter(role__lt=Membership.Roles.MEMBER):
-        facility_member.user_account.user.groups.add(GroupModel.objects.get(name=FACILITY_MANAGER_GROUPNAME))
+        user = facility_member.user_account.user
+        group = GroupModel.objects.get(name=FACILITY_MANAGER_GROUPNAME)
+        user.groups.add(group)
+        print(f'  - {group.name}: added user "{user.username}" (id: {user.id})')
 
 
 def backwards(apps, schema_editor):
