@@ -312,6 +312,7 @@ class ShiftTemplateAdmin(MembershipFilteredAdmin):
         'workplace',
         'starting_time',
         'ending_time',
+        'members_only',
         'days',
     )
     list_filter = (
