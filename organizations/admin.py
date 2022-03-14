@@ -270,8 +270,8 @@ class FacilityAdmin(MembershipFilteredAdmin):
     get_contact_info.allow_tags = True
 
     list_display = (
-        'organization',
         'name',
+        'organization',
         'get_short_description',
         'get_description',
         'get_contact_info',
@@ -334,8 +334,8 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
     get_description.allow_tags = True
 
     list_display = (
-        'facility',
         'name',
+        'facility',
         'get_description'
     )
     list_filter = (
@@ -358,8 +358,8 @@ class TaskAdmin(MembershipFilteredAdmin):
     get_description.allow_tags = True
 
     list_display = (
-        'facility',
         'name',
+        'facility',
         'get_description'
     )
     list_filter = (
