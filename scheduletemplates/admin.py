@@ -36,6 +36,13 @@ class ShiftTemplateForm(forms.ModelForm):
                                   widget=TimeInput,
                                   input_formats=time_formats)
 
+    def __init__(self, *args, **kwargs):
+        super(ShiftTemplateForm, self).__init__(*args, **kwargs)
+        if self.instance and self.instance.id:
+            facility = self.instance.schedule_template.facility
+            self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=facility)
+            self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=facility)
+
     def clean(self):
         """Validation of shift data, to prevent non-sense values to be entered"""
         schedule_template = self.cleaned_data.get('schedule_template')
