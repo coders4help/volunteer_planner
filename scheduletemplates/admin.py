@@ -36,6 +36,26 @@ class ShiftTemplateForm(forms.ModelForm):
                                   widget=TimeInput,
                                   input_formats=time_formats)
 
+    def clean(self):
+        """Validation of shift data, to prevent non-sense values to be entered"""
+        schedule_template = self.cleaned_data.get('schedule_template')
+        if schedule_template:
+            facility = schedule_template.facility
+            task = self.cleaned_data.get('task')
+
+            if task and not task.facility == facility:
+                self.add_error('task', ValidationError(_(f'Facility does not match: "{task.name}" is at '
+                                                         f'"{task.facility.name}" but shift takes place at '
+                                                         f'"{facility.name}"')))
+
+            workplace = self.cleaned_data.get('workplace')
+            if workplace and not workplace.facility == facility:
+                self.add_error('workplace', ValidationError(_(f'Facility does not match: "{workplace.name}" is at '
+                                                              f'"{workplace.facility.name}" but shift takes place at '
+                                                              f'"{facility.name}"')))
+
+
+
 
 class ShiftTemplateInline(FormattedModelChoiceFieldAdminMixin, MembershipFilteredTabularInline):
     model = models.ShiftTemplate
