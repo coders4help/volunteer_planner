@@ -1,5 +1,6 @@
 # coding: utf-8
 from datetime import datetime
+
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
@@ -7,11 +8,23 @@ from django.db.models import Count
 from django.utils.html import format_html, mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from . import models
 from organizations.admin import (
     MembershipFilteredAdmin,
     MembershipFieldListFilter
 )
+from . import models
+from .fields import FormattedModelChoiceIteratorFactory
+
+
+class FormattedModelChoiceFieldAdminMixin:
+
+    fk_label_formats = None
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        field = super().formfield_for_foreignkey(db_field, request, **kwargs)
+        if self.fk_label_formats and db_field.name in self.fk_label_formats.keys():
+            field.iterator = FormattedModelChoiceIteratorFactory(label_format=self.fk_label_formats[db_field.name])
+        return field
 
 
 class ShiftAdminForm(forms.ModelForm):
@@ -19,11 +32,33 @@ class ShiftAdminForm(forms.ModelForm):
         model = models.Shift
         fields = ['facility', 'slots', 'task', 'workplace', 'starting_time', 'ending_time', 'members_only']
 
+    def __init__(self, *args, **kwargs):
+        super(ShiftAdminForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=self.instance.facility)
+            self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=self.instance.facility)
+
     def clean(self):
         """Validation of shift data, to prevent non-sense values to be entered"""
         # Check start and end times to be reasonable
         start = self.cleaned_data.get('starting_time')
         end = self.cleaned_data.get('ending_time')
+
+        facility = self.cleaned_data.get('facility') or self.instance.facility
+        if facility:
+            task = self.cleaned_data.get('task')
+
+            if task and not task.facility == facility:
+                self.add_error('task', ValidationError(_(f'Facility does not match: "{task.name}" is at '
+                                                         f'"{task.facility.name}" but shift takes place at '
+                                                         f'"{facility.name}"')))
+
+            workplace = self.cleaned_data.get('workplace')
+            if workplace and not workplace.facility == facility:
+                self.add_error('workplace', ValidationError(_(f'Facility does not match: "{workplace.name}" is at '
+                                                              f'"{workplace.facility.name}" but shift takes place at '
+                                                              f'"{facility.name}"')))
+
 
         # No times, no joy
         if not start:
@@ -43,8 +78,13 @@ class ShiftAdminForm(forms.ModelForm):
 
 
 @admin.register(models.Shift)
-class ShiftAdmin(MembershipFilteredAdmin):
+class ShiftAdmin(FormattedModelChoiceFieldAdminMixin, MembershipFilteredAdmin):
     form = ShiftAdminForm
+
+    fk_label_formats = {
+        'task': "{obj.name} ({obj.facility.name})",
+        'workplace': "{obj.name} ({obj.facility.name})"
+    }
 
     def get_queryset(self, request):
         qs = super(ShiftAdmin, self).get_queryset(request)

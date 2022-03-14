@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta, datetime, time
 
+from django.core.exceptions import ValidationError
 from django.utils import formats
 from django import forms
 from django.conf.urls import url
 from django.contrib import admin, messages
-from django.urls import reverse
 from django.db.models import Min, Count, Sum
 from django.forms import DateInput, TimeInput
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
+from scheduler.admin import FormattedModelChoiceFieldAdminMixin
 from . import models
 from organizations.admin import (MembershipFilteredAdmin,
                                  MembershipFilteredTabularInline,
@@ -36,9 +36,42 @@ class ShiftTemplateForm(forms.ModelForm):
                                   widget=TimeInput,
                                   input_formats=time_formats)
 
+    def __init__(self, *args, **kwargs):
+        super(ShiftTemplateForm, self).__init__(*args, **kwargs)
+        if self.instance and self.instance.id:
+            facility = self.instance.schedule_template.facility
+            self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=facility)
+            self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=facility)
 
-class ShiftTemplateInline(MembershipFilteredTabularInline):
+    def clean(self):
+        """Validation of shift data, to prevent non-sense values to be entered"""
+        schedule_template = self.cleaned_data.get('schedule_template')
+        if schedule_template:
+            facility = schedule_template.facility
+            task = self.cleaned_data.get('task')
+
+            if task and not task.facility == facility:
+                self.add_error('task', ValidationError(_(f'Facility does not match: "{task.name}" is at '
+                                                         f'"{task.facility.name}" but shift takes place at '
+                                                         f'"{facility.name}"')))
+
+            workplace = self.cleaned_data.get('workplace')
+            if workplace and not workplace.facility == facility:
+                self.add_error('workplace', ValidationError(_(f'Facility does not match: "{workplace.name}" is at '
+                                                              f'"{workplace.facility.name}" but shift takes place at '
+                                                              f'"{facility.name}"')))
+
+
+
+
+class ShiftTemplateInline(FormattedModelChoiceFieldAdminMixin, MembershipFilteredTabularInline):
     model = models.ShiftTemplate
+
+    fk_label_formats = {
+        'schedule_template': "{obj.name} ({obj.facility.name})",
+        'task': "{obj.name} ({obj.facility.name})",
+        'workplace': "{obj.name} ({obj.facility.name})"
+    }
 
     min_num = 0
     extra = 0
@@ -302,10 +335,24 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
 
 
 @admin.register(models.ShiftTemplate)
-class ShiftTemplateAdmin(MembershipFilteredAdmin):
+class ShiftTemplateAdmin(FormattedModelChoiceFieldAdminMixin, MembershipFilteredAdmin):
     form = ShiftTemplateForm
+
+    fk_label_formats = {
+        'schedule_template': "{obj.name} ({obj.facility.name})",
+        'task': "{obj.name} ({obj.facility.name})",
+        'workplace': "{obj.name} ({obj.facility.name})"
+    }
+
+    def get_facility(self, obj):
+        return obj.schedule_template.facility
+
+    get_facility.short_description = _(u'facility')
+    get_facility.admin_order_field = 'schedule_template__facility'
+
     list_display = (
         'get_edit_link',
+        'get_facility',
         'schedule_template',
         'slots',
         'task',
@@ -337,3 +384,10 @@ class ShiftTemplateAdmin(MembershipFilteredAdmin):
             qs = qs or db_field.remote_field.model.objects.all()
             qs = filter_queryset_by_membership(qs, request.user)
         return qs
+
+    def get_readonly_fields(self, request, obj=None):
+        readonly = super(ShiftTemplateAdmin, self).get_readonly_fields(
+            request=request, obj=obj)
+        if obj and obj.id:
+            readonly = readonly + ('schedule_template',)
+        return readonly
