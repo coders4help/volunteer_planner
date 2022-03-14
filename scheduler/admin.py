@@ -32,6 +32,12 @@ class ShiftAdminForm(forms.ModelForm):
         model = models.Shift
         fields = ['facility', 'slots', 'task', 'workplace', 'starting_time', 'ending_time', 'members_only']
 
+    def __init__(self, *args, **kwargs):
+        super(ShiftAdminForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=self.instance.facility)
+            self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=self.instance.facility)
+
     def clean(self):
         """Validation of shift data, to prevent non-sense values to be entered"""
         # Check start and end times to be reasonable
