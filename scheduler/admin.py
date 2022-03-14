@@ -38,6 +38,22 @@ class ShiftAdminForm(forms.ModelForm):
         start = self.cleaned_data.get('starting_time')
         end = self.cleaned_data.get('ending_time')
 
+        facility = self.cleaned_data.get('facility') or self.instance.facility
+        if facility:
+            task = self.cleaned_data.get('task')
+
+            if task and not task.facility == facility:
+                self.add_error('task', ValidationError(_(f'Facility does not match: "{task.name}" is at '
+                                                         f'"{task.facility.name}" but shift takes place at '
+                                                         f'"{facility.name}"')))
+
+            workplace = self.cleaned_data.get('workplace')
+            if workplace and not workplace.facility == facility:
+                self.add_error('workplace', ValidationError(_(f'Facility does not match: "{workplace.name}" is at '
+                                                              f'"{workplace.facility.name}" but shift takes place at '
+                                                              f'"{facility.name}"')))
+
+
         # No times, no joy
         if not start:
             self.add_error('starting_time', ValidationError(_('No start time given')))
