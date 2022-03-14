@@ -8,10 +8,8 @@
 
 <body>
 <p>
-    {% blocktrans %}
-    Your account is now approved. You can 
-    {% endblocktrans %}
-    <a href="http://{{site.domain}}{% url 'auth_login' %}">{% trans "log in." %}</a>
+    {% url 'auth_login' as login_url %}
+    {% blocktrans %}Your account is now approved. You can <a href="https://{{ site.domain }}{{ login_url }}">login now</a>.{% endblocktrans %}
 </p>
 </body>
 
