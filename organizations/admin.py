@@ -118,18 +118,18 @@ class MembershipFilteredAdmin(admin.ModelAdmin):
             readonly += ('user_account',)
         return readonly
 
-    def get_list_display(self, request):
-        list_display = list(
-            super(MembershipFilteredAdmin, self).get_list_display(request))
-        if request.user.is_superuser:
-            return list_display
-        if 'facility' in list_display or 'organization' in list_display:
-            user_orgs, user_facilities = get_cached_memberships(request.user)
-            if len(user_facilities) <= 1 and 'facility' in list_display:
-                list_display.remove('facility')
-            if len(user_orgs) <= 1 and 'organization' in list_display:
-                list_display.remove('organization')
-        return list_display
+    # def get_list_display(self, request):
+    #     list_display = list(
+    #         super(MembershipFilteredAdmin, self).get_list_display(request))
+    #     if request.user.is_superuser:
+    #         return list_display
+    #     if 'facility' in list_display or 'organization' in list_display:
+    #         user_orgs, user_facilities = get_cached_memberships(request.user)
+    #         if len(user_facilities) <= 1 and 'facility' in list_display:
+    #             list_display.remove('facility')
+    #         if len(user_orgs) <= 1 and 'organization' in list_display:
+    #             list_display.remove('organization')
+    #     return list_display
 
     def get_list_display_links(self, request, list_display):
         list_display_links = list(
