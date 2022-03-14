@@ -70,6 +70,8 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
