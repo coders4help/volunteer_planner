@@ -1,5 +1,6 @@
 # coding: utf-8
 from datetime import datetime
+
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
@@ -7,11 +8,23 @@ from django.db.models import Count
 from django.utils.html import format_html, mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from . import models
 from organizations.admin import (
     MembershipFilteredAdmin,
     MembershipFieldListFilter
 )
+from . import models
+from .fields import FormattedModelChoiceIteratorFactory
+
+
+class FormattedModelChoiceFieldAdminMixin:
+
+    fk_label_formats = None
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        field = super().formfield_for_foreignkey(db_field, request, **kwargs)
+        if self.fk_label_formats and db_field.name in self.fk_label_formats.keys():
+            field.iterator = FormattedModelChoiceIteratorFactory(label_format=self.fk_label_formats[db_field.name])
+        return field
 
 
 class ShiftAdminForm(forms.ModelForm):
@@ -43,8 +56,13 @@ class ShiftAdminForm(forms.ModelForm):
 
 
 @admin.register(models.Shift)
-class ShiftAdmin(MembershipFilteredAdmin):
+class ShiftAdmin(FormattedModelChoiceFieldAdminMixin, MembershipFilteredAdmin):
     form = ShiftAdminForm
+
+    fk_label_formats = {
+        'task': "{obj.name} ({obj.facility.name})",
+        'workplace': "{obj.name} ({obj.facility.name})"
+    }
 
     def get_queryset(self, request):
         qs = super(ShiftAdmin, self).get_queryset(request)
