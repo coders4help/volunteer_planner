@@ -34,9 +34,12 @@ class ShiftAdminForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ShiftAdminForm, self).__init__(*args, **kwargs)
-        if self.instance:
-            self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=self.instance.facility)
-            self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=self.instance.facility)
+        try:
+            if self.instance:
+                self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=self.instance.facility)
+                self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=self.instance.facility)
+        except models.Shift.facility.RelatedObjectDoesNotExist as e:
+            pass  # FIXME There must be some better way, to handle this use case
 
     def clean(self):
         """Validation of shift data, to prevent non-sense values to be entered"""
