@@ -235,8 +235,8 @@ class PlannerView(LoginRequiredMixin, FormView):
 
                     if soft_conflicted_shifts:
                         warning_message = _(
-                            u'The shift you joined overlaps with other shifts you already joined. Please check for \
-                            conflicts:')
+                            'The shift you joined overlaps with other shifts you already joined. Please check for '
+                            'conflicts:')
                         message_list = u'<ul>{}</ul>'.format('\n'.join(
                             [u'<li>{}</li>'.format(conflict) for conflict in
                              soft_conflicted_shifts]))

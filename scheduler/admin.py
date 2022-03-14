@@ -27,17 +27,17 @@ class ShiftAdminForm(forms.ModelForm):
 
         # No times, no joy
         if not start:
-            self.add_error('starting_time', ValidationError(_('No start time given')))
+            self.add_error('starting_time', ValidationError(_('No start time given.')))
         if not end:
-            self.add_error('ending_time', ValidationError(_('No end time given')))
+            self.add_error('ending_time', ValidationError(_('No end time given.')))
 
         # There is no known reason to modify shifts in the past
         if start:
             now = datetime.now()
             if start < now:
-                self.add_error('starting_time', ValidationError(_('Start time in the past')))
+                self.add_error('starting_time', ValidationError(_('Start time in the past.')))
             if end and not end > start:
-                self.add_error('ending_time', ValidationError(_('End time not after start time')))
+                self.add_error('ending_time', ValidationError(_('Shift ends before it starts.')))
 
         return self.cleaned_data
 

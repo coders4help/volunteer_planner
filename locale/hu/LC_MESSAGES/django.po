@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-06 20:47+0100\n"
+"POT-Creation-Date: 2022-03-14 17:00+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:15 accounts/admin.py:21 shiftmailer/models.py:9
+#: accounts/admin.py:16 accounts/admin.py:22 shiftmailer/models.py:9
 msgid "first name"
 msgstr ""
 
-#: accounts/admin.py:27 shiftmailer/models.py:13
+#: accounts/admin.py:28 shiftmailer/models.py:13
 msgid "email"
 msgstr "e-mail"
 
@@ -36,11 +36,15 @@ msgstr "e-mail"
 msgid "Accounts"
 msgstr ""
 
-#: accounts/models.py:16 organizations/models.py:59
+#: accounts/forms.py:7
+msgid "Accept privacy policy"
+msgstr ""
+
+#: accounts/models.py:17 organizations/models.py:60
 msgid "user account"
 msgstr "felhasználói fiók"
 
-#: accounts/models.py:17
+#: accounts/models.py:18
 msgid "user accounts"
 msgstr "felhasználói fiókok"
 
@@ -151,7 +155,7 @@ msgstr ""
 msgid "Your user account has been deleted."
 msgstr ""
 
-#: content/admin.py:15 content/admin.py:16 content/models.py:15
+#: content/admin.py:15 content/admin.py:16 content/models.py:16
 msgid "additional CSS"
 msgstr ""
 
@@ -167,39 +171,39 @@ msgstr ""
 msgid "No translation available"
 msgstr ""
 
-#: content/models.py:12
+#: content/models.py:13
 msgid "additional style"
 msgstr ""
 
-#: content/models.py:18
+#: content/models.py:19
 msgid "additional flat page style"
 msgstr ""
 
-#: content/models.py:19
+#: content/models.py:20
 msgid "additional flat page styles"
 msgstr ""
 
-#: content/models.py:25
+#: content/models.py:27
 msgid "flat page"
 msgstr ""
 
-#: content/models.py:28
+#: content/models.py:30
 msgid "language"
 msgstr ""
 
-#: content/models.py:32 news/models.py:14
+#: content/models.py:34 news/models.py:14
 msgid "title"
 msgstr "cím"
 
-#: content/models.py:36
+#: content/models.py:38
 msgid "content"
 msgstr ""
 
-#: content/models.py:46
+#: content/models.py:48
 msgid "flat page translation"
 msgstr ""
 
-#: content/models.py:47
+#: content/models.py:49
 msgid "flat page translations"
 msgstr ""
 
@@ -236,11 +240,11 @@ msgstr ""
 msgid "creation date"
 msgstr ""
 
-#: news/models.py:39
+#: news/models.py:41
 msgid "news entry"
 msgstr ""
 
-#: news/models.py:40
+#: news/models.py:42
 msgid "news entries"
 msgstr ""
 
@@ -600,25 +604,29 @@ msgid ""
 "                    "
 msgstr ""
 
-#: organizations/admin.py:128 organizations/admin.py:130
+#: organizations/admin.py:141 organizations/admin.py:143
 msgid "edit"
 msgstr ""
 
-#: organizations/admin.py:202 organizations/admin.py:239
-#: organizations/models.py:79 organizations/models.py:148
+#: organizations/admin.py:220 organizations/admin.py:257
+#: organizations/models.py:80 organizations/models.py:153
 msgid "short description"
 msgstr ""
 
-#: organizations/admin.py:208 organizations/admin.py:245
-#: organizations/admin.py:311 organizations/admin.py:335
-#: organizations/models.py:82 organizations/models.py:151
-#: organizations/models.py:291 organizations/models.py:316
+#: organizations/admin.py:226 organizations/admin.py:263
+#: organizations/admin.py:333 organizations/admin.py:357
+#: organizations/models.py:83 organizations/models.py:156
+#: organizations/models.py:309 organizations/models.py:338
 msgid "description"
 msgstr "leírás"
 
-#: organizations/admin.py:214 organizations/admin.py:251
-#: organizations/models.py:85 organizations/models.py:154
+#: organizations/admin.py:232 organizations/admin.py:269
+#: organizations/models.py:86 organizations/models.py:159
 msgid "contact info"
+msgstr ""
+
+#: organizations/apps.py:7 organizations/models.py:108
+msgid "organizations"
 msgstr ""
 
 #: organizations/models.py:29
@@ -665,139 +673,140 @@ msgstr ""
 msgid "status"
 msgstr ""
 
-#: organizations/models.py:74 organizations/models.py:143
-#: organizations/models.py:288 organizations/models.py:313 places/models.py:20
+#: organizations/models.py:75 organizations/models.py:148
+#: organizations/models.py:306 organizations/models.py:335 places/models.py:20
 #: scheduletemplates/models.py:13
 msgid "name"
 msgstr "név"
 
-#: organizations/models.py:88 organizations/models.py:169
+#: organizations/models.py:89 organizations/models.py:175
 msgid "address"
 msgstr "cím"
 
-#: organizations/models.py:97 organizations/models.py:185 places/models.py:21
+#: organizations/models.py:98 organizations/models.py:191 places/models.py:21
 msgid "slug"
 msgstr "slug"
 
-#: organizations/models.py:102 organizations/models.py:195
+#: organizations/models.py:103 organizations/models.py:201
 msgid "join mode"
 msgstr ""
 
-#: organizations/models.py:103
+#: organizations/models.py:104
 msgid "Who can join this organization?"
 msgstr ""
 
-#: organizations/models.py:106 organizations/models.py:139
-#: organizations/models.py:232
+#: organizations/models.py:107 organizations/models.py:144
+#: organizations/models.py:242
 msgid "organization"
 msgstr ""
 
-#: organizations/models.py:107
-msgid "organizations"
-msgstr ""
-
-#: organizations/models.py:111 organizations/models.py:214
-#: organizations/models.py:299 organizations/models.py:324
+#: organizations/models.py:112 organizations/models.py:220
+#: organizations/models.py:317 organizations/models.py:346
 #, python-brace-format
 msgid "{name}"
 msgstr ""
 
-#: organizations/models.py:132
+#: organizations/models.py:136
 msgid "disabled"
 msgstr ""
 
-#: organizations/models.py:133
+#: organizations/models.py:137
 msgid "enabled (collapsed)"
 msgstr ""
 
-#: organizations/models.py:134
+#: organizations/models.py:138
 msgid "enabled"
 msgstr ""
 
-#: organizations/models.py:165 places/models.py:132
+#: organizations/models.py:171 places/models.py:139
 msgid "place"
 msgstr "hely"
 
-#: organizations/models.py:174
+#: organizations/models.py:180
 msgid "postal code"
 msgstr "irányítószám"
 
-#: organizations/models.py:179
+#: organizations/models.py:185
 msgid "Show on map of all facilities"
 msgstr ""
 
-#: organizations/models.py:181
+#: organizations/models.py:187
 msgid "latitude"
 msgstr "szélességi fok"
 
-#: organizations/models.py:183
+#: organizations/models.py:189
 msgid "longitude"
 msgstr "hosszúsági fok"
 
-#: organizations/models.py:190
+#: organizations/models.py:196
 msgid "timeline"
 msgstr ""
 
-#: organizations/models.py:196
+#: organizations/models.py:202
 msgid "Who can join this facility?"
 msgstr ""
 
-#: organizations/models.py:199 organizations/models.py:258
-#: organizations/models.py:283 organizations/models.py:309
-#: scheduler/models.py:51 scheduletemplates/models.py:16
+#: organizations/models.py:205 organizations/models.py:272
+#: organizations/models.py:301 organizations/models.py:331
+#: scheduler/models.py:59 scheduletemplates/models.py:17
 msgid "facility"
 msgstr ""
 
-#: organizations/models.py:200
+#: organizations/models.py:206
 msgid "facilities"
 msgstr ""
 
-#: organizations/models.py:237
+#: organizations/models.py:247
 msgid "organization member"
 msgstr ""
 
-#: organizations/models.py:238
+#: organizations/models.py:248
 msgid "organization members"
 msgstr ""
 
-#: organizations/models.py:242
+#: organizations/models.py:252
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr ""
 
-#: organizations/models.py:264
+#: organizations/models.py:278
 msgid "facility member"
 msgstr ""
 
-#: organizations/models.py:265
+#: organizations/models.py:279
 msgid "facility members"
 msgstr ""
 
-#: organizations/models.py:269
+#: organizations/models.py:283
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr ""
 
-#: organizations/models.py:294 scheduler/models.py:46
-#: scheduletemplates/models.py:40
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
+#: organizations/models.py:312 scheduler/models.py:53
+#: scheduletemplates/models.py:47
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr ""
 
-#: organizations/models.py:295
+#: organizations/models.py:313
 msgid "workplaces"
 msgstr ""
 
-#: organizations/models.py:319 scheduler/models.py:44
-#: scheduletemplates/models.py:37
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
+#: organizations/models.py:341 scheduler/models.py:50
+#: scheduletemplates/models.py:43
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr ""
 
-#: organizations/models.py:320
+#: organizations/models.py:342
 msgid "tasks"
+msgstr ""
+
+#: organizations/signals.py:36
+#, python-brace-format
+msgid "User '{user}' manager status of a facility/organization was changed. "
 msgstr ""
 
 #: organizations/templates/emails/membership_approved.txt:2
@@ -824,13 +833,18 @@ msgstr ""
 msgid "Helpdesk"
 msgstr "Helpdes"
 
+#: organizations/templates/facility.html:29
+#: scheduler/templates/geographic_helpdesk.html:69
+msgid "Show on map"
+msgstr ""
+
 #: organizations/templates/facility.html:41
 #: organizations/templates/partials/compact_facility.html:31
 msgid "Open Shifts"
 msgstr ""
 
 #: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:70
+#: scheduler/templates/helpdesk.html:68
 msgid "News"
 msgstr ""
 
@@ -870,7 +884,7 @@ msgstr ""
 
 #: organizations/templates/partials/compact_facility.html:23
 #: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:68
+#: scheduler/templates/helpdesk.html:66
 msgid "Show details"
 msgstr ""
 
@@ -884,102 +898,114 @@ msgctxt "maps search url pattern"
 msgid "https://www.openstreetmap.org/search?query={location}"
 msgstr ""
 
-#: places/models.py:69 places/models.py:84
+#: places/models.py:72 places/models.py:88
 msgid "country"
 msgstr "ország"
 
-#: places/models.py:70
+#: places/models.py:73
 msgid "countries"
 msgstr "országok"
 
-#: places/models.py:87 places/models.py:106
+#: places/models.py:91 places/models.py:112
 msgid "region"
 msgstr "régió"
 
-#: places/models.py:88
+#: places/models.py:92
 msgid "regions"
 msgstr "régiók"
 
-#: places/models.py:109 places/models.py:129
+#: places/models.py:115 places/models.py:136
 msgid "area"
 msgstr "terület"
 
-#: places/models.py:110
+#: places/models.py:116
 msgid "areas"
 msgstr "területek"
 
-#: places/models.py:133
+#: places/models.py:140
 msgid "places"
 msgstr "helyek"
 
-#: scheduler/admin.py:28
+#: scheduler/admin.py:30
+msgid "No start time given."
+msgstr ""
+
+#: scheduler/admin.py:32
+msgid "No end time given."
+msgstr ""
+
+#: scheduler/admin.py:38
+msgid "Start time in the past."
+msgstr ""
+
+#: scheduler/admin.py:40
+msgid "Shift ends before it starts."
+msgstr ""
+
+#: scheduler/admin.py:62
 msgid "number of volunteers"
 msgstr ""
 
-#: scheduler/admin.py:44
+#: scheduler/admin.py:78
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
 msgstr ""
 
 #: scheduler/apps.py:8
-msgid "Scheduler"
+msgid "scheduler"
 msgstr "Ütemező"
 
-#: scheduler/models.py:41 scheduletemplates/models.py:34
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
+#: scheduler/models.py:46 scheduletemplates/models.py:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
 msgid "number of needed volunteers"
 msgstr "a szükséges önkéntesek száma"
 
-#: scheduler/models.py:53 scheduletemplates/admin.py:33
-#: scheduletemplates/models.py:44
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
+#: scheduler/models.py:61 scheduletemplates/admin.py:32
+#: scheduletemplates/models.py:51
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr "kezdés ideje"
 
-#: scheduler/models.py:55 scheduletemplates/admin.py:36
-#: scheduletemplates/models.py:47
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
+#: scheduler/models.py:63 scheduletemplates/admin.py:35
+#: scheduletemplates/models.py:54
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr "befejezés ideje"
 
-#: scheduler/models.py:63 scheduletemplates/models.py:54
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:58
+#: scheduler/models.py:71 scheduletemplates/models.py:61
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
 msgid "members only"
 msgstr ""
 
-#: scheduler/models.py:65 scheduletemplates/models.py:56
+#: scheduler/models.py:73 scheduletemplates/models.py:63
 msgid "allow only members to help"
 msgstr ""
 
-#: scheduler/models.py:71
+#: scheduler/models.py:79
 msgid "shift"
 msgstr "műszak"
 
-#: scheduler/models.py:72 scheduletemplates/admin.py:283
+#: scheduler/models.py:80 scheduletemplates/admin.py:282
 msgid "shifts"
 msgstr "műszakok"
 
-#: scheduler/models.py:86 scheduletemplates/models.py:77
+#: scheduler/models.py:94 scheduletemplates/models.py:84
 #, python-brace-format
 msgid "the next day"
 msgid_plural "after {number_of_days} days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scheduler/models.py:130
+#: scheduler/models.py:144
 msgid "shift helper"
 msgstr "beosztásban segítő"
 
-#: scheduler/models.py:131
+#: scheduler/models.py:145
 msgid "shift helpers"
 msgstr "beosztásban segítők"
-
-#: scheduler/templates/geographic_helpdesk.html:69
-msgid "Show on map"
-msgstr ""
 
 #: scheduler/templates/geographic_helpdesk.html:81
 msgctxt "helpdesk shifts heading"
@@ -991,19 +1017,19 @@ msgstr "beosztás"
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "Új beosztások a/az %(geographical_name)s helyszínen."
 
-#: scheduler/templates/helpdesk.html:39
+#: scheduler/templates/helpdesk.html:37
 msgid "You can help in the following facilities"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:43
+#: scheduler/templates/helpdesk.html:41
 msgid "filter"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:59
+#: scheduler/templates/helpdesk.html:57
 msgid "see more"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:82
+#: scheduler/templates/helpdesk.html:80
 msgid "open shifts"
 msgstr "üres beosztás"
 
@@ -1144,134 +1170,134 @@ msgid ""
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/views.py:169
+#: scheduler/views.py:175
 msgid "The submitted data was invalid."
 msgstr "A megadott adat érvénytelen volt."
 
-#: scheduler/views.py:177
+#: scheduler/views.py:183
 msgid "User account does not exist."
 msgstr "Ez a felhasználói azonosító nem létezik."
 
-#: scheduler/views.py:201
+#: scheduler/views.py:205
 msgid "A membership request has been sent."
 msgstr ""
 
-#: scheduler/views.py:214
+#: scheduler/views.py:218
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Nem tudunk ehhez a beosztáshoz hozzáadni, mert ebben az időben egy másik beosztásban már szerepelsz."
 
-#: scheduler/views.py:223
+#: scheduler/views.py:227
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr ""
 
-#: scheduler/views.py:230
+#: scheduler/views.py:234
 msgid "You were successfully added to this shift."
 msgstr "Sikeresen hozzáadtunk ehhez a beosztáshoz."
 
-#: scheduler/views.py:234
-msgid "The shift you joined overlaps with other shifts you already joined. Please check for                             conflicts:"
+#: scheduler/views.py:238
+msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr ""
 
-#: scheduler/views.py:244
+#: scheduler/views.py:248
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Erre a műszakra {date_time}-kor már jelentkeztél."
 
-#: scheduler/views.py:256
+#: scheduler/views.py:269
 msgid "You successfully left this shift."
 msgstr "Sikeresen kiléptél a beosztásból"
 
-#: scheduletemplates/admin.py:176
+#: scheduletemplates/admin.py:175
 #, python-brace-format
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scheduletemplates/admin.py:232
+#: scheduletemplates/admin.py:231
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scheduletemplates/admin.py:244
+#: scheduletemplates/admin.py:243
 msgid "Something didn't work. Sorry about that."
 msgstr ""
 
-#: scheduletemplates/admin.py:277
+#: scheduletemplates/admin.py:276
 msgid "slots"
 msgstr ""
 
-#: scheduletemplates/admin.py:289
+#: scheduletemplates/admin.py:288
 msgid "from"
 msgstr ""
 
-#: scheduletemplates/admin.py:302
+#: scheduletemplates/admin.py:301
 msgid "to"
 msgstr ""
 
-#: scheduletemplates/models.py:21
+#: scheduletemplates/models.py:22
 msgid "schedule templates"
 msgstr ""
 
-#: scheduletemplates/models.py:22 scheduletemplates/models.py:30
+#: scheduletemplates/models.py:23 scheduletemplates/models.py:35
 msgid "schedule template"
 msgstr ""
 
-#: scheduletemplates/models.py:50
+#: scheduletemplates/models.py:57
 msgid "days"
 msgstr ""
 
-#: scheduletemplates/models.py:62
+#: scheduletemplates/models.py:69
 msgid "shift templates"
 msgstr ""
 
-#: scheduletemplates/models.py:63
+#: scheduletemplates/models.py:70
 msgid "shift template"
 msgstr ""
 
-#: scheduletemplates/models.py:97
+#: scheduletemplates/models.py:104
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr ""
 
-#: scheduletemplates/models.py:101
+#: scheduletemplates/models.py:108
 #, python-brace-format
 msgid "{task_name}"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:32
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:31
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
 msgid "Home"
 msgstr "Kezdőlap"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:40
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:46
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:45
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
 msgid "Apply Template"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:50
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
 msgstr "kiválaszt"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:61
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:60
 msgid "Select a date"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:66
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:125
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:65
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:124
 msgid "Continue"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:70
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:69
 msgid "Select shift templates"
 msgstr ""
 
@@ -1279,11 +1305,11 @@ msgstr ""
 msgid "Please review and confirm shifts to create"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:118
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:117
 msgid "Apply"
 msgstr ""
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:120
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:119
 msgid "Apply and select new date"
 msgstr ""
 
@@ -1327,17 +1353,17 @@ msgstr "pozíció"
 msgid "organisation"
 msgstr "szervezet"
 
-#: shiftmailer/templates/shifts_today.html:1
+#: shiftmailer/templates/shifts_today.html:2
 #, python-format
 msgctxt "shift today title"
 msgid "Schedule for %(organization_name)s on %(date)s"
 msgstr "A %(organization_name)s csoport beosztása %(date)s-n"
 
-#: shiftmailer/templates/shifts_today.html:6
+#: shiftmailer/templates/shifts_today.html:7
 msgid "All data is private and not supposed to be given away!"
 msgstr "Minden adat bizalmas és nem adható tovább!"
 
-#: shiftmailer/templates/shifts_today.html:15
+#: shiftmailer/templates/shifts_today.html:16
 #, python-format
 msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
 msgstr "%(start_time)s-tól %(end_time)s-ig %(volunteer_count)s önkéntes irtakozott fel:"
@@ -1459,6 +1485,19 @@ msgstr ""
 
 #: templates/registration/activation_email_subject.txt:1
 msgid "Your volunteer-planner.org registration"
+msgstr ""
+
+#: templates/registration/admin_approve_complete_email.html:6
+msgid "admin approval"
+msgstr ""
+
+#: templates/registration/admin_approve_complete_email.html:12
+#, python-format
+msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
+msgstr ""
+
+#: templates/registration/admin_approve_complete_email.txt:2
+msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
 #: templates/registration/login.html:15
@@ -1633,7 +1672,15 @@ msgstr "A két jelszó nem egyezik!"
 msgid "Repeat password"
 msgstr "Ismételd meg a jelszót"
 
-#: templates/registration/registration_form.html:60
+#: templates/registration/registration_form.html:68
+msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
+msgstr ""
+
+#: templates/registration/registration_form.html:71
+msgid "This must be checked."
+msgstr ""
+
+#: templates/registration/registration_form.html:76
 msgid "Sign-up"
 msgstr "Regisztráció"
 
@@ -1649,34 +1696,34 @@ msgstr "Egy érvényes felhasználói nevet adj meg, ami betüből, számból é
 msgid "A user with that username already exists."
 msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
 
-#: volunteer_planner/settings/base.py:142
+#: volunteer_planner/settings/base.py:149
 msgid "English"
 msgstr "Angol"
 
-#: volunteer_planner/settings/base.py:143
+#: volunteer_planner/settings/base.py:150
 msgid "German"
 msgstr "Német"
 
-#: volunteer_planner/settings/base.py:144
+#: volunteer_planner/settings/base.py:151
 msgid "French"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:145
+#: volunteer_planner/settings/base.py:152
 msgid "Greek"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:146
+#: volunteer_planner/settings/base.py:153
 msgid "Hungarian"
 msgstr "Magyar"
 
-#: volunteer_planner/settings/base.py:147
+#: volunteer_planner/settings/base.py:154
 msgid "Swedish"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:148
+#: volunteer_planner/settings/base.py:155
 msgid "Portuguese"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:149
+#: volunteer_planner/settings/base.py:156
 msgid "Turkish"
 msgstr ""
