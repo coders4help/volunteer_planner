@@ -105,7 +105,7 @@ class ShiftTemplate(models.Model):
                 task_name=self.task.name,
                 workplace_name=self.workplace.name)
         else:
-            return _(u"{task_name}").format(task_name=self.task.name)
+            return f"{self.task_name}"
 
     def __str__(self):
         return self.__unicode__()

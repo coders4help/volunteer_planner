@@ -3,39 +3,56 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# trendspotter <j.podhorecky@volny.cz>, 2019
+# Translators:
+# trendspotter <jirka.p@volny.cz>, 2019
+# trendspotter <jirka.p@volny.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-29 09:22+0100\n"
-"PO-Revision-Date: 2021-11-27 15:45+0100\n"
-"Last-Translator: trendspotter <j.podhorecky@volny.cz>\n"
+"POT-Creation-Date: 2022-03-15 21:55+0100\n"
+"PO-Revision-Date: 2022-03-15 17:56+0000\n"
+"Last-Translator: Christoph Meißner\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Poedit 3.0\n"
 
-#: accounts/admin.py:15 accounts/admin.py:21 shiftmailer/models.py:9
+#: accounts/admin.py:20 accounts/admin.py:26 shiftmailer/models.py:9
 msgid "first name"
 msgstr "křestní jméno"
 
-#: accounts/admin.py:27 shiftmailer/models.py:13
+#: accounts/admin.py:32 shiftmailer/models.py:13
 msgid "email"
 msgstr "e-mail"
+
+#: accounts/admin.py:39
+msgid "active"
+msgstr ""
+
+#: accounts/admin.py:45
+msgid "date joined"
+msgstr ""
+
+#: accounts/admin.py:51
+msgid "last login"
+msgstr ""
 
 #: accounts/apps.py:8 accounts/apps.py:16
 msgid "Accounts"
 msgstr "Účty"
 
-#: accounts/models.py:16 organizations/models.py:46
+#: accounts/forms.py:7
+msgid "Accept privacy policy"
+msgstr ""
+
+#: accounts/models.py:17 organizations/models.py:60
 msgid "user account"
 msgstr "uživatelský účet"
 
-#: accounts/models.py:17
+#: accounts/models.py:18
 msgid "user accounts"
 msgstr "uživatelské účty"
 
@@ -47,7 +64,8 @@ msgstr "Moje dnešní směny:"
 msgid "No shifts today."
 msgstr "Dnes žádné směny."
 
-#: accounts/templates/shift_list.html:19 accounts/templates/shift_list.html:33 accounts/templates/shift_list.html:47 accounts/templates/shift_list.html:61
+#: accounts/templates/shift_list.html:19 accounts/templates/shift_list.html:33
+#: accounts/templates/shift_list.html:47 accounts/templates/shift_list.html:61
 msgid "Show this work shift"
 msgstr "Zobrazit tuto pracovní směnu"
 
@@ -91,19 +109,28 @@ msgstr "Poslední dny nebyly žádné pracovní směny."
 msgid "Show my work shifts in the future"
 msgstr "Zobrazit moje budoucí pracovní směny"
 
-#: accounts/templates/user_account_delete.html:10 accounts/templates/user_detail.html:10 organizations/templates/manage_members.html:64 templates/registration/login.html:23 templates/registration/registration_form.html:35
+#: accounts/templates/user_account_delete.html:10
+#: accounts/templates/user_detail.html:10
+#: organizations/templates/manage_members.html:64
+#: templates/registration/login.html:23
+#: templates/registration/registration_form.html:35
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: accounts/templates/user_account_delete.html:11 accounts/templates/user_detail.html:11
+#: accounts/templates/user_account_delete.html:11
+#: accounts/templates/user_detail.html:11
 msgid "First name"
 msgstr "Křestní jméno"
 
-#: accounts/templates/user_account_delete.html:12 accounts/templates/user_detail.html:12
+#: accounts/templates/user_account_delete.html:12
+#: accounts/templates/user_detail.html:12
 msgid "Last name"
 msgstr "Příjmení"
 
-#: accounts/templates/user_account_delete.html:13 accounts/templates/user_detail.html:13 templates/registration/registration_form.html:23
+#: accounts/templates/user_account_delete.html:13
+#: accounts/templates/user_detail.html:13
+#: organizations/templates/manage_members.html:67
+#: templates/registration/registration_form.html:23
 msgid "Email"
 msgstr "E-mail"
 
@@ -119,7 +146,8 @@ msgstr "Není možné tyto informace obnovit. Pokud chcete znovu pracovat jako d
 msgid "Delete Account (no additional warning)"
 msgstr "Odstranit účet (bez dalšího upozornění)"
 
-#: accounts/templates/user_account_edit.html:12 scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
+#: accounts/templates/user_account_edit.html:12
+#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save"
 msgstr "Uložit"
 
@@ -135,7 +163,7 @@ msgstr "Smazat účet"
 msgid "Your user account has been deleted."
 msgstr "Váš uživatelský účet byl smazán."
 
-#: content/admin.py:15 content/admin.py:16 content/models.py:15
+#: content/admin.py:15 content/admin.py:16 content/models.py:16
 msgid "additional CSS"
 msgstr "další CSS"
 
@@ -151,51 +179,55 @@ msgstr "překlady"
 msgid "No translation available"
 msgstr "Nejsou k dispozici překlady"
 
-#: content/models.py:12
+#: content/models.py:13
 msgid "additional style"
 msgstr "další styl"
 
-#: content/models.py:18
+#: content/models.py:19
 msgid "additional flat page style"
 msgstr "další styl ploché stránky"
 
-#: content/models.py:19
+#: content/models.py:20
 msgid "additional flat page styles"
 msgstr "další ploché styly stránek"
 
-#: content/models.py:25
+#: content/models.py:27
 msgid "flat page"
 msgstr "plochá strana"
 
-#: content/models.py:28
+#: content/models.py:30
 msgid "language"
 msgstr "jazyk"
 
-#: content/models.py:32 news/models.py:14
+#: content/models.py:34 news/models.py:14
 msgid "title"
 msgstr "nadpis"
 
-#: content/models.py:36
+#: content/models.py:38
 msgid "content"
 msgstr "obsah"
 
-#: content/models.py:46
+#: content/models.py:48
 msgid "flat page translation"
 msgstr "překlad ploché stránky"
 
-#: content/models.py:47
+#: content/models.py:49
 msgid "flat page translations"
 msgstr "překlady plochých stránek"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:12 scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:33
+#: content/templates/flatpages/additional_flat_page_style_inline.html:12
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:33
 msgid "View on site"
 msgstr "Zobrazit na webu"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:32 organizations/templates/manage_members.html:101 scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
+#: content/templates/flatpages/additional_flat_page_style_inline.html:32
+#: organizations/templates/manage_members.html:109
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
 msgid "Remove"
 msgstr "Odstranit"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:33 scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:80
+#: content/templates/flatpages/additional_flat_page_style_inline.html:33
+#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:80
 #, python-format
 msgid "Add another %(verbose_name)s"
 msgstr "Přidat další %(verbose_name)s"
@@ -216,11 +248,11 @@ msgstr "text článku"
 msgid "creation date"
 msgstr "datum vytvoření"
 
-#: news/models.py:39
+#: news/models.py:41
 msgid "news entry"
 msgstr "zapsání novinky"
 
-#: news/models.py:40
+#: news/models.py:42
 msgid "news entries"
 msgstr "zapsané novinky"
 
@@ -241,10 +273,11 @@ msgid "Server Error <em>(500)</em>"
 msgstr "Chyba serveru <em>(500)</em>"
 
 #: non_logged_in_area/templates/500.html:10
-msgid "There's been an error. It's been reported to the site administrators via email and should be fixed shortly. Thanks for your patience."
+msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
 msgstr "Došlo k chybě. Byla hlášena správcům webu e-mailem a měla by být opravena brzy. Děkujeme za trpělivost."
 
-#: non_logged_in_area/templates/base_non_logged_in.html:57 templates/registration/login.html:3 templates/registration/login.html:10
+#: non_logged_in_area/templates/base_non_logged_in.html:57
+#: templates/registration/login.html:3 templates/registration/login.html:10
 msgid "Login"
 msgstr "Přihlášení"
 
@@ -252,31 +285,38 @@ msgstr "Přihlášení"
 msgid "Start helping"
 msgstr "Začněte pomáhat"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:87 templates/partials/footer.html:6
+#: non_logged_in_area/templates/base_non_logged_in.html:87
+#: templates/partials/footer.html:6
 msgid "Main page"
 msgstr "Hlavní strana"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:90 templates/partials/footer.html:7
+#: non_logged_in_area/templates/base_non_logged_in.html:90
+#: templates/partials/footer.html:7
 msgid "Imprint"
 msgstr "Impresum"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:93 templates/partials/footer.html:8
+#: non_logged_in_area/templates/base_non_logged_in.html:93
+#: templates/partials/footer.html:8
 msgid "About"
 msgstr "O nás"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:96 templates/partials/footer.html:9
+#: non_logged_in_area/templates/base_non_logged_in.html:96
+#: templates/partials/footer.html:9
 msgid "Supporter"
 msgstr "Podporovatel"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:99 templates/partials/footer.html:10
+#: non_logged_in_area/templates/base_non_logged_in.html:99
+#: templates/partials/footer.html:10
 msgid "Press"
 msgstr "Media"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:102 templates/partials/footer.html:11
+#: non_logged_in_area/templates/base_non_logged_in.html:102
+#: templates/partials/footer.html:11
 msgid "Contact"
 msgstr "Kontakt"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:105 templates/partials/faq_link.html:2
+#: non_logged_in_area/templates/base_non_logged_in.html:105
+#: templates/partials/faq_link.html:2
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -318,7 +358,7 @@ msgstr "Jste dobrovolník a chcete pomáhat? Dobrovolník - Planner.org vám uk�
 
 #: non_logged_in_area/templates/home.html:85
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
-msgstr "<p>Tato platforma je nekomerční a bez reklam. Mezinárodní tým terénních pracovníků, programátoři, projektoví manažeři a projektanti jsou pro tento projekt dobrovolně a přinášejí svou odbornou zkušenost, aby přinesli změnu.</p>"
+msgstr "Tato platforma je nekomerční a bez reklam. Mezinárodní tým terénních pracovníků, programátoři, projektoví manažeři a projektanti jsou pro tento projekt dobrovolně a přinášejí svou odbornou zkušenost, aby přinesli změnu."
 
 #: non_logged_in_area/templates/home.html:98
 msgid "You can help at these locations:"
@@ -515,8 +555,7 @@ msgid ""
 msgstr ""
 "\n"
 " dobrovolníci se rozdělují efektivněji na směny, \n"
-"dočasné zkratky lze očekávat samotnými pomocníky\n"
-"                "
+"dočasné zkratky lze očekávat samotnými pomocníky"
 
 #: non_logged_in_area/templates/shelters_need_help.html:32
 msgid ""
@@ -527,8 +566,7 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-" plány směn mohou být poskytovány bezpečnostnímu personálu nebo koordinátorům automatickým mailerem každé ráno\n"
-"                "
+" plány směn mohou být poskytovány bezpečnostnímu personálu nebo koordinátorům automatickým mailerem každé ráno"
 
 #: non_logged_in_area/templates/shelters_need_help.html:39
 msgid ""
@@ -538,8 +576,7 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-" čím více úkrytů a táborů jsou s námi organizovány, tím více dobrovolníků se připojí a všechny zařízení budou mít prospěch ze společného fondu motivovaných dobrovolníků\n"
-"                "
+" čím více úkrytů a táborů jsou s námi organizovány, tím více dobrovolníků se připojí a všechny zařízení budou mít prospěch ze společného fondu motivovaných dobrovolníků"
 
 #: non_logged_in_area/templates/shelters_need_help.html:45
 msgid "for free without costs"
@@ -574,8 +611,7 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"        <p>  Platforma byla sestavena skupinou dobrovolnických odborníků v oblasti vývoje softwaru, projektového řízení, designu a marketingu. Kód je otevřený pro nekomerční použití. Soukromé údaje (e-mail, data profilu apod.) nebudou poskytovány žádné třetí straně.</p>\n"
-"            "
+"<p>Platforma byla sestavena skupinou dobrovolnických odborníků v oblasti vývoje softwaru, projektového řízení, designu a marketingu. Kód je otevřený pro nekomerční použití. Soukromé údaje (e-mail, data profilu apod.) nebudou poskytovány žádné třetí straně</p>"
 
 #: non_logged_in_area/templates/shelters_need_help.html:69
 msgid "contact us!"
@@ -585,196 +621,204 @@ msgstr "kontaktujte nás!"
 msgid ""
 "\n"
 "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
-"                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 msgstr ""
-"\n"
-" ... možná s přiloženým návrhem směn, které chcete vidět na dobrovolnickém plánovači. Napište prosím na adresu <a\n"
-"                            href=\"mailto:neue_unterkunefte@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
-"                    "
 
-#: organizations/admin.py:128 organizations/admin.py:130
+#: organizations/admin.py:141 organizations/admin.py:143
 msgid "edit"
 msgstr "upravit"
 
-#: organizations/admin.py:202 organizations/admin.py:239 organizations/models.py:60 organizations/models.py:120
-msgid "short description"
-msgstr "stručný popis"
-
-#: organizations/admin.py:208 organizations/admin.py:245 organizations/admin.py:311 organizations/admin.py:335 organizations/models.py:63 organizations/models.py:123 organizations/models.py:245 organizations/models.py:266
+#: organizations/admin.py:220 organizations/admin.py:250
+#: organizations/admin.py:318 organizations/admin.py:342
+#: organizations/models.py:78 organizations/models.py:146
+#: organizations/models.py:299 organizations/models.py:328
 msgid "description"
 msgstr "popis"
 
-#: organizations/admin.py:214 organizations/admin.py:251 organizations/models.py:66 organizations/models.py:126
+#: organizations/admin.py:226 organizations/admin.py:256
+#: organizations/models.py:81 organizations/models.py:149
 msgid "contact info"
 msgstr "kontakty"
 
-#: organizations/models.py:16
-msgid "by invitation"
-msgstr "na pozvání"
-
-#: organizations/models.py:17
-msgid "anyone (approved by manager)"
-msgstr "kdokoliv (schválen správcem)"
-
-#: organizations/models.py:18
-msgid "anyone"
-msgstr "kdokoliv"
-
-#: organizations/models.py:24
-msgid "rejected"
-msgstr "odmítnut"
-
-#: organizations/models.py:25
-msgid "pending"
-msgstr "čeká"
-
-#: organizations/models.py:26
-msgid "approved"
-msgstr "schválen"
-
-#: organizations/models.py:32
-msgid "admin"
-msgstr "administrátor"
-
-#: organizations/models.py:33
-msgid "manager"
-msgstr "manažer"
-
-#: organizations/models.py:34
-msgid "member"
-msgstr "člen"
-
-#: organizations/models.py:39
-msgid "role"
-msgstr "role"
-
-#: organizations/models.py:43
-msgid "status"
-msgstr "stav"
-
-#: organizations/models.py:55 organizations/models.py:115 organizations/models.py:242 organizations/models.py:263 places/models.py:20 scheduletemplates/models.py:13
-msgid "name"
-msgstr "jméno"
-
-#: organizations/models.py:69 organizations/models.py:141
-msgid "address"
-msgstr "adresa"
-
-#: organizations/models.py:78 organizations/models.py:157 places/models.py:21
-msgid "slug"
-msgstr "slug"
-
-#: organizations/models.py:83 organizations/models.py:167
-msgid "join mode"
-msgstr "join mód"
-
-#: organizations/models.py:84
-msgid "Who can join this organization?"
-msgstr "Kdo se může připojit k této organizaci?"
-
-#: organizations/models.py:87 organizations/models.py:111 organizations/models.py:197
-msgid "organization"
-msgstr "organizace"
-
-#: organizations/models.py:88
+#: organizations/apps.py:7 organizations/models.py:103
 msgid "organizations"
 msgstr "organizace"
 
-#: organizations/models.py:92 organizations/models.py:186 organizations/models.py:253 organizations/models.py:274
-#, python-brace-format
-msgid "{name}"
-msgstr "{name}"
+#: organizations/models.py:29
+msgid "by invitation"
+msgstr "na pozvání"
 
-#: organizations/models.py:104
+#: organizations/models.py:30
+msgid "anyone (approved by manager)"
+msgstr "kdokoliv (schválen správcem)"
+
+#: organizations/models.py:31
+msgid "anyone"
+msgstr "kdokoliv"
+
+#: organizations/models.py:37
+msgid "rejected"
+msgstr "odmítnut"
+
+#: organizations/models.py:38
+msgid "pending"
+msgstr "čeká"
+
+#: organizations/models.py:39
+msgid "approved"
+msgstr "schválen"
+
+#: organizations/models.py:45
+msgid "admin"
+msgstr "administrátor"
+
+#: organizations/models.py:46
+msgid "manager"
+msgstr "manažer"
+
+#: organizations/models.py:47
+msgid "member"
+msgstr "člen"
+
+#: organizations/models.py:52
+msgid "role"
+msgstr "role"
+
+#: organizations/models.py:56
+msgid "status"
+msgstr "stav"
+
+#: organizations/models.py:75 organizations/models.py:143
+#: organizations/models.py:296 organizations/models.py:325 places/models.py:20
+#: scheduletemplates/models.py:13
+msgid "name"
+msgstr "jméno"
+
+#: organizations/models.py:84 organizations/models.py:165
+msgid "address"
+msgstr "adresa"
+
+#: organizations/models.py:93 organizations/models.py:181 places/models.py:21
+msgid "slug"
+msgstr "slug"
+
+#: organizations/models.py:98 organizations/models.py:191
+msgid "join mode"
+msgstr "join mód"
+
+#: organizations/models.py:99
+msgid "Who can join this organization?"
+msgstr "Kdo se může připojit k této organizaci?"
+
+#: organizations/models.py:102 organizations/models.py:139
+#: organizations/models.py:232
+msgid "organization"
+msgstr "organizace"
+
+#: organizations/models.py:131
 msgid "disabled"
 msgstr "vypnuto"
 
-#: organizations/models.py:105
+#: organizations/models.py:132
 msgid "enabled (collapsed)"
 msgstr "zapnuto (sbaleno)"
 
-#: organizations/models.py:106
+#: organizations/models.py:133
 msgid "enabled"
 msgstr "zapnuto"
 
-#: organizations/models.py:137 places/models.py:132
+#: organizations/models.py:161 places/models.py:139
 msgid "place"
 msgstr "místo"
 
-#: organizations/models.py:146
+#: organizations/models.py:170
 msgid "postal code"
-msgstr "psč"
+msgstr "PSČ"
 
-#: organizations/models.py:151
+#: organizations/models.py:175
 msgid "Show on map of all facilities"
 msgstr "Zobrazit mapu všech zařízení"
 
-#: organizations/models.py:153
+#: organizations/models.py:177
 msgid "latitude"
 msgstr "zeměpisná šířka"
 
-#: organizations/models.py:155
+#: organizations/models.py:179
 msgid "longitude"
 msgstr "zeměpisná délka"
 
-#: organizations/models.py:162
+#: organizations/models.py:186
 msgid "timeline"
 msgstr "časová osa"
 
-#: organizations/models.py:168
+#: organizations/models.py:192
 msgid "Who can join this facility?"
 msgstr "Kdo se může připojit k tomuto zařízení?"
 
-#: organizations/models.py:171 organizations/models.py:217 organizations/models.py:237 organizations/models.py:259 scheduler/models.py:28 scheduletemplates/models.py:16
+#: organizations/models.py:195 organizations/models.py:262
+#: organizations/models.py:291 organizations/models.py:321
+#: scheduler/models.py:59 scheduletemplates/admin.py:352
+#: scheduletemplates/models.py:17
 msgid "facility"
 msgstr "zařízení"
 
-#: organizations/models.py:172
+#: organizations/models.py:196
 msgid "facilities"
 msgstr "zařízení"
 
-#: organizations/models.py:202
+#: organizations/models.py:237
 msgid "organization member"
 msgstr "člen organizace"
 
-#: organizations/models.py:203
+#: organizations/models.py:238
 msgid "organization members"
 msgstr "členové organizace"
 
-#: organizations/models.py:207
+#: organizations/models.py:242
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr "{username} v {organization_name} ({user_role})"
 
-#: organizations/models.py:223
+#: organizations/models.py:268
 msgid "facility member"
 msgstr "člen zařízení"
 
-#: organizations/models.py:224
+#: organizations/models.py:269
 msgid "facility members"
 msgstr "členové zařízení"
 
-#: organizations/models.py:228
+#: organizations/models.py:273
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr "{username} v {facility_name} ({user_role})"
 
-#: organizations/models.py:248 scheduler/models.py:23 scheduletemplates/models.py:40 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
+#: organizations/models.py:302 scheduler/models.py:53
+#: scheduletemplates/models.py:47
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr "pracoviště"
 
-#: organizations/models.py:249
+#: organizations/models.py:303
 msgid "workplaces"
 msgstr "pracoviště"
 
-#: organizations/models.py:269 scheduler/models.py:21 scheduletemplates/models.py:37 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
+#: organizations/models.py:331 scheduler/models.py:50
+#: scheduletemplates/models.py:43
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "úloha"
 
-#: organizations/models.py:270
+#: organizations/models.py:332
 msgid "tasks"
 msgstr "úlohy"
+
+#: organizations/signals.py:36
+#, python-brace-format
+msgid "User '{user}' manager status of a facility/organization was changed. "
+msgstr ""
 
 #: organizations/templates/emails/membership_approved.txt:2
 #, python-format
@@ -794,15 +838,26 @@ msgstr ""
 "Váš tým,\n"
 "volunteer-planner.org"
 
-#: organizations/templates/facility.html:9 organizations/templates/organization.html:9 scheduler/templates/helpdesk_breadcrumps.html:6 scheduler/templates/helpdesk_single.html:144 scheduler/templates/shift_details.html:33
+#: organizations/templates/facility.html:9
+#: organizations/templates/organization.html:9
+#: scheduler/templates/helpdesk_breadcrumps.html:6
+#: scheduler/templates/helpdesk_single.html:144
+#: scheduler/templates/shift_details.html:33
 msgid "Helpdesk"
 msgstr "Centrum nápovědy"
 
-#: organizations/templates/facility.html:41 organizations/templates/partials/compact_facility.html:31
+#: organizations/templates/facility.html:29
+#: scheduler/templates/geographic_helpdesk.html:69
+msgid "Show on map"
+msgstr "Ukázat na mapě"
+
+#: organizations/templates/facility.html:41
+#: organizations/templates/partials/compact_facility.html:27
 msgid "Open Shifts"
 msgstr "Otevřené směny"
 
-#: organizations/templates/facility.html:50 scheduler/templates/helpdesk.html:71
+#: organizations/templates/facility.html:50
+#: scheduler/templates/helpdesk.html:68
 msgid "News"
 msgstr "Novinky"
 
@@ -819,19 +874,20 @@ msgstr "Nemáte povoleno to udělat."
 msgid "Members in %(facility)s"
 msgstr "Členové v %(facility)s"
 
-#: organizations/templates/manage_members.html:67
+#: organizations/templates/manage_members.html:70
 msgid "Role"
 msgstr "Role"
 
-#: organizations/templates/manage_members.html:70
+#: organizations/templates/manage_members.html:73
 msgid "Actions"
 msgstr "Akce"
 
-#: organizations/templates/manage_members.html:90 organizations/templates/manage_members.html:97
+#: organizations/templates/manage_members.html:98
+#: organizations/templates/manage_members.html:105
 msgid "Block"
 msgstr "Blokovat"
 
-#: organizations/templates/manage_members.html:94
+#: organizations/templates/manage_members.html:102
 msgid "Accept"
 msgstr "Přijmout"
 
@@ -839,11 +895,13 @@ msgstr "Přijmout"
 msgid "Facilities"
 msgstr "Zařízení"
 
-#: organizations/templates/partials/compact_facility.html:23 scheduler/templates/geographic_helpdesk.html:76 scheduler/templates/helpdesk.html:69
+#: organizations/templates/partials/compact_facility.html:19
+#: scheduler/templates/geographic_helpdesk.html:76
+#: scheduler/templates/helpdesk.html:66
 msgid "Show details"
 msgstr "Zobrazit detaily"
 
-#: organizations/views.py:122
+#: organizations/views.py:137
 msgid "volunteer-planner.org: Membership approved"
 msgstr "volunteer-planner.org: Členství schváleno"
 
@@ -853,75 +911,116 @@ msgctxt "maps search url pattern"
 msgid "https://www.openstreetmap.org/search?query={location}"
 msgstr "https://www.openstreetmap.org/search?query={location}"
 
-#: places/models.py:69 places/models.py:84
+#: places/models.py:72 places/models.py:88
 msgid "country"
 msgstr "země"
 
-#: places/models.py:70
+#: places/models.py:73
 msgid "countries"
 msgstr "státy"
 
-#: places/models.py:87 places/models.py:106
+#: places/models.py:91 places/models.py:112
 msgid "region"
 msgstr "region"
 
-#: places/models.py:88
+#: places/models.py:92
 msgid "regions"
 msgstr "regiony"
 
-#: places/models.py:109 places/models.py:129
+#: places/models.py:115 places/models.py:136
 msgid "area"
 msgstr "oblast"
 
-#: places/models.py:110
+#: places/models.py:116
 msgid "areas"
 msgstr "oblasti"
 
-#: places/models.py:133
+#: places/models.py:140
 msgid "places"
 msgstr "místa"
 
-#: scheduler/admin.py:28
+#: scheduler/admin.py:55 scheduler/admin.py:62 scheduletemplates/admin.py:54
+#: scheduletemplates/admin.py:61
+msgid "Facilities do not match."
+msgstr ""
+
+#: scheduler/admin.py:56 scheduletemplates/admin.py:55
+#, python-brace-format
+msgid "\"{task.name}\" belongs to facility \"{task.facility.name}\", but shift takes place at \"{facility.name}\"."
+msgstr ""
+
+#: scheduler/admin.py:63 scheduletemplates/admin.py:62
+#, python-brace-format
+msgid "\"{workplace.name}\" is at \"{workplace.facility.name}\" but shift takes place at \"{facility.name}\"."
+msgstr ""
+
+#: scheduler/admin.py:70
+msgid "No start time given."
+msgstr ""
+
+#: scheduler/admin.py:72
+msgid "No end time given."
+msgstr ""
+
+#: scheduler/admin.py:78
+msgid "Start time in the past."
+msgstr ""
+
+#: scheduler/admin.py:80
+msgid "Shift ends before it starts."
+msgstr ""
+
+#: scheduler/admin.py:107
 msgid "number of volunteers"
 msgstr "počet dobrovolníků"
 
-#: scheduler/admin.py:44 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
+#: scheduler/admin.py:123
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
 msgstr "dobrovolníci"
 
 #: scheduler/apps.py:8
-msgid "Scheduler"
+msgid "scheduler"
 msgstr "Plánovač"
 
-#: scheduler/models.py:18 scheduletemplates/models.py:34 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
+#: scheduler/models.py:46 scheduletemplates/models.py:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
 msgid "number of needed volunteers"
 msgstr "počet potřebných dobrovolníků"
 
-#: scheduler/models.py:30 scheduletemplates/admin.py:33 scheduletemplates/models.py:44 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
+#: scheduler/models.py:61 scheduletemplates/admin.py:32
+#: scheduletemplates/models.py:51
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr "počáteční čas"
 
-#: scheduler/models.py:32 scheduletemplates/admin.py:36 scheduletemplates/models.py:47 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
+#: scheduler/models.py:63 scheduletemplates/admin.py:35
+#: scheduletemplates/models.py:54
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr "konečný čas"
 
-#: scheduler/models.py:40 scheduletemplates/models.py:54 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:58 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
+#: scheduler/models.py:71 scheduletemplates/models.py:61
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
 msgid "members only"
 msgstr "pouze členové"
 
-#: scheduler/models.py:42 scheduletemplates/models.py:56
+#: scheduler/models.py:73 scheduletemplates/models.py:63
 msgid "allow only members to help"
 msgstr "povolit pouze členům, aby vám pomohli"
 
-#: scheduler/models.py:48
+#: scheduler/models.py:79
 msgid "shift"
 msgstr "směna"
 
-#: scheduler/models.py:49 scheduletemplates/admin.py:283
+#: scheduler/models.py:80 scheduletemplates/admin.py:317
 msgid "shifts"
 msgstr "směny"
 
-#: scheduler/models.py:63 scheduletemplates/models.py:77
+#: scheduler/models.py:94 scheduletemplates/models.py:84
 #, python-brace-format
 msgid "the next day"
 msgid_plural "after {number_of_days} days"
@@ -930,17 +1029,13 @@ msgstr[1] "další dny"
 msgstr[2] "další dny"
 msgstr[3] "po {number_of_days} dnech"
 
-#: scheduler/models.py:95
+#: scheduler/models.py:144
 msgid "shift helper"
 msgstr "pomocník směn"
 
-#: scheduler/models.py:96
+#: scheduler/models.py:145
 msgid "shift helpers"
 msgstr "pomocníci směn"
-
-#: scheduler/templates/geographic_helpdesk.html:69
-msgid "Show on map"
-msgstr "Ukázat na mapě"
 
 #: scheduler/templates/geographic_helpdesk.html:81
 msgctxt "helpdesk shifts heading"
@@ -952,23 +1047,24 @@ msgstr "směny"
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "Nejsou k dispozici žádné nadcházející směny pro %(geographical_name)s."
 
-#: scheduler/templates/helpdesk.html:39
+#: scheduler/templates/helpdesk.html:37
 msgid "You can help in the following facilities"
 msgstr "Můžete pomoci v následujících zařízeních"
 
-#: scheduler/templates/helpdesk.html:43
+#: scheduler/templates/helpdesk.html:41
 msgid "filter"
 msgstr "filtr"
 
-#: scheduler/templates/helpdesk.html:60
+#: scheduler/templates/helpdesk.html:57
 msgid "see more"
 msgstr "zobrazit víc"
 
-#: scheduler/templates/helpdesk.html:83
+#: scheduler/templates/helpdesk.html:80
 msgid "open shifts"
 msgstr "otevřené směny"
 
-#: scheduler/templates/helpdesk_single.html:6 scheduler/templates/shift_details.html:24
+#: scheduler/templates/helpdesk_single.html:6
+#: scheduler/templates/shift_details.html:24
 #, python-format
 msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
@@ -1025,32 +1121,36 @@ msgstr "Uživatelé"
 msgid "You"
 msgstr "Vy"
 
-#: scheduler/templates/helpdesk_single.html:301
+#: scheduler/templates/helpdesk_single.html:321
 #, python-format
 msgid "%(slots_left)s more"
 msgstr "%(slots_left)s víc"
 
-#: scheduler/templates/helpdesk_single.html:305 scheduler/templates/helpdesk_single.html:386 scheduler/templates/shift_details.html:134
+#: scheduler/templates/helpdesk_single.html:325
+#: scheduler/templates/helpdesk_single.html:406
+#: scheduler/templates/shift_details.html:134
 msgid "Covered"
 msgstr "Pokryto"
 
-#: scheduler/templates/helpdesk_single.html:330 scheduler/templates/shift_details.html:95
+#: scheduler/templates/helpdesk_single.html:350
+#: scheduler/templates/shift_details.html:95
 msgid "Drop out"
 msgstr "Opuštěno"
 
-#: scheduler/templates/helpdesk_single.html:340 scheduler/templates/shift_details.html:105
+#: scheduler/templates/helpdesk_single.html:360
+#: scheduler/templates/shift_details.html:105
 msgid "Sign up"
 msgstr "Přihlásit se"
 
-#: scheduler/templates/helpdesk_single.html:351
+#: scheduler/templates/helpdesk_single.html:371
 msgid "Membership pending"
 msgstr "Členství čeká na schválení"
 
-#: scheduler/templates/helpdesk_single.html:358
+#: scheduler/templates/helpdesk_single.html:378
 msgid "Membership rejected"
 msgstr "Členství bylo zamítnuto"
 
-#: scheduler/templates/helpdesk_single.html:365
+#: scheduler/templates/helpdesk_single.html:385
 msgid "Become member"
 msgstr "Staňte se členem"
 
@@ -1120,40 +1220,44 @@ msgstr ""
 "\n"
 "Váš, involunteer-planner.org tým \n"
 
-#: scheduler/views.py:169
+#: scheduler/views.py:175
 msgid "The submitted data was invalid."
 msgstr "Odeslaná data byla neplatná."
 
-#: scheduler/views.py:177
+#: scheduler/views.py:183
 msgid "User account does not exist."
 msgstr "Uživatelský účet neexistuje."
 
-#: scheduler/views.py:201
+#: scheduler/views.py:205
 msgid "A membership request has been sent."
 msgstr "Byla odeslána žádost o členství."
 
-#: scheduler/views.py:211
+#: scheduler/views.py:218
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Nemůžeme vás přidat k této směně, protože jste již souhlasili s dalšími směnami ve stejnou dobu:"
 
-#: scheduler/views.py:220
+#: scheduler/views.py:227
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr "Nemůžeme vás přidat k této směně, protože už nezbývají další volné sloty."
 
-#: scheduler/views.py:227
+#: scheduler/views.py:234
 msgid "You were successfully added to this shift."
 msgstr "Byli jste úspěšně přidáni k této směně."
 
-#: scheduler/views.py:230
+#: scheduler/views.py:238
+msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
+msgstr ""
+
+#: scheduler/views.py:248
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Již jste se zaregistrovali na tuto směnu v {date_time}."
 
-#: scheduler/views.py:242
+#: scheduler/views.py:269
 msgid "You successfully left this shift."
 msgstr "Úspěšně jste opustili tuto směnu."
 
-#: scheduletemplates/admin.py:176
+#: scheduletemplates/admin.py:210
 #, python-brace-format
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
@@ -1162,7 +1266,7 @@ msgstr[1] "Směny již existují na {date}"
 msgstr[2] "Směny již existují na {date}"
 msgstr[3] "{num_shifts} směny již existují v {date}"
 
-#: scheduletemplates/admin.py:232
+#: scheduletemplates/admin.py:266
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
@@ -1171,77 +1275,78 @@ msgstr[1] "{num_shifts} směny byly přidány do {date}"
 msgstr[2] "{num_shifts} směn bylo přidáno do {date}"
 msgstr[3] "{num_shifts} směn bylo přidáno do {date}"
 
-#: scheduletemplates/admin.py:244
+#: scheduletemplates/admin.py:278
 msgid "Something didn't work. Sorry about that."
 msgstr "Něco nefunguje. Omlouvám se za to."
 
-#: scheduletemplates/admin.py:277
+#: scheduletemplates/admin.py:311
 msgid "slots"
 msgstr "sloty"
 
-#: scheduletemplates/admin.py:289
+#: scheduletemplates/admin.py:323
 msgid "from"
 msgstr "ok"
 
-#: scheduletemplates/admin.py:302
+#: scheduletemplates/admin.py:336
 msgid "to"
 msgstr "komu"
 
-#: scheduletemplates/models.py:21
+#: scheduletemplates/models.py:22
 msgid "schedule templates"
 msgstr "šablony plánů"
 
-#: scheduletemplates/models.py:22 scheduletemplates/models.py:30
+#: scheduletemplates/models.py:23 scheduletemplates/models.py:35
 msgid "schedule template"
 msgstr "šablona plánu"
 
-#: scheduletemplates/models.py:50
+#: scheduletemplates/models.py:57
 msgid "days"
 msgstr "dní"
 
-#: scheduletemplates/models.py:62
+#: scheduletemplates/models.py:69
 msgid "shift templates"
 msgstr "šablony směn"
 
-#: scheduletemplates/models.py:63
+#: scheduletemplates/models.py:70
 msgid "shift template"
 msgstr "šablona směny"
 
-#: scheduletemplates/models.py:97
+#: scheduletemplates/models.py:104
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr "{task_name} - {workplace_name}"
 
-#: scheduletemplates/models.py:101
-#, python-brace-format
-msgid "{task_name}"
-msgstr "{task_name}"
-
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:32 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:31
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
 msgid "Home"
 msgstr "Hlavní strana"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:40 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:46 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:45
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
 msgid "Apply Template"
 msgstr "Použít šablonu"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:50
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
 msgstr "žádné pracoviště"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52 scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
 msgstr "použít"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:61
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:60
 msgid "Select a date"
 msgstr "Zvolit datum"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:66 scheduletemplates/templates/admin/scheduletemplates/apply_template.html:125
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:65
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:124
 msgid "Continue"
 msgstr "Pokračovat"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:70
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:69
 msgid "Select shift templates"
 msgstr "Vybrat šablony směn"
 
@@ -1249,11 +1354,11 @@ msgstr "Vybrat šablony směn"
 msgid "Please review and confirm shifts to create"
 msgstr "Zkontrolujte a potvrďte směny, které chcete vytvořit"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:118
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:117
 msgid "Apply"
 msgstr "Použít"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:120
+#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:119
 msgid "Apply and select new date"
 msgstr "Použít a vybrat nové datum"
 
@@ -1297,17 +1402,17 @@ msgstr "pozice"
 msgid "organisation"
 msgstr "organizace"
 
-#: shiftmailer/templates/shifts_today.html:1
+#: shiftmailer/templates/shifts_today.html:2
 #, python-format
 msgctxt "shift today title"
 msgid "Schedule for %(organization_name)s on %(date)s"
 msgstr "Plán pro %(organization_name)s v %(date)s"
 
-#: shiftmailer/templates/shifts_today.html:6
+#: shiftmailer/templates/shifts_today.html:7
 msgid "All data is private and not supposed to be given away!"
 msgstr "Všechna data jsou soukromá a nemají být šířena!"
 
-#: shiftmailer/templates/shifts_today.html:15
+#: shiftmailer/templates/shifts_today.html:16
 #, python-format
 msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
 msgstr "od %(start_time)s do %(end_time)s s následujícími %(volunteer_count)s dobrovolníky se zaregistrovali:"
@@ -1449,15 +1554,30 @@ msgstr ""
 msgid "Your volunteer-planner.org registration"
 msgstr "Registrace dobrovolníka"
 
+#: templates/registration/admin_approve_complete_email.html:6
+msgid "admin approval"
+msgstr ""
+
+#: templates/registration/admin_approve_complete_email.html:12
+#, python-format
+msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
+msgstr ""
+
+#: templates/registration/admin_approve_complete_email.txt:2
+msgid "Your account is now approved. You can log in using the following link"
+msgstr ""
+
 #: templates/registration/login.html:15
 msgid "Your username and password didn't match. Please try again."
 msgstr "Vaše uživatelské jméno a heslo se neshodují. Prosím zkuste to znovu."
 
-#: templates/registration/login.html:26 templates/registration/registration_form.html:44
+#: templates/registration/login.html:26
+#: templates/registration/registration_form.html:44
 msgid "Password"
 msgstr "Heslo"
 
-#: templates/registration/login.html:36 templates/registration/password_reset_form.html:6
+#: templates/registration/login.html:36
+#: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
 msgstr "Zapomněli jste heslo?"
 
@@ -1473,15 +1593,20 @@ msgstr "Heslo změněno"
 msgid "Password successfully changed!"
 msgstr "Heslo úspěšně změněno!"
 
-#: templates/registration/password_change_form.html:3 templates/registration/password_change_form.html:6
+#: templates/registration/password_change_form.html:3
+#: templates/registration/password_change_form.html:6
 msgid "Change Password"
 msgstr "Změnit heslo"
 
-#: templates/registration/password_change_form.html:11 templates/registration/password_change_form.html:13 templates/registration/password_reset_form.html:12 templates/registration/password_reset_form.html:14
+#: templates/registration/password_change_form.html:11
+#: templates/registration/password_change_form.html:13
+#: templates/registration/password_reset_form.html:12
+#: templates/registration/password_reset_form.html:14
 msgid "Email address"
 msgstr "Emailová adresa"
 
-#: templates/registration/password_change_form.html:15 templates/registration/password_reset_confirm.html:13
+#: templates/registration/password_change_form.html:15
+#: templates/registration/password_reset_confirm.html:13
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -1549,7 +1674,8 @@ msgstr ""
 "S pozdravem \n"
 "Správci %(site_name)s\n"
 
-#: templates/registration/password_reset_form.html:3 templates/registration/password_reset_form.html:16
+#: templates/registration/password_reset_form.html:3
+#: templates/registration/password_reset_form.html:16
 msgid "Reset password"
 msgstr "Obnovit heslo"
 
@@ -1561,7 +1687,8 @@ msgstr "Žádný problém! Pošleme vám pokyny, jak obnovit heslo."
 msgid "Activation email sent"
 msgstr "Aktivační e-mail odeslán"
 
-#: templates/registration/registration_complete.html:7 tests/registration/test_registration.py:145
+#: templates/registration/registration_complete.html:7
+#: tests/registration/test_registration.py:145
 msgid "An activation mail will be sent to you email address."
 msgstr "Aktivační e-mail vám bude zaslán na e-mailovou adresu."
 
@@ -1593,7 +1720,8 @@ msgstr "Uživatelské jméno již existuje. Zvolte jiné uživatelské jméno."
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Vaše uživatelské jméno bude viditelné ostatním uživatelům. Nepoužívejte mezery nebo speciální znaky."
 
-#: templates/registration/registration_form.html:51 tests/registration/test_registration.py:131
+#: templates/registration/registration_form.html:51
+#: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
 msgstr "Dvě pole hesla si neodpovídají."
 
@@ -1601,7 +1729,15 @@ msgstr "Dvě pole hesla si neodpovídají."
 msgid "Repeat password"
 msgstr "Zopakovat heslo"
 
-#: templates/registration/registration_form.html:60
+#: templates/registration/registration_form.html:68
+msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
+msgstr ""
+
+#: templates/registration/registration_form.html:71
+msgid "This must be checked."
+msgstr ""
+
+#: templates/registration/registration_form.html:76
 msgid "Sign-up"
 msgstr "Přihlásit se"
 
@@ -1617,22 +1753,34 @@ msgstr "Zadejte platné uživatelské jméno. Tato hodnota může obsahovat pouz
 msgid "A user with that username already exists."
 msgstr "Uživatel s tímto uživatelským jménem již existuje."
 
-#: volunteer_planner/settings/base.py:146
+#: volunteer_planner/settings/base.py:149
 msgid "English"
 msgstr "Angličtina"
 
-#: volunteer_planner/settings/base.py:147
+#: volunteer_planner/settings/base.py:150
 msgid "German"
 msgstr "Němčina"
 
-#: volunteer_planner/settings/base.py:148
+#: volunteer_planner/settings/base.py:151
+msgid "French"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:152
 msgid "Greek"
 msgstr "Řečtina"
 
-#: volunteer_planner/settings/base.py:149
+#: volunteer_planner/settings/base.py:153
 msgid "Hungarian"
 msgstr "Maďarština"
 
-#: volunteer_planner/settings/base.py:150
+#: volunteer_planner/settings/base.py:154
 msgid "Swedish"
 msgstr "Švédština"
+
+#: volunteer_planner/settings/base.py:155
+msgid "Portuguese"
+msgstr ""
+
+#: volunteer_planner/settings/base.py:156
+msgid "Turkish"
+msgstr ""
