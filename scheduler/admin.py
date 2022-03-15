@@ -14,7 +14,9 @@ from organizations.admin import (
 )
 from . import models
 from .fields import FormattedModelChoiceIteratorFactory
+import logging
 
+logger = logging.getLogger(__name__)
 
 class FormattedModelChoiceFieldAdminMixin:
 
@@ -34,12 +36,10 @@ class ShiftAdminForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ShiftAdminForm, self).__init__(*args, **kwargs)
-        try:
-            if self.instance:
-                self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=self.instance.facility)
-                self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=self.instance.facility)
-        except models.Shift.facility.RelatedObjectDoesNotExist as e:
-            pass  # FIXME There must be some better way, to handle this use case
+        if self.instance and hasattr(self.instance, 'facility'):
+            facility = self.instance.facility
+            self.fields['task'].queryset = self.fields['task'].queryset.filter(facility=facility)
+            self.fields['workplace'].queryset = self.fields['workplace'].queryset.filter(facility=facility)
 
     def clean(self):
         """Validation of shift data, to prevent non-sense values to be entered"""
