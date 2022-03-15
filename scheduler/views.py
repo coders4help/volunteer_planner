@@ -69,15 +69,21 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
         facility_list = []
         used_places = set()
+        used_countries = set()
 
         for facility, shifts_at_facility in shifts_by_facility:
             used_places.add(facility.place.area)
             facility_list.append(
                 get_facility_details(facility, shifts_at_facility))
+            used_countries.add(facility.place.area.region.country)
 
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
              sorted(used_places, key=lambda p: p.name)])
+        context['country_json'] = json.dumps(
+            [{'slug': country.slug, 'name': country.name} for country in
+             sorted(used_countries, key=lambda p: p.name)])
+
         context['facility_json'] = json.dumps(facility_list,
                                               cls=DjangoJSONEncoder)
         context['shifts'] = open_shifts
