@@ -1,10 +1,15 @@
 # coding: utf-8
+import logging
 
 from django.contrib import admin
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
+from registration.models import RegistrationProfile
 
 from .models import UserAccount
+
+logger = logging.getLogger(__name__)
 
 
 @admin.register(UserAccount)
@@ -28,11 +33,36 @@ class UserAccountAdmin(admin.ModelAdmin):
     get_user_email.short_description = _(u'email')
     get_user_email.admin_order_field = 'user__email'
 
+    def user_is_active(self, obj):
+        return obj.user.is_active
+
+    user_is_active.boolean = True
+    user_is_active.short_description = _('active')
+    user_is_active.admin_order_field = 'user__is_active'
+
+    def get_user_join_date(self, obj):
+        return obj.user.date_joined
+
+    get_user_join_date.short_description = _('date joined')
+    get_user_join_date.admin_order_field = 'user__date_joined'
+
+    def get_user_last_login(self, obj):
+        return obj.user.last_login
+
+    get_user_last_login.short_description = _('last login')
+    get_user_last_login.admin_user_field = 'user'
+
+    date_hierarchy = 'user__date_joined'
+    actions = ['resend_activation_mail']
+
     list_display = (
         'user',
         'get_user_email',
         'get_user_first_name',
-        'get_user_last_name'
+        'get_user_last_name',
+        'user_is_active',
+        'get_user_join_date',
+        'get_user_last_login',
     )
     raw_id_fields = ('user',)
     search_fields = (
@@ -45,7 +75,15 @@ class UserAccountAdmin(admin.ModelAdmin):
     list_filter = (
         'user__is_active',
         'user__is_staff',
+        'user__last_login',
     )
+
+    def resend_activation_mail(self, request, queryset):
+        site = get_current_site(request)
+        for profile in queryset:
+            user = profile.user
+            logger.info(f"Attempt to re-send activation mail for '{user.username}' <{user.email}>")
+            RegistrationProfile.objects.resend_activation_mail(user.email, site, request)
 
 
 from django.contrib.sessions.models import Session
