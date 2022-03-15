@@ -51,16 +51,16 @@ class ShiftTemplateForm(forms.ModelForm):
             task = self.cleaned_data.get('task')
 
             if task and not task.facility == facility:
-                msg = _(f"Facilities do not match.") + " " + _(
+                msg = str(_(f"Facilities do not match.")) + " " + str(_(
                     f'"{task.name}" belongs to facility "{task.facility.name}", but shift takes place at "{facility.name}".'
-                )
+                ))
                 self.add_error("task", ValidationError(msg))
 
             workplace = self.cleaned_data.get("workplace")
             if workplace and not workplace.facility == facility:
-                msg = _(f"Facilities do not match.") + " " + _(
+                msg = str(_(f"Facilities do not match.")) + " " + str(_(
                     f'"{workplace.name}" is at "{workplace.facility.name}" but shift takes place at "{facility.name}".'
-                )
+                ))
                 self.add_error("workplace", ValidationError(msg))
 
 
