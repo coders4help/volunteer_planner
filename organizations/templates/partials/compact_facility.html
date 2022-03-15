@@ -12,11 +12,7 @@
         {% endif %}
 
         <p>
-            {% if facility.short_description %}
-                {{ facility.short_description|safe }}
-            {% else %}
-                {{ facility.description|truncatechars_html:150|safe }}
-            {% endif %}
+            {{ facility.description|truncatechars_html:150|safe }}
         </p>
 
         <p>

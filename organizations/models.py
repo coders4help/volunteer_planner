@@ -74,11 +74,6 @@ class Organization(models.Model):
     # the name of the organization, ie. "Wilmersdorf hilft"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
 
-    # a short description of the organization.
-    # will be derived from description, if empty
-    short_description = models.TextField(blank=True,
-                                         verbose_name=_(u'short description'))
-
     # a description of the organization
     description = models.TextField(verbose_name=_(u'description'))
 
@@ -146,11 +141,6 @@ class Facility(models.Model):
 
     # the name of the facility, ie. "Fehrbelliner Platz 4"
     name = models.CharField(max_length=256, verbose_name=_(u'name'))
-
-    # a short description of the facility.
-    # will be derived from description, if empty
-    short_description = models.TextField(blank=True,
-                                         verbose_name=_(u'short description'))
 
     # a description of the facility
     description = models.TextField(verbose_name=_(u'description'))
