@@ -13,7 +13,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         # Intentionally out of repository so that git clean doesn't delete the file.
-        'NAME': os.path.join(SITE_ROOT, '..', 'db.sqlite3'),
+        'NAME': os.path.join(SITE_ROOT, 'db.sqlite3'),
     }
 }
 
