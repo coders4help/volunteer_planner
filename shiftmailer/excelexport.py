@@ -5,7 +5,7 @@ import tempfile
 
 from django.conf import settings
 from django.core.mail.message import EmailMessage
-from excel_renderer import ExcelRenderer
+from .excel_renderer import ExcelRenderer
 
 log = logging.getLogger(__name__)
 
