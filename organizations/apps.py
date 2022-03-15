@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 class OrganizationsConfig(AppConfig):
     name = "organizations"
-    verbose_name = _("Organizations")
+    verbose_name = _("organizations")
 
     def ready(self):
         # Connect signals

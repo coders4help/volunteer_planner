@@ -51,9 +51,9 @@ def forwards(apps, schema_editor):
         group, created = GroupModel.objects.get_or_create(name=group_name)
         print(f"  - {group.name}: created group object")
         for app_label, model, actions in permissions:
-            content_type = ContentTypeModel.objects.get(app_label=app_label.lower(), model=model.lower())
+            content_type, _ = ContentTypeModel.objects.get_or_create(app_label=app_label.lower(), model=model.lower())
             for action in actions:
-                permission = PermissionModel.objects.get(
+                permission, _ = PermissionModel.objects.get_or_create(
                     content_type=content_type, codename=f"{action}_{model}".lower()
                 )
                 group.permissions.add(permission)
@@ -82,7 +82,9 @@ def backwards(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
+        ("contenttypes", "0002_remove_content_type_name"),
         ("auth", "0011_update_proxy_permissions"),
+        ("accounts", "0001_initial"),
         ("organizations", "0012_cascade_deletion"),
     ]
 

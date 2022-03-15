@@ -57,6 +57,22 @@
                    value="{{ form.cleaned_data.password2 }}">
           </div>
 
+        <div class="form-group {% if form.accept_privacy_policy.errors %}has-error{% endif %}">
+            <input type="checkbox"
+                   id="accept_privacy_policy"
+                   name="accept_privacy_policy"
+                   {% if form.cleaned_data.accept_privacy_policy %}
+                       checked
+                   {% endif %}>
+            <label {% if form.accept_privacy_policy.errors %}style="color:red"{% endif %} for="accept_privacy_policy">
+                {% blocktrans %}I have read and agree to the <a href="/impressum/#datenschutz">Privacy Policy</a>.{% endblocktrans %}
+
+                {% if form.accept_privacy_policy.errors %}
+                    <b>{% trans "This must be checked." %}</b>
+                {% endif %}
+            </label>
+        </div>
+
         <button type="submit" class="btn btn-primary align-left">{% trans "Sign-up" %}</button>
     </form>
 </div>
