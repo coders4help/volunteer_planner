@@ -18,15 +18,18 @@
                     // this rather should be done through an nice REST api
                     $scope.facilities = {{ facility_json | safe }};
                     $scope.areas = {{ areas_json | safe }};
-                    $scope.selectedAreas = [];
-                    $scope.toggleArea = function (area) {
-                        if ($scope.selectedAreas.indexOf(area) > -1) {
-                            $scope.selectedAreas.splice($scope.selectedAreas.indexOf(area),1);
+                    $scope.countries = {{ country_json | safe }};
+                    $scope.selectedCountryAndArea = [];
+                    $scope.toggleCountryAndArea = function (countryOrArea) {
+                        debugger
+                        if ($scope.selectedCountryAndArea.indexOf(countryOrArea) > -1) {
+                            $scope.selectedCountryAndArea.splice($scope.selectedCountryAndArea.indexOf(countryOrArea), 1);
                         } else {
-                            $scope.selectedAreas.push(area);
+                            $scope.selectedCountryAndArea.push(countryOrArea);
                         }
                     }
-                });
+                })
+
     </script>
 {% endblock %}
 
@@ -39,6 +42,13 @@
                 <hr>
                 <div>
                     {% endverbatim %}<span>{% trans "filter" %}:</span>{% verbatim %}
+                    <label class="countries-filter" ng-repeat="country in countries">
+                        <input type="checkbox" value="{{ country.name }}"
+
+                            ng-click="toggleCountryAndArea(country.slug)"
+                            ng-class="{ 'country': selectedCountryAndArea.indexOf(country.slug) > -1 }"
+                            >{{ country.name }}
+                    </label>
                     <label class="area-filter" ng-repeat="area in areas">
                         <input type="checkbox" value="{{ area.name }}"
 
@@ -50,7 +60,7 @@
 
                 <div class="area-accordions row">
                     <div class="col-md-12">
-                        <div ng-repeat="facility in facilities" ng-show="selectedAreas.indexOf(facility.area_slug) > -1 || selectedAreas.length == 0">
+                        <div ng-repeat="facility in facilities" ng-show="selectedCountryAndArea.indexOf(facility.area_slug) > -1 || selectedCountryAndArea.length == 0">
                             <accordion>
                                 <accordion-group panel-class="panel-primary">
                                     <accordion-heading>
