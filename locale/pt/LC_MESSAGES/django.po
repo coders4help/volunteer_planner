@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 15:17+0100\n"
+"POT-Creation-Date: 2022-03-15 21:55+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/coders4help/volunteer-planner/language/pt/)\n"
@@ -19,13 +19,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:16 accounts/admin.py:22 shiftmailer/models.py:9
+#: accounts/admin.py:20 accounts/admin.py:26 shiftmailer/models.py:9
 msgid "first name"
 msgstr "nome"
 
-#: accounts/admin.py:28 shiftmailer/models.py:13
+#: accounts/admin.py:32 shiftmailer/models.py:13
 msgid "email"
 msgstr "e-mail"
+
+#: accounts/admin.py:39
+msgid "active"
+msgstr ""
+
+#: accounts/admin.py:45
+msgid "date joined"
+msgstr ""
+
+#: accounts/admin.py:51
+msgid "last login"
+msgstr ""
 
 #: accounts/apps.py:8 accounts/apps.py:16
 msgid "Accounts"
@@ -260,7 +272,7 @@ msgid "Server Error <em>(500)</em>"
 msgstr ""
 
 #: non_logged_in_area/templates/500.html:10
-msgid "There's been an error. I should be fixed shortly. Thanks for your patience."
+msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: non_logged_in_area/templates/base_non_logged_in.html:57
@@ -689,12 +701,6 @@ msgstr ""
 #: organizations/models.py:232
 msgid "organization"
 msgstr "organização"
-
-#: organizations/models.py:107 organizations/models.py:210
-#: organizations/models.py:307 organizations/models.py:336
-#, python-brace-format
-msgid "{name}"
-msgstr "{name}"
 
 #: organizations/models.py:131
 msgid "disabled"
@@ -1266,11 +1272,6 @@ msgstr ""
 #: scheduletemplates/models.py:104
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
-msgstr ""
-
-#: scheduletemplates/models.py:108
-#, python-brace-format
-msgid "{task_name}"
 msgstr ""
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:31
