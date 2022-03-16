@@ -27,8 +27,8 @@ class HomeView(TemplateView):
             facility_count=Count('areas__places__facilities')).exclude(
             facility_count=0).prefetch_related('areas', 'areas__region').all()
         facilities = Facility.objects.select_related('place',
-                                                                'place__area',
-                                                                'place__area__region').order_by('place').all()
+                                                     'place__area',
+                                                     'place__area__region').order_by('place').all()
         facilities_with_shifts = []
         for i in facilities:
             if len(i.open_shifts) > 0:
