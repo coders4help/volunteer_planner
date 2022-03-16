@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 10:07+0100\n"
+"POT-Creation-Date: 2022-03-16 23:25+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
@@ -24,23 +24,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:20 accounts/admin.py:26
+#: accounts/admin.py:22 accounts/admin.py:28
 msgid "first name"
 msgstr ""
 
-#: accounts/admin.py:32
+#: accounts/admin.py:34 accounts/admin.py:61
 msgid "email"
 msgstr "e-mail"
 
-#: accounts/admin.py:39
-msgid "active"
-msgstr ""
-
-#: accounts/admin.py:45
+#: accounts/admin.py:67
 msgid "date joined"
 msgstr ""
 
-#: accounts/admin.py:51
+#: accounts/admin.py:73
 msgid "last login"
 msgstr ""
 
@@ -1616,7 +1612,6 @@ msgid "Activation email sent"
 msgstr "Az akitváló e-mailt elküldtük!"
 
 #: templates/registration/registration_complete.html:7
-#: tests/registration/test_registration.py:145
 msgid "An activation mail will be sent to you email address."
 msgstr "A regisztrációt aktiváló e-mailt küldünk az e-mail címedre."
 
@@ -1649,7 +1644,6 @@ msgid "Your username will be visible to other users. Don't use spaces or special
 msgstr ""
 
 #: templates/registration/registration_form.html:51
-#: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
 msgstr "A két jelszó nem egyezik!"
 
@@ -1668,18 +1662,6 @@ msgstr ""
 #: templates/registration/registration_form.html:76
 msgid "Sign-up"
 msgstr "Regisztráció"
-
-#: tests/registration/test_registration.py:43
-msgid "This field is required."
-msgstr "Kötelezően megadandó érték."
-
-#: tests/registration/test_registration.py:82
-msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Egy érvényes felhasználói nevet adj meg, ami betüből, számból és a következő karakterekből állhat: @/./+/-/_ "
-
-#: tests/registration/test_registration.py:110
-msgid "A user with that username already exists."
-msgstr "Ezzel a felhasználónévvel már létezik felhasználó."
 
 #: volunteer_planner/settings/base.py:149
 msgid "English"
