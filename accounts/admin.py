@@ -1,10 +1,15 @@
 # coding: utf-8
+import logging
 
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
+from registration.admin import RegistrationAdmin
+from registration.models import RegistrationProfile
 
 from .models import UserAccount
+
+logger = logging.getLogger(__name__)
 
 
 @admin.register(UserAccount)
@@ -46,6 +51,47 @@ class UserAccountAdmin(admin.ModelAdmin):
         'user__is_active',
         'user__is_staff',
     )
+
+
+class RegistrationProfileAdmin(RegistrationAdmin):
+    def user_email(self, obj):
+        return obj.user.email
+
+    user_email.short_description = _("email")
+    user_email.admin_order_field = "user__email"
+
+    def user_date_joined(self, obj):
+        return obj.user.date_joined
+
+    user_date_joined.short_description = _("date joined")
+    user_date_joined.admin_order_field = "user__date_joined"
+
+    def user_last_login(self, obj):
+        return obj.user.last_login
+
+    user_last_login.short_description = _("last login")
+    user_last_login.admin_order_field = "user__last_login"
+
+    date_hierarchy = "user__date_joined"
+
+    list_display = (
+        "user",
+        "user_email",
+        "activated",
+        "activation_key_expired",
+        "user_date_joined",
+        "user_last_login",
+    )
+
+    list_filter = (
+        "user__is_active",
+        "user__is_staff",
+        "user__last_login",
+    )
+
+
+admin.site.unregister(RegistrationProfile)
+admin.site.register(RegistrationProfile, RegistrationProfileAdmin)
 
 
 from django.contrib.sessions.models import Session
