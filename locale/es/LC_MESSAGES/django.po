@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 21:55+0100\n"
+"POT-Creation-Date: 2022-03-16 10:07+0100\n"
 "PO-Revision-Date: 2016-04-13 17:27+0000\n"
 "Last-Translator: Antonio Mireles <antonio@mirelesindependent.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/coders4help/volunteer-planner/language/es/)\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:20 accounts/admin.py:26 shiftmailer/models.py:9
+#: accounts/admin.py:20 accounts/admin.py:26
 msgid "first name"
 msgstr "nombre"
 
-#: accounts/admin.py:32 shiftmailer/models.py:13
+#: accounts/admin.py:32
 msgid "email"
 msgstr "correo electrónico"
 
@@ -1370,33 +1370,6 @@ msgstr "¿Eliminar?"
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
 msgid "Change"
 msgstr "Cambiar"
-
-#: shiftmailer/models.py:10
-msgid "last name"
-msgstr "apellido"
-
-#: shiftmailer/models.py:11
-msgid "position"
-msgstr "posición"
-
-#: shiftmailer/models.py:12
-msgid "organisation"
-msgstr "organización"
-
-#: shiftmailer/templates/shifts_today.html:2
-#, python-format
-msgctxt "shift today title"
-msgid "Schedule for %(organization_name)s on %(date)s"
-msgstr "El horario para %(organization_name)s en %(date)s"
-
-#: shiftmailer/templates/shifts_today.html:7
-msgid "All data is private and not supposed to be given away!"
-msgstr "¡Toda la información es privada y no se debe compartir!"
-
-#: shiftmailer/templates/shifts_today.html:16
-#, python-format
-msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
-msgstr "desde %(start_time)s a %(end_time)s siguientes %(volunteer_count)s voluntarios se han inscrito:"
 
 #: templates/partials/footer.html:17
 #, python-format
