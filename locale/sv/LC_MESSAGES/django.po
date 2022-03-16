@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 21:55+0100\n"
+"POT-Creation-Date: 2022-03-16 10:07+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
@@ -21,11 +21,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:20 accounts/admin.py:26 shiftmailer/models.py:9
+#: accounts/admin.py:20 accounts/admin.py:26
 msgid "first name"
 msgstr "förnamn"
 
-#: accounts/admin.py:32 shiftmailer/models.py:13
+#: accounts/admin.py:32
 msgid "email"
 msgstr "e-post"
 
@@ -1370,33 +1370,6 @@ msgstr "Radera?"
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
 msgid "Change"
 msgstr "Ändra"
-
-#: shiftmailer/models.py:10
-msgid "last name"
-msgstr "efternamn"
-
-#: shiftmailer/models.py:11
-msgid "position"
-msgstr "ställning"
-
-#: shiftmailer/models.py:12
-msgid "organisation"
-msgstr "organisation"
-
-#: shiftmailer/templates/shifts_today.html:2
-#, python-format
-msgctxt "shift today title"
-msgid "Schedule for %(organization_name)s on %(date)s"
-msgstr "Schema för %(organization_name)s den %(date)s"
-
-#: shiftmailer/templates/shifts_today.html:7
-msgid "All data is private and not supposed to be given away!"
-msgstr "Samtliga uppgifter behandlas konfidentiellt och får inte lämnas ut till tredje part."
-
-#: shiftmailer/templates/shifts_today.html:16
-#, python-format
-msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
-msgstr "från klockan %(start_time)s till %(end_time)s har följande %(volunteer_count)s volontärer anmält sig:"
 
 #: templates/partials/footer.html:17
 #, python-format
