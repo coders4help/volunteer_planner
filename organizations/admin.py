@@ -214,12 +214,6 @@ class MembershipFieldListFilter(admin.RelatedFieldListFilter):
 @admin.register(models.Organization)
 class OrganizationAdmin(MembershipFilteredAdmin):
 
-    def get_short_description(self, obj):
-        return striptags(obj.short_description)
-
-    get_short_description.short_description = _(u'short description')
-    get_short_description.allow_tags = True
-
     def get_description(self, obj):
         return striptags(obj.description)
 
@@ -234,7 +228,6 @@ class OrganizationAdmin(MembershipFilteredAdmin):
 
     list_display = (
         'name',
-        'short_description',
         'get_description',
         'contact_info',
         'address',
@@ -242,7 +235,6 @@ class OrganizationAdmin(MembershipFilteredAdmin):
     raw_id_fields = ('members',)
     search_fields = ('name',)
     widgets = {
-        'short_description': CKEditorWidget(),
         'description': CKEditorWidget(),
         'contact_info': CKEditorWidget(),
     }
@@ -251,11 +243,6 @@ class OrganizationAdmin(MembershipFilteredAdmin):
 
 @admin.register(models.Facility)
 class FacilityAdmin(MembershipFilteredAdmin):
-    def get_short_description(self, obj):
-        return striptags(obj.short_description)
-
-    get_short_description.short_description = _(u'short description')
-    get_short_description.allow_tags = True
 
     def get_description(self, obj):
         return striptags(obj.description)
@@ -272,7 +259,6 @@ class FacilityAdmin(MembershipFilteredAdmin):
     list_display = (
         'name',
         'organization',
-        'get_short_description',
         'get_description',
         'get_contact_info',
         'place',
@@ -288,7 +274,6 @@ class FacilityAdmin(MembershipFilteredAdmin):
     raw_id_fields = ('members',)
     search_fields = ('name',)
     widgets = {
-        'short_description': CKEditorWidget(),
         'description': CKEditorWidget(),
         'contact_info': CKEditorWidget(),
     }
