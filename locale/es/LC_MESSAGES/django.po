@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 08:22+0100\n"
+"POT-Creation-Date: 2022-03-17 10:40+0100\n"
 "PO-Revision-Date: 2016-04-13 17:27+0000\n"
 "Last-Translator: Antonio Mireles <antonio@mirelesindependent.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/coders4help/volunteer-planner/language/es/)\n"
@@ -1636,7 +1636,6 @@ msgid "Activation email sent"
 msgstr "El correo electrónico de activación fue enviado"
 
 #: templates/registration/registration_complete.html:7
-#: tests/registration/test_registration.py:145
 msgid "An activation mail will be sent to you email address."
 msgstr "Un correo electrónico de activación será enviado a su dirección de correo electrónico. "
 
@@ -1669,7 +1668,6 @@ msgid "Your username will be visible to other users. Don't use spaces or special
 msgstr "Tu nombre de usuario va a ser visible a otros usuarios. No uses espacios o caracteres especiales."
 
 #: templates/registration/registration_form.html:51
-#: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
 msgstr "Los dos campos para la contraseña no coinciden."
 
@@ -1688,18 +1686,6 @@ msgstr ""
 #: templates/registration/registration_form.html:76
 msgid "Sign-up"
 msgstr "Inscribirse"
-
-#: tests/registration/test_registration.py:43
-msgid "This field is required."
-msgstr "Este campo es obligatorio."
-
-#: tests/registration/test_registration.py:82
-msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Introduzca un nombre de usario válido. Sólo puede contener letras, numeros y los simbolos @/./+/-/_."
-
-#: tests/registration/test_registration.py:110
-msgid "A user with that username already exists."
-msgstr "Un usario con el mismo nombre de usario ya existe."
 
 #: volunteer_planner/settings/base.py:150
 msgid "English"
@@ -1722,10 +1708,8 @@ msgid "Hungarian"
 msgstr "Húngaro"
 
 #: volunteer_planner/settings/base.py:155
-#, fuzzy
-#| msgid "English"
 msgid "Polish"
-msgstr "Inglés"
+msgstr ""
 
 #: volunteer_planner/settings/base.py:156
 msgid "Portuguese"
