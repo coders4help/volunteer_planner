@@ -4,16 +4,15 @@
 #
 # Translators:
 # Translators:
-# trendspotter <jirka.p@volny.cz>, 2022
 # trendspotter <jirka.p@volny.cz>, 2019
 # trendspotter <jirka.p@volny.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 20:45+0100\n"
-"PO-Revision-Date: 2015-09-24 12:23+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
+"POT-Creation-Date: 2022-03-17 08:22+0100\n"
+"PO-Revision-Date: 2022-03-15 17:56+0000\n"
+"Last-Translator: Christoph Meißner\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -21,23 +20,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: accounts/admin.py:20 accounts/admin.py:26 shiftmailer/models.py:9
+#: accounts/admin.py:22 accounts/admin.py:28
 msgid "first name"
 msgstr "křestní jméno"
 
-#: accounts/admin.py:32 shiftmailer/models.py:13
+#: accounts/admin.py:34 accounts/admin.py:61
 msgid "email"
 msgstr "e-mail"
 
-#: accounts/admin.py:39
-msgid "active"
-msgstr ""
-
-#: accounts/admin.py:45
+#: accounts/admin.py:67
 msgid "date joined"
 msgstr ""
 
-#: accounts/admin.py:51
+#: accounts/admin.py:73
 msgid "last login"
 msgstr ""
 
@@ -47,7 +42,7 @@ msgstr "Účty"
 
 #: accounts/forms.py:7
 msgid "Accept privacy policy"
-msgstr "Přijmout zásady ochrany osobních údajů"
+msgstr ""
 
 #: accounts/models.py:17 organizations/models.py:60
 msgid "user account"
@@ -202,7 +197,7 @@ msgstr "jazyk"
 
 #: content/models.py:34 news/models.py:14
 msgid "title"
-msgstr "Nadpis"
+msgstr "nadpis"
 
 #: content/models.py:38
 msgid "content"
@@ -267,7 +262,7 @@ msgstr "Omlouváme se, ale požadovaná stránka nebyla nalezena."
 
 #: non_logged_in_area/templates/500.html:4
 msgid "Server error"
-msgstr "chyba serveru"
+msgstr "Chyba serveru"
 
 #: non_logged_in_area/templates/500.html:8
 msgid "Server Error <em>(500)</em>"
@@ -275,7 +270,7 @@ msgstr "Chyba serveru <em>(500)</em>"
 
 #: non_logged_in_area/templates/500.html:10
 msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
-msgstr ""
+msgstr "Došlo k chybě. Byla hlášena správcům webu e-mailem a měla by být opravena brzy. Děkujeme za trpělivost."
 
 #: non_logged_in_area/templates/base_non_logged_in.html:57
 #: templates/registration/login.html:3 templates/registration/login.html:10
@@ -625,10 +620,6 @@ msgid ""
 "                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 msgstr ""
-"\n"
-" ...třeba s přiloženým návrhem směn, které chcete vidět v plánovači dobrovolníků. Napište prosím na <a\n"
-"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
-"                  "
 
 #: organizations/admin.py:141 organizations/admin.py:143
 msgid "edit"
@@ -823,7 +814,7 @@ msgstr "úlohy"
 #: organizations/signals.py:36
 #, python-brace-format
 msgid "User '{user}' manager status of a facility/organization was changed. "
-msgstr "Byl změněn status správce zařízení/organizace uživatele '{user}'. "
+msgstr ""
 
 #: organizations/templates/emails/membership_approved.txt:2
 #, python-format
@@ -947,33 +938,33 @@ msgstr "místa"
 #: scheduler/admin.py:55 scheduler/admin.py:62 scheduletemplates/admin.py:54
 #: scheduletemplates/admin.py:61
 msgid "Facilities do not match."
-msgstr "Zařízení neodpovídají."
+msgstr ""
 
 #: scheduler/admin.py:56 scheduletemplates/admin.py:55
 #, python-brace-format
 msgid "\"{task.name}\" belongs to facility \"{task.facility.name}\", but shift takes place at \"{facility.name}\"."
-msgstr "\"{task.name}\" patří do zařízení \"{task.facility.name}\", ale směna probíhá v zařízení \"{facility.name}\"."
+msgstr ""
 
 #: scheduler/admin.py:63 scheduletemplates/admin.py:62
 #, python-brace-format
 msgid "\"{workplace.name}\" is at \"{workplace.facility.name}\" but shift takes place at \"{facility.name}\"."
-msgstr "\"{workplace.name}\" se nachází v \"{workplace.facility.name}\", ale směna probíhá v \"{facility.name}\"."
+msgstr ""
 
 #: scheduler/admin.py:70
 msgid "No start time given."
-msgstr "Čas zahájení není uveden."
+msgstr ""
 
 #: scheduler/admin.py:72
 msgid "No end time given."
-msgstr "Čas ukončení není uveden."
+msgstr ""
 
 #: scheduler/admin.py:78
 msgid "Start time in the past."
-msgstr "Čas zahájení v minulosti."
+msgstr ""
 
 #: scheduler/admin.py:80
 msgid "Shift ends before it starts."
-msgstr "Směna končí dřív, než začne."
+msgstr ""
 
 #: scheduler/admin.py:107
 msgid "number of volunteers"
@@ -1242,7 +1233,7 @@ msgstr "Byli jste úspěšně přidáni k této směně."
 
 #: scheduler/views.py:238
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
-msgstr "Směna, do které jste nastoupili, se překrývá s jinými směnami, do kterých jste již nastoupili. Zkontrolujte, zda nedochází ke konfliktům:"
+msgstr ""
 
 #: scheduler/views.py:248
 #, python-brace-format
@@ -1292,7 +1283,7 @@ msgstr "šablona směny"
 #: scheduletemplates/models.py:83
 #, python-brace-format
 msgid "after {number_of_days} days"
-msgstr "po {number_of_days} dnech"
+msgstr ""
 
 #: scheduletemplates/models.py:102
 #, python-brace-format
@@ -1372,33 +1363,6 @@ msgstr "Smazat?"
 #: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
 msgid "Change"
 msgstr "Změnit"
-
-#: shiftmailer/models.py:10
-msgid "last name"
-msgstr "příjmení"
-
-#: shiftmailer/models.py:11
-msgid "position"
-msgstr "pozice"
-
-#: shiftmailer/models.py:12
-msgid "organisation"
-msgstr "organizace"
-
-#: shiftmailer/templates/shifts_today.html:2
-#, python-format
-msgctxt "shift today title"
-msgid "Schedule for %(organization_name)s on %(date)s"
-msgstr "Plán pro %(organization_name)s v %(date)s"
-
-#: shiftmailer/templates/shifts_today.html:7
-msgid "All data is private and not supposed to be given away!"
-msgstr "Všechna data jsou soukromá a nemají být šířena!"
-
-#: shiftmailer/templates/shifts_today.html:16
-#, python-format
-msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
-msgstr "od %(start_time)s do %(end_time)s s následujícími %(volunteer_count)s dobrovolníky se zaregistrovali:"
 
 #: templates/partials/footer.html:17
 #, python-format
@@ -1539,16 +1503,16 @@ msgstr "Registrace dobrovolníka"
 
 #: templates/registration/admin_approve_complete_email.html:6
 msgid "admin approval"
-msgstr "schválení administrátorem"
+msgstr ""
 
 #: templates/registration/admin_approve_complete_email.html:12
 #, python-format
 msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
-msgstr "Váš účet je nyní schválen. Nyní se můžete <a href=\"https://%(site.domain)s%(login_url)s\">přihlásit</a>."
+msgstr ""
 
 #: templates/registration/admin_approve_complete_email.txt:2
 msgid "Your account is now approved. You can log in using the following link"
-msgstr "Váš účet je nyní schválen. Přihlásit se můžete pomocí následujícího odkazu"
+msgstr ""
 
 #: templates/registration/login.html:15
 msgid "Your username and password didn't match. Please try again."
@@ -1714,11 +1678,11 @@ msgstr "Zopakovat heslo"
 
 #: templates/registration/registration_form.html:68
 msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
-msgstr "Přečetl/a jsem si <a href=\"/impressum/#datenschutz\">Zásady ochrany osobních údajů</a> a souhlasím s nimi."
+msgstr ""
 
 #: templates/registration/registration_form.html:71
 msgid "This must be checked."
-msgstr "To je nutné zaškrtnout."
+msgstr ""
 
 #: templates/registration/registration_form.html:76
 msgid "Sign-up"
@@ -1746,7 +1710,7 @@ msgstr "Němčina"
 
 #: volunteer_planner/settings/base.py:152
 msgid "French"
-msgstr "Francouzština"
+msgstr ""
 
 #: volunteer_planner/settings/base.py:153
 msgid "Greek"
@@ -1757,16 +1721,18 @@ msgid "Hungarian"
 msgstr "Maďarština"
 
 #: volunteer_planner/settings/base.py:155
+#, fuzzy
+#| msgid "English"
 msgid "Polish"
-msgstr "Polština"
+msgstr "Angličtina"
 
 #: volunteer_planner/settings/base.py:156
 msgid "Portuguese"
-msgstr "Portugalština"
+msgstr ""
 
 #: volunteer_planner/settings/base.py:157
 msgid "Russian"
-msgstr "Ruština"
+msgstr ""
 
 #: volunteer_planner/settings/base.py:158
 msgid "Swedish"
@@ -1774,4 +1740,4 @@ msgstr "Švédština"
 
 #: volunteer_planner/settings/base.py:159
 msgid "Turkish"
-msgstr "Turečtina"
+msgstr ""

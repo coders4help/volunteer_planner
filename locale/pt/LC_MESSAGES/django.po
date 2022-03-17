@@ -3,18 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Translators:
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2015
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2015
-# Ricardo Leonardo, 2016
+# Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2015
 # Ricardo Leonardo, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 20:45+0100\n"
-"PO-Revision-Date: 2015-09-24 12:23+0000\n"
-"Last-Translator: Ricardo Leonardo, 2016\n"
+"POT-Creation-Date: 2022-03-17 08:22+0100\n"
+"PO-Revision-Date: 2016-01-29 08:23+0000\n"
+"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/coders4help/volunteer-planner/language/pt/)\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -22,23 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:20 accounts/admin.py:26 shiftmailer/models.py:9
+#: accounts/admin.py:22 accounts/admin.py:28
 msgid "first name"
 msgstr "nome"
 
-#: accounts/admin.py:32 shiftmailer/models.py:13
+#: accounts/admin.py:34 accounts/admin.py:61
 msgid "email"
 msgstr "e-mail"
 
-#: accounts/admin.py:39
-msgid "active"
-msgstr ""
-
-#: accounts/admin.py:45
+#: accounts/admin.py:67
 msgid "date joined"
 msgstr ""
 
-#: accounts/admin.py:51
+#: accounts/admin.py:73
 msgid "last login"
 msgstr ""
 
@@ -968,7 +961,7 @@ msgstr "voluntários"
 
 #: scheduler/apps.py:8
 msgid "scheduler"
-msgstr ""
+msgstr "Agenda"
 
 #: scheduler/models.py:46 scheduletemplates/models.py:38
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
@@ -1335,33 +1328,6 @@ msgstr "Eliminar?"
 msgid "Change"
 msgstr "Alterar"
 
-#: shiftmailer/models.py:10
-msgid "last name"
-msgstr "sobrenome"
-
-#: shiftmailer/models.py:11
-msgid "position"
-msgstr "posição"
-
-#: shiftmailer/models.py:12
-msgid "organisation"
-msgstr "organização"
-
-#: shiftmailer/templates/shifts_today.html:2
-#, python-format
-msgctxt "shift today title"
-msgid "Schedule for %(organization_name)s on %(date)s"
-msgstr "Agendado para %(organization_name)s em %(date)s"
-
-#: shiftmailer/templates/shifts_today.html:7
-msgid "All data is private and not supposed to be given away!"
-msgstr ""
-
-#: shiftmailer/templates/shifts_today.html:16
-#, python-format
-msgid "from %(start_time)s to %(end_time)s following %(volunteer_count)s volunteers have signed up:"
-msgstr ""
-
 #: templates/partials/footer.html:17
 #, python-format
 msgid "Questions? Get in touch: %(mailto_link)s"
@@ -1693,8 +1659,10 @@ msgid "Hungarian"
 msgstr "Húngaro"
 
 #: volunteer_planner/settings/base.py:155
+#, fuzzy
+#| msgid "English"
 msgid "Polish"
-msgstr ""
+msgstr "Inglês"
 
 #: volunteer_planner/settings/base.py:156
 msgid "Portuguese"
