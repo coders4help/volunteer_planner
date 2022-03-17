@@ -207,3 +207,11 @@ code {
 .nav-up {
     top: -50px;
 }
+
+/*
+Schedeuler
+ */
+
+.filter input[type=checkbox]{
+    margin:5px;
+}

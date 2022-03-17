@@ -16,16 +16,44 @@
         angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
                 .controller('ShiftWidgetCtrl', function($scope) {
                     // this rather should be done through an nice REST api
+                    $scope.setCookie = function(cName, cValue){
+                        document.cookie = cName + "=" + cValue + "; path=/";
+                    }
+                    $scope.getCookie = function getCookie(cName) {
+                        const name = cName + "=";
+                        const cDecoded = decodeURIComponent(document.cookie);
+                        const cArr = cDecoded .split('; ');
+                        let res;
+                        cArr.forEach(val => {
+                          if (val.indexOf(name) === 0) res = val.substring(name.length);
+                        })
+                        return res;
+                    }
+
                     $scope.facilities = {{ facility_json | safe }};
                     $scope.areas = {{ areas_json | safe }};
                     $scope.countries = {{ country_json | safe }};
                     $scope.selectedCountryAndArea = [];
+
+                    $scope.setCheckBoxFromCookie= function(){
+                        let cookiedFilters = $scope.getCookie("filters")
+                        if (cookiedFilters){
+                            $scope.selectedCountryAndArea = cookiedFilters.split(",")
+                            for (let i = 0; i < $scope.selectedCountryAndArea.length; i++) {
+                                let checkbox = document.getElementById("filter-"+$scope.selectedCountryAndArea[i])
+                                checkbox.checked = true;
+                                }
+                        }
+                    };
+
                     $scope.toggleCountryAndArea = function (countryOrArea) {
-                        debugger
                         if ($scope.selectedCountryAndArea.indexOf(countryOrArea) > -1) {
                             $scope.selectedCountryAndArea.splice($scope.selectedCountryAndArea.indexOf(countryOrArea), 1);
+                            $scope.setCookie("filters", $scope.selectedCountryAndArea.toString())
+
                         } else {
                             $scope.selectedCountryAndArea.push(countryOrArea);
+                            $scope.setCookie("filters", $scope.selectedCountryAndArea.toString())
                         }
                     }
                 })
@@ -41,26 +69,28 @@
             {% verbatim %}
                 <hr>
                 <div>
-                    {% endverbatim %}<span>{% trans "filter" %}:</span>{% verbatim %}
-                    <label class="countries-filter" ng-repeat="country in countries">
-                        <input type="checkbox" value="{{ country.name }}"
+                    {% endverbatim %}<span>{% trans "Countries" %}:</span>{% verbatim %}
+                    <label class="filter" ng-repeat="country in countries">
+                        <input id="filter-{{ country.slug }}" type="checkbox" value="{{ country.name }}"
 
                             ng-click="toggleCountryAndArea(country.slug)"
                             ng-class="{ 'country': selectedCountryAndArea.indexOf(country.slug) > -1 }"
                             >{{ country.name }}
                     </label>
-                    <label class="area-filter" ng-repeat="area in areas">
-                        <input type="checkbox" value="{{ area.name }}"
-
-                            ng-click="toggleArea(area.slug)"
-                            ng-class="{ 'fddf': selectedAreas.indexOf(area.slug) > -1 }"
+                </div>
+              <div>
+                    {% endverbatim %}<span>{% trans "Areas" %}:</span>{% verbatim %}
+                    <label class="filter" ng-repeat="area in areas">
+                        <input id="filter-{{ area.slug }}" type="checkbox" value="{{ area.name }}"
+                            ng-click="toggleCountryAndArea(area.slug)"
+                            ng-class="{ 'area': selectedAreas.indexOf(area.slug) > -1 }"
                             >{{ area.name }}
                     </label>
                 </div>
 
                 <div class="area-accordions row">
                     <div class="col-md-12">
-                        <div ng-repeat="facility in facilities" ng-show="selectedCountryAndArea.indexOf(facility.area_slug) > -1 || selectedCountryAndArea.length == 0">
+                        <div ng-repeat="facility in facilities" ng-show="selectedCountryAndArea.indexOf(facility.area_slug) > -1 || selectedCountryAndArea.indexOf(facility.country_slug) > -1 || selectedCountryAndArea.length == 0">
                             <accordion>
                                 <accordion-group panel-class="panel-primary">
                                     <accordion-heading>
