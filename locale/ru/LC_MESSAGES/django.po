@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 10:40+0100\n"
+"POT-Creation-Date: 2022-03-17 11:06+0100\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Anna Dunn, 2022\n"
 "Language-Team: Russian (http://www.transifex.com/coders4help/volunteer-planner/language/ru/)\n"
@@ -1679,10 +1679,6 @@ msgstr "Имя пользователя уже занято. Выберите д
 #: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Ваше имя пользователя будет видно другим пользователям. Не используйте пробелы или специальные символы."
-
-#: templates/registration/registration_form.html:51
-msgid "The two password fields didn't match."
-msgstr "Два поля пароля не совпадают."
 
 #: templates/registration/registration_form.html:54
 msgid "Repeat password"

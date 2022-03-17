@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 10:40+0100\n"
+"POT-Creation-Date: 2022-03-17 11:06+0100\n"
 "PO-Revision-Date: 2015-10-04 21:53+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
@@ -1599,10 +1599,6 @@ msgstr ""
 
 #: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr ""
-
-#: templates/registration/registration_form.html:51
-msgid "The two password fields didn't match."
 msgstr ""
 
 #: templates/registration/registration_form.html:54

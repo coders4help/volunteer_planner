@@ -48,7 +48,7 @@
 
         <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
             <label {% if form.password2.errors %}style="color:red"{% endif %}
-                   for="password2">{% if form.password2.errors %}{% trans "The two password fields didn't match." %}{% endif %}</label>
+                   for="password2">{% if form.password2.errors %}{{ form.password2.errors.0 }}{% endif %}</label>
             <input type="password"
                    class="form-control"
                    placeholder="{% trans "Repeat password" %}"
