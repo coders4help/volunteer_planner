@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 10:40+0100\n"
+"POT-Creation-Date: 2022-03-17 11:06+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
@@ -1665,10 +1665,6 @@ msgstr "Användarnamnet finns redan. Vänligen välj ett annat användarnamn."
 #: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
-
-#: templates/registration/registration_form.html:51
-msgid "The two password fields didn't match."
-msgstr "Lösenorden stämmer inte överens."
 
 #: templates/registration/registration_form.html:54
 msgid "Repeat password"

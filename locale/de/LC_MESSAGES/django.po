@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 10:40+0100\n"
+"POT-Creation-Date: 2022-03-17 11:06+0100\n"
 "PO-Revision-Date: 2016-11-21 18:24+0000\n"
 "Last-Translator: Sönke Klinger <klinger@biver.de>\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -1703,10 +1703,6 @@ msgstr "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen aus
 #: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeilen oder Sonderzeichen benutzen."
-
-#: templates/registration/registration_form.html:51
-msgid "The two password fields didn't match."
-msgstr "Die Passwörter stimmen nicht überein."
 
 #: templates/registration/registration_form.html:54
 msgid "Repeat password"
