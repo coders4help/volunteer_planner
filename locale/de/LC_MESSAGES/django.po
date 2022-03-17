@@ -3,29 +3,26 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Translators:
 # audrey liehn <woog_wg@web.de>, 2015
 # Caroline Elis <caroline@adazylla.de>, 2015
 # Christoph, 2015
-# Christoph Meißner, 2015,2022
-# Christoph Meißner, 2015,2022
-# Christoph Meißner, 2015
-# Dorian Cantzen <cantzen@googlemail.com>, 2015-2016,2022
+# Christoph, 2015
+# Christoph, 2015
+# Dorian Cantzen <cantzen@googlemail.com>, 2015-2016
 # Fabian Lindenberg, 2015
 # Fabian Lindenberg, 2015
 # Franziska Böttger <fr.boettger@gmail.com>, 2015
 # Jan Mewes <j.mewes@epages.com>, 2015
 # Martin Dix <dixmartin@gmx.de>, 2016
-# Maxi Krause <maxi.krause@wanadoo.fr>, 2017
 # Peter Palmreuther <pitpalme@yahoo.de>, 2015
 # Sönke Klinger <klinger@biver.de>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 08:22+0100\n"
-"PO-Revision-Date: 2015-09-24 12:23+0000\n"
-"Last-Translator: Sönke Klinger <klinger@biver.de>, 2016\n"
+"POT-Creation-Date: 2022-03-17 10:40+0100\n"
+"PO-Revision-Date: 2016-11-21 18:24+0000\n"
+"Last-Translator: Sönke Klinger <klinger@biver.de>\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +44,7 @@ msgstr ""
 
 #: accounts/admin.py:73
 msgid "last login"
-msgstr ""
+msgstr "zuletzt eingeloggt"
 
 #: accounts/apps.py:8 accounts/apps.py:16
 msgid "Accounts"
@@ -80,7 +77,7 @@ msgstr "Schicht anzeigen"
 
 #: accounts/templates/shift_list.html:26
 msgid "My shifts tomorrow:"
-msgstr "Meine Schichten morgen"
+msgstr "Meine schichten morgen"
 
 #: accounts/templates/shift_list.html:28
 msgid "No shifts tomorrow."
@@ -104,7 +101,7 @@ msgstr "keine weiteren Schichten"
 
 #: accounts/templates/shift_list.html:66
 msgid "Show my work shifts in the past"
-msgstr "frühere Schichten"
+msgstr "frührere Schichten"
 
 #: accounts/templates/shift_list_done.html:12
 msgid "My work shifts in the past:"
@@ -283,7 +280,7 @@ msgstr "Serverfehler <em>(500)</em>"
 
 #: non_logged_in_area/templates/500.html:10
 msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
-msgstr ""
+msgstr "Es hat einen Fehler gegeben. Er wurde an die Siteadministratoren berichtet und wird in Kürze behoben. Danke für Deine Geduld."
 
 #: non_logged_in_area/templates/base_non_logged_in.html:57
 #: templates/registration/login.html:3 templates/registration/login.html:10
@@ -1312,7 +1309,7 @@ msgstr "Schichtvorlage"
 #: scheduletemplates/models.py:83
 #, python-brace-format
 msgid "after {number_of_days} days"
-msgstr "nach {number_of_days} Tagen"
+msgstr ""
 
 #: scheduletemplates/models.py:102
 #, python-brace-format
@@ -1355,7 +1352,7 @@ msgstr "Schichtvorlagen auswählen"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
 msgid "Please review and confirm shifts to create"
-msgstr "Bitte kontrolliere und bestätige die Schichten zum Erstellen"
+msgstr "Bitte kontrolliere und bestätige die Schichten zum erstellen"
 
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:117
 msgid "Apply"
@@ -1676,7 +1673,6 @@ msgid "Activation email sent"
 msgstr "Aktivierungsemail wurde versandt"
 
 #: templates/registration/registration_complete.html:7
-#: tests/registration/test_registration.py:145
 msgid "An activation mail will be sent to you email address."
 msgstr "Dir wird jetzt eine Aktivierungs-E-Mail zugesendet."
 
@@ -1709,7 +1705,6 @@ msgid "Your username will be visible to other users. Don't use spaces or special
 msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeilen oder Sonderzeichen benutzen."
 
 #: templates/registration/registration_form.html:51
-#: tests/registration/test_registration.py:131
 msgid "The two password fields didn't match."
 msgstr "Die Passwörter stimmen nicht überein."
 
@@ -1728,18 +1723,6 @@ msgstr "Du musst diesen Haken setzen."
 #: templates/registration/registration_form.html:76
 msgid "Sign-up"
 msgstr "Eintragen"
-
-#: tests/registration/test_registration.py:43
-msgid "This field is required."
-msgstr "Dieses Feld ist zwingend erforderlich."
-
-#: tests/registration/test_registration.py:82
-msgid "Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters."
-msgstr "Bitte einen gültigen Benutzernamen wählen (erlaubte Sonderzeichen: @/./+/-/_)."
-
-#: tests/registration/test_registration.py:110
-msgid "A user with that username already exists."
-msgstr "Es gibt bereits einen Benutzer mit diesem Benutzernamen."
 
 #: volunteer_planner/settings/base.py:150
 msgid "English"
@@ -1763,7 +1746,7 @@ msgstr "Ungarisch"
 
 #: volunteer_planner/settings/base.py:155
 msgid "Polish"
-msgstr "Polnisch"
+msgstr ""
 
 #: volunteer_planner/settings/base.py:156
 msgid "Portuguese"
@@ -1771,7 +1754,7 @@ msgstr "Portugiesisch"
 
 #: volunteer_planner/settings/base.py:157
 msgid "Russian"
-msgstr "Russisch"
+msgstr ""
 
 #: volunteer_planner/settings/base.py:158
 msgid "Swedish"
