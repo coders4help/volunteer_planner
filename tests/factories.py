@@ -82,12 +82,23 @@ class TaskFactory(DjangoModelFactory):
     facility = SubFactory(FacilityFactory)
 
 
+class WorkplaceFactory(DjangoModelFactory):
+    class Meta:
+        model = organization_models.Workplace
+
+    name = Sequence(lambda n: 'Workplace ' + str(n))
+    description = Sequence(lambda n: f'workplace {n}')
+
+    facility = SubFactory(FacilityFactory)
+
+
 class ShiftFactory(DjangoModelFactory):
     class Meta:
         model = scheduler_models.Shift
 
     task = SubFactory(TaskFactory)
     facility = SubFactory(FacilityFactory)
+    workplace = SubFactory(WorkplaceFactory)
 
     starting_time = datetime(2016, 2, 13, 19, 0)
     ending_time = datetime(2016, 2, 13, 20, 0)

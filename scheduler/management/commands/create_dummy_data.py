@@ -13,9 +13,10 @@ from registration.models import RegistrationProfile
 from django.contrib.auth.models import User
 from accounts.models import UserAccount
 
-from organizations.models import Facility, Workplace, Task
-from tests.factories import ShiftHelperFactory, ShiftFactory, FacilityFactory, PlaceFactory, OrganizationFactory
-from scheduler.models import Shift
+from organizations.models import Facility, Workplace, Task, Organization
+from tests.factories import ShiftHelperFactory, ShiftFactory, FacilityFactory, PlaceFactory, OrganizationFactory, \
+    TaskFactory, WorkplaceFactory, UserFactory, UserAccountFactory
+from scheduler.models import Shift, ShiftHelper
 from places.models import Region, Area, Place, Country
 
 HELPTOPICS = ["Jumper", "Translator", "Clothing Room", "Womens Room",
@@ -61,47 +62,51 @@ class Command(BaseCommand):
         with transaction.atomic():
             if options['flush']:
                 print('delete all data in app tables')
-                RegistrationProfile.objects.all().delete()
-
-                Shift.objects.all().delete()
-                Task.objects.all().delete()
-                Workplace.objects.all().delete()
-                Facility.objects.all().delete()
-
-                UserAccount.objects.all().delete()
-
-                # delete geographic information
-                Place.objects.all().delete()
-                Area.objects.all().delete()
-                Region.objects.all().delete()
-                Country.objects.all().delete()
-
+                for clazz in [RegistrationProfile, ShiftHelper, Shift, UserAccount, Task, Workplace, Facility,
+                              Organization, Place, Area, Region, Country]:
+                    clazz.objects.all().delete()
                 User.objects.filter().exclude(is_superuser=True).delete()
 
+            print('creating new dummy data')
             # create regional data
-            places = list()
-            for i in range(0, 10):
-                places.append(PlaceFactory.create())
+            places = [PlaceFactory.create() for _ in range(0, 10)]
 
-            organizations = list()
-            for i in range(0, 4):
-                organizations.append(OrganizationFactory.create())
+            # create organizations and facilities
+            organizations = [OrganizationFactory.create() for _ in range(0, 4)]
+            facilities = [FacilityFactory.create(
+                description=LOREM,
+                place=random.choice(places),
+                organization=random.choice(organizations)
+            ) for _ in range(0, len(organizations) * 2)]
+
+            # create tasks and workplaces
+            i = 0
+            tasks = list()
+            workplaces = list()
+            for fac in facilities:
+                tasks.extend(
+                    [TaskFactory.create(name=f'Task {i + j}', description=f'task {i + j}', facility=fac) for j in
+                     range(0, random.randint(1, 5))])
+                workplaces.extend([
+                    WorkplaceFactory.create(name=f'Workplace {i + j}', description=f'workplace {i + j}', facility=fac)
+                    for j in range(0, random.randint(1, 5))])
+                i += 1
 
             # create shifts for number of days
             for day in range(0, options['days'][0]):
                 for i in range(2, 23):
-                    place = places[random.randint(0, len(places) - 1)]
-                    organization = organizations[random.randint(0, len(organizations) - 1)]
-                    facility = FacilityFactory.create(
-                        description=LOREM,
-                        place=place,
-                        organization=organization
-                    )
+                    task = random.choice(tasks)
+                    facility = task.facility
+                    workplace = random.choice(list(filter(lambda w: w.facility == facility, workplaces)))
                     shift = ShiftFactory.create(
                         starting_time=gen_date(hour=i - 1, day=day),
                         ending_time=gen_date(hour=i, day=day),
-                        facility=facility
+                        facility=facility,
+                        task=task,
+                        workplace=workplace
                     )
                     # assign random volunteer for each shift
                     reg_user = ShiftHelperFactory.create(shift=shift)
-                    reg_user.save()
+
+            for i in range(0, 5):
+                UserAccountFactory.create(user=UserFactory.create(username=f'user{i}'))
