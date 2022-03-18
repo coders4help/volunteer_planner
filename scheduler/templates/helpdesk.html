@@ -15,7 +15,7 @@
     <script>
         angular.module('vpWidgets', ['ui.bootstrap', 'ngSanitize'])
                 .controller('ShiftWidgetCtrl', function($scope) {
-                    // this rather should be done through an nice REST api
+                    // TODO: this rather should be done through an nice REST api
                     $scope.setCookie = function(cName, cValue){
                         document.cookie = cName + "=" + cValue + "; path=/";
                     }
@@ -34,15 +34,17 @@
                     $scope.areas = {{ areas_json | safe }};
                     $scope.countries = {{ country_json | safe }};
                     $scope.selectedCountryAndArea = [];
+                    $scope.isInCookie = function(item){
+                        console.log(item)
+                        if ($scope.selectedCountryAndArea.includes(item.slug)){
+                            return true
+                        }
+                    }
 
                     $scope.setCheckBoxFromCookie= function(){
                         let cookiedFilters = $scope.getCookie("filters")
                         if (cookiedFilters){
                             $scope.selectedCountryAndArea = cookiedFilters.split(",")
-                            for (let i = 0; i < $scope.selectedCountryAndArea.length; i++) {
-                                let checkbox = document.getElementById("filter-"+$scope.selectedCountryAndArea[i])
-                                checkbox.checked = true;
-                                }
                         }
                     };
 
@@ -56,8 +58,9 @@
                             $scope.setCookie("filters", $scope.selectedCountryAndArea.toString())
                         }
                     }
+                    // process initial cookies
+                    $scope.setCheckBoxFromCookie()
                 })
-
     </script>
 {% endblock %}
 
@@ -68,14 +71,13 @@
             <h2>{% trans "You can help in the following facilities" %}</h2>
             {% verbatim %}
                 <hr>
-                <div>
+                <div ng-show="countries.length > 1">
                     {% endverbatim %}<span>{% trans "Countries" %}:</span>{% verbatim %}
                     <label class="filter" ng-repeat="country in countries">
                         <input id="filter-{{ country.slug }}" type="checkbox" value="{{ country.name }}"
-
                             ng-click="toggleCountryAndArea(country.slug)"
                             ng-class="{ 'country': selectedCountryAndArea.indexOf(country.slug) > -1 }"
-                            >{{ country.name }}
+                            ng-checked="isInCookie(country)">{{ country.name }}
                     </label>
                 </div>
               <div>
@@ -84,7 +86,7 @@
                         <input id="filter-{{ area.slug }}" type="checkbox" value="{{ area.name }}"
                             ng-click="toggleCountryAndArea(area.slug)"
                             ng-class="{ 'area': selectedAreas.indexOf(area.slug) > -1 }"
-                            >{{ area.name }}
+                            ng-checked="isInCookie(area)">{{ area.name }}
                     </label>
                 </div>
 
@@ -106,15 +108,12 @@
                                             <a ng-href="{{ facility.url }}">{% endverbatim %}{% trans "Show details" %}{% verbatim %}</a>
 
                                             <h4 ng-show="facility.news[0]">{% endverbatim %}{% trans "News" %}{% verbatim %}</h4>
-
-
                                         <div ng-repeat="news in facility.news">
                                             <hr>
                                         <h4>{{ news.title }} </h4>
                                             <date><i> {{ news.date | date:'fullDate' }}</i></date>
                                         <p ng-bind-html="news.text">{{ news.text }}</p>
                                         </div>
-
                                         </div>
                                         <div class="col-md-4">
                                             {% endverbatim %}<h4>{% trans "open shifts" %}</h4>{% verbatim %}
@@ -126,8 +125,6 @@
                                             </p>
                                         </div>
                                     </div>
-
-
                                 </accordion-group>
                             </accordion>
                         </div>
