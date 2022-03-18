@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 11:06+0100\n"
+"POT-Creation-Date: 2022-03-18 21:42+0100\n"
 "PO-Revision-Date: 2016-11-21 18:24+0000\n"
 "Last-Translator: Sönke Klinger <klinger@biver.de>\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -862,7 +862,7 @@ msgid "Open Shifts"
 msgstr "Offene Schichten"
 
 #: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:68
+#: scheduler/templates/helpdesk.html:110
 msgid "News"
 msgstr "Nachrichten"
 
@@ -902,7 +902,7 @@ msgstr "Einrichtungen"
 
 #: organizations/templates/partials/compact_facility.html:19
 #: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:66
+#: scheduler/templates/helpdesk.html:108
 msgid "Show details"
 msgstr "Details anzeigen"
 
@@ -1043,19 +1043,25 @@ msgstr "Schichten"
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "Derzeit sind keine Schichten geplant für %(geographical_name)s."
 
-#: scheduler/templates/helpdesk.html:37
+#: scheduler/templates/helpdesk.html:71
 msgid "You can help in the following facilities"
 msgstr "Du kannst in folgenden Einrichtungen helfen"
 
-#: scheduler/templates/helpdesk.html:41
-msgid "filter"
-msgstr "filtern"
+#: scheduler/templates/helpdesk.html:75
+#| msgid "countries"
+msgid "Countries"
+msgstr "Länder"
 
-#: scheduler/templates/helpdesk.html:57
+#: scheduler/templates/helpdesk.html:84
+#| msgid "areas"
+msgid "Areas"
+msgstr "Landkreis"
+
+#: scheduler/templates/helpdesk.html:99
 msgid "see more"
 msgstr "mehr anzeigen"
 
-#: scheduler/templates/helpdesk.html:80
+#: scheduler/templates/helpdesk.html:119
 msgid "open shifts"
 msgstr "offene Schichten"
 
@@ -1233,40 +1239,40 @@ msgstr ""
 "\n"
 "Volunteer-planner.org Team\n"
 
-#: scheduler/views.py:175
+#: scheduler/views.py:181
 msgid "The submitted data was invalid."
 msgstr "Die eingegebenen Daten sind ungültig."
 
-#: scheduler/views.py:183
+#: scheduler/views.py:189
 msgid "User account does not exist."
 msgstr "Benutzerkonto existiert nicht."
 
-#: scheduler/views.py:205
+#: scheduler/views.py:211
 msgid "A membership request has been sent."
 msgstr "Ein Antrag auf Mitgliedschaft wurde gestellt."
 
-#: scheduler/views.py:218
+#: scheduler/views.py:224
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Wir konnten Dich nicht für die Schicht eintragen, da Du zur gleichen Zeit schon an mindestens einer anderen teilnimmst:"
 
-#: scheduler/views.py:227
+#: scheduler/views.py:233
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr "Wir können Dich nicht zu dieser Schicht hinzufügen, da alle Plätze bereits belegt sind."
 
-#: scheduler/views.py:234
+#: scheduler/views.py:240
 msgid "You were successfully added to this shift."
 msgstr "Du hast Dich erfolgreich für die Schicht angemeldet."
 
-#: scheduler/views.py:238
+#: scheduler/views.py:244
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr "Die Schicht, der Du eigetreten bist, überschneidet sich zeitlich mit einer anderen Schicht. Bitte überprüfe die Überschneidungen:"
 
-#: scheduler/views.py:248
+#: scheduler/views.py:254
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Du hast Dich bereits am {date_time} für diese Schicht eingetragen."
 
-#: scheduler/views.py:269
+#: scheduler/views.py:275
 msgid "You successfully left this shift."
 msgstr "Du hast Deine Teilnahme abgesagt."
 
