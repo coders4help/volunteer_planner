@@ -156,7 +156,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
         2. POST: Displays a preview of what will be done
         3. POST: Actually apply the template.
         """
-        schedule_template = get_object_or_404(self.model, pk=pk)
+        schedule_template = self.get_queryset(request).get(pk=pk)
         shift_templates = schedule_template.shift_templates.all()
 
         context = dict(self.admin_site.each_context(request))
