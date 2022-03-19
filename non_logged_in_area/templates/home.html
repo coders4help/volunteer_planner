@@ -37,7 +37,6 @@
         <div class="col-md-4">
             <div class="facts ">
                 {% get_current_language as LANGUAGE_CODE %}
-
                 {% cache 900 volunteer_stats LANGUAGE_CODE %}
                     {% get_volunteer_stats as volunteer_stats %}
 
@@ -82,12 +81,12 @@
             </p>
 
 
-                {% blocktrans trimmed %}
-                    <p>This platform is non-commercial and ads-free. An
+            {% blocktrans trimmed %}
+                <p>This platform is non-commercial and ads-free. An
                     international team of field workers, programmers, project
                     managers and designers are volunteering for this project and
                     bring in their professional experience to make a difference.</p>
-                {% endblocktrans %}
+            {% endblocktrans %}
 
         </div>
 

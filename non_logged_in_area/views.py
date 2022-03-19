@@ -1,11 +1,8 @@
-# coding=utf-8
 import logging
 
-from django.db.models import Q
 from django.db.models.aggregates import Count
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
-from django.utils import timezone
 from django.views.generic.base import TemplateView
 
 from organizations.models import Facility
@@ -34,10 +31,9 @@ class HomeView(TemplateView):
         )
 
         facilities = (
-            Facility.objects.select_related("place", "place__area", "place__area__region")
+            Facility.objects.with_open_shifts()
+            .select_related("place", "place__area", "place__area__region")
             .order_by("place")
-            .annotate(open_shift_count=Count("shift", filter=Q(shift__ending_time__gte=timezone.now())))
-            .filter(open_shift_count__gt=0)
         )
 
         context["facilities"] = facilities
