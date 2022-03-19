@@ -35,7 +35,6 @@
                     $scope.countries = {{ country_json | safe }};
                     $scope.selectedCountryAndArea = [];
                     $scope.isInCookie = function(item){
-                        console.log(item)
                         if ($scope.selectedCountryAndArea.includes(item.slug)){
                             return true
                         }
