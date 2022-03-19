@@ -1,10 +1,11 @@
 # coding: utf-8
-from django.urls import reverse
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import UserAccount
 from scheduler.models import Shift
+from .managers import FacilityManager
 
 
 class Membership(models.Model):
@@ -190,6 +191,8 @@ class Facility(models.Model):
         default=Membership.JoinMode.INVITATION_ONLY,
         verbose_name=_(u'join mode'),
         help_text=_(u'Who can join this facility?'))
+
+    objects = FacilityManager()
 
     class Meta:
         verbose_name = _(u'facility')
