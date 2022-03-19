@@ -137,6 +137,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
         'get_latest_ending_time')
     list_filter = (
         ('facility', MembershipFieldListFilter),
+        ('facility__organization', MembershipFieldListFilter),
     )
     search_fields = ('name',)
     list_select_related = True
@@ -366,6 +367,7 @@ class ShiftTemplateAdmin(FormattedModelChoiceFieldAdminMixin, MembershipFiltered
     )
     list_filter = (
         ('schedule_template__facility', MembershipFieldListFilter),
+        ('schedule_template__facility__organization', MembershipFieldListFilter),
         ('schedule_template', MembershipFieldListFilter),
         ('task', MembershipFieldListFilter),
         ('workplace', MembershipFieldListFilter),
