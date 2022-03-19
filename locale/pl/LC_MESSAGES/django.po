@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 11:06+0100\n"
+"POT-Creation-Date: 2022-03-18 21:42+0100\n"
 "PO-Revision-Date: 2022-03-15 17:56+0000\n"
 "Last-Translator: Christoph Meißner\n"
 "Language-Team: Polish (http://www.transifex.com/coders4help/volunteer-planner/language/pl/)\n"
@@ -837,7 +837,7 @@ msgid "Open Shifts"
 msgstr ""
 
 #: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:68
+#: scheduler/templates/helpdesk.html:110
 msgid "News"
 msgstr ""
 
@@ -877,7 +877,7 @@ msgstr ""
 
 #: organizations/templates/partials/compact_facility.html:19
 #: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:66
+#: scheduler/templates/helpdesk.html:108
 msgid "Show details"
 msgstr ""
 
@@ -1018,19 +1018,23 @@ msgstr ""
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:37
+#: scheduler/templates/helpdesk.html:71
 msgid "You can help in the following facilities"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:41
-msgid "filter"
+#: scheduler/templates/helpdesk.html:75
+msgid "Countries"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:57
+#: scheduler/templates/helpdesk.html:84
+msgid "Areas"
+msgstr ""
+
+#: scheduler/templates/helpdesk.html:99
 msgid "see more"
 msgstr ""
 
-#: scheduler/templates/helpdesk.html:80
+#: scheduler/templates/helpdesk.html:119
 msgid "open shifts"
 msgstr ""
 
@@ -1171,40 +1175,40 @@ msgid ""
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/views.py:175
+#: scheduler/views.py:181
 msgid "The submitted data was invalid."
 msgstr "Wysłane dane nie są poprawne."
 
-#: scheduler/views.py:183
+#: scheduler/views.py:189
 msgid "User account does not exist."
 msgstr ""
 
-#: scheduler/views.py:205
+#: scheduler/views.py:211
 msgid "A membership request has been sent."
 msgstr ""
 
-#: scheduler/views.py:218
+#: scheduler/views.py:224
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr ""
 
-#: scheduler/views.py:227
+#: scheduler/views.py:233
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr ""
 
-#: scheduler/views.py:234
+#: scheduler/views.py:240
 msgid "You were successfully added to this shift."
 msgstr "Zostałeś pomyślnie dodany do zmiany."
 
-#: scheduler/views.py:238
+#: scheduler/views.py:244
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr ""
 
-#: scheduler/views.py:248
+#: scheduler/views.py:254
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr ""
 
-#: scheduler/views.py:269
+#: scheduler/views.py:275
 msgid "You successfully left this shift."
 msgstr ""
 

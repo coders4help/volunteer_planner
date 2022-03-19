@@ -164,6 +164,7 @@ def get_facility_details(facility, shifts):
         'osm_link': osm_search(address_line) if address_line else None,
         'description': mark_safe(facility.description),
         'area_slug': facility.place.area.slug,
+        'country_slug': facility.place.area.region.country.slug,
         'shifts': [{
                        'date_string': date(shift_date),
                        'link': reverse('planner_by_facility', kwargs={

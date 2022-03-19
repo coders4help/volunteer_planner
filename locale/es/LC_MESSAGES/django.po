@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 11:06+0100\n"
+"POT-Creation-Date: 2022-03-18 21:42+0100\n"
 "PO-Revision-Date: 2016-04-13 17:27+0000\n"
 "Last-Translator: Antonio Mireles <antonio@mirelesindependent.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/coders4help/volunteer-planner/language/es/)\n"
@@ -860,7 +860,7 @@ msgid "Open Shifts"
 msgstr "Turnos disponibles"
 
 #: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:68
+#: scheduler/templates/helpdesk.html:110
 msgid "News"
 msgstr "Noticias"
 
@@ -900,7 +900,7 @@ msgstr "Instalaciones"
 
 #: organizations/templates/partials/compact_facility.html:19
 #: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:66
+#: scheduler/templates/helpdesk.html:108
 msgid "Show details"
 msgstr "Mostrar los detalles"
 
@@ -1041,19 +1041,25 @@ msgstr "turnos"
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "No hay turnos futuros disponibles para %(geographical_name)s."
 
-#: scheduler/templates/helpdesk.html:37
+#: scheduler/templates/helpdesk.html:71
 msgid "You can help in the following facilities"
 msgstr "Usted puede ayudar en las siguientes instalaciones"
 
-#: scheduler/templates/helpdesk.html:41
-msgid "filter"
-msgstr "filtrar"
+#: scheduler/templates/helpdesk.html:75
+#| msgid "countries"
+msgid "Countries"
+msgstr ""
 
-#: scheduler/templates/helpdesk.html:57
+#: scheduler/templates/helpdesk.html:84
+#| msgid "areas"
+msgid "Areas"
+msgstr ""
+
+#: scheduler/templates/helpdesk.html:99
 msgid "see more"
 msgstr "ver más"
 
-#: scheduler/templates/helpdesk.html:80
+#: scheduler/templates/helpdesk.html:119
 msgid "open shifts"
 msgstr "turnos disponibles"
 
@@ -1194,40 +1200,40 @@ msgid ""
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/views.py:175
+#: scheduler/views.py:181
 msgid "The submitted data was invalid."
 msgstr "Los datos que fueron enviados no son válidos."
 
-#: scheduler/views.py:183
+#: scheduler/views.py:189
 msgid "User account does not exist."
 msgstr "Esta cuenta de usario no existe."
 
-#: scheduler/views.py:205
+#: scheduler/views.py:211
 msgid "A membership request has been sent."
 msgstr "Se ha enviado una solicitud para la membresía."
 
-#: scheduler/views.py:218
+#: scheduler/views.py:224
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "No podemos añadirle a este turno porque ya se ha inscrito para otros turnos del mismo horario:"
 
-#: scheduler/views.py:227
+#: scheduler/views.py:233
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr "No podemos añadirle a este turno porque ya no hay un horario disponible."
 
-#: scheduler/views.py:234
+#: scheduler/views.py:240
 msgid "You were successfully added to this shift."
 msgstr "Usted fue añadido exitosamente a este turno."
 
-#: scheduler/views.py:238
+#: scheduler/views.py:244
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr ""
 
-#: scheduler/views.py:248
+#: scheduler/views.py:254
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Usted ya se ha inscrito para el turno del {date_time} "
 
-#: scheduler/views.py:269
+#: scheduler/views.py:275
 msgid "You successfully left this shift."
 msgstr "Usted abandonó exitosamente este turno."
 
