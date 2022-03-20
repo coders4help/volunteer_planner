@@ -6,8 +6,8 @@ from django.contrib import admin, messages
 from django.core.exceptions import ValidationError
 from django.db.models import Count, Min, Sum
 from django.forms import DateInput, TimeInput
-from django.http import Http404
-from django.shortcuts import redirect
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
 from django.utils import formats, timezone
@@ -161,7 +161,8 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
         try:
             schedule_template = self.get_queryset(request).get(pk=pk)
         except ScheduleTemplate.DoesNotExist:
-            raise Http404()
+            if get_object_or_404(self.model, pk=pk):
+                return HttpResponseForbidden()
         shift_templates = schedule_template.shift_templates.all()
 
         context = dict(self.admin_site.each_context(request))
