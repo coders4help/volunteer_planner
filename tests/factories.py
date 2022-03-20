@@ -86,7 +86,7 @@ class WorkplaceFactory(DjangoModelFactory):
     class Meta:
         model = organization_models.Workplace
 
-    name = Sequence(lambda n: "fWorkplace {n}")
+    name = Sequence(lambda n: f"Workplace {n}")
     description = Sequence(lambda n: f"workplace {n}")
 
     facility = SubFactory(FacilityFactory)
