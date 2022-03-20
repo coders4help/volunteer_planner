@@ -113,7 +113,7 @@ class UserFactory(DjangoModelFactory):
     first_name = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
     last_name = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
     password = PostGenerationMethodCall('set_password', 'defaultpassword')
-    email = LazyAttribute(lambda o: '%s@example.com' % o.last_name)
+    email = LazyAttribute(lambda o: f"{o.last_name}@example.com")
 
 
 class UserAccountFactory(DjangoModelFactory):
