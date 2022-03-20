@@ -62,9 +62,9 @@ class Command(BaseCommand):
         with transaction.atomic():
             if options['flush']:
                 print('delete all data in app tables')
-                for clazz in [RegistrationProfile, ShiftHelper, Shift, UserAccount, Task, Workplace, Facility,
-                              Organization, Place, Area, Region, Country]:
-                    clazz.objects.all().delete()
+                for model in (RegistrationProfile, ShiftHelper, Shift, UserAccount, Task, Workplace, Facility,
+                              Organization, Place, Area, Region, Country):
+                    model.objects.all().delete()
                 User.objects.filter().exclude(is_superuser=True).delete()
 
             print('creating new dummy data')
