@@ -321,6 +321,7 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
     list_display = (
         'name',
         'facility',
+        'priority',
         'get_description'
     )
     list_filter = (
@@ -345,6 +346,7 @@ class TaskAdmin(MembershipFilteredAdmin):
     list_display = (
         'name',
         'facility',
+        'priority',
         'get_description'
     )
     list_filter = (
