@@ -26,7 +26,7 @@ class RegionFactory(DjangoModelFactory):
         model = places_models.Region
 
     name = Sequence(lambda n: f"Region {n}")
-    slug = Sequence(lambda n: "region_{n}")
+    slug = Sequence(lambda n: f"region_{n}")
 
     country = SubFactory(CountryFactory)
 
