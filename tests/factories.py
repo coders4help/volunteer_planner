@@ -17,16 +17,16 @@ class CountryFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Country
 
-    name = Sequence(lambda n: "Country " + str(n))
-    slug = Sequence(lambda n: "country_" + str(n))
+    name = Sequence(lambda n: f"Country {n}")
+    slug = Sequence(lambda n: f"country_{n}")
 
 
 class RegionFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Region
 
-    name = Sequence(lambda n: "Region " + str(n))
-    slug = Sequence(lambda n: "region_" + str(n))
+    name = Sequence(lambda n: f"Region {n}")
+    slug = Sequence(lambda n: "region_{n}")
 
     country = SubFactory(CountryFactory)
 
@@ -35,8 +35,8 @@ class AreaFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Area
 
-    name = Sequence(lambda n: "Area " + str(n))
-    slug = Sequence(lambda n: "area_" + str(n))
+    name = Sequence(lambda n: f"Area {n}")
+    slug = Sequence(lambda n: f"area_{n}")
 
     region = SubFactory(RegionFactory)
 
@@ -45,15 +45,15 @@ class PlaceFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Place
 
-    name = Sequence(lambda n: "Place " + str(n))
-    slug = Sequence(lambda n: "place_" + str(n))
+    name = Sequence(lambda n: f"Place {n}")
+    slug = Sequence(lambda n: f"place_{n}")
 
     area = SubFactory(AreaFactory)
 
 
 class OrganizationFactory(DjangoModelFactory):
-    name = Sequence(lambda n: "Organization " + str(n))
-    slug = Sequence(lambda n: "org_" + str(n))
+    name = Sequence(lambda n: f"Organization {n}")
+    slug = Sequence(lambda n: f"org_{n}")
 
     class Meta:
         model = organization_models.Organization
@@ -61,8 +61,8 @@ class OrganizationFactory(DjangoModelFactory):
 
 
 class FacilityFactory(DjangoModelFactory):
-    name = Sequence(lambda n: "Facility " + str(n))
-    slug = Sequence(lambda n: "facility_" + str(n))
+    name = Sequence(lambda n: f"Facility {n}")
+    slug = Sequence(lambda n: f"facility_{n}")
 
     place = SubFactory(PlaceFactory)
     organization = SubFactory(OrganizationFactory)
@@ -76,8 +76,8 @@ class TaskFactory(DjangoModelFactory):
     class Meta:
         model = organization_models.Task
 
-    name = Sequence(lambda n: "Task " + str(n))
-    description = Sequence(lambda n: "task " + str(n))
+    name = Sequence(lambda n: f"Task {n}")
+    description = Sequence(lambda n: f"task {n}")
 
     facility = SubFactory(FacilityFactory)
 
@@ -86,7 +86,7 @@ class WorkplaceFactory(DjangoModelFactory):
     class Meta:
         model = organization_models.Workplace
 
-    name = Sequence(lambda n: "Workplace " + str(n))
+    name = Sequence(lambda n: "fWorkplace {n}")
     description = Sequence(lambda n: f"workplace {n}")
 
     facility = SubFactory(FacilityFactory)
