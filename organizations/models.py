@@ -301,10 +301,12 @@ class Workplace(models.Model):
     # a description of the workplace
     description = models.TextField(blank=True, verbose_name=_(u'description'))
 
+    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"))
+
     class Meta:
         verbose_name = _(u'workplace')
         verbose_name_plural = _(u'workplaces')
-        ordering = ('facility', 'name',)
+        ordering = ('facility', '-priority', 'name',)
 
     def __unicode__(self):
         return f"{self.name}"
@@ -330,10 +332,12 @@ class Task(models.Model):
     # a description of the task
     description = models.TextField(blank=True, verbose_name=_(u'description'))
 
+    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"))
+
     class Meta:
         verbose_name = _(u'task')
         verbose_name_plural = _(u'tasks')
-        ordering = ('facility', 'name',)
+        ordering = ('facility', '-priority', 'name',)
 
     def __unicode__(self):
         return f"{self.name}"

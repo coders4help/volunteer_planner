@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 23:25+0100\n"
+"POT-Creation-Date: 2022-03-20 13:33+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
@@ -45,7 +45,7 @@ msgstr "Konton"
 msgid "Accept privacy policy"
 msgstr ""
 
-#: accounts/models.py:17 organizations/models.py:60
+#: accounts/models.py:17 organizations/models.py:61
 msgid "user account"
 msgstr "användarkonto"
 
@@ -333,35 +333,35 @@ msgstr "Organisera volontärer!"
 msgid "Register a shelter and organize volunteers"
 msgstr "Registrera ett boende och organisera volontärer"
 
-#: non_logged_in_area/templates/home.html:48
+#: non_logged_in_area/templates/home.html:47
 msgid "Places to help"
 msgstr "Platser att hjälpa på"
 
-#: non_logged_in_area/templates/home.html:55
+#: non_logged_in_area/templates/home.html:54
 msgid "Registered Volunteers"
 msgstr "Registrerade volontärer"
 
-#: non_logged_in_area/templates/home.html:62
+#: non_logged_in_area/templates/home.html:61
 msgid "Worked Hours"
 msgstr "Arbetade timmar"
 
-#: non_logged_in_area/templates/home.html:74
+#: non_logged_in_area/templates/home.html:73
 msgid "What is it all about?"
 msgstr "Vad går det ut på?"
 
-#: non_logged_in_area/templates/home.html:77
+#: non_logged_in_area/templates/home.html:76
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr "Vill du bli volontär och hjälpa flyktingar? Volunteer-planner.org visar hur, var och när din hjälp behövs.  "
 
-#: non_logged_in_area/templates/home.html:85
+#: non_logged_in_area/templates/home.html:84
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
 msgstr "<p>Denna plattform är icke-komersiell och fri från reklam. Ett internationellt team av fältarbetare, programmerare, projektledare och designers arbetar ideellt med volunteer-planner, för att med sin samlade yrkeserfarenhet göra skillnad.</p>"
 
-#: non_logged_in_area/templates/home.html:98
+#: non_logged_in_area/templates/home.html:97
 msgid "You can help at these locations:"
 msgstr "Du kan hjälpa på följande platser:"
 
-#: non_logged_in_area/templates/home.html:116
+#: non_logged_in_area/templates/home.html:115
 msgid "There are currently no places in need of help."
 msgstr "För nuvarande finns inga platser med behov av hjälp."
 
@@ -635,188 +635,192 @@ msgid "edit"
 msgstr "redigera"
 
 #: organizations/admin.py:220 organizations/admin.py:250
-#: organizations/admin.py:318 organizations/admin.py:342
-#: organizations/models.py:78 organizations/models.py:146
-#: organizations/models.py:299 organizations/models.py:328
+#: organizations/admin.py:318 organizations/admin.py:343
+#: organizations/models.py:79 organizations/models.py:147
+#: organizations/models.py:302 organizations/models.py:333
 msgid "description"
 msgstr "beskrivning"
 
 #: organizations/admin.py:226 organizations/admin.py:256
-#: organizations/models.py:81 organizations/models.py:149
+#: organizations/models.py:82 organizations/models.py:150
 msgid "contact info"
 msgstr "kontaktinformation"
 
-#: organizations/apps.py:7 organizations/models.py:103
+#: organizations/apps.py:7 organizations/models.py:104
 msgid "organizations"
 msgstr "organisationer"
 
-#: organizations/models.py:29
+#: organizations/models.py:30
 msgid "by invitation"
 msgstr "genom inbjudan"
 
-#: organizations/models.py:30
+#: organizations/models.py:31
 msgid "anyone (approved by manager)"
 msgstr "alla (med godkännande av platschef)"
 
-#: organizations/models.py:31
+#: organizations/models.py:32
 msgid "anyone"
 msgstr "alla"
 
-#: organizations/models.py:37
+#: organizations/models.py:38
 msgid "rejected"
 msgstr "nekad"
 
-#: organizations/models.py:38
+#: organizations/models.py:39
 msgid "pending"
 msgstr "behandlas"
 
-#: organizations/models.py:39
+#: organizations/models.py:40
 msgid "approved"
 msgstr "godkänd"
 
-#: organizations/models.py:45
+#: organizations/models.py:46
 msgid "admin"
 msgstr "admin"
 
-#: organizations/models.py:46
+#: organizations/models.py:47
 msgid "manager"
 msgstr "chef"
 
-#: organizations/models.py:47
+#: organizations/models.py:48
 msgid "member"
 msgstr "medlem"
 
-#: organizations/models.py:52
+#: organizations/models.py:53
 msgid "role"
 msgstr "ställning"
 
-#: organizations/models.py:56
+#: organizations/models.py:57
 msgid "status"
 msgstr "status"
 
-#: organizations/models.py:75 organizations/models.py:143
-#: organizations/models.py:296 organizations/models.py:325 places/models.py:20
+#: organizations/models.py:76 organizations/models.py:144
+#: organizations/models.py:299 organizations/models.py:330 places/models.py:20
 #: scheduletemplates/models.py:13
 msgid "name"
 msgstr "namn"
 
-#: organizations/models.py:84 organizations/models.py:165
+#: organizations/models.py:85 organizations/models.py:166
 msgid "address"
 msgstr "adress"
 
-#: organizations/models.py:93 organizations/models.py:181 places/models.py:21
+#: organizations/models.py:94 organizations/models.py:182 places/models.py:21
 msgid "slug"
 msgstr "slug"
 
-#: organizations/models.py:98 organizations/models.py:191
+#: organizations/models.py:99 organizations/models.py:192
 msgid "join mode"
 msgstr "typ av tillträde"
 
-#: organizations/models.py:99
+#: organizations/models.py:100
 msgid "Who can join this organization?"
 msgstr "Vem kan gå med i organisationen?"
 
-#: organizations/models.py:102 organizations/models.py:139
-#: organizations/models.py:232
+#: organizations/models.py:103 organizations/models.py:140
+#: organizations/models.py:235
 msgid "organization"
 msgstr "organisation"
 
-#: organizations/models.py:131
+#: organizations/models.py:132
 msgid "disabled"
 msgstr "inaktiverad"
 
-#: organizations/models.py:132
+#: organizations/models.py:133
 msgid "enabled (collapsed)"
 msgstr "aktiverad (dold)"
 
-#: organizations/models.py:133
+#: organizations/models.py:134
 msgid "enabled"
 msgstr "aktiverad"
 
-#: organizations/models.py:161 places/models.py:139
+#: organizations/models.py:162 places/models.py:139
 msgid "place"
 msgstr "plats"
 
-#: organizations/models.py:170
+#: organizations/models.py:171
 msgid "postal code"
 msgstr "postnummer"
 
-#: organizations/models.py:175
+#: organizations/models.py:176
 msgid "Show on map of all facilities"
 msgstr "Visa på karta över alla anläggningar"
 
-#: organizations/models.py:177
+#: organizations/models.py:178
 msgid "latitude"
 msgstr "latitud"
 
-#: organizations/models.py:179
+#: organizations/models.py:180
 msgid "longitude"
 msgstr "longitud"
 
-#: organizations/models.py:186
+#: organizations/models.py:187
 msgid "timeline"
 msgstr "tidsplan"
 
-#: organizations/models.py:192
+#: organizations/models.py:193
 msgid "Who can join this facility?"
 msgstr "Vem kan ansluta sig till denna anläggning?"
 
-#: organizations/models.py:195 organizations/models.py:262
-#: organizations/models.py:291 organizations/models.py:321
+#: organizations/models.py:198 organizations/models.py:265
+#: organizations/models.py:294 organizations/models.py:326
 #: scheduler/models.py:59 scheduletemplates/admin.py:352
 #: scheduletemplates/models.py:17
 msgid "facility"
 msgstr "anläggning"
 
-#: organizations/models.py:196
+#: organizations/models.py:199
 msgid "facilities"
 msgstr "anläggningar"
 
-#: organizations/models.py:237
+#: organizations/models.py:240
 msgid "organization member"
 msgstr "organisationsmedlem"
 
-#: organizations/models.py:238
+#: organizations/models.py:241
 msgid "organization members"
 msgstr "organisationsmedlemmar"
 
-#: organizations/models.py:242
+#: organizations/models.py:245
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr "{username} vid {organization_name} ({user_role})"
 
-#: organizations/models.py:268
+#: organizations/models.py:271
 msgid "facility member"
 msgstr "anläggningsmedlem"
 
-#: organizations/models.py:269
+#: organizations/models.py:272
 msgid "facility members"
 msgstr "anläggningsmedlemmar"
 
-#: organizations/models.py:273
+#: organizations/models.py:276
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr "{username} vid {facility_name} ({user_role})"
 
-#: organizations/models.py:302 scheduler/models.py:53
+#: organizations/models.py:304 organizations/models.py:335
+msgid "priority"
+msgstr ""
+
+#: organizations/models.py:307 scheduler/models.py:53
 #: scheduletemplates/models.py:47
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr "arbetsplats"
 
-#: organizations/models.py:303
+#: organizations/models.py:308
 msgid "workplaces"
 msgstr "arbetsplatser"
 
-#: organizations/models.py:331 scheduler/models.py:50
+#: organizations/models.py:338 scheduler/models.py:50
 #: scheduletemplates/models.py:43
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "uppgift"
 
-#: organizations/models.py:332
+#: organizations/models.py:339
 msgid "tasks"
 msgstr "uppgifter"
 
@@ -1201,40 +1205,40 @@ msgid ""
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/views.py:175
+#: scheduler/views.py:184
 msgid "The submitted data was invalid."
 msgstr "Den angivna informationen är ogiltig."
 
-#: scheduler/views.py:183
+#: scheduler/views.py:192
 msgid "User account does not exist."
 msgstr "Användarkontot finns inte."
 
-#: scheduler/views.py:205
+#: scheduler/views.py:214
 msgid "A membership request has been sent."
 msgstr "En förfrågan om medlemsskap har skickats."
 
-#: scheduler/views.py:218
+#: scheduler/views.py:227
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Vi kan inte lägga till dig till detta pass, då du redan är anmäld till ett annat pass vid samma tidpunkt:"
 
-#: scheduler/views.py:227
+#: scheduler/views.py:236
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr "Du kan inte delta på detta pass, då det inte finns några lediga platser."
 
-#: scheduler/views.py:234
+#: scheduler/views.py:243
 msgid "You were successfully added to this shift."
 msgstr "Du har nu blivit tillagd till detta pass."
 
-#: scheduler/views.py:238
+#: scheduler/views.py:247
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr ""
 
-#: scheduler/views.py:248
+#: scheduler/views.py:257
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Du har redan anmält dig till detta pass den {date_time}."
 
-#: scheduler/views.py:269
+#: scheduler/views.py:278
 msgid "You successfully left this shift."
 msgstr "Du kommer inte längre att delta i detta pass."
 

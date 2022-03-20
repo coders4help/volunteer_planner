@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 23:25+0100\n"
+"POT-Creation-Date: 2022-03-20 13:33+0100\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/coders4help/volunteer-planner/language/pt/)\n"
@@ -43,7 +43,7 @@ msgstr "Contas"
 msgid "Accept privacy policy"
 msgstr ""
 
-#: accounts/models.py:17 organizations/models.py:60
+#: accounts/models.py:17 organizations/models.py:61
 msgid "user account"
 msgstr "conta do utilizador"
 
@@ -331,35 +331,35 @@ msgstr "Organizar voluntários"
 msgid "Register a shelter and organize volunteers"
 msgstr "Registar um abrigo e organizar voluntários"
 
-#: non_logged_in_area/templates/home.html:48
+#: non_logged_in_area/templates/home.html:47
 msgid "Places to help"
 msgstr "Locais para ajudar"
 
-#: non_logged_in_area/templates/home.html:55
+#: non_logged_in_area/templates/home.html:54
 msgid "Registered Volunteers"
 msgstr "Voluntários Registados"
 
-#: non_logged_in_area/templates/home.html:62
+#: non_logged_in_area/templates/home.html:61
 msgid "Worked Hours"
 msgstr "Horas Efetuadas"
 
-#: non_logged_in_area/templates/home.html:74
+#: non_logged_in_area/templates/home.html:73
 msgid "What is it all about?"
 msgstr "Sobre o que é tudo isto?"
 
-#: non_logged_in_area/templates/home.html:77
+#: non_logged_in_area/templates/home.html:76
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr "És voluntário e queres ajudar refugiados? Volunteer-Planner.org mostra-te onde, quando e como ajudar directamente no terreno."
 
-#: non_logged_in_area/templates/home.html:85
+#: non_logged_in_area/templates/home.html:84
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
 msgstr ""
 
-#: non_logged_in_area/templates/home.html:98
+#: non_logged_in_area/templates/home.html:97
 msgid "You can help at these locations:"
 msgstr "Pode ajudar nestes locais:"
 
-#: non_logged_in_area/templates/home.html:116
+#: non_logged_in_area/templates/home.html:115
 msgid "There are currently no places in need of help."
 msgstr ""
 
@@ -612,188 +612,192 @@ msgid "edit"
 msgstr "editar"
 
 #: organizations/admin.py:220 organizations/admin.py:250
-#: organizations/admin.py:318 organizations/admin.py:342
-#: organizations/models.py:78 organizations/models.py:146
-#: organizations/models.py:299 organizations/models.py:328
+#: organizations/admin.py:318 organizations/admin.py:343
+#: organizations/models.py:79 organizations/models.py:147
+#: organizations/models.py:302 organizations/models.py:333
 msgid "description"
 msgstr "descrição"
 
 #: organizations/admin.py:226 organizations/admin.py:256
-#: organizations/models.py:81 organizations/models.py:149
+#: organizations/models.py:82 organizations/models.py:150
 msgid "contact info"
 msgstr "informação de contacto"
 
-#: organizations/apps.py:7 organizations/models.py:103
+#: organizations/apps.py:7 organizations/models.py:104
 msgid "organizations"
 msgstr "organizações"
 
-#: organizations/models.py:29
+#: organizations/models.py:30
 msgid "by invitation"
 msgstr ""
 
-#: organizations/models.py:30
+#: organizations/models.py:31
 msgid "anyone (approved by manager)"
 msgstr ""
 
-#: organizations/models.py:31
+#: organizations/models.py:32
 msgid "anyone"
 msgstr ""
 
-#: organizations/models.py:37
+#: organizations/models.py:38
 msgid "rejected"
 msgstr ""
 
-#: organizations/models.py:38
+#: organizations/models.py:39
 msgid "pending"
 msgstr ""
 
-#: organizations/models.py:39
+#: organizations/models.py:40
 msgid "approved"
 msgstr ""
 
-#: organizations/models.py:45
+#: organizations/models.py:46
 msgid "admin"
 msgstr "administração"
 
-#: organizations/models.py:46
+#: organizations/models.py:47
 msgid "manager"
 msgstr "gestor"
 
-#: organizations/models.py:47
+#: organizations/models.py:48
 msgid "member"
 msgstr "membro"
 
-#: organizations/models.py:52
+#: organizations/models.py:53
 msgid "role"
 msgstr "função"
 
-#: organizations/models.py:56
+#: organizations/models.py:57
 msgid "status"
 msgstr ""
 
-#: organizations/models.py:75 organizations/models.py:143
-#: organizations/models.py:296 organizations/models.py:325 places/models.py:20
+#: organizations/models.py:76 organizations/models.py:144
+#: organizations/models.py:299 organizations/models.py:330 places/models.py:20
 #: scheduletemplates/models.py:13
 msgid "name"
 msgstr "nome"
 
-#: organizations/models.py:84 organizations/models.py:165
+#: organizations/models.py:85 organizations/models.py:166
 msgid "address"
 msgstr "morada"
 
-#: organizations/models.py:93 organizations/models.py:181 places/models.py:21
+#: organizations/models.py:94 organizations/models.py:182 places/models.py:21
 msgid "slug"
 msgstr ""
 
-#: organizations/models.py:98 organizations/models.py:191
+#: organizations/models.py:99 organizations/models.py:192
 msgid "join mode"
 msgstr ""
 
-#: organizations/models.py:99
+#: organizations/models.py:100
 msgid "Who can join this organization?"
 msgstr ""
 
-#: organizations/models.py:102 organizations/models.py:139
-#: organizations/models.py:232
+#: organizations/models.py:103 organizations/models.py:140
+#: organizations/models.py:235
 msgid "organization"
 msgstr "organização"
 
-#: organizations/models.py:131
+#: organizations/models.py:132
 msgid "disabled"
 msgstr ""
 
-#: organizations/models.py:132
+#: organizations/models.py:133
 msgid "enabled (collapsed)"
 msgstr ""
 
-#: organizations/models.py:133
+#: organizations/models.py:134
 msgid "enabled"
 msgstr ""
 
-#: organizations/models.py:161 places/models.py:139
+#: organizations/models.py:162 places/models.py:139
 msgid "place"
 msgstr "local"
 
-#: organizations/models.py:170
+#: organizations/models.py:171
 msgid "postal code"
 msgstr "código postal"
 
-#: organizations/models.py:175
+#: organizations/models.py:176
 msgid "Show on map of all facilities"
 msgstr "Mostrar no mapa de todas as instalações"
 
-#: organizations/models.py:177
+#: organizations/models.py:178
 msgid "latitude"
 msgstr "latitude"
 
-#: organizations/models.py:179
+#: organizations/models.py:180
 msgid "longitude"
 msgstr "longitude"
 
-#: organizations/models.py:186
+#: organizations/models.py:187
 msgid "timeline"
 msgstr ""
 
-#: organizations/models.py:192
+#: organizations/models.py:193
 msgid "Who can join this facility?"
 msgstr ""
 
-#: organizations/models.py:195 organizations/models.py:262
-#: organizations/models.py:291 organizations/models.py:321
+#: organizations/models.py:198 organizations/models.py:265
+#: organizations/models.py:294 organizations/models.py:326
 #: scheduler/models.py:59 scheduletemplates/admin.py:352
 #: scheduletemplates/models.py:17
 msgid "facility"
 msgstr "instalação"
 
-#: organizations/models.py:196
+#: organizations/models.py:199
 msgid "facilities"
 msgstr "instalações"
 
-#: organizations/models.py:237
+#: organizations/models.py:240
 msgid "organization member"
 msgstr "membro da organização"
 
-#: organizations/models.py:238
+#: organizations/models.py:241
 msgid "organization members"
 msgstr "membros da organização"
 
-#: organizations/models.py:242
+#: organizations/models.py:245
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr ""
 
-#: organizations/models.py:268
+#: organizations/models.py:271
 msgid "facility member"
 msgstr ""
 
-#: organizations/models.py:269
+#: organizations/models.py:272
 msgid "facility members"
 msgstr ""
 
-#: organizations/models.py:273
+#: organizations/models.py:276
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr ""
 
-#: organizations/models.py:302 scheduler/models.py:53
+#: organizations/models.py:304 organizations/models.py:335
+msgid "priority"
+msgstr ""
+
+#: organizations/models.py:307 scheduler/models.py:53
 #: scheduletemplates/models.py:47
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
 msgid "workplace"
 msgstr "local de trabalho"
 
-#: organizations/models.py:303
+#: organizations/models.py:308
 msgid "workplaces"
 msgstr "locais de trabalho"
 
-#: organizations/models.py:331 scheduler/models.py:50
+#: organizations/models.py:338 scheduler/models.py:50
 #: scheduletemplates/models.py:43
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
 #: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "tarefa"
 
-#: organizations/models.py:332
+#: organizations/models.py:339
 msgid "tasks"
 msgstr "tarefas"
 
@@ -1178,40 +1182,40 @@ msgid ""
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/views.py:175
+#: scheduler/views.py:184
 msgid "The submitted data was invalid."
 msgstr ""
 
-#: scheduler/views.py:183
+#: scheduler/views.py:192
 msgid "User account does not exist."
 msgstr ""
 
-#: scheduler/views.py:205
+#: scheduler/views.py:214
 msgid "A membership request has been sent."
 msgstr ""
 
-#: scheduler/views.py:218
+#: scheduler/views.py:227
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr ""
 
-#: scheduler/views.py:227
+#: scheduler/views.py:236
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr ""
 
-#: scheduler/views.py:234
+#: scheduler/views.py:243
 msgid "You were successfully added to this shift."
 msgstr ""
 
-#: scheduler/views.py:238
+#: scheduler/views.py:247
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr ""
 
-#: scheduler/views.py:248
+#: scheduler/views.py:257
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr ""
 
-#: scheduler/views.py:269
+#: scheduler/views.py:278
 msgid "You successfully left this shift."
 msgstr ""
 
