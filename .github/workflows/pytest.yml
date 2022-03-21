@@ -23,8 +23,13 @@ jobs:
         with:
           python-version: "3.9"
 
+      # apt install system dependencies
+      - name: Install apt packages
+        run: |
+          sudo apt install -y gettext 
+
       # Pip install project dependencies
-      - name: Install dependencies
+      - name: Install python packages
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements/dev.txt
