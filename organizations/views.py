@@ -4,6 +4,7 @@ import itertools
 
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.http import HttpResponseForbidden
@@ -14,7 +15,6 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView
 from django_ajax.decorators import ajax
 
-from accounts.models import UserAccount
 from osm_tools.templatetags.osm_links import osm_search
 from news.models import NewsEntry
 from organizations.admin import filter_queryset_by_membership
@@ -103,7 +103,7 @@ def managing_members_view(request, **kwargs):
     return {'result': "sucess"}
 
 
-class ManageFacilityMembersView(DetailView):
+class ManageFacilityMembersView(LoginRequiredMixin, DetailView):
     """
     This view returns the pending member requests for approval by the shift
     planner for the already logged in

@@ -165,12 +165,21 @@ class PlannerView(LoginRequiredMixin, FormView):
         facility = get_object_or_404(Facility,
                                      slug=self.kwargs['facility_slug'])
 
-        shifts = Shift.objects.filter(facility=facility)
-        shifts = shifts.on_shiftdate(schedule_date)
-        shifts = shifts.annotate(volunteer_count=Count('helpers'))
-        shifts = shifts.order_by('task', 'workplace', 'ending_time')
-        shifts = shifts.select_related('task', 'workplace', 'facility')
-        shifts = shifts.prefetch_related('helpers', 'helpers__user')
+        shifts = (
+            Shift.objects.filter(facility=facility)
+            .on_shiftdate(schedule_date)
+            .annotate(volunteer_count=Count("helpers"))
+            .order_by(
+                "facility",
+                "task__priority",
+                "workplace__priority",
+                "task__name",
+                "workplace__name",
+                "ending_time",
+            )
+            .select_related("task", "workplace", "facility")
+            .prefetch_related("helpers", "helpers__user")
+        )
 
         context['shifts'] = shifts
         context['facility'] = facility

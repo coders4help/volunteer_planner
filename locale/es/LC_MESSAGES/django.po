@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 21:42+0100\n"
+"POT-Creation-Date: 2022-03-21 16:52+0100\n"
 "PO-Revision-Date: 2016-04-13 17:27+0000\n"
 "Last-Translator: Antonio Mireles <antonio@mirelesindependent.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/coders4help/volunteer-planner/language/es/)\n"
@@ -20,529 +20,389 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:22 accounts/admin.py:28
 msgid "first name"
 msgstr "nombre"
 
-#: accounts/admin.py:34 accounts/admin.py:61
 msgid "email"
 msgstr "correo electrónico"
 
-#: accounts/admin.py:67
 msgid "date joined"
 msgstr ""
 
-#: accounts/admin.py:73
 msgid "last login"
 msgstr ""
 
-#: accounts/apps.py:8 accounts/apps.py:16
 msgid "Accounts"
 msgstr "Cuentas"
 
-#: accounts/forms.py:7
 msgid "Accept privacy policy"
 msgstr ""
 
-#: accounts/models.py:17 organizations/models.py:60
 msgid "user account"
 msgstr "cuenta de usuario"
 
-#: accounts/models.py:18
 msgid "user accounts"
 msgstr "cuentas de usuarios"
 
-#: accounts/templates/shift_list.html:12
 msgid "My shifts today:"
 msgstr "Mis turnos hoy:"
 
-#: accounts/templates/shift_list.html:14
 msgid "No shifts today."
 msgstr "Hoy no hay turnos."
 
-#: accounts/templates/shift_list.html:19 accounts/templates/shift_list.html:33
-#: accounts/templates/shift_list.html:47 accounts/templates/shift_list.html:61
 msgid "Show this work shift"
 msgstr "Mostrar este turno de trabajo"
 
-#: accounts/templates/shift_list.html:26
 msgid "My shifts tomorrow:"
 msgstr "Mis turnos mañana:"
 
-#: accounts/templates/shift_list.html:28
 msgid "No shifts tomorrow."
 msgstr "No hay turnos mañana."
 
-#: accounts/templates/shift_list.html:40
 msgid "My shifts the day after tomorrow:"
 msgstr "Mis turnos pasado mañana:"
 
-#: accounts/templates/shift_list.html:42
 msgid "No shifts the day after tomorrow."
 msgstr "No hay turnos pasado mañana."
 
-#: accounts/templates/shift_list.html:54
 msgid "Further shifts:"
 msgstr "Turnos adicionales:"
 
-#: accounts/templates/shift_list.html:56
 msgid "No further shifts."
 msgstr "No hay mas turnos adicionales."
 
-#: accounts/templates/shift_list.html:66
 msgid "Show my work shifts in the past"
 msgstr "Mostrar mis turnos de trabajo pasados"
 
-#: accounts/templates/shift_list_done.html:12
 msgid "My work shifts in the past:"
 msgstr "Mis turnos de trabajo pasados:"
 
-#: accounts/templates/shift_list_done.html:14
 msgid "No work shifts in the past days yet."
 msgstr "No hay turnos de trabajo pasados aun."
 
-#: accounts/templates/shift_list_done.html:21
 msgid "Show my work shifts in the future"
 msgstr "Mostrar mis turnos de trabajo futuros"
 
-#: accounts/templates/user_account_delete.html:10
-#: accounts/templates/user_detail.html:10
-#: organizations/templates/manage_members.html:64
-#: templates/registration/login.html:23
-#: templates/registration/registration_form.html:35
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: accounts/templates/user_account_delete.html:11
-#: accounts/templates/user_detail.html:11
 msgid "First name"
 msgstr "Nombre"
 
-#: accounts/templates/user_account_delete.html:12
-#: accounts/templates/user_detail.html:12
 msgid "Last name"
 msgstr "Apellido"
 
-#: accounts/templates/user_account_delete.html:13
-#: accounts/templates/user_detail.html:13
-#: organizations/templates/manage_members.html:67
-#: templates/registration/registration_form.html:23
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: accounts/templates/user_account_delete.html:15
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "Si eliminas tu cuenta, esta informacion sera anonimizada, y ya no va a ser posible que vuelvas a accesar Volunteer-Planner."
 
-#: accounts/templates/user_account_delete.html:16
 msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
 msgstr "No es posible recuperar esta informacion. Si quieres volver a trabajar como voluntario, tendras que crear una nueva cuenta."
 
-#: accounts/templates/user_account_delete.html:18
 msgid "Delete Account (no additional warning)"
 msgstr "Eliminar Cuenta (no hay mas avisos)"
 
-#: accounts/templates/user_account_edit.html:12
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save"
 msgstr "Guardar"
 
-#: accounts/templates/user_detail.html:16
 msgid "Edit Account"
 msgstr "Editar tu cuento"
 
-#: accounts/templates/user_detail.html:17
 msgid "Delete Account"
 msgstr "Eliminar Cuenta"
 
-#: accounts/templates/user_detail_deleted.html:6
 msgid "Your user account has been deleted."
 msgstr "Tu cuenta de usuario ha sido eliminada."
 
-#: content/admin.py:15 content/admin.py:16 content/models.py:16
 msgid "additional CSS"
 msgstr "CSS adicional"
 
-#: content/admin.py:23
 msgid "translation"
 msgstr "traducción"
 
-#: content/admin.py:24 content/admin.py:63
 msgid "translations"
 msgstr "traducciones"
 
-#: content/admin.py:58
 msgid "No translation available"
 msgstr "No hay una traducción disponible"
 
-#: content/models.py:13
 msgid "additional style"
 msgstr "estilo adicional"
 
-#: content/models.py:19
 msgid "additional flat page style"
 msgstr "estilo adicional de página estática"
 
-#: content/models.py:20
 msgid "additional flat page styles"
 msgstr "estilos adicionales de página estática"
 
-#: content/models.py:27
 msgid "flat page"
 msgstr "página estática"
 
-#: content/models.py:30
 msgid "language"
 msgstr "idioma"
 
-#: content/models.py:34 news/models.py:14
 msgid "title"
 msgstr "título"
 
-#: content/models.py:38
 msgid "content"
 msgstr "contenido"
 
-#: content/models.py:48
 msgid "flat page translation"
 msgstr "traducción de página estática"
 
-#: content/models.py:49
 msgid "flat page translations"
 msgstr "traducciones de páginas estáticas"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:12
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:33
 msgid "View on site"
 msgstr "Ver en el sitio"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:32
-#: organizations/templates/manage_members.html:109
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
 msgid "Remove"
 msgstr "Quitar"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:33
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:80
 #, python-format
 msgid "Add another %(verbose_name)s"
 msgstr "Agregar otros %(verbose_name)s"
 
-#: content/templates/flatpages/default.html:23
 msgid "Edit this page"
 msgstr "Editar esta página"
 
-#: news/models.py:17
 msgid "subtitle"
 msgstr "subtítulo"
 
-#: news/models.py:21
 msgid "articletext"
 msgstr "texto del artículo"
 
-#: news/models.py:26
 msgid "creation date"
 msgstr "fecha de creación"
 
-#: news/models.py:41
 msgid "news entry"
 msgstr "noticia"
 
-#: news/models.py:42
 msgid "news entries"
 msgstr "noticias"
 
-#: non_logged_in_area/templates/404.html:8
 msgid "Page not found"
 msgstr "Pagina no encontrada"
 
-#: non_logged_in_area/templates/404.html:10
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Lo sentimos, pero la pagina requerida no pudo ser encontrada."
 
-#: non_logged_in_area/templates/500.html:4
 msgid "Server error"
 msgstr "Error del servidor"
 
-#: non_logged_in_area/templates/500.html:8
 msgid "Server Error <em>(500)</em>"
 msgstr "Error del Servidor <em>(500)</em>"
 
-#: non_logged_in_area/templates/500.html:10
 msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
 msgstr "Ha habido un error. Ha sido reportado a los administradores del sitio por medio de correo electronico y se debera de arreglar brevemente. Gracias por su paciencia."
 
-#: non_logged_in_area/templates/base_non_logged_in.html:57
-#: templates/registration/login.html:3 templates/registration/login.html:10
 msgid "Login"
 msgstr "Identificarse"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:60
 msgid "Start helping"
 msgstr "Empezar a ayudar"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:87
-#: templates/partials/footer.html:6
 msgid "Main page"
 msgstr "Página principal"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:90
-#: templates/partials/footer.html:7
 msgid "Imprint"
 msgstr "Grabar"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:93
-#: templates/partials/footer.html:8
 msgid "About"
 msgstr "Acerca de nosotros"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:96
-#: templates/partials/footer.html:9
 msgid "Supporter"
 msgstr "Patrocinador"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:99
-#: templates/partials/footer.html:10
 msgid "Press"
 msgstr "Prensa"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:102
-#: templates/partials/footer.html:11
 msgid "Contact"
 msgstr "Contactar"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:105
-#: templates/partials/faq_link.html:2
 msgid "FAQ"
 msgstr "Preguntas Frecuentes"
 
-#: non_logged_in_area/templates/home.html:25
 msgid "I want to help!"
 msgstr "¡Quiero ayudar!"
 
-#: non_logged_in_area/templates/home.html:27
 msgid "Register and see where you can help"
 msgstr "Inscríbase para ver dónde puede ayudar"
 
-#: non_logged_in_area/templates/home.html:32
 msgid "Organize volunteers!"
 msgstr "¡Organice a los voluntarios!"
 
-#: non_logged_in_area/templates/home.html:34
 msgid "Register a shelter and organize volunteers"
 msgstr "Registrar un refugio y organice a los voluntarios"
 
-#: non_logged_in_area/templates/home.html:48
 msgid "Places to help"
 msgstr "Dónde ayudar"
 
-#: non_logged_in_area/templates/home.html:55
 msgid "Registered Volunteers"
 msgstr "Voluntarios registrados"
 
-#: non_logged_in_area/templates/home.html:62
 msgid "Worked Hours"
 msgstr "Horas trabajadas"
 
-#: non_logged_in_area/templates/home.html:74
 msgid "What is it all about?"
 msgstr "¿Cuál es el propósito?"
 
-#: non_logged_in_area/templates/home.html:77
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr "¿Es usted un voluntario y quiere ofrecer su ayuda a los refugiados? Volunteer-Planner.org le muestra dónde, cuándo y cómo puede ayudar directamente en el campo."
 
-#: non_logged_in_area/templates/home.html:85
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
 msgstr "<p>Ésta es una plataforma no comercial y libre de anuncios. Un equipo internacional de obreros en el campo, programadores, gerentes de proyectos se ofrecen como voluntarios para este proyecto y traen sus experiencias profesionales para marcar la diferencia.</p>"
 
-#: non_logged_in_area/templates/home.html:98
 msgid "You can help at these locations:"
 msgstr "Puede ayudar en estos lugares:"
 
-#: non_logged_in_area/templates/home.html:116
 msgid "There are currently no places in need of help."
 msgstr "En este momento no hay lugares que necesiten ayuda."
 
-#: non_logged_in_area/templates/privacy_policy.html:6
 msgid "Privacy Policy"
 msgstr "Política de privacidad"
 
-#: non_logged_in_area/templates/privacy_policy.html:10
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
 msgstr "Objetivo"
 
-#: non_logged_in_area/templates/privacy_policy.html:16
 msgctxt "Privacy Policy Sec1 P1"
 msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
 msgstr "Esta política de privacidad informa al usuario sobre la colección y el uso de los datos personales en este sitio (de aquí en adelante \"el servicio\") por el proveedor del servicio, el Beneficio e.V. (Wollankstr. 2, 13187 Berlin)"
 
-#: non_logged_in_area/templates/privacy_policy.html:21
 msgctxt "Privacy Policy Sec1 P2"
 msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
 msgstr "Esta política de privaciada se basa en la ley alemana de portección de datos (Bundesdatenschutzgesetz, BDSG) y la ley alemana telemedia (Telemediengesetz, TMG)."
 
-#: non_logged_in_area/templates/privacy_policy.html:29
 msgctxt "Privacy Policy Sec2"
 msgid "Access data / server log files"
 msgstr "Acceder los datos/archivos de registro del servidor"
 
-#: non_logged_in_area/templates/privacy_policy.html:35
 msgctxt "Privacy Policy Sec2 P1"
 msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
 msgstr "El proveedor de servicio (o el proveedor de su espacio web) colecciona datos sobre cada incidente de acceso al servicio y guarda estos datos de acceso en llamados archivos de registro de servidor. Los datos de acceso incluyen el nombre del sitio web visitado, los archivos accedidos, la hora y la fecha del acceso, los datos transferidos, la notificación de acceso exitoso, el tipo y el número de versión del navegador del usuario, el sistema de operación del usuario, el URL de procedencia (eso es, es sitio web que el usuario visitó anteriormente), la dirección IP del usuario, y el nombre del proveedor de Internet del usuario."
 
-#: non_logged_in_area/templates/privacy_policy.html:40
 msgctxt "Privacy Policy Sec2 P2"
 msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
 msgstr "El proveedor de servicio utuliza los archivos de registro de servidor sólo para fines estadísticos y para la operación, la seguridad y la mejora del servicio proveído. Sin embargo, el proveedor de servicio reserva el derecho de revisar los archivos si en cualquier momento si exista una indicación de un uso ilegal del servicio."
 
-#: non_logged_in_area/templates/privacy_policy.html:48
 msgctxt "Privacy Policy Sec3"
 msgid "Use of personal data"
 msgstr "El uso de los datos personales"
 
-#: non_logged_in_area/templates/privacy_policy.html:54
 msgctxt "Privacy Policy Sec3 P1"
 msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
 msgstr "Los datos personales son la información que se puede usar para identificar a una persona, eso es, cualquier dato que se puede remontar a una persona espicífica. Los datos personales incluyen el nombre, la dirección de correo electrónico o el número de teléfono del usuario. Aun los datos sobre las preferencias personales, los pasatiempos, las membresías u otros sitios web visitados cuentan como datos personales."
 
-#: non_logged_in_area/templates/privacy_policy.html:59
 msgctxt "Privacy Policy Sec3 P2"
 msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
 msgstr "El proveedor de servicio recoge, utiliza y comperte los datos personales con terceros sólo si o se le permite hacerlo por ley o si el usuario ha dado su permiso."
 
-#: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
 msgstr "Contactar"
 
-#: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
 msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
 msgstr "Cuando el usuario contacta al proveedor de servicio (por ejemplo por correo electrónico o por otra forma de contacto), los datos que el usuario provee se guardan para processar la consulta y para contestar preguntas de seguimiento potenciales futuras."
 
-#: non_logged_in_area/templates/privacy_policy.html:81
 msgctxt "Privacy Policy Sec5"
 msgid "Cookies"
 msgstr "Cookies"
 
-#: non_logged_in_area/templates/privacy_policy.html:87
 msgctxt "Privacy Policy Sec5 P1"
 msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
 msgstr "Los cookies son archivos pequeños que se guardan en el dispositvo del usuario (su ordenador, su smartphone, etcétera) con información espicífica sobre ese dispositivo. Pueden tener varios propósitos: los cookies pueden usarse para mejorar la experiencia del usuario (por ejemplo, guardando y \"recordando\" las credenciales para iniciar una sesión). Los cookies también pueden usarse para recoger datos estadísticos que permiten que el proveedor de servicio analice el uso del usuario del sitio web con fines de mejorar el servicio."
 
-#: non_logged_in_area/templates/privacy_policy.html:92
 msgctxt "Privacy Policy Sec5 P2"
 msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
 msgstr "El usuario puede personalizar el uso de los cookies. La mayor parte de los navegadores web pueden configurarse para restringir o aun impedir por completo el almacenamiento de los cookies. Sin embargo, el proveedor de servicio observa que tales impedimentos pueden tener un impacto negativo con respecto a la experiencia del usuario y la funcionalidad del sitio web."
 
-#: non_logged_in_area/templates/privacy_policy.html:97
 #, python-format
 msgctxt "Privacy Policy Sec5 P3"
 msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
 msgstr "El usuario puede personalizar la función de los cookies de muchos anunciantes de web visitando o el sitio web americano %(us_url)s o el sitio web europeo %(eu_url)s."
 
-#: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
 msgstr "Inscripción"
 
-#: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
 msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
 msgstr "Los datos que el usuario provee durante la inscripción le permiten usar el servicio. El proveedor de servicio puede informar al usuario por medio de correo electrónico sobre la información relevante al servicio o la inscripción, tal como la información sobre los cambios que el servicio experimenta o la información técnica (véase también la siguiente sección)."
 
-#: non_logged_in_area/templates/privacy_policy.html:116
 msgctxt "Privacy Policy Sec6 P2"
 msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
 msgstr "Los formularios de la inscripción y el perfíl del usuario muestran los datos que se recogen y se guardan. Estos datos incluyen, entre otros, el nombre, el apellido y la dirección de correo electrónico del usuario."
 
-#: non_logged_in_area/templates/privacy_policy.html:124
 msgctxt "Privacy Policy Sec7"
 msgid "E-mail notifications / Newsletter"
 msgstr "Comunicaciones por correo electrónico / Boletín"
 
-#: non_logged_in_area/templates/privacy_policy.html:130
 msgctxt "Privacy Policy Sec7 P1"
 msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
 msgstr "Cuando se inscribe para una cuenta con el servicio, el usuario da permiso tanto para recibir comunicaciones por correo electrónico como para recibir boletines por correo electrónico."
 
-#: non_logged_in_area/templates/privacy_policy.html:135
 msgctxt "Privacy Policy Sec7 P2"
 msgid "E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s)."
 msgstr "Las comunicaciones por correo electrónico informan al usuario de ciertos eventos que están relacionados con el uso del servicio del usuario. Junto con el boletín, el proveedor de servicio envía al usuario información general sobre el proveedor y su(s) servicio(s) ofrecido(s)."
 
-#: non_logged_in_area/templates/privacy_policy.html:140
 msgctxt "Privacy Policy Sec7 P3"
 msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
 msgstr "Si el usuario desea revocar su permiso para recibir correos electrónicos, debe cancelar su cuenta de usuario."
 
-#: non_logged_in_area/templates/privacy_policy.html:148
 msgctxt "Privacy Policy Sec8"
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
-#: non_logged_in_area/templates/privacy_policy.html:154
 msgctxt "Privacy Policy Sec8 P1"
 msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
 msgstr "Este sitio web utiliza Google Analytics, un servico analítico web que Google, Inc. (“Google”) provee. Google Analytics utiliza “cookies”, que son archivos de texto que se integran en el dispositivo del usuario, para ayudar al sitio web a analizar cómo utilizan el sitio los usuarios. La información generada por el cookie sobre el uso del sitio web del usuario se transmitirá a Google y se guardará en los servidores de Google que se encuentran en Estados Unidos."
 
-#: non_logged_in_area/templates/privacy_policy.html:159
 msgctxt "Privacy Policy Sec8 P2"
 msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
 msgstr "En el caso de que esté activado el anonimato de IP en este sitio web, la dirección IP del usuario será truncada dentro del área de los Estados miembros de la Unión Europea u otros partes del acuerdo sobre el Espacio Económico Europeo. Sólo en los casos excepcionales, la dirección IP entera se transmitirá al servidor de Google en Estados Unidos para ser truncado allí. El anonimato de IP está activado en este sitio web."
 
-#: non_logged_in_area/templates/privacy_policy.html:164
 msgctxt "Privacy Policy Sec8 P3"
 msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
 msgstr "Google utilizará esta información de parte del director de este sitio web con el propósito de evaluar su uso de este sitio web, compilar informes sobre la actividad del sitio web para los directores y proveerles los servicios que están relacionados con la actividad del sitio web y el uso del Internet."
 
-#: non_logged_in_area/templates/privacy_policy.html:169
 #, python-format
 msgctxt "Privacy Policy Sec8 P4"
 msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
 msgstr "La dirección IP, que el navegador del usuario transmite de acuerdo con el ámbito de Google Analytics, no se asociará con ninguno de los datos que tiene Google. El usuario puede rechazar el uso de las cookies ajustando la configuración de su navegador. Sin embargo, se debe notar que si el usuario lo hace, es posible que no pueda utilizar todas las funciones de este sitio de web. El usuario también puede optar que en el futuro Google Analytics no pueda monitorizarlo descargando e instalando el Complemento de inhabilitación para navegadores de Google Analytics: %(optout_plugin_url)s."
 
-#: non_logged_in_area/templates/privacy_policy.html:174
 msgid "click this link"
 msgstr "haga clic en este enlace"
 
-#: non_logged_in_area/templates/privacy_policy.html:175
 #, python-format
 msgctxt "Privacy Policy Sec8 P5"
 msgid "As an alternative to the browser Addon or within browsers on mobile devices, the user can %(optout_javascript)s in order to opt-out from being tracked by Google Analytics within this website in the future (the opt-out applies only for the browser in which the user sets it and within this domain). An opt-out cookie will be stored on the user's device, which means that the user will have to click this link again, if he deletes his cookies."
 msgstr "Como alternativa al complemento para el navegador o dentro de los navegadores para los aparatos móviles, el usuario puede %(optout_javascript)s para poder optar que Google Analytics no pueda monitorizarlo en el futuro dentro de este sitio de web (optar por no ser monitorizado sólo se aplica al navegador en el que el usuario lo establezca y dentro de este dominio). Una cookie se guardará en el aparato del usuario, lo cual significa que el usuario tendrá que hacer clic en este enlace de nuevo si elimina sus cookies."
 
-#: non_logged_in_area/templates/privacy_policy.html:183
 msgctxt "Privacy Policy Sec9"
 msgid "Revocation, Changes, Corrections, and Updates"
 msgstr "Revocación, cambios, correcciones y actualizaciones"
 
-#: non_logged_in_area/templates/privacy_policy.html:189
 msgctxt "Privacy Policy Sec9 P1"
 msgid "The user has the right to be informed upon application and free of charge, which personal data about him has been stored. Additionally, the user can ask for the correction of uncorrect data, as well as for the suspension or even deletion of his personal data as far as there is no legal obligation to retain that data."
 msgstr "Al inscribirse y sin cargo, el usario tiene el derecho de estar informado sobre cuáles de los datos personales de él se han guardado. Además, el usario puede pedir que sean corregidos los datos incorrectos, y que se suspendan o se eliminen sus datos personales con tal de que no haya una obligación legal de retener los datos."
 
-#: non_logged_in_area/templates/privacy_policy.html:198
 msgctxt "Privacy Policy Credit"
 msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
 msgstr "Basada en la muestra de la política de privacidad del abogado Thomas Schwenke - I LAW it"
 
-#: non_logged_in_area/templates/shelters_need_help.html:20
 msgid "advantages"
 msgstr "ventajas"
 
-#: non_logged_in_area/templates/shelters_need_help.html:22
 msgid "save time"
 msgstr "ahorrar tiempo"
 
-#: non_logged_in_area/templates/shelters_need_help.html:23
 msgid "improve selforganization of the volunteers"
 msgstr "mejorar la autoorganización de los voluntarios"
 
-#: non_logged_in_area/templates/shelters_need_help.html:26
 msgid ""
 "\n"
 "                    volunteers split themselves up more effectively into shifts,\n"
@@ -553,7 +413,6 @@ msgstr ""
 "los voluntarios se dividen más eficazmente  en turnos,\n"
 "los ayudantes mismos pueden anticipar más facilmente los atajos temporales"
 
-#: non_logged_in_area/templates/shelters_need_help.html:32
 msgid ""
 "\n"
 "                    shift plans can be given to the security personnel\n"
@@ -566,7 +425,6 @@ msgstr ""
 "o las personas coordinantes por medio de un\n"
 "cartero automático"
 
-#: non_logged_in_area/templates/shelters_need_help.html:39
 msgid ""
 "\n"
 "                the more shelters and camps are organized with us, the more volunteers are joining\n"
@@ -577,15 +435,12 @@ msgstr ""
 "cuanto más albergues y campamentos que se organizan con nosotros, más voluntarios participarán\n"
 "y todas las instalaciones se beneficiarán de un grupo de voluntarios motivados"
 
-#: non_logged_in_area/templates/shelters_need_help.html:45
 msgid "for free without costs"
 msgstr "gratis y sin precio"
 
-#: non_logged_in_area/templates/shelters_need_help.html:51
 msgid "The right help at the right time at the right place"
 msgstr "La ayuda correcta al tiempo correcto en el lugar correcto"
 
-#: non_logged_in_area/templates/shelters_need_help.html:52
 msgid ""
 "\n"
 "        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.\n"
@@ -598,11 +453,9 @@ msgstr ""
 "¡Volunteer-planner intenta resolver este problema! <br>\n"
 "</p>"
 
-#: non_logged_in_area/templates/shelters_need_help.html:60
 msgid "for free, ad free"
 msgstr "gratis, sin anuncios"
 
-#: non_logged_in_area/templates/shelters_need_help.html:61
 msgid ""
 "\n"
 "        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
@@ -613,11 +466,9 @@ msgstr ""
 "<p> Un grupo de profesionales voluntarios de los áreas del desarrollo de software, la gestión de proyectos, el diseño y la mercadotecnia construyeron esta plataforma.\n"
 "El código es abierto para el uso no comercial. Los datos privados (las direcciones de correo electrónico, los datos del perfil, etc.) y no se compartirá con un tercero.</p>"
 
-#: non_logged_in_area/templates/shelters_need_help.html:69
 msgid "contact us!"
 msgstr "¡Contáctenos!"
 
-#: non_logged_in_area/templates/shelters_need_help.html:72
 msgid ""
 "\n"
 "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
@@ -628,212 +479,152 @@ msgstr ""
 "...tal vez con un borrador adjunto de los turnos que quiere ver en volunteer-planner. Por favor escriba a <a\n"
 "href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
 
-#: organizations/admin.py:141 organizations/admin.py:143
 msgid "edit"
 msgstr "editar"
 
-#: organizations/admin.py:220 organizations/admin.py:250
-#: organizations/admin.py:318 organizations/admin.py:342
-#: organizations/models.py:78 organizations/models.py:146
-#: organizations/models.py:299 organizations/models.py:328
 msgid "description"
 msgstr "descripción "
 
-#: organizations/admin.py:226 organizations/admin.py:256
-#: organizations/models.py:81 organizations/models.py:149
 msgid "contact info"
 msgstr "información de contacto"
 
-#: organizations/apps.py:7 organizations/models.py:103
 msgid "organizations"
 msgstr "organizaciones"
 
-#: organizations/models.py:29
 msgid "by invitation"
 msgstr "por invitación"
 
-#: organizations/models.py:30
 msgid "anyone (approved by manager)"
 msgstr "quien sea (aprobado por el gerente)"
 
-#: organizations/models.py:31
 msgid "anyone"
 msgstr "quien sea"
 
-#: organizations/models.py:37
 msgid "rejected"
 msgstr "rechazado"
 
-#: organizations/models.py:38
 msgid "pending"
 msgstr "pendiente"
 
-#: organizations/models.py:39
 msgid "approved"
 msgstr "aprobado"
 
-#: organizations/models.py:45
 msgid "admin"
 msgstr "administración"
 
-#: organizations/models.py:46
 msgid "manager"
 msgstr "gerente"
 
-#: organizations/models.py:47
 msgid "member"
 msgstr "miembro"
 
-#: organizations/models.py:52
 msgid "role"
 msgstr "papel"
 
-#: organizations/models.py:56
 msgid "status"
 msgstr "estado"
 
-#: organizations/models.py:75 organizations/models.py:143
-#: organizations/models.py:296 organizations/models.py:325 places/models.py:20
-#: scheduletemplates/models.py:12
 msgid "name"
 msgstr "nombre"
 
-#: organizations/models.py:84 organizations/models.py:165
 msgid "address"
 msgstr "dirección"
 
-#: organizations/models.py:93 organizations/models.py:181 places/models.py:21
 msgid "slug"
 msgstr "URL semántica"
 
-#: organizations/models.py:98 organizations/models.py:191
 msgid "join mode"
 msgstr "forma de unirse"
 
-#: organizations/models.py:99
 msgid "Who can join this organization?"
 msgstr "¿Quién puede unirse a esta organización?"
 
-#: organizations/models.py:102 organizations/models.py:139
-#: organizations/models.py:232
 msgid "organization"
 msgstr "organización"
 
-#: organizations/models.py:131
 msgid "disabled"
 msgstr "inhabilitado"
 
-#: organizations/models.py:132
 msgid "enabled (collapsed)"
 msgstr "habilitado (derrumbado)"
 
-#: organizations/models.py:133
 msgid "enabled"
 msgstr "habilitado"
 
-#: organizations/models.py:161 places/models.py:139
 msgid "place"
 msgstr "lugar"
 
-#: organizations/models.py:170
 msgid "postal code"
 msgstr "código postal"
 
-#: organizations/models.py:175
 msgid "Show on map of all facilities"
 msgstr "Mostrar en un mapa todas las instalaciones"
 
-#: organizations/models.py:177
 msgid "latitude"
 msgstr "latitud"
 
-#: organizations/models.py:179
 msgid "longitude"
 msgstr "longitud"
 
-#: organizations/models.py:186
 msgid "timeline"
 msgstr "cronología"
 
-#: organizations/models.py:192
 msgid "Who can join this facility?"
 msgstr "¿Quién puede unirse a esta instalación?"
 
-#: organizations/models.py:195 organizations/models.py:262
-#: organizations/models.py:291 organizations/models.py:321
-#: scheduler/models.py:59 scheduletemplates/admin.py:352
-#: scheduletemplates/models.py:16
 msgid "facility"
 msgstr "instalación"
 
-#: organizations/models.py:196
 msgid "facilities"
 msgstr "instalaciones"
 
-#: organizations/models.py:237
 msgid "organization member"
 msgstr "miembro de la organización"
 
-#: organizations/models.py:238
 msgid "organization members"
 msgstr "miembros de la organización"
 
-#: organizations/models.py:242
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr "{username} con {organization_name} ({user_role})"
 
-#: organizations/models.py:268
 msgid "facility member"
 msgstr "miembro de la instalación"
 
-#: organizations/models.py:269
 msgid "facility members"
 msgstr "miembros de la instalación"
 
-#: organizations/models.py:273
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr "{username} con {facility_name} ({user_role})"
 
-#: organizations/models.py:302 scheduler/models.py:53
-#: scheduletemplates/models.py:46
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
+msgid "priority"
+msgstr ""
+
 msgid "workplace"
 msgstr "lugar de trabajo"
 
-#: organizations/models.py:303
 msgid "workplaces"
 msgstr "lugares de trabajo"
 
-#: organizations/models.py:331 scheduler/models.py:50
-#: scheduletemplates/models.py:42
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "tarea"
 
-#: organizations/models.py:332
 msgid "tasks"
 msgstr "tareas"
 
-#: organizations/signals.py:36
 #, python-brace-format
 msgid "User '{user}' manager status of a facility/organization was changed. "
 msgstr ""
 
-#: organizations/templates/emails/membership_approved.txt:2
 #, python-format
 msgid "Hello %(username)s,"
 msgstr "Hola %(username)s,"
 
-#: organizations/templates/emails/membership_approved.txt:6
 #, python-format
 msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
 msgstr "Su solicitud de membresía con %(facility_name)s fue aprobada. Ya puede inscribirse para los turnos restringidos de esta instalación. "
 
-#: organizations/templates/emails/membership_approved.txt:10
 msgid ""
 "Yours,\n"
 "the volunteer-planner.org Team"
@@ -841,320 +632,227 @@ msgstr ""
 "Atentamente,\n"
 "el equipo de volunteer-planner.org"
 
-#: organizations/templates/facility.html:9
-#: organizations/templates/organization.html:9
-#: scheduler/templates/helpdesk_breadcrumps.html:6
-#: scheduler/templates/helpdesk_single.html:144
-#: scheduler/templates/shift_details.html:33
 msgid "Helpdesk"
 msgstr "Ayuda"
 
-#: organizations/templates/facility.html:29
-#: scheduler/templates/geographic_helpdesk.html:69
 msgid "Show on map"
 msgstr "Mostrar en el mapa"
 
-#: organizations/templates/facility.html:41
-#: organizations/templates/partials/compact_facility.html:27
 msgid "Open Shifts"
 msgstr "Turnos disponibles"
 
-#: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:110
 msgid "News"
 msgstr "Noticias"
 
-#: organizations/templates/manage_members.html:18
 msgid "Error"
 msgstr "Error"
 
-#: organizations/templates/manage_members.html:18
 msgid "You are not allowed to do this."
 msgstr "No se le permite hacer esto."
 
-#: organizations/templates/manage_members.html:43
 #, python-format
 msgid "Members in %(facility)s"
 msgstr "Miembros en %(facility)s"
 
-#: organizations/templates/manage_members.html:70
 msgid "Role"
 msgstr "Papel"
 
-#: organizations/templates/manage_members.html:73
 msgid "Actions"
 msgstr "Acciones"
 
-#: organizations/templates/manage_members.html:98
-#: organizations/templates/manage_members.html:105
 msgid "Block"
 msgstr "Bloquear"
 
-#: organizations/templates/manage_members.html:102
 msgid "Accept"
 msgstr "Aceptar"
 
-#: organizations/templates/organization.html:26
 msgid "Facilities"
 msgstr "Instalaciones"
 
-#: organizations/templates/partials/compact_facility.html:19
-#: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:108
 msgid "Show details"
 msgstr "Mostrar los detalles"
 
-#: organizations/views.py:137
 msgid "volunteer-planner.org: Membership approved"
 msgstr "volunteer-planner.org: Se aprobó la membresía"
 
-#: osm_tools/templatetags/osm_links.py:17
 #, python-brace-format
 msgctxt "maps search url pattern"
 msgid "https://www.openstreetmap.org/search?query={location}"
 msgstr ""
 
-#: places/models.py:72 places/models.py:88
 msgid "country"
 msgstr "país"
 
-#: places/models.py:73
 msgid "countries"
 msgstr "paises"
 
-#: places/models.py:91 places/models.py:112
 msgid "region"
 msgstr "región"
 
-#: places/models.py:92
 msgid "regions"
 msgstr "regiones"
 
-#: places/models.py:115 places/models.py:136
 msgid "area"
 msgstr "área"
 
-#: places/models.py:116
 msgid "areas"
 msgstr "áreas"
 
-#: places/models.py:140
 msgid "places"
 msgstr "lugares"
 
-#: scheduler/admin.py:55 scheduler/admin.py:62 scheduletemplates/admin.py:54
-#: scheduletemplates/admin.py:61
 msgid "Facilities do not match."
 msgstr ""
 
-#: scheduler/admin.py:56 scheduletemplates/admin.py:55
 #, python-brace-format
 msgid "\"{task.name}\" belongs to facility \"{task.facility.name}\", but shift takes place at \"{facility.name}\"."
 msgstr ""
 
-#: scheduler/admin.py:63 scheduletemplates/admin.py:62
 #, python-brace-format
 msgid "\"{workplace.name}\" is at \"{workplace.facility.name}\" but shift takes place at \"{facility.name}\"."
 msgstr ""
 
-#: scheduler/admin.py:70
 msgid "No start time given."
 msgstr ""
 
-#: scheduler/admin.py:72
 msgid "No end time given."
 msgstr ""
 
-#: scheduler/admin.py:78
 msgid "Start time in the past."
 msgstr ""
 
-#: scheduler/admin.py:80
 msgid "Shift ends before it starts."
 msgstr ""
 
-#: scheduler/admin.py:107
 msgid "number of volunteers"
 msgstr "número de voluntarios"
 
-#: scheduler/admin.py:123
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
 msgstr "voluntarios"
 
-#: scheduler/apps.py:8
 msgid "scheduler"
 msgstr "Planificador"
 
-#: scheduler/models.py:46 scheduletemplates/models.py:38
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
 msgid "number of needed volunteers"
 msgstr "número de voluntarios que se necesitan"
 
-#: scheduler/models.py:61 scheduletemplates/admin.py:32
-#: scheduletemplates/models.py:50
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr "hora de inicio"
 
-#: scheduler/models.py:63 scheduletemplates/admin.py:35
-#: scheduletemplates/models.py:53
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr "hora de terminar"
 
-#: scheduler/models.py:71 scheduletemplates/models.py:60
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
 msgid "members only"
 msgstr "sólo los miembros"
 
-#: scheduler/models.py:73 scheduletemplates/models.py:62
 msgid "allow only members to help"
 msgstr "hacer que solamente los miembros ayuden"
 
-#: scheduler/models.py:79
 msgid "shift"
 msgstr "turno"
 
-#: scheduler/models.py:80 scheduletemplates/admin.py:317
 msgid "shifts"
 msgstr "turnos "
 
-#: scheduler/models.py:144
 msgid "shift helper"
 msgstr "ayudante de turno"
 
-#: scheduler/models.py:145
 msgid "shift helpers"
 msgstr "ayudantes de turno"
 
-#: scheduler/templates/geographic_helpdesk.html:81
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
 msgstr "turnos"
 
-#: scheduler/templates/geographic_helpdesk.html:113
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "No hay turnos futuros disponibles para %(geographical_name)s."
 
-#: scheduler/templates/helpdesk.html:71
 msgid "You can help in the following facilities"
 msgstr "Usted puede ayudar en las siguientes instalaciones"
 
-#: scheduler/templates/helpdesk.html:75
+#, fuzzy
 #| msgid "countries"
 msgid "Countries"
-msgstr ""
+msgstr "paises"
 
-#: scheduler/templates/helpdesk.html:84
+#, fuzzy
 #| msgid "areas"
 msgid "Areas"
-msgstr ""
+msgstr "áreas"
 
-#: scheduler/templates/helpdesk.html:99
 msgid "see more"
 msgstr "ver más"
 
-#: scheduler/templates/helpdesk.html:119
 msgid "open shifts"
 msgstr "turnos disponibles"
 
-#: scheduler/templates/helpdesk_single.html:6
-#: scheduler/templates/shift_details.html:24
 #, python-format
 msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
 msgstr "Horario para %(facility_name)s"
 
-#: scheduler/templates/helpdesk_single.html:60
 #, python-format
 msgid "%(starting_time)s - %(ending_time)s"
 msgstr "%(starting_time)s - %(ending_time)s"
 
-#: scheduler/templates/helpdesk_single.html:172
 #, python-format
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
 msgstr "Horario para %(schedule_date)s"
 
-#: scheduler/templates/helpdesk_single.html:185
 msgid "Toggle Timeline"
 msgstr "Cambiar la cronología"
 
-#: scheduler/templates/helpdesk_single.html:237
 msgid "Link"
 msgstr "Enlace"
 
-#: scheduler/templates/helpdesk_single.html:240
 msgid "Time"
 msgstr "Hora"
 
-#: scheduler/templates/helpdesk_single.html:243
 msgid "Helpers"
 msgstr "Ayudantes"
 
-#: scheduler/templates/helpdesk_single.html:254
 msgid "Start"
 msgstr "Empezar"
 
-#: scheduler/templates/helpdesk_single.html:257
 msgid "End"
 msgstr "Terminar"
 
-#: scheduler/templates/helpdesk_single.html:260
 msgid "Required"
 msgstr "Necesario"
 
-#: scheduler/templates/helpdesk_single.html:263
 msgid "Status"
 msgstr "Estado"
 
-#: scheduler/templates/helpdesk_single.html:266
 msgid "Users"
 msgstr "Usuarios"
 
-#: scheduler/templates/helpdesk_single.html:269
 msgid "You"
 msgstr "Usted"
 
-#: scheduler/templates/helpdesk_single.html:321
 #, python-format
 msgid "%(slots_left)s more"
 msgstr "%(slots_left)s más"
 
-#: scheduler/templates/helpdesk_single.html:325
-#: scheduler/templates/helpdesk_single.html:406
-#: scheduler/templates/shift_details.html:134
 msgid "Covered"
 msgstr "Cubierto"
 
-#: scheduler/templates/helpdesk_single.html:350
-#: scheduler/templates/shift_details.html:95
 msgid "Drop out"
 msgstr "Abandonar"
 
-#: scheduler/templates/helpdesk_single.html:360
-#: scheduler/templates/shift_details.html:105
 msgid "Sign up"
 msgstr "Inscribirse"
 
-#: scheduler/templates/helpdesk_single.html:371
 msgid "Membership pending"
 msgstr "La membresía está pendiente"
 
-#: scheduler/templates/helpdesk_single.html:378
 msgid "Membership rejected"
 msgstr "Se rechazó la membresía"
 
-#: scheduler/templates/helpdesk_single.html:385
 msgid "Become member"
 msgstr "Hacerse miembro"
 
-#: scheduler/templates/shift_cancellation_notification.html:1
 #, python-format
 msgid ""
 "\n"
@@ -1172,11 +870,9 @@ msgid ""
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/templates/shift_details.html:108
 msgid "Members only"
 msgstr "Sólo miembros"
 
-#: scheduler/templates/shift_modification_notification.html:1
 #, python-format
 msgid ""
 "\n"
@@ -1200,241 +896,191 @@ msgid ""
 "the volunteer-planner.org team\n"
 msgstr ""
 
-#: scheduler/views.py:181
 msgid "The submitted data was invalid."
 msgstr "Los datos que fueron enviados no son válidos."
 
-#: scheduler/views.py:189
 msgid "User account does not exist."
 msgstr "Esta cuenta de usario no existe."
 
-#: scheduler/views.py:211
 msgid "A membership request has been sent."
 msgstr "Se ha enviado una solicitud para la membresía."
 
-#: scheduler/views.py:224
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "No podemos añadirle a este turno porque ya se ha inscrito para otros turnos del mismo horario:"
 
-#: scheduler/views.py:233
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr "No podemos añadirle a este turno porque ya no hay un horario disponible."
 
-#: scheduler/views.py:240
 msgid "You were successfully added to this shift."
 msgstr "Usted fue añadido exitosamente a este turno."
 
-#: scheduler/views.py:244
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr ""
 
-#: scheduler/views.py:254
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Usted ya se ha inscrito para el turno del {date_time} "
 
-#: scheduler/views.py:275
 msgid "You successfully left this shift."
 msgstr "Usted abandonó exitosamente este turno."
 
-#: scheduletemplates/admin.py:278
+#, python-brace-format
+msgid "A shift already exists at {date}"
+msgid_plural "{num_shifts} shifts already exists at {date}"
+msgstr[0] "Un turno ya existe en el {date}"
+msgstr[1] "{num_shifts} turnos ya existen en el {date}"
+
+#, python-brace-format
+msgid "{num_shifts} shift was added to {date}"
+msgid_plural "{num_shifts} shifts were added to {date}"
+msgstr[0] "{num_shifts} turno fue añadido al {date}"
+msgstr[1] "{num_shifts} turnos fueron añadidos al {date}"
+
 msgid "Something didn't work. Sorry about that."
 msgstr "Algo no funcionó. Sentimos que haya ocurrido."
 
-#: scheduletemplates/admin.py:311
 msgid "slots"
 msgstr "horarios"
 
-#: scheduletemplates/admin.py:323
 msgid "from"
 msgstr "de"
 
-#: scheduletemplates/admin.py:336
 msgid "to"
 msgstr "a"
 
-#: scheduletemplates/models.py:21
 msgid "schedule templates"
 msgstr "formularios de horario"
 
-#: scheduletemplates/models.py:22 scheduletemplates/models.py:34
 msgid "schedule template"
 msgstr "formulario de horario"
 
-#: scheduletemplates/models.py:56
 msgid "days"
 msgstr "días"
 
-#: scheduletemplates/models.py:68
 msgid "shift templates"
 msgstr "formularios de turno"
 
-#: scheduletemplates/models.py:69
 msgid "shift template"
 msgstr "formulario de turno"
 
-#: scheduletemplates/models.py:83
 #, python-brace-format
 msgid "after {number_of_days} days"
 msgstr ""
 
-#: scheduletemplates/models.py:102
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr "{task_name} - {workplace_name}"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:31
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
 msgid "Home"
 msgstr "Inicio"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:39
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:45
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
 msgid "Apply Template"
 msgstr "Aplicar el formulario"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:50
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
 msgstr "ningún lugar de trabajo"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
 msgstr "aplicar"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:60
 msgid "Select a date"
 msgstr "Seleccione una fecha"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:65
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:124
 msgid "Continue"
 msgstr "Continuar"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:69
 msgid "Select shift templates"
 msgstr "Seleccionar los formularios de turno"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
 msgid "Please review and confirm shifts to create"
 msgstr "Por favor repase y confirme los turnos que se van a crear"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:117
 msgid "Apply"
 msgstr "Aplicar"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:119
 msgid "Apply and select new date"
 msgstr "Aplicar y seleccionar nueva fecha"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save and apply template"
 msgstr "Guardar y aplicar el formulario"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:4
 msgid "Delete"
 msgstr "Eliminar"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:5
 msgid "Save as new"
 msgstr "Guardar como nuevo"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:6
 msgid "Save and add another"
 msgstr "Guardar y añadir otro"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:7
 msgid "Save and continue editing"
 msgstr "Guardar y seguir editando"
 
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:17
 msgid "Delete?"
 msgstr "¿Eliminar?"
 
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
 msgid "Change"
 msgstr "Cambiar"
 
-#: templates/partials/footer.html:17
 #, python-format
 msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr "¿Preguntas? Contáctenos: %(mailto_link)s"
 
-#: templates/partials/management_tools.html:13
 msgid "Manage"
 msgstr "Gestionar"
 
-#: templates/partials/management_tools.html:28
 msgid "Members"
 msgstr "Miembros"
 
-#: templates/partials/navigation_bar.html:11
 msgid "Toggle navigation"
 msgstr "Cambiar la navegación"
 
-#: templates/partials/navigation_bar.html:46
 msgid "Account"
 msgstr "Cuenta"
 
-#: templates/partials/navigation_bar.html:51
 msgid "My work shifts"
 msgstr "Mis turnos de trabajo"
 
-#: templates/partials/navigation_bar.html:56
 msgid "Help"
 msgstr "Ayuda"
 
-#: templates/partials/navigation_bar.html:59
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: templates/partials/navigation_bar.html:63
 msgid "Admin"
 msgstr "Administración"
 
-#: templates/partials/region_selection.html:18
 msgid "Regions"
 msgstr "Regiones"
 
-#: templates/registration/activate.html:5
 msgid "Activation complete"
 msgstr "La activación está finalizada"
 
-#: templates/registration/activate.html:7
 msgid "Activation problem"
 msgstr "Problema de activación"
 
-#: templates/registration/activate.html:15
 msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
 msgstr "Iniciar sesión"
 
-#: templates/registration/activate.html:17
 #, python-format
 msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
 msgstr "Gracias %(account)s, la activación está finalizada! Ya puede %(login_link)s usando el nombre de usario y contraseña que estableció al de inscribirse."
 
-#: templates/registration/activate.html:25
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 msgstr "Oops & ndash; O ya activó su cuenta, o la clave de activación no es válida o se ha caducado. "
 
-#: templates/registration/activation_complete.html:3
 msgid "Activation successful!"
 msgstr "¡La activación fue exitosa!"
 
-#: templates/registration/activation_complete.html:9
 msgctxt "Activation successful page"
 msgid "Thank you for signing up."
 msgstr "Gracias por inscribirse."
 
-#: templates/registration/activation_complete.html:12
 msgctxt "Login link text on activation success page"
 msgid "You can login here."
 msgstr "Puede iniciar una sesión aquí."
 
-#: templates/registration/activation_email.html:2
 #, python-format
 msgid ""
 "\n"
@@ -1468,7 +1114,6 @@ msgstr ""
 "\n"
 "el equipo de volunteer-planner.org\n"
 
-#: templates/registration/activation_email.txt:2
 #, python-format
 msgid ""
 "\n"
@@ -1501,102 +1146,73 @@ msgstr ""
 "\n"
 "el equipo de volunteer-planner.org\n"
 
-#: templates/registration/activation_email_subject.txt:1
 msgid "Your volunteer-planner.org registration"
 msgstr "Su inscripción con volunteer-planner.org"
 
-#: templates/registration/admin_approve_complete_email.html:6
 msgid "admin approval"
 msgstr ""
 
-#: templates/registration/admin_approve_complete_email.html:12
 #, python-format
 msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
 msgstr ""
 
-#: templates/registration/admin_approve_complete_email.txt:2
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-#: templates/registration/login.html:15
 msgid "Your username and password didn't match. Please try again."
 msgstr "Su nombre de usario y contraseña no coinciden. Inténtelo de nuevo por favor."
 
-#: templates/registration/login.html:26
-#: templates/registration/registration_form.html:44
 msgid "Password"
 msgstr "Contraseña"
 
-#: templates/registration/login.html:36
-#: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
 msgstr "¿Se le olvidó la contraseña?"
 
-#: templates/registration/login.html:40
 msgid "Help and sign-up"
 msgstr "Ayuda e inscripción"
 
-#: templates/registration/password_change_done.html:3
 msgid "Password changed"
 msgstr "La contraseña cambió"
 
-#: templates/registration/password_change_done.html:7
 msgid "Password successfully changed!"
 msgstr "¡La contraseña fue cambiada exitosamente!"
 
-#: templates/registration/password_change_form.html:3
-#: templates/registration/password_change_form.html:6
 msgid "Change Password"
 msgstr "Cambiar la contraseña"
 
-#: templates/registration/password_change_form.html:11
-#: templates/registration/password_change_form.html:13
-#: templates/registration/password_reset_form.html:12
-#: templates/registration/password_reset_form.html:14
 msgid "Email address"
 msgstr "Correo electrónico"
 
-#: templates/registration/password_change_form.html:15
-#: templates/registration/password_reset_confirm.html:13
 msgid "Change password"
 msgstr "Cambiar la contraseña"
 
-#: templates/registration/password_reset_complete.html:3
 msgid "Password reset complete"
 msgstr "El restablecimineto de la contraseña está finalizado"
 
-#: templates/registration/password_reset_complete.html:8
 msgctxt "login link title reset password complete page"
 msgid "log in"
 msgstr "Iniciar sesión"
 
-#: templates/registration/password_reset_complete.html:10
 #, python-format
 msgctxt "reset password complete page"
 msgid "Your password has been reset! You may now %(login_link)s again."
 msgstr "¡Su contraseña se ha restablecido! Ya puede %(login_link)s de nuevo."
 
-#: templates/registration/password_reset_confirm.html:3
 msgid "Enter new password"
 msgstr "Introduzca nueva contraseña"
 
-#: templates/registration/password_reset_confirm.html:6
 msgid "Enter your new password below to reset your password"
 msgstr "Introduzca su nueva contraseña abajo para restablecer su contraseña"
 
-#: templates/registration/password_reset_done.html:3
 msgid "Password reset"
 msgstr "Restablecer la contraseña"
 
-#: templates/registration/password_reset_done.html:6
 msgid "We sent you an email with a link to reset your password."
 msgstr "Le enviamos un correo electrónico con un enlace para restablecer su contraseña."
 
-#: templates/registration/password_reset_done.html:7
 msgid "Please check your email and click the link to continue."
 msgstr "Por favor revise su buzón de correo electrónico y haga clic en el enlace para continuar."
 
-#: templates/registration/password_reset_email.html:3
 #, python-format
 msgid ""
 "You are receiving this email because you (or someone pretending to be you)\n"
@@ -1613,7 +1229,6 @@ msgstr ""
 "Para restablecer su contraseña, por favor o haga clic en el siguiente enlace o cópielo y  péguelo\n"
 "y ábrelo en su navegador de internet."
 
-#: templates/registration/password_reset_email.html:12
 #, python-format
 msgid ""
 "\n"
@@ -1628,103 +1243,79 @@ msgstr ""
 "Saludos cordiales,\n"
 "%(site_name)s Gerencia\n"
 
-#: templates/registration/password_reset_form.html:3
-#: templates/registration/password_reset_form.html:16
 msgid "Reset password"
 msgstr "Restablecer la contraseña"
 
-#: templates/registration/password_reset_form.html:7
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "¡No hay problema! Le enviaremos algunas instrucciones sobre cómo restablecer su contraseña."
 
-#: templates/registration/registration_complete.html:3
 msgid "Activation email sent"
 msgstr "El correo electrónico de activación fue enviado"
 
-#: templates/registration/registration_complete.html:7
 msgid "An activation mail will be sent to you email address."
 msgstr "Un correo electrónico de activación será enviado a su dirección de correo electrónico. "
 
-#: templates/registration/registration_complete.html:13
 msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Por favor confirme que se haya inscrito siguiendo el enlace en el correo electrónico. Si no lo ha recibido en 10 minutos, búsquelo en la carpeta del correo basura."
 
-#: templates/registration/registration_form.html:3
 msgid "Register for an account"
 msgstr "Inscríbase para una cuenta"
 
-#: templates/registration/registration_form.html:5
 msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
 msgstr "Puedes crear una nueva cuenta de usuario aqui. Si ya tienes una cuenta de usuario dale click a LOGIN en la esquina superior derecha."
 
-#: templates/registration/registration_form.html:10
 msgid "Create a new account"
 msgstr "Crear una nueva cuenta"
 
-#: templates/registration/registration_form.html:26
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr "Volunteer-Planner y albergues te mandaran correos electronicos acerca de tus turnos de trabajo."
 
-#: templates/registration/registration_form.html:31
 msgid "Username already exists. Please choose a different username."
 msgstr "Ese nombre de usario ya existe. Escoja otro nombre de usario por favor."
 
-#: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Tu nombre de usuario va a ser visible a otros usuarios. No uses espacios o caracteres especiales."
 
-#: templates/registration/registration_form.html:54
 msgid "Repeat password"
 msgstr "Repita la contraseña"
 
-#: templates/registration/registration_form.html:68
 msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
 msgstr ""
 
-#: templates/registration/registration_form.html:71
 msgid "This must be checked."
 msgstr ""
 
-#: templates/registration/registration_form.html:76
 msgid "Sign-up"
 msgstr "Inscribirse"
 
-#: volunteer_planner/settings/base.py:150
 msgid "English"
 msgstr "Inglés"
 
-#: volunteer_planner/settings/base.py:151
 msgid "German"
 msgstr "Alemán"
 
-#: volunteer_planner/settings/base.py:152
 msgid "French"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:153
 msgid "Greek"
 msgstr "Griego"
 
-#: volunteer_planner/settings/base.py:154
 msgid "Hungarian"
 msgstr "Húngaro"
 
-#: volunteer_planner/settings/base.py:155
+#, fuzzy
+#| msgid "English"
 msgid "Polish"
-msgstr ""
+msgstr "Inglés"
 
-#: volunteer_planner/settings/base.py:156
 msgid "Portuguese"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:157
 msgid "Russian"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:158
 msgid "Swedish"
 msgstr "Sueco"
 
-#: volunteer_planner/settings/base.py:159
 msgid "Turkish"
 msgstr ""

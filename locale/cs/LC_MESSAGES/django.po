@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 21:42+0100\n"
+"POT-Creation-Date: 2022-03-21 16:52+0100\n"
 "PO-Revision-Date: 2022-03-15 17:56+0000\n"
 "Last-Translator: Christoph Meißner\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
@@ -20,529 +20,389 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: accounts/admin.py:22 accounts/admin.py:28
 msgid "first name"
 msgstr "křestní jméno"
 
-#: accounts/admin.py:34 accounts/admin.py:61
 msgid "email"
 msgstr "e-mail"
 
-#: accounts/admin.py:67
 msgid "date joined"
 msgstr ""
 
-#: accounts/admin.py:73
 msgid "last login"
 msgstr ""
 
-#: accounts/apps.py:8 accounts/apps.py:16
 msgid "Accounts"
 msgstr "Účty"
 
-#: accounts/forms.py:7
 msgid "Accept privacy policy"
 msgstr ""
 
-#: accounts/models.py:17 organizations/models.py:60
 msgid "user account"
 msgstr "uživatelský účet"
 
-#: accounts/models.py:18
 msgid "user accounts"
 msgstr "uživatelské účty"
 
-#: accounts/templates/shift_list.html:12
 msgid "My shifts today:"
 msgstr "Moje dnešní směny:"
 
-#: accounts/templates/shift_list.html:14
 msgid "No shifts today."
 msgstr "Dnes žádné směny."
 
-#: accounts/templates/shift_list.html:19 accounts/templates/shift_list.html:33
-#: accounts/templates/shift_list.html:47 accounts/templates/shift_list.html:61
 msgid "Show this work shift"
 msgstr "Zobrazit tuto pracovní směnu"
 
-#: accounts/templates/shift_list.html:26
 msgid "My shifts tomorrow:"
 msgstr "Moje směny zítra:"
 
-#: accounts/templates/shift_list.html:28
 msgid "No shifts tomorrow."
 msgstr "Žádné směny zítra."
 
-#: accounts/templates/shift_list.html:40
 msgid "My shifts the day after tomorrow:"
 msgstr "Moje směny pozítří:"
 
-#: accounts/templates/shift_list.html:42
 msgid "No shifts the day after tomorrow."
 msgstr "Žádné směny pozítří."
 
-#: accounts/templates/shift_list.html:54
 msgid "Further shifts:"
 msgstr "Další směny:"
 
-#: accounts/templates/shift_list.html:56
 msgid "No further shifts."
 msgstr "Žádné další směny."
 
-#: accounts/templates/shift_list.html:66
 msgid "Show my work shifts in the past"
 msgstr "Ukažte své pracovní směny v minulosti"
 
-#: accounts/templates/shift_list_done.html:12
 msgid "My work shifts in the past:"
 msgstr "Moje předchozí pracovní směny:"
 
-#: accounts/templates/shift_list_done.html:14
 msgid "No work shifts in the past days yet."
 msgstr "Poslední dny nebyly žádné pracovní směny."
 
-#: accounts/templates/shift_list_done.html:21
 msgid "Show my work shifts in the future"
 msgstr "Zobrazit moje budoucí pracovní směny"
 
-#: accounts/templates/user_account_delete.html:10
-#: accounts/templates/user_detail.html:10
-#: organizations/templates/manage_members.html:64
-#: templates/registration/login.html:23
-#: templates/registration/registration_form.html:35
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: accounts/templates/user_account_delete.html:11
-#: accounts/templates/user_detail.html:11
 msgid "First name"
 msgstr "Křestní jméno"
 
-#: accounts/templates/user_account_delete.html:12
-#: accounts/templates/user_detail.html:12
 msgid "Last name"
 msgstr "Příjmení"
 
-#: accounts/templates/user_account_delete.html:13
-#: accounts/templates/user_detail.html:13
-#: organizations/templates/manage_members.html:67
-#: templates/registration/registration_form.html:23
 msgid "Email"
 msgstr "E-mail"
 
-#: accounts/templates/user_account_delete.html:15
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "Pokud účet zrušíte, budou tyto informace anonymizovány a nebudete se již moci přihlásit do programu Volunteer-Planner."
 
-#: accounts/templates/user_account_delete.html:16
 msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
 msgstr "Není možné tyto informace obnovit. Pokud chcete znovu pracovat jako dobrovolník, budete muset vytvořit nový účet."
 
-#: accounts/templates/user_account_delete.html:18
 msgid "Delete Account (no additional warning)"
 msgstr "Odstranit účet (bez dalšího upozornění)"
 
-#: accounts/templates/user_account_edit.html:12
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save"
 msgstr "Uložit"
 
-#: accounts/templates/user_detail.html:16
 msgid "Edit Account"
 msgstr "Upravit účet"
 
-#: accounts/templates/user_detail.html:17
 msgid "Delete Account"
 msgstr "Smazat účet"
 
-#: accounts/templates/user_detail_deleted.html:6
 msgid "Your user account has been deleted."
 msgstr "Váš uživatelský účet byl smazán."
 
-#: content/admin.py:15 content/admin.py:16 content/models.py:16
 msgid "additional CSS"
 msgstr "další CSS"
 
-#: content/admin.py:23
 msgid "translation"
 msgstr "překlad"
 
-#: content/admin.py:24 content/admin.py:63
 msgid "translations"
 msgstr "překlady"
 
-#: content/admin.py:58
 msgid "No translation available"
 msgstr "Nejsou k dispozici překlady"
 
-#: content/models.py:13
 msgid "additional style"
 msgstr "další styl"
 
-#: content/models.py:19
 msgid "additional flat page style"
 msgstr "další styl ploché stránky"
 
-#: content/models.py:20
 msgid "additional flat page styles"
 msgstr "další ploché styly stránek"
 
-#: content/models.py:27
 msgid "flat page"
 msgstr "plochá strana"
 
-#: content/models.py:30
 msgid "language"
 msgstr "jazyk"
 
-#: content/models.py:34 news/models.py:14
 msgid "title"
 msgstr "nadpis"
 
-#: content/models.py:38
 msgid "content"
 msgstr "obsah"
 
-#: content/models.py:48
 msgid "flat page translation"
 msgstr "překlad ploché stránky"
 
-#: content/models.py:49
 msgid "flat page translations"
 msgstr "překlady plochých stránek"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:12
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:33
 msgid "View on site"
 msgstr "Zobrazit na webu"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:32
-#: organizations/templates/manage_members.html:109
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:81
 msgid "Remove"
 msgstr "Odstranit"
 
-#: content/templates/flatpages/additional_flat_page_style_inline.html:33
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:80
 #, python-format
 msgid "Add another %(verbose_name)s"
 msgstr "Přidat další %(verbose_name)s"
 
-#: content/templates/flatpages/default.html:23
 msgid "Edit this page"
 msgstr "Upravit tuto stranu"
 
-#: news/models.py:17
 msgid "subtitle"
 msgstr "podtitulek"
 
-#: news/models.py:21
 msgid "articletext"
 msgstr "text článku"
 
-#: news/models.py:26
 msgid "creation date"
 msgstr "datum vytvoření"
 
-#: news/models.py:41
 msgid "news entry"
 msgstr "zapsání novinky"
 
-#: news/models.py:42
 msgid "news entries"
 msgstr "zapsané novinky"
 
-#: non_logged_in_area/templates/404.html:8
 msgid "Page not found"
 msgstr "Stránka nenalezena"
 
-#: non_logged_in_area/templates/404.html:10
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Omlouváme se, ale požadovaná stránka nebyla nalezena."
 
-#: non_logged_in_area/templates/500.html:4
 msgid "Server error"
 msgstr "Chyba serveru"
 
-#: non_logged_in_area/templates/500.html:8
 msgid "Server Error <em>(500)</em>"
 msgstr "Chyba serveru <em>(500)</em>"
 
-#: non_logged_in_area/templates/500.html:10
 msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
 msgstr "Došlo k chybě. Byla hlášena správcům webu e-mailem a měla by být opravena brzy. Děkujeme za trpělivost."
 
-#: non_logged_in_area/templates/base_non_logged_in.html:57
-#: templates/registration/login.html:3 templates/registration/login.html:10
 msgid "Login"
 msgstr "Přihlášení"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:60
 msgid "Start helping"
 msgstr "Začněte pomáhat"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:87
-#: templates/partials/footer.html:6
 msgid "Main page"
 msgstr "Hlavní strana"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:90
-#: templates/partials/footer.html:7
 msgid "Imprint"
 msgstr "Impresum"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:93
-#: templates/partials/footer.html:8
 msgid "About"
 msgstr "O nás"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:96
-#: templates/partials/footer.html:9
 msgid "Supporter"
 msgstr "Podporovatel"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:99
-#: templates/partials/footer.html:10
 msgid "Press"
 msgstr "Media"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:102
-#: templates/partials/footer.html:11
 msgid "Contact"
 msgstr "Kontakt"
 
-#: non_logged_in_area/templates/base_non_logged_in.html:105
-#: templates/partials/faq_link.html:2
 msgid "FAQ"
 msgstr "FAQ"
 
-#: non_logged_in_area/templates/home.html:25
 msgid "I want to help!"
 msgstr "Chci pomoci!"
 
-#: non_logged_in_area/templates/home.html:27
 msgid "Register and see where you can help"
 msgstr "Zaregistrujte se a zjistěte, kde můžete pomoci"
 
-#: non_logged_in_area/templates/home.html:32
 msgid "Organize volunteers!"
 msgstr "Organizujte dobrovolníky!"
 
-#: non_logged_in_area/templates/home.html:34
 msgid "Register a shelter and organize volunteers"
 msgstr "Zaregistrujte přístřeší a organizujte dobrovolníky"
 
-#: non_logged_in_area/templates/home.html:48
 msgid "Places to help"
 msgstr "Místa k pomoci"
 
-#: non_logged_in_area/templates/home.html:55
 msgid "Registered Volunteers"
 msgstr "Registrovaní dobrovolníci"
 
-#: non_logged_in_area/templates/home.html:62
 msgid "Worked Hours"
 msgstr "Pracovní hodiny"
 
-#: non_logged_in_area/templates/home.html:74
 msgid "What is it all about?"
 msgstr "O čem to celé je?"
 
-#: non_logged_in_area/templates/home.html:77
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
 msgstr "Jste dobrovolník a chcete pomáhat? Dobrovolník - Planner.org vám ukáže, kde, kdy a jak přímo pomáhat v terénu."
 
-#: non_logged_in_area/templates/home.html:85
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
 msgstr "Tato platforma je nekomerční a bez reklam. Mezinárodní tým terénních pracovníků, programátoři, projektoví manažeři a projektanti jsou pro tento projekt dobrovolně a přinášejí svou odbornou zkušenost, aby přinesli změnu."
 
-#: non_logged_in_area/templates/home.html:98
 msgid "You can help at these locations:"
 msgstr "Na těchto místech můžete pomoci:"
 
-#: non_logged_in_area/templates/home.html:116
 msgid "There are currently no places in need of help."
 msgstr "V současné době neexistují místa, která by potřebovala pomoc."
 
-#: non_logged_in_area/templates/privacy_policy.html:6
 msgid "Privacy Policy"
 msgstr "Zásady ochrany osobních údajů"
 
-#: non_logged_in_area/templates/privacy_policy.html:10
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
 msgstr "Rozsah"
 
-#: non_logged_in_area/templates/privacy_policy.html:16
 msgctxt "Privacy Policy Sec1 P1"
 msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
 msgstr "Tyto zásady ochrany osobních údajů informují uživatele o shromažďování a používání osobních údajů na tomto webu (dále jen \"služba\") poskytovatelem služeb, Benefit e.V. (Wollankstr. 2, 13187 Berlín)."
 
-#: non_logged_in_area/templates/privacy_policy.html:21
 msgctxt "Privacy Policy Sec1 P2"
 msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
 msgstr "Právním základem pro politiku ochrany osobních údajů je německý zákon o ochraně osobních údajů (Bundesdatenschutzgesetz, BDSG) a německý zákon Telemedia (Telemediengesetz, TMG)."
 
-#: non_logged_in_area/templates/privacy_policy.html:29
 msgctxt "Privacy Policy Sec2"
 msgid "Access data / server log files"
 msgstr "Přístup k souborům protokolů dat / serveru"
 
-#: non_logged_in_area/templates/privacy_policy.html:35
 msgctxt "Privacy Policy Sec2 P1"
 msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
 msgstr "Poskytovatel služby (nebo poskytovatel jeho webového prostoru) shromažďuje data o každém přístupu k této službě a ukládá tato přístupová data do takzvaných souborů protokolu serveru. Přístupová data zahrnují název navštíveného webu, které soubory jsou přístupné, datum a čas přístupu, přenesená data, oznámení o úspěšném přístupu, číslo typu a verze webového prohlížeče uživatele, operační systém uživatele, adresu URL odkazujícího uživatele (tj. web, který uživatel navštívil dříve), adresu IP uživatele a jméno poskytovatele internetového připojení uživatele."
 
-#: non_logged_in_area/templates/privacy_policy.html:40
 msgctxt "Privacy Policy Sec2 P2"
 msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
 msgstr "Poskytovatel služeb používá protokolové soubory serveru pro statistické účely a pouze pro provoz, zabezpečení a vylepšení poskytované služby. Poskytovatel služby si nicméně vyhrazuje právo kdykoli přehodnotit soubory protokolu, pokud existují určité náznaky nezákonného používání služby."
 
-#: non_logged_in_area/templates/privacy_policy.html:48
 msgctxt "Privacy Policy Sec3"
 msgid "Use of personal data"
 msgstr "Použití osobních údajů"
 
-#: non_logged_in_area/templates/privacy_policy.html:54
 msgctxt "Privacy Policy Sec3 P1"
 msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
 msgstr "Osobní údaje jsou informace, které lze použít k identifikaci osoby, tj. Veškeré údaje, které lze vysledovat zpět na určitou osobu. Osobní údaje zahrnují jméno, e-mailovou adresu nebo telefonní číslo uživatele. Dokonce i údaje o osobních preferencích, koníčcích, členství nebo navštívených webových stránkách se považují za osobní údaje."
 
-#: non_logged_in_area/templates/privacy_policy.html:59
 msgctxt "Privacy Policy Sec3 P2"
 msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
 msgstr "Poskytovatel služeb shromažďuje, používá a sdílí osobní údaje s třetími stranami pouze tehdy, je-li ze zákona oprávněn tak učinit, nebo pokud uživatel dal jeho svolení."
 
-#: non_logged_in_area/templates/privacy_policy.html:67
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: non_logged_in_area/templates/privacy_policy.html:73
 msgctxt "Privacy Policy Sec4 P1"
 msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
 msgstr "Při kontaktování poskytovatele služeb (například prostřednictvím e-mailu nebo prostřednictvím formuláře pro kontakt na web) jsou data poskytnutá uživatelem uložena pro zpracování žádosti a pro případné následné dotazy v budoucnu."
 
-#: non_logged_in_area/templates/privacy_policy.html:81
 msgctxt "Privacy Policy Sec5"
 msgid "Cookies"
 msgstr "Cookies"
 
-#: non_logged_in_area/templates/privacy_policy.html:87
 msgctxt "Privacy Policy Sec5 P1"
 msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
 msgstr "Cookies jsou malé soubory, které jsou ukládány na zařízení uživatele (osobní počítač, smartphone nebo podobně) s informacemi specifickými pro toto zařízení. Mohou být použity k různým účelům: Cookies mohou být použity ke zlepšení uživatelské zkušenosti (např. Ukládáním, a tudíž i \"zapamatováním\" přihlašovacích pověření). Soubory cookie mohou být také použity ke shromažďování statistických údajů, které umožňují poskytovateli služeb analyzovat využití uživatele webové stránky s cílem zlepšit službu."
 
-#: non_logged_in_area/templates/privacy_policy.html:92
 msgctxt "Privacy Policy Sec5 P2"
 msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
 msgstr "Uživatel může přizpůsobit používání souborů cookie. Většina webových prohlížečů nabízí nastavení, která omezují nebo dokonce zcela zabraňují ukládání souborů cookie. Poskytovatel služeb však bere na vědomí, že tato omezení mohou negativně ovlivnit uživatelskou zkušenost a funkčnost webových stránek."
 
-#: non_logged_in_area/templates/privacy_policy.html:97
 #, python-format
 msgctxt "Privacy Policy Sec5 P3"
 msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
 msgstr "Uživatel může spravovat používání souborů cookie od mnoha inzerentů na internetu buď na americkém webu %(us_url)s nebo na evropském webu %(eu_url)s."
 
-#: non_logged_in_area/templates/privacy_policy.html:105
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
 msgstr "Registrace"
 
-#: non_logged_in_area/templates/privacy_policy.html:111
 msgctxt "Privacy Policy Sec6 P1"
 msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
 msgstr "Data poskytovaná uživatelem při registraci umožňují využití služby. Poskytovatel služeb může uživateli prostřednictvím e-mailu informovat o informacích týkajících se služby nebo o registraci, například informace o změnách, které služba prochází, nebo technické informace (viz také další část)."
 
-#: non_logged_in_area/templates/privacy_policy.html:116
 msgctxt "Privacy Policy Sec6 P2"
 msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
 msgstr "Formuláře registrace a uživatelského profilu ukazují, která data se shromažďují a ukládají. Zahrnují - nikoli však pouze - jméno, příjmení a e-mailovou adresu uživatele."
 
-#: non_logged_in_area/templates/privacy_policy.html:124
 msgctxt "Privacy Policy Sec7"
 msgid "E-mail notifications / Newsletter"
 msgstr "E-mailové upozornění / Newsletter"
 
-#: non_logged_in_area/templates/privacy_policy.html:130
 msgctxt "Privacy Policy Sec7 P1"
 msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
 msgstr "Při registraci účtu u služby poskytuje uživatel povolení k přijímání e-mailových upozornění, stejně jako e-mailů se zpravodajem."
 
-#: non_logged_in_area/templates/privacy_policy.html:135
 msgctxt "Privacy Policy Sec7 P2"
 msgid "E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s)."
 msgstr "E-mailové upozornění informují uživatele o určitých událostech týkajících se užívání služby uživatelem. Pomocí zpravodaje poskytovatel služeb zašle uživateli obecné informace o poskytovateli a jeho nabízené službě(ách)."
 
-#: non_logged_in_area/templates/privacy_policy.html:140
 msgctxt "Privacy Policy Sec7 P3"
 msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
 msgstr "Pokud si uživatel přeje zrušit své oprávnění k přijímání e-mailů, musí svůj uživatelský účet smazat."
 
-#: non_logged_in_area/templates/privacy_policy.html:148
 msgctxt "Privacy Policy Sec8"
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
-#: non_logged_in_area/templates/privacy_policy.html:154
 msgctxt "Privacy Policy Sec8 P1"
 msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
 msgstr "Tento web používá službu Google Analytics, webovou službu pro analýzu poskytovanou společností Google, Inc. (\"Google\"). Google Analytics používá \"cookies\", které jsou textové soubory umístěné na zařízení uživatele, aby pomohly webové stránce analyzovat, jak uživatelé stránky používají. Informace vygenerované cookie o užívání webových stránek uživatelem budou předány a uloženy společností Google na serverech ve Spojených státech."
 
-#: non_logged_in_area/templates/privacy_policy.html:159
 msgctxt "Privacy Policy Sec8 P2"
 msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
 msgstr "V případě, že je na této webové stránce aktivována IP anonymita, bude IP adresa uživatele zkrácena v oblasti členských států Evropské unie nebo jiných stran Dohody o Evropském hospodářském prostoru. Pouze ve výjimečných případech bude celá IP adresa nejprve převedena na server Google v USA a zkrácena. Na této webové stránce je aktivní anonymita IP."
 
-#: non_logged_in_area/templates/privacy_policy.html:164
 msgctxt "Privacy Policy Sec8 P3"
 msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
 msgstr "Společnost Google tyto informace použije jménem provozovatele této webové stránky za účelem vyhodnocení vašeho používání webových stránek, sestavování zpráv o činnosti webových stránek pro provozovatele webových stránek a poskytováním dalších služeb souvisejících s činností webových stránek a využíváním internetu."
 
-#: non_logged_in_area/templates/privacy_policy.html:169
 #, python-format
 msgctxt "Privacy Policy Sec8 P4"
 msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
 msgstr "Adresa IP, kterou prohlížeč uživatele sděluje v rámci služby Google Analytics, nebude spojena s jinými údaji, které společnost Google drží. Uživatel může odmítnout použití souborů cookie výběrem příslušných nastavení v prohlížeči, nicméně je třeba poznamenat, že pokud to uživatel provede, nemusí být schopen používat plnou funkcionalitu tohoto webu. Může se také odhlásit ze sledování služby Google Analytics s účinkem do budoucna tím, že stáhne a nainstaluje doplněk prohlížeče pro odmítnutí služby Google Analytics pro svůj aktuální webový prohlížeč: %(optout_plugin_url)s."
 
-#: non_logged_in_area/templates/privacy_policy.html:174
 msgid "click this link"
 msgstr "klikněte na tento odkaz"
 
-#: non_logged_in_area/templates/privacy_policy.html:175
 #, python-format
 msgctxt "Privacy Policy Sec8 P5"
 msgid "As an alternative to the browser Addon or within browsers on mobile devices, the user can %(optout_javascript)s in order to opt-out from being tracked by Google Analytics within this website in the future (the opt-out applies only for the browser in which the user sets it and within this domain). An opt-out cookie will be stored on the user's device, which means that the user will have to click this link again, if he deletes his cookies."
 msgstr "Jako alternativu k doplňkům prohlížeče nebo v prohlížečích v mobilních zařízeních může uživatel %(optout_javascript)s pro odhlášení ze služby Google Analytics v rámci tohoto webu v budoucnu sledovat (výjimka platí pouze pro prohlížeč v němž uživatel nastavuje a v rámci této domény). Soubor cookie pro odhlášení se uloží na zařízení uživatele, což znamená, že uživatel bude muset kliknout na tento odkaz znovu, pokud odstraní soubory cookie."
 
-#: non_logged_in_area/templates/privacy_policy.html:183
 msgctxt "Privacy Policy Sec9"
 msgid "Revocation, Changes, Corrections, and Updates"
 msgstr "Zrušení, změny, opravy a aktualizace"
 
-#: non_logged_in_area/templates/privacy_policy.html:189
 msgctxt "Privacy Policy Sec9 P1"
 msgid "The user has the right to be informed upon application and free of charge, which personal data about him has been stored. Additionally, the user can ask for the correction of uncorrect data, as well as for the suspension or even deletion of his personal data as far as there is no legal obligation to retain that data."
 msgstr "Uživatel má právo být na požádání a bezplatně informován, jaké osobní údaje o něm byly uloženy. Kromě toho může uživatel požádat o opravu nesprávných údajů, jakož i o pozastavení nebo dokonce smazání jeho osobních údajů, pokud neexistuje žádná právní povinnost tyto údaje uchovávat."
 
-#: non_logged_in_area/templates/privacy_policy.html:198
 msgctxt "Privacy Policy Credit"
 msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
 msgstr "Na základě vzoru ochrany soukromí advokáta Thomase Schwenkeho - I LAW it"
 
-#: non_logged_in_area/templates/shelters_need_help.html:20
 msgid "advantages"
 msgstr "výhody"
 
-#: non_logged_in_area/templates/shelters_need_help.html:22
 msgid "save time"
 msgstr "šetřit čas"
 
-#: non_logged_in_area/templates/shelters_need_help.html:23
 msgid "improve selforganization of the volunteers"
 msgstr "zlepšit vlastní organizaci dobrovolníků"
 
-#: non_logged_in_area/templates/shelters_need_help.html:26
 msgid ""
 "\n"
 "                    volunteers split themselves up more effectively into shifts,\n"
@@ -553,7 +413,6 @@ msgstr ""
 " dobrovolníci se rozdělují efektivněji na směny, \n"
 "dočasné zkratky lze očekávat samotnými pomocníky"
 
-#: non_logged_in_area/templates/shelters_need_help.html:32
 msgid ""
 "\n"
 "                    shift plans can be given to the security personnel\n"
@@ -564,7 +423,6 @@ msgstr ""
 "\n"
 " plány směn mohou být poskytovány bezpečnostnímu personálu nebo koordinátorům automatickým mailerem každé ráno"
 
-#: non_logged_in_area/templates/shelters_need_help.html:39
 msgid ""
 "\n"
 "                the more shelters and camps are organized with us, the more volunteers are joining\n"
@@ -574,15 +432,12 @@ msgstr ""
 "\n"
 " čím více úkrytů a táborů jsou s námi organizovány, tím více dobrovolníků se připojí a všechny zařízení budou mít prospěch ze společného fondu motivovaných dobrovolníků"
 
-#: non_logged_in_area/templates/shelters_need_help.html:45
 msgid "for free without costs"
 msgstr "zdarma bez nákladů"
 
-#: non_logged_in_area/templates/shelters_need_help.html:51
 msgid "The right help at the right time at the right place"
 msgstr "Správná pomoc v pravý čas na správném místě"
 
-#: non_logged_in_area/templates/shelters_need_help.html:52
 msgid ""
 "\n"
 "        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.\n"
@@ -595,11 +450,9 @@ msgstr ""
 "volunteer-planner se snaží tento problém vyřešit!<br>\n"
 "</p> "
 
-#: non_logged_in_area/templates/shelters_need_help.html:60
 msgid "for free, ad free"
 msgstr "zdarma, bez reklam"
 
-#: non_logged_in_area/templates/shelters_need_help.html:61
 msgid ""
 "\n"
 "        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
@@ -609,11 +462,9 @@ msgstr ""
 "\n"
 "<p>Platforma byla sestavena skupinou dobrovolnických odborníků v oblasti vývoje softwaru, projektového řízení, designu a marketingu. Kód je otevřený pro nekomerční použití. Soukromé údaje (e-mail, data profilu apod.) nebudou poskytovány žádné třetí straně</p>"
 
-#: non_logged_in_area/templates/shelters_need_help.html:69
 msgid "contact us!"
 msgstr "kontaktujte nás!"
 
-#: non_logged_in_area/templates/shelters_need_help.html:72
 msgid ""
 "\n"
 "                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
@@ -621,212 +472,152 @@ msgid ""
 "                    "
 msgstr ""
 
-#: organizations/admin.py:141 organizations/admin.py:143
 msgid "edit"
 msgstr "upravit"
 
-#: organizations/admin.py:220 organizations/admin.py:250
-#: organizations/admin.py:318 organizations/admin.py:342
-#: organizations/models.py:78 organizations/models.py:146
-#: organizations/models.py:299 organizations/models.py:328
 msgid "description"
 msgstr "popis"
 
-#: organizations/admin.py:226 organizations/admin.py:256
-#: organizations/models.py:81 organizations/models.py:149
 msgid "contact info"
 msgstr "kontakty"
 
-#: organizations/apps.py:7 organizations/models.py:103
 msgid "organizations"
 msgstr "organizace"
 
-#: organizations/models.py:29
 msgid "by invitation"
 msgstr "na pozvání"
 
-#: organizations/models.py:30
 msgid "anyone (approved by manager)"
 msgstr "kdokoliv (schválen správcem)"
 
-#: organizations/models.py:31
 msgid "anyone"
 msgstr "kdokoliv"
 
-#: organizations/models.py:37
 msgid "rejected"
 msgstr "odmítnut"
 
-#: organizations/models.py:38
 msgid "pending"
 msgstr "čeká"
 
-#: organizations/models.py:39
 msgid "approved"
 msgstr "schválen"
 
-#: organizations/models.py:45
 msgid "admin"
 msgstr "administrátor"
 
-#: organizations/models.py:46
 msgid "manager"
 msgstr "manažer"
 
-#: organizations/models.py:47
 msgid "member"
 msgstr "člen"
 
-#: organizations/models.py:52
 msgid "role"
 msgstr "role"
 
-#: organizations/models.py:56
 msgid "status"
 msgstr "stav"
 
-#: organizations/models.py:75 organizations/models.py:143
-#: organizations/models.py:296 organizations/models.py:325 places/models.py:20
-#: scheduletemplates/models.py:12
 msgid "name"
 msgstr "jméno"
 
-#: organizations/models.py:84 organizations/models.py:165
 msgid "address"
 msgstr "adresa"
 
-#: organizations/models.py:93 organizations/models.py:181 places/models.py:21
 msgid "slug"
 msgstr "slug"
 
-#: organizations/models.py:98 organizations/models.py:191
 msgid "join mode"
 msgstr "join mód"
 
-#: organizations/models.py:99
 msgid "Who can join this organization?"
 msgstr "Kdo se může připojit k této organizaci?"
 
-#: organizations/models.py:102 organizations/models.py:139
-#: organizations/models.py:232
 msgid "organization"
 msgstr "organizace"
 
-#: organizations/models.py:131
 msgid "disabled"
 msgstr "vypnuto"
 
-#: organizations/models.py:132
 msgid "enabled (collapsed)"
 msgstr "zapnuto (sbaleno)"
 
-#: organizations/models.py:133
 msgid "enabled"
 msgstr "zapnuto"
 
-#: organizations/models.py:161 places/models.py:139
 msgid "place"
 msgstr "místo"
 
-#: organizations/models.py:170
 msgid "postal code"
 msgstr "PSČ"
 
-#: organizations/models.py:175
 msgid "Show on map of all facilities"
 msgstr "Zobrazit mapu všech zařízení"
 
-#: organizations/models.py:177
 msgid "latitude"
 msgstr "zeměpisná šířka"
 
-#: organizations/models.py:179
 msgid "longitude"
 msgstr "zeměpisná délka"
 
-#: organizations/models.py:186
 msgid "timeline"
 msgstr "časová osa"
 
-#: organizations/models.py:192
 msgid "Who can join this facility?"
 msgstr "Kdo se může připojit k tomuto zařízení?"
 
-#: organizations/models.py:195 organizations/models.py:262
-#: organizations/models.py:291 organizations/models.py:321
-#: scheduler/models.py:59 scheduletemplates/admin.py:352
-#: scheduletemplates/models.py:16
 msgid "facility"
 msgstr "zařízení"
 
-#: organizations/models.py:196
 msgid "facilities"
 msgstr "zařízení"
 
-#: organizations/models.py:237
 msgid "organization member"
 msgstr "člen organizace"
 
-#: organizations/models.py:238
 msgid "organization members"
 msgstr "členové organizace"
 
-#: organizations/models.py:242
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
 msgstr "{username} v {organization_name} ({user_role})"
 
-#: organizations/models.py:268
 msgid "facility member"
 msgstr "člen zařízení"
 
-#: organizations/models.py:269
 msgid "facility members"
 msgstr "členové zařízení"
 
-#: organizations/models.py:273
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
 msgstr "{username} v {facility_name} ({user_role})"
 
-#: organizations/models.py:302 scheduler/models.py:53
-#: scheduletemplates/models.py:46
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:54
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:42
+msgid "priority"
+msgstr ""
+
 msgid "workplace"
 msgstr "pracoviště"
 
-#: organizations/models.py:303
 msgid "workplaces"
 msgstr "pracoviště"
 
-#: organizations/models.py:331 scheduler/models.py:50
-#: scheduletemplates/models.py:42
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:53
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:41
 msgid "task"
 msgstr "úloha"
 
-#: organizations/models.py:332
 msgid "tasks"
 msgstr "úlohy"
 
-#: organizations/signals.py:36
 #, python-brace-format
 msgid "User '{user}' manager status of a facility/organization was changed. "
 msgstr ""
 
-#: organizations/templates/emails/membership_approved.txt:2
 #, python-format
 msgid "Hello %(username)s,"
 msgstr "Ahoj %(username)s,"
 
-#: organizations/templates/emails/membership_approved.txt:6
 #, python-format
 msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
 msgstr "Vaše žádost o členství v %(facility_name)s byla schválena. Nyní se můžete v tomto zařízení registrovat na omezené směny."
 
-#: organizations/templates/emails/membership_approved.txt:10
 msgid ""
 "Yours,\n"
 "the volunteer-planner.org Team"
@@ -834,320 +625,227 @@ msgstr ""
 "Váš tým,\n"
 "volunteer-planner.org"
 
-#: organizations/templates/facility.html:9
-#: organizations/templates/organization.html:9
-#: scheduler/templates/helpdesk_breadcrumps.html:6
-#: scheduler/templates/helpdesk_single.html:144
-#: scheduler/templates/shift_details.html:33
 msgid "Helpdesk"
 msgstr "Centrum nápovědy"
 
-#: organizations/templates/facility.html:29
-#: scheduler/templates/geographic_helpdesk.html:69
 msgid "Show on map"
 msgstr "Ukázat na mapě"
 
-#: organizations/templates/facility.html:41
-#: organizations/templates/partials/compact_facility.html:27
 msgid "Open Shifts"
 msgstr "Otevřené směny"
 
-#: organizations/templates/facility.html:50
-#: scheduler/templates/helpdesk.html:110
 msgid "News"
 msgstr "Novinky"
 
-#: organizations/templates/manage_members.html:18
 msgid "Error"
 msgstr "Chyba"
 
-#: organizations/templates/manage_members.html:18
 msgid "You are not allowed to do this."
 msgstr "Nemáte povoleno to udělat."
 
-#: organizations/templates/manage_members.html:43
 #, python-format
 msgid "Members in %(facility)s"
 msgstr "Členové v %(facility)s"
 
-#: organizations/templates/manage_members.html:70
 msgid "Role"
 msgstr "Role"
 
-#: organizations/templates/manage_members.html:73
 msgid "Actions"
 msgstr "Akce"
 
-#: organizations/templates/manage_members.html:98
-#: organizations/templates/manage_members.html:105
 msgid "Block"
 msgstr "Blokovat"
 
-#: organizations/templates/manage_members.html:102
 msgid "Accept"
 msgstr "Přijmout"
 
-#: organizations/templates/organization.html:26
 msgid "Facilities"
 msgstr "Zařízení"
 
-#: organizations/templates/partials/compact_facility.html:19
-#: scheduler/templates/geographic_helpdesk.html:76
-#: scheduler/templates/helpdesk.html:108
 msgid "Show details"
 msgstr "Zobrazit detaily"
 
-#: organizations/views.py:137
 msgid "volunteer-planner.org: Membership approved"
 msgstr "volunteer-planner.org: Členství schváleno"
 
-#: osm_tools/templatetags/osm_links.py:17
 #, python-brace-format
 msgctxt "maps search url pattern"
 msgid "https://www.openstreetmap.org/search?query={location}"
 msgstr "https://www.openstreetmap.org/search?query={location}"
 
-#: places/models.py:72 places/models.py:88
 msgid "country"
 msgstr "země"
 
-#: places/models.py:73
 msgid "countries"
 msgstr "státy"
 
-#: places/models.py:91 places/models.py:112
 msgid "region"
 msgstr "region"
 
-#: places/models.py:92
 msgid "regions"
 msgstr "regiony"
 
-#: places/models.py:115 places/models.py:136
 msgid "area"
 msgstr "oblast"
 
-#: places/models.py:116
 msgid "areas"
 msgstr "oblasti"
 
-#: places/models.py:140
 msgid "places"
 msgstr "místa"
 
-#: scheduler/admin.py:55 scheduler/admin.py:62 scheduletemplates/admin.py:54
-#: scheduletemplates/admin.py:61
 msgid "Facilities do not match."
 msgstr ""
 
-#: scheduler/admin.py:56 scheduletemplates/admin.py:55
 #, python-brace-format
 msgid "\"{task.name}\" belongs to facility \"{task.facility.name}\", but shift takes place at \"{facility.name}\"."
 msgstr ""
 
-#: scheduler/admin.py:63 scheduletemplates/admin.py:62
 #, python-brace-format
 msgid "\"{workplace.name}\" is at \"{workplace.facility.name}\" but shift takes place at \"{facility.name}\"."
 msgstr ""
 
-#: scheduler/admin.py:70
 msgid "No start time given."
 msgstr ""
 
-#: scheduler/admin.py:72
 msgid "No end time given."
 msgstr ""
 
-#: scheduler/admin.py:78
 msgid "Start time in the past."
 msgstr ""
 
-#: scheduler/admin.py:80
 msgid "Shift ends before it starts."
 msgstr ""
 
-#: scheduler/admin.py:107
 msgid "number of volunteers"
 msgstr "počet dobrovolníků"
 
-#: scheduler/admin.py:123
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:40
 msgid "volunteers"
 msgstr "dobrovolníci"
 
-#: scheduler/apps.py:8
 msgid "scheduler"
 msgstr "Plánovač"
 
-#: scheduler/models.py:46 scheduletemplates/models.py:38
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:52
 msgid "number of needed volunteers"
 msgstr "počet potřebných dobrovolníků"
 
-#: scheduler/models.py:61 scheduletemplates/admin.py:32
-#: scheduletemplates/models.py:50
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:55
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:43
 msgid "starting time"
 msgstr "počáteční čas"
 
-#: scheduler/models.py:63 scheduletemplates/admin.py:35
-#: scheduletemplates/models.py:53
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:56
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:44
 msgid "ending time"
 msgstr "konečný čas"
 
-#: scheduler/models.py:71 scheduletemplates/models.py:60
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:57
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:45
 msgid "members only"
 msgstr "pouze členové"
 
-#: scheduler/models.py:73 scheduletemplates/models.py:62
 msgid "allow only members to help"
 msgstr "povolit pouze členům, aby vám pomohli"
 
-#: scheduler/models.py:79
 msgid "shift"
 msgstr "směna"
 
-#: scheduler/models.py:80 scheduletemplates/admin.py:317
 msgid "shifts"
 msgstr "směny"
 
-#: scheduler/models.py:144
 msgid "shift helper"
 msgstr "pomocník směn"
 
-#: scheduler/models.py:145
 msgid "shift helpers"
 msgstr "pomocníci směn"
 
-#: scheduler/templates/geographic_helpdesk.html:81
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
 msgstr "směny"
 
-#: scheduler/templates/geographic_helpdesk.html:113
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
 msgstr "Nejsou k dispozici žádné nadcházející směny pro %(geographical_name)s."
 
-#: scheduler/templates/helpdesk.html:71
 msgid "You can help in the following facilities"
 msgstr "Můžete pomoci v následujících zařízeních"
 
-#: scheduler/templates/helpdesk.html:75
+#, fuzzy
 #| msgid "countries"
 msgid "Countries"
-msgstr ""
+msgstr "státy"
 
-#: scheduler/templates/helpdesk.html:84
+#, fuzzy
 #| msgid "areas"
 msgid "Areas"
-msgstr ""
+msgstr "oblasti"
 
-#: scheduler/templates/helpdesk.html:99
 msgid "see more"
 msgstr "zobrazit víc"
 
-#: scheduler/templates/helpdesk.html:119
 msgid "open shifts"
 msgstr "otevřené směny"
 
-#: scheduler/templates/helpdesk_single.html:6
-#: scheduler/templates/shift_details.html:24
 #, python-format
 msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
 msgstr "Plán pro %(facility_name)s"
 
-#: scheduler/templates/helpdesk_single.html:60
 #, python-format
 msgid "%(starting_time)s - %(ending_time)s"
 msgstr "%(starting_time)s - %(ending_time)s"
 
-#: scheduler/templates/helpdesk_single.html:172
 #, python-format
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
 msgstr "Plán pro %(schedule_date)s"
 
-#: scheduler/templates/helpdesk_single.html:185
 msgid "Toggle Timeline"
 msgstr "Přepnout časovou osu"
 
-#: scheduler/templates/helpdesk_single.html:237
 msgid "Link"
 msgstr "Odkaz"
 
-#: scheduler/templates/helpdesk_single.html:240
 msgid "Time"
 msgstr "Čas"
 
-#: scheduler/templates/helpdesk_single.html:243
 msgid "Helpers"
 msgstr "Pomocníci"
 
-#: scheduler/templates/helpdesk_single.html:254
 msgid "Start"
 msgstr "Začátek"
 
-#: scheduler/templates/helpdesk_single.html:257
 msgid "End"
 msgstr "Konec"
 
-#: scheduler/templates/helpdesk_single.html:260
 msgid "Required"
 msgstr "Vyžadováno"
 
-#: scheduler/templates/helpdesk_single.html:263
 msgid "Status"
 msgstr "Stav"
 
-#: scheduler/templates/helpdesk_single.html:266
 msgid "Users"
 msgstr "Uživatelé"
 
-#: scheduler/templates/helpdesk_single.html:269
 msgid "You"
 msgstr "Vy"
 
-#: scheduler/templates/helpdesk_single.html:321
 #, python-format
 msgid "%(slots_left)s more"
 msgstr "%(slots_left)s víc"
 
-#: scheduler/templates/helpdesk_single.html:325
-#: scheduler/templates/helpdesk_single.html:406
-#: scheduler/templates/shift_details.html:134
 msgid "Covered"
 msgstr "Pokryto"
 
-#: scheduler/templates/helpdesk_single.html:350
-#: scheduler/templates/shift_details.html:95
 msgid "Drop out"
 msgstr "Opuštěno"
 
-#: scheduler/templates/helpdesk_single.html:360
-#: scheduler/templates/shift_details.html:105
 msgid "Sign up"
 msgstr "Přihlásit se"
 
-#: scheduler/templates/helpdesk_single.html:371
 msgid "Membership pending"
 msgstr "Členství čeká na schválení"
 
-#: scheduler/templates/helpdesk_single.html:378
 msgid "Membership rejected"
 msgstr "Členství bylo zamítnuto"
 
-#: scheduler/templates/helpdesk_single.html:385
 msgid "Become member"
 msgstr "Staňte se členem"
 
-#: scheduler/templates/shift_cancellation_notification.html:1
 #, python-format
 msgid ""
 "\n"
@@ -1171,11 +869,9 @@ msgstr ""
 "%(from_date)s od %(from_time)s do %(to_time)s hodin\n"
 " Toto je automaticky generovaný e-mail. Máte-li jakékoli dotazy, kontaktujte prosím přímo zařízení. Váš tým.\n"
 
-#: scheduler/templates/shift_details.html:108
 msgid "Members only"
 msgstr "Pouze členové"
 
-#: scheduler/templates/shift_modification_notification.html:1
 #, python-format
 msgid ""
 "\n"
@@ -1213,241 +909,195 @@ msgstr ""
 "\n"
 "Váš, involunteer-planner.org tým \n"
 
-#: scheduler/views.py:181
 msgid "The submitted data was invalid."
 msgstr "Odeslaná data byla neplatná."
 
-#: scheduler/views.py:189
 msgid "User account does not exist."
 msgstr "Uživatelský účet neexistuje."
 
-#: scheduler/views.py:211
 msgid "A membership request has been sent."
 msgstr "Byla odeslána žádost o členství."
 
-#: scheduler/views.py:224
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
 msgstr "Nemůžeme vás přidat k této směně, protože jste již souhlasili s dalšími směnami ve stejnou dobu:"
 
-#: scheduler/views.py:233
 msgid "We can't add you to this shift because there are no more slots left."
 msgstr "Nemůžeme vás přidat k této směně, protože už nezbývají další volné sloty."
 
-#: scheduler/views.py:240
 msgid "You were successfully added to this shift."
 msgstr "Byli jste úspěšně přidáni k této směně."
 
-#: scheduler/views.py:244
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
 msgstr ""
 
-#: scheduler/views.py:254
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
 msgstr "Již jste se zaregistrovali na tuto směnu v {date_time}."
 
-#: scheduler/views.py:275
 msgid "You successfully left this shift."
 msgstr "Úspěšně jste opustili tuto směnu."
 
-#: scheduletemplates/admin.py:278
+#, python-brace-format
+msgid "A shift already exists at {date}"
+msgid_plural "{num_shifts} shifts already exists at {date}"
+msgstr[0] "Směna již existuje na {date}"
+msgstr[1] "Směny již existují na {date}"
+msgstr[2] "Směny již existují na {date}"
+msgstr[3] "{num_shifts} směny již existují v {date}"
+
+#, python-brace-format
+msgid "{num_shifts} shift was added to {date}"
+msgid_plural "{num_shifts} shifts were added to {date}"
+msgstr[0] "{num_shifts} směna byla přidána do {date}"
+msgstr[1] "{num_shifts} směny byly přidány do {date}"
+msgstr[2] "{num_shifts} směn bylo přidáno do {date}"
+msgstr[3] "{num_shifts} směn bylo přidáno do {date}"
+
 msgid "Something didn't work. Sorry about that."
 msgstr "Něco nefunguje. Omlouvám se za to."
 
-#: scheduletemplates/admin.py:311
 msgid "slots"
 msgstr "sloty"
 
-#: scheduletemplates/admin.py:323
 msgid "from"
 msgstr "ok"
 
-#: scheduletemplates/admin.py:336
 msgid "to"
 msgstr "komu"
 
-#: scheduletemplates/models.py:21
 msgid "schedule templates"
 msgstr "šablony plánů"
 
-#: scheduletemplates/models.py:22 scheduletemplates/models.py:34
 msgid "schedule template"
 msgstr "šablona plánu"
 
-#: scheduletemplates/models.py:56
 msgid "days"
 msgstr "dní"
 
-#: scheduletemplates/models.py:68
 msgid "shift templates"
 msgstr "šablony směn"
 
-#: scheduletemplates/models.py:69
 msgid "shift template"
 msgstr "šablona směny"
 
-#: scheduletemplates/models.py:83
 #, python-brace-format
 msgid "after {number_of_days} days"
 msgstr ""
 
-#: scheduletemplates/models.py:102
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr "{task_name} - {workplace_name}"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:31
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:6
 msgid "Home"
 msgstr "Hlavní strana"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:39
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:45
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:14
 msgid "Apply Template"
 msgstr "Použít šablonu"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:50
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:38
 msgid "no workplace"
 msgstr "žádné pracoviště"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:51
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:39
 msgid "apply"
 msgstr "použít"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:60
 msgid "Select a date"
 msgstr "Zvolit datum"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:65
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:124
 msgid "Continue"
 msgstr "Pokračovat"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template.html:69
 msgid "Select shift templates"
 msgstr "Vybrat šablony směn"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:22
 msgid "Please review and confirm shifts to create"
 msgstr "Zkontrolujte a potvrďte směny, které chcete vytvořit"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:117
 msgid "Apply"
 msgstr "Použít"
 
-#: scheduletemplates/templates/admin/scheduletemplates/apply_template_confirm.html:119
 msgid "Apply and select new date"
 msgstr "Použít a vybrat nové datum"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:3
 msgid "Save and apply template"
 msgstr "Uložit a použít šablonu"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:4
 msgid "Delete"
 msgstr "Smazat"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:5
 msgid "Save as new"
 msgstr "Uložit jako nový"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:6
 msgid "Save and add another"
 msgstr "Uložit a přidat další"
 
-#: scheduletemplates/templates/admin/scheduletemplates/scheduletemplate/scheduletemplate_submit_line.html:7
 msgid "Save and continue editing"
 msgstr "Uložit a pokračovat v úpravách"
 
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:17
 msgid "Delete?"
 msgstr "Smazat?"
 
-#: scheduletemplates/templates/admin/scheduletemplates/shifttemplate/shift_template_inline.html:31
 msgid "Change"
 msgstr "Změnit"
 
-#: templates/partials/footer.html:17
 #, python-format
 msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr "Otázky? Napište: %(mailto_link)s"
 
-#: templates/partials/management_tools.html:13
 msgid "Manage"
 msgstr "Spravovat"
 
-#: templates/partials/management_tools.html:28
 msgid "Members"
 msgstr "Členové"
 
-#: templates/partials/navigation_bar.html:11
 msgid "Toggle navigation"
 msgstr "Přepnout navigaci"
 
-#: templates/partials/navigation_bar.html:46
 msgid "Account"
 msgstr "Účet"
 
-#: templates/partials/navigation_bar.html:51
 msgid "My work shifts"
 msgstr "Moje pracovní směny"
 
-#: templates/partials/navigation_bar.html:56
 msgid "Help"
 msgstr "Nápověda"
 
-#: templates/partials/navigation_bar.html:59
 msgid "Logout"
 msgstr "Odhlášení"
 
-#: templates/partials/navigation_bar.html:63
 msgid "Admin"
 msgstr "Administrátor"
 
-#: templates/partials/region_selection.html:18
 msgid "Regions"
 msgstr "Regiony"
 
-#: templates/registration/activate.html:5
 msgid "Activation complete"
 msgstr "Aktivace dokončena"
 
-#: templates/registration/activate.html:7
 msgid "Activation problem"
 msgstr "Problém s aktivací"
 
-#: templates/registration/activate.html:15
 msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
 msgstr "přihlášení"
 
-#: templates/registration/activate.html:17
 #, python-format
 msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
 msgstr "Díky %(account)s, aktivace je dokončena! Nyní se můžete přihlásit %(login_link)s s použitím uživatelského jména a hesla nastaveného při registraci."
 
-#: templates/registration/activate.html:25
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
 msgstr "Jejda &ndash; Buď již aktivujete svůj aktivní účet nebo je aktivační klíč neplatný, nebo jeho platnost vypršela."
 
-#: templates/registration/activation_complete.html:3
 msgid "Activation successful!"
 msgstr "Aktivace byla úspěšná!"
 
-#: templates/registration/activation_complete.html:9
 msgctxt "Activation successful page"
 msgid "Thank you for signing up."
 msgstr "Děkujeme, že jste se zaregistrovali."
 
-#: templates/registration/activation_complete.html:12
 msgctxt "Login link text on activation success page"
 msgid "You can login here."
 msgstr "Zde se můžete přihlásit."
 
-#: templates/registration/activation_email.html:2
 #, python-format
 msgid ""
 "\n"
@@ -1476,7 +1126,6 @@ msgstr ""
 "\n"
 "Váš tým \n"
 
-#: templates/registration/activation_email.txt:2
 #, python-format
 msgid ""
 "\n"
@@ -1503,102 +1152,73 @@ msgstr ""
 "\n"
 "Váš tým\n"
 
-#: templates/registration/activation_email_subject.txt:1
 msgid "Your volunteer-planner.org registration"
 msgstr "Registrace dobrovolníka"
 
-#: templates/registration/admin_approve_complete_email.html:6
 msgid "admin approval"
 msgstr ""
 
-#: templates/registration/admin_approve_complete_email.html:12
 #, python-format
 msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
 msgstr ""
 
-#: templates/registration/admin_approve_complete_email.txt:2
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-#: templates/registration/login.html:15
 msgid "Your username and password didn't match. Please try again."
 msgstr "Vaše uživatelské jméno a heslo se neshodují. Prosím zkuste to znovu."
 
-#: templates/registration/login.html:26
-#: templates/registration/registration_form.html:44
 msgid "Password"
 msgstr "Heslo"
 
-#: templates/registration/login.html:36
-#: templates/registration/password_reset_form.html:6
 msgid "Forgot your password?"
 msgstr "Zapomněli jste heslo?"
 
-#: templates/registration/login.html:40
 msgid "Help and sign-up"
 msgstr "Nápověda a registrace"
 
-#: templates/registration/password_change_done.html:3
 msgid "Password changed"
 msgstr "Heslo změněno"
 
-#: templates/registration/password_change_done.html:7
 msgid "Password successfully changed!"
 msgstr "Heslo úspěšně změněno!"
 
-#: templates/registration/password_change_form.html:3
-#: templates/registration/password_change_form.html:6
 msgid "Change Password"
 msgstr "Změnit heslo"
 
-#: templates/registration/password_change_form.html:11
-#: templates/registration/password_change_form.html:13
-#: templates/registration/password_reset_form.html:12
-#: templates/registration/password_reset_form.html:14
 msgid "Email address"
 msgstr "Emailová adresa"
 
-#: templates/registration/password_change_form.html:15
-#: templates/registration/password_reset_confirm.html:13
 msgid "Change password"
 msgstr "Změnit heslo"
 
-#: templates/registration/password_reset_complete.html:3
 msgid "Password reset complete"
 msgstr "Resetování hesla dokončeno"
 
-#: templates/registration/password_reset_complete.html:8
 msgctxt "login link title reset password complete page"
 msgid "log in"
 msgstr "přihlášení"
 
-#: templates/registration/password_reset_complete.html:10
 #, python-format
 msgctxt "reset password complete page"
 msgid "Your password has been reset! You may now %(login_link)s again."
 msgstr "Vaše heslo bylo resetováno! Nyní se můžete znovu přihlásit na %(login_link)s."
 
-#: templates/registration/password_reset_confirm.html:3
 msgid "Enter new password"
 msgstr "Zadejte nové heslo"
 
-#: templates/registration/password_reset_confirm.html:6
 msgid "Enter your new password below to reset your password"
 msgstr "Zadejte nové heslo pro resetování hesla"
 
-#: templates/registration/password_reset_done.html:3
 msgid "Password reset"
 msgstr "Resetovat heslo"
 
-#: templates/registration/password_reset_done.html:6
 msgid "We sent you an email with a link to reset your password."
 msgstr "Poslali jsme vám e-mail s odkazem na obnovení hesla."
 
-#: templates/registration/password_reset_done.html:7
 msgid "Please check your email and click the link to continue."
 msgstr "Zkontrolujte e-mail a pokračujte kliknutím na odkaz."
 
-#: templates/registration/password_reset_email.html:3
 #, python-format
 msgid ""
 "You are receiving this email because you (or someone pretending to be you)\n"
@@ -1612,7 +1232,6 @@ msgstr ""
 "\n"
 "Chcete-li obnovit heslo, klikněte na následující odkaz nebo jej zkopírujte a vložte do svého webového prohlížeče:"
 
-#: templates/registration/password_reset_email.html:12
 #, python-format
 msgid ""
 "\n"
@@ -1627,103 +1246,79 @@ msgstr ""
 "S pozdravem \n"
 "Správci %(site_name)s\n"
 
-#: templates/registration/password_reset_form.html:3
-#: templates/registration/password_reset_form.html:16
 msgid "Reset password"
 msgstr "Obnovit heslo"
 
-#: templates/registration/password_reset_form.html:7
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Žádný problém! Pošleme vám pokyny, jak obnovit heslo."
 
-#: templates/registration/registration_complete.html:3
 msgid "Activation email sent"
 msgstr "Aktivační e-mail odeslán"
 
-#: templates/registration/registration_complete.html:7
 msgid "An activation mail will be sent to you email address."
 msgstr "Aktivační e-mail vám bude zaslán na e-mailovou adresu."
 
-#: templates/registration/registration_complete.html:13
 msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Potvrďte prosím registraci s odkazem v e-mailu. Pokud jste jej neobdrželi do 10 minut, podívejte se do složky spam."
 
-#: templates/registration/registration_form.html:3
 msgid "Register for an account"
 msgstr "Zaregistrujte se na účet"
 
-#: templates/registration/registration_form.html:5
 msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
 msgstr "Zde můžete vytvořit nový uživatelský účet. Pokud již máte uživatelský účet, klikněte v pravém horním rohu na položku PŘIHLÁŠENÍ."
 
-#: templates/registration/registration_form.html:10
 msgid "Create a new account"
 msgstr "Vytvořit nový účet"
 
-#: templates/registration/registration_form.html:26
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr "Plánovač dobrovolníků a úkrytů vám pošlou e-maily týkající se vašich směn."
 
-#: templates/registration/registration_form.html:31
 msgid "Username already exists. Please choose a different username."
 msgstr "Uživatelské jméno již existuje. Zvolte jiné uživatelské jméno."
 
-#: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Vaše uživatelské jméno bude viditelné ostatním uživatelům. Nepoužívejte mezery nebo speciální znaky."
 
-#: templates/registration/registration_form.html:54
 msgid "Repeat password"
 msgstr "Zopakovat heslo"
 
-#: templates/registration/registration_form.html:68
 msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
 msgstr ""
 
-#: templates/registration/registration_form.html:71
 msgid "This must be checked."
 msgstr ""
 
-#: templates/registration/registration_form.html:76
 msgid "Sign-up"
 msgstr "Přihlásit se"
 
-#: volunteer_planner/settings/base.py:150
 msgid "English"
 msgstr "Angličtina"
 
-#: volunteer_planner/settings/base.py:151
 msgid "German"
 msgstr "Němčina"
 
-#: volunteer_planner/settings/base.py:152
 msgid "French"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:153
 msgid "Greek"
 msgstr "Řečtina"
 
-#: volunteer_planner/settings/base.py:154
 msgid "Hungarian"
 msgstr "Maďarština"
 
-#: volunteer_planner/settings/base.py:155
+#, fuzzy
+#| msgid "English"
 msgid "Polish"
-msgstr ""
+msgstr "Angličtina"
 
-#: volunteer_planner/settings/base.py:156
 msgid "Portuguese"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:157
 msgid "Russian"
 msgstr ""
 
-#: volunteer_planner/settings/base.py:158
 msgid "Swedish"
 msgstr "Švédština"
 
-#: volunteer_planner/settings/base.py:159
 msgid "Turkish"
 msgstr ""

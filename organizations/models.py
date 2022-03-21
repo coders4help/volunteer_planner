@@ -1,10 +1,11 @@
 # coding: utf-8
-from django.urls import reverse
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from accounts.models import UserAccount
 from scheduler.models import Shift
+from .managers import FacilityManager
 
 
 class Membership(models.Model):
@@ -191,6 +192,8 @@ class Facility(models.Model):
         verbose_name=_(u'join mode'),
         help_text=_(u'Who can join this facility?'))
 
+    objects = FacilityManager()
+
     class Meta:
         verbose_name = _(u'facility')
         verbose_name_plural = _(u'facilities')
@@ -298,10 +301,12 @@ class Workplace(models.Model):
     # a description of the workplace
     description = models.TextField(blank=True, verbose_name=_(u'description'))
 
+    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"))
+
     class Meta:
         verbose_name = _(u'workplace')
         verbose_name_plural = _(u'workplaces')
-        ordering = ('facility', 'name',)
+        ordering = ('facility', '-priority', 'name',)
 
     def __unicode__(self):
         return f"{self.name}"
@@ -327,10 +332,12 @@ class Task(models.Model):
     # a description of the task
     description = models.TextField(blank=True, verbose_name=_(u'description'))
 
+    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"))
+
     class Meta:
         verbose_name = _(u'task')
         verbose_name_plural = _(u'tasks')
-        ordering = ('facility', 'name',)
+        ordering = ('facility', '-priority', 'name',)
 
     def __unicode__(self):
         return f"{self.name}"
