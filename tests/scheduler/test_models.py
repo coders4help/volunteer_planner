@@ -8,7 +8,7 @@ from django.conf import settings
 from organizations.models import Facility
 from scheduler.models import Shift, ShiftHelper
 from tests.factories import ShiftFactory, UserAccountFactory, TaskFactory, \
-    FacilityFactory
+    FacilityFactory, WorkplaceFactory
 
 
 def create_shift(start_hour, end_hour, facility=None):
@@ -125,6 +125,7 @@ class ShiftTestCase(TestCase):
 
 
 class FacilityTestCase(TestCase):
+
     def test_shift_manager_for_facility(self):
         """
             checks that get_days_with_shifts() returns only dates later than datetime.now()
@@ -135,16 +136,21 @@ class FacilityTestCase(TestCase):
         tomorrow_start = now + timedelta(1)
         tomorrow_end = tomorrow_start + timedelta(hours=1)
 
+        assert Facility.objects.count() == 0
+
         facility = FacilityFactory.create()
         task = TaskFactory.create(facility=facility)
+        workplace = WorkplaceFactory.create(facility=facility)
 
         yesterday_shift = ShiftFactory.create(facility=facility,
                                               task=task,
+                                              workplace=workplace,
                                               starting_time=yesterday_start,
                                               ending_time=yesterday_end)
 
         tomorrow_shift = ShiftFactory.create(facility=facility,
                                              task=task,
+                                             workplace=workplace,
                                              starting_time=tomorrow_start,
                                              ending_time=tomorrow_end)
 
