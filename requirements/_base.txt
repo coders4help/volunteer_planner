@@ -10,7 +10,6 @@ django-extensions==3.1.5
 django-js-asset==2.0.0
 django-logentry-admin==1.1.0
 django-registration-redux==2.10
-djangocms-admin-style==3.0.0
 execnet==1.9.0
 executing==0.8.3
 git+https://github.com/Doca/django-ajax.git#egg=djangoajax
