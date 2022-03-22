@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-
-cmd="./manage.py makemessages --no-wrap --no-location --no-obsolete $@"
-echo "${cmd}"
-${cmd}
+set -e
+cmd="./manage.py"
+args=(makemessages --no-wrap --no-location --no-obsolete "${@}")
+echo "${cmd} ${args[*]}"
+${cmd} "${args[@]}"
 echo "Done."
 echo
 echo "Checking for changes in .po files..."
