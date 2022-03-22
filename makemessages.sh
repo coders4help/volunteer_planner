@@ -6,7 +6,7 @@ default_locale_args() {
     while [ $# -gt 0 ]; do
         arg="${1}"
         shift
-        if [[ "${arg}" =~ ^--(all|locale)(=|$) ]]; then
+        if [[ "${arg}" =~ ^-(a|l|-all|-locale)(=|$) ]]; then
             locale_arg=1
             break
         fi
