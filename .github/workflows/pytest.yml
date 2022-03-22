@@ -26,7 +26,7 @@ jobs:
       # apt install system dependencies
       - name: Install apt packages
         run: |
-          sudo apt install -y gettext 
+          sudo apt install -y gettext
 
       # Pip install project dependencies
       - name: Install python packages with pip
@@ -38,7 +38,6 @@ jobs:
       - name: Check for missing messages in .po files
         run: |
           ./makemessages.sh
-          git diff --ignore-matching-lines=POT-Creation-Date --exit-code
 
       # Check for missing Django migrations
       - name: Check for missing Django migrations
