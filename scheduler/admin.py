@@ -110,10 +110,10 @@ class ShiftAdmin(FormattedModelChoiceFieldAdminMixin, MembershipFilteredAdmin):
     def get_volunteer_names(self, obj):
         def _format_username(user):
             full_name = user.get_full_name()
-            username = format_html(u'{}<br><strong>{}</strong>',
-                                   user.username, user.email)
+            username = format_html('<strong>{}</strong>', user.username)
+
             if full_name:
-                username = format_html(u'{} / {}', full_name, username)
+                username = format_html('{} ({})', full_name, username)
             return format_html(u'<li>{}</li>', username)
 
         return format_html(u"<ul>{}</ul>", mark_safe(u"\n".join(
