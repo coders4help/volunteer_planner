@@ -25,18 +25,11 @@ class UserAccountAdmin(admin.ModelAdmin):
     def get_user_last_name(self, obj):
         return obj.user.last_name
 
-    get_user_last_name.short_description = _("first name")
+    get_user_last_name.short_description = _("last name")
     get_user_last_name.admin_order_field = "user__last_name"
-
-    def get_user_email(self, obj):
-        return obj.user.email
-
-    get_user_email.short_description = _("email")
-    get_user_email.admin_order_field = "user__email"
 
     list_display = (
         "user",
-        "get_user_email",
         "get_user_first_name",
         "get_user_last_name",
     )
@@ -44,8 +37,6 @@ class UserAccountAdmin(admin.ModelAdmin):
     search_fields = (
         "user__username",
         "user__email",
-        "user__last_name",
-        "user__first_name",
     )
 
     list_filter = (

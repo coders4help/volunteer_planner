@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-21 12:22+0100\n"
+"POT-Creation-Date: 2022-03-22 01:20+0100\n"
 "PO-Revision-Date: 2016-04-13 17:27+0000\n"
 "Last-Translator: Antonio Mireles <antonio@mirelesindependent.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/coders4help/volunteer-planner/language/es/)\n"
@@ -22,6 +22,9 @@ msgstr ""
 
 msgid "first name"
 msgstr "nombre"
+
+msgid "last name"
+msgstr "Apellido"
 
 msgid "email"
 msgstr "correo electrónico"

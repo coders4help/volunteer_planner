@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-21 12:22+0100\n"
+"POT-Creation-Date: 2022-03-22 01:20+0100\n"
 "PO-Revision-Date: 2022-03-15 17:56+0000\n"
 "Last-Translator: Christoph Meißner\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
@@ -22,6 +22,9 @@ msgstr ""
 
 msgid "first name"
 msgstr "křestní jméno"
+
+msgid "last name"
+msgstr "Příjmení"
 
 msgid "email"
 msgstr "e-mail"
