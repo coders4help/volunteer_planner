@@ -754,8 +754,15 @@ msgstr ""
 msgid "You can help in the following facilities"
 msgstr "Pode ajudar nas seguintes instalações"
 
-msgid "filter"
-msgstr "filtro"
+#, fuzzy
+#| msgid "countries"
+msgid "Countries"
+msgstr "paises"
+
+#, fuzzy
+#| msgid "areas"
+msgid "Areas"
+msgstr "áreas"
 
 msgid "see more"
 msgstr "ver mais"

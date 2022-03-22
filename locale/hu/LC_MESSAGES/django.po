@@ -759,8 +759,15 @@ msgstr "Új beosztások a/az %(geographical_name)s helyszínen."
 msgid "You can help in the following facilities"
 msgstr ""
 
-msgid "filter"
-msgstr ""
+#, fuzzy
+#| msgid "countries"
+msgid "Countries"
+msgstr "országok"
+
+#, fuzzy
+#| msgid "areas"
+msgid "Areas"
+msgstr "területek"
 
 msgid "see more"
 msgstr ""

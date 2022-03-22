@@ -781,8 +781,15 @@ msgstr "Δεν υπάρχουν διαθέσιμες βάρδιες σε:  %(geo
 msgid "You can help in the following facilities"
 msgstr "Μπορείς να βοηθήσεις στις ακόλουθες τοποθεσίες"
 
-msgid "filter"
-msgstr "Φιλτράρισε"
+#, fuzzy
+#| msgid "countries"
+msgid "Countries"
+msgstr "χώρες"
+
+#, fuzzy
+#| msgid "areas"
+msgid "Areas"
+msgstr "περιοχές"
 
 msgid "see more"
 msgstr "Δες περισότερα"

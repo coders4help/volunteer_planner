@@ -777,8 +777,15 @@ msgstr "Det finns inga kommande pass lediga för %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Du kan hjälpa på följande platser"
 
-msgid "filter"
-msgstr "filter"
+#, fuzzy
+#| msgid "countries"
+msgid "Countries"
+msgstr "länder"
+
+#, fuzzy
+#| msgid "areas"
+msgid "Areas"
+msgstr "områden"
 
 msgid "see more"
 msgstr "se mer"

@@ -777,8 +777,11 @@ msgstr "No hay turnos futuros disponibles para %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Usted puede ayudar en las siguientes instalaciones"
 
-msgid "filter"
-msgstr "filtrar"
+msgid "Countries"
+msgstr "paises"
+
+msgid "Areas"
+msgstr "áreas"
 
 msgid "see more"
 msgstr "ver más"

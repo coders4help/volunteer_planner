@@ -752,7 +752,10 @@ msgstr ""
 msgid "You can help in the following facilities"
 msgstr ""
 
-msgid "filter"
+msgid "Countries"
+msgstr ""
+
+msgid "Areas"
 msgstr ""
 
 msgid "see more"

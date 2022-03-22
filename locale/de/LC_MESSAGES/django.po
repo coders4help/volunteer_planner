@@ -779,8 +779,12 @@ msgstr "Derzeit sind keine Schichten geplant für %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Du kannst in folgenden Einrichtungen helfen"
 
-msgid "filter"
-msgstr "filtern"
+msgid "Countries"
+msgstr "Länder"
+
+
+msgid "Areas"
+msgstr "Gebiete"
 
 msgid "see more"
 msgstr "mehr anzeigen"

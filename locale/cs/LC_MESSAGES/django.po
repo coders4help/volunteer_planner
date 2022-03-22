@@ -770,8 +770,11 @@ msgstr "Nejsou k dispozici žádné nadcházející směny pro %(geographical_na
 msgid "You can help in the following facilities"
 msgstr "Můžete pomoci v následujících zařízeních"
 
-msgid "filter"
-msgstr "filtr"
+msgid "Countries"
+msgstr "státy"
+
+msgid "Areas"
+msgstr "oblasti"
 
 msgid "see more"
 msgstr "zobrazit víc"

@@ -773,8 +773,15 @@ msgstr "Нет доступных смен для %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Вы можете помочь в следующих объектах"
 
-msgid "filter"
-msgstr "фильтровать"
+#, fuzzy
+#| msgid "countries"
+msgid "Countries"
+msgstr "страны"
+
+#, fuzzy
+#| msgid "areas"
+msgid "Areas"
+msgstr "зоны"
 
 msgid "see more"
 msgstr "узнать больше"

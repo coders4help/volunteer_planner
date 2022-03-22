@@ -775,8 +775,11 @@ msgstr "Il n'y a pas de créneau disponible à %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Vous pouvez aider dans les établissements suivants"
 
-msgid "filter"
-msgstr "Filtrer"
+msgid "Countries"
+msgstr "Pays"
+
+msgid "Areas"
+msgstr "Zones"
 
 msgid "see more"
 msgstr "voir"

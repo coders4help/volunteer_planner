@@ -753,8 +753,11 @@ msgstr "%(geographical_name)s için uygun bir vardiya görünmemektedir."
 msgid "You can help in the following facilities"
 msgstr ""
 
-msgid "filter"
-msgstr ""
+msgid "Countries"
+msgstr "ülkeler"
+
+msgid "Areas"
+msgstr "alanlar"
 
 msgid "see more"
 msgstr ""
