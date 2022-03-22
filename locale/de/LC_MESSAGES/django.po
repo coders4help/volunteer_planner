@@ -1723,7 +1723,7 @@ msgstr "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen aus
 
 #: templates/registration/registration_form.html:38
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeilen oder Sonderzeichen benutzen."
+msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeichen oder Sonderzeichen benutzen."
 
 #: templates/registration/registration_form.html:51
 #: tests/registration/test_registration.py:131
