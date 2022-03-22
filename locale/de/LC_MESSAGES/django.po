@@ -1309,7 +1309,7 @@ msgid "Username already exists. Please choose a different username."
 msgstr "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen aus."
 
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeilen oder Sonderzeichen benutzen."
+msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeichen oder Sonderzeichen benutzen."
 
 msgid "The two password fields didn't match."
 msgstr "Die Passwörter stimmen nicht überein."
