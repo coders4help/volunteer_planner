@@ -37,7 +37,7 @@ jobs:
       # Check for missing messages in .po files
       - name: Check for missing messages in .po files
         run: |
-          ./makemessages.sh --all
+          ./makemessages.sh
 
       # Check for missing Django migrations
       - name: Check for missing Django migrations
