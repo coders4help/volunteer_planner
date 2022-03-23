@@ -4,8 +4,8 @@ echo
 echo "================================================================================"
 echo "Checking for changes in .po files..."
 echo "--------------------------------------------------------------------------------"
-diff_cmd="git diff"
-diff_args=(--ignore-matching-lines=POT-Creation-Date --exit-code -- '***.po')
+diff_cmd="git"
+diff_args=(diff --ignore-matching-lines=POT-Creation-Date --exit-code -- ':/:locale/**/*.po')
 echo "${diff_cmd} ${diff_args[*]}"
 ${diff_cmd} "${diff_args[@]}"
 diff_result=$?
