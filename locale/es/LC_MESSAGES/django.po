@@ -1271,14 +1271,8 @@ msgstr "Crear una nueva cuenta"
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr "Volunteer-Planner y albergues te mandaran correos electronicos acerca de tus turnos de trabajo."
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Ese nombre de usario ya existe. Escoja otro nombre de usario por favor."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Tu nombre de usuario va a ser visible a otros usuarios. No uses espacios o caracteres especiales."
-
-msgid "The two password fields didn't match."
-msgstr "Los dos campos para la contraseña no coinciden."
 
 msgid "Repeat password"
 msgstr "Repita la contraseña"

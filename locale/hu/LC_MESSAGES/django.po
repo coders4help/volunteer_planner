@@ -1231,14 +1231,8 @@ msgstr ""
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Már létezik ez a felhasználói név. Kérjük, válassz egy másikat!"
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
-
-msgid "The two password fields didn't match."
-msgstr "A két jelszó nem egyezik!"
 
 msgid "Repeat password"
 msgstr "Ismételd meg a jelszót"

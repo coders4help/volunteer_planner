@@ -1270,14 +1270,8 @@ msgstr ""
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Användarnamnet finns redan. Vänligen välj ett annat användarnamn."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
-
-msgid "The two password fields didn't match."
-msgstr "Lösenorden stämmer inte överens."
 
 msgid "Repeat password"
 msgstr "Upprepa lösenord"

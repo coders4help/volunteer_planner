@@ -1274,14 +1274,8 @@ msgstr ""
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Υπάρχει ήδη κάποιος χρήστης με αυτό το όνομα χρήστη. Μπορείς να επιλέξεις κάποιο άλλο;"
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
-
-msgid "The two password fields didn't match."
-msgstr "Τα περιεχόμενο των δύο πεδίων κωδικού δεν είναι το ίδιο"
 
 msgid "Repeat password"
 msgstr "Επανάληψη κωδικού"
