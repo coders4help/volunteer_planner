@@ -1,15 +1,17 @@
-# coding: utf-8
 import random
 import string
 
+from django.contrib.admin.models import DELETION, LogEntry
 from django.contrib.auth import logout
+from django.contrib.contenttypes.models import ContentType
+from django.db import transaction
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth import models
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 from volunteer_planner.utils import LoginRequiredMixin
 from scheduler.models import ShiftHelper
@@ -37,7 +39,23 @@ def random_string(length=30):
     return u''.join(random.choice(string.ascii_letters) for x in range(length))
 
 
+@transaction.atomic
+def unsub_user_from_future_shifts(user):
+    subscribed_shifts = ShiftHelper.objects.filter(user_account=user, shift__starting_time__gt=datetime.now())
+    for sh in subscribed_shifts:
+        LogEntry.objects.log_action(
+            user_id=user.id,
+            content_type_id=ContentType.objects.get_for_model(ShiftHelper).id,
+            object_id=sh.id,
+            object_repr=f"User '{user}' @ shift '{sh.shift}'",
+            action_flag=DELETION,
+            change_message=f"Initially joined: {sh.joined_shift_at.isoformat()}"
+        )
+        sh.delete()
+
+
 @login_required()
+@transaction.atomic
 def account_delete_final(request):
     """
     This randomizes/anonymises the user profile. The account is set inactive.
@@ -47,12 +65,19 @@ def account_delete_final(request):
     :return http response of user_detail_deleted-template that confirms deletion.
     """
     user = models.User.objects.get_by_natural_key(request.user.username)
+
+    unsub_user_from_future_shifts(user.account)
+
     user.username = random_string()
     user.first_name = "Deleted"
     user.last_name = "User"
     user.email = random_string(24)+"@yy.yy"
     user.password = random_string(20)
     user.is_active = False
+    user.is_staff = False
+    user.is_superuser = False
+    user.user_permissions.clear()
+    user.groups.clear()
     user.save()
 
     logout(request)
