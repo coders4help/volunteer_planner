@@ -13,9 +13,9 @@ DATABASES = {
     }
 }
 
-INSTALLED_APPS += (
-    'debug_toolbar',
-)
+# INSTALLED_APPS += (
+#     'debug_toolbar',
+# )
 
 # CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
@@ -26,10 +26,6 @@ CACHES = {
     }
 }
 # END CACHE CONFIGURATION
-
-MIDDLEWARE += (
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
 
 LOGGING = {
     'version': 1,
