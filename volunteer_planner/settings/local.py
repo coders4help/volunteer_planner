@@ -89,5 +89,5 @@ LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'de')
 
 DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
 
-# for testing on mobile devices in local networks it's neccessary to overwrite with a local ip
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'volunteer-planner.org,www.volunteer-planner.org').split(sep=',') + ['localhost']
+# for testing on mobile devices in local networks it's necessary to overwrite with a local ip
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.localhost,127.0.0.1,[::1]').split(sep=',')
