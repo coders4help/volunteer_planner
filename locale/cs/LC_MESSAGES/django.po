@@ -1276,14 +1276,8 @@ msgstr "Vytvořit nový účet"
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr "Plánovač dobrovolníků a úkrytů vám pošlou e-maily týkající se vašich směn."
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Uživatelské jméno již existuje. Zvolte jiné uživatelské jméno."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Vaše uživatelské jméno bude viditelné ostatním uživatelům. Nepoužívejte mezery nebo speciální znaky."
-
-msgid "The two password fields didn't match."
-msgstr "Dvě pole hesla si neodpovídají."
 
 msgid "Repeat password"
 msgstr "Zopakovat heslo"

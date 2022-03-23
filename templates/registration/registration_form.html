@@ -15,9 +15,11 @@
 
     <form method='post' action=''>{% csrf_token %}
         <div class="form-group {% if form.email.errors %}has-error{% endif %}">
-            {% for email_error in form.email.errors %}
-                <div class="alert alert-danger" role="alert">{{ email_error }}</div>
-            {% endfor %}
+                {% for error in form.email.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
             <input type="email"
                    class="form-control"
                    placeholder="{% trans "Email" %}"
@@ -28,8 +30,11 @@
 
         <div class="form-group {% if form.username.errors %}has-error{% endif %}">
             <label {% if form.username.errors %}style="color:red"{% endif %} for="Username">
-                {% if form.username.errors %}{% trans "Username already exists. Please choose a different username." %}
-                {% endif %}</label>
+                {% for error in form.username.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
             <input class="form-control"
                    id="Username"
                    placeholder="{% trans "Username" %}"
@@ -38,7 +43,14 @@
             <p class="help-block">{% trans "Your username will be visible to other users. Don't use spaces or special characters." %}</p>
         </div>
 
-        <div class="form-group">
+        <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
+            <label {% if form.password1.errors %}style="color:red"{% endif %} for="password1">
+                {% for error in form.password1.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            </label>
             <input type="password"
                    class="form-control"
                    placeholder="{% trans "Password" %}"
@@ -47,8 +59,13 @@
         </div>
 
         <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
-            <label {% if form.password2.errors %}style="color:red"{% endif %}
-                   for="password2">{% if form.password2.errors %}{% trans "The two password fields didn't match." %}{% endif %}</label>
+            <label {% if form.password2.errors %}style="color:red"{% endif %} for="password2">
+                {% for error in form.password2.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            </label>
             <input type="password"
                    class="form-control"
                    placeholder="{% trans "Repeat password" %}"
@@ -58,19 +75,20 @@
           </div>
 
         <div class="form-group {% if form.accept_privacy_policy.errors %}has-error{% endif %}">
-            <input type="checkbox"
-                   id="accept_privacy_policy"
-                   name="accept_privacy_policy"
-                   {% if form.cleaned_data.accept_privacy_policy %}
-                       checked
-                   {% endif %}>
+            <input {% if form.cleaned_data.accept_privacy_policy %} checked{% endif %}
+                    type="checkbox"
+                    id="accept_privacy_policy"
+                    name="accept_privacy_policy">
             <label {% if form.accept_privacy_policy.errors %}style="color:red"{% endif %} for="accept_privacy_policy">
                 {% blocktrans %}I have read and agree to the <a href="/impressum/#datenschutz">Privacy Policy</a>.{% endblocktrans %}
 
                 {% if form.accept_privacy_policy.errors %}
-                    <b>{% trans "This must be checked." %}</b>
+                    <div class="alert alert-danger">
+                        {% trans "This must be checked." %}
+                    </div>
                 {% endif %}
             </label>
+
         </div>
 
         <button type="submit" class="btn btn-primary align-left">{% trans "Sign-up" %}</button>

@@ -1207,13 +1207,7 @@ msgstr ""
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Böyle bir kullanıcı adı bulunmakta. Lütfen farklı bir kullanıcı adı seçin."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr ""
-
-msgid "The two password fields didn't match."
 msgstr ""
 
 msgid "Repeat password"
