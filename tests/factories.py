@@ -3,6 +3,7 @@ import string
 from datetime import datetime, timedelta
 
 from django.contrib.auth.models import User
+
 from factory import Sequence, SubFactory, LazyAttribute, PostGenerationMethodCall
 from factory.django import DjangoModelFactory
 from factory.fuzzy import FuzzyText

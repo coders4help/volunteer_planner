@@ -1,4 +1,7 @@
 # coding=utf-8
+from django.test import TestCase
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 import pytest
 
 from django.test import TestCase, override_settings
