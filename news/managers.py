@@ -17,7 +17,7 @@ class NewsEntryQuerySet(models.QuerySet):
 
             :return: the query set configured to filter only for given facilities
         """
-        log.debug(u'Filtering for %d facilities', len(facilities))
+        logger.debug(u'Filtering for %d facilities', len(facilities))
         return self.filter(facility__in=facilities)
 
     def filter_by_facility(self, facility):
@@ -28,7 +28,7 @@ class NewsEntryQuerySet(models.QuerySet):
 
             :return: Iterator containing only news entries for the given facility
         """
-        log.debug(u'Filtering news entries for facility %s (id: %s)', facility.name, facility.id)
+        logger.debug(u'Filtering news entries for facility %s (id: %s)', facility.name, facility.id)
         return filter(lambda entry: entry.facility_id == facility.id, self)
 
 
