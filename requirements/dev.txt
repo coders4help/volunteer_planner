@@ -1,22 +1,17 @@
 -r base.txt
 -r tests.txt
 
-black==22.1.0
-coverage==6.3.2
-flake8==4.0.1
-gunicorn==19.9.0
-django-debug-toolbar==3.2.4
-factory-boy==3.2.1
-pytest-cache==1.0
-pytest-cov==3.0.0
-pytest-django==4.5.2
-pytest==7.1.0
-transifex-client==0.14.4
-whitenoise==6.0.0
-selenium==4.1.3
+# debugging
 ipdb==0.13.9
-ipython-genutils==0.2.0
 ipython==8.1.1
+
+# code formatting and linting
+black==22.1.0
+flake8==4.0.1
+
+# translations
+transifex-client==0.14.4
+
+# package management tools
+pip-chill==1.0.1
 pipdeptree==2.2.1
-behave==1.2.6
-python-slugify==4.0.1
