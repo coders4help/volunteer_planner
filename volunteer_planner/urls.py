@@ -21,11 +21,11 @@ urlpatterns = [
     re_path(r'^', include('non_logged_in_area.urls')),
 ]
 
-# if settings.DEBUG:
-#     import debug_toolbar
-#     urlpatterns += [
-#         re_path(r'^__debug__/', include(debug_toolbar.urls)),
-#     ]
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        re_path('__debug__/', include(debug_toolbar.urls)),
+    ]
 
 urlpatterns += [
     re_path(r'^(?P<url>.*/)$', translated_flatpage),
