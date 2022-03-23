@@ -1,4 +1,4 @@
--r _base.txt
+-r base.txt
 coverage==4.5.3
 django-debug-toolbar==2.0
 factory-boy==2.12.0

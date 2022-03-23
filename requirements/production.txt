@@ -1,2 +1,2 @@
--r _base.txt
+-r base.txt
 MySQL-python==1.2.5
