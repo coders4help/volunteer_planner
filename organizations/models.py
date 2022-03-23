@@ -301,7 +301,8 @@ class Workplace(models.Model):
     # a description of the workplace
     description = models.TextField(blank=True, verbose_name=_(u'description'))
 
-    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"))
+    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"),
+                                                help_text=_("Higher value = higher priority"))
 
     class Meta:
         verbose_name = _(u'workplace')
@@ -332,7 +333,8 @@ class Task(models.Model):
     # a description of the task
     description = models.TextField(blank=True, verbose_name=_(u'description'))
 
-    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"))
+    priority = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name=_("priority"),
+                                                help_text=_("Higher value = higher priority"))
 
     class Meta:
         verbose_name = _(u'task')

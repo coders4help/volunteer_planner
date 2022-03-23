@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-22 01:20+0100\n"
+"POT-Creation-Date: 2022-03-23 00:36+0100\n"
 "PO-Revision-Date: 2016-11-21 18:24+0000\n"
 "Last-Translator: Sönke Klinger <klinger@biver.de>\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -607,6 +607,9 @@ msgstr "{username} bei {facility_name} ({user_role})"
 
 msgid "priority"
 msgstr "Priorität"
+
+msgid "Higher value = higher priority"
+msgstr "Höherer Wert = höhere Priorität"
 
 msgid "workplace"
 msgstr "Arbeitsplatz"
