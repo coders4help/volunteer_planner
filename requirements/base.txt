@@ -4,12 +4,14 @@ decorator==4.4.0
 django-appconf==1.0.3
 django-ckeditor==5.7.1
 django-compressor==2.3
+django-debug-toolbar==2.0
 django-extensions==2.2.1
 django-logentry-admin==1.0.4
 django-registration-redux==2.6
 django-uwsgi==0.2.2
 Django==2.2.3
 djangocms-admin-style==1.4.0
+factory-boy==2.12.0
 ipdb==0.13.9
 ipython-genutils==0.2.0
 ipython==7.32.0
