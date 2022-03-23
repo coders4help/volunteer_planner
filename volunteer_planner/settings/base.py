@@ -54,7 +54,6 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    'google_tools',
     'osm_tools',
     'accounts.apps.AccountsConfig',
     'organizations',
@@ -105,7 +104,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'google_tools.context_processors.google_tools_config',
                 'non_logged_in_area.context_processors.current_site',
             ],
         },
