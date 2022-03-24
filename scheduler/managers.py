@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from datetime import timedelta
+from datetime import datetime, time, timedelta
 
 from django.db import models
 from django.utils import timezone
@@ -18,6 +18,8 @@ class ShiftQuerySet(models.QuerySet):
             shiftdate. That means shifts that intersect with the day of
             shiftdate.
         """
+        # make sure, shiftdate is a date and not a datetime
+        shiftdate = datetime.combine(shiftdate, time.min).date()
         return self.filter(ending_time__gte=shiftdate,
                            starting_time__lt=shiftdate + timedelta(days=1))
 
