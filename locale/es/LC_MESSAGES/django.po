@@ -1,8 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Antonio Mireles <antonio@mirelesindependent.com>, 2016
 # Ethan Jones <ethancjones90@gmail.com>, 2015
 # Jacob Cline <jacob.w.cline@gmail.com>, 2015
 # Antonio Mireles <antonio@mirelesindependent.com>, 2016
@@ -192,14 +190,14 @@ msgstr "Pagina no encontrada"
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Lo sentimos, pero la pagina requerida no pudo ser encontrada."
 
-msgid "Server error"
+msgid "server error"
 msgstr "Error del servidor"
 
 msgid "Server Error <em>(500)</em>"
 msgstr "Error del Servidor <em>(500)</em>"
 
 msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
-msgstr "Ha habido un error. Ha sido reportado a los administradores del sitio por medio de correo electronico y se debera de arreglar brevemente. Gracias por su paciencia."
+msgstr ""
 
 msgid "Login"
 msgstr "Identificarse"
@@ -478,9 +476,6 @@ msgid ""
 "                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 msgstr ""
-"\n"
-"...tal vez con un borrador adjunto de los turnos que quiere ver en volunteer-planner. Por favor escriba a <a\n"
-"href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
 
 msgid "edit"
 msgstr "editar"
@@ -737,7 +732,7 @@ msgid "volunteers"
 msgstr "voluntarios"
 
 msgid "scheduler"
-msgstr "Planificador"
+msgstr ""
 
 msgid "number of needed volunteers"
 msgstr "número de voluntarios que se necesitan"
@@ -783,11 +778,11 @@ msgstr "No hay turnos futuros disponibles para %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Usted puede ayudar en las siguientes instalaciones"
 
-msgid "filter"
-msgstr "filtrar"
-
 msgid "see more"
 msgstr "ver más"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr "turnos disponibles"
@@ -932,14 +927,14 @@ msgstr "Usted abandonó exitosamente este turno."
 #, python-brace-format
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
-msgstr[0] "Un turno ya existe en el {date}"
-msgstr[1] "{num_shifts} turnos ya existen en el {date}"
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
-msgstr[0] "{num_shifts} turno fue añadido al {date}"
-msgstr[1] "{num_shifts} turnos fueron añadidos al {date}"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Something didn't work. Sorry about that."
 msgstr "Algo no funcionó. Sentimos que haya ocurrido."
@@ -1301,11 +1296,17 @@ msgstr "Griego"
 msgid "Hungarian"
 msgstr "Húngaro"
 
-msgid "Swedish"
-msgstr "Sueco"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Sueco"
 
 msgid "Turkish"
 msgstr ""

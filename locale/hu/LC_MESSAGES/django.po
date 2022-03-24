@@ -196,7 +196,7 @@ msgstr ""
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
 
-msgid "Server error"
+msgid "server error"
 msgstr ""
 
 msgid "Server Error <em>(500)</em>"
@@ -765,10 +765,10 @@ msgstr "Új beosztások a/az %(geographical_name)s helyszínen."
 msgid "You can help in the following facilities"
 msgstr ""
 
-msgid "filter"
+msgid "see more"
 msgstr ""
 
-msgid "see more"
+msgid "news"
 msgstr ""
 
 msgid "open shifts"
@@ -1261,10 +1261,16 @@ msgstr ""
 msgid "Hungarian"
 msgstr "Magyar"
 
-msgid "Swedish"
+msgid "Polish"
 msgstr ""
 
 msgid "Portuguese"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Turkish"

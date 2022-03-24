@@ -1,8 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
-# Translators:
 # Translators:
 # trendspotter <jirka.p@volny.cz>, 2019
 # trendspotter <jirka.p@volny.cz>, 2019
@@ -30,16 +26,16 @@ msgid "email"
 msgstr "e-mail"
 
 msgid "date joined"
-msgstr ""
+msgstr "datum připojení"
 
 msgid "last login"
-msgstr ""
+msgstr "poslední přihlášení"
 
 msgid "Accounts"
 msgstr "Účty"
 
 msgid "Accept privacy policy"
-msgstr ""
+msgstr "Přijmout zásady ochrany osobních údajů"
 
 msgid "user account"
 msgstr "uživatelský účet"
@@ -192,7 +188,7 @@ msgstr "Stránka nenalezena"
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Omlouváme se, ale požadovaná stránka nebyla nalezena."
 
-msgid "Server error"
+msgid "server error"
 msgstr "Chyba serveru"
 
 msgid "Server Error <em>(500)</em>"
@@ -778,11 +774,11 @@ msgstr "Nejsou k dispozici žádné nadcházející směny pro %(geographical_na
 msgid "You can help in the following facilities"
 msgstr "Můžete pomoci v následujících zařízeních"
 
-msgid "filter"
-msgstr "filtr"
-
 msgid "see more"
 msgstr "zobrazit víc"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr "otevřené směny"
@@ -1306,11 +1302,17 @@ msgstr "Řečtina"
 msgid "Hungarian"
 msgstr "Maďarština"
 
-msgid "Swedish"
-msgstr "Švédština"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Švédština"
 
 msgid "Turkish"
 msgstr ""

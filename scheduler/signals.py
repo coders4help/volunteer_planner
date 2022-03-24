@@ -1,6 +1,6 @@
 # coding=utf-8
 import logging
-from datetime import datetime, timedelta
+from django.utils.timezone import timedelta
 
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -8,6 +8,7 @@ from django.db.models.signals import pre_delete, pre_save
 from django.dispatch import receiver
 from django.template.defaultfilters import time as date_filter
 from django.template.loader import render_to_string
+from django.utils import timezone
 
 from scheduler.models import Shift
 
@@ -28,7 +29,7 @@ def send_email_notifications(sender, instance, **kwargs):
     """
     try:
         shift = instance
-        if shift.ending_time >= datetime.now():
+        if shift.ending_time >= timezone.now():
             subject = u'Schicht am {} wurde abgesagt'.format(
                 shift.starting_time.strftime('%d.%m.%y'))
 
@@ -73,7 +74,7 @@ def notify_users_shift_change(sender, instance, **kwargs):
     if shift.pk:
         old_shift = Shift.objects.get(pk=shift.pk)
 
-        if old_shift.starting_time >= datetime.now() and times_changed(shift,
+        if old_shift.starting_time >= timezone.now() and times_changed(shift,
                                                                        old_shift):
             subject = u'Schicht wurde verändert: {task} am {date}'.format(
                 task=old_shift.task.name,

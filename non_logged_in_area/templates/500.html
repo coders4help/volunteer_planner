@@ -1,7 +1,7 @@
 {% extends "base_non_logged_in.html" %}
 {% load i18n %}
 
-{% block title %} Volunteer Planner - {% trans "Server error" %}{% endblock %}
+{% block title %} Volunteer Planner - {% trans "server error" as server_error_title %}{{ server_error_title|title }}{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">

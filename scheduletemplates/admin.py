@@ -1,7 +1,6 @@
 from datetime import datetime, time, timedelta
 
 from django import forms
-from django.conf.urls import url
 from django.contrib import admin, messages
 from django.core.exceptions import ValidationError
 from django.db.models import Count, Min, Sum
@@ -10,9 +9,12 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
-from django.utils import formats, timezone
-from django.utils.translation import ugettext_lazy as _, ungettext_lazy
+from django.urls import re_path
+from django.utils import formats
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
+from . import models
 from organizations.admin import (
     filter_queryset_by_membership,
     MembershipFieldListFilter,
@@ -213,7 +215,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                     volunteer_count=Count('helpers')))
 
                 if len(existing_shifts):
-                    messages.warning(request, ungettext_lazy(
+                    messages.warning(request, ngettext_lazy(
                         u'A shift already exists at {date}',
                         u'{num_shifts} shifts already exists at {date}',
                         len(id_list)).format(
@@ -269,7 +271,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
                         slots=template.slots,
                         members_only=template.members_only)
 
-                messages.success(request, ungettext_lazy(
+                messages.success(request, ngettext_lazy(
                     u'{num_shifts} shift was added to {date}',
                     u'{num_shifts} shifts were added to {date}',
                     len(id_list)).format(
@@ -294,7 +296,7 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
     def get_urls(self):
         urls = super(ScheduleTemplateAdmin, self).get_urls()
         custom_urls = [
-            url(r'^(?P<pk>.+)/apply/$',
+            re_path(r'^(?P<pk>.+)/apply/$',
                 self.admin_site.admin_view(self.apply_schedule_template),
                 name='apply_schedule_template'),
         ]

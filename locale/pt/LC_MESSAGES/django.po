@@ -191,7 +191,7 @@ msgstr ""
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
 
-msgid "Server error"
+msgid "server error"
 msgstr ""
 
 msgid "Server Error <em>(500)</em>"
@@ -760,11 +760,11 @@ msgstr ""
 msgid "You can help in the following facilities"
 msgstr "Pode ajudar nas seguintes instalações"
 
-msgid "filter"
-msgstr "filtro"
-
 msgid "see more"
 msgstr "ver mais"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr ""
@@ -1238,11 +1238,17 @@ msgstr ""
 msgid "Hungarian"
 msgstr "Húngaro"
 
-msgid "Swedish"
-msgstr "Sueco"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Sueco"
 
 msgid "Turkish"
 msgstr ""
