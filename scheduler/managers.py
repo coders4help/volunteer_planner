@@ -62,8 +62,10 @@ class ShiftQuerySet(models.QuerySet):
     def open(self):
         return self.filter(ending_time__gte=timezone.now())
 
+
 # Create manager from custom QuerySet ShiftQuerySet
 ShiftManager = models.Manager.from_queryset(ShiftQuerySet)
+
 
 class OpenShiftManager(ShiftManager):
     """ Manager for Shift. Overwrites get_queryset with a filter on QuerySet

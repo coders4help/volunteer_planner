@@ -1,6 +1,5 @@
 # coding: utf-8
 
-import itertools
 import json
 import logging
 from datetime import date
@@ -18,7 +17,6 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, FormView, DetailView
 
 from accounts.models import UserAccount
-from news.models import NewsEntry
 from organizations.models import Facility, FacilityMembership
 from organizations.templatetags.memberships import is_facility_member, \
     is_membership_pending

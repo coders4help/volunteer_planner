@@ -114,8 +114,6 @@ class Command(BaseCommand):
                 for _ in range(0, len(organizations) * 2)
             ]
 
-
-
             # create tasks and workplaces
             i = 0
             tasks = list()
