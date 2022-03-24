@@ -59,6 +59,10 @@ class ShiftQuerySet(models.QuerySet):
         elif isinstance(geo_affiliation, place_models.Country):
             return self.in_country(geo_affiliation)
 
+    def open(self):
+        return self.filter(ending_time__gte=timezone.now())
+
+
 # Create manager from custom QuerySet ShiftQuerySet
 ShiftManager = models.Manager.from_queryset(ShiftQuerySet)
 
@@ -68,9 +72,7 @@ class OpenShiftManager(ShiftManager):
         that holds all shifts that end now or in the future.
     """
     def get_queryset(self):
-        now = timezone.now()
-        qs = super(OpenShiftManager, self).get_queryset()
-        return qs.filter(ending_time__gte=now)
+        return super(OpenShiftManager, self).get_queryset().filter(ending_time__gte=timezone.now())
 
 
 class ShiftHelperManager(models.Manager):

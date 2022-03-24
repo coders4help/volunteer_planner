@@ -8,7 +8,6 @@ from django.template.defaultfilters import slugify
 class NewsEntry(models.Model):
     """
     facilities and organizations can publish news.
-    TODO: News are shown in appropriate organization templates
     """
     title = models.CharField(max_length=255,
                              verbose_name=_("title"))

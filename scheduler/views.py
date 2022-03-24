@@ -1,6 +1,5 @@
 # coding: utf-8
 
-import itertools
 import json
 import logging
 from datetime import date
@@ -11,7 +10,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import Http404
 from django.urls import reverse
-from django.db.models import Count
+from django.db.models import Count, Prefetch
 from django.shortcuts import get_object_or_404
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -45,7 +44,7 @@ def get_open_shifts():
                              'facility__place',
                              'facility',
                              'starting_time',
-                             )
+    )
     return shifts
 
 
@@ -55,26 +54,23 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
     """
     template_name = "helpdesk.html"
 
-    @staticmethod
-    def serialize_news(news_entries):
-        return [dict(title=news_entry.title,
-                     date=news_entry.creation_date,
-                     text=news_entry.text) for news_entry in news_entries]
-
     def get_context_data(self, **kwargs):
         context = super(HelpDesk, self).get_context_data(**kwargs)
-        open_shifts = get_open_shifts()
-        shifts_by_facility = itertools.groupby(open_shifts,
-                                               lambda s: s.facility)
+
+        facilities = (
+            Facility.objects
+                .with_open_shifts()
+                .select_related("organization", "place", "place__area", "place__area__region")
+                .prefetch_related(Prefetch('shift_set', queryset=Shift.open_shifts.all(), to_attr='open_shifts'), "news_entries")
+        )
 
         facility_list = []
         used_places = set()
         used_countries = set()
 
-        for facility, shifts_at_facility in shifts_by_facility:
+        for facility in facilities:
             used_places.add(facility.place.area)
-            facility_list.append(
-                get_facility_details(facility, shifts_at_facility))
+            facility_list.append(get_facility_details(facility))
             used_countries.add(facility.place.area.region.country)
 
         context['areas_json'] = json.dumps(
@@ -86,7 +82,6 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
 
         context['facility_json'] = json.dumps(facility_list,
                                               cls=DjangoJSONEncoder)
-        context['shifts'] = open_shifts
         return context
 
 
