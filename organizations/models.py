@@ -204,11 +204,6 @@ class Facility(models.Model):
         return ', '.join(
             filter(None, map(lambda s: s.strip(), self.address.splitlines())))
 
-    # TODO: Could this be implemented in a more optimized way?
-    @property
-    def open_shifts(self):
-        return Shift.open_shifts.filter(facility=self)
-
     def __unicode__(self):
         return f"{self.name}"
 

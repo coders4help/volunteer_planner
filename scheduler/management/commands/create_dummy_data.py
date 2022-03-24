@@ -8,10 +8,12 @@ import factory
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.db.models import signals
+from django.utils import timezone
 from registration.models import RegistrationProfile
 
 from django.contrib.auth.models import User
 from accounts.models import UserAccount
+from news.models import NewsEntry
 
 from organizations.models import Facility, Workplace, Task, Organization
 from tests.factories import (
@@ -112,11 +114,20 @@ class Command(BaseCommand):
                 for _ in range(0, len(organizations) * 2)
             ]
 
+
+
             # create tasks and workplaces
             i = 0
             tasks = list()
             workplaces = list()
             for fac in facilities:
+                today = timezone.now()
+                for d in range(random.randint(1, 15)):
+                    NewsEntry.objects.create(
+                        title=f"Newsentry #{d} for {fac.name}",
+                        creation_date=(today - datetime.timedelta(days=d)).date(),
+                        text=f"Newsentry #{d} for {fac.name} lorem"
+                    )
                 tasks.extend(
                     [
                         TaskFactory.create(

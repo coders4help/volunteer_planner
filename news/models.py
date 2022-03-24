@@ -4,13 +4,10 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
-from . import managers
-
 
 class NewsEntry(models.Model):
     """
     facilities and organizations can publish news.
-    TODO: News are shown in appropriate organization templates
     """
     title = models.CharField(max_length=255,
                              verbose_name=_("title"))
@@ -38,8 +35,6 @@ class NewsEntry(models.Model):
                                      related_name='news_entries',
                                      null=True,
                                      blank=True)
-
-    objects = managers.NewsEntryManager()
 
     class Meta:
         verbose_name = _('news entry')

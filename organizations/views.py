@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMessage
+from django.db.models import Prefetch
 from django.urls import reverse
 from django.http import HttpResponseForbidden
 from django.template.defaultfilters import date
@@ -50,17 +51,13 @@ class FacilityView(DetailView):
     '''
     template_name = 'facility.html'
     model = Facility
-    queryset = Facility.objects.select_related('organization')
+    queryset = Facility.objects.select_related('organization').prefetch_related(
+        Prefetch('shift_set', queryset=Shift.open_shifts.all(), to_attr='open_shifts')
+    )
 
     def get_context_data(self, **kwargs):
         context = super(FacilityView, self).get_context_data(**kwargs)
-        shifts = Shift.open_shifts.filter(facility=self.object)
-        news = NewsEntry.objects.for_facilities(
-            [facility for facility, tmp in (itertools.groupby(shifts, lambda s: s.facility))]
-        )
-        context['object'] = self.object
-        context['facility'] = get_facility_details(self.object, shifts, news)
-
+        context['facility'] = get_facility_details(self.object)
         return context
 
 
@@ -155,13 +152,14 @@ def send_membership_approved_notification(membership, approved_by):
         raise
 
 
-def get_facility_details(facility, shifts, news_entries):
+def get_facility_details(facility):
     address_line = facility.address_line if facility.address else None
-    shifts_by_date = itertools.groupby(shifts, lambda s: s.starting_time.date())
+
+    shifts_by_date = itertools.groupby(facility.open_shifts, lambda s: s.starting_time.date())
     return {
         'name': facility.name,
         'url': facility.get_absolute_url(),
-        'news': _serialize_news(news_entries.filter_by_facility(facility)),
+        'news': [{"title": n.title, "date": n.creation_date, "text": n.text} for n in facility.news_entries.all()],
         'address_line': address_line,
         'contact_info': facility.contact_info,
         'osm_link': osm_search(address_line) if address_line else None,
@@ -182,9 +180,3 @@ def get_facility_details(facility, shifts, news_entries):
             'url': facility.organization.get_absolute_url(),
         }
     }
-
-
-def _serialize_news(news_entries):
-    return [dict(title=news_entry.title,
-                 date=news_entry.creation_date,
-                 text=news_entry.text) for news_entry in news_entries]
