@@ -760,12 +760,6 @@ msgstr "pass"
 msgid "shifts"
 msgstr "pass"
 
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "nästa dag"
-msgstr[1] "efter {number_of_days} dagar"
-
 msgid "shift helper"
 msgstr "passhjälpare"
 
@@ -967,6 +961,12 @@ msgstr "byt utkast"
 
 msgid "shift template"
 msgstr "byt utkast"
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "nästa dag"
+msgstr[1] "efter {number_of_days} dagar"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

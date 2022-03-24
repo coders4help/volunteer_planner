@@ -742,12 +742,6 @@ msgstr "műszak"
 msgid "shifts"
 msgstr "műszakok"
 
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "shift helper"
 msgstr "beosztásban segítő"
 
@@ -949,6 +943,12 @@ msgstr ""
 
 msgid "shift template"
 msgstr ""
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

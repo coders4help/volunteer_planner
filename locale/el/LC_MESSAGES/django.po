@@ -764,12 +764,6 @@ msgstr "Βάρδια"
 msgid "shifts"
 msgstr "Βάρδιες"
 
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "Την επόμενη μέρα"
-msgstr[1] "Μετά από {number_of_days} μέρες"
-
 msgid "shift helper"
 msgstr "Εθελοντής βάρδιας"
 
@@ -971,6 +965,12 @@ msgstr "Προσχέδια βάρδιας"
 
 msgid "shift template"
 msgstr "Προσχέδιο βάρδιας"
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "Την επόμενη μέρα"
+msgstr[1] "Μετά από {number_of_days} μέρες"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

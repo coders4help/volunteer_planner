@@ -753,14 +753,6 @@ msgstr "směna"
 msgid "shifts"
 msgstr "směny"
 
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "další den"
-msgstr[1] "další dny"
-msgstr[2] "další dny"
-msgstr[3] "po {number_of_days} dnech"
-
 msgid "shift helper"
 msgstr "pomocník směn"
 
@@ -986,6 +978,14 @@ msgstr "šablony směn"
 
 msgid "shift template"
 msgstr "šablona směny"
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "další den"
+msgstr[1] "další dny"
+msgstr[2] "další dny"
+msgstr[3] "po {number_of_days} dnech"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

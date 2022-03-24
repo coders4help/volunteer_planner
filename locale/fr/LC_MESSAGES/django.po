@@ -758,12 +758,6 @@ msgstr "Créneau"
 msgid "shifts"
 msgstr "Créneaux"
 
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "demain"
-msgstr[1] "dans {number_of_days} jours"
-
 msgid "shift helper"
 msgstr "bénévole inscrit pour le créneau"
 
@@ -996,6 +990,12 @@ msgstr "modèles de créneaux"
 
 msgid "shift template"
 msgstr "modèle de créneau"
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "demain"
+msgstr[1] "dans {number_of_days} jours"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

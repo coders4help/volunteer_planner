@@ -760,12 +760,6 @@ msgstr "turno"
 msgid "shifts"
 msgstr "turnos "
 
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "El próximo día"
-msgstr[1] "después de {number_of_days} días"
-
 msgid "shift helper"
 msgstr "ayudante de turno"
 
@@ -967,6 +961,12 @@ msgstr "formularios de turno"
 
 msgid "shift template"
 msgstr "formulario de turno"
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "El próximo día"
+msgstr[1] "después de {number_of_days} días"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
