@@ -1238,11 +1238,17 @@ msgstr ""
 msgid "Hungarian"
 msgstr "Húngaro"
 
-msgid "Swedish"
-msgstr "Sueco"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Sueco"
 
 msgid "Turkish"
 msgstr ""

@@ -1,29 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# Ahmad Sghaier, 2016,2019
+# Maha Abdulkaream Mohammad Sharaf, 2022
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 00:36+0100\n"
-"PO-Revision-Date: 2015-10-04 21:53+0000\n"
-"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
-"Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
-"Language: en\n"
+"POT-Creation-Date: 2022-03-22 09:49+0100\n"
+"PO-Revision-Date: 2022-02-10 20:50+0000\n"
+"Last-Translator: Maha Abdulkaream Mohammad Sharaf\n"
+"Language-Team: Arabic (http://www.transifex.com/coders4help/volunteer-planner/language/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 msgid "first name"
-msgstr ""
+msgstr "الإسم الأول "
 
 msgid "last name"
-msgstr ""
+msgstr "اللقب"
 
 msgid "email"
-msgstr ""
+msgstr "البريد الإلكتروني "
 
 msgid "date joined"
 msgstr ""
@@ -32,19 +35,19 @@ msgid "last login"
 msgstr ""
 
 msgid "Accounts"
-msgstr ""
+msgstr "الحسابات "
 
 msgid "Accept privacy policy"
 msgstr ""
 
 msgid "user account"
-msgstr ""
+msgstr "حساب المستخدم"
 
 msgid "user accounts"
-msgstr ""
+msgstr "حسابات المستخدمين"
 
 msgid "My shifts today:"
-msgstr ""
+msgstr "جدولي اليوم"
 
 msgid "No shifts today."
 msgstr ""
@@ -83,16 +86,16 @@ msgid "Show my work shifts in the future"
 msgstr ""
 
 msgid "Username"
-msgstr ""
+msgstr "إسم المستخدم "
 
 msgid "First name"
-msgstr ""
+msgstr "الإسم الأول "
 
 msgid "Last name"
-msgstr ""
+msgstr "اللقب"
 
 msgid "Email"
-msgstr ""
+msgstr "البريد الإلكتروني"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr ""
@@ -101,31 +104,31 @@ msgid "Its not possible to recover this information. If you want to work as volu
 msgstr ""
 
 msgid "Delete Account (no additional warning)"
-msgstr ""
+msgstr "مسح الحساب (التحذير الأخير)"
 
 msgid "Save"
-msgstr ""
+msgstr "حفظ"
 
 msgid "Edit Account"
-msgstr ""
+msgstr "تعديل بيانات الحساب"
 
 msgid "Delete Account"
-msgstr ""
+msgstr "مسح الحساب"
 
 msgid "Your user account has been deleted."
-msgstr ""
+msgstr "لقد تم مسح حسابك"
 
 msgid "additional CSS"
 msgstr ""
 
 msgid "translation"
-msgstr ""
+msgstr "ترجمة"
 
 msgid "translations"
-msgstr ""
+msgstr "الترجمات"
 
 msgid "No translation available"
-msgstr ""
+msgstr "لا توجد أي ترجمة متاحة"
 
 msgid "additional style"
 msgstr ""
@@ -140,13 +143,13 @@ msgid "flat page"
 msgstr ""
 
 msgid "language"
-msgstr ""
+msgstr "اللغة"
 
 msgid "title"
-msgstr ""
+msgstr "العنوان"
 
 msgid "content"
-msgstr ""
+msgstr "المحتوى"
 
 msgid "flat page translation"
 msgstr ""
@@ -158,14 +161,14 @@ msgid "View on site"
 msgstr ""
 
 msgid "Remove"
-msgstr ""
+msgstr "ازالة"
 
 #, python-format
 msgid "Add another %(verbose_name)s"
 msgstr ""
 
 msgid "Edit this page"
-msgstr ""
+msgstr "تعديل هذه الصفحة"
 
 msgid "subtitle"
 msgstr ""
@@ -204,7 +207,7 @@ msgid "Start helping"
 msgstr ""
 
 msgid "Main page"
-msgstr ""
+msgstr "الصفحة الرئيسية"
 
 msgid "Imprint"
 msgstr ""
@@ -755,7 +758,7 @@ msgid "filter"
 msgstr ""
 
 msgid "see more"
-msgstr ""
+msgstr "عرض المزيد"
 
 msgid "open shifts"
 msgstr ""
@@ -902,12 +905,20 @@ msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 msgid "Something didn't work. Sorry about that."
 msgstr ""
@@ -928,7 +939,7 @@ msgid "schedule template"
 msgstr ""
 
 msgid "days"
-msgstr ""
+msgstr "الأيام "
 
 msgid "shift templates"
 msgstr ""
@@ -941,13 +952,17 @@ msgid "the next day"
 msgid_plural "after {number_of_days} days"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr ""
 
 msgid "Home"
-msgstr ""
+msgstr "الصفحة الرئيسية "
 
 msgid "Apply Template"
 msgstr ""
@@ -1005,7 +1020,7 @@ msgid "Manage"
 msgstr ""
 
 msgid "Members"
-msgstr ""
+msgstr "الأعضاء "
 
 msgid "Toggle navigation"
 msgstr ""
@@ -1017,44 +1032,44 @@ msgid "My work shifts"
 msgstr ""
 
 msgid "Help"
-msgstr ""
+msgstr "المساعدة"
 
 msgid "Logout"
-msgstr ""
+msgstr "تسجيل الخروج"
 
 msgid "Admin"
-msgstr ""
+msgstr "مسؤول الصفحة"
 
 msgid "Regions"
-msgstr ""
+msgstr "المناطق "
 
 msgid "Activation complete"
-msgstr ""
+msgstr "تم التفعيل"
 
 msgid "Activation problem"
-msgstr ""
+msgstr "اشكالية اثناء التفعيل"
 
 msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
-msgstr ""
+msgstr "تسجيل الدخول "
 
 #, python-format
 msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
-msgstr ""
+msgstr "شكرا %(account)s، تفعيل الحساب قد تم بنجاح. يمكنك الآن %(login_link)s واستخدام اسم المستخدم وكلمة المرور التي اخترتها عند التسجيل."
 
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
-msgstr ""
+msgstr "خطأ. اما انك قد فعلت حسابك في السابق او ان مفتاح التفعيل غير صحيحة او فاقدة للصلاحية"
 
 msgid "Activation successful!"
-msgstr ""
+msgstr "تم التفعيل بنجاح"
 
 msgctxt "Activation successful page"
 msgid "Thank you for signing up."
-msgstr ""
+msgstr "شكرا للتسجيل"
 
 msgctxt "Login link text on activation success page"
 msgid "You can login here."
-msgstr ""
+msgstr "بامكانك تسجيل الدخول هنا"
 
 #, python-format
 msgid ""
@@ -1109,35 +1124,35 @@ msgid "Your username and password didn't match. Please try again."
 msgstr ""
 
 msgid "Password"
-msgstr ""
+msgstr "كلمة المرور "
 
 msgid "Forgot your password?"
-msgstr ""
+msgstr "هل نسيت كلمة المرور "
 
 msgid "Help and sign-up"
-msgstr ""
+msgstr "المساعدة وانشاء حساب"
 
 msgid "Password changed"
-msgstr ""
+msgstr "كلمة المرور تغيرت"
 
 msgid "Password successfully changed!"
-msgstr ""
+msgstr "تم تغيير كلمة المرور بنجاح "
 
 msgid "Change Password"
-msgstr ""
+msgstr "قم بتغيير كلمة المرور "
 
 msgid "Email address"
-msgstr ""
+msgstr "البريد الإلكتروني "
 
 msgid "Change password"
-msgstr ""
+msgstr "تغيير كلمة المرور"
 
 msgid "Password reset complete"
-msgstr ""
+msgstr "اعادة تعيين كلمة المرور تم بنجاح"
 
 msgctxt "login link title reset password complete page"
 msgid "log in"
-msgstr ""
+msgstr "تسجيل الدخول"
 
 #, python-format
 msgctxt "reset password complete page"
@@ -1145,7 +1160,7 @@ msgid "Your password has been reset! You may now %(login_link)s again."
 msgstr ""
 
 msgid "Enter new password"
-msgstr ""
+msgstr "ادخل كلمة مرور جديدة"
 
 msgid "Enter your new password below to reset your password"
 msgstr ""

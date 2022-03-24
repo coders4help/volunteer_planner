@@ -1261,10 +1261,16 @@ msgstr ""
 msgid "Hungarian"
 msgstr "Magyar"
 
-msgid "Swedish"
+msgid "Polish"
 msgstr ""
 
 msgid "Portuguese"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Turkish"

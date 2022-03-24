@@ -1,29 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# Camilla Zuleger <camillazuleger@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 00:36+0100\n"
-"PO-Revision-Date: 2015-10-04 21:53+0000\n"
+"POT-Creation-Date: 2022-03-21 18:15+0100\n"
+"PO-Revision-Date: 2017-09-22 15:35+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
-"Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
-"Language: en\n"
+"Language-Team: Danish (http://www.transifex.com/coders4help/volunteer-planner/language/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "first name"
 msgstr ""
 
 msgid "last name"
-msgstr ""
+msgstr "Efternavn"
 
 msgid "email"
-msgstr ""
+msgstr "email"
 
 msgid "date joined"
 msgstr ""
@@ -38,10 +40,10 @@ msgid "Accept privacy policy"
 msgstr ""
 
 msgid "user account"
-msgstr ""
+msgstr "Brugerkonto"
 
 msgid "user accounts"
-msgstr ""
+msgstr "Brugerkonti"
 
 msgid "My shifts today:"
 msgstr ""
@@ -83,16 +85,16 @@ msgid "Show my work shifts in the future"
 msgstr ""
 
 msgid "Username"
-msgstr ""
+msgstr "Brugernavn"
 
 msgid "First name"
-msgstr ""
+msgstr "Fornavn"
 
 msgid "Last name"
-msgstr ""
+msgstr "Efternavn"
 
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr ""
@@ -104,10 +106,10 @@ msgid "Delete Account (no additional warning)"
 msgstr ""
 
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
 msgid "Edit Account"
-msgstr ""
+msgstr "Ændre konto"
 
 msgid "Delete Account"
 msgstr ""
@@ -198,16 +200,16 @@ msgid "There's been an error. It should be fixed shortly. Thanks for your patien
 msgstr ""
 
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 msgid "Start helping"
-msgstr ""
+msgstr "Begynd at hjælpe"
 
 msgid "Main page"
-msgstr ""
+msgstr "Hovedside"
 
 msgid "Imprint"
-msgstr ""
+msgstr "Impressum"
 
 msgid "About"
 msgstr ""
@@ -219,7 +221,7 @@ msgid "Press"
 msgstr ""
 
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 msgid "FAQ"
 msgstr ""
@@ -261,7 +263,7 @@ msgid "There are currently no places in need of help."
 msgstr ""
 
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Privatlivspolitik"
 
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
@@ -301,7 +303,7 @@ msgstr ""
 
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 msgctxt "Privacy Policy Sec4 P1"
 msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
@@ -947,7 +949,7 @@ msgid "{task_name} - {workplace_name}"
 msgstr ""
 
 msgid "Home"
-msgstr ""
+msgstr "Hjem"
 
 msgid "Apply Template"
 msgstr ""

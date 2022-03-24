@@ -1237,10 +1237,16 @@ msgstr ""
 msgid "Hungarian"
 msgstr "Macarca"
 
-msgid "Swedish"
+msgid "Polish"
 msgstr ""
 
 msgid "Portuguese"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Turkish"

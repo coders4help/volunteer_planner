@@ -1306,11 +1306,17 @@ msgstr "Řečtina"
 msgid "Hungarian"
 msgstr "Maďarština"
 
-msgid "Swedish"
-msgstr "Švédština"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Švédština"
 
 msgid "Turkish"
 msgstr ""

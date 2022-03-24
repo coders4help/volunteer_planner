@@ -1300,11 +1300,17 @@ msgstr "Grekiska"
 msgid "Hungarian"
 msgstr "Ungerska"
 
-msgid "Swedish"
-msgstr "Svenska"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Svenska"
 
 msgid "Turkish"
 msgstr ""

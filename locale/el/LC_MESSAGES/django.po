@@ -1304,11 +1304,17 @@ msgstr "Ελληνικά"
 msgid "Hungarian"
 msgstr "Ουγγρικά"
 
-msgid "Swedish"
-msgstr "Σουηδικά"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Σουηδικά"
 
 msgid "Turkish"
 msgstr ""

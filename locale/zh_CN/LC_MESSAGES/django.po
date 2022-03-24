@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 00:36+0100\n"
-"PO-Revision-Date: 2015-10-04 21:53+0000\n"
+"POT-Creation-Date: 2022-03-22 09:49+0100\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
-"Language-Team: English (http://www.transifex.com/coders4help/volunteer-planner/language/en/)\n"
-"Language: en\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/coders4help/volunteer-planner/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "first name"
 msgstr ""
@@ -901,13 +902,11 @@ msgstr ""
 msgid "A shift already exists at {date}"
 msgid_plural "{num_shifts} shifts already exists at {date}"
 msgstr[0] ""
-msgstr[1] ""
 
 #, python-brace-format
 msgid "{num_shifts} shift was added to {date}"
 msgid_plural "{num_shifts} shifts were added to {date}"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "Something didn't work. Sorry about that."
 msgstr ""
@@ -940,7 +939,6 @@ msgstr ""
 msgid "the next day"
 msgid_plural "after {number_of_days} days"
 msgstr[0] ""
-msgstr[1] ""
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

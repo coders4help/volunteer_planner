@@ -1328,11 +1328,17 @@ msgstr "Grec"
 msgid "Hungarian"
 msgstr "Hongrois"
 
-msgid "Swedish"
-msgstr "Suédois"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Suédois"
 
 msgid "Turkish"
 msgstr ""
