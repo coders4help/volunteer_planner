@@ -3,6 +3,7 @@ from datetime import datetime, time, timedelta
 
 from django.db import models
 from django.templatetags.l10n import localize
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from . import managers
@@ -70,10 +71,9 @@ class ShiftTemplate(models.Model):
 
     @property
     def duration(self):
-        today = datetime.today()
-        days = timedelta(days=self.days)
+        today = timezone.now().date()
         start = datetime.combine(today, self.starting_time)
-        end = datetime.combine(today + days, self.ending_time)
+        end = datetime.combine(today + timedelta(days=self.days), self.ending_time)
         duration = end - start
         return duration
 

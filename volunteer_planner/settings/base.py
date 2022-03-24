@@ -137,10 +137,11 @@ LOGGING = {
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/auth/login/'
 
+USE_TZ = True
 TIME_ZONE = 'Europe/Berlin'
 
 LANGUAGE_CODE = 'en'
-USE_L10N = True
+
 LANGUAGES = (
     ('en', _('English')),
     ('de', _('German')),

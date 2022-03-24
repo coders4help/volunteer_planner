@@ -4,8 +4,9 @@ from datetime import time
 
 from django.urls import reverse
 from django.db import models
+from django.utils.timezone import datetime
 from django.utils.formats import localize
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from places.models import Country, Region, Area, Place
 from . import managers
@@ -91,7 +92,7 @@ class Shift(models.Model):
     @property
     def localized_display_ending_time(self):
         days = self.days if self.ending_time.time() > time.min else 0
-        days_fmt = ungettext_lazy(u'the next day',
+        days_fmt = ngettext_lazy(u'the next day',
                                   u'after {number_of_days} days',
                                   days)
         days_str = days_fmt.format(number_of_days=days) if days else u''

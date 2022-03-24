@@ -1,14 +1,13 @@
-# coding: utf-8
+from datetime import datetime, timedelta
 
-from datetime import timedelta, datetime
-
-from django.test import TestCase
 from django.conf import settings
+from django.test import TestCase
+from django.utils import timezone
+from django.utils.timezone import get_current_timezone
 
 from organizations.models import Facility
 from scheduler.models import Shift, ShiftHelper
-from tests.factories import ShiftFactory, UserAccountFactory, TaskFactory, \
-    FacilityFactory, WorkplaceFactory
+from tests.factories import FacilityFactory, ShiftFactory, TaskFactory, UserAccountFactory, WorkplaceFactory
 
 
 def create_shift(start_hour, end_hour, facility=None):
@@ -16,8 +15,8 @@ def create_shift(start_hour, end_hour, facility=None):
     Tiny helper because setting time periods is awkward till we remove the FK relationship.
     """
     create_args = dict(
-        starting_time=datetime(2015, 1, 1, start_hour),
-        ending_time=datetime(2015, 1, 1, end_hour)
+        starting_time=datetime(2015, 1, 1, start_hour, tzinfo=get_current_timezone()),
+        ending_time=datetime(2015, 1, 1, end_hour, tzinfo=get_current_timezone())
     )
     if facility:
         create_args['facility'] = facility
@@ -130,7 +129,7 @@ class FacilityTestCase(TestCase):
         """
             checks that get_days_with_shifts() returns only dates later than datetime.now()
         """
-        now = datetime.now()
+        now = timezone.now()
         yesterday_start = now - timedelta(1)
         yesterday_end = yesterday_start + timedelta(hours=1)
         tomorrow_start = now + timedelta(1)

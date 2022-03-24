@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from datetime import timedelta, datetime, time
+from datetime import timedelta
 
 from django.db import models
 from django.utils import timezone
@@ -18,9 +18,8 @@ class ShiftQuerySet(models.QuerySet):
             shiftdate. That means shifts that intersect with the day of
             shiftdate.
         """
-        next_day = datetime.combine(shiftdate + timedelta(days=1), time.min)
         return self.filter(ending_time__gte=shiftdate,
-                           starting_time__lt=next_day)
+                           starting_time__lt=shiftdate + timedelta(days=1))
 
     def at_place(self, place):
         """ Shifts at a certain place (geographical location of a facility).

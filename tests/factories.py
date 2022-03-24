@@ -1,8 +1,8 @@
-# coding: utf-8
 import string
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 from factory import Sequence, SubFactory, LazyAttribute, PostGenerationMethodCall
 from factory.django import DjangoModelFactory
@@ -101,7 +101,7 @@ class ShiftFactory(DjangoModelFactory):
     facility = SubFactory(FacilityFactory)
     workplace = SubFactory(WorkplaceFactory)
 
-    starting_time = datetime.now() + timedelta(
+    starting_time = timezone.now() + timedelta(
         hours=0.5
     )  # create a shift in the future, so test users can subscribe
     ending_time = starting_time + timedelta(

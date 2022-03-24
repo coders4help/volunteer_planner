@@ -1,10 +1,8 @@
-# coding: utf-8
-from datetime import datetime
-
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.db.models import Count
+from django.utils import timezone
 from django.utils.html import format_html, mark_safe
 from django.utils.translation import gettext_lazy as _
 
@@ -73,7 +71,7 @@ class ShiftAdminForm(forms.ModelForm):
 
         # There is no known reason to modify shifts in the past
         if start:
-            now = datetime.now()
+            now = timezone.now()
             if start < now:
                 self.add_error('starting_time', ValidationError(_('Start time in the past.')))
             if end and not end > start:
