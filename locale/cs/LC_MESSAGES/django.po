@@ -1,8 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
-# Translators:
 # Translators:
 # trendspotter <jirka.p@volny.cz>, 2019
 # trendspotter <jirka.p@volny.cz>, 2019
@@ -30,16 +26,16 @@ msgid "email"
 msgstr "e-mail"
 
 msgid "date joined"
-msgstr ""
+msgstr "datum připojení"
 
 msgid "last login"
-msgstr ""
+msgstr "poslední přihlášení"
 
 msgid "Accounts"
 msgstr "Účty"
 
 msgid "Accept privacy policy"
-msgstr ""
+msgstr "Přijmout zásady ochrany osobních údajů"
 
 msgid "user account"
 msgstr "uživatelský účet"
@@ -192,7 +188,7 @@ msgstr "Stránka nenalezena"
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Omlouváme se, ale požadovaná stránka nebyla nalezena."
 
-msgid "Server error"
+msgid "server error"
 msgstr "Chyba serveru"
 
 msgid "Server Error <em>(500)</em>"
@@ -753,6 +749,14 @@ msgstr "směna"
 msgid "shifts"
 msgstr "směny"
 
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "další den"
+msgstr[1] "další dny"
+msgstr[2] "další dny"
+msgstr[3] "po {number_of_days} dnech"
+
 msgid "shift helper"
 msgstr "pomocník směn"
 
@@ -770,14 +774,11 @@ msgstr "Nejsou k dispozici žádné nadcházející směny pro %(geographical_na
 msgid "You can help in the following facilities"
 msgstr "Můžete pomoci v následujících zařízeních"
 
-msgid "Countries"
-msgstr "státy"
-
-msgid "Areas"
-msgstr "oblasti"
-
 msgid "see more"
 msgstr "zobrazit víc"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr "otevřené směny"
@@ -981,14 +982,6 @@ msgstr "šablony směn"
 
 msgid "shift template"
 msgstr "šablona směny"
-
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "další den"
-msgstr[1] "další dny"
-msgstr[2] "další dny"
-msgstr[3] "po {number_of_days} dnech"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

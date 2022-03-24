@@ -190,7 +190,7 @@ msgstr "Страница не найдена"
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Сожалеем, но запрошенная страница не найдена."
 
-msgid "Server error"
+msgid "server error"
 msgstr "Ошибка сервера"
 
 msgid "Server Error <em>(500)</em>"
@@ -756,6 +756,14 @@ msgstr "смена"
 msgid "shifts"
 msgstr "смены"
 
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
 msgid "shift helper"
 msgstr "помощник по смене"
 
@@ -773,18 +781,11 @@ msgstr "Нет доступных смен для %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Вы можете помочь в следующих объектах"
 
-#, fuzzy
-#| msgid "countries"
-msgid "Countries"
-msgstr "страны"
-
-#, fuzzy
-#| msgid "areas"
-msgid "Areas"
-msgstr "зоны"
-
 msgid "see more"
 msgstr "узнать больше"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr "открытые смены"
@@ -1000,14 +1001,6 @@ msgstr "шаблоны смены"
 
 msgid "shift template"
 msgstr "шаблон смены"
-
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

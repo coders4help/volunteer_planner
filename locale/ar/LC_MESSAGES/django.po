@@ -1,8 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
-# Translators:
 # Translators:
 # Ahmad Sghaier, 2016,2019
 # Ahmad Sghaier, 2016,2019
@@ -194,7 +190,7 @@ msgstr ""
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
 
-msgid "Server error"
+msgid "server error"
 msgstr ""
 
 msgid "Server Error <em>(500)</em>"
@@ -740,6 +736,16 @@ msgstr ""
 msgid "shifts"
 msgstr ""
 
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
 msgid "shift helper"
 msgstr ""
 
@@ -757,14 +763,11 @@ msgstr ""
 msgid "You can help in the following facilities"
 msgstr ""
 
-msgid "Countries"
-msgstr ""
-
-msgid "Areas"
-msgstr ""
-
 msgid "see more"
 msgstr "عرض المزيد"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr ""
@@ -952,16 +955,6 @@ msgstr ""
 
 msgid "shift template"
 msgstr ""
-
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

@@ -1,20 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
 # audrey liehn <woog_wg@web.de>, 2015
 # Caroline Elis <caroline@adazylla.de>, 2015
 # Christoph, 2015
-# Christoph, 2015
-# Christoph, 2015
-# Dorian Cantzen <cantzen@googlemail.com>, 2015-2016
+# Christoph Meißner, 2015,2022
+# Christoph Meißner, 2015,2022
+# Christoph Meißner, 2015
+# Dorian Cantzen <cantzen@googlemail.com>, 2015-2016,2022
 # Fabian Lindenberg, 2015
 # Fabian Lindenberg, 2015
 # Franziska Böttger <fr.boettger@gmail.com>, 2015
 # Jan Mewes <j.mewes@epages.com>, 2015
 # Martin Dix <dixmartin@gmx.de>, 2016
-# Peter Palmreuther <pitpalme@yahoo.de>, 2015
+# Maxi Krause <maxi.krause@wanadoo.fr>, 2017
+# Peter Palmreuther <pitpalme@yahoo.de>, 2015,2022
 # Sönke Klinger <klinger@biver.de>, 2016
 msgid ""
 msgstr ""
@@ -40,16 +39,16 @@ msgid "email"
 msgstr "E-Mail"
 
 msgid "date joined"
-msgstr ""
+msgstr "Mitglied seit"
 
 msgid "last login"
-msgstr "zuletzt eingeloggt"
+msgstr "Letzte Anmeldung"
 
 msgid "Accounts"
 msgstr "Benutzerkonten"
 
 msgid "Accept privacy policy"
-msgstr ""
+msgstr "Einwilligung (nach Art 6 Abs 1 Satz 1 a DSGVO)"
 
 msgid "user account"
 msgstr "Benutzerkonto"
@@ -67,7 +66,7 @@ msgid "Show this work shift"
 msgstr "Schicht anzeigen"
 
 msgid "My shifts tomorrow:"
-msgstr "Meine schichten morgen"
+msgstr "Meine Schichten morgen"
 
 msgid "No shifts tomorrow."
 msgstr "keine Schichten morgen"
@@ -85,7 +84,7 @@ msgid "No further shifts."
 msgstr "keine weiteren Schichten"
 
 msgid "Show my work shifts in the past"
-msgstr "frührere Schichten"
+msgstr "frühere Schichten"
 
 msgid "My work shifts in the past:"
 msgstr "teilgenommene Schichten"
@@ -109,10 +108,10 @@ msgid "Email"
 msgstr "E-Mail Adresse"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
-msgstr "Wenn Du deinen Benutzerkonto löschst, werden Deine Daten anonymisiert und du kannst Dich nicht mehr einloggen."
+msgstr "Wenn Du deinen Benutzerkonto löschst werden Deine Daten anonymisiert und du kannst Dich nicht mehr einloggen."
 
 msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
-msgstr "Es ist nicht möglich das Benutzerkonto wiederherzustellen. Wenn Du später nochmal als Freiwillige/r helfen willst, musst Du Dich nochmal registrieren."
+msgstr "Es ist nicht möglich das Benutzerkonto wiederherzustellen. Wenn Du später nochmal als Freiwillige/r helfen willst, mußt Du Dich nochmal registrieren."
 
 msgid "Delete Account (no additional warning)"
 msgstr "Mein Benutzerkonto löschen!"
@@ -188,13 +187,13 @@ msgid "articletext"
 msgstr "Artikeltext"
 
 msgid "creation date"
-msgstr "Erstellungs-Datum"
+msgstr "Datum"
 
 msgid "news entry"
-msgstr "Artikeltext"
+msgstr "Nachrichtenartikel"
 
 msgid "news entries"
-msgstr "Artikeltexte"
+msgstr "Nachrichtenartikel"
 
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
@@ -202,7 +201,7 @@ msgstr "Seite nicht gefunden"
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Sorry, die angeforderte Seite konnte nicht gefunden werden."
 
-msgid "Server error"
+msgid "server error"
 msgstr "Serverfehler"
 
 msgid "Server Error <em>(500)</em>"
@@ -242,7 +241,7 @@ msgid "I want to help!"
 msgstr "Ich will helfen!"
 
 msgid "Register and see where you can help"
-msgstr "Registriere Dich und erfahre, wo du helfen kannst"
+msgstr "Registriere Dich und erfahre wo du helfen kannst"
 
 msgid "Organize volunteers!"
 msgstr "Freiwillige organisieren!"
@@ -263,10 +262,10 @@ msgid "What is it all about?"
 msgstr "Was ist volunteer-planner.org?"
 
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
-msgstr "Du willst Geflüchteten helfen? volunteer-planner.org zeigt Dir wo, wann und wie du helfen kannst: direkt vor Ort."
+msgstr "Du willst Flüchtlingen helfen? volunteer-planner.org zeigt Dir wo, wann und wie du helfen kannst: direkt vor Ort."
 
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
-msgstr "<p>Die Plattform ist werbefrei und gemeinnützig. Ein internationales Team von Helfer_innen vor Ort, Programmierer_innen, Projektmanager_innen und DesignerInnen helfen freiwillig und unentgeltlich um den volunteer-planner voranzubringen.</p>"
+msgstr "<p>Die Plattform ist werbefrei und gemeinnützig. Ein internationales Team von Helfern vor Ort, Programmierern, Projektmanagern und Designern helfen freiwillig und unentgeltlich um den volunteer-planner voranzubringen.</p>"
 
 msgid "You can help at these locations:"
 msgstr "Du kannst in folgenden Einrichtungen helfen:"
@@ -287,7 +286,7 @@ msgstr "Diese Datenschutzerklärung klärt den Nutzer über die Art, den Umfang 
 
 msgctxt "Privacy Policy Sec1 P2"
 msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
-msgstr "Die rechtlichen Grundlagen des Datenschutzes finden sich im deutschen Bundesdatenschutzgesetz (BDSG) und dem deutschen Telemediengesetz (TMG)."
+msgstr "Die rechtlichen Grundlagen des Datenschutzes finden sich im Bundesdatenschutzgesetz (BDSG) und dem Telemediengesetz (TMG)."
 
 msgctxt "Privacy Policy Sec2"
 msgid "Access data / server log files"
@@ -295,7 +294,7 @@ msgstr "Zugriffsdaten / Server-Logfiles"
 
 msgctxt "Privacy Policy Sec2 P1"
 msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
-msgstr "Der Anbieter (beziehungsweise sein Webspace-Provider) erhebt Daten über jeden Zugriff auf das Angebot und speichert sie in so genannten Server-Logfiles. Zu den Zugriffsdaten gehören: Name der abgerufenen Website, Datei, Datum und Uhrzeit des Abrufs, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Browsertyp nebst Version, das Betriebssystem des Nutzers, Referrer URL (die zuvor besuchte Seite), IP-Adresse und der anfragende Provider."
+msgstr "Der Anbieter (beziehungsweise sein Webspace-Provider) erhebt Daten über jeden Zugriff auf das Angebot und speichert sie in so genannten Server-Logfiles. Zu den Zugriffsdaten gehören: Name der abgerufenen Webseite, Datei, Datum und Uhrzeit des Abrufs, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Browsertyp nebst Version, das Betriebssystem des Nutzers, Referrer URL (die zuvor besuchte Seite), IP-Adresse und der anfragende Provider."
 
 msgctxt "Privacy Policy Sec2 P2"
 msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
@@ -307,7 +306,7 @@ msgstr "Umgang mit personenbezogenen Daten"
 
 msgctxt "Privacy Policy Sec3 P1"
 msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
-msgstr "Personenbezogene Daten sind Informationen, mit deren Hilfe eine Person bestimmbar ist, also Angaben, die zurück zu einer Person verfolgt werden können. Dazu gehören der Name, die E-Mail-Adresse oder die Telefonnummer des Nutzers. Aber auch Daten über Vorlieben, Hobbies, Mitgliedschaften oder welche Websites von jemandem angesehen wurden zählen zu personenbezogenen Daten."
+msgstr "Personenbezogene Daten sind Informationen, mit deren Hilfe eine Person bestimmbar ist, also Angaben, die zurück zu einer Person verfolgt werden können. Dazu gehören der Name, die E-Mail-Adresse oder die Telefonnummer des Nutzers. Aber auch Daten über Vorlieben, Hobbies, Mitgliedschaften oder welche Webseiten von jemandem angesehen wurden zählen zu personenbezogenen Daten."
 
 msgctxt "Privacy Policy Sec3 P2"
 msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
@@ -327,7 +326,7 @@ msgstr "Cookies"
 
 msgctxt "Privacy Policy Sec5 P1"
 msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
-msgstr "Cookies sind kleine Dateien, die es ermöglichen, auf dem Zugriffsgerät des Nutzers (PC, Smartphone o.ä.) spezifische, auf das Gerät bezogene Informationen zu speichern. Sie dienen zum einem der Benutzerfreundlichkeit von Websites und damit dem Nutzer (z.B. Speicherung von Logindaten). Zum anderen dienen sie, um statistische Daten der Websitenutzung zu erfassen und sie zwecks Verbesserung des Angebotes analysieren zu können."
+msgstr "Cookies sind kleine Dateien, die es ermöglichen, auf dem Zugriffsgerät des Nutzers (PC, Smartphone o.ä.) spezifische, auf das Gerät bezogene Informationen zu speichern. Sie dienen zum einem der Benutzerfreundlichkeit von Webseiten und damit dem Nutzer (z.B. Speicherung von Logindaten). Zum anderen dienen sie, um statistische Daten der Webseitennutzung zu erfassen und sie zwecks Verbesserung des Angebotes analysieren zu können."
 
 msgctxt "Privacy Policy Sec5 P2"
 msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
@@ -336,7 +335,7 @@ msgstr "Der Nutzer kann auf den Einsatz der Cookies Einfluss nehmen. Die meisten
 #, python-format
 msgctxt "Privacy Policy Sec5 P3"
 msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
-msgstr "Der Nutzer kann den Gebrauch vieler Online-Anzeigen-Cookies von Unternehmen über die US-amerikanische Seite %(us_url)s oder die EU-Seite %(eu_url)s verwalten."
+msgstr "Der Nutzer kann viele Online-Anzeigen-Cookies von Unternehmen über die US-amerikanische Seite %(us_url)s oder die EU-Seite %(eu_url)s verwalten."
 
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
@@ -344,11 +343,11 @@ msgstr "Registrierung"
 
 msgctxt "Privacy Policy Sec6 P1"
 msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
-msgstr "Die vom Nutzer/Kunden bei der Registrierung eingegebenen Daten ermöglichen die Nutzung des Angebotes. Der Anbieter kann dem Nutzer per E-Mail Informationen zur Dienstleistung oder Registrierung zukommen lassen, wie etwa Veränderungen im Angebot oder technische Hinweise (dazu auch im nächsten Abschnitt)."
+msgstr "Die im Rahmen der Registrierung eingegebenen Daten werden für die Zwecke der Nutzung des Angebotes verwendet. Der Nutzer kann über angebots- oder registrierungsrelevante Informationen, wie Änderungen des Angebotsumfangs oder technische Umstände per E-Mail informiert werden (siehe auch nächster Abschnitt)."
 
 msgctxt "Privacy Policy Sec6 P2"
 msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
-msgstr "Die erhobenen und gespeicherten Daten sind aus den Eingabemasken im Rahmen der Registrierung und in der Nutzerprofilverwaltung ersichtlich. Dazu gehören unter anderem Vorname, Nachname und E-Mail-Adresse des Nutzers."
+msgstr "Die erhobenen Daten sind aus den Eingabemasken im Rahmen der Registrierung und in der Nutzerprofilverwaltung ersichtlich. Dazu gehören unter anderem Vorname, Nachname und E-Mail-Adresse des Nutzers."
 
 msgctxt "Privacy Policy Sec7"
 msgid "E-mail notifications / Newsletter"
@@ -364,7 +363,7 @@ msgstr "E-Mail-Benachrichtigungen informieren den Nutzer über bestimmte Ereigni
 
 msgctxt "Privacy Policy Sec7 P3"
 msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
-msgstr "Seine Einwilligung zum Empfang von E-Mail-Benachrichtigungen und Newsletter-Mails  kann der Nutzer widerrufen, indem er sein Benutzerkonto löscht."
+msgstr "Seine Einwilligung E-Mail-Benachrichtigungen und Newsletter-Mails zu empfangen kann der Nutzer widerrufen, indem er sein Benutzerkonto löscht."
 
 msgctxt "Privacy Policy Sec8"
 msgid "Google Analytics"
@@ -372,20 +371,20 @@ msgstr "Google Analytics"
 
 msgctxt "Privacy Policy Sec8 P1"
 msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
-msgstr "Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“, Textdateien, die auf dem Gerät des Nutzers gespeichert werden und es ermöglichen zu analysieren, wie der Nutzer die Website benutzt.  Die durch den Cookie erstellten Informationen über die Benutzung dieser Website durch den Nutzer werden an einen Server von Google in den USA übertragen und dort gespeichert."
+msgstr "Dieses Angebot benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“, Textdateien, die auf dem Gerät des Nutzers gespeichert werden und die eine Analyse der Benutzung der Website durch sie ermöglichen. Die durch den Cookie erzeugten Informationen über Benutzung dieser Website durch den Nutzer werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert."
 
 msgctxt "Privacy Policy Sec8 P2"
 msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
-msgstr "Im Falle der Aktivierung der IP-Anonymisierung auf dieser Website, wird die IP-Adresse des Nutzers von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Auf dieser Website ist die IP-Anonymisierung aktiviert."
+msgstr "Im Falle der Aktivierung der IP-Anonymisierung auf dieser Webseite, wird die IP-Adresse des Nutzers von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die IP-Anonymisierung ist auf dieser Website aktiv."
 
 msgctxt "Privacy Policy Sec8 P3"
 msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
-msgstr "Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um deine Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen für den Websitebetreiber zu erbringen."
+msgstr "Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um die Nutzung der Website durch die Nutzer auszuwerten, um Reports über die Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegenüber dem Websitebetreiber zu erbringen."
 
 #, python-format
 msgctxt "Privacy Policy Sec8 P4"
 msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
-msgstr "Die im Rahmen von Google Analytics vom Browser des Nutzers übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Der Nutzer kann die Speicherung der Cookies durch eine entsprechende Einstellung seiner Browser-Software verhindern; Der Anbieter weist den Nutzer jedoch darauf hin, dass er in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich wird nutzen können. Der Nutzer kann auch für die Zunkunft auf jede Datenerhebung und -speicherung durch Goggle Analytics verzichten indem er das unter dem folgenden Link verfügbare Browser-Plugin herunterlädt und installiert: %(optout_plugin_url)s."
+msgstr "Die im Rahmen von Google Analytics vom Browser des Nutzers übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Der Nutzer kann die Speicherung der Cookies durch eine entsprechende Einstellung seiner Browser-Software verhindern; Der Anbieter weist den Nutzer jedoch darauf hin, dass er in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich wird nutzen können. Der Nutzer kann darüber hinaus die Erfassung der durch das Cookie erzeugten und auf seine Nutzung der Website bezogenen Daten, inkl. seiner IP-Adresse, an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem er das unter dem folgenden Link verfügbare Browser-Plugin herunterlädt und installiert: %(optout_plugin_url)s"
 
 msgid "click this link"
 msgstr "diesen Link klicken"
@@ -458,7 +457,7 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"<p>Sehr viele Menschen wollen helfen. Das ist super! Leider ist oft nicht klar, wie wann und wo geholfen werden kann. Das möchten wir ändern! Über volunteer-planner.org können die Koordinator_innen der Organisationen und Vereine übersichtlich auflisten wo wann welche Hilfe benötigt wird. Freiwillige können dann auf einem Blick sehen wie sie helfen können und sich sofort für eine Schicht eintragen</p>"
+"<p>Sehr viele Menschen wollen helfen. Das ist super! Leider ist oft nicht klar, wie wann und wo geholfen werden kann. Das möchten wir ändern! Über volunteer-planner.org können Organisationen und soziale Einrichtungen übersichtlich auflisten, wo wann welche Hilfe benötigt wird. Freiwillige können dann auf einem Blick sehen wie sie helfen können und sich sofort für eine Schicht eintragen</p>"
 
 msgid "for free, ad free"
 msgstr "Kostenlos. Werbefrei."
@@ -669,10 +668,10 @@ msgid "Actions"
 msgstr "Aktionen"
 
 msgid "Block"
-msgstr "Blockieren"
+msgstr "Blockiert"
 
 msgid "Accept"
-msgstr "Akzeptieren"
+msgstr "Akzeptiert"
 
 msgid "Facilities"
 msgstr "Einrichtungen"
@@ -762,11 +761,17 @@ msgstr "Schicht"
 msgid "shifts"
 msgstr "Schichten"
 
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "am nächsten Tag"
+msgstr[1] "nach {number_of_days} Tagen"
+
 msgid "shift helper"
-msgstr "Schichthelfer_innen"
+msgstr "Schichthelfer"
 
 msgid "shift helpers"
-msgstr "Schichthelfer_innen"
+msgstr "Schichthelfer"
 
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
@@ -779,15 +784,11 @@ msgstr "Derzeit sind keine Schichten geplant für %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Du kannst in folgenden Einrichtungen helfen"
 
-msgid "Countries"
-msgstr "Länder"
-
-
-msgid "Areas"
-msgstr "Gebiete"
-
 msgid "see more"
 msgstr "mehr anzeigen"
+
+msgid "news"
+msgstr "Nachrichten"
 
 msgid "open shifts"
 msgstr "offene Schichten"
@@ -893,7 +894,7 @@ msgstr ""
 "\n"
 
 msgid "Members only"
-msgstr "Nur für MItglieder"
+msgstr "Zugangsbeschränkt"
 
 #, python-format
 msgid ""
@@ -1006,12 +1007,6 @@ msgid "shift template"
 msgstr "Schichtvorlage"
 
 #, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "am nächsten Tag"
-msgstr[1] "nach {number_of_days} Tagen"
-
-#, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr "{task_name} - {workplace_name}"
 
@@ -1037,13 +1032,13 @@ msgid "Select shift templates"
 msgstr "Schichtvorlagen auswählen"
 
 msgid "Please review and confirm shifts to create"
-msgstr "Bitte kontrolliere und bestätige die Schichten zum Erstellen"
+msgstr "Bitte kontrolliere und bestätige die Schichten zum erstellen"
 
 msgid "Apply"
-msgstr "Anwenden"
+msgstr "anwenden"
 
 msgid "Apply and select new date"
-msgstr "Anwenden und neues Datum wählen"
+msgstr "anwenden und neues Datum wählen"
 
 msgid "Save and apply template"
 msgstr "Vorlage speichern und anwenden"
@@ -1071,7 +1066,7 @@ msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr "Fragen? Schreib' uns: %(mailto_link)s"
 
 msgid "Manage"
-msgstr "Verwalten"
+msgstr "Verwaltung"
 
 msgid "Members"
 msgstr "Mitglieder"
@@ -1269,7 +1264,7 @@ msgstr ""
 "Dein Passwort für %(domain)s ändern möchte. Wenn Du Dein Passwort nicht\n"
 "ändern möchtest, kannst Du diese E-Mail einfach ignorieren und es passiert nichts.\n"
 "\n"
-"Um Dein Passwort zu ändern, klicke bitte auf folgenden Link, oder kopiere und übertrage ihn in deinen Brower :"
+"Um Dein Passwort zu ändern, klicke bitte folgenden Link:"
 
 #, python-format
 msgid ""
@@ -1343,13 +1338,13 @@ msgid "Hungarian"
 msgstr "Ungarisch"
 
 msgid "Polish"
-msgstr ""
+msgstr "Polnisch"
 
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 msgid "Swedish"
 msgstr "Schwedisch"

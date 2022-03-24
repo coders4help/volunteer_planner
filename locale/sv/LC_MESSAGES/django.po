@@ -193,7 +193,7 @@ msgstr ""
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
 
-msgid "Server error"
+msgid "server error"
 msgstr ""
 
 msgid "Server Error <em>(500)</em>"
@@ -760,6 +760,12 @@ msgstr "pass"
 msgid "shifts"
 msgstr "pass"
 
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "nästa dag"
+msgstr[1] "efter {number_of_days} dagar"
+
 msgid "shift helper"
 msgstr "passhjälpare"
 
@@ -777,18 +783,11 @@ msgstr "Det finns inga kommande pass lediga för %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Du kan hjälpa på följande platser"
 
-#, fuzzy
-#| msgid "countries"
-msgid "Countries"
-msgstr "länder"
-
-#, fuzzy
-#| msgid "areas"
-msgid "Areas"
-msgstr "områden"
-
 msgid "see more"
 msgstr "se mer"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr "lediga pass"
@@ -968,12 +967,6 @@ msgstr "byt utkast"
 
 msgid "shift template"
 msgstr "byt utkast"
-
-#, python-brace-format
-msgid "the next day"
-msgid_plural "after {number_of_days} days"
-msgstr[0] "nästa dag"
-msgstr[1] "efter {number_of_days} dagar"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"

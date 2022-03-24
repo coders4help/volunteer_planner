@@ -71,7 +71,7 @@
             {% verbatim %}
                 <hr>
                 <div ng-show="countries.length > 1">
-                    {% endverbatim %}<span>{% trans "Countries" %}:</span>{% verbatim %}
+                    {% endverbatim %}<span>{% trans "countries" as countries_title %}{{ countries_title|title }}:</span>{% verbatim %}
                     <label class="filter" ng-repeat="country in countries">
                         <input id="filter-{{ country.slug }}" type="checkbox" value="{{ country.name }}"
                             ng-click="toggleCountryAndArea(country.slug)"
@@ -80,7 +80,7 @@
                     </label>
                 </div>
               <div>
-                    {% endverbatim %}<span>{% trans "Areas" %}:</span>{% verbatim %}
+                    {% endverbatim %}<span>{% trans "areas" as area_title %}{{ area_title|title }}:</span>{% verbatim %}
                     <label class="filter" ng-repeat="area in areas">
                         <input id="filter-{{ area.slug }}" type="checkbox" value="{{ area.name }}"
                             ng-click="toggleCountryAndArea(area.slug)"
@@ -106,7 +106,7 @@
                                             <p ng-bind-html="facility.description"></p>
                                             <a ng-href="{{ facility.url }}">{% endverbatim %}{% trans "Show details" %}{% verbatim %}</a>
 
-                                            <h4 ng-show="facility.news[0]">{% endverbatim %}{% trans "News" %}{% verbatim %}</h4>
+                                            <h4 ng-show="facility.news[0]">{% endverbatim %}{% trans "news" as news_title %}{{ news_title|title }}{% verbatim %}</h4>
                                         <div ng-repeat="news in facility.news">
                                             <hr>
                                         <h4>{{ news.title }} </h4>
