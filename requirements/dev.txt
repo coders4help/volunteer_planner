@@ -3,7 +3,6 @@
 
 # debugging
 ipdb==0.13.9
-ipython==8.1.1
 
 # code formatting and linting
 black==22.1.0

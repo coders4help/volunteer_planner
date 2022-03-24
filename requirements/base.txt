@@ -7,5 +7,6 @@ django-logentry-admin==1.1.0
 django-registration-redux==2.10
 git+https://github.com/Doca/django-ajax.git#egg=djangoajax
 
-factory-boy==3.2.1
 python3-memcached==1.51
+
+ipython==8.1.1

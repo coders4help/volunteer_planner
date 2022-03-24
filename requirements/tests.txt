@@ -1,5 +1,7 @@
 -r base.txt
 
+factory-boy==3.2.1
+
 # unit testing
 pytest-cache==1.0
 pytest-cov==3.0.0
