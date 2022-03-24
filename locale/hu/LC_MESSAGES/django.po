@@ -196,7 +196,7 @@ msgstr ""
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
 
-msgid "Server error"
+msgid "server error"
 msgstr ""
 
 msgid "Server Error <em>(500)</em>"
@@ -765,10 +765,10 @@ msgstr "Új beosztások a/az %(geographical_name)s helyszínen."
 msgid "You can help in the following facilities"
 msgstr ""
 
-msgid "filter"
+msgid "see more"
 msgstr ""
 
-msgid "see more"
+msgid "news"
 msgstr ""
 
 msgid "open shifts"
@@ -1231,14 +1231,8 @@ msgstr ""
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Már létezik ez a felhasználói név. Kérjük, válassz egy másikat!"
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
-
-msgid "The two password fields didn't match."
-msgstr "A két jelszó nem egyezik!"
 
 msgid "Repeat password"
 msgstr "Ismételd meg a jelszót"
@@ -1267,10 +1261,16 @@ msgstr ""
 msgid "Hungarian"
 msgstr "Magyar"
 
-msgid "Swedish"
+msgid "Polish"
 msgstr ""
 
 msgid "Portuguese"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Turkish"

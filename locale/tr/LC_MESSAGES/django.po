@@ -1,6 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
 # Serdar Dalgiç <Serdar.dalgic@orderbird.com>, 2015
@@ -190,7 +187,7 @@ msgstr ""
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
 
-msgid "Server error"
+msgid "server error"
 msgstr ""
 
 msgid "Server Error <em>(500)</em>"
@@ -713,7 +710,7 @@ msgid "volunteers"
 msgstr ""
 
 msgid "scheduler"
-msgstr "Çalışma Saatleri"
+msgstr ""
 
 msgid "number of needed volunteers"
 msgstr "İhtiyaç duyulan gönüllü sayısı"
@@ -759,10 +756,10 @@ msgstr "%(geographical_name)s için uygun bir vardiya görünmemektedir."
 msgid "You can help in the following facilities"
 msgstr ""
 
-msgid "filter"
+msgid "see more"
 msgstr ""
 
-msgid "see more"
+msgid "news"
 msgstr ""
 
 msgid "open shifts"
@@ -1207,13 +1204,7 @@ msgstr ""
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Böyle bir kullanıcı adı bulunmakta. Lütfen farklı bir kullanıcı adı seçin."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr ""
-
-msgid "The two password fields didn't match."
 msgstr ""
 
 msgid "Repeat password"
@@ -1243,10 +1234,16 @@ msgstr ""
 msgid "Hungarian"
 msgstr "Macarca"
 
-msgid "Swedish"
+msgid "Polish"
 msgstr ""
 
 msgid "Portuguese"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Turkish"

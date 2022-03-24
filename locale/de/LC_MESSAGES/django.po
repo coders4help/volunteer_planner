@@ -1,20 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
 # audrey liehn <woog_wg@web.de>, 2015
 # Caroline Elis <caroline@adazylla.de>, 2015
 # Christoph, 2015
-# Christoph, 2015
-# Christoph, 2015
-# Dorian Cantzen <cantzen@googlemail.com>, 2015-2016
+# Christoph Meißner, 2015,2022
+# Christoph Meißner, 2015,2022
+# Christoph Meißner, 2015
+# Dorian Cantzen <cantzen@googlemail.com>, 2015-2016,2022
 # Fabian Lindenberg, 2015
 # Fabian Lindenberg, 2015
 # Franziska Böttger <fr.boettger@gmail.com>, 2015
 # Jan Mewes <j.mewes@epages.com>, 2015
 # Martin Dix <dixmartin@gmx.de>, 2016
-# Peter Palmreuther <pitpalme@yahoo.de>, 2015
+# Maxi Krause <maxi.krause@wanadoo.fr>, 2017
+# Peter Palmreuther <pitpalme@yahoo.de>, 2015,2022
 # Sönke Klinger <klinger@biver.de>, 2016
 msgid ""
 msgstr ""
@@ -40,10 +39,10 @@ msgid "email"
 msgstr "E-Mail"
 
 msgid "date joined"
-msgstr ""
+msgstr "Mitglied seit"
 
 msgid "last login"
-msgstr "zuletzt eingeloggt"
+msgstr "Letzte Anmeldung"
 
 msgid "Accounts"
 msgstr "Benutzerkonten"
@@ -67,7 +66,7 @@ msgid "Show this work shift"
 msgstr "Schicht anzeigen"
 
 msgid "My shifts tomorrow:"
-msgstr "Meine schichten morgen"
+msgstr "Meine Schichten morgen"
 
 msgid "No shifts tomorrow."
 msgstr "keine Schichten morgen"
@@ -85,7 +84,7 @@ msgid "No further shifts."
 msgstr "keine weiteren Schichten"
 
 msgid "Show my work shifts in the past"
-msgstr "frührere Schichten"
+msgstr "frühere Schichten"
 
 msgid "My work shifts in the past:"
 msgstr "teilgenommene Schichten"
@@ -202,7 +201,7 @@ msgstr "Seite nicht gefunden"
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Sorry, die angeforderte Seite konnte nicht gefunden werden."
 
-msgid "Server error"
+msgid "server error"
 msgstr "Serverfehler"
 
 msgid "Server Error <em>(500)</em>"
@@ -785,11 +784,11 @@ msgstr "Derzeit sind keine Schichten geplant für %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Du kannst in folgenden Einrichtungen helfen"
 
-msgid "filter"
-msgstr "filtern"
-
 msgid "see more"
 msgstr "mehr anzeigen"
+
+msgid "news"
+msgstr "Nachrichten"
 
 msgid "open shifts"
 msgstr "offene Schichten"
@@ -1308,14 +1307,8 @@ msgstr "Ein neues Benutzerkonto erstellen"
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr "Volunteer-Planner und die Unterkunftskoordination werden Dir Emails schicken, die Deine Schicht betreffen."
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen aus."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeichen oder Sonderzeichen benutzen."
-
-msgid "The two password fields didn't match."
-msgstr "Die Passwörter stimmen nicht überein."
 
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
@@ -1344,11 +1337,17 @@ msgstr "Griechisch"
 msgid "Hungarian"
 msgstr "Ungarisch"
 
-msgid "Swedish"
-msgstr "Schwedisch"
+msgid "Polish"
+msgstr "Polnisch"
 
 msgid "Portuguese"
 msgstr "Portugiesisch"
+
+msgid "Russian"
+msgstr "Russisch"
+
+msgid "Swedish"
+msgstr "Schwedisch"
 
 msgid "Turkish"
 msgstr "Türkisch"

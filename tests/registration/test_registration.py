@@ -126,7 +126,7 @@ class RegistrationTestCase(TestCase):
 
         # TODO: why is this a non-field error? Shouldn't it be a error on the
         # second password field?
-        self.assertFormError(response, "form", "password2", "The two password fields didn't match.")
+        self.assertFormError(response, "form", "password2", "The two password fields didn’t match.")
 
         assert RegistrationProfile.objects.count() == 0
 

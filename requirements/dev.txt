@@ -1,8 +1,16 @@
 -r base.txt
 -r tests.txt
 
+# debugging
+ipdb==0.13.9
+
+# code formatting and linting
 black==22.1.0
 flake8==4.0.1
-gunicorn==19.9.0
+
+# translations
 transifex-client==0.14.4
-whitenoise==4.1.3
+
+# package management tools
+pip-chill==1.0.1
+pipdeptree==2.2.1

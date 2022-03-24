@@ -5,11 +5,15 @@ from datetime import timedelta
 DEBUG = True
 INTERNAL_IPS = ('127.0.0.1',)
 
+MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+] + MIDDLEWARE
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         # Intentionally out of repository so that git clean doesn't delete the file.
-        'NAME': os.path.join(SITE_ROOT, '..', 'db.sqlite3'),
+        'NAME': os.path.join(SITE_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -26,10 +30,6 @@ CACHES = {
     }
 }
 # END CACHE CONFIGURATION
-
-MIDDLEWARE += (
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
 
 LOGGING = {
     'version': 1,

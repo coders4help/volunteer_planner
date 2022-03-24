@@ -14,7 +14,7 @@ from django.urls import reverse
 from django.db.models import Count, Prefetch
 from django.shortcuts import get_object_or_404
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, FormView, DetailView
 
 from accounts.models import UserAccount
@@ -66,16 +66,22 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
                 .prefetch_related(Prefetch('shift_set', queryset=Shift.open_shifts.all(), to_attr='open_shifts'), "news_entries")
         )
 
-        used_places = set()
         facility_list = []
+        used_places = set()
+        used_countries = set()
 
         for facility in facilities:
             used_places.add(facility.place.area)
             facility_list.append(get_facility_details(facility))
+            used_countries.add(facility.place.area.region.country)
 
         context['areas_json'] = json.dumps(
             [{'slug': area.slug, 'name': area.name} for area in
              sorted(used_places, key=lambda p: p.name)])
+        context['country_json'] = json.dumps(
+            [{'slug': country.slug, 'name': country.name} for country in
+             sorted(used_countries, key=lambda p: p.name)])
+
         context['facility_json'] = json.dumps(facility_list,
                                               cls=DjangoJSONEncoder)
         return context

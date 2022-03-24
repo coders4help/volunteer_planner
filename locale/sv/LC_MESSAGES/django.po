@@ -193,7 +193,7 @@ msgstr ""
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
 
-msgid "Server error"
+msgid "server error"
 msgstr ""
 
 msgid "Server Error <em>(500)</em>"
@@ -783,11 +783,11 @@ msgstr "Det finns inga kommande pass lediga för %(geographical_name)s."
 msgid "You can help in the following facilities"
 msgstr "Du kan hjälpa på följande platser"
 
-msgid "filter"
-msgstr "filter"
-
 msgid "see more"
 msgstr "se mer"
+
+msgid "news"
+msgstr ""
 
 msgid "open shifts"
 msgstr "lediga pass"
@@ -1270,14 +1270,8 @@ msgstr ""
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
-msgid "Username already exists. Please choose a different username."
-msgstr "Användarnamnet finns redan. Vänligen välj ett annat användarnamn."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
-
-msgid "The two password fields didn't match."
-msgstr "Lösenorden stämmer inte överens."
 
 msgid "Repeat password"
 msgstr "Upprepa lösenord"
@@ -1306,11 +1300,17 @@ msgstr "Grekiska"
 msgid "Hungarian"
 msgstr "Ungerska"
 
-msgid "Swedish"
-msgstr "Svenska"
+msgid "Polish"
+msgstr ""
 
 msgid "Portuguese"
 msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr "Svenska"
 
 msgid "Turkish"
 msgstr ""

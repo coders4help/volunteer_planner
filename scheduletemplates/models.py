@@ -1,10 +1,10 @@
 # coding: utf-8
-from datetime import timedelta, datetime, time
+from datetime import datetime, time, timedelta
 
 from django.db import models
 from django.templatetags.l10n import localize
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from . import managers
 
@@ -71,20 +71,19 @@ class ShiftTemplate(models.Model):
 
     @property
     def duration(self):
-        today = datetime.today()
-        days = timedelta(days=self.days)
+        today = timezone.now().date()
         start = datetime.combine(today, self.starting_time)
-        end = datetime.combine(today + days, self.ending_time)
+        end = datetime.combine(today + timedelta(days=self.days), self.ending_time)
         duration = end - start
         return duration
 
     @property
     def localized_display_ending_time(self):
         days = self.days if self.ending_time > time.min else 0
-        days_fmt = ungettext_lazy(u'the next day',
-                                  u'after {number_of_days} days', days)
-        days_str = days_fmt.format(
-            number_of_days=days) if days else u''
+        days_fmt = ngettext_lazy(u'the next day',
+                                 u'after {number_of_days} days',
+                                 days)
+        days_str = days_fmt.format(number_of_days=days) if days else u''
         return u'{time} {days}'.format(time=localize(self.ending_time),
                                        days=days_str).strip()
 

@@ -7,9 +7,9 @@ from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.db.models import Q, Count
 from django.template.defaultfilters import striptags
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str as smart_text
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from . import models
 from scheduler import models as shiftmodels

@@ -12,7 +12,7 @@ from django.http import HttpResponseForbidden
 from django.template.defaultfilters import date
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView
 from django_ajax.decorators import ajax
 
@@ -165,6 +165,7 @@ def get_facility_details(facility):
         'osm_link': osm_search(address_line) if address_line else None,
         'description': mark_safe(facility.description),
         'area_slug': facility.place.area.slug,
+        'country_slug': facility.place.area.region.country.slug,
         'shifts': [{
                        'date_string': date(shift_date),
                        'link': reverse('planner_by_facility', kwargs={

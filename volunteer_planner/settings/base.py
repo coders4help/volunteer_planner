@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import os
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
@@ -36,9 +36,6 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
-    'djangocms_admin_style',
-    # Admin panel and documentation:
     'django.contrib.admin',
 )
 
@@ -49,7 +46,6 @@ THIRD_PARTY_APPS = (
     'accounts.apps.RegistrationConfig',
     'django_ajax',
     'django_extensions',
-    'django_uwsgi',
     'logentry_admin',
 )
 
@@ -70,6 +66,8 @@ LOCAL_APPS = (
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -139,18 +137,21 @@ LOGGING = {
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/auth/login/'
 
+USE_TZ = True
 TIME_ZONE = 'Europe/Berlin'
 
 LANGUAGE_CODE = 'en'
-USE_L10N = True
+
 LANGUAGES = (
     ('en', _('English')),
     ('de', _('German')),
     ('fr', _('French')),
     ('el', _('Greek')),
     ('hu', _('Hungarian')),
-    ('sv', _('Swedish')),
+    ('pl', _('Polish')),
     ('pt', _('Portuguese')),
+    ('ru', _('Russian')),
+    ('sv', _('Swedish')),
     ('tr', _('Turkish'))
 )
 
