@@ -129,32 +129,28 @@ class ManageFacilityMembersView(LoginRequiredMixin, DetailView):
 
 
 def send_membership_approved_notification(membership, approved_by):
+    template = get_template("emails/membership_approved.txt")
+    context = {
+        "username": membership.user_account.user.username,
+        "facility_name": membership.facility.name,
+    }
+    message = template.render(context)
+    subject = _("volunteer-planner.org: Membership approved")
 
-    try:
-        template = get_template("emails/membership_approved.txt")
-        context = {
-            "username": membership.user_account.user.username,
-            "facility_name": membership.facility.name,
-        }
-        message = template.render(context)
-        subject = _("volunteer-planner.org: Membership approved")
+    from_email = settings.DEFAULT_FROM_EMAIL
+    reply_to = approved_by.email
+    to = membership.user_account.user.email
 
-        from_email = settings.DEFAULT_FROM_EMAIL
-        reply_to = approved_by.email
-        to = membership.user_account.user.email
+    addresses = (to,)
 
-        addresses = (to,)
-
-        mail = EmailMessage(
-            subject=subject,
-            body=message,
-            to=addresses,
-            from_email=from_email,
-            reply_to=reply_to,
-        )
-        mail.send()
-    except:
-        raise
+    mail = EmailMessage(
+        subject=subject,
+        body=message,
+        to=addresses,
+        from_email=from_email,
+        reply_to=reply_to,
+    )
+    mail.send()
 
 
 def get_facility_details(facility):
