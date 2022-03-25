@@ -67,7 +67,9 @@ class ShiftAdminForm(forms.ModelForm):
                     + " "
                     + str(
                         _(
-                            f'"{task.name}" belongs to facility "{task.facility.name}", but shift takes place at "{facility.name}".'
+                            f'"{task.name}" belongs to facility '
+                            f'"{task.facility.name}", but shift takes place at '
+                            f'"{facility.name}".'
                         )
                     )
                 )
@@ -80,7 +82,9 @@ class ShiftAdminForm(forms.ModelForm):
                     + " "
                     + str(
                         _(
-                            f'"{workplace.name}" is at "{workplace.facility.name}" but shift takes place at "{facility.name}".'
+                            f'"{workplace.name}" is at '
+                            f'"{workplace.facility.name}" but shift takes place '
+                            f'at "{facility.name}".'
                         )
                     )
                 )

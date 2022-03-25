@@ -39,7 +39,7 @@ def send_email_notifications(sender, instance, **kwargs):
             )
 
             from_email = settings.DEFAULT_FROM_EMAIL
-            # TODO Find a way to identify current manager or give facility an e-mail address
+            # TODO: identify current manager or give facility an e-mail address
             reply_to = ["kontakt@volunteer-planner.org"]
             addresses = shift.helpers.values_list("user__email", flat=True)
 
@@ -55,7 +55,6 @@ def send_email_notifications(sender, instance, **kwargs):
                 mail.send()
     except Exception as e:
         logger.exception("Error sending notification email (Shift: %s)" % instance)
-        pass
 
 
 def times_changed(shift, old_shift, grace=timedelta(minutes=5)):
@@ -102,7 +101,8 @@ def notify_users_shift_change(sender, instance, **kwargs):
                     bcc=addresses,
                 )
                 logger.info(
-                    "Shift %s at %s changed: (%s-%s -> %s->%s). Sending email notification to %d affected user(s).",
+                    "Shift %s at %s changed: (%s-%s -> %s->%s). Sending email "
+                    "notification to %d affected user(s).",
                     shift.task.name,
                     shift.facility.name,
                     old_shift.starting_time,

@@ -63,8 +63,9 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(
                 verbose_name=b"Hilfetyp",
                 to="scheduler.Topics",
-                help_text="Jeder Hilfetyp hat so viele Planelemente wie es Arbeitsschichten geben "
-                "soll. Dies ist EINE Arbeitsschicht f\xfcr einen bestimmten Tag",
+                help_text="Jeder Hilfetyp hat so viele Planelemente wie es "
+                "Arbeitsschichten geben soll. Dies ist EINE Arbeitsschicht "
+                "f\xfcr einen bestimmten Tag",
                 on_delete=models.CASCADE,
             ),
         ),

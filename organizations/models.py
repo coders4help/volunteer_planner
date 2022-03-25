@@ -118,14 +118,8 @@ class Organization(models.Model):
 
 
 class Facility(models.Model):
-    """Facilities are the places where the voluntary work is done,
-    mainly where refugees live or administrative places.
-
-    Has fields: organization (org. that is running the fac.,foreign-key to organization),
-        name, short description, description, contact info,
-        members (User account many2many Facility),
-        place, adress, zip-code, show_on_map, latitude, longitude, slug,
-        timeline enabled and join mode.
+    """
+    Facilities are the places where the voluntary work is done.
     """
 
     class TimelineViewMode:
@@ -227,11 +221,10 @@ class Facility(models.Model):
 
 
 class OrganizationMembership(Membership):
-    """Users membership of organizations.
+    """
+    Users membership at organizations.
 
     Inherits from Membership which has a foreign key to user account.
-    Has a foreign key field to Organization,
-        so this is the many2many model of the m2m relationship user accounts/organization.
     """
 
     related_name = "organizations"
@@ -261,11 +254,10 @@ class OrganizationMembership(Membership):
 
 
 class FacilityMembership(Membership):
-    """Users membership of facilities.
+    """
+    Users membership of facilities.
 
     Inherits from Membership which has a foreign key to user account.
-    Has a foreign key field to Facility,
-        so this is the many2many model of the m2m relationship user accounts/facility.
     """
 
     related_name = "facilities"
@@ -295,10 +287,10 @@ class FacilityMembership(Membership):
 
 
 class Workplace(models.Model):
-    """Workplaces are places at the facilities, where work is done,
-        eg. kitchen or clothing store.
+    """
+    Workplaces are places at the facilities, where work is done.
 
-    Has foreign key to facility, name and description.
+    Examples: kitchen or clothing store.
     """
 
     # the facility the workplace belongs to

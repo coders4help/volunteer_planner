@@ -59,7 +59,8 @@ def forwards(apps, schema_editor):
                 )
                 group.permissions.add(permission)
                 print(
-                    f'    - {group.name}: added permission "{permission.name}" ({permission.codename})'
+                    f'    - {group.name}: added permission "{permission.name}" '
+                    f"({permission.codename})"
                 )
 
     OrganizationMembershipModel = apps.get_model(

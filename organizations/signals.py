@@ -20,7 +20,8 @@ class MembershipGroupUpdateException(Exception):
 @transaction.atomic
 def update_group_for_user(user_account, membership_set, group_name):
     """
-    Check django.contrib.auth groups of user in user_account and add or remove groups for its memberships.
+    Check django.contrib.auth groups of user in user_account and add or remove groups
+    for its memberships.
 
     :param user_account: the user account of the associated user to update the groups of
     :param membership_set: the membership set (reverse relation) to consider
@@ -36,10 +37,12 @@ def update_group_for_user(user_account, membership_set, group_name):
                 f"User '{user}' manager status of a facility/organization was changed. "
                 f"We tried to automatically update facility/organization manager "
                 f"group '{group_name}' for them, but no such group exists. "
-                f"In order to auto-assign permission groups to de-/resignated facility managers or organization "
-                f"managers, please make sure, to configure the permission group names in your VP installation settings "
-                f'module ORGANIZATION_MANAGER_GROUPNAME (default: "{ORGANIZATION_MANAGER_GROUPNAME}") and '
-                f'FACILITY_MANAGER_GROUPNAME (default: "{FACILITY_MANAGER_GROUPNAME}") exactly as they are '
+                f"In order to auto-assign permission groups to de-/resignated facility "
+                f"managers or organization managers, please make sure, to configure "
+                f"the permission group names in your VP installation settings module "
+                f"ORGANIZATION_MANAGER_GROUPNAME (default: "
+                f'"{ORGANIZATION_MANAGER_GROUPNAME}") and FACILITY_MANAGER_GROUPNAME '
+                f'(default: "{FACILITY_MANAGER_GROUPNAME}") exactly as they are '
                 f"named in the database."
             )
         )
@@ -53,15 +56,15 @@ def update_group_for_user(user_account, membership_set, group_name):
             user.save()
     else:
         user.groups.remove(group)
-        # Revoking the user is_staff flag here is not save, because it can not be known, if the user has this flag
-        # for another reason, too.
+        # Revoking the user is_staff flag here is not save, because it can not be known,
+        # if the user has this flag for another reason, too.
 
 
 @receiver([post_save, post_delete], sender=FacilityMembership)
 def handle_facility_membership_change(sender, instance, **kwargs):
     """
-    Update the django.contrib.auth groups of the associated user object, whenever a facility membership for it is
-    created, changed or deleted.
+    Update the django.contrib.auth groups of the associated user object, whenever a
+    facility membership for it is created, changed or deleted.
     """
     try:
         user_account = instance.user_account
@@ -80,8 +83,8 @@ def handle_facility_membership_change(sender, instance, **kwargs):
 @receiver((post_save, post_delete), sender=OrganizationMembership)
 def handle_organization_membership_change(sender, instance, **kwargs):
     """
-    Update the django.contrib.auth groups of the associated user object, whenever a organization membership for it is
-    created, changed or deleted.
+    Update the django.contrib.auth groups of the associated user object, whenever a
+    organization membership for it is created, changed or deleted.
     """
     try:
         user_account = instance.user_account

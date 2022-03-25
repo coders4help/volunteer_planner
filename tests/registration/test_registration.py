@@ -81,15 +81,14 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(self.registration_url, user_data)
 
         form = response.context["form"]
-        assert (
-            form is not None
-        ), "We expect the form to be displayed again if the submission failed"
+        assert form is not None, "Form not displayed again after submission failed"
 
         self.assertFormError(
             response,
             "form",
             "username",
-            "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.",
+            "Enter a valid username. This value may contain only letters, numbers, and "
+            "@/./+/-/_ characters.",
         )
 
         assert RegistrationProfile.objects.count() == 0

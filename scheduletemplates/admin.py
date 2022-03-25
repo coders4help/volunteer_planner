@@ -64,7 +64,9 @@ class ShiftTemplateForm(forms.ModelForm):
                     + " "
                     + str(
                         _(
-                            f'"{task.name}" belongs to facility "{task.facility.name}", but shift takes place at "{facility.name}".'
+                            f'"{task.name}" belongs to facility '
+                            f'"{task.facility.name}", but shift takes place at '
+                            f'"{facility.name}".'
                         )
                     )
                 )
@@ -77,7 +79,8 @@ class ShiftTemplateForm(forms.ModelForm):
                     + " "
                     + str(
                         _(
-                            f'"{workplace.name}" is at "{workplace.facility.name}" but shift takes place at "{facility.name}".'
+                            f'"{workplace.name}" is at "{workplace.facility.name}" but '
+                            f'shift takes place at "{facility.name}".'
                         )
                     )
                 )
@@ -121,9 +124,6 @@ def translate_date_format(format_string, mappings=JQUERYUI_FORMAT_MAPPING):
 class ApplyTemplateForm(forms.Form):
     """
     Form that lets one select a date.
-
-    TODO: Also select shifts via the form instead of inspecting raw POST data.
-          https://docs.djangoproject.com/en/1.8/ref/forms/fields/#modelmultiplechoicefield
     """
 
     apply_for_date = forms.DateField(widget=DateInput)

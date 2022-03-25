@@ -256,7 +256,8 @@ class PlannerView(LoginRequiredMixin, FormView):
 
             if hard_conflicted_shifts:
                 error_message = _(
-                    "We can't add you to this shift because you've already agreed to other shifts at the same time:"
+                    "We can't add you to this shift because you've already "
+                    "agreed to other shifts at the same time:"
                 )
                 message_list = "<ul>{}</ul>".format(
                     "\n".join(
@@ -272,7 +273,8 @@ class PlannerView(LoginRequiredMixin, FormView):
                 )
             elif shift_to_join.slots - shift_to_join.volunteer_count <= 0:
                 error_message = _(
-                    "We can't add you to this shift because there are no more slots left."
+                    "We can't add you to this shift because there are no more "
+                    "slots left."
                 )
                 messages.warning(self.request, error_message)
             else:
@@ -286,7 +288,8 @@ class PlannerView(LoginRequiredMixin, FormView):
 
                     if soft_conflicted_shifts:
                         warning_message = _(
-                            "The shift you joined overlaps with other shifts you already joined. Please check for "
+                            "The shift you joined overlaps with other shifts "
+                            "you already joined. Please check for "
                             "conflicts:"
                         )
                         message_list = "<ul>{}</ul>".format(
