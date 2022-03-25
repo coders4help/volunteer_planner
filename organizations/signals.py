@@ -65,10 +65,16 @@ def handle_facility_membership_change(sender, instance, **kwargs):
     """
     try:
         user_account = instance.user_account
-        update_group_for_user(user_account, user_account.facilitymembership_set, FACILITY_MANAGER_GROUPNAME)
+        update_group_for_user(
+            user_account,
+            user_account.facilitymembership_set,
+            FACILITY_MANAGER_GROUPNAME,
+        )
 
     except Exception as e:
-        raise MembershipGroupUpdateException(f'facility -> "{FACILITY_MANAGER_GROUPNAME}"') from e
+        raise MembershipGroupUpdateException(
+            f'facility -> "{FACILITY_MANAGER_GROUPNAME}"'
+        ) from e
 
 
 @receiver((post_save, post_delete), sender=OrganizationMembership)
@@ -79,7 +85,13 @@ def handle_organization_membership_change(sender, instance, **kwargs):
     """
     try:
         user_account = instance.user_account
-        update_group_for_user(user_account, user_account.organizationmembership_set, ORGANIZATION_MANAGER_GROUPNAME)
+        update_group_for_user(
+            user_account,
+            user_account.organizationmembership_set,
+            ORGANIZATION_MANAGER_GROUPNAME,
+        )
 
     except Exception as e:
-        raise MembershipGroupUpdateException(f'organization -> "{FACILITY_MANAGER_GROUPNAME}"') from e
+        raise MembershipGroupUpdateException(
+            f'organization -> "{FACILITY_MANAGER_GROUPNAME}"'
+        ) from e

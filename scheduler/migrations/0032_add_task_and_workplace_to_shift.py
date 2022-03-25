@@ -7,19 +7,30 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organizations', '0004_add_tasks'),
-        ('scheduler', '0031_rename_need_to_shift'),
+        ("organizations", "0004_add_tasks"),
+        ("scheduler", "0031_rename_need_to_shift"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='shift',
-            name='task',
-            field=models.ForeignKey(verbose_name='task', to='organizations.Task', null=True, on_delete=models.SET_NULL),
+            model_name="shift",
+            name="task",
+            field=models.ForeignKey(
+                verbose_name="task",
+                to="organizations.Task",
+                null=True,
+                on_delete=models.SET_NULL,
+            ),
         ),
         migrations.AddField(
-            model_name='shift',
-            name='workplace',
-            field=models.ForeignKey(verbose_name='workplace', to='organizations.Workplace', null=True, blank=True, on_delete=models.SET_NULL),
+            model_name="shift",
+            name="workplace",
+            field=models.ForeignKey(
+                verbose_name="workplace",
+                to="organizations.Workplace",
+                null=True,
+                blank=True,
+                on_delete=models.SET_NULL,
+            ),
         ),
     ]

@@ -42,7 +42,9 @@ def get_volunteer_hours():
     """
     Returns the number of total volunteer hours worked.
     """
-    finished_shifts = Shift.objects.filter(starting_time__lte=timezone.now()).annotate(slots_done=Count("helpers"))
+    finished_shifts = Shift.objects.filter(starting_time__lte=timezone.now()).annotate(
+        slots_done=Count("helpers")
+    )
     delta = timedelta()
     for shift in finished_shifts:
         delta += shift.slots_done * (shift.ending_time - shift.starting_time)

@@ -9,18 +9,24 @@ from django.utils import timezone
 
 
 class Command(BaseCommand):
-    help = 'dump complete database as sql'
+    help = "dump complete database as sql"
     args = ""
 
     option_list = BaseCommand.option_list
 
     def handle(self, *fixture_labels, **options):
-        db = settings.DATABASES['default']['NAME']
-        user = settings.DATABASES['default']['USER']
-        password = settings.DATABASES['default']['PASSWORD']
+        db = settings.DATABASES["default"]["NAME"]
+        user = settings.DATABASES["default"]["USER"]
+        password = settings.DATABASES["default"]["PASSWORD"]
         ts = datetime.datetime.isoformat(timezone.now())
 
         # first make a dump haha!
-        os.system('mysqldump -u %s --password="%s" %s | gzip > var/%s.dump.sql.gz' % (user, password, db, ts))
+        os.system(
+            'mysqldump -u %s --password="%s" %s | gzip > var/%s.dump.sql.gz'
+            % (user, password, db, ts)
+        )
         # then load new sql
-        os.system('gunzip < var/dump.sql.gz | mysql -u %s --password="%s" %s' % (user, password, db))
+        os.system(
+            'gunzip < var/dump.sql.gz | mysql -u %s --password="%s" %s'
+            % (user, password, db)
+        )

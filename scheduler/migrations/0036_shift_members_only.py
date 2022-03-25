@@ -7,13 +7,17 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduler', '0035_delete_topics_model'),
+        ("scheduler", "0035_delete_topics_model"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='shift',
-            name='members_only',
-            field=models.BooleanField(default=False, help_text='allow only members to help', verbose_name='members only'),
+            model_name="shift",
+            name="members_only",
+            field=models.BooleanField(
+                default=False,
+                help_text="allow only members to help",
+                verbose_name="members only",
+            ),
         ),
     ]

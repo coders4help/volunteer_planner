@@ -7,13 +7,15 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('notifications', '0001_initial'),
+        ("notifications", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='notification',
-            name='subtitle',
-            field=models.CharField(max_length=255, null=True, verbose_name=b'Untertitel', blank=True),
+            model_name="notification",
+            name="subtitle",
+            field=models.CharField(
+                max_length=255, null=True, verbose_name=b"Untertitel", blank=True
+            ),
         ),
     ]

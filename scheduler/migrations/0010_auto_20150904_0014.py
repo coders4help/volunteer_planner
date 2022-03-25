@@ -7,12 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduler', '0009_auto_20150823_1546'),
+        ("scheduler", "0009_auto_20150823_1546"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='location',
-            options={'permissions': (('can_view', 'User can view location'),)},
+            name="location",
+            options={"permissions": (("can_view", "User can view location"),)},
         ),
     ]

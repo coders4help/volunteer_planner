@@ -9,7 +9,7 @@ from django.utils.safestring import mark_safe
 from django.views.decorators.csrf import csrf_protect
 from content.models import FlatPageTranslation
 
-DEFAULT_TEMPLATE = 'flatpages/default.html'
+DEFAULT_TEMPLATE = "flatpages/default.html"
 
 
 # This view is called from FlatpageFallbackMiddleware.process_response
@@ -33,18 +33,16 @@ def translated_flatpage(request, url):
         flatpage
             `flatpages.flatpages` object
     """
-    if not url.startswith('/'):
-        url = '/' + url
+    if not url.startswith("/"):
+        url = "/" + url
     site_id = get_current_site(request).id
     try:
-        f = get_object_or_404(FlatPage,
-                              url=url, sites=site_id)
+        f = get_object_or_404(FlatPage, url=url, sites=site_id)
     except Http404:
-        if not url.endswith('/') and settings.APPEND_SLASH:
-            url += '/'
-            f = get_object_or_404(FlatPage,
-                                  url=url, sites=site_id)
-            return HttpResponsePermanentRedirect('%s/' % request.path)
+        if not url.endswith("/") and settings.APPEND_SLASH:
+            url += "/"
+            f = get_object_or_404(FlatPage, url=url, sites=site_id)
+            return HttpResponsePermanentRedirect("%s/" % request.path)
         else:
             raise
     return render_translated_flatpage(request, f)
@@ -57,7 +55,9 @@ def render_translated_flatpage(request, f):
         f.title = translation.title
         f.content = translation.content
     except FlatPageTranslation.DoesNotExist:
-        print(u'no translation for page "{flatpage}" for language {lang}'.format(
-            flatpage=f.url,
-            lang=request.LANGUAGE_CODE))
+        print(
+            'no translation for page "{flatpage}" for language {lang}'.format(
+                flatpage=f.url, lang=request.LANGUAGE_CODE
+            )
+        )
     return render_flatpage(request, f)

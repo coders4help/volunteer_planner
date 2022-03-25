@@ -9,13 +9,13 @@ from importlib import import_module
 
 
 class CompressedStaticFilesStorage(StaticFilesStorage):
-    EXTENSIONS = ['js', 'css']
+    EXTENSIONS = ["js", "css"]
     EXT_LOOKUP = {}
 
     def __init__(self, location=None, base_url=None, *args, **kwargs):
         super().__init__(location, base_url, *args, **kwargs)
         for ext in self.EXTENSIONS:
-            self.EXT_LOOKUP[ext] = re.compile('.*\.{}\Z'.format(ext))
+            self.EXT_LOOKUP[ext] = re.compile(".*\.{}\Z".format(ext))
 
     def post_process(self, paths, dry_run=False, **kwargs):
         processing_files = []
@@ -32,7 +32,7 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
         if dry_run:
             return name, path, False
         try:
-            func_name = '_minify_{}'.format(ext)
+            func_name = "_minify_{}".format(ext)
             func = getattr(self, func_name)
             if func:
                 processed = func(path)
@@ -53,11 +53,11 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
 
     @staticmethod
     def _minify_js(path):
-        return __class__._generic_minify(path, 'rjsmin', 'jsmin')
+        return __class__._generic_minify(path, "rjsmin", "jsmin")
 
     @staticmethod
     def _minify_css(path):
-        return __class__._generic_minify(path, 'rcssmin', 'cssmin')
+        return __class__._generic_minify(path, "rcssmin", "cssmin")
 
     @staticmethod
     def _generic_minify(path, module, func):
@@ -65,7 +65,7 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
             f = getattr(import_module(module), func)
             with open(path) as f_in:
                 input = f_in.read()
-            with open(path, 'w') as f_out:
+            with open(path, "w") as f_out:
                 f_out.write(f(input))
             __class__._gzip(path)
 
@@ -76,8 +76,8 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
     @staticmethod
     def _gzip(path):
         try:
-            with open(path, 'rb') as f_in:
-                with gzip.open('{}.gz'.format(path), 'wb') as f_out:
+            with open(path, "rb") as f_in:
+                with gzip.open("{}.gz".format(path), "wb") as f_out:
                     shutil.copyfileobj(f_in, f_out)
         except:
             pass

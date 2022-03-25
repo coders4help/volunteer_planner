@@ -13,48 +13,96 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Need',
+            name="Need",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('slots', models.IntegerField(blank=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        verbose_name="ID",
+                        serialize=False,
+                        auto_created=True,
+                        primary_key=True,
+                    ),
+                ),
+                ("slots", models.IntegerField(blank=True)),
             ],
         ),
         migrations.CreateModel(
-            name='TimePeriods',
+            name="TimePeriods",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('date_time', models.DateTimeField()),
+                (
+                    "id",
+                    models.AutoField(
+                        verbose_name="ID",
+                        serialize=False,
+                        auto_created=True,
+                        primary_key=True,
+                    ),
+                ),
+                ("date_time", models.DateTimeField()),
             ],
         ),
         migrations.CreateModel(
-            name='Topics',
+            name="Topics",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('title', models.CharField(max_length=255)),
-                ('description', models.TextField(max_length=20000, blank=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        verbose_name="ID",
+                        serialize=False,
+                        auto_created=True,
+                        primary_key=True,
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("description", models.TextField(max_length=20000, blank=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Volunteers',
+            name="Volunteers",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('interests', models.ForeignKey(to='scheduler.Topics', on_delete=models.CASCADE)),
-                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
+                (
+                    "id",
+                    models.AutoField(
+                        verbose_name="ID",
+                        serialize=False,
+                        auto_created=True,
+                        primary_key=True,
+                    ),
+                ),
+                (
+                    "interests",
+                    models.ForeignKey(to="scheduler.Topics", on_delete=models.CASCADE),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='need',
-            name='time_period_from',
-            field=models.ForeignKey(related_name='time_from', to='scheduler.TimePeriods', on_delete=models.CASCADE),
+            model_name="need",
+            name="time_period_from",
+            field=models.ForeignKey(
+                related_name="time_from",
+                to="scheduler.TimePeriods",
+                on_delete=models.CASCADE,
+            ),
         ),
         migrations.AddField(
-            model_name='need',
-            name='time_period_to',
-            field=models.ForeignKey(related_name='time_to', to='scheduler.TimePeriods', on_delete=models.CASCADE),
+            model_name="need",
+            name="time_period_to",
+            field=models.ForeignKey(
+                related_name="time_to",
+                to="scheduler.TimePeriods",
+                on_delete=models.CASCADE,
+            ),
         ),
         migrations.AddField(
-            model_name='need',
-            name='topic',
-            field=models.ForeignKey(to='scheduler.Topics', on_delete=models.CASCADE),
+            model_name="need",
+            name="topic",
+            field=models.ForeignKey(to="scheduler.Topics", on_delete=models.CASCADE),
         ),
     ]

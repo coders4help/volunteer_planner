@@ -6,12 +6,12 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('scheduler', '0025_merge'),
+        ("scheduler", "0025_merge"),
     ]
 
     operations = [
         migrations.AlterUniqueTogether(
-            name='shifthelper',
-            unique_together=set([('user_account', 'need')]),
+            name="shifthelper",
+            unique_together=set([("user_account", "need")]),
         ),
     ]

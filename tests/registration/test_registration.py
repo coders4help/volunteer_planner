@@ -39,7 +39,9 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(self.registration_url, {})
 
         form = response.context["form"]
-        assert form is not None, "We expect the form to be displayed again if the submission failed"
+        assert (
+            form is not None
+        ), "We expect the form to be displayed again if the submission failed"
 
         self.assertFormError(response, "form", "email", "This field is required.")
 
@@ -56,7 +58,9 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(self.registration_url, user_data)
 
         form = response.context["form"]
-        assert form is not None, "We expect the form to be displayed again if the submission failed"
+        assert (
+            form is not None
+        ), "We expect the form to be displayed again if the submission failed"
 
         # TODO: implement form error and then assertFormError
         # see for example test_username_exists_already
@@ -77,7 +81,9 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(self.registration_url, user_data)
 
         form = response.context["form"]
-        assert form is not None, "We expect the form to be displayed again if the submission failed"
+        assert (
+            form is not None
+        ), "We expect the form to be displayed again if the submission failed"
 
         self.assertFormError(
             response,
@@ -105,9 +111,13 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(self.registration_url, self.valid_user_data)
 
         form = response.context["form"]
-        assert form is not None, "We expect the form to be displayed again if the submission failed"
+        assert (
+            form is not None
+        ), "We expect the form to be displayed again if the submission failed"
 
-        self.assertFormError(response, "form", "username", "A user with that username already exists.")
+        self.assertFormError(
+            response, "form", "username", "A user with that username already exists."
+        )
 
         assert RegistrationProfile.objects.count() == 1
 
@@ -122,21 +132,29 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(self.registration_url, user_data)
 
         form = response.context["form"]
-        assert form is not None, "We expect the form to be displayed again if the submission failed"
+        assert (
+            form is not None
+        ), "We expect the form to be displayed again if the submission failed"
 
         # TODO: why is this a non-field error? Shouldn't it be a error on the
         # second password field?
-        self.assertFormError(response, "form", "password2", "The two password fields didn’t match.")
+        self.assertFormError(
+            response, "form", "password2", "The two password fields didn’t match."
+        )
 
         assert RegistrationProfile.objects.count() == 0
 
     def test_submit_valid_form(self):
-        response = self.client.post(self.registration_url, self.valid_user_data, follow=True)
+        response = self.client.post(
+            self.registration_url, self.valid_user_data, follow=True
+        )
 
         registration_complete_url = reverse("registration_complete")
 
         self.assertRedirects(response, registration_complete_url)
-        self.assertContains(response, "An activation mail will be sent to you email address.")
+        self.assertContains(
+            response, "An activation mail will be sent to you email address."
+        )
 
         assert RegistrationProfile.objects.count() == 1
         new_user = RegistrationProfile.objects.first()

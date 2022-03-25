@@ -6,18 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organizations', '0015_add_priority_fields'),
+        ("organizations", "0015_add_priority_fields"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='task',
-            name='priority',
-            field=models.PositiveSmallIntegerField(blank=True, help_text='Higher value = higher priority', null=True, verbose_name='priority'),
+            model_name="task",
+            name="priority",
+            field=models.PositiveSmallIntegerField(
+                blank=True,
+                help_text="Higher value = higher priority",
+                null=True,
+                verbose_name="priority",
+            ),
         ),
         migrations.AlterField(
-            model_name='workplace',
-            name='priority',
-            field=models.PositiveSmallIntegerField(blank=True, help_text='Higher value = higher priority', null=True, verbose_name='priority'),
+            model_name="workplace",
+            name="priority",
+            field=models.PositiveSmallIntegerField(
+                blank=True,
+                help_text="Higher value = higher priority",
+                null=True,
+                verbose_name="priority",
+            ),
         ),
     ]

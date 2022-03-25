@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 class Shift(models.Model):
-    """ A Shift is a time period for the work on a task at a workplace of a
+    """A Shift is a time period for the work on a task at a workplace of a
         certain facility (see organizations). Users register themselves for
         shifts, but there can be more than one slot for a shift, ie. there
         can be more than one user for a shift.
@@ -44,42 +44,43 @@ class Shift(models.Model):
     """
 
     # PositiveIntegerField instead of custom validation
-    slots = models.PositiveIntegerField(verbose_name=_(u'number of needed volunteers'))
+    slots = models.PositiveIntegerField(verbose_name=_("number of needed volunteers"))
 
-    task = models.ForeignKey("organizations.Task",
-                             models.PROTECT,
-                             verbose_name=_(u'task'))
-    workplace = models.ForeignKey("organizations.Workplace",
-                                  models.PROTECT,
-                                  verbose_name=_(u'workplace'),
-                                  null=True,
-                                  blank=True)
+    task = models.ForeignKey(
+        "organizations.Task", models.PROTECT, verbose_name=_("task")
+    )
+    workplace = models.ForeignKey(
+        "organizations.Workplace",
+        models.PROTECT,
+        verbose_name=_("workplace"),
+        null=True,
+        blank=True,
+    )
 
-    facility = models.ForeignKey('organizations.Facility',
-                                 models.PROTECT,
-                                 verbose_name=_(u'facility'))
+    facility = models.ForeignKey(
+        "organizations.Facility", models.PROTECT, verbose_name=_("facility")
+    )
 
-    starting_time = models.DateTimeField(verbose_name=_('starting time'),
-                                         db_index=True)
-    ending_time = models.DateTimeField(verbose_name=_('ending time'),
-                                       db_index=True)
+    starting_time = models.DateTimeField(verbose_name=_("starting time"), db_index=True)
+    ending_time = models.DateTimeField(verbose_name=_("ending time"), db_index=True)
 
-    helpers = models.ManyToManyField('accounts.UserAccount',
-                                     through='ShiftHelper',
-                                     related_name='shifts')
+    helpers = models.ManyToManyField(
+        "accounts.UserAccount", through="ShiftHelper", related_name="shifts"
+    )
 
-    members_only = models.BooleanField(default=False,
-                                       verbose_name=_(u'members only'),
-                                       help_text=_(
-                                           u'allow only members to help'))
+    members_only = models.BooleanField(
+        default=False,
+        verbose_name=_("members only"),
+        help_text=_("allow only members to help"),
+    )
 
     objects = managers.ShiftManager()
     open_shifts = managers.OpenShiftManager()
 
     class Meta:
-        verbose_name = _(u'shift')
-        verbose_name_plural = _(u'shifts')
-        ordering = ['starting_time', 'ending_time']
+        verbose_name = _("shift")
+        verbose_name_plural = _("shifts")
+        ordering = ["starting_time", "ending_time"]
 
     @property
     def days(self):
@@ -92,34 +93,38 @@ class Shift(models.Model):
     @property
     def localized_display_ending_time(self):
         days = self.days if self.ending_time.time() > time.min else 0
-        days_fmt = ngettext_lazy(u'the next day',
-                                  u'after {number_of_days} days',
-                                  days)
-        days_str = days_fmt.format(number_of_days=days) if days else u''
-        return u'{time} {days}'.format(time=localize(self.ending_time.time()),
-                                       days=days_str).strip()
+        days_fmt = ngettext_lazy("the next day", "after {number_of_days} days", days)
+        days_str = days_fmt.format(number_of_days=days) if days else ""
+        return "{time} {days}".format(
+            time=localize(self.ending_time.time()), days=days_str
+        ).strip()
 
     def __unicode__(self):
-        return u"{title} - {facility} ({start} - {end})".format(
+        return "{title} - {facility} ({start} - {end})".format(
             title=self.task.name,
             facility=self.facility.name,
             start=localize(self.starting_time),
-            end=localize(self.ending_time))
+            end=localize(self.ending_time),
+        )
 
     def __str__(self):
         return self.__unicode__()
 
     def get_absolute_url(self):
-        return reverse('shift_details',
-                       kwargs=dict(facility_slug=self.facility.slug,
-                                   year=self.starting_time.year,
-                                   month=self.starting_time.month,
-                                   day=self.starting_time.day,
-                                   shift_id=self.id))
+        return reverse(
+            "shift_details",
+            kwargs=dict(
+                facility_slug=self.facility.slug,
+                year=self.starting_time.year,
+                month=self.starting_time.month,
+                day=self.starting_time.day,
+                shift_id=self.id,
+            ),
+        )
 
 
 class ShiftHelper(models.Model):
-    """ A user registered for a shift. There is a many2many relationship
+    """A user registered for a shift. There is a many2many relationship
         between shift and user. ShiftHelper is the data structure realizing
         this relationship.
 
@@ -131,24 +136,24 @@ class ShiftHelper(models.Model):
 
     Manager is set to managers.ShiftHelperManager.
     """
-    user_account = models.ForeignKey('accounts.UserAccount',
-                                     models.CASCADE,
-                                     related_name='shift_helpers')
-    shift = models.ForeignKey('scheduler.Shift',
-                              models.CASCADE,
-                              related_name='shift_helpers')
+
+    user_account = models.ForeignKey(
+        "accounts.UserAccount", models.CASCADE, related_name="shift_helpers"
+    )
+    shift = models.ForeignKey(
+        "scheduler.Shift", models.CASCADE, related_name="shift_helpers"
+    )
     joined_shift_at = models.DateTimeField(auto_now_add=True)
 
     objects = managers.ShiftHelperManager()
 
     class Meta:
-        verbose_name = _('shift helper')
-        verbose_name_plural = _('shift helpers')
-        unique_together = ('user_account', 'shift')
+        verbose_name = _("shift helper")
+        verbose_name_plural = _("shift helpers")
+        unique_together = ("user_account", "shift")
 
     def __unicode__(self):
-        return u"{} on {}".format(self.user_account.user.username,
-                                  self.shift.task)
+        return "{} on {}".format(self.user_account.user.username, self.shift.task)
 
     def __str__(self):
         return self.__unicode__()

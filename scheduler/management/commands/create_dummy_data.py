@@ -54,7 +54,13 @@ LOREM = (
 
 def gen_date(hour, day):
     date_today = datetime.date.today() + datetime.timedelta(days=day)
-    date_time = datetime.time(hour=hour, minute=0, second=0, microsecond=0, tzinfo=timezone.get_current_timezone())
+    date_time = datetime.time(
+        hour=hour,
+        minute=0,
+        second=0,
+        microsecond=0,
+        tzinfo=timezone.get_current_timezone(),
+    )
     new_date = datetime.datetime.combine(date_today, date_time)
     return new_date
 
@@ -124,7 +130,7 @@ class Command(BaseCommand):
                     NewsEntry.objects.create(
                         title=f"Newsentry #{d} for {fac.name}",
                         creation_date=(today - datetime.timedelta(days=d)).date(),
-                        text=f"Newsentry #{d} for {fac.name} lorem"
+                        text=f"Newsentry #{d} for {fac.name} lorem",
                     )
                 tasks.extend(
                     [

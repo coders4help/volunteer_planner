@@ -5,12 +5,17 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    replaces = [('shiftmailer', '0001_initial'), ('shiftmailer', '0002_auto_20150912_2049'), ('shiftmailer', '0003_auto_20151002_1854'), ('shiftmailer', '0004_location_to_facility'), ('shiftmailer', '0005_delete_mailer')]
+    replaces = [
+        ("shiftmailer", "0001_initial"),
+        ("shiftmailer", "0002_auto_20150912_2049"),
+        ("shiftmailer", "0003_auto_20151002_1854"),
+        ("shiftmailer", "0004_location_to_facility"),
+        ("shiftmailer", "0005_delete_mailer"),
+    ]
 
     dependencies = [
-        ('organizations', '0002_migrate_locations_to_facilities'),
-        ('scheduler', '0009_auto_20150823_1546'),
+        ("organizations", "0002_migrate_locations_to_facilities"),
+        ("scheduler", "0009_auto_20150823_1546"),
     ]
 
-    operations = [
-    ]
+    operations = []
