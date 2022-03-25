@@ -28,11 +28,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         if 0 > options["count"]:
             raise CommandError(
-                "No negative count allowed. "
-                "It"
-                "s not I"
-                "m picky, but I simply don"
-                "t now, how to handle it."
+                "No negative count allowed. It's not I'm picky, "
+                "but I simply don't now, how to handle it."
             )
         if 0 > options["sleep"]:
             raise CommandError(
