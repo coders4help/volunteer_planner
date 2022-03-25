@@ -101,9 +101,6 @@ jobs:
         uses: actions/checkout@v2
       - name: flake8 Lint
         uses: py-actions/flake8@v2
-        continue-on-error: true
-      - name: Succeed until flake8 is enforced
-        run: exit 0
 
   pytest:
     name: Unit Tests
