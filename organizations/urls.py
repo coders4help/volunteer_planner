@@ -3,10 +3,10 @@
 from django.urls import re_path
 
 from .views import (
-    OrganizationView,
     FacilityView,
     ManageFacilityMembersView,
     managing_members_view,
+    OrganizationView,
 )
 
 urlpatterns = [

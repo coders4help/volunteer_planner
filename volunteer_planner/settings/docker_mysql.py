@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from volunteer_planner.settings.local import *
+from .local import *
 
 DATABASES = {
     "default": {

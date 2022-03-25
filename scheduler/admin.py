@@ -1,3 +1,5 @@
+import logging
+
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
@@ -6,12 +8,20 @@ from django.utils import timezone
 from django.utils.html import format_html, mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from organizations.admin import MembershipFilteredAdmin, MembershipFieldListFilter
+from organizations.admin import MembershipFieldListFilter, MembershipFilteredAdmin
 from . import models
 from .fields import FormattedModelChoiceIteratorFactory
-import logging
 
 logger = logging.getLogger(__name__)
+
+
+def facility_mismatch_error_message(object, facility):
+    title = _("Facilities do not match.")
+    text = _(
+        f'"{object.name}" belongs to facility "{object.facility.name}", but shift \
+takes place at "{facility.name}".'
+    )
+    return f"{title} {text}"
 
 
 class FormattedModelChoiceFieldAdminMixin:
@@ -62,29 +72,19 @@ class ShiftAdminForm(forms.ModelForm):
 
             task = self.cleaned_data.get("task")
             if task and not task.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{task.name}" belongs to facility "{task.facility.name}", but shift takes place at "{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "task",
+                    ValidationError(facility_mismatch_error_message(task, facility)),
                 )
-                self.add_error("task", ValidationError(msg))
 
             workplace = self.cleaned_data.get("workplace")
             if workplace and not workplace.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{workplace.name}" is at "{workplace.facility.name}" but shift takes place at "{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "workplace",
+                    ValidationError(
+                        facility_mismatch_error_message(workplace, facility)
+                    ),
                 )
-                self.add_error("workplace", ValidationError(msg))
 
         # No times, no joy
         if not start:

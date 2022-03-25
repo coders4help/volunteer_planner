@@ -1,6 +1,5 @@
 # coding=utf-8
 import logging
-from django.utils.timezone import timedelta
 
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -9,6 +8,7 @@ from django.dispatch import receiver
 from django.template.defaultfilters import time as date_filter
 from django.template.loader import render_to_string
 from django.utils import timezone
+from django.utils.timezone import timedelta
 
 from scheduler.models import Shift
 
@@ -39,7 +39,7 @@ def send_email_notifications(sender, instance, **kwargs):
             )
 
             from_email = settings.DEFAULT_FROM_EMAIL
-            # TODO Find a way to identify current manager or give facility an e-mail address
+            # TODO: identify current manager or give facility an e-mail address
             reply_to = ["kontakt@volunteer-planner.org"]
             addresses = shift.helpers.values_list("user__email", flat=True)
 
@@ -53,9 +53,8 @@ def send_email_notifications(sender, instance, **kwargs):
                     reply_to=reply_to,
                 )
                 mail.send()
-    except Exception as e:
+    except Exception:
         logger.exception("Error sending notification email (Shift: %s)" % instance)
-        pass
 
 
 def times_changed(shift, old_shift, grace=timedelta(minutes=5)):
@@ -102,7 +101,8 @@ def notify_users_shift_change(sender, instance, **kwargs):
                     bcc=addresses,
                 )
                 logger.info(
-                    "Shift %s at %s changed: (%s-%s -> %s->%s). Sending email notification to %d affected user(s).",
+                    "Shift %s at %s changed: (%s-%s -> %s->%s). Sending email "
+                    "notification to %d affected user(s).",
                     shift.task.name,
                     shift.facility.name,
                     old_shift.starting_time,

@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
-from collections import defaultdict
 import itertools
+from collections import defaultdict
 from operator import itemgetter
 
 from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
-from django.db.models import Q, Count
+from django.db.models import Count, Q
 from django.template.defaultfilters import striptags
 from django.utils.encoding import smart_str as smart_text
-
 from django.utils.translation import gettext_lazy as _
 
-from . import models
-from scheduler import models as shiftmodels
 from organizations.models import Membership
+from scheduler import models as shiftmodels
+from . import models
 
 DEFAULT_FILTER_ROLES = (models.Membership.Roles.ADMIN, models.Membership.Roles.MANAGER)
 

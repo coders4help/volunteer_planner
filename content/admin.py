@@ -1,13 +1,12 @@
 # coding: utf-8
 from django.conf import settings
-
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
-from . import models, forms
+from . import forms, models
 
 
 class FlatPageStyleInline(admin.StackedInline):

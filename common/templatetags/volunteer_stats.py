@@ -32,7 +32,9 @@ def get_volunteer_number():
 @register.simple_tag
 def get_volunteer_deleted_number():
     """
-    Returns the number of deleted volunteer accounts (accounts are inactive and anonymized)
+    Returns the number of deleted volunteer accounts.
+
+    Accounts are inactive and anonymized.
     """
     return User.objects.filter(is_active=False).count()
 
@@ -42,7 +44,8 @@ def get_volunteer_hours():
     """
     Returns the number of total volunteer hours worked.
     """
-    finished_shifts = Shift.objects.filter(starting_time__lte=timezone.now()).annotate(
+    now = timezone.now()
+    finished_shifts = Shift.objects.filter(starting_time__lte=now).annotate(
         slots_done=Count("helpers")
     )
     delta = timedelta()

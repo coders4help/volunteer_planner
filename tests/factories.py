@@ -3,15 +3,14 @@ from datetime import timedelta
 
 from django.contrib.auth.models import User
 from django.utils import timezone
-
-from factory import Sequence, SubFactory, LazyAttribute, PostGenerationMethodCall
+from factory import LazyAttribute, PostGenerationMethodCall, Sequence, SubFactory
 from factory.django import DjangoModelFactory
 from factory.fuzzy import FuzzyText
 
 from accounts import models as account_models
-from scheduler import models as scheduler_models
-from places import models as places_models
 from organizations import models as organization_models
+from places import models as places_models
+from scheduler import models as scheduler_models
 
 
 class CountryFactory(DjangoModelFactory):

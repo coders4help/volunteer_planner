@@ -18,7 +18,8 @@ from tests.factories import (
 
 def create_shift(start_hour, end_hour, facility=None):
     """
-    Tiny helper because setting time periods is awkward till we remove the FK relationship.
+    Tiny helper because setting time periods is awkward till we remove the FK
+    relationship.
     """
     create_args = dict(
         starting_time=datetime(2015, 1, 1, start_hour, tzinfo=get_current_timezone()),
@@ -44,8 +45,8 @@ def assert_shift_conflict_count(
 
 class ShiftTestCase(TestCase):
     """
-    We have some logic to detect conflicting shifts. This test case tests a few basic
-    cases.
+    We have some logic to detect conflicting shifts. This test case tests a few
+    basic cases.
     """
 
     def setUp(self):
@@ -142,7 +143,8 @@ class ShiftTestCase(TestCase):
 class FacilityTestCase(TestCase):
     def test_shift_manager_for_facility(self):
         """
-        checks that get_days_with_shifts() returns only dates later than datetime.now()
+        checks that get_days_with_shifts() returns only dates later than
+        timezone.now()
         """
         now = timezone.now()
         yesterday_start = now - timedelta(1)
@@ -156,7 +158,7 @@ class FacilityTestCase(TestCase):
         task = TaskFactory.create(facility=facility)
         workplace = WorkplaceFactory.create(facility=facility)
 
-        yesterday_shift = ShiftFactory.create(
+        ShiftFactory.create(
             facility=facility,
             task=task,
             workplace=workplace,
@@ -172,9 +174,11 @@ class FacilityTestCase(TestCase):
             ending_time=tomorrow_end,
         )
 
-        assert (
-            Facility.objects.count() == 1
-        ), "test case assumes that shifts have been created for the same facility, as the ShiftFactory indeed does at the time of writing of this test case"
+        assert Facility.objects.count() == 1, (
+            "test case assumes that shifts have been created for the same "
+            "facility, as the ShiftFactory indeed does at the time of writing "
+            "of this test case"
+        )
         assert Facility.objects.get() == task.facility
 
         shifts = Shift.open_shifts.filter(facility=facility)

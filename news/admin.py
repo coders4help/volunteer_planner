@@ -1,11 +1,11 @@
 # coding: utf-8
 
-from django.contrib import admin
-from django import forms
 from ckeditor.widgets import CKEditorWidget
+from django import forms
+from django.contrib import admin
 
+from organizations.admin import MembershipFieldListFilter, MembershipFilteredAdmin
 from . import models
-from organizations.admin import MembershipFilteredAdmin, MembershipFieldListFilter
 
 
 class NewsAdminForm(forms.ModelForm):

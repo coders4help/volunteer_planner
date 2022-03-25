@@ -2,8 +2,7 @@
 
 from django.urls import re_path
 
-from places.models import Country, Region, Area, Place
-
+from places.models import Area, Country, Place, Region
 from .views import GeographicHelpdeskView
 
 urlpatterns = [
@@ -18,12 +17,12 @@ urlpatterns = [
         name="region-details",
     ),
     re_path(
-        r"^(?P<region__country__slug>[-\w]+)/(?P<region__slug>[-\w]+)/(?P<slug>[-\w]+)/?$",
+        r"^(?P<region__country__slug>[-\w]+)/(?P<region__slug>[-\w]+)/(?P<slug>[-\w]+)/?$",  # noqa: E501
         GeographicHelpdeskView.as_view(model=Area),
         name="area-details",
     ),
     re_path(
-        r"^(?P<area__region__country__slug>[-\w]+)/(?P<area__region__slug>[-\w]+)/(?P<area__slug>[-\w]+)/(?P<slug>[-\w]+)/?$",
+        r"^(?P<area__region__country__slug>[-\w]+)/(?P<area__region__slug>[-\w]+)/(?P<area__slug>[-\w]+)/(?P<slug>[-\w]+)/?$",  # noqa: E501
         GeographicHelpdeskView.as_view(model=Place),
         name="place-details",
     ),

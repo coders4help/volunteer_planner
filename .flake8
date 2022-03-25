@@ -1,6 +1,5 @@
 [flake8]
 per-file-ignores =
-   volunteer_planner/settings/*.py: F403, F405,
-   volunteer_planner/settings/__init__.py: F403,
+   volunteer_planner/settings/*.py: F401, F403, F405,
 
 max-line-length = 88

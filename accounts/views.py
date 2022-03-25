@@ -1,21 +1,19 @@
 import random
 import string
+from datetime import date, datetime, timedelta
 
 from django.contrib.admin.models import DELETION, LogEntry
-from django.contrib.auth import logout
+from django.contrib.auth import logout, models
+from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.db import transaction
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
-from django.contrib.auth import models
+from django.views.generic.edit import UpdateView
 
-from datetime import date, datetime, timedelta
-
-from volunteer_planner.utils import LoginRequiredMixin
-from scheduler.models import ShiftHelper
 from accounts.models import UserAccount
+from scheduler.models import ShiftHelper
+from volunteer_planner.utils import LoginRequiredMixin
 
 
 @login_required()

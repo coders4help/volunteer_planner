@@ -1,10 +1,9 @@
 # coding=utf-8
+import datetime
 import os
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
-import datetime
-
 from django.utils import timezone
 
 

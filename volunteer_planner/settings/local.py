@@ -1,6 +1,7 @@
 # coding=utf-8
-from .base import *
 from datetime import timedelta
+
+from .base import *  # noqa: F401
 
 DEBUG = True
 INTERNAL_IPS = ("127.0.0.1",)
@@ -12,7 +13,8 @@ MIDDLEWARE = [
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        # Intentionally out of repository so that git clean doesn't delete the file.
+        # Intentionally out of repository so that git clean doesn't delete the
+        # file.
         "NAME": os.path.join(SITE_ROOT, "db.sqlite3"),
     }
 }
@@ -37,8 +39,8 @@ LOGGING = {
             "format": "%(levelname)s %(message)s",
         },
         "verbose": {
-            "format": "%(asctime)s - %(name)s (%(filename)s:%(lineno)d) [%(levelname)s] "
-            "(%(process)d/%(thread)d): %(message)s",
+            "format": "%(asctime)s - %(name)s (%(filename)s:%(lineno)d) "
+            "[%(levelname)s] (%(process)d/%(thread)d): %(message)s",
         },
     },
     "handlers": {
@@ -87,7 +89,8 @@ LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "de")
 
 DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
 
-# for testing on mobile devices in local networks it's necessary to overwrite with a local ip
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", ".localhost,127.0.0.1,[::1]").split(
+# for testing on mobile devices in local networks it's necessary to overwrite
+# with a local ip
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1,[::1]").split(
     sep=","
 )

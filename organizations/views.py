@@ -7,20 +7,19 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMessage
 from django.db.models import Prefetch
-from django.urls import reverse
 from django.http import HttpResponseForbidden
 from django.template.defaultfilters import date
 from django.template.loader import get_template
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView
 from django_ajax.decorators import ajax
 
-from osm_tools.templatetags.osm_links import osm_search
-from news.models import NewsEntry
 from organizations.admin import filter_queryset_by_membership
+from osm_tools.templatetags.osm_links import osm_search
 from scheduler.models import Shift
-from .models import Organization, Facility, FacilityMembership
+from .models import Facility, FacilityMembership, Organization
 
 
 class OrganizationView(DetailView):
@@ -129,32 +128,28 @@ class ManageFacilityMembersView(LoginRequiredMixin, DetailView):
 
 
 def send_membership_approved_notification(membership, approved_by):
+    template = get_template("emails/membership_approved.txt")
+    context = {
+        "username": membership.user_account.user.username,
+        "facility_name": membership.facility.name,
+    }
+    message = template.render(context)
+    subject = _("volunteer-planner.org: Membership approved")
 
-    try:
-        template = get_template("emails/membership_approved.txt")
-        context = {
-            "username": membership.user_account.user.username,
-            "facility_name": membership.facility.name,
-        }
-        message = template.render(context)
-        subject = _("volunteer-planner.org: Membership approved")
+    from_email = settings.DEFAULT_FROM_EMAIL
+    reply_to = approved_by.email
+    to = membership.user_account.user.email
 
-        from_email = settings.DEFAULT_FROM_EMAIL
-        reply_to = approved_by.email
-        to = membership.user_account.user.email
+    addresses = (to,)
 
-        addresses = (to,)
-
-        mail = EmailMessage(
-            subject=subject,
-            body=message,
-            to=addresses,
-            from_email=from_email,
-            reply_to=reply_to,
-        )
-        mail.send()
-    except:
-        raise
+    mail = EmailMessage(
+        subject=subject,
+        body=message,
+        to=addresses,
+        from_email=from_email,
+        reply_to=reply_to,
+    )
+    mail.send()
 
 
 def get_facility_details(facility):

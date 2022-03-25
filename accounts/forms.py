@@ -1,6 +1,6 @@
 from django import forms
-from registration.forms import RegistrationFormUniqueEmail
 from django.utils.text import gettext_lazy as _
+from registration.forms import RegistrationFormUniqueEmail
 
 
 class RegistrationForm(RegistrationFormUniqueEmail):

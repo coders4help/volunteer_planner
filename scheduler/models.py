@@ -2,15 +2,12 @@
 import logging
 from datetime import time
 
-from django.urls import reverse
 from django.db import models
-from django.utils.timezone import datetime
+from django.urls import reverse
 from django.utils.formats import localize
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
-from places.models import Country, Region, Area, Place
 from . import managers
-
 
 logger = logging.getLogger(__name__)
 

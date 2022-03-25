@@ -1,34 +1,33 @@
 # coding: utf-8
 
+import datetime
 import random
 import string
-import datetime
 
 import factory
+from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.db.models import signals
 from django.utils import timezone
 from registration.models import RegistrationProfile
 
-from django.contrib.auth.models import User
 from accounts.models import UserAccount
 from news.models import NewsEntry
-
-from organizations.models import Facility, Workplace, Task, Organization
-from tests.factories import (
-    ShiftHelperFactory,
-    ShiftFactory,
-    FacilityFactory,
-    PlaceFactory,
-    OrganizationFactory,
-    TaskFactory,
-    WorkplaceFactory,
-    UserFactory,
-    UserAccountFactory,
-)
+from organizations.models import Facility, Organization, Task, Workplace
+from places.models import Area, Country, Place, Region
 from scheduler.models import Shift, ShiftHelper
-from places.models import Region, Area, Place, Country
+from tests.factories import (
+    FacilityFactory,
+    OrganizationFactory,
+    PlaceFactory,
+    ShiftFactory,
+    ShiftHelperFactory,
+    TaskFactory,
+    UserAccountFactory,
+    UserFactory,
+    WorkplaceFactory,
+)
 
 HELPTOPICS = [
     "Jumper",
@@ -71,10 +70,10 @@ def random_string(length=10):
 
 class Command(BaseCommand):
     help = (
-        "this command creates dummy data for the entire "
-        'application execute "python manage.py create_dummy_data 30 --flush True"'
-        "to first delete all data in the database and then ad random shifts for 30 days."
-        'if you don\'t want to delete data just not add "flush True"   '
+        "This command creates dummy data for the entire application.\n"
+        'Execute "python manage.py create_dummy_data 30 --flush True" to first '
+        "delete all data in the database and then add random shifts for 30 days. "
+        'if you don`t want to delete data just not add "flush True".'
     )
 
     args = ""
@@ -170,7 +169,7 @@ class Command(BaseCommand):
                         workplace=workplace,
                     )
                     # assign random volunteer for each shift
-                    reg_user = ShiftHelperFactory.create(shift=shift)
+                    ShiftHelperFactory.create(shift=shift)
 
             for i in range(0, 5):
                 UserAccountFactory.create(user=UserFactory.create(username=f"user{i}"))

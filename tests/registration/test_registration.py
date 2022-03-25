@@ -1,9 +1,7 @@
 # coding=utf-8
 import pytest
-
-from django.test import TestCase, override_settings
+from django.test import override_settings, TestCase
 from django.urls import reverse
-
 from registration.models import RegistrationProfile
 
 from accounts.models import UserAccount
@@ -81,15 +79,14 @@ class RegistrationTestCase(TestCase):
         response = self.client.post(self.registration_url, user_data)
 
         form = response.context["form"]
-        assert (
-            form is not None
-        ), "We expect the form to be displayed again if the submission failed"
+        assert form is not None, "Form not displayed again after submission failed"
 
         self.assertFormError(
             response,
             "form",
             "username",
-            "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.",
+            "Enter a valid username. This value may contain only letters, numbers, and "
+            "@/./+/-/_ characters.",
         )
 
         assert RegistrationProfile.objects.count() == 0

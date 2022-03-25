@@ -97,7 +97,7 @@ class SessionAdmin(admin.ModelAdmin):
                 try:
                     user = User.objects.get(id=decoded.get(key))
                     _session_data += " (" + user.username + ")"
-                except Exception as e:
+                except Exception:
                     pass
             _session_data += "<br/>"
         return format_html(_session_data)

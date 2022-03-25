@@ -10,18 +10,19 @@ from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
 from django.urls import re_path
-from django.utils import formats
-from django.utils import timezone
+from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
-from . import models
 from organizations.admin import (
     filter_queryset_by_membership,
     MembershipFieldListFilter,
     MembershipFilteredAdmin,
     MembershipFilteredTabularInline,
 )
-from scheduler.admin import FormattedModelChoiceFieldAdminMixin
+from scheduler.admin import (
+    FormattedModelChoiceFieldAdminMixin,
+    facility_mismatch_error_message,
+)
 from scheduler.models import Shift
 from .models import ScheduleTemplate, ShiftTemplate
 
@@ -56,32 +57,22 @@ class ShiftTemplateForm(forms.ModelForm):
         schedule_template = self.cleaned_data.get("schedule_template")
         if schedule_template:
             facility = schedule_template.facility
-            task = self.cleaned_data.get("task")
 
+            task = self.cleaned_data.get("task")
             if task and not task.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{task.name}" belongs to facility "{task.facility.name}", but shift takes place at "{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "task",
+                    ValidationError(facility_mismatch_error_message(task, facility)),
                 )
-                self.add_error("task", ValidationError(msg))
 
             workplace = self.cleaned_data.get("workplace")
             if workplace and not workplace.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{workplace.name}" is at "{workplace.facility.name}" but shift takes place at "{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "workplace",
+                    ValidationError(
+                        facility_mismatch_error_message(workplace, facility)
+                    ),
                 )
-                self.add_error("workplace", ValidationError(msg))
 
 
 class ShiftTemplateInline(
@@ -121,9 +112,6 @@ def translate_date_format(format_string, mappings=JQUERYUI_FORMAT_MAPPING):
 class ApplyTemplateForm(forms.Form):
     """
     Form that lets one select a date.
-
-    TODO: Also select shifts via the form instead of inspecting raw POST data.
-          https://docs.djangoproject.com/en/1.8/ref/forms/fields/#modelmultiplechoicefield
     """
 
     apply_for_date = forms.DateField(widget=DateInput)
