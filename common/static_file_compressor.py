@@ -36,9 +36,10 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
             func = getattr(self, func_name)
             if func:
                 processed = func(path)
-        except AttributeError as e:
+        except AttributeError:
             processed = False
-        except io.UnsupportedOperation as e:
+        except io.UnsupportedOperation:
+            # raise explicitly
             raise
 
         return name, path, processed
@@ -70,7 +71,7 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
             __class__._gzip(path)
 
             return True
-        except Exception as ex:
+        except Exception:
             return False
 
     @staticmethod
@@ -79,5 +80,5 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
             with open(path, "rb") as f_in:
                 with gzip.open("{}.gz".format(path), "wb") as f_out:
                     shutil.copyfileobj(f_in, f_out)
-        except Exception as ex:
+        except Exception:
             pass

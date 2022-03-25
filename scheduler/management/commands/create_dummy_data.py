@@ -169,7 +169,7 @@ class Command(BaseCommand):
                         workplace=workplace,
                     )
                     # assign random volunteer for each shift
-                    reg_user = ShiftHelperFactory.create(shift=shift)
+                    ShiftHelperFactory.create(shift=shift)
 
             for i in range(0, 5):
                 UserAccountFactory.create(user=UserFactory.create(username=f"user{i}"))

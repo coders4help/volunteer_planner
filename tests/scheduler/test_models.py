@@ -158,7 +158,7 @@ class FacilityTestCase(TestCase):
         task = TaskFactory.create(facility=facility)
         workplace = WorkplaceFactory.create(facility=facility)
 
-        yesterday_shift = ShiftFactory.create(
+        ShiftFactory.create(
             facility=facility,
             task=task,
             workplace=workplace,

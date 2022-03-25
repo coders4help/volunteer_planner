@@ -40,7 +40,7 @@ class Command(BaseCommand):
         db_conn = connections["default"]
         for i in range(0, options["count"]):
             try:
-                c = db_conn.cursor()
+                db_conn.cursor()
                 success = True
                 break
             except OperationalError as e:

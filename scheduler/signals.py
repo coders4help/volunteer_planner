@@ -53,7 +53,7 @@ def send_email_notifications(sender, instance, **kwargs):
                     reply_to=reply_to,
                 )
                 mail.send()
-    except Exception as e:
+    except Exception:
         logger.exception("Error sending notification email (Shift: %s)" % instance)
 
 
