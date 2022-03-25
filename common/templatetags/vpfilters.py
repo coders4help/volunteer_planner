@@ -27,7 +27,7 @@ def contains(enumeratable, obj):
 
 
 @register.filter
-def split(value, separator=' '):
+def split(value, separator=" "):
     return value.split(separator)
 
 

@@ -7,15 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduletemplates', '0004_shifttemplate_members_only'),
+        ("scheduletemplates", "0004_shifttemplate_members_only"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='shifttemplate',
-            name='workplace',
-            field=models.ForeignKey(verbose_name='workplace', to='organizations.Workplace',
-                                    null=True, blank=True,
-                                    on_delete=django.db.models.deletion.CASCADE),
+            model_name="shifttemplate",
+            name="workplace",
+            field=models.ForeignKey(
+                verbose_name="workplace",
+                to="organizations.Workplace",
+                null=True,
+                blank=True,
+                on_delete=django.db.models.deletion.CASCADE,
+            ),
         ),
     ]

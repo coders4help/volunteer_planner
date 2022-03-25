@@ -5,15 +5,15 @@ from django.db import migrations
 
 
 def migrate_locations(apps, schema_editor):
-    location_model = apps.get_model('scheduler', 'Location')
-    organization_model = apps.get_model('organizations', 'Organization')
-    facility_model = apps.get_model('organizations', 'Facility')
-    need_model = apps.get_model('scheduler', 'Need')
+    location_model = apps.get_model("scheduler", "Location")
+    organization_model = apps.get_model("organizations", "Organization")
+    facility_model = apps.get_model("organizations", "Facility")
+    need_model = apps.get_model("scheduler", "Need")
 
     def merged_address(location):
-        return u"{}\n{}".format(location.street,
-                                u'{} {}'.format(location.postal_code,
-                                                location.city).strip())
+        return "{}\n{}".format(
+            location.street, "{} {}".format(location.postal_code, location.city).strip()
+        )
 
     def make_org_from_location(location):
         org = organization_model()
@@ -57,10 +57,8 @@ def skip(_, __):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('organizations', '0001_initial'),
-        ('scheduler', '0028_need_facility'),
+        ("organizations", "0001_initial"),
+        ("scheduler", "0028_need_facility"),
     ]
 
-    operations = [
-        migrations.RunPython(migrate_locations, skip)
-    ]
+    operations = [migrations.RunPython(migrate_locations, skip)]

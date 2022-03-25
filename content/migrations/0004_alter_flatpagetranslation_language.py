@@ -6,13 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('content', '0003_add_french_turkish_portugues_language'),
+        ("content", "0003_add_french_turkish_portugues_language"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='flatpagetranslation',
-            name='language',
-            field=models.CharField(choices=[('en', 'English'), ('de', 'German'), ('fr', 'French'), ('el', 'Greek'), ('hu', 'Hungarian'), ('pl', 'Polish'), ('pt', 'Portuguese'), ('ru', 'Russian'), ('sv', 'Swedish'), ('tr', 'Turkish')], max_length=20, verbose_name='language'),
+            model_name="flatpagetranslation",
+            name="language",
+            field=models.CharField(
+                choices=[
+                    ("en", "English"),
+                    ("de", "German"),
+                    ("fr", "French"),
+                    ("el", "Greek"),
+                    ("hu", "Hungarian"),
+                    ("pl", "Polish"),
+                    ("pt", "Portuguese"),
+                    ("ru", "Russian"),
+                    ("sv", "Swedish"),
+                    ("tr", "Turkish"),
+                ],
+                max_length=20,
+                verbose_name="language",
+            ),
         ),
     ]

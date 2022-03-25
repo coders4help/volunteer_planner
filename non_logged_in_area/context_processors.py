@@ -5,4 +5,4 @@ from django.utils.functional import SimpleLazyObject
 
 
 def current_site(request):
-    return {'site': SimpleLazyObject(lambda: get_current_site(request))}
+    return {"site": SimpleLazyObject(lambda: get_current_site(request))}

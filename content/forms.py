@@ -10,7 +10,7 @@ class FlatPageTranslationFormWithHTMLEditor(forms.ModelForm):
     content = forms.CharField(widget=CKEditorWidget())
 
     class Meta:
-        fields = '__all__'
+        fields = "__all__"
         model = FlatPageTranslation
 
 

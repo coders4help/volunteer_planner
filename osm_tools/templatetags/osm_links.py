@@ -7,12 +7,14 @@ register = template.Library()
 
 
 def url_encoded_location(location):
-    return u'+'.join(u'{}'.format(location).split(u' '))
+    return "+".join("{}".format(location).split(" "))
 
 
 @register.filter
 def osm_search(location):
     location = url_encoded_location(location)
-    pattern = pgettext_lazy('maps search url pattern',
-                            u'https://www.openstreetmap.org/search?query={location}')
+    pattern = pgettext_lazy(
+        "maps search url pattern",
+        "https://www.openstreetmap.org/search?query={location}",
+    )
     return pattern.format(location=location)

@@ -18,7 +18,9 @@ def combine_descriptions(apps, schema_editor):
     )
 
     for Model in models:
-        for object in Model.objects.exclude(short_description="").exclude(short_description=None):
+        for object in Model.objects.exclude(short_description="").exclude(
+            short_description=None
+        ):
             short_description = (object.short_description or "").strip()
             if short_description:
                 description = (object.description or "").strip()

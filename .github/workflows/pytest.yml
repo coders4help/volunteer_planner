@@ -92,10 +92,6 @@ jobs:
       - uses: psf/black@stable
         with:
           options: "--check --target-version py39"
-        continue-on-error: true
-
-      - name: Succeed until black is enforced
-        run: exit 0
 
   flake8:
     runs-on: ubuntu-latest

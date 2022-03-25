@@ -10,10 +10,11 @@ class ConfLoader(object):
 
         @property
         def message(self):
-            return u"ConfigNotFound: {}".format(self.key)
+            return "ConfigNotFound: {}".format(self.key)
 
-    def __init__(self, settings=None, env_fmt=None, env=True,
-                 raise_missing=True, **defaults):
+    def __init__(
+        self, settings=None, env_fmt=None, env=True, raise_missing=True, **defaults
+    ):
         self._defaults = defaults or {}
         self.env = env
         self.env_fmt = env_fmt or "{}"

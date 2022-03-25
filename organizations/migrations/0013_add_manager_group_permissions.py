@@ -50,23 +50,33 @@ def forwards(apps, schema_editor):
         group, created = GroupModel.objects.get_or_create(name=group_name)
         print(f"  - {group.name}: created group object")
         for app_label, model, actions in permissions:
-            content_type, _ = ContentTypeModel.objects.get_or_create(app_label=app_label.lower(), model=model.lower())
+            content_type, _ = ContentTypeModel.objects.get_or_create(
+                app_label=app_label.lower(), model=model.lower()
+            )
             for action in actions:
                 permission, _ = PermissionModel.objects.get_or_create(
                     content_type=content_type, codename=f"{action}_{model}".lower()
                 )
                 group.permissions.add(permission)
-                print(f'    - {group.name}: added permission "{permission.name}" ({permission.codename})')
+                print(
+                    f'    - {group.name}: added permission "{permission.name}" ({permission.codename})'
+                )
 
-    OrganizationMembershipModel = apps.get_model("organizations", "OrganizationMembership")
-    for organization_member in OrganizationMembershipModel.objects.filter(role__lt=Membership.Roles.MEMBER):
+    OrganizationMembershipModel = apps.get_model(
+        "organizations", "OrganizationMembership"
+    )
+    for organization_member in OrganizationMembershipModel.objects.filter(
+        role__lt=Membership.Roles.MEMBER
+    ):
         user = organization_member.user_account.user
         group = GroupModel.objects.get(name=ORGANIZATION_MANAGER_GROUPNAME)
         user.groups.add(group)
         print(f'  - {group.name}: added user "{user.username}" (id: {user.id})')
 
     FacilityMembershipModel = apps.get_model("organizations", "FacilityMembership")
-    for facility_member in FacilityMembershipModel.objects.filter(role__lt=Membership.Roles.MEMBER):
+    for facility_member in FacilityMembershipModel.objects.filter(
+        role__lt=Membership.Roles.MEMBER
+    ):
         user = facility_member.user_account.user
         group = GroupModel.objects.get(name=FACILITY_MANAGER_GROUPNAME)
         user.groups.add(group)

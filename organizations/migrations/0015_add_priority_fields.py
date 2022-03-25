@@ -29,11 +29,15 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="task",
             name="priority",
-            field=models.PositiveSmallIntegerField(blank=True, null=True, verbose_name="priority"),
+            field=models.PositiveSmallIntegerField(
+                blank=True, null=True, verbose_name="priority"
+            ),
         ),
         migrations.AddField(
             model_name="workplace",
             name="priority",
-            field=models.PositiveSmallIntegerField(blank=True, null=True, verbose_name="priority"),
+            field=models.PositiveSmallIntegerField(
+                blank=True, null=True, verbose_name="priority"
+            ),
         ),
     ]
