@@ -72,7 +72,7 @@ class Command(BaseCommand):
     help = (
         "This command creates dummy data for the entire application.\n"
         'Execute "python manage.py create_dummy_data 30 --flush True" to first '
-        "delete all data in the database and then ad random shifts for 30 days. "
+        "delete all data in the database and then add random shifts for 30 days. "
         'if you don`t want to delete data just not add "flush True".'
     )
 
