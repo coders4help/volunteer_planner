@@ -4,7 +4,7 @@ from behave import given, then
 
 
 @given("I visit the home page")
-def impl(context):
+def visit_homepage(context):
     context.browser.get("http://localhost:8000/")
 
 
