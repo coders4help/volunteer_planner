@@ -15,7 +15,7 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
     def __init__(self, location=None, base_url=None, *args, **kwargs):
         super().__init__(location, base_url, *args, **kwargs)
         for ext in self.EXTENSIONS:
-            self.EXT_LOOKUP[ext] = re.compile(".*\.{}\Z".format(ext))
+            self.EXT_LOOKUP[ext] = re.compile(r".*\.{}\Z".format(ext))
 
     def post_process(self, paths, dry_run=False, **kwargs):
         processing_files = []

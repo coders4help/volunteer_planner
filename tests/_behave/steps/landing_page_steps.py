@@ -43,7 +43,7 @@ def find_statistics(context):
     facts_div_containers = context.browser.find_elements_by_class_name("facts")
     stats_div = facts_div_containers[0]
 
-    stats_reg_ex = "(^[0-9]+\n[A-Za-z ]+\n)*(^[0-9]+\n[A-Za-z ]+$)\Z"
+    stats_reg_ex = r"(^[0-9]+\n[A-Za-z ]+\n)*(^[0-9]+\n[A-Za-z ]+$)\Z"
 
     match = re.match(stats_reg_ex, stats_div.text, re.MULTILINE)
 
@@ -55,18 +55,18 @@ def find_areas_and_facilities(context):
     facts_div_containers = context.browser.find_elements_by_class_name("facts")
     areas_facilities_div = facts_div_containers[1]
 
-    regex_heading = "^.*\n"
-    regex_one_area = "(^[\w ]+\n([\w ]+\u2022)*[\w ]+)"
-    regex_at_least_one_area = "(" + regex_one_area + "\n)*" + regex_one_area
-    regex_placeholder_msg = "There are currently no places in need of help."
+    regex_heading = r"^.*\n"
+    regex_one_area = r"(^[\w ]+\n([\w ]+\u2022)*[\w ]+)"
+    regex_at_least_one_area = r"(" + regex_one_area + r"\n)*" + regex_one_area
+    regex_placeholder_msg = r"There are currently no places in need of help."
     regex_total = (
         regex_heading
-        + "("
+        + r"("
         + regex_at_least_one_area
-        + "|"
+        + r"|"
         + regex_placeholder_msg
-        + ")"
-        + "\Z"
+        + r")"
+        + r"\Z"
     )
 
     match = re.match(regex_total, areas_facilities_div.text, re.MULTILINE | re.UNICODE)
