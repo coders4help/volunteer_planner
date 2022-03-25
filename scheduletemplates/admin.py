@@ -10,11 +10,9 @@ from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.templatetags.l10n import localize
 from django.urls import re_path
-from django.utils import formats
-from django.utils import timezone
+from django.utils import formats, timezone
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
-from . import models
 from organizations.admin import (
     filter_queryset_by_membership,
     MembershipFieldListFilter,

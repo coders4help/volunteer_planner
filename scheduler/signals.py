@@ -1,6 +1,5 @@
 # coding=utf-8
 import logging
-from django.utils.timezone import timedelta
 
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -9,6 +8,7 @@ from django.dispatch import receiver
 from django.template.defaultfilters import time as date_filter
 from django.template.loader import render_to_string
 from django.utils import timezone
+from django.utils.timezone import timedelta
 
 from scheduler.models import Shift
 

@@ -5,16 +5,16 @@ import logging
 from datetime import date
 
 from django.contrib import messages
-from django.contrib.admin.models import LogEntry, DELETION
+from django.contrib.admin.models import DELETION, LogEntry
 from django.contrib.contenttypes.models import ContentType
 from django.core.serializers.json import DjangoJSONEncoder
-from django.http import Http404
-from django.urls import reverse
 from django.db.models import Count, Prefetch
+from django.http import Http404
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import TemplateView, FormView, DetailView
+from django.views.generic import DetailView, FormView, TemplateView
 
 from accounts.models import UserAccount
 from organizations.models import Facility, FacilityMembership
@@ -23,8 +23,7 @@ from organizations.templatetags.memberships import (
     is_membership_pending,
 )
 from organizations.views import get_facility_details
-from scheduler.models import Shift
-from scheduler.models import ShiftHelper
+from scheduler.models import Shift, ShiftHelper
 from volunteer_planner.utils import LoginRequiredMixin
 from .forms import RegisterForShiftForm
 

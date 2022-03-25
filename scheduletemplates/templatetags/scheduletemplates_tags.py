@@ -1,7 +1,6 @@
 # coding: utf-8
 
 from django import template
-from django.utils.translation import pgettext_lazy
 from django.contrib.admin.templatetags.admin_modify import submit_row
 
 register = template.Library()

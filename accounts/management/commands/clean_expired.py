@@ -1,9 +1,8 @@
 # coding=utf-8
-from django.conf import settings
-from django.core.management.base import BaseCommand
-
 from datetime import date, timedelta
 
+from django.conf import settings
+from django.core.management.base import BaseCommand
 from registration.models import RegistrationProfile
 
 

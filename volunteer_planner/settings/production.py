@@ -1,7 +1,8 @@
 # coding=utf-8
 
-from .base import *
 from datetime import timedelta
+
+from .base import *  # noqa: F401
 
 DEBUG = os.environ.get("BETA", False)
 

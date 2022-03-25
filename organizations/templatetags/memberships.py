@@ -3,8 +3,8 @@
 from django import template
 from django.db.models import Count
 
-from organizations.admin import get_cached_memberships, filter_queryset_by_membership
-from organizations.models import Membership, FacilityMembership
+from organizations.admin import filter_queryset_by_membership, get_cached_memberships
+from organizations.models import FacilityMembership, Membership
 
 register = template.Library()
 

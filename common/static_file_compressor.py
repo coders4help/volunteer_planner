@@ -3,9 +3,9 @@ import gzip
 import io
 import re
 import shutil
+from importlib import import_module
 
 from django.contrib.staticfiles.storage import StaticFilesStorage
-from importlib import import_module
 
 
 class CompressedStaticFilesStorage(StaticFilesStorage):

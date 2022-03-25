@@ -2,14 +2,13 @@
 
 from django.urls import re_path
 
-
 from .views import (
-    user_account_detail,
-    AccountUpdateView,
-    AccountDeleteView,
     account_delete_final,
+    AccountDeleteView,
+    AccountUpdateView,
     shift_list_active,
     shift_list_done,
+    user_account_detail,
 )
 
 urlpatterns = [

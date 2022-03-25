@@ -2,8 +2,7 @@
 
 from django.urls import re_path
 
-from places.models import Country, Region, Area, Place
-
+from places.models import Area, Country, Place, Region
 from .views import GeographicHelpdeskView
 
 urlpatterns = [

@@ -8,7 +8,7 @@ class AccountsConfig(AppConfig):
     verbose_name = _("Accounts")
 
     def ready(self):
-        import accounts.signals
+        from . import signals  # noqa
 
 
 class RegistrationConfig(AppConfig):

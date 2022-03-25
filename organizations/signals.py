@@ -2,13 +2,12 @@ import logging
 
 from django.contrib.auth.models import Group
 from django.db import transaction
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-
 from django.utils.translation import gettext_lazy as _
 
-from .models import Membership, FacilityMembership, OrganizationMembership
-from .settings import ORGANIZATION_MANAGER_GROUPNAME, FACILITY_MANAGER_GROUPNAME
+from .models import FacilityMembership, Membership, OrganizationMembership
+from .settings import FACILITY_MANAGER_GROUPNAME, ORGANIZATION_MANAGER_GROUPNAME
 
 logger = logging.getLogger(__name__)
 

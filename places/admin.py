@@ -1,7 +1,7 @@
 # coding=utf-8
 from django.contrib import admin
 
-from .models import Country, Region, Area, Place
+from .models import Area, Country, Place, Region
 
 
 @admin.register(Country)

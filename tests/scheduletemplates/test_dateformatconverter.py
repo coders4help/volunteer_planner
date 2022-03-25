@@ -2,6 +2,7 @@
 
 
 import pytest
+
 from scheduletemplates.admin import translate_date_format
 
 

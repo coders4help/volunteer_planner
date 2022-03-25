@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from volunteer_planner.settings.local import *
+from volunteer_planner.settings.local import *  # noqa: F401
 
 DATABASES = {
     "default": {

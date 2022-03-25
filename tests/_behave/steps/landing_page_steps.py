@@ -1,5 +1,6 @@
-from behave import given, then
 import re
+
+from behave import given, then
 
 
 @given("I visit the home page")

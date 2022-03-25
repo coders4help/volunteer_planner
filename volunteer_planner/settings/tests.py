@@ -1,5 +1,6 @@
-from .local import *
 from datetime import timedelta
+
+from .local import *  # noqa: F401
 
 DEBUG = False
 

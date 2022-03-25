@@ -1,34 +1,33 @@
 # coding: utf-8
 
+import datetime
 import random
 import string
-import datetime
 
 import factory
+from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.db.models import signals
 from django.utils import timezone
 from registration.models import RegistrationProfile
 
-from django.contrib.auth.models import User
 from accounts.models import UserAccount
 from news.models import NewsEntry
-
-from organizations.models import Facility, Workplace, Task, Organization
-from tests.factories import (
-    ShiftHelperFactory,
-    ShiftFactory,
-    FacilityFactory,
-    PlaceFactory,
-    OrganizationFactory,
-    TaskFactory,
-    WorkplaceFactory,
-    UserFactory,
-    UserAccountFactory,
-)
+from organizations.models import Facility, Organization, Task, Workplace
+from places.models import Area, Country, Place, Region
 from scheduler.models import Shift, ShiftHelper
-from places.models import Region, Area, Place, Country
+from tests.factories import (
+    FacilityFactory,
+    OrganizationFactory,
+    PlaceFactory,
+    ShiftFactory,
+    ShiftHelperFactory,
+    TaskFactory,
+    UserAccountFactory,
+    UserFactory,
+    WorkplaceFactory,
+)
 
 HELPTOPICS = [
     "Jumper",

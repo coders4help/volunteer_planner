@@ -1,3 +1,5 @@
+import logging
+
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
@@ -6,10 +8,9 @@ from django.utils import timezone
 from django.utils.html import format_html, mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from organizations.admin import MembershipFilteredAdmin, MembershipFieldListFilter
+from organizations.admin import MembershipFieldListFilter, MembershipFilteredAdmin
 from . import models
 from .fields import FormattedModelChoiceIteratorFactory
-import logging
 
 logger = logging.getLogger(__name__)
 

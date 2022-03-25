@@ -1,10 +1,9 @@
 # coding: utf-8
-from django.urls import reverse
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from accounts.models import UserAccount
-from scheduler.models import Shift
 from .managers import FacilityManager
 
 
