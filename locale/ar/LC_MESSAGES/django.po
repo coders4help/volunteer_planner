@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-21 16:52+0100\n"
+"POT-Creation-Date: 2022-03-25 11:54+0100\n"
 "PO-Revision-Date: 2022-03-15 17:56+0000\n"
 "Last-Translator: Christoph Meißner\n"
 "Language-Team: Arabic (http://www.transifex.com/coders4help/volunteer-planner/language/ar/)\n"
@@ -687,11 +687,7 @@ msgid "Facilities do not match."
 msgstr ""
 
 #, python-brace-format
-msgid "\"{task.name}\" belongs to facility \"{task.facility.name}\", but shift takes place at \"{facility.name}\"."
-msgstr ""
-
-#, python-brace-format
-msgid "\"{workplace.name}\" is at \"{workplace.facility.name}\" but shift takes place at \"{facility.name}\"."
+msgid "\"{object.name}\" belongs to facility \"{object.facility.name}\", but shift takes place at \"{facility.name}\"."
 msgstr ""
 
 msgid "No start time given."

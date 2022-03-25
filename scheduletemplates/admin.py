@@ -19,7 +19,10 @@ from organizations.admin import (
     MembershipFilteredAdmin,
     MembershipFilteredTabularInline,
 )
-from scheduler.admin import FormattedModelChoiceFieldAdminMixin
+from scheduler.admin import (
+    FormattedModelChoiceFieldAdminMixin,
+    facility_mismatch_error_message,
+)
 from scheduler.models import Shift
 from .models import ScheduleTemplate, ShiftTemplate
 
@@ -54,35 +57,22 @@ class ShiftTemplateForm(forms.ModelForm):
         schedule_template = self.cleaned_data.get("schedule_template")
         if schedule_template:
             facility = schedule_template.facility
-            task = self.cleaned_data.get("task")
 
+            task = self.cleaned_data.get("task")
             if task and not task.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{task.name}" belongs to facility '
-                            f'"{task.facility.name}", but shift takes place at '
-                            f'"{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "task",
+                    ValidationError(facility_mismatch_error_message(task, facility)),
                 )
-                self.add_error("task", ValidationError(msg))
 
             workplace = self.cleaned_data.get("workplace")
             if workplace and not workplace.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{workplace.name}" is at "{workplace.facility.name}" but '
-                            f'shift takes place at "{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "workplace",
+                    ValidationError(
+                        facility_mismatch_error_message(workplace, facility)
+                    ),
                 )
-                self.add_error("workplace", ValidationError(msg))
 
 
 class ShiftTemplateInline(

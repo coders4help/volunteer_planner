@@ -15,6 +15,15 @@ from .fields import FormattedModelChoiceIteratorFactory
 logger = logging.getLogger(__name__)
 
 
+def facility_mismatch_error_message(object, facility):
+    title = _("Facilities do not match.")
+    text = _(
+        f'"{object.name}" belongs to facility "{object.facility.name}", but shift \
+takes place at "{facility.name}".'
+    )
+    return f"{title} {text}"
+
+
 class FormattedModelChoiceFieldAdminMixin:
 
     fk_label_formats = None
@@ -63,33 +72,19 @@ class ShiftAdminForm(forms.ModelForm):
 
             task = self.cleaned_data.get("task")
             if task and not task.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{task.name}" belongs to facility '
-                            f'"{task.facility.name}", but shift takes place at '
-                            f'"{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "task",
+                    ValidationError(facility_mismatch_error_message(task, facility)),
                 )
-                self.add_error("task", ValidationError(msg))
 
             workplace = self.cleaned_data.get("workplace")
             if workplace and not workplace.facility == facility:
-                msg = (
-                    str(_(f"Facilities do not match."))
-                    + " "
-                    + str(
-                        _(
-                            f'"{workplace.name}" is at '
-                            f'"{workplace.facility.name}" but shift takes place '
-                            f'at "{facility.name}".'
-                        )
-                    )
+                self.add_error(
+                    "workplace",
+                    ValidationError(
+                        facility_mismatch_error_message(workplace, facility)
+                    ),
                 )
-                self.add_error("workplace", ValidationError(msg))
 
         # No times, no joy
         if not start:

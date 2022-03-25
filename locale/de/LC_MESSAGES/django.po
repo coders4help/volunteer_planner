@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 00:36+0100\n"
+"POT-Creation-Date: 2022-03-25 11:54+0100\n"
 "PO-Revision-Date: 2016-11-21 18:24+0000\n"
 "Last-Translator: Sönke Klinger <klinger@biver.de>\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -712,12 +712,8 @@ msgid "Facilities do not match."
 msgstr "Einrichtungen stimmen nicht überein."
 
 #, python-brace-format
-msgid "\"{task.name}\" belongs to facility \"{task.facility.name}\", but shift takes place at \"{facility.name}\"."
-msgstr "\"{task.name}\" gehört zur Einrichtung \"{task.facility.name}\", die Schicht ist aber für \"{facility.name}\" angelegt."
-
-#, python-brace-format
-msgid "\"{workplace.name}\" is at \"{workplace.facility.name}\" but shift takes place at \"{facility.name}\"."
-msgstr "\"{workplace.name}\" gehört zur Einrichtung \"{workplace.facility.name}\", die Schicht ist aber für \"{facility.name}\" angelegt."
+msgid "\"{object.name}\" belongs to facility \"{object.facility.name}\", but shift takes place at \"{facility.name}\"."
+msgstr "\"{object.name}\" gehört zur Einrichtung \"{object.facility.name}\", die Schicht ist aber für \"{facility.name}\" angelegt."
 
 msgid "No start time given."
 msgstr "Keine Startzeit angegeben."
