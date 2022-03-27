@@ -240,6 +240,10 @@ class OrganizationMembership(Membership):
         verbose_name = _("organization member")
         verbose_name_plural = _("organization members")
         ordering = ("organization", "role", "user_account")
+        unique_together = (
+            "organization",
+            "user_account",
+        )
 
     def __unicode__(self):
         return _("{username} at {organization_name} ({user_role})").format(
@@ -273,6 +277,10 @@ class FacilityMembership(Membership):
         verbose_name = _("facility member")
         verbose_name_plural = _("facility members")
         ordering = ("facility", "role", "user_account")
+        unique_together = (
+            "facility",
+            "user_account",
+        )
 
     def __unicode__(self):
         return _("{username} at {facility_name} ({user_role})").format(
