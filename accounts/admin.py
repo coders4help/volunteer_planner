@@ -81,6 +81,11 @@ class RegistrationProfileAdmin(RegistrationAdmin):
         "user__last_login",
     )
 
+    search_fields = (
+        "user__username",
+        "user__email",
+    )
+
 
 admin.site.unregister(RegistrationProfile)
 admin.site.register(RegistrationProfile, RegistrationProfileAdmin)
