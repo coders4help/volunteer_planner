@@ -125,7 +125,7 @@ class RegistrationTestCase(TestCase):
 
     def test_username_ending(self):
         self.try_invalid_username(
-            "username.", "Username must end with a letter or a number."
+            "username.", 'Username must end with a letter, a number or "_".'
         )
 
     def test_username_too_short(self):
@@ -182,7 +182,7 @@ class RegistrationTestCase(TestCase):
         self.try_invalid_username(
             "username ",
             [
-                "Username must end with a letter or a number.",
+                'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
             ],
@@ -191,7 +191,7 @@ class RegistrationTestCase(TestCase):
             " username ",
             [
                 "Username must start with a letter.",
-                "Username must end with a letter or a number.",
+                'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
             ],
@@ -200,7 +200,7 @@ class RegistrationTestCase(TestCase):
             " user name ",
             [
                 "Username must start with a letter.",
-                "Username must end with a letter or a number.",
+                'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
             ],
