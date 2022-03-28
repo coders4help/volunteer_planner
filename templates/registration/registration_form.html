@@ -24,7 +24,7 @@
                    class="form-control"
                    placeholder="{% trans "Email" %}"
                    name="email"
-                   value="{{ form.cleaned_data.email|default:form.email.value }}">
+                   value="{{ form.cleaned_data.email|default:form.email.value|default:"" }}">
              <p class="help-block">{% trans "Volunteer-Planner and shelters will send you emails concerning your shifts." %}</p>
         </div>
 
@@ -39,7 +39,7 @@
                    id="Username"
                    placeholder="{% trans "Username" %}"
                    name="username"
-                   value="{{ form.cleaned_data.username|default:form.username.value }}">
+                   value="{{ form.cleaned_data.username|default:form.username.value|default:"" }}">
             <p class="help-block">{% trans "Your username will be visible to other users. Don't use spaces or special characters." %}</p>
         </div>
 
