@@ -5,32 +5,19 @@ from django.utils.text import gettext_lazy as _
 from registration.forms import RegistrationFormUniqueEmail
 
 username_first_char_validator = RegexValidator(
-    r"^[a-zA-Z]", _("Username must start with a letter.")
+    r"^[_.0-9\s]", _("Username must start with a letter."),
+    inverse_match=True
 )
 username_validator = RegexValidator(
-    r"^[a-zA-Z0-9_.]*$",
+    r"[^\w.]",
     _('Invalid username. Allowed characters are letters, numbers, "." and "_".'),
+    inverse_match=True
 )
 username_last_char_validator = RegexValidator(
-    r"[a-zA-Z0-9]$", _("Username must end with a letter or a number.")
+    r"[\w]$", _("Username must end with a letter or a number.")
 )
-no_consequtive_dots = RegexValidator(
-    r"\.\.",
-    _("Username must not contain consecutive . or _ characters."),
-    inverse_match=True,
-)
-no_consequtive_underscores = RegexValidator(
-    r"__",
-    _("Username must not contain consecutive . or _ characters."),
-    inverse_match=True,
-)
-no_consequtive_funnystuff = RegexValidator(
-    r"_\.",
-    _("Username must not contain consecutive . or _ characters."),
-    inverse_match=True,
-)
-no_consequtive_funnystuff2 = RegexValidator(
-    r"\._",
+no_consequtive = RegexValidator(
+    r"[_.]{2,}",
     _("Username must not contain consecutive . or _ characters."),
     inverse_match=True,
 )
@@ -46,10 +33,7 @@ class RegistrationForm(RegistrationFormUniqueEmail):
             username_first_char_validator,
             username_validator,
             username_last_char_validator,
-            no_consequtive_dots,
-            no_consequtive_underscores,
-            no_consequtive_funnystuff,
-            no_consequtive_funnystuff2,
+            no_consequtive,
         ],
     )
 

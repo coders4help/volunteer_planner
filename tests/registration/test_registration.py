@@ -4,7 +4,34 @@ from django.test import override_settings, TestCase
 from django.urls import reverse
 from registration.models import RegistrationProfile
 
+from accounts.forms import RegistrationForm
 from accounts.models import UserAccount
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "username",
+    [
+        "jusernäym",
+        "üser.name",
+        "user.name2",
+        "user.name2_",
+        "username_2",
+        "username_2",
+        "ÄBCDEF0123456789",
+    ],
+)
+def test_submit_valid_username(username):
+    formdata = {
+        "username": username,
+        "email": "somename@example.com",
+        "password1": "somepassword",
+        "password2": "somepassword",
+        "accept_privacy_policy": True,
+    }
+    form = RegistrationForm(formdata)
+    assert not form.errors
+    assert form.is_valid()
 
 
 @override_settings(LANGUAGE_CODE="en", LANGUAGES=(("en", "English"),))
@@ -13,8 +40,8 @@ class RegistrationTestCase(TestCase):
         self.registration_url = reverse("registration_register")
 
         self.valid_user_data = {
-            "username": "somename",
-            "email": "somename@example.de",
+            "username": "Some.name123_",
+            "email": "somename@example.com",
             "password1": "somepassword",
             "password2": "somepassword",
             "accept_privacy_policy": True,
@@ -71,7 +98,7 @@ class RegistrationTestCase(TestCase):
         """
         user_data = {
             "username": invalid_username,
-            "email": "somename@example.de",
+            "email": "somename@example.com",
             "password1": "somepassword",
             "password2": "somepassword",
             "accept_privacy_policy": True,
@@ -97,9 +124,6 @@ class RegistrationTestCase(TestCase):
         self.try_invalid_username("_username", "Username must start with a letter.")
 
     def test_username_ending(self):
-        self.try_invalid_username(
-            "username_", "Username must end with a letter or a number."
-        )
         self.try_invalid_username(
             "username.", "Username must end with a letter or a number."
         )
@@ -187,10 +211,8 @@ class RegistrationTestCase(TestCase):
             "invalidname$",
             'Invalid username. Allowed characters are letters, numbers, "." and "_".',
         )
-
-    def test_username_with_umlauts(self):
         self.try_invalid_username(
-            "aÖÄÜäöüß",
+            "emoji_😀name",
             'Invalid username. Allowed characters are letters, numbers, "." and "_".',
         )
 
@@ -215,7 +237,7 @@ class RegistrationTestCase(TestCase):
     def test_privacy_policy_missing(self):
         user_data = {
             "username": "somename",
-            "email": "somename@example.de",
+            "email": "somename@example.com",
             "password1": "somepassword",
             "password2": "somepassword",
             # "accept_privacy_policy": True,
@@ -237,7 +259,7 @@ class RegistrationTestCase(TestCase):
     def test_privacy_policy_not_accepted(self):
         user_data = {
             "username": "somename",
-            "email": "somename@example.de",
+            "email": "somename@example.com",
             "password1": "somepassword",
             "password2": "somepassword",
             "accept_privacy_policy": "false",
@@ -259,7 +281,7 @@ class RegistrationTestCase(TestCase):
     def test_passwords_dont_match(self):
         user_data = {
             "username": "somename",
-            "email": "somename@example.de",
+            "email": "somename@example.com",
             "password1": "somepassword",
             "password2": "differentpassword",
             "accept_privacy_policy": True,
@@ -280,27 +302,11 @@ class RegistrationTestCase(TestCase):
             response, "form", "password2", "The two password fields didn’t match."
         )
 
-    def test_submit_valid_form(self):
-        response = self.client.post(
-            self.registration_url, self.valid_user_data, follow=True
-        )
-
-        registration_complete_url = reverse("registration_complete")
-
-        self.assertRedirects(response, registration_complete_url)
-        self.assertContains(
-            response, "An activation mail will be sent to you email address."
-        )
-
-        assert RegistrationProfile.objects.count() == 1
-        new_user = RegistrationProfile.objects.first()
-        assert new_user is not None
-        assert new_user.user.username == "somename"
-
     def test_registered_user_is_inactive(self):
         self.client.post(self.registration_url, self.valid_user_data)
 
         new_user = RegistrationProfile.objects.first()
+        assert new_user is not None
         assert not new_user.user.is_active
 
         with pytest.raises(UserAccount.DoesNotExist):
