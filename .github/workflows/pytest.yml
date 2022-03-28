@@ -1,13 +1,19 @@
-name: Pull Request
+name: Check & Test
 
 on:
-  pull_request:
+  push:
     branches:
       - develop
-      - django4
+      - master
+      - main
+      - beta
+  pull_request:
+    branches:
+      - master
+      - develop
+      - beta
 
 jobs:
-
   check-migrations:
     name: Check Migrations
     runs-on: ubuntu-latest
