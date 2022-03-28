@@ -736,6 +736,9 @@ msgstr "Freiwillige"
 msgid "scheduler"
 msgstr "Schichtplaner"
 
+msgid "slots"
+msgstr "Plätze"
+
 msgid "number of needed volunteers"
 msgstr "Anz. benötigter Freiwillige"
 
@@ -977,9 +980,6 @@ msgstr[1] "{num_shifts} Schichten wurden am {date} hinzugefügt"
 
 msgid "Something didn't work. Sorry about that."
 msgstr "Entschuldigung, etwas hat nicht funktioniert."
-
-msgid "slots"
-msgstr "Plätze"
 
 msgid "from"
 msgstr "von"

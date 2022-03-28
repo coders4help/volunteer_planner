@@ -735,6 +735,9 @@ msgstr "volontärer"
 msgid "scheduler"
 msgstr "Schemaläggare"
 
+msgid "slots"
+msgstr "platser"
+
 msgid "number of needed volunteers"
 msgstr "antal volontärer som behövs"
 
@@ -939,9 +942,6 @@ msgstr[1] "{num_shifts} pass har lagts till den {date}"
 
 msgid "Something didn't work. Sorry about that."
 msgstr "Oj, det skedde ett fel. Vi beklagar."
-
-msgid "slots"
-msgstr "platser"
 
 msgid "from"
 msgstr "från"

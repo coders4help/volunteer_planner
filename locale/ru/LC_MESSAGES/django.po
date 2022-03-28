@@ -731,6 +731,9 @@ msgstr "волонтеры"
 msgid "scheduler"
 msgstr ""
 
+msgid "slots"
+msgstr "временные интервалы"
+
 msgid "number of needed volunteers"
 msgstr "количество необходимых волонтеров"
 
@@ -973,9 +976,6 @@ msgstr[3] ""
 
 msgid "Something didn't work. Sorry about that."
 msgstr "Что-то не сработало. Извини за это."
-
-msgid "slots"
-msgstr "временные интервалы"
 
 msgid "from"
 msgstr "от"

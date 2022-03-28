@@ -707,6 +707,9 @@ msgstr ""
 msgid "scheduler"
 msgstr ""
 
+msgid "slots"
+msgstr ""
+
 msgid "number of needed volunteers"
 msgstr ""
 
@@ -907,9 +910,6 @@ msgid_plural "{num_shifts} shifts were added to {date}"
 msgstr[0] ""
 
 msgid "Something didn't work. Sorry about that."
-msgstr ""
-
-msgid "slots"
 msgstr ""
 
 msgid "from"

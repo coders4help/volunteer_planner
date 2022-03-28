@@ -724,6 +724,9 @@ msgstr "dobrovolníci"
 msgid "scheduler"
 msgstr "Plánovač"
 
+msgid "slots"
+msgstr "sloty"
+
 msgid "number of needed volunteers"
 msgstr "počet potřebných dobrovolníků"
 
@@ -954,9 +957,6 @@ msgstr[3] "{num_shifts} směn bylo přidáno do {date}"
 
 msgid "Something didn't work. Sorry about that."
 msgstr "Něco nefunguje. Omlouvám se za to."
-
-msgid "slots"
-msgstr "sloty"
 
 msgid "from"
 msgstr "ok"
