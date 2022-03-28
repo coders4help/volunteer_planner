@@ -717,6 +717,9 @@ msgstr ""
 msgid "scheduler"
 msgstr "Ütemező"
 
+msgid "slots"
+msgstr ""
+
 msgid "number of needed volunteers"
 msgstr "a szükséges önkéntesek száma"
 
@@ -920,9 +923,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Something didn't work. Sorry about that."
-msgstr ""
-
-msgid "slots"
 msgstr ""
 
 msgid "from"

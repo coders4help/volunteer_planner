@@ -708,6 +708,9 @@ msgstr ""
 msgid "scheduler"
 msgstr ""
 
+msgid "slots"
+msgstr ""
+
 msgid "number of needed volunteers"
 msgstr ""
 
@@ -911,9 +914,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Something didn't work. Sorry about that."
-msgstr ""
-
-msgid "slots"
 msgstr ""
 
 msgid "from"

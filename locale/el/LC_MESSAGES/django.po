@@ -739,6 +739,9 @@ msgstr "Εθελοντές."
 msgid "scheduler"
 msgstr "Προγραμματιστής"
 
+msgid "slots"
+msgstr "Βάρδιες"
+
 msgid "number of needed volunteers"
 msgstr "Αριθμός εθελοντών που χρειάζεσαι"
 
@@ -943,9 +946,6 @@ msgstr[1] "{num_shifts} βάρδιες προστέθηκαν στις {date}"
 
 msgid "Something didn't work. Sorry about that."
 msgstr "Φαίνεται πως κάτι δεν πήγε καλά. Ζητούμε συγγνώμη."
-
-msgid "slots"
-msgstr "Βάρδιες"
 
 msgid "from"
 msgstr "από"

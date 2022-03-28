@@ -712,6 +712,9 @@ msgstr "voluntários"
 msgid "scheduler"
 msgstr "Agenda"
 
+msgid "slots"
+msgstr ""
+
 msgid "number of needed volunteers"
 msgstr "número de voluntários necessários"
 
@@ -915,9 +918,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Something didn't work. Sorry about that."
-msgstr ""
-
-msgid "slots"
 msgstr ""
 
 msgid "from"

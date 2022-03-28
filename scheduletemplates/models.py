@@ -1,6 +1,7 @@
 # coding: utf-8
 from datetime import datetime, time, timedelta
 
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.templatetags.l10n import localize
 from django.utils import timezone
@@ -39,7 +40,13 @@ class ShiftTemplate(models.Model):
         related_name="shift_templates",
     )
 
-    slots = models.IntegerField(verbose_name=_("number of needed volunteers"))
+    slots = models.PositiveIntegerField(
+        verbose_name=_("slots"),
+        help_text=_("number of needed volunteers"),
+        validators=[
+            MinValueValidator(1),
+        ],
+    )
 
     task = models.ForeignKey(
         "organizations.Task",
