@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 21:54+0100\n"
+"POT-Creation-Date: 2022-03-28 17:29+0200\n"
 "PO-Revision-Date: 2022-03-10 13:42+0000\n"
 "Last-Translator: Anna Dunn\n"
 "Language-Team: Russian (http://www.transifex.com/coders4help/volunteer-planner/language/ru/)\n"
@@ -36,13 +36,13 @@ msgstr ""
 msgid "Accounts"
 msgstr "Aккаунты"
 
-msgid "Username must start with a letter."
-msgstr ""
-
 msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
 msgstr ""
 
-msgid "Username must end with a letter or a number."
+msgid "Username must start with a letter."
+msgstr ""
+
+msgid "Username must end with a letter, a number or \"_\"."
 msgstr ""
 
 msgid "Username must not contain consecutive . or _ characters."
