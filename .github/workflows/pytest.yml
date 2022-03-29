@@ -1,17 +1,6 @@
 name: Check & Test
 
-on:
-  push:
-    branches:
-      - develop
-      - master
-      - main
-      - beta
-  pull_request:
-    branches:
-      - master
-      - develop
-      - beta
+on: [push, pull_request]
 
 jobs:
   check-migrations:
