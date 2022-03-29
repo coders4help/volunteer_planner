@@ -148,7 +148,7 @@ def send_membership_approved_notification(membership, approved_by):
         to=addresses,
         from_email=from_email,
         reply_to=reply_to,
-        headers={'Sender': approved_by.email},
+        headers={"Sender": approved_by.email},
     )
     mail.send()
 
