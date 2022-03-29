@@ -9,7 +9,7 @@ class EmailAsUsernameModelBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         if username and "@" in username:
             try:
-                user = UserModel._default_manager.get(email=username)
+                user = UserModel._default_manager.get(email__iexact=username)
                 return super().authenticate(request, user.username, password, **kwargs)
             except UserModel.DoesNotExist:
                 logger.debug('No user with email address "%s"', username)
