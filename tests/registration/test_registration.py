@@ -135,8 +135,8 @@ class RegistrationTestCase(TestCase):
 
     def test_username_too_long(self):
         self.try_invalid_username(
-            "abcdef_0123456789",
-            "Ensure this value has at most 16 characters (it has 17).",
+            "abcdef0123456789.abcdef0123456789",
+            "Ensure this value has at most 32 characters (it has 33).",
         )
 
     def test_username_with_consequtive_underscores(self):
@@ -174,7 +174,6 @@ class RegistrationTestCase(TestCase):
         self.try_invalid_username(
             " username",
             [
-                "Username must start with a letter.",
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
             ],
@@ -190,7 +189,6 @@ class RegistrationTestCase(TestCase):
         self.try_invalid_username(
             " username ",
             [
-                "Username must start with a letter.",
                 'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
@@ -199,7 +197,6 @@ class RegistrationTestCase(TestCase):
         self.try_invalid_username(
             " user name ",
             [
-                "Username must start with a letter.",
                 'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',

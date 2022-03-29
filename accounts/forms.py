@@ -10,7 +10,7 @@ username_validator = RegexValidator(
     inverse_match=True,
 )
 username_first_char_validator = RegexValidator(
-    r"^[_.0-9\s]", _("Username must start with a letter."), inverse_match=True
+    r"^[\d_.]", _("Username must start with a letter."), inverse_match=True
 )
 username_last_char_validator = RegexValidator(
     r"[\w]$", _('Username must end with a letter, a number or "_".')
@@ -25,7 +25,7 @@ no_consequtive = RegexValidator(
 class RegistrationForm(RegistrationFormUniqueEmail):
 
     username = forms.CharField(
-        max_length=16,
+        max_length=32,
         min_length=3,
         strip=False,
         validators=[
