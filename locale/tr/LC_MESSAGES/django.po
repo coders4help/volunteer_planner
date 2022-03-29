@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 17:29+0200\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/coders4help/volunteer-planner/language/tr/)\n"
@@ -1112,8 +1112,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "Kullanıcı adınız ve şifreniz eşleştirilemedi. Lütfen tekrar deneyiniz."
+msgid "Email address"
+msgstr "E-posta adresi"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Şifre"
@@ -1132,9 +1136,6 @@ msgstr "Şifre başarıyla değiştirildi."
 
 msgid "Change Password"
 msgstr "Şifre Değiştir"
-
-msgid "Email address"
-msgstr "E-posta adresi"
 
 msgid "Change password"
 msgstr "Şifre değiştir"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 17:29+0200\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
@@ -1121,8 +1121,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "A felhasználónév és a jelszó nem megfelelő. Próbálja újra."
+msgid "Email address"
+msgstr "E-mail cím"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Jelszó"
@@ -1141,9 +1145,6 @@ msgstr "A jelszót sikeresen megváltoztatta!"
 
 msgid "Change Password"
 msgstr "Jelszó megváltoztatása"
-
-msgid "Email address"
-msgstr "E-mail cím"
 
 msgid "Change password"
 msgstr "Jelszó megváltoztatása"

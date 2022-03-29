@@ -10,20 +10,35 @@
         <h2 class="text-right">{% trans "Login" %}</h2>
     </div>
     <div class="col-md-3 form-container border-left">
-        {% if form.errors %}
-            <p>
-                {% blocktrans trimmed %}
-                    Your username and password didn't match. Please try again.
-                {% endblocktrans %}
-            </p>
-        {% endif %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>
+                    {{ error }}
+                </strong>
+            </div>
 
+        {% endfor %}
         <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
             <div class="form-group">
-                <input class="form-control" placeholder="{% trans "Username" %}" name="username" autofocus>
+                {% for error in form.username.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+                {% translate "Email address" as email_trans %}
+                {% translate "Username" as username_trans %}
+                <input class="form-control"
+                       placeholder="{% blocktrans %}{{ email_trans }} / {{ username_trans }}{% endblocktrans %}"
+                       name="username" autofocus>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="{% trans "Password" %}" name="password">
+                {% for error in form.password.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+                <input type="password" class="form-control"
+                       placeholder="{% trans "Password" %}" name="password">
             </div>
 
             <input type="submit" class="btn btn-primary align-left" value="login"/>
