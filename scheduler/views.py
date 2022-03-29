@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.admin.models import DELETION, LogEntry
 from django.contrib.contenttypes.models import ContentType
 from django.core.serializers.json import DjangoJSONEncoder
-from django.db.models import Count, Prefetch
+from django.db.models import Count, F, Prefetch
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -195,8 +195,8 @@ class PlannerView(LoginRequiredMixin, FormView):
             .annotate(volunteer_count=Count("helpers"))
             .order_by(
                 "facility",
-                "task__priority",
-                "workplace__priority",
+                F("task__priority").desc(nulls_last=True),
+                F("workplace__priority").desc(nulls_last=True),
                 "task__name",
                 "workplace__name",
                 "ending_time",

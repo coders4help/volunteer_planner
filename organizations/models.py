@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from django.db.models import F
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -326,7 +327,7 @@ class Workplace(models.Model):
         verbose_name_plural = _("workplaces")
         ordering = (
             "facility",
-            "-priority",
+            F("priority").desc(nulls_last=True),
             "name",
         )
 
@@ -366,7 +367,7 @@ class Task(models.Model):
         verbose_name_plural = _("tasks")
         ordering = (
             "facility",
-            "-priority",
+            F("priority").desc(nulls_last=True),
             "name",
         )
 
