@@ -177,7 +177,7 @@ class ShiftMessageToHelpers(models.Model):
     sender = models.ForeignKey(
         "accounts.UserAccount", models.CASCADE, related_name="msg_sender"
     )
-    send_date = models.DateTimeField(default=timezone.now())
+    send_date = models.DateTimeField(default=timezone.now)
     shift = models.ForeignKey("Shift", on_delete=models.PROTECT)
     recipients = models.ManyToManyField("accounts.UserAccount")
 
