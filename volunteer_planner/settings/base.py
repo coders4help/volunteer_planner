@@ -78,6 +78,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "accounts.auth.EmailAsUsernameModelBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 

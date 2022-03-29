@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 17:29+0200\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/coders4help/volunteer-planner/language/pt/)\n"
@@ -1116,8 +1116,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "O seu nome de utilizador e senha não correspondem. Por favor, tente de novo."
+msgid "Email address"
+msgstr "Endereço de correio eletrónico"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Senha"
@@ -1136,9 +1140,6 @@ msgstr "Senha alterada com sucesso!"
 
 msgid "Change Password"
 msgstr "Alterar Senha"
-
-msgid "Email address"
-msgstr "Endereço de correio eletrónico"
 
 msgid "Change password"
 msgstr "Alterar senha"

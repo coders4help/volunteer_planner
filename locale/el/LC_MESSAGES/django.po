@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 17:29+0200\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/coders4help/volunteer-planner/language/el/)\n"
@@ -1171,8 +1171,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "Το όνομα χρήστη και ο κωδικός πρόσβασής σου δεν ταιριάζουν. Προσπάθησε ξανά."
+msgid "Email address"
+msgstr "Διεύθυνση email"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
@@ -1191,9 +1195,6 @@ msgstr "Επιτυχής αλλαγή κωδικού πρόσβασης!"
 
 msgid "Change Password"
 msgstr "Αλλαγή κωδικού πρόσβασης"
-
-msgid "Email address"
-msgstr "Διεύθυνση email"
 
 msgid "Change password"
 msgstr "Αλλαγή κωδικού πρόσβασης"

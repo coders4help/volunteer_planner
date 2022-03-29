@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 17:29+0200\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2022-03-15 17:56+0000\n"
 "Last-Translator: Christoph Meißner\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
@@ -1172,8 +1172,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "Vaše uživatelské jméno a heslo se neshodují. Prosím zkuste to znovu."
+msgid "Email address"
+msgstr "Emailová adresa"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Heslo"
@@ -1192,9 +1196,6 @@ msgstr "Heslo úspěšně změněno!"
 
 msgid "Change Password"
 msgstr "Změnit heslo"
-
-msgid "Email address"
-msgstr "Emailová adresa"
 
 msgid "Change password"
 msgstr "Změnit heslo"
