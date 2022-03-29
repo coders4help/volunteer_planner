@@ -64,7 +64,11 @@ class HelpDesk(LoginRequiredMixin, TemplateView):
         facilities = (
             Facility.objects.with_open_shifts()
             .select_related(
-                "organization", "place", "place__area", "place__area__region"
+                "organization",
+                "place",
+                "place__area",
+                "place__area__region",
+                "place__area__region__country",
             )
             .prefetch_related(
                 Prefetch(
