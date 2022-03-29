@@ -8,13 +8,15 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduler', '0041_shiftmessagetohelpers'),
+        ("scheduler", "0041_shiftmessagetohelpers"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='shiftmessagetohelpers',
-            name='send_date',
-            field=models.DateTimeField(default=datetime.datetime(2022, 3, 29, 13, 35, 44, 361728, tzinfo=utc)),
+            model_name="shiftmessagetohelpers",
+            name="send_date",
+            field=models.DateTimeField(
+                default=datetime.datetime(2022, 3, 29, 13, 35, 44, 361728, tzinfo=utc)
+            ),
         ),
     ]

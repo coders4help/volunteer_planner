@@ -7,13 +7,13 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduler', '0042_alter_shiftmessagetohelpers_send_date'),
+        ("scheduler", "0042_alter_shiftmessagetohelpers_send_date"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='shiftmessagetohelpers',
-            name='send_date',
+            model_name="shiftmessagetohelpers",
+            name="send_date",
             field=models.DateTimeField(default=django.utils.timezone.now),
         ),
     ]

@@ -15,16 +15,16 @@ class RegisterForShiftForm(forms.Form):
 
 
 class ShiftMessageToHelpersModelForm(forms.ModelForm):
-    message = forms.TextInput(attrs={'class': "form-control"})
+    message = forms.TextInput(attrs={"class": "form-control"})
 
     def __init__(self, *args, **kwargs):
         super(ShiftMessageToHelpersModelForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = ShiftMessageToHelpers
         fields = ["message", "shift"]
         widgets = {
-            'shift': forms.HiddenInput(),
+            "shift": forms.HiddenInput(),
         }

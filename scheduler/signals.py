@@ -119,11 +119,14 @@ def notify_users_shift_change(sender, instance, **kwargs):
 def send_shift_message_to_helpers(sender, instance, **kwargs):
     for recipient in instance.recipients.all():
         message = render_to_string(
-            "shift_message_to_helpers.html", dict(message=instance.message,
-                                                  recipient=recipient,
-                                                  shift=instance.shift)
+            "shift_message_to_helpers.html",
+            dict(message=instance.message, recipient=recipient, shift=instance.shift),
         )
-        subject = _("Volunteer-Planner: A Message from shift manager of {shift_title}".format(shift_title=instance.shift.task.name.strip))
+        subject = _(
+            "Volunteer-Planner: A Message from shift manager of {shift_title}".format(
+                shift_title=instance.shift.task.name.strip
+            )
+        )
         mail = EmailMessage(
             subject=subject,
             body=message,

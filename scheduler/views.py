@@ -358,7 +358,7 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
 
     template_name = "helpdesk_single.html"
     form_class = ShiftMessageToHelpersModelForm
-    success_url = '/thanks/'
+    success_url = "/thanks/"
 
     def form_invalid(self, form):
 
@@ -375,7 +375,9 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
 
         shift = form.cleaned_data.get("shift")
         if not is_facility_member(user_account.user, shift.facility):
-            messages.warning(self.request, _("The user has no permissions to send emails!"))
+            messages.warning(
+                self.request, _("The user has no permissions to send emails!")
+            )
             return super(SendMessageToShiftHelpers, self).form_valid(form)
 
         sm = ShiftMessageToHelpers.objects.create(
@@ -392,4 +394,4 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
 
     def get_success_url(self):
         """redirect to referer site"""
-        return self.request.META['HTTP_REFERER']
+        return self.request.META["HTTP_REFERER"]

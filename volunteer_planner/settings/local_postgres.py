@@ -10,3 +10,4 @@ DATABASES = {
         "USER": os.environ.get("DB_USER", "vp"),
     }
 }
+USE_TZ = False
