@@ -1,0 +1,9 @@
+{% load i18n %}{% blocktrans with shift_title=shift.task.name.strip location=shift.facility.name.strip %}
+
+Hello {{ recipient }}
+The shift manager of the shift {{ shift_title }} at {{ location }} wanted to let you know:
+----------------------
+{{ message }}
+----------------------
+Please reply to this email to reach out to the shift manager of this shift.
+{% endblocktrans %}

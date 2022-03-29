@@ -5,6 +5,7 @@ from datetime import time
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.formats import localize
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
@@ -161,3 +162,24 @@ class ShiftHelper(models.Model):
 
     def __str__(self):
         return self.__unicode__()
+
+
+class ShiftMessageToHelpers(models.Model):
+    """
+    The ShiftMessageToHelpers represents a message to be sent to the helpers
+    signed up for a certain shift. A use case would be to tell all helpers to
+    come 1 hour later.
+
+    The actual email will be sent via a post_save signal.
+    """
+
+    message = models.TextField(verbose_name=_("Message"))
+    sender = models.ForeignKey(
+        "accounts.UserAccount", models.CASCADE, related_name="msg_sender"
+    )
+    send_date = models.DateTimeField(default=timezone.now())
+    shift = models.ForeignKey("Shift", on_delete=models.PROTECT)
+    recipients = models.ManyToManyField("accounts.UserAccount")
+
+    def __unicode__(self):
+        return "{} on {}".format(self.sender.user.email, self.shift.task)
