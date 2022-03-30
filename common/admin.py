@@ -35,7 +35,7 @@ class RedirectOnAdminPermissionDenied403:
             permission_denied = _("Permission denied")
             error = f"{error}: {permission_denied}"
             note = _(
-                "You were not allowed to do this and have been redirected to {redirect_path}."  # noqa: E501
+                "You are not allowed to do this and have been redirected to {redirect_path}."  # noqa: E501
             ).format(redirect_path=redirect_path)
             messages.error(
                 request,

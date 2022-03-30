@@ -143,7 +143,7 @@ msgid "Permission denied"
 msgstr ""
 
 #, python-brace-format
-msgid "You were not allowed to do this and have been redirected to {redirect_path}."
+msgid "You are not allowed to do this and have been redirected to {redirect_path}."
 msgstr ""
 
 msgid "additional CSS"

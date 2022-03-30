@@ -148,7 +148,7 @@ msgid "Permission denied"
 msgstr "Keine Berechtigung"
 
 #, python-brace-format
-msgid "You were not allowed to do this and have been redirected to {redirect_path}."
+msgid "You are not allowed to do this and have been redirected to {redirect_path}."
 msgstr "Du kannst diese Aktion nicht ausführen und wurdest stattdessen nach {redirect_path} umgeleitet."
 
 msgid "additional CSS"
