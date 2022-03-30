@@ -1,7 +1,5 @@
 # coding=utf-8
 
-from datetime import timedelta
-
 from .base import *  # noqa: F401
 
 DEBUG = os.environ.get("BETA", False)
@@ -50,8 +48,5 @@ CACHES = {
         "LOCATION": "127.0.0.1:11211",
     }
 }
-
-DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
-
 
 INTERNAL_IPS = ["127.0.0.1", "172.20.0.1"]

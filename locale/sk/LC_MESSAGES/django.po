@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-29 11:54+0200\n"
+"POT-Creation-Date: 2022-03-30 10:51+0200\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/coders4help/volunteer-planner/language/sk/)\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Username must end with a letter, a number or \"_\"."
 msgstr ""
 
-msgid "Username must not contain consecutive . or _ characters."
+msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr ""
 
 msgid "Accept privacy policy"
@@ -1233,16 +1233,22 @@ msgstr ""
 msgid "Sign-up"
 msgstr ""
 
+msgid "Ukrainian"
+msgstr ""
+
 msgid "English"
 msgstr ""
 
 msgid "German"
 msgstr ""
 
-msgid "French"
+msgid "Czech"
 msgstr ""
 
 msgid "Greek"
+msgstr ""
+
+msgid "French"
 msgstr ""
 
 msgid "Hungarian"

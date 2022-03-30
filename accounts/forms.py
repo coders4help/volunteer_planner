@@ -17,7 +17,7 @@ username_last_char_validator = RegexValidator(
 )
 no_consequtive = RegexValidator(
     r"[_.]{2,}",
-    _("Username must not contain consecutive . or _ characters."),
+    _('Username must not contain consecutive "." or "_" characters.'),
     inverse_match=True,
 )
 
