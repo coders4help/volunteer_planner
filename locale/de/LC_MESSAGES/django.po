@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 10:51+0200\n"
+"POT-Creation-Date: 2022-03-30 18:28+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Christoph Meißner, 2015,2022\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
@@ -139,6 +139,17 @@ msgstr "Benutzerkonto löschen"
 
 msgid "Your user account has been deleted."
 msgstr "Dein Benutzerkonto wurde gelöscht."
+
+#, python-brace-format
+msgid "Error {error_code}"
+msgstr "Fehler {error_code}"
+
+msgid "Permission denied"
+msgstr "Keine Berechtigung"
+
+#, python-brace-format
+msgid "You were not allowed to do this and have been redirected to {redirect_path}."
+msgstr "Du kannst diese Aktion nicht ausführen und wurdest stattdessen nach {redirect_path} umgeleitet."
 
 msgid "additional CSS"
 msgstr "zusätzliches CSS"

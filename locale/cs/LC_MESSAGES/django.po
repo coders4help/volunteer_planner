@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 10:51+0200\n"
+"POT-Creation-Date: 2022-03-30 18:28+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2019,2022\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
@@ -127,6 +127,17 @@ msgstr "Smazat účet"
 
 msgid "Your user account has been deleted."
 msgstr "Váš uživatelský účet byl smazán."
+
+#, python-brace-format
+msgid "Error {error_code}"
+msgstr ""
+
+msgid "Permission denied"
+msgstr ""
+
+#, python-brace-format
+msgid "You were not allowed to do this and have been redirected to {redirect_path}."
+msgstr ""
 
 msgid "additional CSS"
 msgstr "další CSS"
