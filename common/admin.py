@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
@@ -38,9 +39,7 @@ class RedirectOnAdminPermissionDenied403:
             ).format(redirect_path=redirect_path)
             messages.error(
                 request,
-                mark_safe(
-                    f"<strong>{note}</strong><br/>"
-                    f"{error} - {request.method} {request.path}"
-                ),
+                mark_safe(f"<strong>{note}</strong><br/> {error} - ")
+                + escape(f"{request.method} {request.path}"),
             )
             return HttpResponseRedirect(redirect_path)
