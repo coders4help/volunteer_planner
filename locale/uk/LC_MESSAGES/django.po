@@ -1,12 +1,13 @@
 #
 # Translators:
+# Anna Dunn, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-29 11:54+0200\n"
+"POT-Creation-Date: 2022-03-30 10:51+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
-"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
+"Last-Translator: Anna Dunn, 2022\n"
 "Language-Team: Ukrainian (http://www.transifex.com/coders4help/volunteer-planner/language/uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -15,22 +16,22 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 msgid "first name"
-msgstr ""
+msgstr "Ім'я"
 
 msgid "last name"
 msgstr ""
 
 msgid "email"
-msgstr ""
+msgstr "Електронна пошта"
 
 msgid "date joined"
-msgstr ""
+msgstr "Дата приєднання"
 
 msgid "last login"
-msgstr ""
+msgstr "Останній вхід"
 
 msgid "Accounts"
-msgstr ""
+msgstr "Облікові записи"
 
 msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
 msgstr ""
@@ -41,101 +42,101 @@ msgstr ""
 msgid "Username must end with a letter, a number or \"_\"."
 msgstr ""
 
-msgid "Username must not contain consecutive . or _ characters."
+msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr ""
 
 msgid "Accept privacy policy"
-msgstr ""
+msgstr "Прийміть політику конфіденційності"
 
 msgid "user account"
-msgstr ""
+msgstr "Обліковий запис користувача"
 
 msgid "user accounts"
-msgstr ""
+msgstr "Облікові записи користувачів"
 
 msgid "My shifts today:"
-msgstr ""
+msgstr "Мої сьогоднішні зміни:"
 
 msgid "No shifts today."
-msgstr ""
+msgstr "Сьогодні без змін."
 
 msgid "Show this work shift"
-msgstr ""
+msgstr "Показати робочу зміну"
 
 msgid "My shifts tomorrow:"
-msgstr ""
+msgstr "Мої зміни завтра:"
 
 msgid "No shifts tomorrow."
-msgstr ""
+msgstr "Завтра без змін."
 
 msgid "My shifts the day after tomorrow:"
-msgstr ""
+msgstr "Мої зміни післязавтра:"
 
 msgid "No shifts the day after tomorrow."
-msgstr ""
+msgstr "Післязавтра немає змін."
 
 msgid "Further shifts:"
-msgstr ""
+msgstr "Подальші зміни:"
 
 msgid "No further shifts."
-msgstr ""
+msgstr "Більше ніяких змін."
 
 msgid "Show my work shifts in the past"
-msgstr ""
+msgstr "Показати мої робочі зміни у минулому"
 
 msgid "My work shifts in the past:"
-msgstr ""
+msgstr "Мої робочі зміни в минулому:"
 
 msgid "No work shifts in the past days yet."
-msgstr ""
+msgstr "Протягом останніх днів робочих змін не було."
 
 msgid "Show my work shifts in the future"
-msgstr ""
+msgstr "Показати мої робочі зміни на майбутнє"
 
 msgid "Username"
-msgstr ""
+msgstr "Ім'я користувача"
 
 msgid "First name"
-msgstr ""
+msgstr "Ім'я"
 
 msgid "Last name"
-msgstr ""
+msgstr "Прізвище"
 
 msgid "Email"
-msgstr ""
+msgstr "Електронна пошта"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
-msgstr ""
+msgstr "Якщо ви видалите свій обліковий запис, ця інформація буде анонімізована, і ви більше не зможете ввійти в Volunteer-Planner."
 
 msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
-msgstr ""
+msgstr "Відновити цю інформацію неможливо. Якщо ви хочете знову працювати волонтером, вам доведеться створити новий обліковий запис."
 
 msgid "Delete Account (no additional warning)"
-msgstr ""
+msgstr "Видалити обліковий запис (без додаткового попередження)"
 
 msgid "Save"
-msgstr ""
+msgstr "Зберегти"
 
 msgid "Edit Account"
-msgstr ""
+msgstr "Редагувати обліковий запис"
 
 msgid "Delete Account"
-msgstr ""
+msgstr "Видалити обліковий запис"
 
 msgid "Your user account has been deleted."
-msgstr ""
+msgstr "Ваш обліковий запис користувача було видалено."
 
 msgid "additional CSS"
 msgstr ""
 
 msgid "translation"
-msgstr ""
+msgstr "переклад"
 
 msgid "translations"
 msgstr ""
 
 msgid "No translation available"
-msgstr ""
+msgstr "Немає перекладу"
 
 msgid "additional style"
 msgstr ""
@@ -150,13 +151,13 @@ msgid "flat page"
 msgstr ""
 
 msgid "language"
-msgstr ""
+msgstr "мова"
 
 msgid "title"
-msgstr ""
+msgstr "титул"
 
 msgid "content"
-msgstr ""
+msgstr "зміст"
 
 msgid "flat page translation"
 msgstr ""
@@ -165,117 +166,117 @@ msgid "flat page translations"
 msgstr ""
 
 msgid "View on site"
-msgstr ""
+msgstr "Подивитися на сайті"
 
 msgid "Remove"
-msgstr ""
+msgstr "Видалити"
 
 #, python-format
 msgid "Add another %(verbose_name)s"
-msgstr ""
+msgstr "Додати %(verbose_name)s"
 
 msgid "Edit this page"
-msgstr ""
+msgstr "Редагувати цю сторінку"
 
 msgid "subtitle"
-msgstr ""
+msgstr "Підзаголовок"
 
 msgid "articletext"
-msgstr ""
+msgstr "стаття"
 
 msgid "creation date"
-msgstr ""
+msgstr "дата створення"
 
 msgid "news entry"
-msgstr ""
+msgstr "запис новин"
 
 msgid "news entries"
-msgstr ""
+msgstr "записи новин"
 
 msgid "Page not found"
-msgstr ""
+msgstr "Сторінку не знайдено"
 
 msgid "We're sorry, but the requested page could not be found."
-msgstr ""
+msgstr "На жаль, не вдалося знайти потрібну сторінку."
 
 msgid "server error"
-msgstr ""
+msgstr "помилка сервера"
 
 msgid "Server Error <em>(500)</em>"
-msgstr ""
+msgstr "Помилка сервера 1(500)1"
 
 msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
-msgstr ""
+msgstr "Сталася помилка. Це має бути виправлено найближчим часом. Дякуємо за ваше терпіння."
 
 msgid "Login"
-msgstr ""
+msgstr "Увійти"
 
 msgid "Start helping"
-msgstr ""
+msgstr "Почни допомагати"
 
 msgid "Main page"
-msgstr ""
+msgstr "Головна сторінка"
 
 msgid "Imprint"
-msgstr ""
+msgstr "Головна інформація"
 
 msgid "About"
-msgstr ""
+msgstr "Про нас"
 
 msgid "Supporter"
-msgstr ""
+msgstr "Підтримка"
 
 msgid "Press"
-msgstr ""
+msgstr "Контакти для преси"
 
 msgid "Contact"
-msgstr ""
+msgstr "Наші контакти"
 
 msgid "FAQ"
-msgstr ""
+msgstr "Поширені запитання"
 
 msgid "I want to help!"
-msgstr ""
+msgstr "Я хочу допомогти!"
 
 msgid "Register and see where you can help"
-msgstr ""
+msgstr "Зареєструйтесь і подивіться, де ви можете допомогти"
 
 msgid "Organize volunteers!"
-msgstr ""
+msgstr "Організуйте волонтерів!"
 
 msgid "Register a shelter and organize volunteers"
-msgstr ""
+msgstr "Зареєструйте притулок і організуйте волонтерів"
 
 msgid "Places to help"
-msgstr ""
+msgstr "Місця, де можна допомогти"
 
 msgid "Registered Volunteers"
-msgstr ""
+msgstr "Зареєстровані волонтери"
 
 msgid "Worked Hours"
-msgstr ""
+msgstr "Відпрацьовані години"
 
 msgid "What is it all about?"
-msgstr ""
+msgstr "Про що йдеться?"
 
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
-msgstr ""
+msgstr "Ви волонтер і хочете допомогти біженцям? Volunteer-Planner.org показує вам, де, коли і як допомогти безпосередньо на місцях."
 
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
-msgstr ""
+msgstr "<p>Ця платформа є некомерційною та без реклами. Міжнародна команда проектних робітників, програмістів, менеджерів проектів і дизайнерів є волонтерами для цього проекту та надає свій професійний досвід, щоб змінити ситуацію.</p>"
 
 msgid "You can help at these locations:"
-msgstr ""
+msgstr "Ви можете допомогти у цих місцях:"
 
 msgid "There are currently no places in need of help."
-msgstr ""
+msgstr "Наразі немає місць, які потребують допомоги."
 
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Політика конфіденційності"
 
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
-msgstr ""
+msgstr "Сфера дії"
 
 msgctxt "Privacy Policy Sec1 P1"
 msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
@@ -404,13 +405,13 @@ msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW 
 msgstr ""
 
 msgid "advantages"
-msgstr ""
+msgstr "Переваги"
 
 msgid "save time"
-msgstr ""
+msgstr "заощадити час"
 
 msgid "improve selforganization of the volunteers"
-msgstr ""
+msgstr "покращити самоорганізацію волонтерів"
 
 msgid ""
 "\n"
@@ -1233,16 +1234,22 @@ msgstr ""
 msgid "Sign-up"
 msgstr ""
 
+msgid "Ukrainian"
+msgstr ""
+
 msgid "English"
 msgstr ""
 
 msgid "German"
 msgstr ""
 
-msgid "French"
+msgid "Czech"
 msgstr ""
 
 msgid "Greek"
+msgstr ""
+
+msgid "French"
 msgstr ""
 
 msgid "Hungarian"

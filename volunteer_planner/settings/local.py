@@ -1,5 +1,4 @@
 # coding=utf-8
-from datetime import timedelta
 
 from .base import *  # noqa: F401
 
@@ -86,8 +85,6 @@ if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "local")
 LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "de")
-
-DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
 
 # for testing on mobile devices in local networks it's necessary to overwrite
 # with a local ip

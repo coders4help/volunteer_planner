@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import os
+from datetime import timedelta
 
 from django.utils.translation import gettext_lazy as _
 
@@ -141,13 +142,15 @@ LOGIN_URL = "/auth/login/"
 USE_TZ = True
 TIME_ZONE = "Europe/Berlin"
 
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "en-us"
 
 LANGUAGES = (
+    ("uk", _("Ukrainian")),
     ("en", _("English")),
     ("de", _("German")),
-    ("fr", _("French")),
+    ("cs", _("Czech")),
     ("el", _("Greek")),
+    ("fr", _("French")),
     ("hu", _("Hungarian")),
     ("pl", _("Polish")),
     ("pt", _("Portuguese")),
@@ -170,3 +173,5 @@ REGISTRATION_FORM = "accounts.forms.RegistrationForm"
 
 FACILITY_MANAGER_GROUPNAME = "Facility Manager"
 ORGANIZATION_MANAGER_GROUPNAME = "Organization Manager"
+
+DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
