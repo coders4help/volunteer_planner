@@ -41,7 +41,6 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     "ckeditor",
-    # A prettier theme
     "accounts.apps.RegistrationConfig",
     "django_ajax",
     "django_extensions",
@@ -162,8 +161,6 @@ LOCALE_PATHS = (SITE_ROOT + "/locale",)
 WSGI_APPLICATION = "%s.wsgi.application" % SITE_NAME
 
 FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, "fixtures"),)
-CKEDITOR_JQUERY_URL = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
-CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DATE_FORMAT = "l, d.m.Y"
 
