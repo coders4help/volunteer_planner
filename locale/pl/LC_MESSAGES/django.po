@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 11:54+0100\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2017-09-22 15:29+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/coders4help/volunteer-planner/language/pl/)\n"
@@ -34,6 +34,18 @@ msgid "last login"
 msgstr ""
 
 msgid "Accounts"
+msgstr ""
+
+msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
+msgstr ""
+
+msgid "Username must start with a letter."
+msgstr ""
+
+msgid "Username must end with a letter, a number or \"_\"."
+msgstr ""
+
+msgid "Username must not contain consecutive . or _ characters."
 msgstr ""
 
 msgid "Accept privacy policy"
@@ -711,6 +723,9 @@ msgstr ""
 msgid "scheduler"
 msgstr ""
 
+msgid "slots"
+msgstr ""
+
 msgid "number of needed volunteers"
 msgstr "Liczba potrzebnych wolontariuszy "
 
@@ -922,9 +937,6 @@ msgstr[3] ""
 msgid "Something didn't work. Sorry about that."
 msgstr ""
 
-msgid "slots"
-msgstr ""
-
 msgid "from"
 msgstr ""
 
@@ -1109,8 +1121,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "Nazwa użytkownika i hasło nie zostały odnalezione. Prosimy spróbować ponownie."
+msgid "Email address"
+msgstr "Adres email"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Hasło"
@@ -1129,9 +1145,6 @@ msgstr "Hasło zostało pomyślnie zmienione! "
 
 msgid "Change Password"
 msgstr "Zmień hasło"
-
-msgid "Email address"
-msgstr "Adres email"
 
 msgid "Change password"
 msgstr "Zmień hasło"

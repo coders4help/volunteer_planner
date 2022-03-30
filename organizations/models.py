@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from django.db.models import F
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -240,6 +241,10 @@ class OrganizationMembership(Membership):
         verbose_name = _("organization member")
         verbose_name_plural = _("organization members")
         ordering = ("organization", "role", "user_account")
+        unique_together = (
+            "organization",
+            "user_account",
+        )
 
     def __unicode__(self):
         return _("{username} at {organization_name} ({user_role})").format(
@@ -273,6 +278,10 @@ class FacilityMembership(Membership):
         verbose_name = _("facility member")
         verbose_name_plural = _("facility members")
         ordering = ("facility", "role", "user_account")
+        unique_together = (
+            "facility",
+            "user_account",
+        )
 
     def __unicode__(self):
         return _("{username} at {facility_name} ({user_role})").format(
@@ -318,7 +327,7 @@ class Workplace(models.Model):
         verbose_name_plural = _("workplaces")
         ordering = (
             "facility",
-            "-priority",
+            F("priority").desc(nulls_last=True),
             "name",
         )
 
@@ -358,7 +367,7 @@ class Task(models.Model):
         verbose_name_plural = _("tasks")
         ordering = (
             "facility",
-            "-priority",
+            F("priority").desc(nulls_last=True),
             "name",
         )
 

@@ -2,6 +2,7 @@
 import logging
 from datetime import time
 
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.urls import reverse
 from django.utils.formats import localize
@@ -41,7 +42,13 @@ class Shift(models.Model):
     """
 
     # PositiveIntegerField instead of custom validation
-    slots = models.PositiveIntegerField(verbose_name=_("number of needed volunteers"))
+    slots = models.PositiveIntegerField(
+        verbose_name=_("slots"),
+        help_text=_("number of needed volunteers"),
+        validators=[
+            MinValueValidator(1),
+        ],
+    )
 
     task = models.ForeignKey(
         "organizations.Task", models.PROTECT, verbose_name=_("task")

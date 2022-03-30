@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 11:54+0100\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2016-01-29 08:23+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
@@ -38,6 +38,18 @@ msgstr ""
 
 msgid "Accounts"
 msgstr "Konton"
+
+msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
+msgstr ""
+
+msgid "Username must start with a letter."
+msgstr ""
+
+msgid "Username must end with a letter, a number or \"_\"."
+msgstr ""
+
+msgid "Username must not contain consecutive . or _ characters."
+msgstr ""
 
 msgid "Accept privacy policy"
 msgstr ""
@@ -735,6 +747,9 @@ msgstr "volontärer"
 msgid "scheduler"
 msgstr "Schemaläggare"
 
+msgid "slots"
+msgstr "platser"
+
 msgid "number of needed volunteers"
 msgstr "antal volontärer som behövs"
 
@@ -939,9 +954,6 @@ msgstr[1] "{num_shifts} pass har lagts till den {date}"
 
 msgid "Something didn't work. Sorry about that."
 msgstr "Oj, det skedde ett fel. Vi beklagar."
-
-msgid "slots"
-msgstr "platser"
 
 msgid "from"
 msgstr "från"
@@ -1155,8 +1167,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "Ditt användarnamn och lösenord stämmer inte överens. Vänligen försök igen."
+msgid "Email address"
+msgstr "E-postadress"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Lösenord"
@@ -1175,9 +1191,6 @@ msgstr "Lösenordet har nu ändrats."
 
 msgid "Change Password"
 msgstr "Ändra lösenord"
-
-msgid "Email address"
-msgstr "E-postadress"
 
 msgid "Change password"
 msgstr "Ändra lösenord"

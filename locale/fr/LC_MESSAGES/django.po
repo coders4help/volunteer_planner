@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 11:54+0100\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2016-12-08 20:50+0000\n"
 "Last-Translator: Dolfeus <dolfeus@sfr.fr>\n"
 "Language-Team: French (http://www.transifex.com/coders4help/volunteer-planner/language/fr/)\n"
@@ -37,6 +37,18 @@ msgstr ""
 
 msgid "Accounts"
 msgstr "Comptes utilisateur"
+
+msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
+msgstr ""
+
+msgid "Username must start with a letter."
+msgstr ""
+
+msgid "Username must end with a letter, a number or \"_\"."
+msgstr ""
+
+msgid "Username must not contain consecutive . or _ characters."
+msgstr ""
 
 msgid "Accept privacy policy"
 msgstr ""
@@ -728,6 +740,9 @@ msgstr "Bénévoles"
 msgid "scheduler"
 msgstr ""
 
+msgid "slots"
+msgstr "opportunités"
+
 msgid "number of needed volunteers"
 msgstr " Nombre de volontaires nécessaires"
 
@@ -964,9 +979,6 @@ msgstr[1] ""
 msgid "Something didn't work. Sorry about that."
 msgstr "Quelque chose à dysfonctionné. Prière de nous en excuser."
 
-msgid "slots"
-msgstr "opportunités"
-
 msgid "from"
 msgstr "de"
 
@@ -1179,8 +1191,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "Ton nom d'utilisateur et le mot de passe ne correspondent pas aux informations archivées. Prière d'essayer à nouveau."
+msgid "Email address"
+msgstr "Courrier électronique"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Mot de passe"
@@ -1199,9 +1215,6 @@ msgstr "Le mot de passe a été modifié"
 
 msgid "Change Password"
 msgstr "Modifie ton mot de passe"
-
-msgid "Email address"
-msgstr "Courrier électronique"
 
 msgid "Change password"
 msgstr "Modifie ton mot de passe"

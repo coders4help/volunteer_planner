@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 11:54+0100\n"
+"POT-Creation-Date: 2022-03-29 11:54+0200\n"
 "PO-Revision-Date: 2022-03-15 17:56+0000\n"
 "Last-Translator: Christoph Meißner\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
@@ -33,6 +33,18 @@ msgstr "poslední přihlášení"
 
 msgid "Accounts"
 msgstr "Účty"
+
+msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
+msgstr ""
+
+msgid "Username must start with a letter."
+msgstr ""
+
+msgid "Username must end with a letter, a number or \"_\"."
+msgstr ""
+
+msgid "Username must not contain consecutive . or _ characters."
+msgstr ""
 
 msgid "Accept privacy policy"
 msgstr "Přijmout zásady ochrany osobních údajů"
@@ -724,6 +736,9 @@ msgstr "dobrovolníci"
 msgid "scheduler"
 msgstr "Plánovač"
 
+msgid "slots"
+msgstr "sloty"
+
 msgid "number of needed volunteers"
 msgstr "počet potřebných dobrovolníků"
 
@@ -955,9 +970,6 @@ msgstr[3] "{num_shifts} směn bylo přidáno do {date}"
 msgid "Something didn't work. Sorry about that."
 msgstr "Něco nefunguje. Omlouvám se za to."
 
-msgid "slots"
-msgstr "sloty"
-
 msgid "from"
 msgstr "ok"
 
@@ -1160,8 +1172,12 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Your username and password didn't match. Please try again."
-msgstr "Vaše uživatelské jméno a heslo se neshodují. Prosím zkuste to znovu."
+msgid "Email address"
+msgstr "Emailová adresa"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
 
 msgid "Password"
 msgstr "Heslo"
@@ -1180,9 +1196,6 @@ msgstr "Heslo úspěšně změněno!"
 
 msgid "Change Password"
 msgstr "Změnit heslo"
-
-msgid "Email address"
-msgstr "Emailová adresa"
 
 msgid "Change password"
 msgstr "Změnit heslo"
