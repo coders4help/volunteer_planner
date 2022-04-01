@@ -1,5 +1,5 @@
 {% load i18n %}{% url 'registration_activate' activation_key as activation_key_url %}
-{% blocktrans with site_domain=site.domain %}
+{% blocktranslate with site_domain=site.domain %}
 Hello {{ user }},
 
 thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!
@@ -13,4 +13,4 @@ This link will expire in {{ expiration_days }} days.
 Yours,
 
 the volunteer-planner.org team
-{% endblocktrans %}
+{% endblocktranslate %}

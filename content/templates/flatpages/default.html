@@ -20,7 +20,7 @@
 
     {% if perms.flatpages.can_change_page %}
         <hr/>
-        <a href="{% url 'admin:flatpages_flatpage_change' flatpage.id %}">{% trans "Edit this page" %}</a>
+        <a href="{% url 'admin:flatpages_flatpage_change' flatpage.id %}">{% translate "Edit this page" %}</a>
     {% endif %}
 
 {% endblock %}

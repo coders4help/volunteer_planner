@@ -8,7 +8,7 @@
 
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">{% trans "Toggle navigation" %}</span>
+                <span class="sr-only">{% translate "Toggle navigation" %}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -43,24 +43,24 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a href="{% url 'account_detail' %}">
-                                {% trans "Account" %}
+                                {% translate "Account" %}
                             </a>
                         </li>
                         <li>
                             <a href="{% url 'shift_list_active' %}">
-                                {% trans "My work shifts" %}
+                                {% translate "My work shifts" %}
                             </a>
                         </li>
 
                         <li><!-- FIXME: remove static e-mail address -->
-                            <a href="mailto:kontakt@volunteer-planner.org">{% trans "Help" %}</a>
+                            <a href="mailto:kontakt@volunteer-planner.org">{% translate "Help" %}</a>
                         </li>
 
-                        <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %}</a></li>
+                        <li><a href="{% url 'auth_logout' %}">{% translate "Logout" %}</a></li>
 
                         {% if user.is_staff or user.is_superuser %}
                             <li role="separator" class="divider"></li>
-                            <li><a href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+                            <li><a href="{% url 'admin:index' %}">{% translate "Admin" %}</a></li>
                         {% endif %}
                     </ul>
 
