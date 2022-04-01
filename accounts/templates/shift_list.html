@@ -9,60 +9,60 @@
 
     <ul class="list-group">
         {% if shifts_today.count > 0  %}
-            {% trans 'My shifts today:' %}
+            {% translate 'My shifts today:' %}
         {% else %}
-            {% trans 'No shifts today.' %}
+            {% translate 'No shifts today.' %}
         {% endif %}
 
         {% for shifts in shifts_today %}
             <li class="list-group-item list-group-item-info">{{ shifts.shift }}
-                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% translate 'Show this work shift' %}</a>
             </li>
         {% endfor %}
     </ul>
 
     <ul class="list-group">
         {% if shifts_tomorrow.count > 0  %}
-            {% trans 'My shifts tomorrow:' %}
+            {% translate 'My shifts tomorrow:' %}
         {% else %}
-            {% trans 'No shifts tomorrow.' %}
+            {% translate 'No shifts tomorrow.' %}
         {% endif %}
 
         {% for shifts in shifts_tomorrow %}
             <li class="list-group-item list-group-item-info">{{ shifts.shift }}
-                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% translate 'Show this work shift' %}</a>
             </li>
         {% endfor %}
     </ul>
 
     <ul class="list-group">
         {% if shifts_day_after_tomorrow.count > 0  %}
-            {% trans 'My shifts the day after tomorrow:' %}
+            {% translate 'My shifts the day after tomorrow:' %}
         {% else %}
-            {% trans 'No shifts the day after tomorrow.' %}
+            {% translate 'No shifts the day after tomorrow.' %}
         {% endif %}
 
         {% for shifts in shifts_day_after_tomorrow %}
             <li class="list-group-item list-group-item-info">{{ shifts.shift }}
-                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% translate 'Show this work shift' %}</a>
             </li>
         {% endfor %}
     </ul>
 
     <ul class="list-group">
         {% if shifts_further_future.count > 0  %}
-            {% trans 'Further shifts:' %}
+            {% translate 'Further shifts:' %}
         {% else %}
-            {% trans 'No further shifts.' %}
+            {% translate 'No further shifts.' %}
         {% endif %}
 
         {% for shifts in shifts_further_future %}
             <li class="list-group-item list-group-item-info">{{ shifts.shift }}
-                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% trans 'Show this work shift' %}</a>
+                <a href="{{shifts.shift.get_absolute_url}}/direct/" class="btn btn-default">{% translate 'Show this work shift' %}</a>
             </li>
 
         {% endfor %}
     </ul>
-    <a href="{% url 'shift_list_done' %}" class="btn btn-default">{% trans 'Show my work shifts in the past' %}</a>
+    <a href="{% url 'shift_list_done' %}" class="btn btn-default">{% translate 'Show my work shifts in the past' %}</a>
 </div>
 {% endblock %}

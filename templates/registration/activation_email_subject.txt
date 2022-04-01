@@ -1,1 +1,1 @@
-{% load i18n %}{% trans "Your volunteer-planner.org registration" %}
+{% load i18n %}{% translate "Your volunteer-planner.org registration" %}

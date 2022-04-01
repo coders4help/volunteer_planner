@@ -6,7 +6,7 @@
 
     <ul class="breadcrumb">
         <li>
-            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+            <a href="/helpdesk/">{% translate "Helpdesk" %}</a>
         </li>
 
         <li>
@@ -26,7 +26,7 @@
     {% if facility.address_line %}
         <p>
             {{ facility.address_line }}
-            <a target="_blank" rel="noreferrer" href="{{ facility.osm_link }}">→ {% trans "Show on map" %}</a>
+            <a target="_blank" rel="noreferrer" href="{{ facility.osm_link }}">→ {% translate "Show on map" %}</a>
         </p>
     {% endif %}
 
@@ -38,7 +38,7 @@
         <a href="{{ facility.organization.url }}">{{ facility.organization.name }} </a>
     </p>
 
-    <h4>{% trans "Open Shifts" %}</h4>
+    <h4>{% translate "Open Shifts" %}</h4>
     <p>
         {% for shift in facility.shifts %}
             <a href="{{ shift.link }}">{{ shift.date_string }}</a>
@@ -47,7 +47,7 @@
     </p>
 
     {% if facility.news %}
-        <h4>{% trans "News" %}</h4>
+        <h4>{% translate "News" %}</h4>
         {% for news in facility.news %}
             <h5>{{ news.title }}</h5>
             <date><i>{{ news.date }}</i></date>

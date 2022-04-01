@@ -66,19 +66,19 @@
                                                     <h5>{{ facility.address_line }}
                                                         <a href="{{ facility.address_line|osm_search }}"
                                                            target="_blank" rel="noreferrer">
-                                                            &rarr; {% trans "Show on map" %}
+                                                            &rarr; {% translate "Show on map" %}
                                                         </a>
                                                     </h5>
                                                 {% endif %}
                                                 <p>{{ facility.description|safe }}</p>
 
                                                 <p>
-                                                    <a href="{{ facility.get_absolute_url }}">{% trans "Show details" %}</a>
+                                                    <a href="{{ facility.get_absolute_url }}">{% translate "Show details" %}</a>
                                                 </p>
                                             </div>
 
                                             <div class="pull-right">
-                                                {% trans "shifts" as shifts_heading context "helpdesk shifts heading" %}
+                                                {% translate "shifts" as shifts_heading context "helpdesk shifts heading" %}
                                                 <h3>
                                                     {{ shifts_heading|title }}
                                                 </h3>
@@ -110,10 +110,10 @@
         </div>
     {% else %}
         <h2>
-            {% blocktrans trimmed with geographical_name=geographical_unit.name %}
+            {% blocktranslate trimmed with geographical_name=geographical_unit.name %}
                 There are no upcoming shifts available for
                 {{ geographical_name }}.
-            {% endblocktrans %}
+            {% endblocktranslate %}
         </h2>
     {% endif %}
 {% endblock %}

@@ -6,7 +6,7 @@
 
     <ul class="breadcrumb">
         <li>
-            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+            <a href="/helpdesk/">{% translate "Helpdesk" %}</a>
         </li>
 
         <li class="active">
@@ -23,7 +23,7 @@
 
     {{ object.description | safe }}
 
-    <h2>{% trans "Facilities" %}</h2>
+    <h2>{% translate "Facilities" %}</h2>
 
     {% for facility in object.facilities.all %}
         {% include 'partials/compact_facility.html' with facility=facility %}

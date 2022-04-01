@@ -1,4 +1,4 @@
-{% load i18n %}{% blocktrans with shift_title=shift.task.name.strip|safe location=shift.facility.name.strip|safe from_date=shift.starting_time.date|date from_time=shift.starting_time.time to_time=shift.ending_time.time %}
+{% load i18n %}{% blocktranslate with shift_title=shift.task.name.strip|safe location=shift.facility.name.strip|safe from_date=shift.starting_time.date|date from_time=shift.starting_time.time to_time=shift.ending_time.time %}
 Hello,
 
 we're sorry, but we had to cancel the following shift at request of the organizer:
@@ -11,4 +11,4 @@ This is an automatically generated e-mail. If you have any questions, please con
 Yours,
 
 the volunteer-planner.org team
-{% endblocktrans %}
+{% endblocktranslate %}

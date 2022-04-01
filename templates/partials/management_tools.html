@@ -10,7 +10,7 @@
                        data-toggle="dropdown"
                        role="button" aria-haspopup="true"
                        aria-expanded="false">
-                        {% trans "Manage" %}
+                        {% translate "Manage" %}
 
                         {% if pending_approvals.total > 0 %}
                             <span class="badge blue-batches fa fa-user-plus">{{ pending_approvals.total }}</span>
@@ -25,7 +25,7 @@
                             <li class="dropdown-header">{{ facility.name }}</li>
                             <li>
                                 <a href="{% url "manage-members" facility.organization.slug facility.slug %}">
-                                    {% trans "Members" %}
+                                    {% translate "Members" %}
                                     {% if pending_approvals.facilities and pending_approvals.facilities|get:facility.id > 0 %}
                                         <span class="badge blue-batches fa fa-user-plus">
                                             {{ pending_approvals.facilities|get:facility.id }}

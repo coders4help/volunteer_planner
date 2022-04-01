@@ -1,13 +1,13 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
-{% block title %}{% trans "Register for an account" %}{% endblock %}
+{% block title %}{% translate "Register for an account" %}{% endblock %}
 {% block content %}
-<h1 class="align-left">{% trans "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner." %} </h1>
+<h1 class="align-left">{% translate "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner." %} </h1>
 <br>
     <div class="col-md-1"></div>
 <div class="col-md-3 form-container ">
     <h1 class="align-right">{{ site.name }}</h1>
-    <h2 class="align-right">{% trans "Create a new account" %}</h2>
+    <h2 class="align-right">{% translate "Create a new account" %}</h2>
 </div>
 
 <div class="col-md-3 border-left form-container">
@@ -22,10 +22,10 @@
                 {% endfor %}
             <input type="email"
                    class="form-control"
-                   placeholder="{% trans "Email" %}"
+                   placeholder="{% translate "Email" %}"
                    name="email"
                    value="{{ form.cleaned_data.email|default:form.email.value|default:"" }}">
-             <p class="help-block">{% trans "Volunteer-Planner and shelters will send you emails concerning your shifts." %}</p>
+             <p class="help-block">{% translate "Volunteer-Planner and shelters will send you emails concerning your shifts." %}</p>
         </div>
 
         <div class="form-group {% if form.username.errors %}has-error{% endif %}">
@@ -37,10 +37,10 @@
                 {% endfor %}
             <input class="form-control"
                    id="Username"
-                   placeholder="{% trans "Username" %}"
+                   placeholder="{% translate "Username" %}"
                    name="username"
                    value="{{ form.cleaned_data.username|default:form.username.value|default:"" }}">
-            <p class="help-block">{% trans "Your username will be visible to other users. Don't use spaces or special characters." %}</p>
+            <p class="help-block">{% translate "Your username will be visible to other users. Don't use spaces or special characters." %}</p>
         </div>
 
         <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
@@ -53,7 +53,7 @@
             </label>
             <input type="password"
                    class="form-control"
-                   placeholder="{% trans "Password" %}"
+                   placeholder="{% translate "Password" %}"
                    name="password1"
                    value="{{ form.cleaned_data.password1 }}">
         </div>
@@ -68,7 +68,7 @@
             </label>
             <input type="password"
                    class="form-control"
-                   placeholder="{% trans "Repeat password" %}"
+                   placeholder="{% translate "Repeat password" %}"
                    id="password2"
                    name="password2"
                    value="{{ form.cleaned_data.password2 }}">
@@ -80,18 +80,18 @@
                     id="accept_privacy_policy"
                     name="accept_privacy_policy">
             <label {% if form.accept_privacy_policy.errors %}style="color:red"{% endif %} for="accept_privacy_policy">
-                {% blocktrans %}I have read and agree to the <a href="/impressum/#datenschutz">Privacy Policy</a>.{% endblocktrans %}
+                {% blocktranslate %}I have read and agree to the <a href="/impressum/#datenschutz">Privacy Policy</a>.{% endblocktranslate %}
 
                 {% if form.accept_privacy_policy.errors %}
                     <div class="alert alert-danger">
-                        {% trans "This must be checked." %}
+                        {% translate "This must be checked." %}
                     </div>
                 {% endif %}
             </label>
 
         </div>
 
-        <button type="submit" class="btn btn-primary align-left">{% trans "Sign-up" %}</button>
+        <button type="submit" class="btn btn-primary align-left">{% translate "Sign-up" %}</button>
     </form>
 </div>
 

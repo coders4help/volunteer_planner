@@ -67,11 +67,11 @@
 {% block content %}
 
         <div ng-cloak ng-controller="ShiftWidgetCtrl">
-            <h2>{% trans "You can help in the following facilities" %}</h2>
+            <h2>{% translate "You can help in the following facilities" %}</h2>
             {% verbatim %}
                 <hr>
                 <div ng-show="countries.length > 1">
-                    {% endverbatim %}<span>{% trans "countries" as countries_title %}{{ countries_title|title }}:</span>{% verbatim %}
+                    {% endverbatim %}<span>{% translate "countries" as countries_title %}{{ countries_title|title }}:</span>{% verbatim %}
                     <label class="filter" ng-repeat="country in countries">
                         <input id="filter-{{ country.slug }}" type="checkbox" value="{{ country.name }}"
                             ng-click="toggleCountryAndArea(country.slug)"
@@ -80,7 +80,7 @@
                     </label>
                 </div>
               <div>
-                    {% endverbatim %}<span>{% trans "areas" as area_title %}{{ area_title|title }}:</span>{% verbatim %}
+                    {% endverbatim %}<span>{% translate "areas" as area_title %}{{ area_title|title }}:</span>{% verbatim %}
                     <label class="filter" ng-repeat="area in areas">
                         <input id="filter-{{ area.slug }}" type="checkbox" value="{{ area.name }}"
                             ng-click="toggleCountryAndArea(area.slug)"
@@ -95,7 +95,7 @@
                             <accordion>
                                 <accordion-group panel-class="panel-primary">
                                     <accordion-heading>
-                                        {{ facility.name }} {% endverbatim %}[{% trans "see more" %}]{% verbatim %} <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
+                                        {{ facility.name }} {% endverbatim %}[{% translate "see more" %}]{% verbatim %} <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
                                     </accordion-heading>
                                     <div class="col-md-12">
                                         <div class="col-md-8">
@@ -104,9 +104,9 @@
                                                 <a target="_blank" rel="noreferrer" ng-href="{{ facility.osm_link }}">→ Show on map</a>
                                             </h5>
                                             <p ng-bind-html="facility.description"></p>
-                                            <a ng-href="{{ facility.url }}">{% endverbatim %}{% trans "Show details" %}{% verbatim %}</a>
+                                            <a ng-href="{{ facility.url }}">{% endverbatim %}{% translate "Show details" %}{% verbatim %}</a>
 
-                                            <h4 ng-show="facility.news[0]">{% endverbatim %}{% trans "news" as news_title %}{{ news_title|title }}{% verbatim %}</h4>
+                                            <h4 ng-show="facility.news[0]">{% endverbatim %}{% translate "news" as news_title %}{{ news_title|title }}{% verbatim %}</h4>
                                         <div ng-repeat="news in facility.news">
                                             <hr>
                                         <h4>{{ news.title }} </h4>
@@ -115,7 +115,7 @@
                                         </div>
                                         </div>
                                         <div class="col-md-4">
-                                            {% endverbatim %}<h4>{% trans "open shifts" %}</h4>{% verbatim %}
+                                            {% endverbatim %}<h4>{% translate "open shifts" %}</h4>{% verbatim %}
                                             <p>
                                                 <span ng-repeat="shift in facility.shifts">
                                                     <a ng-href="{{ shift.link }}">{{ shift.date_string }}</a>

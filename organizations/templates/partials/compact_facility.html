@@ -16,7 +16,7 @@
         </p>
 
         <p>
-            <a href="{{ facility.get_absolute_url }}">{% trans "Show details" %}</a>
+            <a href="{{ facility.get_absolute_url }}">{% translate "Show details" %}</a>
         </p>
     </div>
 
@@ -24,7 +24,7 @@
     {% regroup facility.open_shifts.all by starting_time.date as shifts_by_day %}
     {% if shifts_by_day %}
         <div class="pull-right">
-            <h4>{% trans "Open Shifts" %}</h4>
+            <h4>{% translate "Open Shifts" %}</h4>
 
             <p>
                 {% for shifts_on_day in shifts_by_day %}
