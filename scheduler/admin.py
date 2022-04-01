@@ -179,3 +179,13 @@ class ShiftHelperAdmin(MembershipFilteredAdmin):
     list_display = ("id", "user_account", "shift", "joined_shift_at")
     list_filter = ("joined_shift_at",)
     raw_id_fields = ("user_account", "shift")
+
+
+@admin.register(models.ShiftMessageToHelpers)
+class ShiftMessageToHelpersAdmin(admin.ModelAdmin):
+    list_display = (
+        "shift",
+        "send_date",
+    )
+    ordering = ("-send_date",)
+    readonly_fields = ["sender", "recipients", "shift", "message", "send_date"]

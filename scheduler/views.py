@@ -23,9 +23,9 @@ from organizations.templatetags.memberships import (
     is_membership_pending,
 )
 from organizations.views import get_facility_details
-from scheduler.models import Shift, ShiftHelper
+from scheduler.models import Shift, ShiftHelper, ShiftMessageToHelpers
 from volunteer_planner.utils import LoginRequiredMixin
-from .forms import RegisterForShiftForm
+from .forms import RegisterForShiftForm, ShiftMessageToHelpersModelForm
 
 logger = logging.getLogger(__name__)
 
@@ -208,6 +208,7 @@ class PlannerView(LoginRequiredMixin, FormView):
         context["shifts"] = shifts
         context["facility"] = facility
         context["schedule_date"] = schedule_date
+        context["shift_message_to_helpers_form"] = ShiftMessageToHelpersModelForm
         return context
 
     def form_invalid(self, form):
@@ -348,3 +349,49 @@ class PlannerView(LoginRequiredMixin, FormView):
         Redirect to the same page.
         """
         return reverse("planner_by_facility", kwargs=self.kwargs)
+
+
+class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
+    """
+    View processes the sending of an email to all shift helpers.
+    """
+
+    template_name = "helpdesk_single.html"
+    form_class = ShiftMessageToHelpersModelForm
+
+    def form_invalid(self, form):
+
+        messages.warning(self.request, _("The submitted data was invalid."))
+        return super(SendMessageToShiftHelpers, self).form_invalid(form)
+
+    def form_valid(self, form):
+        user = self.request.user
+        try:
+            user_account = UserAccount.objects.get(user=user)
+        except UserAccount.DoesNotExist:
+            messages.warning(self.request, _("User account does not exist."))
+            return super(SendMessageToShiftHelpers, self).form_valid(form)
+
+        shift = form.cleaned_data.get("shift")
+        if not is_facility_member(user_account.user, shift.facility):
+            messages.warning(self.request, _("You have no permissions to send emails!"))
+            return super(SendMessageToShiftHelpers, self).form_valid(form)
+
+        shift_message = ShiftMessageToHelpers.objects.create(
+            message=form.cleaned_data.get("message"),
+            shift=shift,
+            sender=user_account,
+        )
+        for helper in shift.helpers.all():
+            if helper.user.email:
+                shift_message.recipients.add(helper)
+        shift_message.save()
+        messages.info(self.request, _("Email has been sent."))
+        return super(SendMessageToShiftHelpers, self).form_valid(form)
+
+    def get_success_url(self):
+        """redirect to referer site"""
+        try:
+            return self.request.META["HTTP_REFERER"]
+        except KeyError:
+            return reverse("helpdesk")

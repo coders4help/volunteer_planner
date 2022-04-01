@@ -172,7 +172,6 @@
             {% blocktranslate trimmed context "title with date" with schedule_date=schedule_date|date %}
                 Schedule for {{ schedule_date }}
             {% endblocktranslate %}
-
         </h3>
 
         {% if facility.timeline_enabled > facility.TimelineViewMode.DISABLED %}
@@ -265,6 +264,11 @@
                                     <th>
                                         {% translate "Users" %}
                                     </th>
+                                    {% if user|is_facility_member:facility %}
+                                    <th>
+                                        {% translate "Send message" %}
+                                    </th>
+                                    {% endif %}
                                     <th width="20%">
                                         {% translate "You" %}
                                     </th>
@@ -344,6 +348,16 @@
                                                     {% endfor %}
                                                 {% endif %}
                                             </td>
+                                            {% if user|is_facility_member:facility %}
+                                            <td>
+                                                <button
+                                                        data-shift-id="{{ shift.id }}"
+                                                        type="button"
+                                                        class="btn btn-default btn-sm shift-msg-button">
+                                                    <span class="glyphicon glyphicon-envelope"></span> {% trans "Send email to all volunteers" %}
+                                                </button>
+                                            </td>
+                                            {% endif %}
 
                                             <td>
                                                 {% if is_assigned %}
@@ -420,6 +434,39 @@
         {% endfor %}
 
     </form>
+    <div id="layerMsgBox">
+        <form class="form-group" method="POST" action="{% url "send_message_to_shift_helpers" %}">
+            {% csrf_token %}
+            {{ shift_message_to_helpers_form.as_p}}
+            <button type="submit" class="btn btn-default fa fa-check" name="sendmessage"> {% translate "send" %}</button>
+            <a id="closeMsgBoxBtn" class="btn btn-danger fa fa-close"> {% translate "cancel" %}</a>
+        </form>
+    </div>
+    <script>
+    let layerMsgBox = document.getElementById("layerMsgBox")
+    let msgButtons = document.getElementsByClassName("shift-msg-button")
+    let closeMsgBoxBtn = document.getElementById("closeMsgBoxBtn")
+    let textarea = document.getElementById("id_message")
+
+    function showMessageBox(){
+        layerMsgBox.style.display = "block";
+        let shiftIdInput = document.getElementById("id_shift")
+        shiftIdInput.value = this.dataset.shiftId;
+    }
+
+    function closeMessageBox(){
+        layerMsgBox.style.display = "none";
+        // clean
+        textarea.value ="";
+    }
+
+    for (let i = 0; i < msgButtons.length; i++) {
+        msgButtons[i].addEventListener('click', showMessageBox, false);
+    }
+    closeMsgBoxBtn.addEventListener('click',closeMessageBox,false)
+
+    </script>
+
 {% endblock %}
 
 
