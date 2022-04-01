@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from django.db.models import F
 
 
 class ShiftTemplateManager(models.Manager):
@@ -16,8 +17,8 @@ class ShiftTemplateManager(models.Manager):
 
         qs = qs.order_by(
             "schedule_template",
-            "task",
-            "workplace",
+            F("task__priority").desc(nulls_last=True),
+            F("workplace__priority").desc(nulls_last=True),
             "starting_time",
             "-days",
             "-ending_time",
