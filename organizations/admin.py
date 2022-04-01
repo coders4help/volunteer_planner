@@ -31,6 +31,10 @@ def get_memberships_by_role(membership_queryset):
 
 
 def get_cached_memberships(user, roles=DEFAULT_FILTER_ROLES):
+    if not hasattr(user, "account"):
+        # bail out for users without account
+        return [], []
+
     user_memberships = getattr(user, "__memberships", None)
     if not user_memberships:
         user_memberships = {
