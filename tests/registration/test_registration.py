@@ -141,28 +141,33 @@ class RegistrationTestCase(TestCase):
 
     def test_username_with_consequtive_underscores(self):
         self.try_invalid_username(
-            "invalid__name", "Username must not contain consecutive . or _ characters."
+            "invalid__name",
+            'Username must not contain consecutive "." or "_" characters.',
         )
 
         self.try_invalid_username(
-            "invalid___name", "Username must not contain consecutive . or _ characters."
+            "invalid___name",
+            'Username must not contain consecutive "." or "_" characters.',
         )
 
     def test_username_with_consequtive_dots(self):
         self.try_invalid_username(
-            "invalid..name", "Username must not contain consecutive . or _ characters."
+            "invalid..name",
+            'Username must not contain consecutive "." or "_" characters.',
         )
         self.try_invalid_username(
-            "invalid...name", "Username must not contain consecutive . or _ characters."
+            "invalid...name",
+            'Username must not contain consecutive "." or "_" characters.',
         )
 
     def test_username_with_consequtive_funnystuff(self):
         self.try_invalid_username(
             "invalid._._name",
-            "Username must not contain consecutive . or _ characters.",
+            'Username must not contain consecutive "." or "_" characters.',
         )
         self.try_invalid_username(
-            "invalid_._name", "Username must not contain consecutive . or _ characters."
+            "invalid_._name",
+            'Username must not contain consecutive "." or "_" characters.',
         )
 
     def test_username_with_whitespaces(self):

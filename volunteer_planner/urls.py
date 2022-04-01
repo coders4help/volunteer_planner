@@ -15,7 +15,6 @@ urlpatterns = [
     re_path(r"^orgs/", include("organizations.urls")),
     re_path(r"^places/", include("scheduler.place_urls")),
     re_path(r"^admin/", admin.site.urls),
-    re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),
     re_path(r"^i18n/", include("django.conf.urls.i18n")),
     re_path(
         r"^favicon.ico",

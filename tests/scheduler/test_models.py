@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 
-from django.conf import settings
 from django.test import TestCase
 from django.utils import timezone
 from django.utils.timezone import get_current_timezone
@@ -34,7 +33,7 @@ def assert_shift_conflict_count(
     shift,
     hard_conflict_count,
     soft_conflict_count,
-    grace=settings.DEFAULT_SHIFT_CONFLICT_GRACE,
+    grace=timedelta(hours=1),
 ):
     hard_conflicting_shifts, soft_conflicting_shifts = ShiftHelper.objects.conflicting(
         shift=shift, grace=grace

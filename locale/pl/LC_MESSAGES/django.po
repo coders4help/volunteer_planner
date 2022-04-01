@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-29 11:54+0200\n"
+"POT-Creation-Date: 2022-03-30 18:28+0200\n"
 "PO-Revision-Date: 2017-09-22 15:29+0000\n"
 "Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/coders4help/volunteer-planner/language/pl/)\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Username must end with a letter, a number or \"_\"."
 msgstr ""
 
-msgid "Username must not contain consecutive . or _ characters."
+msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr ""
 
 msgid "Accept privacy policy"
@@ -127,6 +127,17 @@ msgid "Delete Account"
 msgstr ""
 
 msgid "Your user account has been deleted."
+msgstr ""
+
+#, python-brace-format
+msgid "Error {error_code}"
+msgstr ""
+
+msgid "Permission denied"
+msgstr ""
+
+#, python-brace-format
+msgid "You are not allowed to do this and have been redirected to {redirect_path}."
 msgstr ""
 
 msgid "additional CSS"
@@ -1249,16 +1260,22 @@ msgstr ""
 msgid "Sign-up"
 msgstr ""
 
+msgid "Ukrainian"
+msgstr ""
+
 msgid "English"
 msgstr "język angielski"
 
 msgid "German"
 msgstr "język niemiecki"
 
-msgid "French"
+msgid "Czech"
 msgstr ""
 
 msgid "Greek"
+msgstr ""
+
+msgid "French"
 msgstr ""
 
 msgid "Hungarian"

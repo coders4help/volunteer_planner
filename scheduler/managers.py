@@ -2,11 +2,11 @@
 
 from datetime import datetime, time, timedelta
 
-from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
 from places import models as place_models
+from .settings import DEFAULT_SHIFT_CONFLICT_GRACE
 
 
 class ShiftQuerySet(models.QuerySet):
@@ -84,9 +84,7 @@ class ShiftHelperManager(models.Manager):
     QuerySet on conflicting shifts.
     """
 
-    def conflicting(
-        self, shift, user_account=None, grace=settings.DEFAULT_SHIFT_CONFLICT_GRACE
-    ):
+    def conflicting(self, shift, user_account=None, grace=DEFAULT_SHIFT_CONFLICT_GRACE):
         """Filters QuerySet of ShiftHelper objects by selecting those that
         intersect with respect to time.
 

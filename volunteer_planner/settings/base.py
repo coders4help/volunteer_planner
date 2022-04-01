@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import os
+from datetime import timedelta
 
 from django.utils.translation import gettext_lazy as _
 
@@ -41,7 +42,6 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     "ckeditor",
-    # A prettier theme
     "accounts.apps.RegistrationConfig",
     "django_ajax",
     "django_extensions",
@@ -76,6 +76,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "common.admin.RedirectOnAdminPermissionDenied403",
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -142,13 +143,15 @@ LOGIN_URL = "/auth/login/"
 USE_TZ = True
 TIME_ZONE = "Europe/Berlin"
 
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "en-us"
 
 LANGUAGES = (
+    ("uk", _("Ukrainian")),
     ("en", _("English")),
     ("de", _("German")),
-    ("fr", _("French")),
+    ("cs", _("Czech")),
     ("el", _("Greek")),
+    ("fr", _("French")),
     ("hu", _("Hungarian")),
     ("pl", _("Polish")),
     ("pt", _("Portuguese")),
@@ -162,8 +165,6 @@ LOCALE_PATHS = (SITE_ROOT + "/locale",)
 WSGI_APPLICATION = "%s.wsgi.application" % SITE_NAME
 
 FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, "fixtures"),)
-CKEDITOR_JQUERY_URL = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
-CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DATE_FORMAT = "l, d.m.Y"
 
@@ -173,3 +174,5 @@ REGISTRATION_FORM = "accounts.forms.RegistrationForm"
 
 FACILITY_MANAGER_GROUPNAME = "Facility Manager"
 ORGANIZATION_MANAGER_GROUPNAME = "Organization Manager"
+
+DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)

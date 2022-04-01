@@ -1,14 +1,15 @@
 #
 # Translators:
+# trendspotter <jirka.p@volny.cz>, 2022
 # trendspotter <jirka.p@volny.cz>, 2019
-# trendspotter <jirka.p@volny.cz>, 2019
+# trendspotter <jirka.p@volny.cz>, 2019,2022
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-29 11:54+0200\n"
-"PO-Revision-Date: 2022-03-15 17:56+0000\n"
-"Last-Translator: Christoph Meißner\n"
+"POT-Creation-Date: 2022-03-30 18:28+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2019,2022\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -35,16 +36,16 @@ msgid "Accounts"
 msgstr "Účty"
 
 msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
-msgstr ""
+msgstr "Neplatné uživatelské jméno. Povolené znaky jsou písmena, číslice, \".\" a \"_\"."
 
 msgid "Username must start with a letter."
-msgstr ""
+msgstr "Uživatelské jméno musí začínat písmenem."
 
 msgid "Username must end with a letter, a number or \"_\"."
-msgstr ""
+msgstr "Uživatelské jméno musí končit písmenem, číslicí nebo znakem \"_\"."
 
-msgid "Username must not contain consecutive . or _ characters."
-msgstr ""
+msgid "Username must not contain consecutive \".\" or \"_\" characters."
+msgstr "Uživatelské jméno nesmí obsahovat po sobě jdoucí znaky \".\" nebo \"_\"."
 
 msgid "Accept privacy policy"
 msgstr "Přijmout zásady ochrany osobních údajů"
@@ -126,6 +127,17 @@ msgstr "Smazat účet"
 
 msgid "Your user account has been deleted."
 msgstr "Váš uživatelský účet byl smazán."
+
+#, python-brace-format
+msgid "Error {error_code}"
+msgstr ""
+
+msgid "Permission denied"
+msgstr ""
+
+#, python-brace-format
+msgid "You are not allowed to do this and have been redirected to {redirect_path}."
+msgstr ""
 
 msgid "additional CSS"
 msgstr "další CSS"
@@ -482,6 +494,10 @@ msgid ""
 "                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 msgstr ""
+"\n"
+" ...třeba s přiloženým návrhem směn, které chcete vidět v plánovači dobrovolníků. Napište prosím na <a\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                  "
 
 msgid "edit"
 msgstr "upravit"
@@ -603,10 +619,10 @@ msgid "{username} at {facility_name} ({user_role})"
 msgstr "{username} v {facility_name} ({user_role})"
 
 msgid "priority"
-msgstr ""
+msgstr "priorita"
 
 msgid "Higher value = higher priority"
-msgstr ""
+msgstr "Vyšší hodnota = vyšší priorita"
 
 msgid "workplace"
 msgstr "pracoviště"
@@ -622,7 +638,7 @@ msgstr "úlohy"
 
 #, python-brace-format
 msgid "User '{user}' manager status of a facility/organization was changed. "
-msgstr ""
+msgstr "Byl změněn status správce zařízení/organizace uživatele '{user}'. "
 
 #, python-format
 msgid "Hello %(username)s,"
@@ -709,23 +725,23 @@ msgid "places"
 msgstr "místa"
 
 msgid "Facilities do not match."
-msgstr ""
+msgstr "Zařízení neodpovídají."
 
 #, python-brace-format
 msgid "\"{object.name}\" belongs to facility \"{object.facility.name}\", but shift takes place at \"{facility.name}\"."
-msgstr ""
+msgstr "\"{object.name}\" patří do zařízení \"{object.facility.name}\", ale směna probíhá v zařízení \"{facility.name}\"."
 
 msgid "No start time given."
-msgstr ""
+msgstr "Čas zahájení není uveden."
 
 msgid "No end time given."
-msgstr ""
+msgstr "Čas ukončení není uveden."
 
 msgid "Start time in the past."
-msgstr ""
+msgstr "Čas zahájení v minulosti."
 
 msgid "Shift ends before it starts."
-msgstr ""
+msgstr "Směna končí dřív, než začne."
 
 msgid "number of volunteers"
 msgstr "počet dobrovolníků"
@@ -789,7 +805,7 @@ msgid "see more"
 msgstr "zobrazit víc"
 
 msgid "news"
-msgstr ""
+msgstr "novinky"
 
 msgid "open shifts"
 msgstr "otevřené směny"
@@ -942,7 +958,7 @@ msgid "You were successfully added to this shift."
 msgstr "Byli jste úspěšně přidáni k této směně."
 
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
-msgstr ""
+msgstr "Směna, do které jste nastoupili, se překrývá s jinými směnami, do kterých jste již nastoupili. Zkontrolujte, zda nedochází ke konfliktům:"
 
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
@@ -1163,21 +1179,21 @@ msgid "Your volunteer-planner.org registration"
 msgstr "Registrace dobrovolníka"
 
 msgid "admin approval"
-msgstr ""
+msgstr "schválení administrátorem"
 
 #, python-format
 msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
-msgstr ""
+msgstr "Váš účet je nyní schválen. Nyní se můžete <a href=\"https://%(site.domain)s%(login_url)s\">přihlásit</a>."
 
 msgid "Your account is now approved. You can log in using the following link"
-msgstr ""
+msgstr "Váš účet je nyní schválen. Přihlásit se můžete pomocí následujícího odkazu"
 
 msgid "Email address"
 msgstr "Emailová adresa"
 
 #, python-format
 msgid "%(email_trans)s / %(username_trans)s"
-msgstr ""
+msgstr "%(email_trans)s / %(username_trans)s"
 
 msgid "Password"
 msgstr "Heslo"
@@ -1288,13 +1304,16 @@ msgid "Repeat password"
 msgstr "Zopakovat heslo"
 
 msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
-msgstr ""
+msgstr "Přečetl/a jsem si <a href=\"/impressum/#datenschutz\">Zásady ochrany osobních údajů</a> a souhlasím s nimi."
 
 msgid "This must be checked."
-msgstr ""
+msgstr "To je nutné zaškrtnout."
 
 msgid "Sign-up"
 msgstr "Přihlásit se"
+
+msgid "Ukrainian"
+msgstr ""
 
 msgid "English"
 msgstr "Angličtina"
@@ -1302,26 +1321,29 @@ msgstr "Angličtina"
 msgid "German"
 msgstr "Němčina"
 
-msgid "French"
+msgid "Czech"
 msgstr ""
 
 msgid "Greek"
 msgstr "Řečtina"
 
+msgid "French"
+msgstr "Francouzština"
+
 msgid "Hungarian"
 msgstr "Maďarština"
 
 msgid "Polish"
-msgstr ""
+msgstr "Polština"
 
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalština"
 
 msgid "Russian"
-msgstr ""
+msgstr "Ruština"
 
 msgid "Swedish"
 msgstr "Švédština"
 
 msgid "Turkish"
-msgstr ""
+msgstr "Turečtina"
