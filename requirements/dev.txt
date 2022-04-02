@@ -5,7 +5,7 @@
 ipdb==0.13.9
 
 # code formatting and linting
-black==22.1.0
+black==22.3.0
 flake8==4.0.1
 
 # translations
