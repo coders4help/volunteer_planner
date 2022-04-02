@@ -2,9 +2,9 @@
 {% load i18n %}
 {% block title %}
     {% if account %}
-        {% trans "Activation complete" %}
+        {% translate "Activation complete" %}
     {% else %}
-        {% trans "Activation problem" %}
+        {% translate "Activation problem" %}
     {% endif %}
 {% endblock %}
 
@@ -12,20 +12,20 @@
     {% if account %}
 
         {% url 'auth_login' as auth_login_url %}
-        {% trans "login" as login_link_title context "login link title in registration confirmation success text 'You may now %(login_link)s'" %}
+        {% translate "login" as login_link_title context "login link title in registration confirmation success text 'You may now %(login_link)s'" %}
 
-        {% blocktrans trimmed with login_link='<a href="'|add:auth_login_url|add:'">'|add:login_link_title|add:'</a>'|safe %}
+        {% blocktranslate trimmed with login_link='<a href="'|add:auth_login_url|add:'">'|add:login_link_title|add:'</a>'|safe %}
             Thanks {{ account }}, activation complete! You may now
             {{ login_link }} using the username and password you set at
             registration.
-        {% endblocktrans %}
+        {% endblocktranslate %}
 
     {% else %}
 
-        {% blocktrans trimmed %}
+        {% blocktranslate trimmed %}
             Oops &ndash; Either you activated your account already, or the
             activation key is invalid or has expired.
-        {% endblocktrans %}
+        {% endblocktranslate %}
 
     {% endif %}
 

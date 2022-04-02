@@ -9,4 +9,4 @@ git+https://github.com/Doca/django-ajax.git#egg=djangoajax
 
 python3-memcached==1.51
 
-ipython==8.1.1
+ipython==8.2.0

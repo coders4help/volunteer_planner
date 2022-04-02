@@ -1,0 +1,11 @@
+{% load i18n %}{% blocktranslate with shift_title=shift.task.name.strip location=shift.facility.name.strip %}Hello {{ recipient }},
+The shift manager of the shift {{ shift_title }} at {{ location }} wants to let you know:
+----------------------
+{{ message }}
+----------------------
+Please reply to {{ sender_email }} for further questions.
+
+
+Best,
+Your volunteer-planner.org team
+{% endblocktranslate %}

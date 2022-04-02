@@ -2,7 +2,7 @@
 
 from django.urls import re_path
 
-from .views import HelpDesk, PlannerView, ShiftDetailView
+from .views import HelpDesk, PlannerView, ShiftDetailView, SendMessageToShiftHelpers
 
 urlpatterns = [
     re_path(r"^$", HelpDesk.as_view(), name="helpdesk"),
@@ -26,5 +26,11 @@ urlpatterns = [
         r"^(?P<facility_slug>[^/]+)/shifts/(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<shift_id>\d+)/?$",  # noqa: E501
         ShiftDetailView.as_view(),
         name="shift_details",
+    ),
+    # receiving the post message to send notifications to the helpers of a shift
+    re_path(
+        r"^sendmessage$",
+        SendMessageToShiftHelpers.as_view(),
+        name="send_message_to_shift_helpers",
     ),
 ]

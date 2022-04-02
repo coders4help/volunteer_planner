@@ -1,11 +1,11 @@
 {% load i18n %}
-{% blocktrans trimmed %}
+{% blocktranslate trimmed %}
 Hello {{ username }},
-{% endblocktrans %}
+{% endblocktranslate %}
 
-{% blocktrans trimmed %}
+{% blocktranslate trimmed %}
 Your membership request at {{ facility_name }} was approved. You now may sign up for restricted shifts at this facility.
-{% endblocktrans %}
+{% endblocktranslate %}
 
-{% blocktrans %}Yours,
-the volunteer-planner.org Team{% endblocktrans %}
+{% blocktranslate %}Yours,
+the volunteer-planner.org Team{% endblocktranslate %}

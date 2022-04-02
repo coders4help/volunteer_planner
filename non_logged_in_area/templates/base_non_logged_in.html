@@ -54,10 +54,10 @@
 		{% include "partials/switch_language.html" with nav_item_tag="span" %}
 
         <a href="{% url 'auth_login' %}" class="btn btn-secondary">
-            {% trans "Login" %}
+            {% translate "Login" %}
                 </a>
         <a href="{% url 'registration_register' %}" class="btn btn-primary">
-            {% trans "Start helping" %}
+            {% translate "Start helping" %}
                 </a>
     </div>
 </nav>
@@ -84,25 +84,25 @@
             <div id="footer-nav">
                 <ul>
                      <li>
-                        <a href="{% url 'home' %}">{% trans "Main page" %}</a>
+                        <a href="{% url 'home' %}">{% translate "Main page" %}</a>
                     </li>
                     <li>
-                        <a href="/impressum/">{% trans "Imprint"%}</a>
+                        <a href="/impressum/">{% translate "Imprint"%}</a>
                     </li>
                     <li>
-                        <a href="/about/">{% trans "About"%}</a>
+                        <a href="/about/">{% translate "About"%}</a>
                     </li>
                     <li>
-                        <a href="/unterstuetzer/">{% trans "Supporter"%}</a>
+                        <a href="/unterstuetzer/">{% translate "Supporter"%}</a>
                     </li>
                     <li>
-                        <a href="/presse/">{% trans "Press"%}</a>
+                        <a href="/presse/">{% translate "Press"%}</a>
                     </li>
                     <li>
-                        <a href="/kontakt/">{% trans "Contact" %}</a>
+                        <a href="/kontakt/">{% translate "Contact" %}</a>
                     </li>
                     <li>
-                        <a href="/faq/">{% trans "FAQ" %}</a>
+                        <a href="/faq/">{% translate "FAQ" %}</a>
                     </li>
                     <li>
                         <a href="https://github.com/coders4help/volunteer_planner" target="_blank">

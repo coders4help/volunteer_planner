@@ -21,16 +21,16 @@
 {% load i18n vpfilters static memberships %}
 
 {% block title %}
-    {% blocktrans trimmed context "title with facility" with facility_name=facility.name %}
+    {% blocktranslate trimmed context "title with facility" with facility_name=facility.name %}
         Schedule for {{ facility_name }}
-    {% endblocktrans %}
+    {% endblocktranslate %}
 {% endblock %}
 
 {% block helpdesk_content %}
 
     <ul class="breadcrumb">
         <li>
-            <a href="/helpdesk/">{% trans "Helpdesk" %}</a>
+            <a href="/helpdesk/">{% translate "Helpdesk" %}</a>
         </li>
 
         <li>
@@ -92,7 +92,7 @@
     {% with slots_left=shift.volunteer_count|subtract:shift.slots is_assigned=shift.helpers.all|contains:user.account %}
 
         {% if is_assigned %}
-            {% trans "Drop out" as dropout_button_label %}
+            {% translate "Drop out" as dropout_button_label %}
 
             <button type="submit"
                     name="leave_shift"
@@ -102,10 +102,10 @@
             </button>
 
             {% elif slots_left %}
-            {% trans "Sign up" as signup_button_label %}
+            {% translate "Sign up" as signup_button_label %}
 
             {% if shift.members_only %}
-                {% trans "Members only" as members_only_button_label %}
+                {% translate "Members only" as members_only_button_label %}
                 {% if user|is_facility_member:shift.facility %}
                     <button type="submit"
                             name="join_shift"
@@ -131,7 +131,7 @@
                 </button>
             {% endif %}
         {% else %}
-            {% trans "Covered" %}
+            {% translate "Covered" %}
         {% endif %}
     {% endwith %}
     <p class="fa fa-group">
