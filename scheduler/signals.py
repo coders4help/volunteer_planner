@@ -3,14 +3,15 @@ import logging
 
 from django.conf import settings
 from django.core.mail import EmailMessage
-from django.db.models.signals import pre_delete, pre_save
+from django.db.models.signals import pre_delete, pre_save, post_save
 from django.dispatch import receiver
 from django.template.defaultfilters import time as date_filter
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.timezone import timedelta
+from django.utils.translation import gettext_lazy as _
 
-from scheduler.models import Shift
+from scheduler.models import Shift, ShiftMessageToHelpers
 
 logger = logging.getLogger(__name__)
 
@@ -112,3 +113,37 @@ def notify_users_shift_change(sender, instance, **kwargs):
                     len(addresses),
                 )
                 mail.send()
+
+
+@receiver(post_save, sender=ShiftMessageToHelpers)
+def send_shift_message_to_helpers(sender, instance, created, **kwargs):
+    if not created:
+        for recipient in instance.recipients.all():
+            if instance.sender.user.email:
+                try:
+                    message = render_to_string(
+                        "emails/shift_message_to_helpers.txt",
+                        dict(
+                            message=instance.message,
+                            recipient=recipient,
+                            shift=instance.shift,
+                            sender_email=instance.sender.user.email,
+                        ),
+                    )
+                    subject = _(
+                        "Volunteer-Planner: A Message from shift "
+                        "manager of {shift_title}"
+                    ).format(shift_title=instance.shift.task.name)
+                    if message:
+                        mail = EmailMessage(
+                            subject=subject,
+                            body=message,
+                            to=[recipient.user.email],
+                            from_email="noreply@volunteer-planner.org",
+                            reply_to=(instance.sender.user.email,),
+                        )
+                        mail.send()
+                except Exception as e:
+                    logger.error(
+                        "send_shift_message_to_helpers: message not successful", e
+                    )

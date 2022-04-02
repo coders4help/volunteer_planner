@@ -161,3 +161,37 @@ class ShiftHelper(models.Model):
 
     def __str__(self):
         return self.__unicode__()
+
+
+class ShiftMessageToHelpers(models.Model):
+    """
+    The ShiftMessageToHelpers represents a message to be sent to the helpers
+    signed up for a certain shift. A use case would be to tell all helpers to
+    come 1 hour later.
+
+    The actual email will be sent via a post_save signal.
+    """
+
+    class Meta:
+        verbose_name = ngettext_lazy("shift notification", "shift notifications", 1)
+        verbose_name_plural = ngettext_lazy(
+            "shift notification", "shift notifications", 2
+        )
+
+    message = models.TextField(verbose_name=_("Message"))
+    sender = models.ForeignKey(
+        "accounts.UserAccount",
+        models.PROTECT,
+        related_name="msg_sender",
+        verbose_name=_("sender"),
+    )
+    send_date = models.DateTimeField(auto_now_add=True, verbose_name=_("send date"))
+    shift = models.ForeignKey(
+        "Shift", on_delete=models.PROTECT, verbose_name=_("Shift")
+    )
+    recipients = models.ManyToManyField(
+        "accounts.UserAccount", verbose_name=_("recipients")
+    )
+
+    def __str__(self):
+        return "{} on {}".format(self.sender.user.email, self.shift.task)

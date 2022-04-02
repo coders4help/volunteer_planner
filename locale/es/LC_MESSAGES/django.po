@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 18:28+0200\n"
+"POT-Creation-Date: 2022-04-02 18:42+0200\n"
 "PO-Revision-Date: 2016-04-13 17:27+0000\n"
 "Last-Translator: Antonio Mireles <antonio@mirelesindependent.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/coders4help/volunteer-planner/language/es/)\n"
@@ -753,6 +753,9 @@ msgstr "voluntarios"
 msgid "scheduler"
 msgstr ""
 
+msgid "Write a message"
+msgstr ""
+
 msgid "slots"
 msgstr "horarios"
 
@@ -788,6 +791,44 @@ msgstr "ayudante de turno"
 
 msgid "shift helpers"
 msgstr "ayudantes de turno"
+
+msgid "shift notification"
+msgid_plural "shift notifications"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Message"
+msgstr ""
+
+msgid "sender"
+msgstr ""
+
+msgid "send date"
+msgstr ""
+
+msgid "Shift"
+msgstr "turno"
+
+msgid "recipients"
+msgstr ""
+
+#, python-brace-format
+msgid "Volunteer-Planner: A Message from shift manager of {shift_title}"
+msgstr ""
+
+#, python-format
+msgid ""
+"Hello %(recipient)s,\n"
+"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"----------------------\n"
+"%(message)s\n"
+"----------------------\n"
+"Please reply to %(sender_email)s for further questions.\n"
+"\n"
+"\n"
+"Best,\n"
+"Your volunteer-planner.org team\n"
+msgstr ""
 
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
@@ -850,6 +891,9 @@ msgstr "Estado"
 msgid "Users"
 msgstr "Usuarios"
 
+msgid "Send message"
+msgstr ""
+
 msgid "You"
 msgstr "Usted"
 
@@ -859,6 +903,9 @@ msgstr "%(slots_left)s más"
 
 msgid "Covered"
 msgstr "Cubierto"
+
+msgid "Send email to all volunteers"
+msgstr ""
 
 msgid "Drop out"
 msgstr "Abandonar"
@@ -874,6 +921,12 @@ msgstr "Se rechazó la membresía"
 
 msgid "Become member"
 msgstr "Hacerse miembro"
+
+msgid "send"
+msgstr ""
+
+msgid "cancel"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -894,6 +947,21 @@ msgstr ""
 
 msgid "Members only"
 msgstr "Sólo miembros"
+
+#, python-format
+msgid ""
+"Hello %(recipient)s,\n"
+"\n"
+"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"----------------------\n"
+"%(message)s\n"
+"----------------------\n"
+"Please reply to %(sender_email)s for further questions.\n"
+"\n"
+"\n"
+"Best,\n"
+"Your volunteer-planner.org team\n"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -945,6 +1013,12 @@ msgstr "Usted ya se ha inscrito para el turno del {date_time} "
 
 msgid "You successfully left this shift."
 msgstr "Usted abandonó exitosamente este turno."
+
+msgid "You have no permissions to send emails!"
+msgstr ""
+
+msgid "Email has been sent."
+msgstr ""
 
 #, python-brace-format
 msgid "A shift already exists at {date}"
