@@ -12,17 +12,15 @@ All notable changes to this project will be documented in this file.
 
 ## [3.1.1] - 2017-02-06
 ### Added
-*added french translation
-*added portuguese translation (not fully translated yet)
-*added turkish translation (not fully translated yet)
+- added french translation
+- added portuguese translation (not fully translated yet)
+- added turkish translation (not fully translated yet)
 
 ### Changed
-*updated all existing translations (massive improvements in translation)
+- updated all existing translations (massive improvements in translation)
 
 ### Fixed
 - fix #398: deleting a non-past shift failed hard when trying to gather information about email about to be sent
-
-### Removed
 
 ## [3.1.0] - 2016-10-10
 ### Added
