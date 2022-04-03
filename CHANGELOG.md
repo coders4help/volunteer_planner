@@ -10,19 +10,52 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
-## [3.1.1] - 2017-02-06
+## [4.0.0] - 2022-04-03
+Revival. Volunteer Planner is back.
+
 ### Added
-*added french translation
-*added portuguese translation (not fully translated yet)
-*added turkish translation (not fully translated yet)
+- privacy policy acception during registration in #437
+- czech translation #406
+- priority attribute for task and workplace, can be used to control listing order #476
+- black and flake8 #518 #519
+- GitHub templates for issues and feature requests
+- Allow login in with email address as username #522
 
 ### Changed
-*updated all existing translations (massive improvements in translation)
+- lift Django version (+ libraries and frameworks) #488
+- Python3 #487
+- PostgreSQL is now default DBMS
+- automatically assign permissions, when promoted as manager #425
+- on landing page list only facilities with open shifts #454
+- update translations
+- reduce number of SQL queries for facility, shift date and news listing #513
+- restrict username variations #520
+
+### Fixed
+- check task and workplace match facility when creating shifts #433
+- better filter for organization and facility membership / manager permission
+- remove user from shift on account deletion #516
+- Sending e-mail on membership approval was broken #533
+- Make membership unique per user and facility / organization #524
+
+### Removed
+- short description removed from organization and facility #442
+- shiftmailer removed #452
+- user e-mail address removed from user account admin (so managers see less data uncontrolled) #490
+- user e-mail address removed from admin shift list #505
+- google_tools app removed #510
+
+## [3.1.1] - 2017-02-06
+### Added
+- added french translation
+- added portuguese translation (not fully translated yet)
+- added turkish translation (not fully translated yet)
+
+### Changed
+- updated all existing translations (massive improvements in translation)
 
 ### Fixed
 - fix #398: deleting a non-past shift failed hard when trying to gather information about email about to be sent
-
-### Removed
 
 ## [3.1.0] - 2016-10-10
 ### Added
