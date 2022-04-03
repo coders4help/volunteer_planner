@@ -3,7 +3,7 @@
 {% load i18n vpfilters static memberships %}
 
 {% block title %}
-    {% blocktranslate trimmed context "title with facility" with facility_name=facility.name %}
+    {% blocktranslate trimmed context "title with facility" with facility_name=shift.facility.name %}
         Schedule for {{ facility_name }}
     {% endblocktranslate %}
 {% endblock %}
