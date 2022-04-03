@@ -4,6 +4,7 @@ from datetime import datetime, time, timedelta
 
 from django.db import models
 from django.utils import timezone
+from django.utils.timezone import get_current_timezone
 
 from places import models as place_models
 from .settings import DEFAULT_SHIFT_CONFLICT_GRACE
@@ -19,8 +20,7 @@ class ShiftQuerySet(models.QuerySet):
         shiftdate. That means shifts that intersect with the day of
         shiftdate.
         """
-        # make sure, shiftdate is a date and not a datetime
-        shiftdate = datetime.combine(shiftdate, time.min).date()
+        shiftdate = datetime.combine(shiftdate, time(tzinfo=get_current_timezone()))
         return self.filter(
             ending_time__gte=shiftdate, starting_time__lt=shiftdate + timedelta(days=1)
         )
