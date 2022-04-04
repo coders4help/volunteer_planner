@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.templatetags.l10n import localize
 from django.utils import timezone
+from django.utils.timezone import get_current_timezone, make_aware
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from . import managers
@@ -63,7 +64,6 @@ class ShiftTemplate(models.Model):
     )
 
     starting_time = models.TimeField(verbose_name=_("starting time"), db_index=True)
-
     ending_time = models.TimeField(verbose_name=_("ending time"), db_index=True)
 
     days = models.PositiveIntegerField(verbose_name=_("days"), default=0)
@@ -95,7 +95,10 @@ class ShiftTemplate(models.Model):
         days_fmt = ngettext_lazy("the next day", "after {number_of_days} days", days)
         days_str = days_fmt.format(number_of_days=days) if days else ""
         return "{time} {days}".format(
-            time=localize(self.ending_time), days=days_str
+            time=localize(
+                make_aware(self.ending_time, timezone=get_current_timezone())
+            ),
+            days=days_str,
         ).strip()
 
     @property
@@ -105,7 +108,7 @@ class ShiftTemplate(models.Model):
             self.slots,
             self.task.name,
             self.workplace and "/{}".format(self.workplace.name) or "",
-            self.starting_time,
+            make_aware(self.starting_time, timezone=get_current_timezone()),
             self.localized_display_ending_time,
         )
 
