@@ -3,7 +3,7 @@ from datetime import datetime, time, timedelta
 from django import forms
 from django.contrib import admin, messages
 from django.core.exceptions import ValidationError
-from django.db.models import Count, Min, Sum
+from django.db.models import Count, F, Min, Sum
 from django.forms import DateInput, TimeInput
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect
@@ -383,13 +383,26 @@ class ShiftTemplateAdmin(FormattedModelChoiceFieldAdminMixin, MembershipFiltered
     get_facility.short_description = _("facility")
     get_facility.admin_order_field = "schedule_template__facility"
 
+    @admin.display(
+        ordering=F("task").desc(nulls_last=True), description=_("task")
+    )
+    def get_task(self, obj):
+        return obj.task
+
+    @admin.display(
+        ordering=F("workplace").desc(nulls_last=True),
+        description=_("workplace"),
+    )
+    def get_workplace(self, obj):
+        return obj.workplace
+
     list_display = (
         "get_edit_link",
         "get_facility",
         "schedule_template",
         "slots",
-        "task",
-        "workplace",
+        "get_task",
+        "get_workplace",
         "starting_time",
         "ending_time",
         "members_only",
