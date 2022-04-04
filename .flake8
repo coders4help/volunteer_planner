@@ -3,3 +3,4 @@ per-file-ignores =
    volunteer_planner/settings/*.py: F401, F403, F405,
 
 max-line-length = 88
+exclude = .*, __pycache__
