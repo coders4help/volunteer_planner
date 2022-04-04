@@ -1,11 +1,11 @@
 # coding=utf-8
 from django.apps import AppConfig
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class SchedulerConfig(AppConfig):
-    name = 'scheduler'
-    verbose_name = _('Scheduler')
+    name = "scheduler"
+    verbose_name = _("scheduler")
 
     def ready(self):
         # Connect signals

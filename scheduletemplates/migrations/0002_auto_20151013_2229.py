@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduletemplates', '0001_initial'),
+        ("scheduletemplates", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='shifttemplate',
-            options={'ordering': ('schedule_template',), 'verbose_name': 'shift template', 'verbose_name_plural': 'shift templates'},
+            name="shifttemplate",
+            options={
+                "ordering": ("schedule_template",),
+                "verbose_name": "shift template",
+                "verbose_name_plural": "shift templates",
+            },
         ),
     ]

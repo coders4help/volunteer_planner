@@ -22,22 +22,21 @@
 
         <div class="col-md-4 ">
             <a id="help-cta" href="{% url 'registration_register' %}">
-                <h2>{% trans "I want to help!" %}</h2>
+                <h2>{% translate "I want to help!" %}</h2>
                 <hr/>
-                <p>{% trans "Register and see where you can help" %}</p>
+                <p>{% translate "Register and see where you can help" %}</p>
             </a><!-- // #about -->
         </div>
         <div class="col-md-4">
             <a href="{% url  "shelter_info" %}" id="need-cta">
-                <h2>{% trans "Organize volunteers!" %}</h2>
+                <h2>{% translate "Organize volunteers!" %}</h2>
                 <hr/>
-                <p>{% trans "Register a shelter and organize volunteers" %}</p>
+                <p>{% translate "Register a shelter and organize volunteers" %}</p>
             </a>
         </div>
         <div class="col-md-4">
             <div class="facts ">
                 {% get_current_language as LANGUAGE_CODE %}
-
                 {% cache 900 volunteer_stats LANGUAGE_CODE %}
                     {% get_volunteer_stats as volunteer_stats %}
 
@@ -45,21 +44,21 @@
                         {{ volunteer_stats.facility_count|intcomma }}
                     </span>
                     <br/>
-                    {% trans "Places to help" %}
+                    {% translate "Places to help" %}
 
                     <hr/>
                     <span class="fact-amount">
                         {{ volunteer_stats.volunteer_count|intcomma }}
                     </span>
                     <br/>
-                    {% trans "Registered Volunteers" %}
+                    {% translate "Registered Volunteers" %}
                     <hr/>
 
                     <span class="fact-amount">
                         {{ volunteer_stats.volunteer_hours|intcomma }}
                     </span>
                     <br/>
-                    {% trans "Worked Hours" %}
+                    {% translate "Worked Hours" %}
 
                 {% endcache %}
             </div>
@@ -71,23 +70,23 @@
     <div class="row">
 
         <div class="col-md-8">
-            <h2>{% trans "What is it all about?" %}</h2>
+            <h2>{% translate "What is it all about?" %}</h2>
 
             <p>
-                {% blocktrans trimmed %}
+                {% blocktranslate trimmed %}
                     You are a volunteer and want to help refugees?
                     Volunteer-Planner.org shows you where, when and how
                     to help directly in the field.
-                {% endblocktrans %}
+                {% endblocktranslate %}
             </p>
 
 
-                {% blocktrans trimmed %}
-                    <p>This platform is non-commercial and ads-free. An
+            {% blocktranslate trimmed %}
+                <p>This platform is non-commercial and ads-free. An
                     international team of field workers, programmers, project
                     managers and designers are volunteering for this project and
                     bring in their professional experience to make a difference.</p>
-                {% endblocktrans %}
+            {% endblocktranslate %}
 
         </div>
 
@@ -95,7 +94,7 @@
 
         <div class="col-md-4">
             <div class="facts facts-less-padding">
-                <h2>{% trans "You can help at these locations:" %}</h2>
+                <h2>{% translate "You can help at these locations:" %}</h2>
                 {% if facilities_by_area %}
                     {% for facility_in_area in facilities_by_area %}
                         {% comment %}
@@ -103,7 +102,7 @@
                            list. At the moment, there's not enough and it's more usable and SEO
                            friendly to show all.
                         {% endcomment %}
-                        {{ facility_in_area.grouper }}
+                        <strong>{{ facility_in_area.grouper }}</strong>
                         <p>
                             {% for facility in facility_in_area.list %}
                                 {{ facility.name }}
@@ -112,7 +111,7 @@
                         </p>
                     {% endfor %}
                 {% else %}
-                    {% trans "There are currently no places in need of help." %}
+                    {% translate "There are currently no places in need of help." %}
                 {% endif %}
             </div>
         </div>

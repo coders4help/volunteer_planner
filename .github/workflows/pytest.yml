@@ -1,0 +1,136 @@
+name: Check & Test
+
+on: 
+  push:
+    branches:
+      - develop
+      - main
+      - master
+      - release/*
+  pull_request:
+
+jobs:
+  check-migrations:
+    name: Check Migrations
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: volunteer_planner.settings.tests
+    steps:
+      # Checkout the GitHub repo
+      - uses: actions/checkout@v2
+
+      # Install Python 3.9.6
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.6"
+          cache: "pip"
+          cache-dependency-path: 'requirements/base.txt'
+
+      # Pip install project dependencies
+      - name: Install python packages with pip
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/base.txt
+
+      # Check for missing Django migrations
+      - name: Check for missing Django migrations
+        run: python manage.py makemigrations --check
+
+  check-messages:
+    name: Check Translations
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: volunteer_planner.settings.tests
+    steps:
+      # Checkout the GitHub repo
+      - uses: actions/checkout@v2
+
+      # Install Python 3.9.6
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.6"
+          cache: "pip"
+          cache-dependency-path: 'requirements/base.txt'
+
+      # apt install system dependencies
+      - name: Install apt packages
+        run: |
+          sudo apt install -y gettext
+
+      # Pip install project dependencies
+      - name: Install python packages with pip
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/base.txt
+
+      # makemessages
+      - name: Run Django management command `makemessages`
+        run: ./scripts/makemessages.sh --all
+
+      # checkdiffs
+      - name: Check for uncommitted changes (in .po files)
+        run: ./scripts/checkdiffs.sh
+
+      # Check for fuzzy translations in .po files
+      - name: Check for fuzzy translations in .po files
+        run: ./scripts/checkfuzzy.sh
+
+      # compilemessages
+      - name: Run Django management command `compilemessages`
+        run: ./scripts/compilemessages.sh
+
+  black:
+    name: Check Code Style (black)
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: volunteer_planner.settings.tests
+    steps:
+      # Checkout the GitHub repo
+      - uses: actions/checkout@v2
+
+      # Run black
+      - uses: psf/black@stable
+        with:
+          options: "--check --target-version py39"
+
+  flake8:
+    runs-on: ubuntu-latest
+    name: Lint with flake8
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
+
+  pytest:
+    name: Unit Tests
+    needs:
+      - check-migrations
+      - check-messages
+    # Run on a Ubuntu VM
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: volunteer_planner.settings.tests
+    steps:
+      # Checkout the GitHub repo
+      - uses: actions/checkout@v2
+
+      # Install Python 3.9.6
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.6"
+          cache: "pip"
+          cache-dependency-path: 'requirements/base.txt'
+
+      # Pip install project dependencies
+      - name: Install python packages with pip
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/tests.txt
+
+      # Run pytest
+      - name: Test with pytest
+        run: pytest -vv

@@ -1,29 +1,44 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
-{% block title %}{% trans "Login" %}{% endblock %}
+{% block title %}{% translate "Login" %}{% endblock %}
 {% block content %}
     {% url 'auth_password_reset' as auth_password_reset_url %}
     {% url 'registration_register' as registration_url %}
     <div class="col-md-4 form-container">
-        <h1 class="text-right">volunteer-planner.org</h1>
+        <h1 class="text-right">{{ site.name }}</h1>
 
-        <h2 class="text-right">{% trans "Login" %}</h2>
+        <h2 class="text-right">{% translate "Login" %}</h2>
     </div>
     <div class="col-md-3 form-container border-left">
-        {% if form.errors %}
-            <p>
-                {% blocktrans trimmed %}
-                    Your username and password didn't match. Please try again.
-                {% endblocktrans %}
-            </p>
-        {% endif %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>
+                    {{ error }}
+                </strong>
+            </div>
 
+        {% endfor %}
         <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
             <div class="form-group">
-                <input class="form-control" placeholder="{% trans "Username" %}" name="username">
+                {% for error in form.username.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+                {% translate "Email address" as email_trans %}
+                {% translate "Username" as username_trans %}
+                <input class="form-control"
+                       placeholder="{% blocktranslate %}{{ email_trans }} / {{ username_trans }}{% endblocktranslate %}"
+                       name="username" autofocus>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="{% trans "Password" %}" name="password">
+                {% for error in form.password.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+                <input type="password" class="form-control"
+                       placeholder="{% translate "Password" %}" name="password">
             </div>
 
             <input type="submit" class="btn btn-primary align-left" value="login"/>
@@ -33,11 +48,11 @@
                 <div class="col-md-12">
                     <p>
                         <a href="{% url 'auth_password_reset' %}">
-                            {% trans "Forgot your password?" %}
+                            {% translate "Forgot your password?" %}
                         </a>
                         <br>
                         <a href="{% url 'registration_register' %}">
-                            {% trans "Help and sign-up" %}
+                            {% translate "Help and sign-up" %}
                         </a>
                     </p>
                 </div>

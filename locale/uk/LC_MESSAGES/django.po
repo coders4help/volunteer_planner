@@ -1,0 +1,1356 @@
+#
+# Translators:
+# Anna Dunn, 2022
+msgid ""
+msgstr ""
+"Project-Id-Version: volunteer-planner.org\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-02 18:42+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: Anna Dunn, 2022\n"
+"Language-Team: Ukrainian (http://www.transifex.com/coders4help/volunteer-planner/language/uk/)\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+msgid "first name"
+msgstr "Ім'я"
+
+msgid "last name"
+msgstr ""
+
+msgid "email"
+msgstr "Електронна пошта"
+
+msgid "date joined"
+msgstr "Дата приєднання"
+
+msgid "last login"
+msgstr "Останній вхід"
+
+msgid "Accounts"
+msgstr "Облікові записи"
+
+msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
+msgstr ""
+
+msgid "Username must start with a letter."
+msgstr ""
+
+msgid "Username must end with a letter, a number or \"_\"."
+msgstr ""
+
+msgid "Username must not contain consecutive \".\" or \"_\" characters."
+msgstr ""
+
+msgid "Accept privacy policy"
+msgstr "Прийміть політику конфіденційності"
+
+msgid "user account"
+msgstr "Обліковий запис користувача"
+
+msgid "user accounts"
+msgstr "Облікові записи користувачів"
+
+msgid "My shifts today:"
+msgstr "Мої сьогоднішні зміни:"
+
+msgid "No shifts today."
+msgstr "Сьогодні без змін."
+
+msgid "Show this work shift"
+msgstr "Показати робочу зміну"
+
+msgid "My shifts tomorrow:"
+msgstr "Мої зміни завтра:"
+
+msgid "No shifts tomorrow."
+msgstr "Завтра без змін."
+
+msgid "My shifts the day after tomorrow:"
+msgstr "Мої зміни післязавтра:"
+
+msgid "No shifts the day after tomorrow."
+msgstr "Післязавтра немає змін."
+
+msgid "Further shifts:"
+msgstr "Подальші зміни:"
+
+msgid "No further shifts."
+msgstr "Більше ніяких змін."
+
+msgid "Show my work shifts in the past"
+msgstr "Показати мої робочі зміни у минулому"
+
+msgid "My work shifts in the past:"
+msgstr "Мої робочі зміни в минулому:"
+
+msgid "No work shifts in the past days yet."
+msgstr "Протягом останніх днів робочих змін не було."
+
+msgid "Show my work shifts in the future"
+msgstr "Показати мої робочі зміни на майбутнє"
+
+msgid "Username"
+msgstr "Ім'я користувача"
+
+msgid "First name"
+msgstr "Ім'я"
+
+msgid "Last name"
+msgstr "Прізвище"
+
+msgid "Email"
+msgstr "Електронна пошта"
+
+msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
+msgstr "Якщо ви видалите свій обліковий запис, ця інформація буде анонімізована, і ви більше не зможете ввійти в Volunteer-Planner."
+
+msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
+msgstr "Відновити цю інформацію неможливо. Якщо ви хочете знову працювати волонтером, вам доведеться створити новий обліковий запис."
+
+msgid "Delete Account (no additional warning)"
+msgstr "Видалити обліковий запис (без додаткового попередження)"
+
+msgid "Save"
+msgstr "Зберегти"
+
+msgid "Edit Account"
+msgstr "Редагувати обліковий запис"
+
+msgid "Delete Account"
+msgstr "Видалити обліковий запис"
+
+msgid "Your user account has been deleted."
+msgstr "Ваш обліковий запис користувача було видалено."
+
+#, python-brace-format
+msgid "Error {error_code}"
+msgstr ""
+
+msgid "Permission denied"
+msgstr ""
+
+#, python-brace-format
+msgid "You are not allowed to do this and have been redirected to {redirect_path}."
+msgstr ""
+
+msgid "additional CSS"
+msgstr ""
+
+msgid "translation"
+msgstr "переклад"
+
+msgid "translations"
+msgstr ""
+
+msgid "No translation available"
+msgstr "Немає перекладу"
+
+msgid "additional style"
+msgstr ""
+
+msgid "additional flat page style"
+msgstr ""
+
+msgid "additional flat page styles"
+msgstr ""
+
+msgid "flat page"
+msgstr ""
+
+msgid "language"
+msgstr "мова"
+
+msgid "title"
+msgstr "титул"
+
+msgid "content"
+msgstr "зміст"
+
+msgid "flat page translation"
+msgstr ""
+
+msgid "flat page translations"
+msgstr ""
+
+msgid "View on site"
+msgstr "Подивитися на сайті"
+
+msgid "Remove"
+msgstr "Видалити"
+
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "Додати %(verbose_name)s"
+
+msgid "Edit this page"
+msgstr "Редагувати цю сторінку"
+
+msgid "subtitle"
+msgstr "Підзаголовок"
+
+msgid "articletext"
+msgstr "стаття"
+
+msgid "creation date"
+msgstr "дата створення"
+
+msgid "news entry"
+msgstr "запис новин"
+
+msgid "news entries"
+msgstr "записи новин"
+
+msgid "Page not found"
+msgstr "Сторінку не знайдено"
+
+msgid "We're sorry, but the requested page could not be found."
+msgstr "На жаль, не вдалося знайти потрібну сторінку."
+
+msgid "server error"
+msgstr "помилка сервера"
+
+msgid "Server Error <em>(500)</em>"
+msgstr "Помилка сервера 1(500)1"
+
+msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
+msgstr "Сталася помилка. Це має бути виправлено найближчим часом. Дякуємо за ваше терпіння."
+
+msgid "Login"
+msgstr "Увійти"
+
+msgid "Start helping"
+msgstr "Почни допомагати"
+
+msgid "Main page"
+msgstr "Головна сторінка"
+
+msgid "Imprint"
+msgstr "Головна інформація"
+
+msgid "About"
+msgstr "Про нас"
+
+msgid "Supporter"
+msgstr "Підтримка"
+
+msgid "Press"
+msgstr "Контакти для преси"
+
+msgid "Contact"
+msgstr "Наші контакти"
+
+msgid "FAQ"
+msgstr "Поширені запитання"
+
+msgid "I want to help!"
+msgstr "Я хочу допомогти!"
+
+msgid "Register and see where you can help"
+msgstr "Зареєструйтесь і подивіться, де ви можете допомогти"
+
+msgid "Organize volunteers!"
+msgstr "Організуйте волонтерів!"
+
+msgid "Register a shelter and organize volunteers"
+msgstr "Зареєструйте притулок і організуйте волонтерів"
+
+msgid "Places to help"
+msgstr "Місця, де можна допомогти"
+
+msgid "Registered Volunteers"
+msgstr "Зареєстровані волонтери"
+
+msgid "Worked Hours"
+msgstr "Відпрацьовані години"
+
+msgid "What is it all about?"
+msgstr "Про що йдеться?"
+
+msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
+msgstr "Ви волонтер і хочете допомогти біженцям? Volunteer-Planner.org показує вам, де, коли і як допомогти безпосередньо на місцях."
+
+msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
+msgstr "<p>Ця платформа є некомерційною та без реклами. Міжнародна команда проектних робітників, програмістів, менеджерів проектів і дизайнерів є волонтерами для цього проекту та надає свій професійний досвід, щоб змінити ситуацію.</p>"
+
+msgid "You can help at these locations:"
+msgstr "Ви можете допомогти у цих місцях:"
+
+msgid "There are currently no places in need of help."
+msgstr "Наразі немає місць, які потребують допомоги."
+
+msgid "Privacy Policy"
+msgstr "Політика конфіденційності"
+
+msgctxt "Privacy Policy Sec1"
+msgid "Scope"
+msgstr "Сфера дії"
+
+msgctxt "Privacy Policy Sec1 P1"
+msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
+msgstr ""
+
+msgctxt "Privacy Policy Sec1 P2"
+msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
+msgstr ""
+
+msgctxt "Privacy Policy Sec2"
+msgid "Access data / server log files"
+msgstr ""
+
+msgctxt "Privacy Policy Sec2 P1"
+msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
+msgstr ""
+
+msgctxt "Privacy Policy Sec2 P2"
+msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
+msgstr ""
+
+msgctxt "Privacy Policy Sec3"
+msgid "Use of personal data"
+msgstr ""
+
+msgctxt "Privacy Policy Sec3 P1"
+msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
+msgstr ""
+
+msgctxt "Privacy Policy Sec3 P2"
+msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
+msgstr ""
+
+msgctxt "Privacy Policy Sec4"
+msgid "Contact"
+msgstr ""
+
+msgctxt "Privacy Policy Sec4 P1"
+msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
+msgstr ""
+
+msgctxt "Privacy Policy Sec5"
+msgid "Cookies"
+msgstr ""
+
+msgctxt "Privacy Policy Sec5 P1"
+msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
+msgstr ""
+
+msgctxt "Privacy Policy Sec5 P2"
+msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
+msgstr ""
+
+#, python-format
+msgctxt "Privacy Policy Sec5 P3"
+msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
+msgstr ""
+
+msgctxt "Privacy Policy Sec6"
+msgid "Registration"
+msgstr ""
+
+msgctxt "Privacy Policy Sec6 P1"
+msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
+msgstr ""
+
+msgctxt "Privacy Policy Sec6 P2"
+msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
+msgstr ""
+
+msgctxt "Privacy Policy Sec7"
+msgid "E-mail notifications / Newsletter"
+msgstr ""
+
+msgctxt "Privacy Policy Sec7 P1"
+msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
+msgstr ""
+
+msgctxt "Privacy Policy Sec7 P2"
+msgid "E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s)."
+msgstr ""
+
+msgctxt "Privacy Policy Sec7 P3"
+msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
+msgstr ""
+
+msgctxt "Privacy Policy Sec8"
+msgid "Google Analytics"
+msgstr ""
+
+msgctxt "Privacy Policy Sec8 P1"
+msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
+msgstr ""
+
+msgctxt "Privacy Policy Sec8 P2"
+msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
+msgstr ""
+
+msgctxt "Privacy Policy Sec8 P3"
+msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
+msgstr ""
+
+#, python-format
+msgctxt "Privacy Policy Sec8 P4"
+msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
+msgstr ""
+
+msgid "click this link"
+msgstr ""
+
+#, python-format
+msgctxt "Privacy Policy Sec8 P5"
+msgid "As an alternative to the browser Addon or within browsers on mobile devices, the user can %(optout_javascript)s in order to opt-out from being tracked by Google Analytics within this website in the future (the opt-out applies only for the browser in which the user sets it and within this domain). An opt-out cookie will be stored on the user's device, which means that the user will have to click this link again, if he deletes his cookies."
+msgstr ""
+
+msgctxt "Privacy Policy Sec9"
+msgid "Revocation, Changes, Corrections, and Updates"
+msgstr ""
+
+msgctxt "Privacy Policy Sec9 P1"
+msgid "The user has the right to be informed upon application and free of charge, which personal data about him has been stored. Additionally, the user can ask for the correction of uncorrect data, as well as for the suspension or even deletion of his personal data as far as there is no legal obligation to retain that data."
+msgstr ""
+
+msgctxt "Privacy Policy Credit"
+msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
+msgstr ""
+
+msgid "advantages"
+msgstr "Переваги"
+
+msgid "save time"
+msgstr "заощадити час"
+
+msgid "improve selforganization of the volunteers"
+msgstr "покращити самоорганізацію волонтерів"
+
+msgid ""
+"\n"
+"                    volunteers split themselves up more effectively into shifts,\n"
+"                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
+"                "
+msgstr ""
+
+msgid ""
+"\n"
+"                    shift plans can be given to the security personnel\n"
+"                    or coordinating persons by an auto-mailer\n"
+"                    every morning\n"
+"                "
+msgstr ""
+
+msgid ""
+"\n"
+"                the more shelters and camps are organized with us, the more volunteers are joining\n"
+"                    and all facilities will benefit from a common pool of motivated volunteers\n"
+"                "
+msgstr ""
+
+msgid "for free without costs"
+msgstr ""
+
+msgid "The right help at the right time at the right place"
+msgstr ""
+
+msgid ""
+"\n"
+"        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.\n"
+"        volunteer-planner tries to solve this problem! <br>\n"
+"        </p>\n"
+"            "
+msgstr ""
+
+msgid "for free, ad free"
+msgstr ""
+
+msgid ""
+"\n"
+"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"            "
+msgstr ""
+
+msgid "contact us!"
+msgstr ""
+
+msgid ""
+"\n"
+"                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                    "
+msgstr ""
+
+msgid "edit"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "contact info"
+msgstr ""
+
+msgid "organizations"
+msgstr ""
+
+msgid "by invitation"
+msgstr ""
+
+msgid "anyone (approved by manager)"
+msgstr ""
+
+msgid "anyone"
+msgstr ""
+
+msgid "rejected"
+msgstr ""
+
+msgid "pending"
+msgstr ""
+
+msgid "approved"
+msgstr ""
+
+msgid "admin"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "member"
+msgstr ""
+
+msgid "role"
+msgstr ""
+
+msgid "status"
+msgstr ""
+
+msgid "name"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid "slug"
+msgstr ""
+
+msgid "join mode"
+msgstr ""
+
+msgid "Who can join this organization?"
+msgstr ""
+
+msgid "organization"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+msgid "enabled (collapsed)"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "place"
+msgstr ""
+
+msgid "postal code"
+msgstr ""
+
+msgid "Show on map of all facilities"
+msgstr ""
+
+msgid "latitude"
+msgstr ""
+
+msgid "longitude"
+msgstr ""
+
+msgid "timeline"
+msgstr ""
+
+msgid "Who can join this facility?"
+msgstr ""
+
+msgid "facility"
+msgstr ""
+
+msgid "facilities"
+msgstr ""
+
+msgid "organization member"
+msgstr ""
+
+msgid "organization members"
+msgstr ""
+
+#, python-brace-format
+msgid "{username} at {organization_name} ({user_role})"
+msgstr ""
+
+msgid "facility member"
+msgstr ""
+
+msgid "facility members"
+msgstr ""
+
+#, python-brace-format
+msgid "{username} at {facility_name} ({user_role})"
+msgstr ""
+
+msgid "priority"
+msgstr ""
+
+msgid "Higher value = higher priority"
+msgstr ""
+
+msgid "workplace"
+msgstr ""
+
+msgid "workplaces"
+msgstr ""
+
+msgid "task"
+msgstr ""
+
+msgid "tasks"
+msgstr ""
+
+#, python-brace-format
+msgid "User '{user}' manager status of a facility/organization was changed. "
+msgstr ""
+
+#, python-format
+msgid "Hello %(username)s,"
+msgstr ""
+
+#, python-format
+msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
+msgstr ""
+
+msgid ""
+"Yours,\n"
+"the volunteer-planner.org Team"
+msgstr ""
+
+msgid "Helpdesk"
+msgstr ""
+
+msgid "Show on map"
+msgstr ""
+
+msgid "Open Shifts"
+msgstr ""
+
+msgid "News"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "You are not allowed to do this."
+msgstr ""
+
+#, python-format
+msgid "Members in %(facility)s"
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
+
+msgid "Facilities"
+msgstr ""
+
+msgid "Show details"
+msgstr ""
+
+msgid "volunteer-planner.org: Membership approved"
+msgstr ""
+
+#, python-brace-format
+msgctxt "maps search url pattern"
+msgid "https://www.openstreetmap.org/search?query={location}"
+msgstr ""
+
+msgid "country"
+msgstr ""
+
+msgid "countries"
+msgstr ""
+
+msgid "region"
+msgstr ""
+
+msgid "regions"
+msgstr ""
+
+msgid "area"
+msgstr ""
+
+msgid "areas"
+msgstr ""
+
+msgid "places"
+msgstr ""
+
+msgid "Facilities do not match."
+msgstr ""
+
+#, python-brace-format
+msgid "\"{object.name}\" belongs to facility \"{object.facility.name}\", but shift takes place at \"{facility.name}\"."
+msgstr ""
+
+msgid "No start time given."
+msgstr ""
+
+msgid "No end time given."
+msgstr ""
+
+msgid "Start time in the past."
+msgstr ""
+
+msgid "Shift ends before it starts."
+msgstr ""
+
+msgid "number of volunteers"
+msgstr ""
+
+msgid "volunteers"
+msgstr ""
+
+msgid "scheduler"
+msgstr ""
+
+msgid "Write a message"
+msgstr ""
+
+msgid "slots"
+msgstr ""
+
+msgid "number of needed volunteers"
+msgstr ""
+
+msgid "starting time"
+msgstr ""
+
+msgid "ending time"
+msgstr ""
+
+msgid "members only"
+msgstr ""
+
+msgid "allow only members to help"
+msgstr ""
+
+msgid "shift"
+msgstr ""
+
+msgid "shifts"
+msgstr ""
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "shift helper"
+msgstr ""
+
+msgid "shift helpers"
+msgstr ""
+
+msgid "shift notification"
+msgid_plural "shift notifications"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Message"
+msgstr ""
+
+msgid "sender"
+msgstr ""
+
+msgid "send date"
+msgstr ""
+
+msgid "Shift"
+msgstr ""
+
+msgid "recipients"
+msgstr ""
+
+#, python-brace-format
+msgid "Volunteer-Planner: A Message from shift manager of {shift_title}"
+msgstr ""
+
+#, python-format
+msgid ""
+"Hello %(recipient)s,\n"
+"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"----------------------\n"
+"%(message)s\n"
+"----------------------\n"
+"Please reply to %(sender_email)s for further questions.\n"
+"\n"
+"\n"
+"Best,\n"
+"Your volunteer-planner.org team\n"
+msgstr ""
+
+msgctxt "helpdesk shifts heading"
+msgid "shifts"
+msgstr ""
+
+#, python-format
+msgid "There are no upcoming shifts available for %(geographical_name)s."
+msgstr ""
+
+msgid "You can help in the following facilities"
+msgstr ""
+
+msgid "see more"
+msgstr ""
+
+msgid "news"
+msgstr ""
+
+msgid "open shifts"
+msgstr ""
+
+#, python-format
+msgctxt "title with facility"
+msgid "Schedule for %(facility_name)s"
+msgstr ""
+
+#, python-format
+msgid "%(starting_time)s - %(ending_time)s"
+msgstr ""
+
+#, python-format
+msgctxt "title with date"
+msgid "Schedule for %(schedule_date)s"
+msgstr ""
+
+msgid "Toggle Timeline"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Helpers"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "End"
+msgstr ""
+
+msgid "Required"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Send message"
+msgstr ""
+
+msgid "You"
+msgstr ""
+
+#, python-format
+msgid "%(slots_left)s more"
+msgstr ""
+
+msgid "Covered"
+msgstr ""
+
+msgid "Send email to all volunteers"
+msgstr ""
+
+msgid "Drop out"
+msgstr ""
+
+msgid "Sign up"
+msgstr ""
+
+msgid "Membership pending"
+msgstr ""
+
+msgid "Membership rejected"
+msgstr ""
+
+msgid "Become member"
+msgstr ""
+
+msgid "send"
+msgstr ""
+
+msgid "cancel"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to cancel the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "Members only"
+msgstr ""
+
+#, python-format
+msgid ""
+"Hello %(recipient)s,\n"
+"\n"
+"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"----------------------\n"
+"%(message)s\n"
+"----------------------\n"
+"Please reply to %(sender_email)s for further questions.\n"
+"\n"
+"\n"
+"Best,\n"
+"Your volunteer-planner.org team\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to change the times of the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s from %(old_from_time)s to %(old_to_time)s o'clock\n"
+"\n"
+"The new shift times are:\n"
+"\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"If you can not help at the new times any longer, please cancel your attendance at volunteer-planner.org.\n"
+"\n"
+"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "The submitted data was invalid."
+msgstr ""
+
+msgid "User account does not exist."
+msgstr ""
+
+msgid "A membership request has been sent."
+msgstr ""
+
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
+msgstr ""
+
+msgid "We can't add you to this shift because there are no more slots left."
+msgstr ""
+
+msgid "You were successfully added to this shift."
+msgstr ""
+
+msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
+msgstr ""
+
+#, python-brace-format
+msgid "You already signed up for this shift at {date_time}."
+msgstr ""
+
+msgid "You successfully left this shift."
+msgstr ""
+
+msgid "You have no permissions to send emails!"
+msgstr ""
+
+msgid "Email has been sent."
+msgstr ""
+
+#, python-brace-format
+msgid "A shift already exists at {date}"
+msgid_plural "{num_shifts} shifts already exists at {date}"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#, python-brace-format
+msgid "{num_shifts} shift was added to {date}"
+msgid_plural "{num_shifts} shifts were added to {date}"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "Something didn't work. Sorry about that."
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "schedule templates"
+msgstr ""
+
+msgid "schedule template"
+msgstr ""
+
+msgid "days"
+msgstr ""
+
+msgid "shift templates"
+msgstr ""
+
+msgid "shift template"
+msgstr ""
+
+#, python-brace-format
+msgid "{task_name} - {workplace_name}"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Apply Template"
+msgstr ""
+
+msgid "no workplace"
+msgstr ""
+
+msgid "apply"
+msgstr ""
+
+msgid "Select a date"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Select shift templates"
+msgstr ""
+
+msgid "Please review and confirm shifts to create"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Apply and select new date"
+msgstr ""
+
+msgid "Save and apply template"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Save as new"
+msgstr ""
+
+msgid "Save and add another"
+msgstr ""
+
+msgid "Save and continue editing"
+msgstr ""
+
+msgid "Delete?"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+#, python-format
+msgid "Questions? Get in touch: %(mailto_link)s"
+msgstr ""
+
+msgid "Manage"
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Toggle navigation"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "My work shifts"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Admin"
+msgstr ""
+
+msgid "Regions"
+msgstr ""
+
+msgid "Activation complete"
+msgstr ""
+
+msgid "Activation problem"
+msgstr ""
+
+msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
+msgid "login"
+msgstr ""
+
+#, python-format
+msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
+msgstr ""
+
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgstr ""
+
+msgid "Activation successful!"
+msgstr ""
+
+msgctxt "Activation successful page"
+msgid "Thank you for signing up."
+msgstr ""
+
+msgctxt "Login link text on activation success page"
+msgid "You can login here."
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+
+msgid "Your volunteer-planner.org registration"
+msgstr ""
+
+msgid "admin approval"
+msgstr ""
+
+#, python-format
+msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
+msgstr ""
+
+msgid "Your account is now approved. You can log in using the following link"
+msgstr ""
+
+msgid "Email address"
+msgstr ""
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Forgot your password?"
+msgstr ""
+
+msgid "Help and sign-up"
+msgstr ""
+
+msgid "Password changed"
+msgstr ""
+
+msgid "Password successfully changed!"
+msgstr ""
+
+msgid "Change Password"
+msgstr ""
+
+msgid "Change password"
+msgstr ""
+
+msgid "Password reset complete"
+msgstr ""
+
+msgctxt "login link title reset password complete page"
+msgid "log in"
+msgstr ""
+
+#, python-format
+msgctxt "reset password complete page"
+msgid "Your password has been reset! You may now %(login_link)s again."
+msgstr ""
+
+msgid "Enter new password"
+msgstr ""
+
+msgid "Enter your new password below to reset your password"
+msgstr ""
+
+msgid "Password reset"
+msgstr ""
+
+msgid "We sent you an email with a link to reset your password."
+msgstr ""
+
+msgid "Please check your email and click the link to continue."
+msgstr ""
+
+#, python-format
+msgid ""
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site.  If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+"\n"
+"To reset your password, please click the following link, or copy and paste it\n"
+"into your web browser:"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+"\n"
+"Best regards,\n"
+"%(site_name)s Management\n"
+msgstr ""
+
+msgid "Reset password"
+msgstr ""
+
+msgid "No Problem! We'll send you instructions on how to reset your password."
+msgstr ""
+
+msgid "Activation email sent"
+msgstr ""
+
+msgid "An activation mail will be sent to you email address."
+msgstr ""
+
+msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgstr ""
+
+msgid "Register for an account"
+msgstr ""
+
+msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
+msgstr ""
+
+msgid "Create a new account"
+msgstr ""
+
+msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
+msgstr ""
+
+msgid "Your username will be visible to other users. Don't use spaces or special characters."
+msgstr ""
+
+msgid "Repeat password"
+msgstr ""
+
+msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
+msgstr ""
+
+msgid "This must be checked."
+msgstr ""
+
+msgid "Sign-up"
+msgstr ""
+
+msgid "Ukrainian"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Czech"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "Hungarian"
+msgstr ""
+
+msgid "Polish"
+msgstr ""
+
+msgid "Portuguese"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Swedish"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""

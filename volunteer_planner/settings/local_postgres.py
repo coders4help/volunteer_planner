@@ -1,12 +1,12 @@
 # coding: utf-8
 
-from volunteer_planner.settings.local import *
+from volunteer_planner.settings.local import *  # noqa: F401
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASE_NAME', 'volunteer_planner'),
-        'PASSWORD': os.environ.get('DATABASE_PW', 'volunteer_planner'),
-        'USER': os.environ.get('DB_USER', 'vp'),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DATABASE_NAME", "volunteer_planner"),
+        "PASSWORD": os.environ.get("DATABASE_PW", "volunteer_planner"),
+        "USER": os.environ.get("DB_USER", "vp"),
     }
 }

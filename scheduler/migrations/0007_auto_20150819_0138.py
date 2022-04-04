@@ -1,29 +1,29 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scheduler', '0006_auto_20150819_0134'),
+        ("scheduler", "0006_auto_20150819_0134"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='volunteers',
-            name='interests',
+            model_name="volunteers",
+            name="interests",
         ),
         migrations.RemoveField(
-            model_name='volunteers',
-            name='needs',
+            model_name="volunteers",
+            name="needs",
         ),
         migrations.RemoveField(
-            model_name='volunteers',
-            name='user',
+            model_name="volunteers",
+            name="user",
         ),
         migrations.DeleteModel(
-            name='Volunteers',
+            name="Volunteers",
         ),
     ]

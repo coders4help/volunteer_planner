@@ -29,7 +29,7 @@ All notable changes to this project will be documented in this file.
 - [UI] Display a warning when joining overlapping shifts #395
 - [UI] shift managers can see the e-mail address of approved and pending facility members to contact them
 - enhancements to the excel document that is sent to shift managers
-- Some javascript files from different CDN are now included in Volunteer Planner distribution. 
+- Some javascript files from different CDN are now included in Volunteer Planner distribution.
 - [development] .editorconfig (PEP8 style)
 - [development] new docstrings to source code
 - [development] support for Docker containers for the test/development environment
@@ -38,7 +38,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - [UI] better alignment of page
-- [UI] Additional information - if shifts span over midnight there is need of additional information to differentiate between shifts that start today and shifts that started yesterday. In these cases the date is shown in the field where the time is shown. 
+- [UI] Additional information - if shifts span over midnight there is need of additional information to differentiate between shifts that start today and shifts that started yesterday. In these cases the date is shown in the field where the time is shown.
 - fixed issue 360: From field of emails is now DEFAULT_FROM_EMAIL and not anymore the fake from email of the shift manager.
 - All used CSS and Javascript files are delivered by Volunteer Planner (instead of using some CDNs)
 - text of HTTP 500 error was shortened.

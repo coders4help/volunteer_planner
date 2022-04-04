@@ -1,0 +1,1423 @@
+#
+# Translators:
+# trendspotter <jirka.p@volny.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2019
+# trendspotter <jirka.p@volny.cz>, 2019,2022
+msgid ""
+msgstr ""
+"Project-Id-Version: volunteer-planner.org\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-02 18:50+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2019,2022\n"
+"Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+msgid "first name"
+msgstr "křestní jméno"
+
+msgid "last name"
+msgstr "Příjmení"
+
+msgid "email"
+msgstr "e-mail"
+
+msgid "date joined"
+msgstr "datum připojení"
+
+msgid "last login"
+msgstr "poslední přihlášení"
+
+msgid "Accounts"
+msgstr "Účty"
+
+msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
+msgstr "Neplatné uživatelské jméno. Povolené znaky jsou písmena, číslice, \".\" a \"_\"."
+
+msgid "Username must start with a letter."
+msgstr "Uživatelské jméno musí začínat písmenem."
+
+msgid "Username must end with a letter, a number or \"_\"."
+msgstr "Uživatelské jméno musí končit písmenem, číslicí nebo znakem \"_\"."
+
+msgid "Username must not contain consecutive \".\" or \"_\" characters."
+msgstr "Uživatelské jméno nesmí obsahovat po sobě jdoucí znaky \".\" nebo \"_\"."
+
+msgid "Accept privacy policy"
+msgstr "Přijmout zásady ochrany osobních údajů"
+
+msgid "user account"
+msgstr "uživatelský účet"
+
+msgid "user accounts"
+msgstr "uživatelské účty"
+
+msgid "My shifts today:"
+msgstr "Moje dnešní směny:"
+
+msgid "No shifts today."
+msgstr "Dnes žádné směny."
+
+msgid "Show this work shift"
+msgstr "Zobrazit tuto pracovní směnu"
+
+msgid "My shifts tomorrow:"
+msgstr "Moje směny zítra:"
+
+msgid "No shifts tomorrow."
+msgstr "Žádné směny zítra."
+
+msgid "My shifts the day after tomorrow:"
+msgstr "Moje směny pozítří:"
+
+msgid "No shifts the day after tomorrow."
+msgstr "Žádné směny pozítří."
+
+msgid "Further shifts:"
+msgstr "Další směny:"
+
+msgid "No further shifts."
+msgstr "Žádné další směny."
+
+msgid "Show my work shifts in the past"
+msgstr "Ukažte své pracovní směny v minulosti"
+
+msgid "My work shifts in the past:"
+msgstr "Moje předchozí pracovní směny:"
+
+msgid "No work shifts in the past days yet."
+msgstr "Poslední dny nebyly žádné pracovní směny."
+
+msgid "Show my work shifts in the future"
+msgstr "Zobrazit moje budoucí pracovní směny"
+
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+msgid "First name"
+msgstr "Křestní jméno"
+
+msgid "Last name"
+msgstr "Příjmení"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
+msgstr "Pokud účet zrušíte, budou tyto informace anonymizovány a nebudete se již moci přihlásit do programu Volunteer-Planner."
+
+msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
+msgstr "Není možné tyto informace obnovit. Pokud chcete znovu pracovat jako dobrovolník, budete muset vytvořit nový účet."
+
+msgid "Delete Account (no additional warning)"
+msgstr "Odstranit účet (bez dalšího upozornění)"
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Edit Account"
+msgstr "Upravit účet"
+
+msgid "Delete Account"
+msgstr "Smazat účet"
+
+msgid "Your user account has been deleted."
+msgstr "Váš uživatelský účet byl smazán."
+
+#, python-brace-format
+msgid "Error {error_code}"
+msgstr ""
+
+msgid "Permission denied"
+msgstr ""
+
+#, python-brace-format
+msgid "You are not allowed to do this and have been redirected to {redirect_path}."
+msgstr ""
+
+msgid "additional CSS"
+msgstr "další CSS"
+
+msgid "translation"
+msgstr "překlad"
+
+msgid "translations"
+msgstr "překlady"
+
+msgid "No translation available"
+msgstr "Nejsou k dispozici překlady"
+
+msgid "additional style"
+msgstr "další styl"
+
+msgid "additional flat page style"
+msgstr "další styl ploché stránky"
+
+msgid "additional flat page styles"
+msgstr "další ploché styly stránek"
+
+msgid "flat page"
+msgstr "plochá strana"
+
+msgid "language"
+msgstr "jazyk"
+
+msgid "title"
+msgstr "nadpis"
+
+msgid "content"
+msgstr "obsah"
+
+msgid "flat page translation"
+msgstr "překlad ploché stránky"
+
+msgid "flat page translations"
+msgstr "překlady plochých stránek"
+
+msgid "View on site"
+msgstr "Zobrazit na webu"
+
+msgid "Remove"
+msgstr "Odstranit"
+
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "Přidat další %(verbose_name)s"
+
+msgid "Edit this page"
+msgstr "Upravit tuto stranu"
+
+msgid "subtitle"
+msgstr "podtitulek"
+
+msgid "articletext"
+msgstr "text článku"
+
+msgid "creation date"
+msgstr "datum vytvoření"
+
+msgid "news entry"
+msgstr "zapsání novinky"
+
+msgid "news entries"
+msgstr "zapsané novinky"
+
+msgid "Page not found"
+msgstr "Stránka nenalezena"
+
+msgid "We're sorry, but the requested page could not be found."
+msgstr "Omlouváme se, ale požadovaná stránka nebyla nalezena."
+
+msgid "server error"
+msgstr "Chyba serveru"
+
+msgid "Server Error <em>(500)</em>"
+msgstr "Chyba serveru <em>(500)</em>"
+
+msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
+msgstr "Došlo k chybě. Byla hlášena správcům webu e-mailem a měla by být opravena brzy. Děkujeme za trpělivost."
+
+msgid "Login"
+msgstr "Přihlášení"
+
+msgid "Start helping"
+msgstr "Začněte pomáhat"
+
+msgid "Main page"
+msgstr "Hlavní strana"
+
+msgid "Imprint"
+msgstr "Impresum"
+
+msgid "About"
+msgstr "O nás"
+
+msgid "Supporter"
+msgstr "Podporovatel"
+
+msgid "Press"
+msgstr "Media"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "I want to help!"
+msgstr "Chci pomoci!"
+
+msgid "Register and see where you can help"
+msgstr "Zaregistrujte se a zjistěte, kde můžete pomoci"
+
+msgid "Organize volunteers!"
+msgstr "Organizujte dobrovolníky!"
+
+msgid "Register a shelter and organize volunteers"
+msgstr "Zaregistrujte přístřeší a organizujte dobrovolníky"
+
+msgid "Places to help"
+msgstr "Místa k pomoci"
+
+msgid "Registered Volunteers"
+msgstr "Registrovaní dobrovolníci"
+
+msgid "Worked Hours"
+msgstr "Pracovní hodiny"
+
+msgid "What is it all about?"
+msgstr "O čem to celé je?"
+
+msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
+msgstr "Jste dobrovolník a chcete pomáhat? Dobrovolník - Planner.org vám ukáže, kde, kdy a jak přímo pomáhat v terénu."
+
+msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
+msgstr "Tato platforma je nekomerční a bez reklam. Mezinárodní tým terénních pracovníků, programátoři, projektoví manažeři a projektanti jsou pro tento projekt dobrovolně a přinášejí svou odbornou zkušenost, aby přinesli změnu."
+
+msgid "You can help at these locations:"
+msgstr "Na těchto místech můžete pomoci:"
+
+msgid "There are currently no places in need of help."
+msgstr "V současné době neexistují místa, která by potřebovala pomoc."
+
+msgid "Privacy Policy"
+msgstr "Zásady ochrany osobních údajů"
+
+msgctxt "Privacy Policy Sec1"
+msgid "Scope"
+msgstr "Rozsah"
+
+msgctxt "Privacy Policy Sec1 P1"
+msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
+msgstr "Tyto zásady ochrany osobních údajů informují uživatele o shromažďování a používání osobních údajů na tomto webu (dále jen \"služba\") poskytovatelem služeb, Benefit e.V. (Wollankstr. 2, 13187 Berlín)."
+
+msgctxt "Privacy Policy Sec1 P2"
+msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
+msgstr "Právním základem pro politiku ochrany osobních údajů je německý zákon o ochraně osobních údajů (Bundesdatenschutzgesetz, BDSG) a německý zákon Telemedia (Telemediengesetz, TMG)."
+
+msgctxt "Privacy Policy Sec2"
+msgid "Access data / server log files"
+msgstr "Přístup k souborům protokolů dat / serveru"
+
+msgctxt "Privacy Policy Sec2 P1"
+msgid "The service provider (or the provider of his webspace) collects data on every access to the service and stores this access data in so-called server log files. Access data includes the name of the website that is being visited, which files are being accessed, the date and time of access, transfered data, notification of successful access, the type and version number of the user's web browser, the user's operating system, the referrer URL (i.e., the website the user visited previously), the user's IP address, and the name of the user's Internet provider."
+msgstr "Poskytovatel služby (nebo poskytovatel jeho webového prostoru) shromažďuje data o každém přístupu k této službě a ukládá tato přístupová data do takzvaných souborů protokolu serveru. Přístupová data zahrnují název navštíveného webu, které soubory jsou přístupné, datum a čas přístupu, přenesená data, oznámení o úspěšném přístupu, číslo typu a verze webového prohlížeče uživatele, operační systém uživatele, adresu URL odkazujícího uživatele (tj. web, který uživatel navštívil dříve), adresu IP uživatele a jméno poskytovatele internetového připojení uživatele."
+
+msgctxt "Privacy Policy Sec2 P2"
+msgid "The service provider uses the server log files for statistical purposes and for the operation, the security, and the enhancement of the provided service only. However, the service provider reserves the right to reassess the log files at any time if specific indications for an illegal use of the service exist."
+msgstr "Poskytovatel služeb používá protokolové soubory serveru pro statistické účely a pouze pro provoz, zabezpečení a vylepšení poskytované služby. Poskytovatel služby si nicméně vyhrazuje právo kdykoli přehodnotit soubory protokolu, pokud existují určité náznaky nezákonného používání služby."
+
+msgctxt "Privacy Policy Sec3"
+msgid "Use of personal data"
+msgstr "Použití osobních údajů"
+
+msgctxt "Privacy Policy Sec3 P1"
+msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
+msgstr "Osobní údaje jsou informace, které lze použít k identifikaci osoby, tj. Veškeré údaje, které lze vysledovat zpět na určitou osobu. Osobní údaje zahrnují jméno, e-mailovou adresu nebo telefonní číslo uživatele. Dokonce i údaje o osobních preferencích, koníčcích, členství nebo navštívených webových stránkách se považují za osobní údaje."
+
+msgctxt "Privacy Policy Sec3 P2"
+msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
+msgstr "Poskytovatel služeb shromažďuje, používá a sdílí osobní údaje s třetími stranami pouze tehdy, je-li ze zákona oprávněn tak učinit, nebo pokud uživatel dal jeho svolení."
+
+msgctxt "Privacy Policy Sec4"
+msgid "Contact"
+msgstr "Kontakt"
+
+msgctxt "Privacy Policy Sec4 P1"
+msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
+msgstr "Při kontaktování poskytovatele služeb (například prostřednictvím e-mailu nebo prostřednictvím formuláře pro kontakt na web) jsou data poskytnutá uživatelem uložena pro zpracování žádosti a pro případné následné dotazy v budoucnu."
+
+msgctxt "Privacy Policy Sec5"
+msgid "Cookies"
+msgstr "Cookies"
+
+msgctxt "Privacy Policy Sec5 P1"
+msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
+msgstr "Cookies jsou malé soubory, které jsou ukládány na zařízení uživatele (osobní počítač, smartphone nebo podobně) s informacemi specifickými pro toto zařízení. Mohou být použity k různým účelům: Cookies mohou být použity ke zlepšení uživatelské zkušenosti (např. Ukládáním, a tudíž i \"zapamatováním\" přihlašovacích pověření). Soubory cookie mohou být také použity ke shromažďování statistických údajů, které umožňují poskytovateli služeb analyzovat využití uživatele webové stránky s cílem zlepšit službu."
+
+msgctxt "Privacy Policy Sec5 P2"
+msgid "The user can customize the use of cookies. Most web browsers offer settings to restrict or even completely prevent the storing of cookies. However, the service provider notes that such restrictions may have a negative impact on the user experience and the functionality of the website."
+msgstr "Uživatel může přizpůsobit používání souborů cookie. Většina webových prohlížečů nabízí nastavení, která omezují nebo dokonce zcela zabraňují ukládání souborů cookie. Poskytovatel služeb však bere na vědomí, že tato omezení mohou negativně ovlivnit uživatelskou zkušenost a funkčnost webových stránek."
+
+#, python-format
+msgctxt "Privacy Policy Sec5 P3"
+msgid "The user can manage the use of cookies from many online advertisers by visiting either the US-american website %(us_url)s or the European website %(eu_url)s."
+msgstr "Uživatel může spravovat používání souborů cookie od mnoha inzerentů na internetu buď na americkém webu %(us_url)s nebo na evropském webu %(eu_url)s."
+
+msgctxt "Privacy Policy Sec6"
+msgid "Registration"
+msgstr "Registrace"
+
+msgctxt "Privacy Policy Sec6 P1"
+msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
+msgstr "Data poskytovaná uživatelem při registraci umožňují využití služby. Poskytovatel služeb může uživateli prostřednictvím e-mailu informovat o informacích týkajících se služby nebo o registraci, například informace o změnách, které služba prochází, nebo technické informace (viz také další část)."
+
+msgctxt "Privacy Policy Sec6 P2"
+msgid "The registration and user profile forms show which data is being collected and stored. They include - but are not limited to - the user's first name, last name, and e-mail address."
+msgstr "Formuláře registrace a uživatelského profilu ukazují, která data se shromažďují a ukládají. Zahrnují - nikoli však pouze - jméno, příjmení a e-mailovou adresu uživatele."
+
+msgctxt "Privacy Policy Sec7"
+msgid "E-mail notifications / Newsletter"
+msgstr "E-mailové upozornění / Newsletter"
+
+msgctxt "Privacy Policy Sec7 P1"
+msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
+msgstr "Při registraci účtu u služby poskytuje uživatel povolení k přijímání e-mailových upozornění, stejně jako e-mailů se zpravodajem."
+
+msgctxt "Privacy Policy Sec7 P2"
+msgid "E-mail notifications inform the user of certain events that relate to the user's use of the service. With the newsletter, the service provider sends the user general information about the provider and his offered service(s)."
+msgstr "E-mailové upozornění informují uživatele o určitých událostech týkajících se užívání služby uživatelem. Pomocí zpravodaje poskytovatel služeb zašle uživateli obecné informace o poskytovateli a jeho nabízené službě(ách)."
+
+msgctxt "Privacy Policy Sec7 P3"
+msgid "If the user wishes to revoke his permission to receive e-mails, he needs to delete his user account."
+msgstr "Pokud si uživatel přeje zrušit své oprávnění k přijímání e-mailů, musí svůj uživatelský účet smazat."
+
+msgctxt "Privacy Policy Sec8"
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+msgctxt "Privacy Policy Sec8 P1"
+msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
+msgstr "Tento web používá službu Google Analytics, webovou službu pro analýzu poskytovanou společností Google, Inc. (\"Google\"). Google Analytics používá \"cookies\", které jsou textové soubory umístěné na zařízení uživatele, aby pomohly webové stránce analyzovat, jak uživatelé stránky používají. Informace vygenerované cookie o užívání webových stránek uživatelem budou předány a uloženy společností Google na serverech ve Spojených státech."
+
+msgctxt "Privacy Policy Sec8 P2"
+msgid "In case IP-anonymisation is activated on this website, the user's IP address will be truncated within the area of Member States of the European Union or other parties to the Agreement on the European Economic Area. Only in exceptional cases the whole IP address will be first transfered to a Google server in the USA and truncated there. The IP-anonymisation is active on this website."
+msgstr "V případě, že je na této webové stránce aktivována IP anonymita, bude IP adresa uživatele zkrácena v oblasti členských států Evropské unie nebo jiných stran Dohody o Evropském hospodářském prostoru. Pouze ve výjimečných případech bude celá IP adresa nejprve převedena na server Google v USA a zkrácena. Na této webové stránce je aktivní anonymita IP."
+
+msgctxt "Privacy Policy Sec8 P3"
+msgid "Google will use this information on behalf of the operator of this website for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing them other services relating to website activity and internet usage."
+msgstr "Společnost Google tyto informace použije jménem provozovatele této webové stránky za účelem vyhodnocení vašeho používání webových stránek, sestavování zpráv o činnosti webových stránek pro provozovatele webových stránek a poskytováním dalších služeb souvisejících s činností webových stránek a využíváním internetu."
+
+#, python-format
+msgctxt "Privacy Policy Sec8 P4"
+msgid "The IP-address, that the user's browser conveys within the scope of Google Analytics, will not be associated with any other data held by Google. The user may refuse the use of cookies by selecting the appropriate settings on his browser, however it is to be noted that if the user does this he may not be able to use the full functionality of this website. He can also opt-out from being tracked by Google Analytics with effect for the future by downloading and installing Google Analytics Opt-out Browser Addon for his current web browser: %(optout_plugin_url)s."
+msgstr "Adresa IP, kterou prohlížeč uživatele sděluje v rámci služby Google Analytics, nebude spojena s jinými údaji, které společnost Google drží. Uživatel může odmítnout použití souborů cookie výběrem příslušných nastavení v prohlížeči, nicméně je třeba poznamenat, že pokud to uživatel provede, nemusí být schopen používat plnou funkcionalitu tohoto webu. Může se také odhlásit ze sledování služby Google Analytics s účinkem do budoucna tím, že stáhne a nainstaluje doplněk prohlížeče pro odmítnutí služby Google Analytics pro svůj aktuální webový prohlížeč: %(optout_plugin_url)s."
+
+msgid "click this link"
+msgstr "klikněte na tento odkaz"
+
+#, python-format
+msgctxt "Privacy Policy Sec8 P5"
+msgid "As an alternative to the browser Addon or within browsers on mobile devices, the user can %(optout_javascript)s in order to opt-out from being tracked by Google Analytics within this website in the future (the opt-out applies only for the browser in which the user sets it and within this domain). An opt-out cookie will be stored on the user's device, which means that the user will have to click this link again, if he deletes his cookies."
+msgstr "Jako alternativu k doplňkům prohlížeče nebo v prohlížečích v mobilních zařízeních může uživatel %(optout_javascript)s pro odhlášení ze služby Google Analytics v rámci tohoto webu v budoucnu sledovat (výjimka platí pouze pro prohlížeč v němž uživatel nastavuje a v rámci této domény). Soubor cookie pro odhlášení se uloží na zařízení uživatele, což znamená, že uživatel bude muset kliknout na tento odkaz znovu, pokud odstraní soubory cookie."
+
+msgctxt "Privacy Policy Sec9"
+msgid "Revocation, Changes, Corrections, and Updates"
+msgstr "Zrušení, změny, opravy a aktualizace"
+
+msgctxt "Privacy Policy Sec9 P1"
+msgid "The user has the right to be informed upon application and free of charge, which personal data about him has been stored. Additionally, the user can ask for the correction of uncorrect data, as well as for the suspension or even deletion of his personal data as far as there is no legal obligation to retain that data."
+msgstr "Uživatel má právo být na požádání a bezplatně informován, jaké osobní údaje o něm byly uloženy. Kromě toho může uživatel požádat o opravu nesprávných údajů, jakož i o pozastavení nebo dokonce smazání jeho osobních údajů, pokud neexistuje žádná právní povinnost tyto údaje uchovávat."
+
+msgctxt "Privacy Policy Credit"
+msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW it"
+msgstr "Na základě vzoru ochrany soukromí advokáta Thomase Schwenkeho - I LAW it"
+
+msgid "advantages"
+msgstr "výhody"
+
+msgid "save time"
+msgstr "šetřit čas"
+
+msgid "improve selforganization of the volunteers"
+msgstr "zlepšit vlastní organizaci dobrovolníků"
+
+msgid ""
+"\n"
+"                    volunteers split themselves up more effectively into shifts,\n"
+"                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
+"                "
+msgstr ""
+"\n"
+" dobrovolníci se rozdělují efektivněji na směny, \n"
+"dočasné zkratky lze očekávat samotnými pomocníky"
+
+msgid ""
+"\n"
+"                    shift plans can be given to the security personnel\n"
+"                    or coordinating persons by an auto-mailer\n"
+"                    every morning\n"
+"                "
+msgstr ""
+"\n"
+" plány směn mohou být poskytovány bezpečnostnímu personálu nebo koordinátorům automatickým mailerem každé ráno"
+
+msgid ""
+"\n"
+"                the more shelters and camps are organized with us, the more volunteers are joining\n"
+"                    and all facilities will benefit from a common pool of motivated volunteers\n"
+"                "
+msgstr ""
+"\n"
+" čím více úkrytů a táborů jsou s námi organizovány, tím více dobrovolníků se připojí a všechny zařízení budou mít prospěch ze společného fondu motivovaných dobrovolníků"
+
+msgid "for free without costs"
+msgstr "zdarma bez nákladů"
+
+msgid "The right help at the right time at the right place"
+msgstr "Správná pomoc v pravý čas na správném místě"
+
+msgid ""
+"\n"
+"        <p>Many people want to help! But often it's not so easy to figure out where, when and how one can help.\n"
+"        volunteer-planner tries to solve this problem! <br>\n"
+"        </p>\n"
+"            "
+msgstr ""
+"\n"
+" <p>Mnoho lidí chce pomoci! Ale často není tak snadné zjistit, kde a kdy a jak se dá pomoci. \n"
+"volunteer-planner se snaží tento problém vyřešit!<br>\n"
+"</p> "
+
+msgid "for free, ad free"
+msgstr "zdarma, bez reklam"
+
+msgid ""
+"\n"
+"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"            "
+msgstr ""
+"\n"
+"<p>Platforma byla sestavena skupinou dobrovolnických odborníků v oblasti vývoje softwaru, projektového řízení, designu a marketingu. Kód je otevřený pro nekomerční použití. Soukromé údaje (e-mail, data profilu apod.) nebudou poskytovány žádné třetí straně</p>"
+
+msgid "contact us!"
+msgstr "kontaktujte nás!"
+
+msgid ""
+"\n"
+"                    ...maybe with an attached draft of the shifts you want to see on volunteer-planner. Please write to <a\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                    "
+msgstr ""
+"\n"
+" ...třeba s přiloženým návrhem směn, které chcete vidět v plánovači dobrovolníků. Napište prosím na <a\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
+"                  "
+
+msgid "edit"
+msgstr "upravit"
+
+msgid "description"
+msgstr "popis"
+
+msgid "contact info"
+msgstr "kontakty"
+
+msgid "organizations"
+msgstr "organizace"
+
+msgid "by invitation"
+msgstr "na pozvání"
+
+msgid "anyone (approved by manager)"
+msgstr "kdokoliv (schválen správcem)"
+
+msgid "anyone"
+msgstr "kdokoliv"
+
+msgid "rejected"
+msgstr "odmítnut"
+
+msgid "pending"
+msgstr "čeká"
+
+msgid "approved"
+msgstr "schválen"
+
+msgid "admin"
+msgstr "administrátor"
+
+msgid "manager"
+msgstr "manažer"
+
+msgid "member"
+msgstr "člen"
+
+msgid "role"
+msgstr "role"
+
+msgid "status"
+msgstr "stav"
+
+msgid "name"
+msgstr "jméno"
+
+msgid "address"
+msgstr "adresa"
+
+msgid "slug"
+msgstr "slug"
+
+msgid "join mode"
+msgstr "join mód"
+
+msgid "Who can join this organization?"
+msgstr "Kdo se může připojit k této organizaci?"
+
+msgid "organization"
+msgstr "organizace"
+
+msgid "disabled"
+msgstr "vypnuto"
+
+msgid "enabled (collapsed)"
+msgstr "zapnuto (sbaleno)"
+
+msgid "enabled"
+msgstr "zapnuto"
+
+msgid "place"
+msgstr "místo"
+
+msgid "postal code"
+msgstr "PSČ"
+
+msgid "Show on map of all facilities"
+msgstr "Zobrazit mapu všech zařízení"
+
+msgid "latitude"
+msgstr "zeměpisná šířka"
+
+msgid "longitude"
+msgstr "zeměpisná délka"
+
+msgid "timeline"
+msgstr "časová osa"
+
+msgid "Who can join this facility?"
+msgstr "Kdo se může připojit k tomuto zařízení?"
+
+msgid "facility"
+msgstr "zařízení"
+
+msgid "facilities"
+msgstr "zařízení"
+
+msgid "organization member"
+msgstr "člen organizace"
+
+msgid "organization members"
+msgstr "členové organizace"
+
+#, python-brace-format
+msgid "{username} at {organization_name} ({user_role})"
+msgstr "{username} v {organization_name} ({user_role})"
+
+msgid "facility member"
+msgstr "člen zařízení"
+
+msgid "facility members"
+msgstr "členové zařízení"
+
+#, python-brace-format
+msgid "{username} at {facility_name} ({user_role})"
+msgstr "{username} v {facility_name} ({user_role})"
+
+msgid "priority"
+msgstr "priorita"
+
+msgid "Higher value = higher priority"
+msgstr "Vyšší hodnota = vyšší priorita"
+
+msgid "workplace"
+msgstr "pracoviště"
+
+msgid "workplaces"
+msgstr "pracoviště"
+
+msgid "task"
+msgstr "úloha"
+
+msgid "tasks"
+msgstr "úlohy"
+
+#, python-brace-format
+msgid "User '{user}' manager status of a facility/organization was changed. "
+msgstr "Byl změněn status správce zařízení/organizace uživatele '{user}'. "
+
+#, python-format
+msgid "Hello %(username)s,"
+msgstr "Ahoj %(username)s,"
+
+#, python-format
+msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
+msgstr "Vaše žádost o členství v %(facility_name)s byla schválena. Nyní se můžete v tomto zařízení registrovat na omezené směny."
+
+msgid ""
+"Yours,\n"
+"the volunteer-planner.org Team"
+msgstr ""
+"Váš tým,\n"
+"volunteer-planner.org"
+
+msgid "Helpdesk"
+msgstr "Centrum nápovědy"
+
+msgid "Show on map"
+msgstr "Ukázat na mapě"
+
+msgid "Open Shifts"
+msgstr "Otevřené směny"
+
+msgid "News"
+msgstr "Novinky"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "You are not allowed to do this."
+msgstr "Nemáte povoleno to udělat."
+
+#, python-format
+msgid "Members in %(facility)s"
+msgstr "Členové v %(facility)s"
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Actions"
+msgstr "Akce"
+
+msgid "Block"
+msgstr "Blokovat"
+
+msgid "Accept"
+msgstr "Přijmout"
+
+msgid "Facilities"
+msgstr "Zařízení"
+
+msgid "Show details"
+msgstr "Zobrazit detaily"
+
+msgid "volunteer-planner.org: Membership approved"
+msgstr "volunteer-planner.org: Členství schváleno"
+
+#, python-brace-format
+msgctxt "maps search url pattern"
+msgid "https://www.openstreetmap.org/search?query={location}"
+msgstr "https://www.openstreetmap.org/search?query={location}"
+
+msgid "country"
+msgstr "země"
+
+msgid "countries"
+msgstr "státy"
+
+msgid "region"
+msgstr "region"
+
+msgid "regions"
+msgstr "regiony"
+
+msgid "area"
+msgstr "oblast"
+
+msgid "areas"
+msgstr "oblasti"
+
+msgid "places"
+msgstr "místa"
+
+msgid "Facilities do not match."
+msgstr "Zařízení neodpovídají."
+
+#, python-brace-format
+msgid "\"{object.name}\" belongs to facility \"{object.facility.name}\", but shift takes place at \"{facility.name}\"."
+msgstr "\"{object.name}\" patří do zařízení \"{object.facility.name}\", ale směna probíhá v zařízení \"{facility.name}\"."
+
+msgid "No start time given."
+msgstr "Čas zahájení není uveden."
+
+msgid "No end time given."
+msgstr "Čas ukončení není uveden."
+
+msgid "Start time in the past."
+msgstr "Čas zahájení v minulosti."
+
+msgid "Shift ends before it starts."
+msgstr "Směna končí dřív, než začne."
+
+msgid "number of volunteers"
+msgstr "počet dobrovolníků"
+
+msgid "volunteers"
+msgstr "dobrovolníci"
+
+msgid "scheduler"
+msgstr "Plánovač"
+
+msgid "Write a message"
+msgstr ""
+
+msgid "slots"
+msgstr "sloty"
+
+msgid "number of needed volunteers"
+msgstr "počet potřebných dobrovolníků"
+
+msgid "starting time"
+msgstr "počáteční čas"
+
+msgid "ending time"
+msgstr "konečný čas"
+
+msgid "members only"
+msgstr "pouze členové"
+
+msgid "allow only members to help"
+msgstr "povolit pouze členům, aby vám pomohli"
+
+msgid "shift"
+msgstr "směna"
+
+msgid "shifts"
+msgstr "směny"
+
+#, python-brace-format
+msgid "the next day"
+msgid_plural "after {number_of_days} days"
+msgstr[0] "další den"
+msgstr[1] "další dny"
+msgstr[2] "další dny"
+msgstr[3] "po {number_of_days} dnech"
+
+msgid "shift helper"
+msgstr "pomocník směn"
+
+msgid "shift helpers"
+msgstr "pomocníci směn"
+
+msgid "shift notification"
+msgid_plural "shift notifications"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Message"
+msgstr ""
+
+msgid "sender"
+msgstr ""
+
+msgid "send date"
+msgstr ""
+
+msgid "Shift"
+msgstr "směna"
+
+msgid "recipients"
+msgstr ""
+
+#, python-brace-format
+msgid "Volunteer-Planner: A Message from shift manager of {shift_title}"
+msgstr ""
+
+#, python-format
+msgid ""
+"Hello %(recipient)s,\n"
+"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"----------------------\n"
+"%(message)s\n"
+"----------------------\n"
+"Please reply to %(sender_email)s for further questions.\n"
+"\n"
+"\n"
+"Best,\n"
+"Your volunteer-planner.org team\n"
+msgstr ""
+
+msgctxt "helpdesk shifts heading"
+msgid "shifts"
+msgstr "směny"
+
+#, python-format
+msgid "There are no upcoming shifts available for %(geographical_name)s."
+msgstr "Nejsou k dispozici žádné nadcházející směny pro %(geographical_name)s."
+
+msgid "You can help in the following facilities"
+msgstr "Můžete pomoci v následujících zařízeních"
+
+msgid "see more"
+msgstr "zobrazit víc"
+
+msgid "news"
+msgstr "novinky"
+
+msgid "open shifts"
+msgstr "otevřené směny"
+
+#, python-format
+msgctxt "title with facility"
+msgid "Schedule for %(facility_name)s"
+msgstr "Plán pro %(facility_name)s"
+
+#, python-format
+msgid "%(starting_time)s - %(ending_time)s"
+msgstr "%(starting_time)s - %(ending_time)s"
+
+#, python-format
+msgctxt "title with date"
+msgid "Schedule for %(schedule_date)s"
+msgstr "Plán pro %(schedule_date)s"
+
+msgid "Toggle Timeline"
+msgstr "Přepnout časovou osu"
+
+msgid "Link"
+msgstr "Odkaz"
+
+msgid "Time"
+msgstr "Čas"
+
+msgid "Helpers"
+msgstr "Pomocníci"
+
+msgid "Start"
+msgstr "Začátek"
+
+msgid "End"
+msgstr "Konec"
+
+msgid "Required"
+msgstr "Vyžadováno"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Users"
+msgstr "Uživatelé"
+
+msgid "Send message"
+msgstr ""
+
+msgid "You"
+msgstr "Vy"
+
+#, python-format
+msgid "%(slots_left)s more"
+msgstr "%(slots_left)s víc"
+
+msgid "Covered"
+msgstr "Pokryto"
+
+msgid "Send email to all volunteers"
+msgstr ""
+
+msgid "Drop out"
+msgstr "Opuštěno"
+
+msgid "Sign up"
+msgstr "Přihlásit se"
+
+msgid "Membership pending"
+msgstr "Členství čeká na schválení"
+
+msgid "Membership rejected"
+msgstr "Členství bylo zamítnuto"
+
+msgid "Become member"
+msgstr "Staňte se členem"
+
+msgid "send"
+msgstr ""
+
+msgid "cancel"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to cancel the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+"\n"
+"Ahoj, \n"
+"Je nám líto, ale na žádost organizátoru jsme museli zrušit následující směny : \n"
+"%(shift_title)s, %(location)s\n"
+"%(from_date)s od %(from_time)s do %(to_time)s hodin\n"
+" Toto je automaticky generovaný e-mail. Máte-li jakékoli dotazy, kontaktujte prosím přímo zařízení. Váš tým.\n"
+
+msgid "Members only"
+msgstr "Pouze členové"
+
+#, python-format
+msgid ""
+"Hello %(recipient)s,\n"
+"\n"
+"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"----------------------\n"
+"%(message)s\n"
+"----------------------\n"
+"Please reply to %(sender_email)s for further questions.\n"
+"\n"
+"\n"
+"Best,\n"
+"Your volunteer-planner.org team\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"we're sorry, but we had to change the times of the following shift at request of the organizer:\n"
+"\n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s from %(old_from_time)s to %(old_to_time)s o'clock\n"
+"\n"
+"The new shift times are:\n"
+"\n"
+"%(from_date)s from %(from_time)s to %(to_time)s o'clock\n"
+"\n"
+"If you can not help at the new times any longer, please cancel your attendance at volunteer-planner.org.\n"
+"\n"
+"This is an automatically generated e-mail. If you have any questions, please contact the facility directly.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+"\n"
+"Ahoj, \n"
+"Je nám líto, ale na žádost organizátora jsme museli změnit čas následující směny: \n"
+"%(shift_title)s, %(location)s\n"
+"%(old_from_date)s od %(old_from_time)s do %(old_to_time)s hodin\n"
+"\n"
+"Nový čas směny je: \n"
+"%(from_date)s od %(from_time)s do %(to_time)s hodin.\n"
+"\n"
+"Pokud nemůžete pomoci v novém termínu, zrušte prosím svou účast na webu. \n"
+"\n"
+"Toto je automaticky generovaný e-mail. Máte-li jakékoli dotazy, kontaktujte prosím přímo zařízení. \n"
+"\n"
+"Váš, involunteer-planner.org tým \n"
+
+msgid "The submitted data was invalid."
+msgstr "Odeslaná data byla neplatná."
+
+msgid "User account does not exist."
+msgstr "Uživatelský účet neexistuje."
+
+msgid "A membership request has been sent."
+msgstr "Byla odeslána žádost o členství."
+
+msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
+msgstr "Nemůžeme vás přidat k této směně, protože jste již souhlasili s dalšími směnami ve stejnou dobu:"
+
+msgid "We can't add you to this shift because there are no more slots left."
+msgstr "Nemůžeme vás přidat k této směně, protože už nezbývají další volné sloty."
+
+msgid "You were successfully added to this shift."
+msgstr "Byli jste úspěšně přidáni k této směně."
+
+msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
+msgstr "Směna, do které jste nastoupili, se překrývá s jinými směnami, do kterých jste již nastoupili. Zkontrolujte, zda nedochází ke konfliktům:"
+
+#, python-brace-format
+msgid "You already signed up for this shift at {date_time}."
+msgstr "Již jste se zaregistrovali na tuto směnu v {date_time}."
+
+msgid "You successfully left this shift."
+msgstr "Úspěšně jste opustili tuto směnu."
+
+msgid "You have no permissions to send emails!"
+msgstr ""
+
+msgid "Email has been sent."
+msgstr ""
+
+#, python-brace-format
+msgid "A shift already exists at {date}"
+msgid_plural "{num_shifts} shifts already exists at {date}"
+msgstr[0] "Směna již existuje na {date}"
+msgstr[1] "Směny již existují na {date}"
+msgstr[2] "Směny již existují na {date}"
+msgstr[3] "{num_shifts} směny již existují v {date}"
+
+#, python-brace-format
+msgid "{num_shifts} shift was added to {date}"
+msgid_plural "{num_shifts} shifts were added to {date}"
+msgstr[0] "{num_shifts} směna byla přidána do {date}"
+msgstr[1] "{num_shifts} směny byly přidány do {date}"
+msgstr[2] "{num_shifts} směn bylo přidáno do {date}"
+msgstr[3] "{num_shifts} směn bylo přidáno do {date}"
+
+msgid "Something didn't work. Sorry about that."
+msgstr "Něco nefunguje. Omlouvám se za to."
+
+msgid "from"
+msgstr "ok"
+
+msgid "to"
+msgstr "komu"
+
+msgid "schedule templates"
+msgstr "šablony plánů"
+
+msgid "schedule template"
+msgstr "šablona plánu"
+
+msgid "days"
+msgstr "dní"
+
+msgid "shift templates"
+msgstr "šablony směn"
+
+msgid "shift template"
+msgstr "šablona směny"
+
+#, python-brace-format
+msgid "{task_name} - {workplace_name}"
+msgstr "{task_name} - {workplace_name}"
+
+msgid "Home"
+msgstr "Hlavní strana"
+
+msgid "Apply Template"
+msgstr "Použít šablonu"
+
+msgid "no workplace"
+msgstr "žádné pracoviště"
+
+msgid "apply"
+msgstr "použít"
+
+msgid "Select a date"
+msgstr "Zvolit datum"
+
+msgid "Continue"
+msgstr "Pokračovat"
+
+msgid "Select shift templates"
+msgstr "Vybrat šablony směn"
+
+msgid "Please review and confirm shifts to create"
+msgstr "Zkontrolujte a potvrďte směny, které chcete vytvořit"
+
+msgid "Apply"
+msgstr "Použít"
+
+msgid "Apply and select new date"
+msgstr "Použít a vybrat nové datum"
+
+msgid "Save and apply template"
+msgstr "Uložit a použít šablonu"
+
+msgid "Delete"
+msgstr "Smazat"
+
+msgid "Save as new"
+msgstr "Uložit jako nový"
+
+msgid "Save and add another"
+msgstr "Uložit a přidat další"
+
+msgid "Save and continue editing"
+msgstr "Uložit a pokračovat v úpravách"
+
+msgid "Delete?"
+msgstr "Smazat?"
+
+msgid "Change"
+msgstr "Změnit"
+
+#, python-format
+msgid "Questions? Get in touch: %(mailto_link)s"
+msgstr "Otázky? Napište: %(mailto_link)s"
+
+msgid "Manage"
+msgstr "Spravovat"
+
+msgid "Members"
+msgstr "Členové"
+
+msgid "Toggle navigation"
+msgstr "Přepnout navigaci"
+
+msgid "Account"
+msgstr "Účet"
+
+msgid "My work shifts"
+msgstr "Moje pracovní směny"
+
+msgid "Help"
+msgstr "Nápověda"
+
+msgid "Logout"
+msgstr "Odhlášení"
+
+msgid "Admin"
+msgstr "Administrátor"
+
+msgid "Regions"
+msgstr "Regiony"
+
+msgid "Activation complete"
+msgstr "Aktivace dokončena"
+
+msgid "Activation problem"
+msgstr "Problém s aktivací"
+
+msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
+msgid "login"
+msgstr "přihlášení"
+
+#, python-format
+msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
+msgstr "Díky %(account)s, aktivace je dokončena! Nyní se můžete přihlásit %(login_link)s s použitím uživatelského jména a hesla nastaveného při registraci."
+
+msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
+msgstr "Jejda &ndash; Buď již aktivujete svůj aktivní účet nebo je aktivační klíč neplatný, nebo jeho platnost vypršela."
+
+msgid "Activation successful!"
+msgstr "Aktivace byla úspěšná!"
+
+msgctxt "Activation successful page"
+msgid "Thank you for signing up."
+msgstr "Děkujeme, že jste se zaregistrovali."
+
+msgctxt "Login link text on activation success page"
+msgid "You can login here."
+msgstr "Zde se můžete přihlásit."
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+"\n"
+"Ahoj %(user)s, \n"
+"moc děkujeme, že chcete pomoci! Ještě jeden krok a budete připraveni zahájit dobrovolnou činnost. \n"
+"\n"
+"Klikněte na následující odkaz a dokončete svou registraci.\n"
+"<a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+" Platnost tohoto odkazu vyprší za %(expiration_days)s dny.\n"
+"\n"
+"Váš tým \n"
+
+#, python-format
+msgid ""
+"\n"
+"Hello %(user)s,\n"
+"\n"
+"thank you very much that you want to help! Just one more step and you'll be ready to start volunteering!\n"
+"\n"
+"Please click the following link to finish your registration at volunteer-planner.org:\n"
+"\n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+"This link will expire in %(expiration_days)s days.\n"
+"\n"
+"Yours,\n"
+"\n"
+"the volunteer-planner.org team\n"
+msgstr ""
+"\n"
+"Ahoj %(user)s\n"
+"Děkujeme velice, že chcete pomoci! Ještě jeden krok a budete připraveni zahájit dobrovolnou činnost. Klikněte na následující odkaz a dokončete svou registraci na adrese: \n"
+"http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+" Platnost tohoto odkazu vyprší za %(expiration_days)s dny. \n"
+"\n"
+"Váš tým\n"
+
+msgid "Your volunteer-planner.org registration"
+msgstr "Registrace dobrovolníka"
+
+msgid "admin approval"
+msgstr "schválení administrátorem"
+
+#, python-format
+msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
+msgstr "Váš účet je nyní schválen. Nyní se můžete <a href=\"https://%(site.domain)s%(login_url)s\">přihlásit</a>."
+
+msgid "Your account is now approved. You can log in using the following link"
+msgstr "Váš účet je nyní schválen. Přihlásit se můžete pomocí následujícího odkazu"
+
+msgid "Email address"
+msgstr "Emailová adresa"
+
+#, python-format
+msgid "%(email_trans)s / %(username_trans)s"
+msgstr "%(email_trans)s / %(username_trans)s"
+
+msgid "Password"
+msgstr "Heslo"
+
+msgid "Forgot your password?"
+msgstr "Zapomněli jste heslo?"
+
+msgid "Help and sign-up"
+msgstr "Nápověda a registrace"
+
+msgid "Password changed"
+msgstr "Heslo změněno"
+
+msgid "Password successfully changed!"
+msgstr "Heslo úspěšně změněno!"
+
+msgid "Change Password"
+msgstr "Změnit heslo"
+
+msgid "Change password"
+msgstr "Změnit heslo"
+
+msgid "Password reset complete"
+msgstr "Resetování hesla dokončeno"
+
+msgctxt "login link title reset password complete page"
+msgid "log in"
+msgstr "přihlášení"
+
+#, python-format
+msgctxt "reset password complete page"
+msgid "Your password has been reset! You may now %(login_link)s again."
+msgstr "Vaše heslo bylo resetováno! Nyní se můžete znovu přihlásit na %(login_link)s."
+
+msgid "Enter new password"
+msgstr "Zadejte nové heslo"
+
+msgid "Enter your new password below to reset your password"
+msgstr "Zadejte nové heslo pro resetování hesla"
+
+msgid "Password reset"
+msgstr "Resetovat heslo"
+
+msgid "We sent you an email with a link to reset your password."
+msgstr "Poslali jsme vám e-mail s odkazem na obnovení hesla."
+
+msgid "Please check your email and click the link to continue."
+msgstr "Zkontrolujte e-mail a pokračujte kliknutím na odkaz."
+
+#, python-format
+msgid ""
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site.  If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+"\n"
+"To reset your password, please click the following link, or copy and paste it\n"
+"into your web browser:"
+msgstr ""
+"Tento e-mail obdržíte, protože jste (vy nebo někdo kdo předstírá, že jste vy) požádali o obnovení hesla na webu %(domain)s. Pokud nechcete obnovit heslo, ignorujte tuto zprávu. \n"
+"\n"
+"Chcete-li obnovit heslo, klikněte na následující odkaz nebo jej zkopírujte a vložte do svého webového prohlížeče:"
+
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+"\n"
+"Best regards,\n"
+"%(site_name)s Management\n"
+msgstr ""
+"\n"
+"Vaše uživatelské jméno v případě, že jste ho zapomněli: %(username)s\n"
+"\n"
+"S pozdravem \n"
+"Správci %(site_name)s\n"
+
+msgid "Reset password"
+msgstr "Obnovit heslo"
+
+msgid "No Problem! We'll send you instructions on how to reset your password."
+msgstr "Žádný problém! Pošleme vám pokyny, jak obnovit heslo."
+
+msgid "Activation email sent"
+msgstr "Aktivační e-mail odeslán"
+
+msgid "An activation mail will be sent to you email address."
+msgstr "Aktivační e-mail vám bude zaslán na e-mailovou adresu."
+
+msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgstr "Potvrďte prosím registraci s odkazem v e-mailu. Pokud jste jej neobdrželi do 10 minut, podívejte se do složky spam."
+
+msgid "Register for an account"
+msgstr "Zaregistrujte se na účet"
+
+msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
+msgstr "Zde můžete vytvořit nový uživatelský účet. Pokud již máte uživatelský účet, klikněte v pravém horním rohu na položku PŘIHLÁŠENÍ."
+
+msgid "Create a new account"
+msgstr "Vytvořit nový účet"
+
+msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
+msgstr "Plánovač dobrovolníků a úkrytů vám pošlou e-maily týkající se vašich směn."
+
+msgid "Your username will be visible to other users. Don't use spaces or special characters."
+msgstr "Vaše uživatelské jméno bude viditelné ostatním uživatelům. Nepoužívejte mezery nebo speciální znaky."
+
+msgid "Repeat password"
+msgstr "Zopakovat heslo"
+
+msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
+msgstr "Přečetl/a jsem si <a href=\"/impressum/#datenschutz\">Zásady ochrany osobních údajů</a> a souhlasím s nimi."
+
+msgid "This must be checked."
+msgstr "To je nutné zaškrtnout."
+
+msgid "Sign-up"
+msgstr "Přihlásit se"
+
+msgid "Ukrainian"
+msgstr ""
+
+msgid "English"
+msgstr "Angličtina"
+
+msgid "German"
+msgstr "Němčina"
+
+msgid "Czech"
+msgstr ""
+
+msgid "Greek"
+msgstr "Řečtina"
+
+msgid "French"
+msgstr "Francouzština"
+
+msgid "Hungarian"
+msgstr "Maďarština"
+
+msgid "Polish"
+msgstr "Polština"
+
+msgid "Portuguese"
+msgstr "Portugalština"
+
+msgid "Russian"
+msgstr "Ruština"
+
+msgid "Swedish"
+msgstr "Švédština"
+
+msgid "Turkish"
+msgstr "Turečtina"

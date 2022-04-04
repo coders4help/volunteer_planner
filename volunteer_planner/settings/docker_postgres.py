@@ -1,13 +1,13 @@
 # coding: utf-8
 
-from volunteer_planner.settings.local import *
+from .local import *  # noqa: F401
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'volunteer_planner',
-        'HOST': 'db',
-        'USER': 'vp',
-        'PASSWORD': 'volunteer_planner',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "volunteer_planner",
+        "HOST": "db",
+        "USER": "vp",
+        "PASSWORD": "volunteer_planner",
     }
 }

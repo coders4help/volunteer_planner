@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations, models
 
 from common.migrations import skip
 from organizations.models import Membership
 
 
 def add_default_join_mode(apps, _):
-    organization_membership_model = apps.get_model('organizations',
-                                                   'OrganizationMembership')
+    organization_membership_model = apps.get_model(
+        "organizations", "OrganizationMembership"
+    )
 
-    facility_membership_model = apps.get_model('organizations',
-                                               'FacilityMembership')
+    facility_membership_model = apps.get_model("organizations", "FacilityMembership")
 
     organization_membership_model.objects.update(status=Membership.Status.APPROVED)
     facility_membership_model.objects.update(status=Membership.Status.APPROVED)
@@ -20,37 +20,37 @@ def add_default_join_mode(apps, _):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('organizations', '0009_membership_status'),
+        ("organizations", "0009_membership_status"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='facility',
-            name='join_mode',
+            model_name="facility",
+            name="join_mode",
             field=models.PositiveSmallIntegerField(
                 default=0,
-                help_text='Who can join this facility?',
-                verbose_name='join mode',
+                help_text="Who can join this facility?",
+                verbose_name="join mode",
                 choices=[
-                    (0, 'by invitation'),
-                    (1, 'anyone (approved by manager)'),
-                    (2, 'anyone')
-                ]
+                    (0, "by invitation"),
+                    (1, "anyone (approved by manager)"),
+                    (2, "anyone"),
+                ],
             ),
         ),
         migrations.AddField(
-            model_name='organization',
-            name='join_mode',
+            model_name="organization",
+            name="join_mode",
             field=models.PositiveSmallIntegerField(
                 default=0,
-                help_text='Who can join this organization?',
-                verbose_name='join mode',
+                help_text="Who can join this organization?",
+                verbose_name="join mode",
                 choices=[
-                    (0, 'by invitation'),
-                    (1, 'anyone (approved by manager)'),
-                    (2, 'anyone')
-                ]
+                    (0, "by invitation"),
+                    (1, "anyone (approved by manager)"),
+                    (2, "anyone"),
+                ],
             ),
         ),
-        migrations.RunPython(add_default_join_mode, skip)
+        migrations.RunPython(add_default_join_mode, skip),
     ]

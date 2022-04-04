@@ -1,16 +1,16 @@
 # coding=utf-8
 from django.apps import AppConfig
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class AccountsConfig(AppConfig):
-    name = 'accounts'
-    verbose_name = _('Accounts')
+    name = "accounts"
+    verbose_name = _("Accounts")
 
     def ready(self):
-        import accounts.signals
+        from . import signals  # noqa
 
 
 class RegistrationConfig(AppConfig):
-    name = 'registration'
-    verbose_name = _('Accounts')
+    name = "registration"
+    verbose_name = _("Accounts")

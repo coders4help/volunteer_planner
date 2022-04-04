@@ -1,5 +1,5 @@
 {% extends "admin/change_form.html" %}
-{% load vpfilters i18n l10n admin_urls staticfiles %}
+{% load vpfilters i18n l10n admin_urls static %}
 
 {% block extrahead %}
     {{ block.super }}
@@ -7,7 +7,6 @@
     <script>
         $(function () {
             $("#{{ apply_form.apply_for_date.auto_id }}").datepicker({
-                firstDay: 1,
                 defaultDate: +1,
                 minDate: +0,
                 monthNames: gettext('January February March April May June July August September October November December').split(' '),
@@ -29,7 +28,7 @@
 
 {% block breadcrumbs %}
     <div class="breadcrumbs">
-        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
         &rsaquo; <a
             href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
         &rsaquo;
@@ -37,37 +36,37 @@
         &rsaquo;
         <a href="{% url opts|admin_urlname:'change' schedule_template.pk|admin_urlquote %}">{{ schedule_template }}</a>
         &rsaquo;
-        {% trans "Apply Template" %}
+        {% translate "Apply Template" %}
     </div>
 {% endblock %}
 
 {% block content %}
     <div id="content-main">
-        <h2>{% trans "Apply Template" %} {{ schedule_template }}</h2>
+        <h2>{% translate "Apply Template" %} {{ schedule_template }}</h2>
 
         <form method="post">
             {% csrf_token %}
 
-            {% trans "no workplace" as no_workplace %}
-            {% trans "apply" as apply_trans %}
-            {% trans "number of needed volunteers" as num_trans %}
-            {% trans "task" as task_trans %}
-            {% trans "workplace" as workplace_trans %}
-            {% trans "starting time" as starting_trans %}
-            {% trans "ending time" as ending_trans %}
-            {% trans "members only" as members_only_trans %}
+            {% translate "no workplace" as no_workplace %}
+            {% translate "apply" as apply_trans %}
+            {% translate "number of needed volunteers" as num_trans %}
+            {% translate "task" as task_trans %}
+            {% translate "workplace" as workplace_trans %}
+            {% translate "starting time" as starting_trans %}
+            {% translate "ending time" as ending_trans %}
+            {% translate "members only" as members_only_trans %}
             {% regroup shift_templates by task as shifts_by_task %}
 
-            <h3>{% trans "Select a date" %} </h3>
+            <h3>{% translate "Select a date" %} </h3>
 
             <div>
                 {{ apply_form.apply_for_date }}
 
-                <input type="submit" value="{% trans "Continue" %}"
+                <input type="submit" value="{% translate "Continue" %}"
                        class="default" name="preview" style="float: initial;">
             </div>
 
-            <h3>{% trans "Select shift templates" %}</h3>
+            <h3>{% translate "Select shift templates" %}</h3>
 
             <div>
 
@@ -122,9 +121,9 @@
                 </table>
             </div>
             <div class="submit-row">
-                <input type="submit" value="{% trans "Continue" %}"
+                <input type="submit" value="{% translate "Continue" %}"
                        class="default" name="preview">
             </div>
+        </form>
     </div>
-    </form>
 {% endblock %}

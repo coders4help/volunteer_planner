@@ -1,0 +1,5 @@
+# To permanently auto-ignore the revs in this file during `git blame`:
+# $ git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# initial re-formatting with black
+d7a57193f9e8c9cd4c6ed00d2f1e960ef5a5042c

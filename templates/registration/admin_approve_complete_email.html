@@ -1,0 +1,25 @@
+{% load i18n %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{{ site.name }} {% translate "admin approval" %}</title>
+</head>
+
+<body>
+<p>
+    {% url 'auth_login' as login_url %}
+    {% blocktranslate %}Your account is now approved. You can <a href="https://{{ site.domain }}{{ login_url }}">login now</a>.{% endblocktranslate %}
+</p>
+</body>
+
+</html>
+
+
+{% comment %}
+**registration/admin_approve_complete_email.html**
+
+Used after successful account activation. This template has no context
+variables of its own, and should simply inform the user that their
+account is now active.
+{% endcomment %}

@@ -7,20 +7,16 @@
         {% if facility.address %}
             <p>
                 {{ facility.address_line }}
-                <a target="_blank" href="{{ facility.address_line|osm_search }}">→ Show on map</a>
+                <a target="_blank" rel="noreferrer" href="{{ facility.address_line|osm_search }}">→ Show on map</a>
             </p>
         {% endif %}
 
         <p>
-            {% if facility.short_description %}
-                {{ facility.short_description|safe }}
-            {% else %}
-                {{ facility.description|truncatechars_html:150|safe }}
-            {% endif %}
+            {{ facility.description|truncatechars_html:150|safe }}
         </p>
 
         <p>
-            <a href="{{ facility.get_absolute_url }}">{% trans "Show details" %}</a>
+            <a href="{{ facility.get_absolute_url }}">{% translate "Show details" %}</a>
         </p>
     </div>
 
@@ -28,7 +24,7 @@
     {% regroup facility.open_shifts.all by starting_time.date as shifts_by_day %}
     {% if shifts_by_day %}
         <div class="pull-right">
-            <h4>{% trans "Open Shifts" %}</h4>
+            <h4>{% translate "Open Shifts" %}</h4>
 
             <p>
                 {% for shifts_on_day in shifts_by_day %}

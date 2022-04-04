@@ -1,15 +1,15 @@
 {% extends "base_non_logged_in.html" %}
 {% load i18n %}
 
-{% block title %} Volunteer Planner - {% trans "Server error" %}{% endblock %}
+{% block title %} Volunteer Planner - {% translate "server error" as server_error_title %}{{ server_error_title|title }}{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">
-		<h1>{% trans "Server Error <em>(500)</em>" %}</h1>
+		<h1>{% translate "Server Error <em>(500)</em>" %}</h1>
 		<p>
-		{% blocktrans trimmed %}
-			There's been an error. I should be fixed shortly. Thanks for your patience.
-		{% endblocktrans %}
+		{% blocktranslate trimmed %}
+			There's been an error. It should be fixed shortly. Thanks for your patience.
+		{% endblocktranslate %}
 		</p>
         </div>
     </div>

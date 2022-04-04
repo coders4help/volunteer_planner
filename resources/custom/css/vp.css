@@ -203,3 +203,35 @@ code {
 .panel-primary{
     border:none;
 }
+
+.nav-up {
+    top: -50px;
+}
+
+/*
+Schedeuler
+ */
+
+.filter input[type=checkbox]{
+    margin:5px;
+}
+
+/*
+Message Box helpdesk_single.html
+ */
+
+
+#layerMsgBox{
+    top:0;
+    left:0;
+    padding:10%;
+    position:fixed;
+    z-index:10000;
+    width:100%;
+    height:100%;
+    background-color: rgba(255,255,255,0.9);
+    display:none;
+}
+#layerMsgBox form button{
+    margin:0px 10px 0 0;
+}

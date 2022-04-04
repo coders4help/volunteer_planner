@@ -1,120 +1,136 @@
-# coding: utf-8
 import string
-from datetime import datetime
+from datetime import timedelta
 
-import factory
 from django.contrib.auth.models import User
+from django.utils import timezone
+from factory import LazyAttribute, PostGenerationMethodCall, Sequence, SubFactory
+from factory.django import DjangoModelFactory
 from factory.fuzzy import FuzzyText
 
 from accounts import models as account_models
-from scheduler import models as scheduler_models
-from places import models as places_models
 from organizations import models as organization_models
+from places import models as places_models
+from scheduler import models as scheduler_models
 
 
-class CountryFactory(factory.DjangoModelFactory):
+class CountryFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Country
 
-    name = factory.Sequence(lambda n: 'Country ' + str(n))
-    slug = factory.Sequence(lambda n: 'country_' + str(n))
+    name = Sequence(lambda n: f"Country {n}")
+    slug = Sequence(lambda n: f"country_{n}")
 
 
-class RegionFactory(factory.DjangoModelFactory):
+class RegionFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Region
 
-    name = factory.Sequence(lambda n: 'Region ' + str(n))
-    slug = factory.Sequence(lambda n: 'region_' + str(n))
+    name = Sequence(lambda n: f"Region {n}")
+    slug = Sequence(lambda n: f"region_{n}")
 
-    country = factory.SubFactory(CountryFactory)
+    country = SubFactory(CountryFactory)
 
 
-class AreaFactory(factory.DjangoModelFactory):
+class AreaFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Area
 
-    name = factory.Sequence(lambda n: 'Area ' + str(n))
-    slug = factory.Sequence(lambda n: 'area_' + str(n))
+    name = Sequence(lambda n: f"Area {n}")
+    slug = Sequence(lambda n: f"area_{n}")
 
-    region = factory.SubFactory(RegionFactory)
+    region = SubFactory(RegionFactory)
 
 
-class PlaceFactory(factory.DjangoModelFactory):
+class PlaceFactory(DjangoModelFactory):
     class Meta:
         model = places_models.Place
 
-    name = factory.Sequence(lambda n: 'Place ' + str(n))
-    slug = factory.Sequence(lambda n: 'place_' + str(n))
+    name = Sequence(lambda n: f"Place {n}")
+    slug = Sequence(lambda n: f"place_{n}")
 
-    area = factory.SubFactory(AreaFactory)
+    area = SubFactory(AreaFactory)
 
 
-class OrganizationFactory(factory.DjangoModelFactory):
-    name = factory.Sequence(lambda n: 'Organization ' + str(n))
-    slug = factory.Sequence(lambda n: 'org_' + str(n))
+class OrganizationFactory(DjangoModelFactory):
+    name = Sequence(lambda n: f"Organization {n}")
+    slug = Sequence(lambda n: f"org_{n}")
 
     class Meta:
         model = organization_models.Organization
-        django_get_or_create = ['name']
+        django_get_or_create = ["name"]
 
 
-class FacilityFactory(factory.DjangoModelFactory):
-    name = factory.Sequence(lambda n: 'Facility ' + str(n))
-    slug = factory.Sequence(lambda n: 'facility_' + str(n))
+class FacilityFactory(DjangoModelFactory):
+    name = Sequence(lambda n: f"Facility {n}")
+    slug = Sequence(lambda n: f"facility_{n}")
 
-    place = factory.SubFactory(PlaceFactory)
-    organization = factory.SubFactory(OrganizationFactory)
+    place = SubFactory(PlaceFactory)
+    organization = SubFactory(OrganizationFactory)
 
     class Meta:
         model = organization_models.Facility
-        django_get_or_create = ['name', 'place', 'organization']
+        django_get_or_create = ["name", "place", "organization"]
 
 
-class TaskFactory(factory.DjangoModelFactory):
+class TaskFactory(DjangoModelFactory):
     class Meta:
         model = organization_models.Task
 
-    name = factory.Sequence(lambda n: 'Task ' + str(n))
-    description = factory.Sequence(lambda n: 'task ' + str(n))
+    name = Sequence(lambda n: f"Task {n}")
+    description = Sequence(lambda n: f"task {n}")
 
-    facility = factory.SubFactory(FacilityFactory)
+    facility = SubFactory(FacilityFactory)
 
 
-class ShiftFactory(factory.DjangoModelFactory):
+class WorkplaceFactory(DjangoModelFactory):
+    class Meta:
+        model = organization_models.Workplace
+
+    name = Sequence(lambda n: f"Workplace {n}")
+    description = Sequence(lambda n: f"workplace {n}")
+
+    facility = SubFactory(FacilityFactory)
+
+
+class ShiftFactory(DjangoModelFactory):
     class Meta:
         model = scheduler_models.Shift
 
-    task = factory.SubFactory(TaskFactory)
-    facility = factory.SubFactory(FacilityFactory)
+    task = SubFactory(TaskFactory)
+    facility = SubFactory(FacilityFactory)
+    workplace = SubFactory(WorkplaceFactory)
 
-    starting_time = datetime(2016, 2, 13, 19, 0)
-    ending_time = datetime(2016, 2, 13, 20, 0)
+    starting_time = timezone.now() + timedelta(
+        hours=0.5
+    )  # create a shift in the future, so test users can subscribe
+    ending_time = starting_time + timedelta(
+        hours=1
+    )  # let shift end one hour after it started
     slots = 10
 
 
-class UserFactory(factory.DjangoModelFactory):
+class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
 
-    username = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
-    first_name = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
-    last_name = FuzzyText(length=10, chars=string.ascii_letters, prefix='')
-    password = factory.PostGenerationMethodCall('set_password', 'defaultpassword')
-    email = factory.LazyAttribute(lambda o: '%s@example.com' % o.last_name)
+    username = FuzzyText(length=10, chars=string.ascii_letters, prefix="")
+    first_name = FuzzyText(length=10, chars=string.ascii_letters, prefix="")
+    last_name = FuzzyText(length=10, chars=string.ascii_letters, prefix="")
+    password = PostGenerationMethodCall("set_password", "defaultpassword")
+    email = LazyAttribute(lambda o: f"{o.last_name}@example.com")
 
 
-class UserAccountFactory(factory.DjangoModelFactory):
+class UserAccountFactory(DjangoModelFactory):
     class Meta:
         model = account_models.UserAccount
 
-    user = factory.SubFactory(UserFactory)
+    user = SubFactory(UserFactory)
 
 
-class ShiftHelperFactory(factory.DjangoModelFactory):
+class ShiftHelperFactory(DjangoModelFactory):
     class Meta:
         model = scheduler_models.ShiftHelper
-        django_get_or_create = ['shift']
+        django_get_or_create = ["shift"]
 
-    user_account = factory.SubFactory(UserAccountFactory)
-    shift = factory.SubFactory(ShiftFactory)
+    user_account = SubFactory(UserAccountFactory)
+    shift = SubFactory(ShiftFactory)

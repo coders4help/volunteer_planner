@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load i18n staticfiles %}
+{% load i18n static %}
 
 {% block additional_js %}
     <script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
@@ -15,7 +15,7 @@
 
                 function onError(content) {
                     if (content.status == 403) {
-                        alert('{% trans "Error" %}\n{% trans "You are not allowed to do this." %}');
+                        alert('{% translate "Error" %}\n{% translate "You are not allowed to do this." %}');
                     }
                 }
 
@@ -40,9 +40,9 @@
         <div class="row">
 
             <h2>
-                {% blocktrans trimmed %}
+                {% blocktranslate trimmed %}
                     Members in {{ facility }}
-                {% endblocktrans %}
+                {% endblocktranslate %}
             </h2>
 
         </div>
@@ -61,16 +61,16 @@
                     <thead>
                     <tr>
                         <th>
-                            {% trans "Username" %}
+                            {% translate "Username" %}
                         </th>
                         <th>
-                            {% trans "Email" %}
+                            {% translate "Email" %}
                         </th>
                         <th>
-                            {% trans "Role" %}
+                            {% translate "Role" %}
                         </th>
                         <th>
-                            {% trans "Actions" %}
+                            {% translate "Actions" %}
                         </th>
                     </tr>
                     </thead>
@@ -95,18 +95,18 @@
                             <td>
                                 {% if membership.status == membership.Status.APPROVED %}
                                     <span data-action="reject" class="fa fa-minus-circle action">
-                                        {% trans "Block" %}
+                                        {% translate "Block" %}
                                     </span>&nbsp;|&nbsp;
                                 {% elif membership.status == membership.Status.PENDING %}
                                     <span data-action="accept" class="fa fa-user-plus action">
-                                        {% trans "Accept" %}
+                                        {% translate "Accept" %}
                                     </span>&nbsp;|&nbsp;
                                     <span data-action="reject" class="fa fa-minus-circle action">
-                                        {% trans "Block" %}
+                                        {% translate "Block" %}
                                     </span>&nbsp;|&nbsp;
                                 {% endif %}
                                 <span data-action="remove" class="fa fa-remove action">
-                                    {% trans "Remove" %}
+                                    {% translate "Remove" %}
                                 </span>
                             </td>
                         </tr>

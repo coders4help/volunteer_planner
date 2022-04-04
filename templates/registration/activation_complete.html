@@ -1,15 +1,15 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
-{% block title %} {% trans "Activation successful!" %}{% endblock %}
+{% block title %} {% translate "Activation successful!" %}{% endblock %}
 {% block content %}
     {% url 'auth_login' as auth_login_url %}
 
     <div class="col-md-12">
         <h3>
-            {% trans "Thank you for signing up." context "Activation successful page" %}
+            {% translate "Thank you for signing up." context "Activation successful page" %}
             <br/>
             <a href="{{ auth_login_url }}">
-                {% trans "You can login here." context "Login link text on activation success page" %}
+                {% translate "You can login here." context "Login link text on activation success page" %}
             </a>
         </h3>
     </div>

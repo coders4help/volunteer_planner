@@ -3,20 +3,20 @@
     <div class="container">
         <p class="text-muted text-center">
 
-            <a href="{% url 'home' %}">{% trans "Main page" %}</a> &bullet;
-            <a href="/impressum/">{% trans "Imprint" %}</a> &bullet;
-            <a href="/about/">{% trans "About" %}</a> &bullet;
-            <a href="/unterstuetzer/">{% trans "Supporter" %}</a> &bullet;
-            <a href="/presse/">{% trans "Press" %}</a> &bullet;
-            <a href="/kontakt/">{% trans "Contact" %}</a> &bullet;
+            <a href="{% url 'home' %}">{% translate "Main page" %}</a> &bullet;
+            <a href="/impressum/">{% translate "Imprint" %}</a> &bullet;
+            <a href="/about/">{% translate "About" %}</a> &bullet;
+            <a href="/unterstuetzer/">{% translate "Supporter" %}</a> &bullet;
+            <a href="/presse/">{% translate "Press" %}</a> &bullet;
+            <a href="/kontakt/">{% translate "Contact" %}</a> &bullet;
             {% include "partials/faq_link.html" %} &bullet;
             &copy; 2015 volunteer-planner.org &bullet;
             <a href="https://github.com/coders4help/volunteer_planner">GitHub</a> &bullet;
 
 
-            {% blocktrans trimmed with mailto_link='<a href="mailto:support@volunteer-planner.org">support@volunteer-planner.org</a>' %}
+            {% blocktranslate trimmed with mailto_link='<a href="mailto:kontakt@volunteer-planner.org">kontakt@volunteer-planner.org</a>' %}
                 Questions? Get in touch: {{ mailto_link }}
-            {% endblocktrans %}
+            {% endblocktranslate %}
 
         </p>
     </div>

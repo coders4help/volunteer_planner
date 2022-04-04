@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles site %}
+{% load static site %}
 {% request_site request as site %}
 
 <html{% block html_attributes %}{% endblock %}>
@@ -9,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}{{ site.domain }}{% endblock %}</title>
-
-    {% include "google_headers.html" %}
 
     <!-- Bootstrap -->
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
@@ -49,7 +47,7 @@
 <script src="{% static "jquery/js/jquery.min.js" %}"></script>
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 <script src="{% static "bootstrap/assets/js/ie10-viewport-bug-workaround.js" %}"></script>
-
+<script src="{% static "custom/js/vp.js" %}"></script>
 {% block additional_js %}
 {% endblock %}
 </body>
