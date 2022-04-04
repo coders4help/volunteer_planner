@@ -3,7 +3,7 @@ import logging
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
-from django.db.models import Count
+from django.db.models import Count, F
 from django.utils import timezone
 from django.utils.html import format_html, mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -150,9 +150,20 @@ class ShiftAdmin(FormattedModelChoiceFieldAdminMixin, MembershipFilteredAdmin):
     get_volunteer_names.short_description = _("volunteers")
     get_volunteer_names.allow_tags = True
 
+    @admin.display(ordering=F("task").desc(nulls_last=True), description=_("task"))
+    def get_task(self, obj):
+        return obj.task
+
+    @admin.display(
+        ordering=F("workplace").desc(nulls_last=True),
+        description=_("workplace"),
+    )
+    def get_workplace(self, obj):
+        return obj.workplace
+
     list_display = (
-        "task",
-        "workplace",
+        "get_task",
+        "get_workplace",
         "facility",
         "starting_time",
         "ending_time",
