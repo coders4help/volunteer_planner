@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-
-<form action="">
-
-    <button>Cancel</button>
-</form>
-
-</body>
-</html>
-
-
 {% extends "helpdesk_base.html" %}
 
 {% load i18n vpfilters static memberships %}
 
 {% block title %}
-    {% blocktranslate trimmed context "title with facility" with facility_name=facility.name %}
+    {% blocktranslate trimmed context "title with facility" with facility_name=shift.facility.name %}
         Schedule for {{ facility_name }}
     {% endblocktranslate %}
 {% endblock %}
@@ -72,7 +54,6 @@
                 {{ shift.task }}{{ shift.workplace|yes:' - '|add:shift.workplace.name }}
             {% endif %}
         </h1>
-    </form>
 
     {% if shift.members_only and not user|is_facility_member:shift.facility %}
         <div class="alert alert-warning fade in">
@@ -100,8 +81,7 @@
                     class="btn btn-danger delete-button fa fa-user-minus">
                 {{ dropout_button_label|title }}
             </button>
-
-            {% elif slots_left %}
+        {% elif slots_left %}
             {% translate "Sign up" as signup_button_label %}
 
             {% if shift.members_only %}
@@ -121,7 +101,6 @@
                         {{ members_only_button_label|title }}
                     </button>
                 {% endif %}
-
             {% else %}
                 <button type="submit"
                         name="join_shift"
@@ -153,6 +132,7 @@
         {% endif %}
 
     </p>
+    </form>
 {% endblock %}
 
 

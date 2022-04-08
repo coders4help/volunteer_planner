@@ -2,6 +2,7 @@
 
 import json
 import logging
+from abc import ABC
 from datetime import date
 
 from django.contrib import messages
@@ -51,169 +52,15 @@ def get_open_shifts():
     return shifts
 
 
-class HelpDesk(LoginRequiredMixin, TemplateView):
+class JoinLeaveFormView(ABC, FormView):
     """
-    Facility overview. First view that a volunteer gets redirected to when they log in.
+    Abstract base class for FormViews, that should be used to sign up for
+    or drop out from a shift.
     """
-
-    template_name = "helpdesk.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(HelpDesk, self).get_context_data(**kwargs)
-
-        facilities = (
-            Facility.objects.with_open_shifts()
-            .select_related(
-                "organization",
-                "place",
-                "place__area",
-                "place__area__region",
-                "place__area__region__country",
-            )
-            .prefetch_related(
-                Prefetch(
-                    "shift_set", queryset=Shift.open_shifts.all(), to_attr="open_shifts"
-                ),
-                "news_entries",
-            )
-        )
-
-        facility_list = []
-        used_places = set()
-        used_countries = set()
-
-        for facility in facilities:
-            used_places.add(facility.place.area)
-            facility_list.append(get_facility_details(facility))
-            used_countries.add(facility.place.area.region.country)
-
-        context["areas_json"] = json.dumps(
-            [
-                {"slug": area.slug, "name": area.name}
-                for area in sorted(used_places, key=lambda p: p.name)
-            ]
-        )
-        context["country_json"] = json.dumps(
-            [
-                {"slug": country.slug, "name": country.name}
-                for country in sorted(used_countries, key=lambda p: p.name)
-            ]
-        )
-
-        context["facility_json"] = json.dumps(facility_list, cls=DjangoJSONEncoder)
-        return context
-
-
-class GeographicHelpdeskView(DetailView):
-    template_name = "geographic_helpdesk.html"
-    context_object_name = "geographical_unit"
-
-    @staticmethod
-    def make_breadcrumps_dict(country, region=None, area=None, place=None):
-
-        result = dict(
-            country=country,
-            flattened=[
-                country,
-            ],
-        )
-
-        for k, v in zip(("region", "area", "place"), (region, area, place)):
-            if v:
-                result[k] = v
-                result["flattened"].append(v)
-
-        return result
-
-    def get_queryset(self):
-        return (
-            super(GeographicHelpdeskView, self)
-            .get_queryset()
-            .select_related(*self.model.get_select_related_list())
-        )
-
-    def get_context_data(self, **kwargs):
-        context = super(GeographicHelpdeskView, self).get_context_data(**kwargs)
-        place = self.object
-        context["breadcrumps"] = self.make_breadcrumps_dict(*place.breadcrumps)
-        context["shifts"] = get_open_shifts().by_geography(place)
-        return context
-
-
-class ShiftDetailView(LoginRequiredMixin, FormView):
-    template_name = "shift_details.html"
-    form_class = RegisterForShiftForm
-
-    def get_context_data(self, **kwargs):
-        context = super(ShiftDetailView, self).get_context_data(**kwargs)
-
-        schedule_date = date(
-            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
-        )
-        try:
-            shift = (
-                Shift.objects.on_shiftdate(schedule_date)
-                .annotate(volunteer_count=Count("helpers"))
-                .get(
-                    facility__slug=self.kwargs["facility_slug"],
-                    id=self.kwargs["shift_id"],
-                )
-            )
-        except Shift.DoesNotExist:
-            raise Http404()
-        context["shift"] = shift
-        return context
-
-    def get_success_url(self):
-        """
-        Redirect to the same page.
-        """
-        return reverse("shift_details", kwargs=self.kwargs)
-
-
-class PlannerView(LoginRequiredMixin, FormView):
-    """
-    View that gets shown to volunteers when they browse a specific day.
-    It'll show all the available shifts, and they can add and remove
-    themselves from shifts.
-    """
-
-    template_name = "helpdesk_single.html"
-    form_class = RegisterForShiftForm
-
-    def get_context_data(self, **kwargs):
-
-        context = super(PlannerView, self).get_context_data(**kwargs)
-        schedule_date = date(
-            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
-        )
-        facility = get_object_or_404(Facility, slug=self.kwargs["facility_slug"])
-
-        shifts = (
-            Shift.objects.filter(facility=facility)
-            .on_shiftdate(schedule_date)
-            .annotate(volunteer_count=Count("helpers"))
-            .order_by(
-                "facility",
-                F("task__priority").desc(nulls_last=True),
-                F("workplace__priority").desc(nulls_last=True),
-                "task__name",
-                "workplace__name",
-                "ending_time",
-            )
-            .select_related("task", "workplace", "facility")
-            .prefetch_related("helpers", "helpers__user")
-        )
-
-        context["shifts"] = shifts
-        context["facility"] = facility
-        context["schedule_date"] = schedule_date
-        context["shift_message_to_helpers_form"] = ShiftMessageToHelpersModelForm
-        return context
 
     def form_invalid(self, form):
         messages.warning(self.request, _("The submitted data was invalid."))
-        return super(PlannerView, self).form_invalid(form)
+        return super().form_invalid(form)
 
     def form_valid(self, form):
         user = self.request.user
@@ -221,7 +68,7 @@ class PlannerView(LoginRequiredMixin, FormView):
             user_account = UserAccount.objects.get(user=user)
         except UserAccount.DoesNotExist:
             messages.warning(self.request, _("User account does not exist."))
-            return super(PlannerView, self).form_valid(form)
+            return super().form_valid(form)
 
         shift_to_join = form.cleaned_data.get("join_shift")
         shift_to_leave = form.cleaned_data.get("leave_shift")
@@ -245,7 +92,7 @@ class PlannerView(LoginRequiredMixin, FormView):
                         messages.success(
                             self.request, _("A membership request has been sent.")
                         )
-                return super(PlannerView, self).form_valid(form)
+                return super().form_valid(form)
 
             hard_conflicts, graced_conflicts = ShiftHelper.objects.conflicting(
                 shift_to_join, user_account=user_account
@@ -342,7 +189,168 @@ class PlannerView(LoginRequiredMixin, FormView):
                 pass
             messages.success(self.request, _("You successfully left this shift."))
 
-        return super(PlannerView, self).form_valid(form)
+        return super().form_valid(form)
+
+
+class HelpDesk(LoginRequiredMixin, TemplateView):
+    """
+    Facility overview. First view that a volunteer gets redirected to when they log in.
+    """
+
+    template_name = "helpdesk.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(HelpDesk, self).get_context_data(**kwargs)
+
+        facilities = (
+            Facility.objects.with_open_shifts()
+            .select_related(
+                "organization",
+                "place",
+                "place__area",
+                "place__area__region",
+                "place__area__region__country",
+            )
+            .prefetch_related(
+                Prefetch(
+                    "shift_set", queryset=Shift.open_shifts.all(), to_attr="open_shifts"
+                ),
+                "news_entries",
+            )
+        )
+
+        facility_list = []
+        used_places = set()
+        used_countries = set()
+
+        for facility in facilities:
+            used_places.add(facility.place.area)
+            facility_list.append(get_facility_details(facility))
+            used_countries.add(facility.place.area.region.country)
+
+        context["areas_json"] = json.dumps(
+            [
+                {"slug": area.slug, "name": area.name}
+                for area in sorted(used_places, key=lambda p: p.name)
+            ]
+        )
+        context["country_json"] = json.dumps(
+            [
+                {"slug": country.slug, "name": country.name}
+                for country in sorted(used_countries, key=lambda p: p.name)
+            ]
+        )
+
+        context["facility_json"] = json.dumps(facility_list, cls=DjangoJSONEncoder)
+        return context
+
+
+class GeographicHelpdeskView(DetailView):
+    template_name = "geographic_helpdesk.html"
+    context_object_name = "geographical_unit"
+
+    @staticmethod
+    def make_breadcrumps_dict(country, region=None, area=None, place=None):
+
+        result = dict(
+            country=country,
+            flattened=[
+                country,
+            ],
+        )
+
+        for k, v in zip(("region", "area", "place"), (region, area, place)):
+            if v:
+                result[k] = v
+                result["flattened"].append(v)
+
+        return result
+
+    def get_queryset(self):
+        return (
+            super(GeographicHelpdeskView, self)
+            .get_queryset()
+            .select_related(*self.model.get_select_related_list())
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(GeographicHelpdeskView, self).get_context_data(**kwargs)
+        place = self.object
+        context["breadcrumps"] = self.make_breadcrumps_dict(*place.breadcrumps)
+        context["shifts"] = get_open_shifts().by_geography(place)
+        return context
+
+
+class ShiftDetailView(LoginRequiredMixin, JoinLeaveFormView):
+    template_name = "shift_details.html"
+    form_class = RegisterForShiftForm
+
+    def get_context_data(self, **kwargs):
+        context = super(ShiftDetailView, self).get_context_data(**kwargs)
+
+        schedule_date = date(
+            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
+        )
+        try:
+            shift = (
+                Shift.objects.on_shiftdate(schedule_date)
+                .annotate(volunteer_count=Count("helpers"))
+                .get(
+                    facility__slug=self.kwargs["facility_slug"],
+                    id=self.kwargs["shift_id"],
+                )
+            )
+        except Shift.DoesNotExist:
+            raise Http404()
+        context["shift"] = shift
+        return context
+
+    def get_success_url(self):
+        """
+        Redirect to the same page.
+        """
+        return reverse("shift_details", kwargs=self.kwargs)
+
+
+class PlannerView(LoginRequiredMixin, JoinLeaveFormView):
+    """
+    View that gets shown to volunteers when they browse a specific day.
+    It'll show all the available shifts, and they can add and remove
+    themselves from shifts.
+    """
+
+    template_name = "helpdesk_single.html"
+    form_class = RegisterForShiftForm
+
+    def get_context_data(self, **kwargs):
+
+        context = super(PlannerView, self).get_context_data(**kwargs)
+        schedule_date = date(
+            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
+        )
+        facility = get_object_or_404(Facility, slug=self.kwargs["facility_slug"])
+
+        shifts = (
+            Shift.objects.filter(facility=facility)
+            .on_shiftdate(schedule_date)
+            .annotate(volunteer_count=Count("helpers"))
+            .order_by(
+                "facility",
+                F("task__priority").desc(nulls_last=True),
+                F("workplace__priority").desc(nulls_last=True),
+                "task__name",
+                "workplace__name",
+                "ending_time",
+            )
+            .select_related("task", "workplace", "facility")
+            .prefetch_related("helpers", "helpers__user")
+        )
+
+        context["shifts"] = shifts
+        context["facility"] = facility
+        context["schedule_date"] = schedule_date
+        context["shift_message_to_helpers_form"] = ShiftMessageToHelpersModelForm
+        return context
 
     def get_success_url(self):
         """
