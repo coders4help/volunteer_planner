@@ -14,6 +14,8 @@ from datetime import timedelta
 
 from django.utils.translation import gettext_lazy as _
 
+from .email import *  # noqa: F401
+
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
 PROJECT_ROOT = os.path.abspath(os.path.join(__file__, "..", ".."))
@@ -46,6 +48,7 @@ THIRD_PARTY_APPS = (
     "django_ajax",
     "django_extensions",
     "logentry_admin",
+    "post_office",
 )
 
 LOCAL_APPS = (
@@ -143,7 +146,7 @@ LOGIN_URL = "/auth/login/"
 USE_TZ = True
 TIME_ZONE = "Europe/Berlin"
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "en-us")
 
 LANGUAGES = (
     ("uk", _("Ukrainian")),
