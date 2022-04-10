@@ -9,8 +9,6 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-import os
-from datetime import timedelta
 
 from django.utils.translation import gettext_lazy as _
 
