@@ -24,6 +24,13 @@ try:
     from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.integrations.logging import LoggingIntegration
 
+    def before_send(event, hint):
+        user_info = event.get("user")
+        if user_info:
+            user_info.pop("email", None)
+            user_info.pop("username", None)
+        return event
+
     sentry_sdk.init(
         dsn=os.environ["SENTRY_DSN"],
         environment=os.environ.get("SENTRY_ENVIRON", "production"),
@@ -35,6 +42,7 @@ try:
         # TODO think - really, I'm serious! - about some good 'traces_sampler'
         #  implementation and replace 'traces_sample_rate'
         send_default_pii=strtobool(os.environ.get("SENTRY_SEND_PII", "False")),
+        before_send=before_send,
     )
 except (ModuleNotFoundError, ImportError):
     logger.warning("sentry not installed - skipping", exc_info=True)
