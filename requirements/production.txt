@@ -2,4 +2,4 @@
 
 MySQL-python==1.2.5
 
-sentry-sdk==1.5.8
+sentry-sdk==1.5.9
