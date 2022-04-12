@@ -19,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 18:42+0200\n"
+"POT-Creation-Date: 2022-04-12 14:06+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
-"Last-Translator: Christoph Meißner, 2015,2022\n"
+"Last-Translator: Peter Palmreuther <pitpalme@yahoo.de>, 2015,2022\n"
 "Language-Team: German (http://www.transifex.com/coders4help/volunteer-planner/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr "Benutzername darf keine aufeinanderfolgenden \".\" and \"_\" enthalten."
 
 msgid "Accept privacy policy"
-msgstr "Einwilligung (nach Art 6 Abs 1 Satz 1 a DSGVO)"
+msgstr "Einwilligung (nach Art. 6 Abs. 1 Satz 1a DSGVO)"
 
 msgid "user account"
 msgstr "Benutzerkonto"
@@ -117,7 +117,7 @@ msgid "Last name"
 msgstr "Nachname"
 
 msgid "Email"
-msgstr "E-Mail Adresse"
+msgstr "E-Mail-Adresse"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "Wenn Du deinen Benutzerkonto löschst werden Deine Daten anonymisiert und du kannst Dich nicht mehr einloggen."
@@ -264,13 +264,13 @@ msgid "I want to help!"
 msgstr "Ich will helfen!"
 
 msgid "Register and see where you can help"
-msgstr "Registriere Dich und erfahre wo du helfen kannst"
+msgstr "Registriere Dich und erfahre, wo du helfen kannst"
 
 msgid "Organize volunteers!"
 msgstr "Freiwillige organisieren!"
 
 msgid "Register a shelter and organize volunteers"
-msgstr "Registriere eine Einrichtung und organisiere Freiwillige"
+msgstr "Registriere deine Einrichtung und organisiere Freiwillige"
 
 msgid "Places to help"
 msgstr "Orte zum Helfen"
@@ -285,10 +285,10 @@ msgid "What is it all about?"
 msgstr "Was ist volunteer-planner.org?"
 
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
-msgstr "Du willst Flüchtlingen helfen? volunteer-planner.org zeigt Dir wo, wann und wie du helfen kannst: direkt vor Ort."
+msgstr "Du willst Menschen in Notlagen helfen? Der Volunteer Planner bringt soziale Einrichtungen, die Hilfe bei der Unterstützung von Menschen in Not benötigen, mit Freiwilligen zusammen. Der Volunteer Planner zeigt Dir, wo, wann und wie du helfen kannst: direkt vor Ort."
 
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
-msgstr "<p>Die Plattform ist werbefrei und gemeinnützig. Ein internationales Team von Helfern vor Ort, Programmierern, Projektmanagern und Designern helfen freiwillig und unentgeltlich um den volunteer-planner voranzubringen.</p>"
+msgstr "<p>Die Plattform ist werbefrei und gemeinnützig. Ein ehrenamtliches Team von Helfer:innen vor Ort, Programmierer:innen, Projektmanager:innen und Designer:innen hilft freiwillig und unentgeltlich, um den Volunteer Planner voranzubringen.</p>"
 
 msgid "You can help at these locations:"
 msgstr "Du kannst in folgenden Einrichtungen helfen:"
@@ -816,7 +816,7 @@ msgid "Shift"
 msgstr "Schicht"
 
 msgid "recipients"
-msgstr ""
+msgstr "Empfänger"
 
 #, python-brace-format
 msgid "Volunteer-Planner: A Message from shift manager of {shift_title}"
@@ -1407,25 +1407,25 @@ msgid "Please confirm registration with the link in the email. If you haven't re
 msgstr "Bitte bestätige Deine Anmeldung, indem Du den entsprechenden Link in der E-Mail anklickst. Wenn Du in 10 Minuten noch keine E-Mail bekommen haben solltest, schaue bitte in Deinem Spamordner nach."
 
 msgid "Register for an account"
-msgstr "Erstelle ein Account"
+msgstr "Erstelle einen Account"
 
 msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
-msgstr "Du kannst hier einen neues Benutzerkonto erstellen. Wenn Du bereits registriert bist bitte einloggen (oben rechts)."
+msgstr "Du kannst hier einen neues Benutzer:innnen-Konto erstellen. Wenn Du dich bereits registriert hast, dann logge dich bitte oben rechts ein."
 
 msgid "Create a new account"
-msgstr "Ein neues Benutzerkonto erstellen"
+msgstr "Ein neues Benutzer:innen-Konto erstellen"
 
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr "Volunteer-Planner und die Unterkunftskoordination werden Dir Emails schicken, die Deine Schicht betreffen."
+msgstr "Volunteer-Planner und die Unterkunftskoordination werden Dir E-Mails schicken, die deine Schicht betreffen."
 
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer! Bitte keine Leerzeichen oder Sonderzeichen benutzen."
+msgstr "Achtung! Der Benutzername ist sichtbar für andere Benutzer:innen! Bitte verwende keine Leerzeichen oder Sonderzeichen."
 
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
 msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
-msgstr "Ich habe die <a href=\"/impressum/#datenschutz\">Datenschutzbestimmungen</a> gelesen und stimme ihnen zu (Einwilligung nach Art 6 Abs 1 Satz 1 a DSGVO)."
+msgstr "Ich habe die <a href=\"/impressum/#datenschutz\">Datenschutzbestimmungen</a> gelesen und stimme ihnen zu (Einwilligung nach Art. 6 Abs. 1 Satz 1a DSGVO)."
 
 msgid "This must be checked."
 msgstr "Du musst diesen Haken setzen."
