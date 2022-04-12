@@ -184,13 +184,14 @@ class ShiftMessageToHelpers(models.Model):
     message = models.TextField(verbose_name=_("Message"))
     sender = models.ForeignKey(
         "accounts.UserAccount",
-        models.PROTECT,
+        null=True,
+        on_delete=models.SET_NULL,
         related_name="msg_sender",
         verbose_name=_("sender"),
     )
     send_date = models.DateTimeField(auto_now_add=True, verbose_name=_("send date"))
     shift = models.ForeignKey(
-        "Shift", on_delete=models.PROTECT, verbose_name=_("Shift")
+        "Shift", on_delete=models.CASCADE, verbose_name=_("Shift")
     )
     recipients = models.ManyToManyField(
         "accounts.UserAccount", verbose_name=_("recipients")
