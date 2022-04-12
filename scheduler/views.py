@@ -20,6 +20,7 @@ from django.views.generic import DetailView, FormView, TemplateView
 from accounts.models import UserAccount
 from organizations.models import Facility, FacilityMembership
 from organizations.templatetags.memberships import (
+    is_facility_manager,
     is_facility_member,
     is_membership_pending,
 )
@@ -368,7 +369,6 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
     form_class = ShiftMessageToHelpersModelForm
 
     def form_invalid(self, form):
-
         messages.warning(self.request, _("The submitted data was invalid."))
         return super(SendMessageToShiftHelpers, self).form_invalid(form)
 
@@ -381,7 +381,7 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
             return super(SendMessageToShiftHelpers, self).form_valid(form)
 
         shift = form.cleaned_data.get("shift")
-        if not is_facility_member(user_account.user, shift.facility):
+        if not is_facility_manager(user_account.user, shift.facility):
             messages.warning(self.request, _("You have no permissions to send emails!"))
             return super(SendMessageToShiftHelpers, self).form_valid(form)
 
@@ -390,10 +390,14 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
             shift=shift,
             sender=user_account,
         )
-        for helper in shift.helpers.all():
+
+        # also send a copy of the message to shift manager
+        shift_message.recipients.add(user_account)
+        for helper in shift.helpers.exclude(user__email=""):
             if helper.user.email:
                 shift_message.recipients.add(helper)
         shift_message.save()
+
         messages.info(self.request, _("Email has been sent."))
         return super(SendMessageToShiftHelpers, self).form_valid(form)
 

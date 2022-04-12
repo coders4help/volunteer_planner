@@ -264,7 +264,7 @@
                                     <th>
                                         {% translate "Users" %}
                                     </th>
-                                    {% if user|is_facility_member:facility %}
+                                    {% if user|is_facility_manager:facility %}
                                     <th>
                                         {% translate "Send message" %}
                                     </th>
@@ -348,7 +348,7 @@
                                                     {% endfor %}
                                                 {% endif %}
                                             </td>
-                                            {% if user|is_facility_member:facility %}
+                                            {% if user|is_facility_manager:facility %}
                                             <td>
                                                 <button
                                                         data-shift-id="{{ shift.id }}"
@@ -434,6 +434,7 @@
         {% endfor %}
 
     </form>
+    {% if user|is_facility_manager:facility %}
     <div id="layerMsgBox">
         <form class="form-group" method="POST" action="{% url "send_message_to_shift_helpers" %}">
             {% csrf_token %}
@@ -466,6 +467,7 @@
     closeMsgBoxBtn.addEventListener('click',closeMessageBox,false)
 
     </script>
+    {% endif %}
 
 {% endblock %}
 

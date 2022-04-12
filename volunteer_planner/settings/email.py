@@ -6,7 +6,7 @@ from django.core.mail import DNS_NAME
 
 
 # The actual backend is defined in BACKENDS in POST_OFFICE.
-EMAIL_BACKEND = "post_office.EmailBackend"
+EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "post_office.EmailBackend")
 
 
 # Default email address to use for various automated correspondence from the site
@@ -68,12 +68,19 @@ if "DJANGO_EMAIL_USE_TLS" in os.environ:
     EMAIL_USE_TLS = strtobool(str(os.environ.get("DJANGO_EMAIL_USE_TLS")))
 
 
+# The directory used by the file email backend to store output files.
+# Default: Not defined
+if "DJANGO_EMAIL_FILE_PATH" in os.environ:
+    EMAIL_FILE_PATH = os.environ.get("DJANGO_EMAIL_FILE_PATH")
+
+
 # Settings for django-post-office async email backend.
 # see https://github.com/ui/django-post_office
 POST_OFFICE = {
     "BACKENDS": {
         "default": os.environ.get(
-            "EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend"
+            "POST_OFFICE_EMAIL_BACKEND",
+            "django.core.mail.backends.console.EmailBackend",
         )
     },
     "BATCH_SIZE": int(os.environ.get("POST_OFFICE_BATCH_SIZE", 100)),
