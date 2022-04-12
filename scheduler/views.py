@@ -288,9 +288,18 @@ class ShiftDetailView(LoginRequiredMixin, JoinLeaveFormView):
     def get_context_data(self, **kwargs):
         context = super(ShiftDetailView, self).get_context_data(**kwargs)
 
-        schedule_date = date(
-            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
-        )
+        try:
+            schedule_date = date(
+                int(self.kwargs["year"]),
+                int(self.kwargs["month"]),
+                int(self.kwargs["day"]),
+            )
+        except ValueError:
+            raise Http404(
+                "Invalid date "
+                f"{self.kwargs['year']}/{self.kwargs['month']}/{self.kwargs['day']}"
+            )
+
         try:
             shift = (
                 Shift.objects.on_shiftdate(schedule_date)
@@ -325,9 +334,18 @@ class PlannerView(LoginRequiredMixin, JoinLeaveFormView):
     def get_context_data(self, **kwargs):
 
         context = super(PlannerView, self).get_context_data(**kwargs)
-        schedule_date = date(
-            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
-        )
+        try:
+            schedule_date = date(
+                int(self.kwargs["year"]),
+                int(self.kwargs["month"]),
+                int(self.kwargs["day"]),
+            )
+        except ValueError:
+            raise Http404(
+                "Invalid date "
+                f"{self.kwargs['year']}/{self.kwargs['month']}/{self.kwargs['day']}"
+            )
+
         facility = get_object_or_404(Facility, slug=self.kwargs["facility_slug"])
 
         shifts = (
