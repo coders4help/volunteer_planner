@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-import os
-from datetime import timedelta
 
 from django.utils.translation import gettext_lazy as _
+
+from .email import *  # noqa: F401
 
 DEBUG = False
 # PROJECT DIRECTORY AND GENERAL SETTINGS
@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = (
     "django_ajax",
     "django_extensions",
     "logentry_admin",
+    "post_office",
 )
 
 LOCAL_APPS = (
@@ -143,7 +144,7 @@ LOGIN_URL = "/auth/login/"
 USE_TZ = True
 TIME_ZONE = "Europe/Berlin"
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "en-us")
 
 LANGUAGES = (
     ("uk", _("Ukrainian")),
