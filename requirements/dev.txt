@@ -1,12 +1,12 @@
 -r base.txt
 -r tests.txt
+-r flake8.txt
 
 # debugging
 ipdb==0.13.9
 
 # code formatting and linting
 black==22.3.0
-flake8==4.0.1
 
 # translations
 transifex-client==0.14.4
