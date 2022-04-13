@@ -20,6 +20,9 @@ from scheduler.models import Shift, ShiftHelper
 from tests.factories import (
     FacilityFactory,
     OrganizationFactory,
+    CountryFactory,
+    RegionFactory,
+    AreaFactory,
     PlaceFactory,
     ShiftFactory,
     ShiftHelperFactory,
@@ -83,93 +86,114 @@ class Command(BaseCommand):
         parser.add_argument("--flush")
 
     @factory.django.mute_signals(signals.pre_delete)
+    @transaction.atomic()
     def handle(self, *args, **options):
-        with transaction.atomic():
-            if options["flush"]:
-                print("delete all data in app tables")
-                for model in (
-                    RegistrationProfile,
-                    ShiftHelper,
-                    Shift,
-                    UserAccount,
-                    Task,
-                    Workplace,
-                    Facility,
-                    Organization,
-                    Place,
-                    Area,
-                    Region,
-                    Country,
-                ):
-                    model.objects.all().delete()
-                User.objects.filter().exclude(is_superuser=True).delete()
+        if options["flush"]:
+            print("delete all data in app tables")
+            for model in (
+                RegistrationProfile,
+                ShiftHelper,
+                Shift,
+                UserAccount,
+                Task,
+                Workplace,
+                Facility,
+                Organization,
+                Place,
+                Area,
+                Region,
+                Country,
+            ):
+                model.objects.all().delete()
+            User.objects.filter().exclude(is_superuser=True).delete()
 
-            print("creating new dummy data")
-            # create regional data
-            places = [PlaceFactory.create() for _ in range(0, 10)]
+        print("creating new dummy data")
+        # use or create regional data
+        countries = Country.objects.all() or [
+            CountryFactory.create() for _ in range(0, 3)
+        ]
+        regions = Region.objects.all() or [
+            RegionFactory.create(country=random.choice(countries)) for _ in range(0, 15)
+        ]
+        areas = Area.objects.all() or [
+            AreaFactory.create(region=random.choice(regions)) for _ in range(0, 30)
+        ]
+        places = Place.objects.all() or [
+            PlaceFactory.create(area=random.choice(areas)) for _ in range(0, 10)
+        ]
 
-            # create organizations and facilities
-            organizations = [OrganizationFactory.create() for _ in range(0, 4)]
-            facilities = [
-                FacilityFactory.create(
-                    description=LOREM,
-                    place=random.choice(places),
-                    organization=random.choice(organizations),
+        # create organizations and facilities
+        organizations = Organization.objects.all() or [
+            OrganizationFactory.create() for _ in range(0, 4)
+        ]
+        facilities = Facility.objects.all() or [
+            FacilityFactory.create(
+                description=LOREM,
+                place=random.choice(places),
+                organization=random.choice(organizations),
+            )
+            for _ in range(0, len(organizations) * 2)
+        ]
+
+        # create tasks and workplaces
+        i = 0
+        tasks = list()
+        workplaces = list()
+        for fac in facilities:
+            today = timezone.now()
+            for d in range(random.randint(1, 15)):
+                NewsEntry.objects.create(
+                    title=f"Newsentry #{d} for {fac.name}",
+                    creation_date=(today - datetime.timedelta(days=d)).date(),
+                    text=f"Newsentry #{d} for {fac.name} lorem",
                 )
-                for _ in range(0, len(organizations) * 2)
-            ]
-
-            # create tasks and workplaces
-            i = 0
-            tasks = list()
-            workplaces = list()
-            for fac in facilities:
-                today = timezone.now()
-                for d in range(random.randint(1, 15)):
-                    NewsEntry.objects.create(
-                        title=f"Newsentry #{d} for {fac.name}",
-                        creation_date=(today - datetime.timedelta(days=d)).date(),
-                        text=f"Newsentry #{d} for {fac.name} lorem",
+            tasks.extend(
+                [
+                    TaskFactory.create(
+                        name=f"Task {i + j}",
+                        description=f"task {i + j}",
+                        facility=fac,
                     )
-                tasks.extend(
-                    [
-                        TaskFactory.create(
-                            name=f"Task {i + j}",
-                            description=f"task {i + j}",
-                            facility=fac,
-                        )
-                        for j in range(0, random.randint(1, 5))
-                    ]
+                    for j in range(0, random.randint(1, 5))
+                ]
+            )
+            workplaces.extend(
+                [
+                    WorkplaceFactory.create(
+                        name=f"Workplace {i + j}",
+                        description=f"workplace {i + j}",
+                        facility=fac,
+                    )
+                    for j in range(0, random.randint(1, 5))
+                ]
+            )
+            i += 1
+
+        # create shifts for number of days
+        for day in range(0, options["days"][0]):
+            for i in range(2, 23):
+                task = random.choice(tasks)
+                facility = task.facility
+                workplace = random.choice(
+                    list(filter(lambda w: w.facility == facility, workplaces))
                 )
-                workplaces.extend(
-                    [
-                        WorkplaceFactory.create(
-                            name=f"Workplace {i + j}",
-                            description=f"workplace {i + j}",
-                            facility=fac,
-                        )
-                        for j in range(0, random.randint(1, 5))
-                    ]
+                shift = ShiftFactory.create(
+                    starting_time=gen_date(hour=i - 1, day=day),
+                    ending_time=gen_date(hour=i, day=day),
+                    facility=facility,
+                    task=task,
+                    workplace=workplace,
                 )
-                i += 1
+                # assign random volunteer for each shift
+                ShiftHelperFactory.create(shift=shift)
 
-            # create shifts for number of days
-            for day in range(0, options["days"][0]):
-                for i in range(2, 23):
-                    task = random.choice(tasks)
-                    facility = task.facility
-                    workplace = random.choice(
-                        list(filter(lambda w: w.facility == facility, workplaces))
-                    )
-                    shift = ShiftFactory.create(
-                        starting_time=gen_date(hour=i - 1, day=day),
-                        ending_time=gen_date(hour=i, day=day),
-                        facility=facility,
-                        task=task,
-                        workplace=workplace,
-                    )
-                    # assign random volunteer for each shift
-                    ShiftHelperFactory.create(shift=shift)
+        for i in range(0, 5):
+            try:
+                user = User.objects.get(username=f"user{i}")
+            except User.DoesNotExist:
+                user = UserFactory.create(username=f"user{i}")
 
-            for i in range(0, 5):
-                UserAccountFactory.create(user=UserFactory.create(username=f"user{i}"))
+            try:
+                UserAccount.objects.get(user=user)
+            except UserAccount.DoesNotExist:
+                UserAccountFactory.create(user=user)

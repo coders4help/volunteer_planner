@@ -1,11 +1,20 @@
-{% load i18n %}{% blocktranslate with shift_title=shift.task.name.strip location=shift.facility.name.strip %}Hello {{ recipient }},
-The shift manager of the shift {{ shift_title }} at {{ location }} wants to let you know:
+{% load i18n %}
+{% with shift_url=shift.get_absolute_url starting_time=shift.starting_time ending_time=shift.ending_time shift_title=shift.task.name.strip location=shift.facility.name.strip %}
+
+{% blocktranslate %}Hello {{ recipient }},
+
+Thank you for having signed up for the following upcoming shift:
+{{ shift_title }} from {{ starting_time }} to {{ ending_time }} at {{ location }}.
+
+The manager of the shift wants to let you know:
 ----------------------
+
 {{ message }}
+
 ----------------------
-Please reply to {{ sender_email }} for further questions.
+Please reach out to the shift manager directly at {{ sender_email }}, for any questions regarding this message, or if you need to respond to it.
 
 
-Best,
-Your volunteer-planner.org team
-{% endblocktranslate %}
+Thank you for volunteering and have a great time,
+your volunteer-planner.org team{% endblocktranslate %}
+{% endwith %}

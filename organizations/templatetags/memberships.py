@@ -10,7 +10,7 @@ register = template.Library()
 
 
 @register.filter
-def is_facility_member(user, facility, role=None):
+def is_facility_member(user, facility):
     user_orgs, user_facilities = get_cached_memberships(
         user=user,
         roles=(
@@ -18,6 +18,15 @@ def is_facility_member(user, facility, role=None):
             Membership.Roles.MANAGER,
             Membership.Roles.MEMBER,
         ),
+    )
+    return facility.id in user_facilities or facility.organization.id in user_orgs
+
+
+@register.filter
+def is_facility_manager(user, facility):
+    user_orgs, user_facilities = get_cached_memberships(
+        user=user,
+        roles=(Membership.Roles.ADMIN, Membership.Roles.MANAGER),
     )
     return facility.id in user_facilities or facility.organization.id in user_orgs
 

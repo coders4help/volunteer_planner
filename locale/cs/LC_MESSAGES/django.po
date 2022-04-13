@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 18:50+0200\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2019,2022\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -130,14 +130,14 @@ msgstr "Váš uživatelský účet byl smazán."
 
 #, python-brace-format
 msgid "Error {error_code}"
-msgstr ""
+msgstr "Chyba {error_code}"
 
 msgid "Permission denied"
-msgstr ""
+msgstr "Povolení odepřeno"
 
 #, python-brace-format
 msgid "You are not allowed to do this and have been redirected to {redirect_path}."
-msgstr ""
+msgstr "To nemáte povoleno a byli jste přesměrováni na {redirect_path}."
 
 msgid "additional CSS"
 msgstr "další CSS"
@@ -753,7 +753,7 @@ msgid "scheduler"
 msgstr "Plánovač"
 
 msgid "Write a message"
-msgstr ""
+msgstr "Napište zprávu"
 
 msgid "slots"
 msgstr "sloty"
@@ -795,40 +795,48 @@ msgstr "pomocníci směn"
 
 msgid "shift notification"
 msgid_plural "shift notifications"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "oznámení směny"
+msgstr[1] "oznámení směn"
+msgstr[2] "oznámení směn"
+msgstr[3] "oznámení směn"
 
 msgid "Message"
-msgstr ""
+msgstr "Zpráva"
 
 msgid "sender"
-msgstr ""
+msgstr "odesílatel"
 
 msgid "send date"
-msgstr ""
+msgstr "datum odeslání"
 
 msgid "Shift"
-msgstr "směna"
+msgstr "Směna"
 
 msgid "recipients"
-msgstr ""
+msgstr "příjemci"
 
 #, python-brace-format
 msgid "Volunteer-Planner: A Message from shift manager of {shift_title}"
-msgstr ""
+msgstr "Volunteer-Planner: Zpráva od vedoucího směny {shift_title}"
 
 #, python-format
 msgid ""
 "Hello %(recipient)s,\n"
-"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"\n"
+"Thank you for having signed up for the following upcoming shift:\n"
+"%(shift_title)s from %(starting_time)s to %(ending_time)s at %(location)s.\n"
+"\n"
+"The manager of the shift wants to let you know:\n"
 "----------------------\n"
+"\n"
 "%(message)s\n"
+"\n"
 "----------------------\n"
-"Please reply to %(sender_email)s for further questions.\n"
+"Please reach out to the shift manager directly at %(sender_email)s, for any questions regarding this message, or if you need to respond to it.\n"
 "\n"
 "\n"
-"Best,\n"
-"Your volunteer-planner.org team\n"
+"Thank you for volunteering and have a great time,\n"
+"your volunteer-planner.org team"
 msgstr ""
 
 msgctxt "helpdesk shifts heading"
@@ -893,7 +901,7 @@ msgid "Users"
 msgstr "Uživatelé"
 
 msgid "Send message"
-msgstr ""
+msgstr "Odeslat zprávu"
 
 msgid "You"
 msgstr "Vy"
@@ -906,7 +914,7 @@ msgid "Covered"
 msgstr "Pokryto"
 
 msgid "Send email to all volunteers"
-msgstr ""
+msgstr "Odeslat e-mail všem dobrovolníkům"
 
 msgid "Drop out"
 msgstr "Opuštěno"
@@ -924,10 +932,10 @@ msgid "Become member"
 msgstr "Staňte se členem"
 
 msgid "send"
-msgstr ""
+msgstr "odeslat"
 
 msgid "cancel"
-msgstr ""
+msgstr "zrušit"
 
 #, python-format
 msgid ""
@@ -954,21 +962,6 @@ msgstr ""
 
 msgid "Members only"
 msgstr "Pouze členové"
-
-#, python-format
-msgid ""
-"Hello %(recipient)s,\n"
-"\n"
-"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
-"----------------------\n"
-"%(message)s\n"
-"----------------------\n"
-"Please reply to %(sender_email)s for further questions.\n"
-"\n"
-"\n"
-"Best,\n"
-"Your volunteer-planner.org team\n"
-msgstr ""
 
 #, python-format
 msgid ""
@@ -1036,10 +1029,10 @@ msgid "You successfully left this shift."
 msgstr "Úspěšně jste opustili tuto směnu."
 
 msgid "You have no permissions to send emails!"
-msgstr ""
+msgstr "Nemáte oprávnění k odesílání e-mailů!"
 
 msgid "Email has been sent."
-msgstr ""
+msgstr "E-mail byl odeslán."
 
 #, python-brace-format
 msgid "A shift already exists at {date}"
@@ -1387,7 +1380,7 @@ msgid "Sign-up"
 msgstr "Přihlásit se"
 
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrajinština"
 
 msgid "English"
 msgstr "Angličtina"
@@ -1396,7 +1389,7 @@ msgid "German"
 msgstr "Němčina"
 
 msgid "Czech"
-msgstr ""
+msgstr "Čeština"
 
 msgid "Greek"
 msgstr "Řečtina"

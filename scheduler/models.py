@@ -6,6 +6,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.urls import reverse
 from django.utils.formats import localize
+from django.utils.timezone import get_current_timezone, localtime
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from . import managers
@@ -100,28 +101,30 @@ class Shift(models.Model):
         days_fmt = ngettext_lazy("the next day", "after {number_of_days} days", days)
         days_str = days_fmt.format(number_of_days=days) if days else ""
         return "{time} {days}".format(
-            time=localize(self.ending_time.time()), days=days_str
+            time=localize(localtime(self.ending_time, get_current_timezone()).time()),
+            days=days_str,
         ).strip()
 
     def __unicode__(self):
         return "{title} - {facility} ({start} - {end})".format(
             title=self.task.name,
             facility=self.facility.name,
-            start=localize(self.starting_time),
-            end=localize(self.ending_time),
+            start=localize(localtime(self.starting_time, get_current_timezone())),
+            end=localize(localtime(self.ending_time, get_current_timezone())),
         )
 
     def __str__(self):
         return self.__unicode__()
 
     def get_absolute_url(self):
+        local_starting_time = localtime(self.starting_time, get_current_timezone())
         return reverse(
             "shift_details",
             kwargs=dict(
                 facility_slug=self.facility.slug,
-                year=self.starting_time.year,
-                month=self.starting_time.month,
-                day=self.starting_time.day,
+                year=local_starting_time.year,
+                month=local_starting_time.month,
+                day=local_starting_time.day,
                 shift_id=self.id,
             ),
         )
@@ -181,13 +184,14 @@ class ShiftMessageToHelpers(models.Model):
     message = models.TextField(verbose_name=_("Message"))
     sender = models.ForeignKey(
         "accounts.UserAccount",
-        models.PROTECT,
+        null=True,
+        on_delete=models.SET_NULL,
         related_name="msg_sender",
         verbose_name=_("sender"),
     )
     send_date = models.DateTimeField(auto_now_add=True, verbose_name=_("send date"))
     shift = models.ForeignKey(
-        "Shift", on_delete=models.PROTECT, verbose_name=_("Shift")
+        "Shift", on_delete=models.CASCADE, verbose_name=_("Shift")
     )
     recipients = models.ManyToManyField(
         "accounts.UserAccount", verbose_name=_("recipients")

@@ -129,7 +129,7 @@ def send_shift_message_to_helpers(sender, instance, created, **kwargs):
                             shift=instance.shift,
                             sender_email=instance.sender.user.email,
                         ),
-                    )
+                    ).strip()
                     subject = _(
                         "Volunteer-Planner: A Message from shift "
                         "manager of {shift_title}"
@@ -141,6 +141,7 @@ def send_shift_message_to_helpers(sender, instance, created, **kwargs):
                             to=[recipient.user.email],
                             from_email="noreply@volunteer-planner.org",
                             reply_to=(instance.sender.user.email,),
+                            headers={"Reply-to": instance.sender.user.email},
                         )
                         mail.send()
                 except Exception as e:

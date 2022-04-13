@@ -4,13 +4,14 @@
 # Ahmad Sghaier, 2016,2019
 # Maha Abdulkaream Mohammad Sharaf, 2022
 # Maha Abdulkaream Mohammad Sharaf, 2022
+# Night Bird, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 18:42+0200\n"
-"PO-Revision-Date: 2022-03-15 17:56+0000\n"
-"Last-Translator: Christoph Meißner\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: Night Bird, 2022\n"
 "Language-Team: Arabic (http://www.transifex.com/coders4help/volunteer-planner/language/ar/)\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -19,37 +20,37 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 msgid "first name"
-msgstr "الإسم الأول "
+msgstr "الاسم الأول "
 
 msgid "last name"
-msgstr "اللقب"
+msgstr "اسم العائلة"
 
 msgid "email"
 msgstr "البريد الإلكتروني "
 
 msgid "date joined"
-msgstr ""
+msgstr "تاريخ الانضمام"
 
 msgid "last login"
-msgstr ""
+msgstr "آخر تسجيل دخول"
 
 msgid "Accounts"
 msgstr "الحسابات "
 
 msgid "Invalid username. Allowed characters are letters, numbers, \".\" and \"_\"."
-msgstr ""
+msgstr "اسم المستخدم غير صالح. الأحرف المسموح بها هي الأحرف والأرقام بالإضافة إلى  \".\" أو \"_\" "
 
 msgid "Username must start with a letter."
-msgstr ""
+msgstr "اسم المستخدم يجب ان يبدأ بحروف هجائية"
 
 msgid "Username must end with a letter, a number or \"_\"."
-msgstr ""
+msgstr "اسم المستخدم يجب أن ينتهي إما بحرف هجائي, رَقَم أو \"_\""
 
 msgid "Username must not contain consecutive \".\" or \"_\" characters."
-msgstr ""
+msgstr "اسم المستخدم يجب ألّا يتضمن الرموز التالية \".\"  أو \"_\" بشكل متتالي"
 
 msgid "Accept privacy policy"
-msgstr ""
+msgstr "قَبُول سياسة الخصوصية"
 
 msgid "user account"
 msgstr "حساب المستخدم"
@@ -61,46 +62,46 @@ msgid "My shifts today:"
 msgstr "جدولي اليوم"
 
 msgid "No shifts today."
-msgstr ""
+msgstr "لا يوجد أوقات عمل اليوم"
 
 msgid "Show this work shift"
 msgstr ""
 
 msgid "My shifts tomorrow:"
-msgstr ""
+msgstr "أوقات مناوباتي غدا"
 
 msgid "No shifts tomorrow."
-msgstr ""
+msgstr "لا يوجد فترات مناوبة غدا"
 
 msgid "My shifts the day after tomorrow:"
-msgstr ""
+msgstr "أوقات مناوبتي بعد الغد"
 
 msgid "No shifts the day after tomorrow."
-msgstr ""
+msgstr "لا يوجد فترات مناوبة غدا"
 
 msgid "Further shifts:"
-msgstr ""
+msgstr "مناوبات إضافية"
 
 msgid "No further shifts."
-msgstr ""
+msgstr "لا يوجد مناوبات إضافية."
 
 msgid "Show my work shifts in the past"
-msgstr ""
+msgstr "عرض فترات مناوباتي السابقة"
 
 msgid "My work shifts in the past:"
-msgstr ""
+msgstr "مدّة مناوباتي السابقة:"
 
 msgid "No work shifts in the past days yet."
-msgstr ""
+msgstr "لا يوجد بعد مناوبات مقيدة"
 
 msgid "Show my work shifts in the future"
-msgstr ""
+msgstr "عرض فترات مناوباتي القادمة"
 
 msgid "Username"
-msgstr "إسم المستخدم "
+msgstr "اسم المستخدم "
 
 msgid "First name"
-msgstr "الإسم الأول "
+msgstr "الاسم الأول "
 
 msgid "Last name"
 msgstr "اللقب"
@@ -109,10 +110,10 @@ msgid "Email"
 msgstr "البريد الإلكتروني"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
-msgstr ""
+msgstr "إذا قمت بحذف حسابك, ستصبح هذه المعلومات مجهولة المصدر, ولن يكون بإمكانك تسجيل الدخول volunteer- بعد الآن planner.org"
 
 msgid "Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account."
-msgstr ""
+msgstr "ليس من الممكن استعادة هذه المعلومات. إذا كنت ترغب في العمل كمتطوع مرة أخرى, فسيتعين عليك إنشاء حساب جديد"
 
 msgid "Delete Account (no additional warning)"
 msgstr "مسح الحساب (التحذير الأخير)"
@@ -144,7 +145,7 @@ msgid "additional CSS"
 msgstr ""
 
 msgid "translation"
-msgstr "ترجمة"
+msgstr "الترجمة"
 
 msgid "translations"
 msgstr "الترجمات"
@@ -153,7 +154,7 @@ msgid "No translation available"
 msgstr "لا توجد أي ترجمة متاحة"
 
 msgid "additional style"
-msgstr ""
+msgstr "تصميم  إضافي"
 
 msgid "additional flat page style"
 msgstr ""
@@ -183,7 +184,7 @@ msgid "View on site"
 msgstr ""
 
 msgid "Remove"
-msgstr "ازالة"
+msgstr "حذف"
 
 #, python-format
 msgid "Add another %(verbose_name)s"
@@ -193,13 +194,13 @@ msgid "Edit this page"
 msgstr "تعديل هذه الصفحة"
 
 msgid "subtitle"
-msgstr ""
+msgstr "عنوان فرعي"
 
 msgid "articletext"
-msgstr ""
+msgstr "نص المقال"
 
 msgid "creation date"
-msgstr ""
+msgstr "تاريخ الإنشاء"
 
 msgid "news entry"
 msgstr ""
@@ -208,25 +209,25 @@ msgid "news entries"
 msgstr ""
 
 msgid "Page not found"
-msgstr ""
+msgstr "الصفحة غير موجودة"
 
 msgid "We're sorry, but the requested page could not be found."
-msgstr ""
+msgstr "نعتذر لا يمكن العثور على الصفحة المطلوبة"
 
 msgid "server error"
-msgstr ""
+msgstr "خطأ في الخادم"
 
 msgid "Server Error <em>(500)</em>"
-msgstr ""
+msgstr "خطأ (٥٠٠) في الخادم"
 
 msgid "There's been an error. It should be fixed shortly. Thanks for your patience."
-msgstr ""
+msgstr "حدث خطأ و سيتم إصلاحه قريبا, شكرا لتفهمك"
 
 msgid "Login"
-msgstr ""
+msgstr "تسجيل الدخول"
 
 msgid "Start helping"
-msgstr ""
+msgstr "ابدأ بالمساعدة"
 
 msgid "Main page"
 msgstr "الصفحة الرئيسية"
@@ -235,66 +236,66 @@ msgid "Imprint"
 msgstr ""
 
 msgid "About"
-msgstr ""
+msgstr "حول"
 
 msgid "Supporter"
-msgstr ""
+msgstr "داعم"
 
 msgid "Press"
 msgstr ""
 
 msgid "Contact"
-msgstr ""
+msgstr "الأعضاء"
 
 msgid "FAQ"
-msgstr ""
+msgstr "الأسئلة الشائعة"
 
 msgid "I want to help!"
-msgstr ""
+msgstr "أريد المساعدة"
 
 msgid "Register and see where you can help"
-msgstr ""
+msgstr "قم بالتسجيل و شاهد أين يمكنك المساعدة"
 
 msgid "Organize volunteers!"
-msgstr ""
+msgstr "تنظيم المتطوعين!"
 
 msgid "Register a shelter and organize volunteers"
 msgstr ""
 
 msgid "Places to help"
-msgstr ""
+msgstr "أماكن المساعدة"
 
 msgid "Registered Volunteers"
-msgstr ""
+msgstr "قائمة المتطوعين المسجلين "
 
 msgid "Worked Hours"
-msgstr ""
+msgstr "ساعات العمل"
 
 msgid "What is it all about?"
 msgstr ""
 
 msgid "You are a volunteer and want to help refugees? Volunteer-Planner.org shows you where, when and how to help directly in the field."
-msgstr ""
+msgstr "هل أنت متطوع وتريد مساعدة اللاجئين؟ Volunteer-planner.org ستعرض لك أين, متى, كيف يمكنك المساعدة"
 
 msgid "<p>This platform is non-commercial and ads-free. An international team of field workers, programmers, project managers and designers are volunteering for this project and bring in their professional experience to make a difference.</p>"
-msgstr ""
+msgstr "هذه المنصة غير تجارية وخالية من الإعلانات. تطوع فريق دُوَليّ من العاملين الميدانيين كذلك المبرمجين والمصممين لهذا المشروع ليقدموا خبراتهم المهنية العالية لإحداث ذلك الفرق "
 
 msgid "You can help at these locations:"
-msgstr ""
+msgstr "مواقع يمكنك المساعدة بها"
 
 msgid "There are currently no places in need of help."
-msgstr ""
+msgstr "لا يوجد حاليا أماكن بحاجة للمساعدة"
 
 msgid "Privacy Policy"
-msgstr ""
+msgstr "سياسة الخصوصية"
 
 msgctxt "Privacy Policy Sec1"
 msgid "Scope"
-msgstr ""
+msgstr "النطاق"
 
 msgctxt "Privacy Policy Sec1 P1"
 msgid "This privacy policy informs the user of the collection and use of personal data on this website (herein after \"the service\") by the service provider, the Benefit e.V. (Wollankstr. 2, 13187 Berlin)."
-msgstr ""
+msgstr "سياسة الخصوصية ُتعلم المستخدم أن البيانات الخصوصية للمستخدم على هذا الموقع (هنا بعد الخدمة) تجمع و تستخدم من قبل مزود الخدمة,  the Benefit e.V. (Wollankstr. 2, 13187 Berlin). "
 
 msgctxt "Privacy Policy Sec1 P2"
 msgid "The legal basis for the privacy policy are the German Data Protection Act (Bundesdatenschutzgesetz, BDSG) and the German Telemedia Act (Telemediengesetz, TMG)."
@@ -314,7 +315,7 @@ msgstr ""
 
 msgctxt "Privacy Policy Sec3"
 msgid "Use of personal data"
-msgstr ""
+msgstr "استخدام البيانات الشخصية"
 
 msgctxt "Privacy Policy Sec3 P1"
 msgid "Personal data is information which can be used to identify a person, i.e., all data that can be traced back to a specific person. Personal data includes the name, the e-mail address, or the telephone number of a user. Even data on personal preferences, hobbies, memberships, or visited websites counts as personal data."
@@ -322,11 +323,11 @@ msgstr ""
 
 msgctxt "Privacy Policy Sec3 P2"
 msgid "The service provider collects, uses, and shares personal data with third parties only if he is permitted by law to do so or if the user has given his permission."
-msgstr ""
+msgstr "يقوم مزود الخدمة بجمع واستخدام ومشاركة البيانات الشخصية مع أطراف ثالثة فقط في حال سمح له القانون بذلك أو إذا أعطى المستخدم الإذن بذلك"
 
 msgctxt "Privacy Policy Sec4"
 msgid "Contact"
-msgstr ""
+msgstr "جهات الاتصال"
 
 msgctxt "Privacy Policy Sec4 P1"
 msgid "When contacting the service provider (e.g. via e-mail or using a web contact form), the data provided by the user is stored for processing the inquiry and for answering potential follow-up inquiries in the future."
@@ -334,7 +335,7 @@ msgstr ""
 
 msgctxt "Privacy Policy Sec5"
 msgid "Cookies"
-msgstr ""
+msgstr "ملفات تعريف الارتباط"
 
 msgctxt "Privacy Policy Sec5 P1"
 msgid "Cookies are small files that are being stored on the user's device (personal computer, smartphone, or the like) with information specific to that device. They can be used for various purposes: Cookies may be used to improve the user experience (e.g. by storing and, hence, \"remembering\" login credentials). Cookies may also be used to collect statistical data that allows the service provider to analyse the user's usage of the website, aiming to improve the service."
@@ -351,7 +352,7 @@ msgstr ""
 
 msgctxt "Privacy Policy Sec6"
 msgid "Registration"
-msgstr ""
+msgstr "التسجيل"
 
 msgctxt "Privacy Policy Sec6 P1"
 msgid "The data provided by the user during registration allows for the usage of the service. The service provider may inform the user via e-mail about information relevant to the service or the registration, such as information on changes, which the service undergoes, or technical information (see also next section)."
@@ -363,7 +364,7 @@ msgstr ""
 
 msgctxt "Privacy Policy Sec7"
 msgid "E-mail notifications / Newsletter"
-msgstr ""
+msgstr "إشعارات البريد الإلكتروني/ الرسائل الإخبارية"
 
 msgctxt "Privacy Policy Sec7 P1"
 msgid "When registering an account with the service, the user gives permission to receive e-mail notifications as well as newsletter e-mails."
@@ -379,7 +380,7 @@ msgstr ""
 
 msgctxt "Privacy Policy Sec8"
 msgid "Google Analytics"
-msgstr ""
+msgstr "تحليلات Google"
 
 msgctxt "Privacy Policy Sec8 P1"
 msgid "This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on the user's device, to help the website analyze how users use the site. The information generated by the cookie about the user's use of the website will be transmitted to and stored by Google on servers in the United States."
@@ -399,7 +400,7 @@ msgid "The IP-address, that the user's browser conveys within the scope of Googl
 msgstr ""
 
 msgid "click this link"
-msgstr ""
+msgstr "اضغط على الرابط"
 
 #, python-format
 msgctxt "Privacy Policy Sec8 P5"
@@ -419,7 +420,7 @@ msgid "Based on the privacy policy sample of the lawyer Thomas Schwenke - I LAW 
 msgstr ""
 
 msgid "advantages"
-msgstr ""
+msgstr "مزايا"
 
 msgid "save time"
 msgstr ""
@@ -450,10 +451,10 @@ msgid ""
 msgstr ""
 
 msgid "for free without costs"
-msgstr ""
+msgstr "مجانا و من دون تكلفة"
 
 msgid "The right help at the right time at the right place"
-msgstr ""
+msgstr "المساعدة المناسبة في الوقت المناسب وفي المكان المناسب"
 
 msgid ""
 "\n"
@@ -464,7 +465,7 @@ msgid ""
 msgstr ""
 
 msgid "for free, ad free"
-msgstr ""
+msgstr "مجانا, دون  إعلانات"
 
 msgid ""
 "\n"
@@ -474,7 +475,7 @@ msgid ""
 msgstr ""
 
 msgid "contact us!"
-msgstr ""
+msgstr "اتصل بنا!"
 
 msgid ""
 "\n"
@@ -484,16 +485,16 @@ msgid ""
 msgstr ""
 
 msgid "edit"
-msgstr ""
+msgstr "تعديل"
 
 msgid "description"
-msgstr ""
+msgstr "الوصف"
 
 msgid "contact info"
-msgstr ""
+msgstr "معلومات الاتصال"
 
 msgid "organizations"
-msgstr ""
+msgstr "المنظمات"
 
 msgid "by invitation"
 msgstr ""
@@ -505,34 +506,34 @@ msgid "anyone"
 msgstr ""
 
 msgid "rejected"
-msgstr ""
+msgstr "مرفوض"
 
 msgid "pending"
-msgstr ""
+msgstr "قيد الانتظار"
 
 msgid "approved"
-msgstr ""
+msgstr "موافق عليه"
 
 msgid "admin"
-msgstr ""
+msgstr "مشرف"
 
 msgid "manager"
 msgstr ""
 
 msgid "member"
-msgstr ""
+msgstr "عضو"
 
 msgid "role"
 msgstr ""
 
 msgid "status"
-msgstr ""
+msgstr "الحالة"
 
 msgid "name"
-msgstr ""
+msgstr "الاسم"
 
 msgid "address"
-msgstr ""
+msgstr "العنوان"
 
 msgid "slug"
 msgstr ""
@@ -541,31 +542,31 @@ msgid "join mode"
 msgstr ""
 
 msgid "Who can join this organization?"
-msgstr ""
+msgstr "من يمكنه الانضمام إلى هذه المنظمة؟"
 
 msgid "organization"
 msgstr ""
 
 msgid "disabled"
-msgstr ""
+msgstr "معطل"
 
 msgid "enabled (collapsed)"
 msgstr ""
 
 msgid "enabled"
-msgstr ""
+msgstr "مسموح"
 
 msgid "place"
-msgstr ""
+msgstr "موقع"
 
 msgid "postal code"
-msgstr ""
+msgstr "الرمز البريدي"
 
 msgid "Show on map of all facilities"
 msgstr ""
 
 msgid "latitude"
-msgstr ""
+msgstr "نطاق"
 
 msgid "longitude"
 msgstr ""
@@ -577,10 +578,10 @@ msgid "Who can join this facility?"
 msgstr ""
 
 msgid "facility"
-msgstr ""
+msgstr "وسيلة"
 
 msgid "facilities"
-msgstr ""
+msgstr "وسائل"
 
 msgid "organization member"
 msgstr ""
@@ -603,10 +604,10 @@ msgid "{username} at {facility_name} ({user_role})"
 msgstr ""
 
 msgid "priority"
-msgstr ""
+msgstr "الأولوية"
 
 msgid "Higher value = higher priority"
-msgstr ""
+msgstr "قيمة أعلى = أولوية أعلى"
 
 msgid "workplace"
 msgstr ""
@@ -615,10 +616,10 @@ msgid "workplaces"
 msgstr ""
 
 msgid "task"
-msgstr ""
+msgstr "المهمة"
 
 msgid "tasks"
-msgstr ""
+msgstr "المهام"
 
 #, python-brace-format
 msgid "User '{user}' manager status of a facility/organization was changed. "
@@ -626,7 +627,7 @@ msgstr ""
 
 #, python-format
 msgid "Hello %(username)s,"
-msgstr ""
+msgstr " مرحبا %(username)s,"
 
 #, python-format
 msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
@@ -638,19 +639,19 @@ msgid ""
 msgstr ""
 
 msgid "Helpdesk"
-msgstr ""
+msgstr "مركز الدعم"
 
 msgid "Show on map"
-msgstr ""
+msgstr "عرض الخريطة"
 
 msgid "Open Shifts"
 msgstr ""
 
 msgid "News"
-msgstr ""
+msgstr "الأخبار"
 
 msgid "Error"
-msgstr ""
+msgstr "خطأ"
 
 msgid "You are not allowed to do this."
 msgstr ""
@@ -669,13 +670,13 @@ msgid "Block"
 msgstr ""
 
 msgid "Accept"
-msgstr ""
+msgstr "قبول"
 
 msgid "Facilities"
 msgstr ""
 
 msgid "Show details"
-msgstr ""
+msgstr "عرض التفاصيل"
 
 msgid "volunteer-planner.org: Membership approved"
 msgstr ""
@@ -686,10 +687,10 @@ msgid "https://www.openstreetmap.org/search?query={location}"
 msgstr ""
 
 msgid "country"
-msgstr ""
+msgstr "البلد"
 
 msgid "countries"
-msgstr ""
+msgstr "البلدان"
 
 msgid "region"
 msgstr ""
@@ -698,10 +699,10 @@ msgid "regions"
 msgstr ""
 
 msgid "area"
-msgstr ""
+msgstr "منطقة"
 
 msgid "areas"
-msgstr ""
+msgstr "مناطق"
 
 msgid "places"
 msgstr ""
@@ -750,7 +751,7 @@ msgid "ending time"
 msgstr ""
 
 msgid "members only"
-msgstr ""
+msgstr "الأعضاء فقط"
 
 msgid "allow only members to help"
 msgstr ""
@@ -787,7 +788,7 @@ msgstr[4] ""
 msgstr[5] ""
 
 msgid "Message"
-msgstr ""
+msgstr "رسالة"
 
 msgid "sender"
 msgstr ""
@@ -808,15 +809,21 @@ msgstr ""
 #, python-format
 msgid ""
 "Hello %(recipient)s,\n"
-"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"\n"
+"Thank you for having signed up for the following upcoming shift:\n"
+"%(shift_title)s from %(starting_time)s to %(ending_time)s at %(location)s.\n"
+"\n"
+"The manager of the shift wants to let you know:\n"
 "----------------------\n"
+"\n"
 "%(message)s\n"
+"\n"
 "----------------------\n"
-"Please reply to %(sender_email)s for further questions.\n"
+"Please reach out to the shift manager directly at %(sender_email)s, for any questions regarding this message, or if you need to respond to it.\n"
 "\n"
 "\n"
-"Best,\n"
-"Your volunteer-planner.org team\n"
+"Thank you for volunteering and have a great time,\n"
+"your volunteer-planner.org team"
 msgstr ""
 
 msgctxt "helpdesk shifts heading"
@@ -834,7 +841,7 @@ msgid "see more"
 msgstr "عرض المزيد"
 
 msgid "news"
-msgstr ""
+msgstr "الاخبار"
 
 msgid "open shifts"
 msgstr ""
@@ -857,34 +864,34 @@ msgid "Toggle Timeline"
 msgstr ""
 
 msgid "Link"
-msgstr ""
+msgstr "الرابط"
 
 msgid "Time"
-msgstr ""
+msgstr "الوقت"
 
 msgid "Helpers"
 msgstr ""
 
 msgid "Start"
-msgstr ""
+msgstr "بدأ"
 
 msgid "End"
-msgstr ""
+msgstr "إنهاء"
 
 msgid "Required"
 msgstr ""
 
 msgid "Status"
-msgstr ""
+msgstr "الحالة"
 
 msgid "Users"
-msgstr ""
+msgstr "المستخدمين"
 
 msgid "Send message"
-msgstr ""
+msgstr "إرسال رسالة"
 
 msgid "You"
-msgstr ""
+msgstr "أنت"
 
 #, python-format
 msgid "%(slots_left)s more"
@@ -894,7 +901,7 @@ msgid "Covered"
 msgstr ""
 
 msgid "Send email to all volunteers"
-msgstr ""
+msgstr "إرسال بريد إلكتروني إلى جميع المتطوعين"
 
 msgid "Drop out"
 msgstr ""
@@ -903,19 +910,19 @@ msgid "Sign up"
 msgstr ""
 
 msgid "Membership pending"
-msgstr ""
+msgstr "العضوية معلقة"
 
 msgid "Membership rejected"
-msgstr ""
+msgstr "رفض العضوية"
 
 msgid "Become member"
 msgstr ""
 
 msgid "send"
-msgstr ""
+msgstr "إرسال"
 
 msgid "cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #, python-format
 msgid ""
@@ -935,21 +942,6 @@ msgid ""
 msgstr ""
 
 msgid "Members only"
-msgstr ""
-
-#, python-format
-msgid ""
-"Hello %(recipient)s,\n"
-"\n"
-"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
-"----------------------\n"
-"%(message)s\n"
-"----------------------\n"
-"Please reply to %(sender_email)s for further questions.\n"
-"\n"
-"\n"
-"Best,\n"
-"Your volunteer-planner.org team\n"
 msgstr ""
 
 #, python-format
@@ -979,7 +971,7 @@ msgid "The submitted data was invalid."
 msgstr ""
 
 msgid "User account does not exist."
-msgstr ""
+msgstr "حساب المستخدم غير موجود"
 
 msgid "A membership request has been sent."
 msgstr ""
@@ -1007,7 +999,7 @@ msgid "You have no permissions to send emails!"
 msgstr ""
 
 msgid "Email has been sent."
-msgstr ""
+msgstr "تم إرسال البريد الإلكتروني"
 
 #, python-brace-format
 msgid "A shift already exists at {date}"
@@ -1033,10 +1025,10 @@ msgid "Something didn't work. Sorry about that."
 msgstr ""
 
 msgid "from"
-msgstr ""
+msgstr "من"
 
 msgid "to"
-msgstr ""
+msgstr "الى"
 
 msgid "schedule templates"
 msgstr ""
@@ -1061,7 +1053,7 @@ msgid "Home"
 msgstr "الصفحة الرئيسية "
 
 msgid "Apply Template"
-msgstr ""
+msgstr "إضافة نموذج"
 
 msgid "no workplace"
 msgstr ""
@@ -1070,10 +1062,10 @@ msgid "apply"
 msgstr ""
 
 msgid "Select a date"
-msgstr ""
+msgstr "اختيار التاريخ"
 
 msgid "Continue"
-msgstr ""
+msgstr "المتابعة"
 
 msgid "Select shift templates"
 msgstr ""
@@ -1088,10 +1080,10 @@ msgid "Apply and select new date"
 msgstr ""
 
 msgid "Save and apply template"
-msgstr ""
+msgstr "حفظ وتطبيق النموذج"
 
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 msgid "Save as new"
 msgstr ""
@@ -1103,17 +1095,17 @@ msgid "Save and continue editing"
 msgstr ""
 
 msgid "Delete?"
-msgstr ""
+msgstr "حذف؟"
 
 msgid "Change"
-msgstr ""
+msgstr "تعديل"
 
 #, python-format
 msgid "Questions? Get in touch: %(mailto_link)s"
 msgstr ""
 
 msgid "Manage"
-msgstr ""
+msgstr "الإدارة"
 
 msgid "Members"
 msgstr "الأعضاء "
@@ -1122,7 +1114,7 @@ msgid "Toggle navigation"
 msgstr ""
 
 msgid "Account"
-msgstr ""
+msgstr "الحساب"
 
 msgid "My work shifts"
 msgstr ""
@@ -1207,14 +1199,14 @@ msgid "Your volunteer-planner.org registration"
 msgstr ""
 
 msgid "admin approval"
-msgstr ""
+msgstr "موافقة المشرف"
 
 #, python-format
 msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
 msgstr ""
 
 msgid "Your account is now approved. You can log in using the following link"
-msgstr ""
+msgstr "تم تفعيل حسابك الآن. يمكنك تسجيل الدخول باستخدام الرابط التالي"
 
 msgid "Email address"
 msgstr "البريد الإلكتروني "
@@ -1260,16 +1252,16 @@ msgid "Enter new password"
 msgstr "ادخل كلمة مرور جديدة"
 
 msgid "Enter your new password below to reset your password"
-msgstr ""
+msgstr "ادخل كلمة المرور الجديدة لإعادة تعيين كلمة المرور"
 
 msgid "Password reset"
-msgstr ""
+msgstr "إعادة تعيين كلمة المرور"
 
 msgid "We sent you an email with a link to reset your password."
-msgstr ""
+msgstr "تم إرسال بريد إلكتروني يحتوي على رابط لإعادة تعيين كلمة المرور الخاصة بك"
 
 msgid "Please check your email and click the link to continue."
-msgstr ""
+msgstr "يرجى التحقق من بريدك الإلكتروني والنقر على الرابط للمتابعة"
 
 #, python-format
 msgid ""
@@ -1291,79 +1283,83 @@ msgid ""
 msgstr ""
 
 msgid "Reset password"
-msgstr ""
+msgstr "إعادة تعيين كلمة المرور"
 
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr ""
 
 msgid "Activation email sent"
-msgstr ""
+msgstr "تم إرسال بريد التفعيل"
 
 msgid "An activation mail will be sent to you email address."
-msgstr ""
+msgstr "سيتم إرسال بريد التفعيل إلى عنوان بريدك الإلكتروني"
 
 msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
-msgstr ""
+msgstr "الرجاء تأكيد تسجيلك بواسطة الضغط على الرابط في البريد الإلكتروني. في حال عدم تلقي البريد الإلكتروني خلال 10 دقائق يرجى البحث في مجلد البريد العشوائي"
 
 msgid "Register for an account"
-msgstr ""
+msgstr "التسجيل للحصول على حساب"
 
 msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
 msgstr ""
+"يمكنك هنا إنشاء حساب جديد.\n"
+"إذا كان لديك حساب مسبقا الرجاء الضغط على تسجيل الدخول في الزاوية اليمنى في الأعلى"
 
 msgid "Create a new account"
-msgstr ""
+msgstr "إنشاء حساب جديد"
 
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
 msgstr ""
 
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
+"اسم المستخدم الخاص بك سيكون مرئيا للآخرين.\n"
+"يجب عدم استخدام مسافات أو أحرفا خاصة."
 
 msgid "Repeat password"
-msgstr ""
+msgstr "يرجى إعادة إدخال كلمة المرور"
 
 msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
-msgstr ""
+msgstr "لقد قرأت وأوافق على سياسية الخصوصية"
 
 msgid "This must be checked."
 msgstr ""
 
 msgid "Sign-up"
-msgstr ""
+msgstr "إنشاء حساب"
 
 msgid "Ukrainian"
-msgstr ""
+msgstr "الأوكرانية"
 
 msgid "English"
-msgstr ""
+msgstr "الانجليزية"
 
 msgid "German"
-msgstr ""
+msgstr "الألمانية"
 
 msgid "Czech"
-msgstr ""
+msgstr "التشيكية"
 
 msgid "Greek"
-msgstr ""
+msgstr "اليونانية"
 
 msgid "French"
-msgstr ""
+msgstr "الفرنسية"
 
 msgid "Hungarian"
-msgstr ""
+msgstr "الهنغارية"
 
 msgid "Polish"
-msgstr ""
+msgstr "البولندية"
 
 msgid "Portuguese"
-msgstr ""
+msgstr "البرتغالية"
 
 msgid "Russian"
-msgstr ""
+msgstr "الروسية"
 
 msgid "Swedish"
-msgstr ""
+msgstr "السويدية"
 
 msgid "Turkish"
-msgstr ""
+msgstr "التركية"

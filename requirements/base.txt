@@ -1,9 +1,11 @@
-django==4.0.3
-django-ckeditor==6.2.0
+django==4.0.4
+django-ckeditor==6.3.2
 django-compressor==3.1
 django-debug-toolbar==3.2.4
 django-extensions==3.1.5
 django-logentry-admin==1.1.0
+django-post-office==3.6.0
+bleach<=4.1.0
 django-registration-redux==2.10
 git+https://github.com/Doca/django-ajax.git#egg=djangoajax
 

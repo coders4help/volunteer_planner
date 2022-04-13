@@ -1,6 +1,9 @@
 #
 # Translators:
 # Caroline Elis <caroline@adazylla.de>, 2015
+# Christoph Meißner, 2015
+# Christoph Meißner, 2015
+# Dolfeus <dolfeus@sfr.fr>, 2016
 # Dolfeus <dolfeus@sfr.fr>, 2016
 # helene bernard <helene.bernard35@gmail.com>, 2016
 # johannes lacher <johannes@lacher.cc>, 2015
@@ -10,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 18:42+0200\n"
-"PO-Revision-Date: 2016-12-08 20:50+0000\n"
-"Last-Translator: Dolfeus <dolfeus@sfr.fr>\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: Maxi Krause <maxi.krause@wanadoo.fr>, 2017\n"
 "Language-Team: French (http://www.transifex.com/coders4help/volunteer-planner/language/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -805,7 +808,7 @@ msgid "send date"
 msgstr ""
 
 msgid "Shift"
-msgstr "Créneau"
+msgstr ""
 
 msgid "recipients"
 msgstr ""
@@ -817,15 +820,21 @@ msgstr ""
 #, python-format
 msgid ""
 "Hello %(recipient)s,\n"
-"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
+"\n"
+"Thank you for having signed up for the following upcoming shift:\n"
+"%(shift_title)s from %(starting_time)s to %(ending_time)s at %(location)s.\n"
+"\n"
+"The manager of the shift wants to let you know:\n"
 "----------------------\n"
+"\n"
 "%(message)s\n"
+"\n"
 "----------------------\n"
-"Please reply to %(sender_email)s for further questions.\n"
+"Please reach out to the shift manager directly at %(sender_email)s, for any questions regarding this message, or if you need to respond to it.\n"
 "\n"
 "\n"
-"Best,\n"
-"Your volunteer-planner.org team\n"
+"Thank you for volunteering and have a great time,\n"
+"your volunteer-planner.org team"
 msgstr ""
 
 msgctxt "helpdesk shifts heading"
@@ -957,21 +966,6 @@ msgstr ""
 
 msgid "Members only"
 msgstr "Membres uniquement"
-
-#, python-format
-msgid ""
-"Hello %(recipient)s,\n"
-"\n"
-"The shift manager of the shift %(shift_title)s at %(location)s wants to let you know:\n"
-"----------------------\n"
-"%(message)s\n"
-"----------------------\n"
-"Please reply to %(sender_email)s for further questions.\n"
-"\n"
-"\n"
-"Best,\n"
-"Your volunteer-planner.org team\n"
-msgstr ""
 
 #, python-format
 msgid ""
