@@ -10,6 +10,32 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
+## [4.1.0] - 2022-04-13
+Bugfix and improvements release with little (visibly) new things
+
+### Added
+- Integrate django-post-office
+- Add sentry integration
+- Create codeql-analysis.yml
+- Add commonly requested static files
+  
+### Changed
+- Bump django-ckeditor from 6.2.0 to 6.3.0 in /requirements
+- Bump django from 4.0.3 to 4.0.4 in /requirements
+- Bump django-ckeditor from 6.3.0 to 6.3.2 in /requirements
+- Bump sentry-sdk from 1.5.8 to 1.5.9 in /requirements by
+
+### Fixed
+- Hotfix/562 fix admin ordering by task and workplace
+- Make admin timezone aware for shift/-templates
+- Fix #575, broken icon in schedule template admin
+- Fixes #570: regions nav bar items not sorted well
+- Fixes #547: jQuery selector expected
+- Correct shift details user view
+- Fix URL redirection from remote source
+- Fix URL date parsing
+- Shift notification messages from managers *only*
+
 ## [4.0.0] - 2022-04-03
 Revival. Volunteer Planner is back.
 

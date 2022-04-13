@@ -20,6 +20,7 @@ from django.views.generic import DetailView, FormView, TemplateView
 from accounts.models import UserAccount
 from organizations.models import Facility, FacilityMembership
 from organizations.templatetags.memberships import (
+    is_facility_manager,
     is_facility_member,
     is_membership_pending,
 )
@@ -288,9 +289,18 @@ class ShiftDetailView(LoginRequiredMixin, JoinLeaveFormView):
     def get_context_data(self, **kwargs):
         context = super(ShiftDetailView, self).get_context_data(**kwargs)
 
-        schedule_date = date(
-            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
-        )
+        try:
+            schedule_date = date(
+                int(self.kwargs["year"]),
+                int(self.kwargs["month"]),
+                int(self.kwargs["day"]),
+            )
+        except ValueError:
+            raise Http404(
+                "Invalid date "
+                f"{self.kwargs['year']}/{self.kwargs['month']}/{self.kwargs['day']}"
+            )
+
         try:
             shift = (
                 Shift.objects.on_shiftdate(schedule_date)
@@ -325,9 +335,18 @@ class PlannerView(LoginRequiredMixin, JoinLeaveFormView):
     def get_context_data(self, **kwargs):
 
         context = super(PlannerView, self).get_context_data(**kwargs)
-        schedule_date = date(
-            int(self.kwargs["year"]), int(self.kwargs["month"]), int(self.kwargs["day"])
-        )
+        try:
+            schedule_date = date(
+                int(self.kwargs["year"]),
+                int(self.kwargs["month"]),
+                int(self.kwargs["day"]),
+            )
+        except ValueError:
+            raise Http404(
+                "Invalid date "
+                f"{self.kwargs['year']}/{self.kwargs['month']}/{self.kwargs['day']}"
+            )
+
         facility = get_object_or_404(Facility, slug=self.kwargs["facility_slug"])
 
         shifts = (
@@ -368,7 +387,6 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
     form_class = ShiftMessageToHelpersModelForm
 
     def form_invalid(self, form):
-
         messages.warning(self.request, _("The submitted data was invalid."))
         return super(SendMessageToShiftHelpers, self).form_invalid(form)
 
@@ -381,7 +399,7 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
             return super(SendMessageToShiftHelpers, self).form_valid(form)
 
         shift = form.cleaned_data.get("shift")
-        if not is_facility_member(user_account.user, shift.facility):
+        if not is_facility_manager(user_account.user, shift.facility):
             messages.warning(self.request, _("You have no permissions to send emails!"))
             return super(SendMessageToShiftHelpers, self).form_valid(form)
 
@@ -390,10 +408,14 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
             shift=shift,
             sender=user_account,
         )
-        for helper in shift.helpers.all():
+
+        # also send a copy of the message to shift manager
+        shift_message.recipients.add(user_account)
+        for helper in shift.helpers.exclude(user__email=""):
             if helper.user.email:
                 shift_message.recipients.add(helper)
         shift_message.save()
+
         messages.info(self.request, _("Email has been sent."))
         return super(SendMessageToShiftHelpers, self).form_valid(form)
 
