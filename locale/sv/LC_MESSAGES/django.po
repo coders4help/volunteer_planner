@@ -1,9 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
 # Christoph, 2015
+# Christoph Meißner, 2015
+# Christoph Meißner, 2015
 # Jonna Appelqvist, 2015
 # Jonna Appelqvist, 2015
 # Linnéa Deurell <linnea.deurell@gmail.com>, 2015
@@ -11,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 22:02+0200\n"
-"PO-Revision-Date: 2016-01-29 08:23+0000\n"
-"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: Linnéa Deurell <linnea.deurell@gmail.com>, 2015\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -812,7 +811,7 @@ msgid "send date"
 msgstr ""
 
 msgid "Shift"
-msgstr "pass"
+msgstr ""
 
 msgid "recipients"
 msgstr ""

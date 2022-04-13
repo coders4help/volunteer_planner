@@ -1,16 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Anna Dunn, 2022
 # Anna Dunn, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 22:02+0200\n"
-"PO-Revision-Date: 2022-03-10 13:42+0000\n"
-"Last-Translator: Anna Dunn\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: Anna Dunn, 2022\n"
 "Language-Team: Russian (http://www.transifex.com/coders4help/volunteer-planner/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -799,6 +797,8 @@ msgid "shift notification"
 msgid_plural "shift notifications"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 msgid "Message"
 msgstr ""
@@ -810,7 +810,7 @@ msgid "send date"
 msgstr ""
 
 msgid "Shift"
-msgstr "смена"
+msgstr ""
 
 msgid "recipients"
 msgstr ""

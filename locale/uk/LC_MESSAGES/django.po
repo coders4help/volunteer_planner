@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 22:02+0200\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Anna Dunn, 2022\n"
 "Language-Team: Ukrainian (http://www.transifex.com/coders4help/volunteer-planner/language/uk/)\n"
@@ -430,6 +430,9 @@ msgid ""
 "                    temporary shortcuts can be anticipated by helpers themselves more easily\n"
 "                "
 msgstr ""
+"\n"
+"волонтери ефективніше діляться на зміни, \n"
+"помічники легше передбачають тимчасові ярлики"
 
 msgid ""
 "\n"
@@ -438,6 +441,9 @@ msgid ""
 "                    every morning\n"
 "                "
 msgstr ""
+"\n"
+"Щоранку працівники служби безпеки або координаційні особи\n"
+"можуть надавати плани змінності автоматичною розсилкою"
 
 msgid ""
 "\n"
@@ -445,12 +451,15 @@ msgid ""
 "                    and all facilities will benefit from a common pool of motivated volunteers\n"
 "                "
 msgstr ""
+"\n"
+"чим більше притулків і таборів організовано разом з нами, тим більше волонтерів приєднується,\n"
+" і всі об’єкти отримають користь від спільного резерву мотивованих волонтерів"
 
 msgid "for free without costs"
-msgstr ""
+msgstr "безкоштовно"
 
 msgid "The right help at the right time at the right place"
-msgstr ""
+msgstr "Правильна допомога в потрібний час у потрібному місці"
 
 msgid ""
 "\n"
@@ -459,9 +468,13 @@ msgid ""
 "        </p>\n"
 "            "
 msgstr ""
+"\n"
+"<p>Багато людей хочуть допомогти! Але часто не так просто зрозуміти, де, коли і як можна допомогти. \n"
+"Volunteer-planner намагається вирішити цю проблему!<br>\n"
+"</p>"
 
 msgid "for free, ad free"
-msgstr ""
+msgstr "Безкоштовно, без реклами"
 
 msgid ""
 "\n"
@@ -469,9 +482,12 @@ msgid ""
 "        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
+"\n"
+"<p>Платформа була створена групою професіоналів-волонтерів у сфері розробки програмного забезпечення, управління проектами, дизайну та маркетингу. \n"
+"Код відкритий для некомерційного використання. Особисті дані (адреси електронної пошти, дані профілю тощо) не будуть передані третім особам.</p>"
 
 msgid "contact us!"
-msgstr ""
+msgstr "Зв'яжіться з нами!"
 
 msgid ""
 "\n"
@@ -479,284 +495,287 @@ msgid ""
 "                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>\n"
 "                    "
 msgstr ""
+"\n"
+"Зв'яжіться з нами і додайте свій проект змін, які ви хочете бачити на Volunteer-planner. Ви можете надіслати його на адресу <a\n"
+"                            href=\"mailto:onboarding@volunteer-planner.org\">onboarding@volunteer-planner.org</a>"
 
 msgid "edit"
-msgstr ""
+msgstr "редагувати"
 
 msgid "description"
-msgstr ""
+msgstr "опис"
 
 msgid "contact info"
-msgstr ""
+msgstr "Контактна інформація"
 
 msgid "organizations"
-msgstr ""
+msgstr "організації"
 
 msgid "by invitation"
-msgstr ""
+msgstr "за запрошенням"
 
 msgid "anyone (approved by manager)"
-msgstr ""
+msgstr "будь-хто (схвалено менеджером)"
 
 msgid "anyone"
-msgstr ""
+msgstr "будь-хто"
 
 msgid "rejected"
-msgstr ""
+msgstr "відхилено"
 
 msgid "pending"
-msgstr ""
+msgstr "в очікуванні"
 
 msgid "approved"
-msgstr ""
+msgstr "затверджено"
 
 msgid "admin"
-msgstr ""
+msgstr "адміністратор"
 
 msgid "manager"
-msgstr ""
+msgstr "менеджер"
 
 msgid "member"
-msgstr ""
+msgstr "учасник"
 
 msgid "role"
-msgstr ""
+msgstr "роль"
 
 msgid "status"
-msgstr ""
+msgstr "статус"
 
 msgid "name"
-msgstr ""
+msgstr "ім'я"
 
 msgid "address"
-msgstr ""
+msgstr "адреса"
 
 msgid "slug"
-msgstr ""
+msgstr "слаг"
 
 msgid "join mode"
-msgstr ""
+msgstr "режим приєднання"
 
 msgid "Who can join this organization?"
-msgstr ""
+msgstr "Хто може приєднатися до цієї організації?"
 
 msgid "organization"
-msgstr ""
+msgstr "організація"
 
 msgid "disabled"
-msgstr ""
+msgstr "вимкнено"
 
 msgid "enabled (collapsed)"
-msgstr ""
+msgstr "увімкнено (згорнуто)"
 
 msgid "enabled"
-msgstr ""
+msgstr "увімкнено"
 
 msgid "place"
-msgstr ""
+msgstr "місце"
 
 msgid "postal code"
-msgstr ""
+msgstr "поштовий індекс"
 
 msgid "Show on map of all facilities"
-msgstr ""
+msgstr "Показати на карті всі об'єкти"
 
 msgid "latitude"
-msgstr ""
+msgstr "широта"
 
 msgid "longitude"
-msgstr ""
+msgstr "довгота"
 
 msgid "timeline"
-msgstr ""
+msgstr "шкала часу"
 
 msgid "Who can join this facility?"
-msgstr ""
+msgstr "Хто може приєднатися до цієї установи?"
 
 msgid "facility"
-msgstr ""
+msgstr "об'єкт"
 
 msgid "facilities"
-msgstr ""
+msgstr "об'єкти"
 
 msgid "organization member"
-msgstr ""
+msgstr "учасник організації"
 
 msgid "organization members"
-msgstr ""
+msgstr "учасники організації"
 
 #, python-brace-format
 msgid "{username} at {organization_name} ({user_role})"
-msgstr ""
+msgstr "{username} в {organization_name} ({user_role})"
 
 msgid "facility member"
-msgstr ""
+msgstr "учасник об'єкта"
 
 msgid "facility members"
-msgstr ""
+msgstr "учасники об'єкта"
 
 #, python-brace-format
 msgid "{username} at {facility_name} ({user_role})"
-msgstr ""
+msgstr "{username} в {facility_name} ({user_role})"
 
 msgid "priority"
-msgstr ""
+msgstr "пріоритет"
 
 msgid "Higher value = higher priority"
-msgstr ""
+msgstr "Вища цінність = вищий пріоритет"
 
 msgid "workplace"
-msgstr ""
+msgstr "робоче місце"
 
 msgid "workplaces"
-msgstr ""
+msgstr "робочі місця"
 
 msgid "task"
-msgstr ""
+msgstr "завдання"
 
 msgid "tasks"
-msgstr ""
+msgstr "завдання"
 
 #, python-brace-format
 msgid "User '{user}' manager status of a facility/organization was changed. "
-msgstr ""
+msgstr "Статус менеджера користувачів \"{user}\" закладу/організації змінено."
 
 #, python-format
 msgid "Hello %(username)s,"
-msgstr ""
+msgstr "Вітаємо %(username)s,"
 
 #, python-format
 msgid "Your membership request at %(facility_name)s was approved. You now may sign up for restricted shifts at this facility."
-msgstr ""
+msgstr "Ваш запит на членство в %(facility_name)s схвалено. Тепер ви можете записатися на зміни в цьому об’єкті."
 
 msgid ""
 "Yours,\n"
 "the volunteer-planner.org Team"
-msgstr ""
+msgstr "Ваша команда volunteer-planner.org"
 
 msgid "Helpdesk"
-msgstr ""
+msgstr "Довідкова"
 
 msgid "Show on map"
-msgstr ""
+msgstr "Показати на карті"
 
 msgid "Open Shifts"
-msgstr ""
+msgstr "Відкриті зміни"
 
 msgid "News"
-msgstr ""
+msgstr "Новини"
 
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 msgid "You are not allowed to do this."
-msgstr ""
+msgstr "Вам заборонено це робити."
 
 #, python-format
 msgid "Members in %(facility)s"
-msgstr ""
+msgstr "Учасники %(facility)s"
 
 msgid "Role"
-msgstr ""
+msgstr "Роль"
 
 msgid "Actions"
-msgstr ""
+msgstr "Дії"
 
 msgid "Block"
-msgstr ""
+msgstr "Блокувати"
 
 msgid "Accept"
-msgstr ""
+msgstr "Прийняти"
 
 msgid "Facilities"
-msgstr ""
+msgstr "Об'єкти"
 
 msgid "Show details"
-msgstr ""
+msgstr "Показати деталі"
 
 msgid "volunteer-planner.org: Membership approved"
-msgstr ""
+msgstr "Volunteer-planner.org: Членство схвалено"
 
 #, python-brace-format
 msgctxt "maps search url pattern"
 msgid "https://www.openstreetmap.org/search?query={location}"
-msgstr ""
+msgstr "https://www.openstreetmap.org/search?query={location}"
 
 msgid "country"
-msgstr ""
+msgstr "країна"
 
 msgid "countries"
-msgstr ""
+msgstr "країни"
 
 msgid "region"
-msgstr ""
+msgstr "область"
 
 msgid "regions"
-msgstr ""
+msgstr "області "
 
 msgid "area"
-msgstr ""
+msgstr "район"
 
 msgid "areas"
-msgstr ""
+msgstr "райони"
 
 msgid "places"
-msgstr ""
+msgstr "місця"
 
 msgid "Facilities do not match."
-msgstr ""
+msgstr "Об'єкти не збігаються."
 
 #, python-brace-format
 msgid "\"{object.name}\" belongs to facility \"{object.facility.name}\", but shift takes place at \"{facility.name}\"."
-msgstr ""
+msgstr "\"{object.name}\" належить об'єкту \"{object.facility.name}\", але зміна відбувається в \"{facility.name}\"."
 
 msgid "No start time given."
-msgstr ""
+msgstr "Час початку не вказано."
 
 msgid "No end time given."
-msgstr ""
+msgstr "Час закінчення не вказано."
 
 msgid "Start time in the past."
-msgstr ""
+msgstr "Час початку в минулому."
 
 msgid "Shift ends before it starts."
-msgstr ""
+msgstr "Зміна закінчується до початку."
 
 msgid "number of volunteers"
-msgstr ""
+msgstr "кількість волонтерів"
 
 msgid "volunteers"
-msgstr ""
+msgstr "волонтери"
 
 msgid "scheduler"
-msgstr ""
+msgstr "планувальник"
 
 msgid "Write a message"
 msgstr ""
 
 msgid "slots"
-msgstr ""
+msgstr "часові інтервали"
 
 msgid "number of needed volunteers"
-msgstr ""
+msgstr "кількість необхідних волонтерів"
 
 msgid "starting time"
-msgstr ""
+msgstr "час початку"
 
 msgid "ending time"
-msgstr ""
+msgstr "час закінчення"
 
 msgid "members only"
-msgstr ""
+msgstr "тільки учасники"
 
 msgid "allow only members to help"
-msgstr ""
+msgstr "дозволити допомагати тільки учасникам"
 
 msgid "shift"
-msgstr ""
+msgstr "зміна"
 
 msgid "shifts"
-msgstr ""
+msgstr "зміни"
 
 #, python-brace-format
 msgid "the next day"
@@ -767,15 +786,17 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "shift helper"
-msgstr ""
+msgstr "помічник зміни"
 
 msgid "shift helpers"
-msgstr ""
+msgstr "помічники зміни"
 
 msgid "shift notification"
 msgid_plural "shift notifications"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 msgid "Message"
 msgstr ""
@@ -818,95 +839,95 @@ msgstr ""
 
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
-msgstr ""
+msgstr "зміни"
 
 #, python-format
 msgid "There are no upcoming shifts available for %(geographical_name)s."
-msgstr ""
+msgstr "Немає доступних змін для %(geographical_name)s."
 
 msgid "You can help in the following facilities"
-msgstr ""
+msgstr "Ви можете допомогти в наступних об'єктах"
 
 msgid "see more"
-msgstr ""
+msgstr "побачити більше"
 
 msgid "news"
-msgstr ""
+msgstr "новини"
 
 msgid "open shifts"
-msgstr ""
+msgstr "відкриті зміни"
 
 #, python-format
 msgctxt "title with facility"
 msgid "Schedule for %(facility_name)s"
-msgstr ""
+msgstr "Розклад для %(facility_name)s"
 
 #, python-format
 msgid "%(starting_time)s - %(ending_time)s"
-msgstr ""
+msgstr "%(starting_time)s - %(ending_time)s"
 
 #, python-format
 msgctxt "title with date"
 msgid "Schedule for %(schedule_date)s"
-msgstr ""
+msgstr "Розклад для %(schedule_date)s"
 
 msgid "Toggle Timeline"
-msgstr ""
+msgstr "Увімкнути шкалу часу"
 
 msgid "Link"
-msgstr ""
+msgstr "Посилання"
 
 msgid "Time"
-msgstr ""
+msgstr "Час"
 
 msgid "Helpers"
-msgstr ""
+msgstr "Помічники"
 
 msgid "Start"
-msgstr ""
+msgstr "Початок"
 
 msgid "End"
-msgstr ""
+msgstr "Кінець"
 
 msgid "Required"
-msgstr ""
+msgstr "вимагається"
 
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 msgid "Users"
-msgstr ""
+msgstr "Користувачі"
 
 msgid "Send message"
 msgstr ""
 
 msgid "You"
-msgstr ""
+msgstr "Ви"
 
 #, python-format
 msgid "%(slots_left)s more"
-msgstr ""
+msgstr "%(slots_left)s більше"
 
 msgid "Covered"
-msgstr ""
+msgstr "Охоплені"
 
 msgid "Send email to all volunteers"
 msgstr ""
 
 msgid "Drop out"
-msgstr ""
+msgstr "Вибути"
 
 msgid "Sign up"
-msgstr ""
+msgstr "Зареєструватися"
 
 msgid "Membership pending"
-msgstr ""
+msgstr "В очікуванні прийняття"
 
 msgid "Membership rejected"
-msgstr ""
+msgstr "В участі відмовлено"
 
 msgid "Become member"
-msgstr ""
+msgstr "Стати учасником"
 
 msgid "send"
 msgstr ""
@@ -930,9 +951,15 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Вітаємо, вибачте, але нам довелося скасувати таку зміну на вимогу організатора:\n"
+" %(shift_title)s, %(location)s%(from_date)s з %(from_time)s на %(to_time)s o ' годинник. \n"
+"Це автоматично згенерований електронний лист. Якщо у вас виникли запитання, зв’яжіться безпосередньо з закладом.\n"
+" Ваша команда volunteer-planner.org\n"
+"\n"
 
 msgid "Members only"
-msgstr ""
+msgstr "Тільки учасники"
 
 #, python-format
 msgid ""
@@ -956,34 +983,45 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Вітаємо, вибачте, але нам довелося змінити час наступної зміни на вимогу організатора: \n"
+"%(shift_title)s, %(location)s%(old_from_date)s з %(old_from_time)s на %(old_to_time)s. \n"
+"\n"
+"Новий час зміни: %(from_date)s з %(from_time)s до %(to_time)s години. \n"
+"\n"
+"Якщо ви більше не можете допомогти в новий час, будь ласка, скасуйте свою участь на volunteer-planner.org. \n"
+"\n"
+"Це автоматично згенерований електронний лист. Якщо у вас виникли запитання, зв’яжіться безпосередньо з закладом.\n"
+"\n"
+" Ваша команда volunteer-planner.org\n"
 
 msgid "The submitted data was invalid."
-msgstr ""
+msgstr "Надані дані були недійсними."
 
 msgid "User account does not exist."
-msgstr ""
+msgstr "Обліковий запис користувача не існує."
 
 msgid "A membership request has been sent."
-msgstr ""
+msgstr "Запит на членство надіслано."
 
 msgid "We can't add you to this shift because you've already agreed to other shifts at the same time:"
-msgstr ""
+msgstr "Ми не можемо додати вас до цієї зміни, оскільки ви вже погодилися на інші зміни одночасно:"
 
 msgid "We can't add you to this shift because there are no more slots left."
-msgstr ""
+msgstr "Ми не можемо додати вас до цієї зміни, оскільки більше не залишилося місць."
 
 msgid "You were successfully added to this shift."
-msgstr ""
+msgstr "Вас успішно додали до цієї зміни."
 
 msgid "The shift you joined overlaps with other shifts you already joined. Please check for conflicts:"
-msgstr ""
+msgstr "Зміна, до якої ви приєдналися, накладається на інші зміни, до яких ви вже приєдналися. Перевірте на наявність конфліктів:"
 
 #, python-brace-format
 msgid "You already signed up for this shift at {date_time}."
-msgstr ""
+msgstr "Ви вже зареєструвалися на цю зміну о {date_time}"
 
 msgid "You successfully left this shift."
-msgstr ""
+msgstr "Ви успішно залишили цю зміну."
 
 msgid "You have no permissions to send emails!"
 msgstr ""
@@ -1008,142 +1046,142 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "Something didn't work. Sorry about that."
-msgstr ""
+msgstr "Щось не спрацювало. Вибачте за це."
 
 msgid "from"
-msgstr ""
+msgstr "з"
 
 msgid "to"
-msgstr ""
+msgstr "до"
 
 msgid "schedule templates"
-msgstr ""
+msgstr "шаблони розкладів"
 
 msgid "schedule template"
-msgstr ""
+msgstr "шаблон розкладу"
 
 msgid "days"
-msgstr ""
+msgstr "дні"
 
 msgid "shift templates"
-msgstr ""
+msgstr "шаблони змін"
 
 msgid "shift template"
-msgstr ""
+msgstr "шаблон зміни"
 
 #, python-brace-format
 msgid "{task_name} - {workplace_name}"
 msgstr ""
 
 msgid "Home"
-msgstr ""
+msgstr "Головна"
 
 msgid "Apply Template"
-msgstr ""
+msgstr "Застосувати шаблон"
 
 msgid "no workplace"
-msgstr ""
+msgstr "немає робочого місця"
 
 msgid "apply"
-msgstr ""
+msgstr "застосовувати"
 
 msgid "Select a date"
-msgstr ""
+msgstr "Виберіть дату"
 
 msgid "Continue"
-msgstr ""
+msgstr "Продовжити"
 
 msgid "Select shift templates"
-msgstr ""
+msgstr "Виберіть шаблони змін"
 
 msgid "Please review and confirm shifts to create"
-msgstr ""
+msgstr "Перегляньте та підтвердьте зміни"
 
 msgid "Apply"
-msgstr ""
+msgstr "Застосувати"
 
 msgid "Apply and select new date"
-msgstr ""
+msgstr "Подати заявку та вибрати нову дату"
 
 msgid "Save and apply template"
-msgstr ""
+msgstr "Зберегти та застосувати шаблон"
 
 msgid "Delete"
-msgstr ""
+msgstr "Видалити"
 
 msgid "Save as new"
-msgstr ""
+msgstr "Зберегти як новий"
 
 msgid "Save and add another"
-msgstr ""
+msgstr "Збережіть і додайте інше"
 
 msgid "Save and continue editing"
-msgstr ""
+msgstr "Збережіть і продовжте редагування"
 
 msgid "Delete?"
-msgstr ""
+msgstr "Видалити?"
 
 msgid "Change"
-msgstr ""
+msgstr "Змінити"
 
 #, python-format
 msgid "Questions? Get in touch: %(mailto_link)s"
-msgstr ""
+msgstr "Питання? Зв’яжіться: %(mailto_link)s"
 
 msgid "Manage"
-msgstr ""
+msgstr "Керувати"
 
 msgid "Members"
-msgstr ""
+msgstr "Учасники"
 
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Переключити навігацію"
 
 msgid "Account"
-msgstr ""
+msgstr "Обліковий запис"
 
 msgid "My work shifts"
-msgstr ""
+msgstr "Мої робочі зміни"
 
 msgid "Help"
-msgstr ""
+msgstr "Допомога"
 
 msgid "Logout"
-msgstr ""
+msgstr "Вийти"
 
 msgid "Admin"
-msgstr ""
+msgstr "Адміністратор"
 
 msgid "Regions"
-msgstr ""
+msgstr "регіони"
 
 msgid "Activation complete"
-msgstr ""
+msgstr "Активація завершена"
 
 msgid "Activation problem"
-msgstr ""
+msgstr "Проблема з активацією"
 
 msgctxt "login link title in registration confirmation success text 'You may now %(login_link)s'"
 msgid "login"
-msgstr ""
+msgstr "увійти"
 
 #, python-format
 msgid "Thanks %(account)s, activation complete! You may now %(login_link)s using the username and password you set at registration."
-msgstr ""
+msgstr "Дякую, %(account)s, активація завершена! Тепер ви можете %(login_link)s використовувати ім’я користувача та пароль, які ви встановили під час реєстрації."
 
 msgid "Oops &ndash; Either you activated your account already, or the activation key is invalid or has expired."
-msgstr ""
+msgstr "Вибачте! Або ви вже активували свій обліковий запис, або ключ активації недійсний або його термін дії закінчився."
 
 msgid "Activation successful!"
-msgstr ""
+msgstr "Активація успішна!"
 
 msgctxt "Activation successful page"
 msgid "Thank you for signing up."
-msgstr ""
+msgstr "Дякуємо за реєстрацію."
 
 msgctxt "Login link text on activation success page"
 msgid "You can login here."
-msgstr ""
+msgstr "Ви можете увійти тут."
 
 #, python-format
 msgid ""
@@ -1162,6 +1200,14 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Вітаємо, %(user)s, дуже дякую, що ви хочете допомогти! Ще один крок, і ви будете готові розпочати волонтерську діяльність! \n"
+"\n"
+"Будь ласка, натисніть це посилання, щоб завершити реєстрацію на volunteer-planner.org: <a href =\"http://%(site_domain)s%(activation_key_url)s\">http://%(site_domain)s%(activation_key_url)s</a>\n"
+"\n"
+" Термін дії цього посилання закінчиться через %(expiration_days)s днів. \n"
+"\n"
+"Ваша команда volunteer-planner.org\n"
 
 #, python-format
 msgid ""
@@ -1180,74 +1226,84 @@ msgid ""
 "\n"
 "the volunteer-planner.org team\n"
 msgstr ""
+"\n"
+"Вітаємо, %(user)s, \n"
+"\n"
+"дуже дякую, що ви хочете допомогти! Ще один крок, і ви будете готові розпочати волонтерську діяльність! \n"
+"\n"
+"Будь ласка, натисніть це посилання, щоб завершити реєстрацію на volunteer-planner.org: http://%(site_domain)s%(activation_key_url)s\n"
+"\n"
+" Термін дії цього посилання закінчиться через %(expiration_days)s днів. \n"
+"\n"
+"Ваша команда volunteer-planner.org\n"
 
 msgid "Your volunteer-planner.org registration"
-msgstr ""
+msgstr "Ваша реєстрація на volunteer-planner.org"
 
 msgid "admin approval"
-msgstr ""
+msgstr "схвалення адміністратора"
 
 #, python-format
 msgid "Your account is now approved. You can <a href=\"https://%(site.domain)s%(login_url)s\">login now</a>."
-msgstr ""
+msgstr "Ваш обліковий запис схвалено. Ви можете <a href=\"https://%(site.domain)s%(login_url)s\">увійти зараз</a>."
 
 msgid "Your account is now approved. You can log in using the following link"
-msgstr ""
+msgstr "Ваш обліковий запис схвалено. Ви можете увійти, використовуючи наступне посилання"
 
 msgid "Email address"
-msgstr ""
+msgstr "Адреса електронної пошти"
 
 #, python-format
 msgid "%(email_trans)s / %(username_trans)s"
-msgstr ""
+msgstr "%(email_trans)s / %(username_trans)s"
 
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Забули свій пароль?"
 
 msgid "Help and sign-up"
-msgstr ""
+msgstr "Допомога та реєстрація"
 
 msgid "Password changed"
-msgstr ""
+msgstr "Пароль змінено"
 
 msgid "Password successfully changed!"
-msgstr ""
+msgstr "Пароль успішно змінено!"
 
 msgid "Change Password"
-msgstr ""
+msgstr "Змінити пароль"
 
 msgid "Change password"
-msgstr ""
+msgstr "Змінити пароль"
 
 msgid "Password reset complete"
-msgstr ""
+msgstr "Відновлення пароля завершено"
 
 msgctxt "login link title reset password complete page"
 msgid "log in"
-msgstr ""
+msgstr "увійти"
 
 #, python-format
 msgctxt "reset password complete page"
 msgid "Your password has been reset! You may now %(login_link)s again."
-msgstr ""
+msgstr "Ваш пароль скинуто! Ви можете спробувати увійти зараз %(login_link)s ще раз."
 
 msgid "Enter new password"
-msgstr ""
+msgstr "Введіть новий пароль"
 
 msgid "Enter your new password below to reset your password"
-msgstr ""
+msgstr "Введіть свій новий пароль нижче, щоб скинути пароль"
 
 msgid "Password reset"
-msgstr ""
+msgstr "Відновлення пароля"
 
 msgid "We sent you an email with a link to reset your password."
-msgstr ""
+msgstr "Ми надіслали вам електронного листа з посиланням для відновлення пароля."
 
 msgid "Please check your email and click the link to continue."
-msgstr ""
+msgstr "Перевірте свою електронну пошту та натисніть посилання, щоб продовжити."
 
 #, python-format
 msgid ""
@@ -1258,6 +1314,11 @@ msgid ""
 "To reset your password, please click the following link, or copy and paste it\n"
 "into your web browser:"
 msgstr ""
+"Ви отримали цей електронний лист, оскільки ви (або хтось, що видає себе за вас) \n"
+"попросили скинути ваш пароль на сайті %(domain)s \n"
+"Якщо ви не бажаєте скидати свій пароль, проігноруйте це повідомлення. \n"
+"\n"
+"Щоб скинути пароль, натисніть наведене нижче посилання або скопіюйте та вставте його у свій веб-браузер:"
 
 #, python-format
 msgid ""
@@ -1267,81 +1328,85 @@ msgid ""
 "Best regards,\n"
 "%(site_name)s Management\n"
 msgstr ""
+"\n"
+"Ваше ім’я користувача, якщо ви забули: %(username)s. \n"
+"\n"
+"З повагою, керівництво %(site_name)s\n"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Скинути пароль"
 
 msgid "No Problem! We'll send you instructions on how to reset your password."
-msgstr ""
+msgstr "Без проблем! Ми надішлемо вам інструкції щодо відновлення пароля."
 
 msgid "Activation email sent"
-msgstr ""
+msgstr "Електронний лист для активації надіслано"
 
 msgid "An activation mail will be sent to you email address."
-msgstr ""
+msgstr "На вашу адресу електронної пошти буде надіслано лист з активацією."
 
 msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
-msgstr ""
+msgstr "Будь ласка, підтвердьте реєстрацію за посиланням в електронному листі. Якщо ви не отримали його протягом 10 хвилин, перевірте папку зі спамом."
 
 msgid "Register for an account"
-msgstr ""
+msgstr "Зареєструвати обліковий запис"
 
 msgid "You can create a new user account here. If you already have a user account click on LOGIN in the upper right corner."
-msgstr ""
+msgstr "Ви можете створити новий обліковий запис користувача тут. Якщо у вас вже є обліковий запис користувача, натисніть «Увійти» у верхньому правому куті."
 
 msgid "Create a new account"
-msgstr ""
+msgstr "Створити новий обліковий запис"
 
 msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr ""
+msgstr "Volunteer-Planner і притулки надсилатимуть вам електронні листи щодо ваших змін."
 
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
-msgstr ""
+msgstr "Ваше ім’я користувача буде видно іншим користувачам. Не використовуйте пробіли або спеціальні символи."
 
 msgid "Repeat password"
-msgstr ""
+msgstr "Повторіть пароль"
 
 msgid "I have read and agree to the <a href=\"/impressum/#datenschutz\">Privacy Policy</a>."
-msgstr ""
+msgstr "Я прочитав і погоджуюся з <a href=\"/impressum/#datenschutz\">Політикою конфіденційності</a>."
 
 msgid "This must be checked."
-msgstr ""
+msgstr "Це треба перевірити."
 
 msgid "Sign-up"
-msgstr ""
+msgstr "Реєстрація"
 
 msgid "Ukrainian"
-msgstr ""
+msgstr "українська"
 
 msgid "English"
-msgstr ""
+msgstr "англійська"
 
 msgid "German"
-msgstr ""
+msgstr "німецька"
 
 msgid "Czech"
-msgstr ""
+msgstr "чеська"
 
 msgid "Greek"
-msgstr ""
+msgstr "грецька"
 
 msgid "French"
-msgstr ""
+msgstr "французька"
 
 msgid "Hungarian"
-msgstr ""
+msgstr "угорська"
 
 msgid "Polish"
-msgstr ""
+msgstr "польська"
 
 msgid "Portuguese"
-msgstr ""
+msgstr "португальська"
 
 msgid "Russian"
-msgstr ""
+msgstr "російська"
 
 msgid "Swedish"
-msgstr ""
+msgstr "шведська"
 
 msgid "Turkish"
-msgstr ""
+msgstr "турецька"

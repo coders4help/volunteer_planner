@@ -1,22 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
 # Christoph, 2015
-# Christoph, 2015
-# Christoph, 2015
+# Christoph Meißner, 2015
+# Christoph Meißner, 2015
+# Christoph Meißner, 2015
 # Julia Biro <juliabiro@gmail.com>, 2015
 # Nagy László, 2015
 # Nagy László, 2015
-# Péter Gerner <pgerner@gmail.com>, 2015
+# Péter Gerner, 2015
+# Péter Gerner, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 22:02+0200\n"
-"PO-Revision-Date: 2016-01-29 08:23+0000\n"
-"Last-Translator: Dorian Cantzen <cantzen@googlemail.com>\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: Péter Gerner, 2015\n"
 "Language-Team: Hungarian (http://www.transifex.com/coders4help/volunteer-planner/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -794,7 +793,7 @@ msgid "send date"
 msgstr ""
 
 msgid "Shift"
-msgstr "műszak"
+msgstr ""
 
 msgid "recipients"
 msgstr ""

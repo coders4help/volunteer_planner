@@ -1,6 +1,9 @@
 #
 # Translators:
 # Caroline Elis <caroline@adazylla.de>, 2015
+# Christoph Meißner, 2015
+# Christoph Meißner, 2015
+# Dolfeus <dolfeus@sfr.fr>, 2016
 # Dolfeus <dolfeus@sfr.fr>, 2016
 # helene bernard <helene.bernard35@gmail.com>, 2016
 # johannes lacher <johannes@lacher.cc>, 2015
@@ -10,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 22:02+0200\n"
-"PO-Revision-Date: 2016-12-08 20:50+0000\n"
-"Last-Translator: Dolfeus <dolfeus@sfr.fr>\n"
+"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"PO-Revision-Date: 2015-09-24 12:23+0000\n"
+"Last-Translator: Maxi Krause <maxi.krause@wanadoo.fr>, 2017\n"
 "Language-Team: French (http://www.transifex.com/coders4help/volunteer-planner/language/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -805,7 +808,7 @@ msgid "send date"
 msgstr ""
 
 msgid "Shift"
-msgstr "Créneau"
+msgstr ""
 
 msgid "recipients"
 msgstr ""
