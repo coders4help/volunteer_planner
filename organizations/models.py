@@ -2,7 +2,7 @@
 from django.db import models
 from django.db.models import F
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from accounts.models import UserAccount
 from .managers import FacilityManager
@@ -376,3 +376,43 @@ class Task(models.Model):
 
     def __str__(self):
         return self.__unicode__()
+
+
+class TaskAttribute(models.Model):
+    class ValueTypeChoice(models.IntegerChoices):
+        BOOL = 1, _("checkbox")
+        TEXT = 2, _("text")
+
+    task = models.ForeignKey(
+        "Task",
+        on_delete=models.CASCADE,
+        verbose_name=_("task attribute"),
+        related_name="attributes",
+    )
+    name = models.CharField(
+        verbose_name=_("attribute name"),
+        max_length=32,
+        blank=False,
+        null=False,
+    )
+    short_description = models.CharField(
+        verbose_name=_("short description"),
+        max_length=64,
+        blank=True,
+    )
+    value_type = models.PositiveSmallIntegerField(
+        verbose_name=_("value type"),
+        choices=ValueTypeChoice.choices,
+        default=ValueTypeChoice.TEXT,
+    )
+    is_required = models.BooleanField(
+        verbose_name=_("is required"),
+        default=False,
+    )
+
+    class Meta:
+        verbose_name = ngettext_lazy("task attribute", "task attributes", 1)
+        verbose_name_plural = ngettext_lazy("task attribute", "task attributes", 2)
+
+    def __str__(self):
+        return _('task attribute "{name}"').format(name=self.name)

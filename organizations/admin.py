@@ -6,9 +6,10 @@ from operator import itemgetter
 from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.db.models import Count, Q
+from django.forms import BaseInlineFormSet
 from django.template.defaultfilters import striptags
 from django.utils.encoding import smart_str as smart_text
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from organizations.models import Membership
 from scheduler import models as shiftmodels
@@ -359,8 +360,49 @@ class WorkplaceAdmin(MembershipFilteredAdmin):
     }
 
 
+class TaskViewAttributeInline(admin.TabularInline):
+    model = models.TaskAttribute
+    extra = 0
+    template = "admin/edit_inline/attribute_tabular.html"
+
+    fields = (
+        "name",
+        "short_description",
+        "value_type",
+        "is_required",
+    )
+    readonly_fields = (
+        "name",
+        "value_type",
+    )
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    # def has_change_permission(self, request, obj=None):
+    #     return False
+
+
+class TaskAddAttributeInline(admin.TabularInline):
+    model = models.TaskAttribute
+    extra = 0
+
+    verbose_name = _("add task attribute")
+    verbose_name_plural = _("add task attributes")
+
+    def get_max_num(self, request, obj=None, **kwargs):
+        return 5 - super().get_queryset(request).count()
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        return queryset.none()
+
+
 @admin.register(models.Task)
 class TaskAdmin(MembershipFilteredAdmin):
+
+    inlines = [TaskViewAttributeInline, TaskAddAttributeInline]
+
     def get_description(self, obj):
         return striptags(obj.description)
 
