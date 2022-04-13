@@ -1,4 +1,4 @@
-import logging
+import brace_format_logging
 import os
 import uuid
 
@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.core.mail.backends.base import BaseEmailBackend
 
-logger = logging.getLogger(__name__)
+logger = brace_format_logging.getLogger(__name__)
 
 
 class FileEmailBackend(BaseEmailBackend):
@@ -44,4 +44,4 @@ class FileEmailBackend(BaseEmailBackend):
             path = os.path.join(self.file_path, f"{msgid}.eml")
             with open(path, "w") as f:
                 f.write(message.as_string())
-                logger.info(f"Saved email at {path}")
+                logger.info("Saved email at {path}", path=path)

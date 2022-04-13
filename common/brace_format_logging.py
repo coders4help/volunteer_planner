@@ -50,21 +50,16 @@ class BraceFormatLoggerAdapter(logging.LoggerAdapter):
             )
 
 
-def getBraceFormatLogger(name=None, extra=None):
-    return BraceFormatLoggerAdapter(getLogger(name=name), extra=extra)
-
-
-def getLogger(name=None):
-    return logging.getLogger(name=name)
+def getLogger(name=None, extra=None):
+    return BraceFormatLoggerAdapter(logging.getLogger(name=name), extra=extra)
 
 
 if __name__ == "__main__":
-    logger = getBraceFormatLogger(__name__, {"logger-extra": "something"})
+    logger = getLogger(__name__, {"logger-extra": "something"})
     logger.error(
         "something {} {extra[extra_key]} {kwargs_key} {extra_key}",
         "postional",
         kwargs_key=123,
         extra={"extra_key": "keyword"},
         stack_info=True,
-        exc_info=None,
     )

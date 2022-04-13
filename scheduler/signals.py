@@ -1,5 +1,5 @@
 # coding=utf-8
-import logging
+from common import brace_format_logging
 
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -13,7 +13,7 @@ from django.utils.translation import gettext_lazy as _
 
 from scheduler.models import Shift, ShiftMessageToHelpers
 
-logger = logging.getLogger(__name__)
+logger = brace_format_logging.getLogger(__name__)
 
 
 @receiver(pre_delete, sender=Shift)
@@ -55,7 +55,10 @@ def send_email_notifications(sender, instance, **kwargs):
                 )
                 mail.send()
     except Exception:
-        logger.exception("Error sending notification email (Shift: %s)" % instance)
+        logger.exception(
+            "Error sending notification email (Shift: {shift})",
+            shift=instance,
+        )
 
 
 def times_changed(shift, old_shift, grace=timedelta(minutes=5)):
@@ -102,8 +105,8 @@ def notify_users_shift_change(sender, instance, **kwargs):
                     bcc=addresses,
                 )
                 logger.info(
-                    "Shift %s at %s changed: (%s-%s -> %s->%s). Sending email "
-                    "notification to %d affected user(s).",
+                    "Shift {} at {} changed: ({}-{} -> {}->{}). Sending email "
+                    "notification to {} affected user(s).",
                     shift.task.name,
                     shift.facility.name,
                     old_shift.starting_time,
@@ -145,6 +148,6 @@ def send_shift_message_to_helpers(sender, instance, created, **kwargs):
                         )
                         mail.send()
                 except Exception as e:
-                    logger.error(
-                        "send_shift_message_to_helpers: message not successful", e
+                    logger.exception(
+                        "send_shift_message_to_helpers: message not successful",
                     )
