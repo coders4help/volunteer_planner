@@ -12,10 +12,10 @@ class EmailAsUsernameModelBackend(ModelBackend):
                 user = UserModel._default_manager.get(email__iexact=username)
                 return super().authenticate(request, user.username, password, **kwargs)
             except UserModel.DoesNotExist:
-                logger.debug('No user with email address "%s"', username)
+                logger.debug('No user with e-mail address "%s"', username)
             except UserModel.MultipleObjectsReturned:
                 logger.warning(
-                    'Found %s users with email address "%s"',
+                    'Found %s users with e-mail address "%s"',
                     UserModel._default_manager.filter(email=username).count(),
                     username,
                 )

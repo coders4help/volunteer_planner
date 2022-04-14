@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"POT-Creation-Date: 2022-04-14 12:36+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Antonio Mireles <antonio@mirelesindependent.com>, 2016\n"
 "Language-Team: Spanish (http://www.transifex.com/coders4help/volunteer-planner/language/es/)\n"
@@ -24,8 +24,8 @@ msgstr "nombre"
 msgid "last name"
 msgstr "Apellido"
 
-msgid "email"
-msgstr "correo electrónico"
+msgid "e-mail address"
+msgstr "Correo electrónico"
 
 msgid "date joined"
 msgstr ""
@@ -48,7 +48,13 @@ msgstr ""
 msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr ""
 
+msgid "repeat e-mail address"
+msgstr "Correo electrónico"
+
 msgid "Accept privacy policy"
+msgstr ""
+
+msgid "The two e-mail addresses didn’t match."
 msgstr ""
 
 msgid "user account"
@@ -96,7 +102,7 @@ msgstr "No hay turnos de trabajo pasados aun."
 msgid "Show my work shifts in the future"
 msgstr "Mostrar mis turnos de trabajo futuros"
 
-msgid "Username"
+msgid "username"
 msgstr "Nombre de usuario"
 
 msgid "First name"
@@ -104,9 +110,6 @@ msgstr "Nombre"
 
 msgid "Last name"
 msgstr "Apellido"
-
-msgid "Email"
-msgstr "Correo electrónico"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "Si eliminas tu cuenta, esta informacion sera anonimizada, y ya no va a ser posible que vuelvas a accesar Volunteer-Planner."
@@ -482,8 +485,8 @@ msgstr "gratis, sin anuncios"
 
 msgid ""
 "\n"
-"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
-"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"        <p>  The platform was built by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (e-mail addresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
 "\n"
@@ -910,7 +913,7 @@ msgstr "%(slots_left)s más"
 msgid "Covered"
 msgstr "Cubierto"
 
-msgid "Send email to all volunteers"
+msgid "Send e-mail to all volunteers"
 msgstr ""
 
 msgid "Drop out"
@@ -1005,10 +1008,10 @@ msgstr "Usted ya se ha inscrito para el turno del {date_time} "
 msgid "You successfully left this shift."
 msgstr "Usted abandonó exitosamente este turno."
 
-msgid "You have no permissions to send emails!"
+msgid "You have no permissions to send e-mails!"
 msgstr ""
 
-msgid "Email has been sent."
+msgid "E-mail has been sent."
 msgstr ""
 
 #, python-brace-format
@@ -1239,13 +1242,6 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Email address"
-msgstr "Correo electrónico"
-
-#, python-format
-msgid "%(email_trans)s / %(username_trans)s"
-msgstr ""
-
 msgid "Password"
 msgstr "Contraseña"
 
@@ -1262,9 +1258,6 @@ msgid "Password successfully changed!"
 msgstr "¡La contraseña fue cambiada exitosamente!"
 
 msgid "Change Password"
-msgstr "Cambiar la contraseña"
-
-msgid "Change password"
 msgstr "Cambiar la contraseña"
 
 msgid "Password reset complete"
@@ -1288,15 +1281,15 @@ msgstr "Introduzca su nueva contraseña abajo para restablecer su contraseña"
 msgid "Password reset"
 msgstr "Restablecer la contraseña"
 
-msgid "We sent you an email with a link to reset your password."
+msgid "We sent you an e-mail with a link to reset your password."
 msgstr "Le enviamos un correo electrónico con un enlace para restablecer su contraseña."
 
-msgid "Please check your email and click the link to continue."
+msgid "Please check your e-mails and click the link to continue."
 msgstr "Por favor revise su buzón de correo electrónico y haga clic en el enlace para continuar."
 
 #, python-format
 msgid ""
-"You are receiving this email because you (or someone pretending to be you)\n"
+"You are receiving this e-mail because you (or someone pretending to be you)\n"
 "requested that your password be reset on the %(domain)s site.  If you do not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
@@ -1330,13 +1323,13 @@ msgstr "Restablecer la contraseña"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "¡No hay problema! Le enviaremos algunas instrucciones sobre cómo restablecer su contraseña."
 
-msgid "Activation email sent"
+msgid "Activation e-mail sent"
 msgstr "El correo electrónico de activación fue enviado"
 
-msgid "An activation mail will be sent to you email address."
+msgid "An activation e-mail will be sent to your e-mail address."
 msgstr "Un correo electrónico de activación será enviado a su dirección de correo electrónico. "
 
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the e-mail. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Por favor confirme que se haya inscrito siguiendo el enlace en el correo electrónico. Si no lo ha recibido en 10 minutos, búsquelo en la carpeta del correo basura."
 
 msgid "Register for an account"
@@ -1348,11 +1341,14 @@ msgstr "Puedes crear una nueva cuenta de usuario aqui. Si ya tienes una cuenta d
 msgid "Create a new account"
 msgstr "Crear una nueva cuenta"
 
-msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr "Volunteer-Planner y albergues te mandaran correos electronicos acerca de tus turnos de trabajo."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Tu nombre de usuario va a ser visible a otros usuarios. No uses espacios o caracteres especiales."
+
+msgid "Volunteer Planner and event organizers might send you e-mails concerning your volunteer work."
+msgstr "Volunteer-Planner y albergues te mandaran correos electronicos acerca de tus turnos de trabajo."
+
+msgid "Please repeat your e-mail address."
+msgstr ""
 
 msgid "Repeat password"
 msgstr "Repita la contraseña"

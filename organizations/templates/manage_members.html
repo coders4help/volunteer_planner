@@ -61,10 +61,12 @@
                     <thead>
                     <tr>
                         <th>
-                            {% translate "Username" %}
+                            {% translate "username" as username_label %}
+                            {{ username_label|title }}
                         </th>
                         <th>
-                            {% translate "Email" %}
+                            {% translate "e-mail address" as email_address_label %}
+                            {{ email_address_label|title }}
                         </th>
                         <th>
                             {% translate "Role" %}

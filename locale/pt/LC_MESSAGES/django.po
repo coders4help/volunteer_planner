@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"POT-Creation-Date: 2022-04-14 12:36+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Ricardo Leonardo, 2016\n"
 "Language-Team: Portuguese (http://www.transifex.com/coders4help/volunteer-planner/language/pt/)\n"
@@ -25,8 +25,8 @@ msgstr "nome"
 msgid "last name"
 msgstr "Sobrenome"
 
-msgid "email"
-msgstr "e-mail"
+msgid "e-mail address"
+msgstr "Endereço de correio eletrónico"
 
 msgid "date joined"
 msgstr ""
@@ -49,7 +49,13 @@ msgstr ""
 msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr ""
 
+msgid "repeat e-mail address"
+msgstr "Endereço de correio eletrónico"
+
 msgid "Accept privacy policy"
+msgstr ""
+
+msgid "The two e-mail addresses didn’t match."
 msgstr ""
 
 msgid "user account"
@@ -97,7 +103,7 @@ msgstr ""
 msgid "Show my work shifts in the future"
 msgstr ""
 
-msgid "Username"
+msgid "username"
 msgstr "Nome de utilizador"
 
 msgid "First name"
@@ -105,9 +111,6 @@ msgstr "Nome"
 
 msgid "Last name"
 msgstr "Sobrenome"
-
-msgid "Email"
-msgstr "E-mail"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr ""
@@ -469,8 +472,8 @@ msgstr "gratuitamente, livre de publicidade"
 
 msgid ""
 "\n"
-"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
-"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"        <p>  The platform was built by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (e-mail addresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
 
@@ -892,7 +895,7 @@ msgstr "%(slots_left)s mais"
 msgid "Covered"
 msgstr ""
 
-msgid "Send email to all volunteers"
+msgid "Send e-mail to all volunteers"
 msgstr ""
 
 msgid "Drop out"
@@ -987,10 +990,10 @@ msgstr ""
 msgid "You successfully left this shift."
 msgstr ""
 
-msgid "You have no permissions to send emails!"
+msgid "You have no permissions to send e-mails!"
 msgstr ""
 
-msgid "Email has been sent."
+msgid "E-mail has been sent."
 msgstr ""
 
 #, python-brace-format
@@ -1192,13 +1195,6 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Email address"
-msgstr "Endereço de correio eletrónico"
-
-#, python-format
-msgid "%(email_trans)s / %(username_trans)s"
-msgstr ""
-
 msgid "Password"
 msgstr "Senha"
 
@@ -1216,9 +1212,6 @@ msgstr "Senha alterada com sucesso!"
 
 msgid "Change Password"
 msgstr "Alterar Senha"
-
-msgid "Change password"
-msgstr "Alterar senha"
 
 msgid "Password reset complete"
 msgstr "Reposição de senha concluída"
@@ -1241,15 +1234,15 @@ msgstr ""
 msgid "Password reset"
 msgstr "Repor senha"
 
-msgid "We sent you an email with a link to reset your password."
+msgid "We sent you an e-mail with a link to reset your password."
 msgstr ""
 
-msgid "Please check your email and click the link to continue."
+msgid "Please check your e-mails and click the link to continue."
 msgstr ""
 
 #, python-format
 msgid ""
-"You are receiving this email because you (or someone pretending to be you)\n"
+"You are receiving this e-mail because you (or someone pretending to be you)\n"
 "requested that your password be reset on the %(domain)s site.  If you do not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
@@ -1272,13 +1265,13 @@ msgstr "Repor senha"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Não tem problema! Nós iremos enviar-lhe as instruções sobre como repor a sua senha."
 
-msgid "Activation email sent"
+msgid "Activation e-mail sent"
 msgstr "Mensagem de ativação enviada"
 
-msgid "An activation mail will be sent to you email address."
+msgid "An activation e-mail will be sent to your e-mail address."
 msgstr ""
 
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the e-mail. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr ""
 
 msgid "Register for an account"
@@ -1290,10 +1283,13 @@ msgstr ""
 msgid "Create a new account"
 msgstr ""
 
-msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
+msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
 
-msgid "Your username will be visible to other users. Don't use spaces or special characters."
+msgid "Volunteer Planner and event organizers might send you e-mails concerning your volunteer work."
+msgstr ""
+
+msgid "Please repeat your e-mail address."
 msgstr ""
 
 msgid "Repeat password"

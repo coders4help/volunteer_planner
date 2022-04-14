@@ -9,7 +9,7 @@ from django.core.mail import DNS_NAME
 EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "post_office.EmailBackend")
 
 
-# Default email address to use for various automated correspondence from the site
+# Default e-mail address to use for various automated correspondence from the site
 # manager(s). This doesn’t include error messages sent to ADMINS and MANAGERS; for that,
 # see SERVER_EMAIL.
 # Default: 'webmaster@localhost'
@@ -19,7 +19,7 @@ if "FROM_EMAIL" in os.environ or "DJANGO_FROM_EMAIL" in os.environ:
     )
 
 
-# The email address that error messages come from, such as those sent to ADMINS and
+# The e-mail address that error messages come from, such as those sent to ADMINS and
 # MANAGERS.
 # Default: 'root@localhost'
 if "SERVER_EMAIL" in os.environ or "DJANGO_SERVER_EMAIL" in os.environ:

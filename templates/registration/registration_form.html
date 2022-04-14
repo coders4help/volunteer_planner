@@ -14,33 +14,53 @@
     {{ form.non_field_errors }}
 
     <form method='post' action=''>{% csrf_token %}
+
+            <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+            <label {% if form.username.errors %}style="color:red"{% endif %} for="username">
+                {% for error in form.username.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% translate "username" as placeholder %}
+            <input class="form-control"
+                   id="username"
+                   placeholder="{{ placeholder|title }}"
+                   name="username"
+                   value="{{ form.cleaned_data.username|default:form.username.value|default:"" }}">
+            <p class="help-block">
+                {% translate "Your username will be visible to other users. Don't use spaces or special characters." %}
+            </p>
+        </div>
+
         <div class="form-group {% if form.email.errors %}has-error{% endif %}">
                 {% for error in form.email.errors %}
                     <div class="alert alert-danger" role="alert">
                         <strong>{{ error|escape }}</strong>
                     </div>
                 {% endfor %}
+            {% translate "e-mail address" as placeholder %}
             <input type="email"
                    class="form-control"
-                   placeholder="{% translate "Email" %}"
+                   placeholder="{{ placeholder|title }}"
                    name="email"
                    value="{{ form.cleaned_data.email|default:form.email.value|default:"" }}">
-             <p class="help-block">{% translate "Volunteer-Planner and shelters will send you emails concerning your shifts." %}</p>
+             <p class="help-block">{% translate "Volunteer Planner and event organizers might send you e-mails concerning your volunteer work." %}</p>
         </div>
 
-        <div class="form-group {% if form.username.errors %}has-error{% endif %}">
-            <label {% if form.username.errors %}style="color:red"{% endif %} for="Username">
-                {% for error in form.username.errors %}
-                    <div class="alert alert-danger">
+        <div class="form-group {% if form.email2.errors %}has-error{% endif %}">
+                {% for error in form.email2.errors %}
+                    <div class="alert alert-danger" role="alert">
                         <strong>{{ error|escape }}</strong>
                     </div>
                 {% endfor %}
-            <input class="form-control"
-                   id="Username"
-                   placeholder="{% translate "Username" %}"
-                   name="username"
-                   value="{{ form.cleaned_data.username|default:form.username.value|default:"" }}">
-            <p class="help-block">{% translate "Your username will be visible to other users. Don't use spaces or special characters." %}</p>
+            {% translate "repeat e-mail address" as placeholder %}
+            <input type="email"
+                   class="form-control"
+                   placeholder="{{ placeholder|title }}"
+                   name="email2"
+                   value="{{ form.cleaned_data.email2|default:form.email2.value|default:"" }}">
+             <p class="help-block">{% translate "Please repeat your e-mail address." %}</p>
         </div>
 
         <div class="form-group {% if form.password1.errors %}has-error{% endif %}">

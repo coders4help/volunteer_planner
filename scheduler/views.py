@@ -400,7 +400,9 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
 
         shift = form.cleaned_data.get("shift")
         if not is_facility_manager(user_account.user, shift.facility):
-            messages.warning(self.request, _("You have no permissions to send emails!"))
+            messages.warning(
+                self.request, _("You have no permissions to send e-mails!")
+            )
             return super(SendMessageToShiftHelpers, self).form_valid(form)
 
         shift_message = ShiftMessageToHelpers.objects.create(
@@ -416,7 +418,7 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
                 shift_message.recipients.add(helper)
         shift_message.save()
 
-        messages.info(self.request, _("Email has been sent."))
+        messages.info(self.request, _("E-mail has been sent."))
         return super(SendMessageToShiftHelpers, self).form_valid(form)
 
     def get_success_url(self):
