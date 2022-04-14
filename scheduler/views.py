@@ -400,7 +400,9 @@ class SendMessageToShiftHelpers(LoginRequiredMixin, FormView):
 
         shift = form.cleaned_data.get("shift")
         if not is_facility_manager(user_account.user, shift.facility):
-            messages.warning(self.request, _("You have no permissions to send e-mails!"))
+            messages.warning(
+                self.request, _("You have no permissions to send e-mails!")
+            )
             return super(SendMessageToShiftHelpers, self).form_valid(form)
 
         shift_message = ShiftMessageToHelpers.objects.create(
