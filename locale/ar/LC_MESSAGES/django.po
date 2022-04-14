@@ -5,11 +5,12 @@
 # Maha Abdulkaream Mohammad Sharaf, 2022
 # Maha Abdulkaream Mohammad Sharaf, 2022
 # Night Bird, 2022
+# Night Bird, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"POT-Creation-Date: 2022-04-14 15:05+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Night Bird, 2022\n"
 "Language-Team: Arabic (http://www.transifex.com/coders4help/volunteer-planner/language/ar/)\n"
@@ -25,7 +26,7 @@ msgstr "الاسم الأول "
 msgid "last name"
 msgstr "اسم العائلة"
 
-msgid "email"
+msgid "e-mail address"
 msgstr "البريد الإلكتروني "
 
 msgid "date joined"
@@ -49,8 +50,14 @@ msgstr "اسم المستخدم يجب أن ينتهي إما بحرف هجائ�
 msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr "اسم المستخدم يجب ألّا يتضمن الرموز التالية \".\"  أو \"_\" بشكل متتالي"
 
+msgid "repeat e-mail address"
+msgstr "البريد الإلكتروني "
+
 msgid "Accept privacy policy"
 msgstr "قَبُول سياسة الخصوصية"
+
+msgid "The two e-mail addresses didn’t match."
+msgstr ""
 
 msgid "user account"
 msgstr "حساب المستخدم"
@@ -97,7 +104,7 @@ msgstr "لا يوجد بعد مناوبات مقيدة"
 msgid "Show my work shifts in the future"
 msgstr "عرض فترات مناوباتي القادمة"
 
-msgid "Username"
+msgid "username"
 msgstr "اسم المستخدم "
 
 msgid "First name"
@@ -105,9 +112,6 @@ msgstr "الاسم الأول "
 
 msgid "Last name"
 msgstr "اللقب"
-
-msgid "Email"
-msgstr "البريد الإلكتروني"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "إذا قمت بحذف حسابك, ستصبح هذه المعلومات مجهولة المصدر, ولن يكون بإمكانك تسجيل الدخول volunteer- بعد الآن planner.org"
@@ -469,8 +473,8 @@ msgstr "مجانا, دون  إعلانات"
 
 msgid ""
 "\n"
-"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
-"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"        <p>  The platform was built by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (e-mail addresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
 
@@ -900,7 +904,7 @@ msgstr ""
 msgid "Covered"
 msgstr ""
 
-msgid "Send email to all volunteers"
+msgid "Send e-mail to all volunteers"
 msgstr "إرسال بريد إلكتروني إلى جميع المتطوعين"
 
 msgid "Drop out"
@@ -995,10 +999,10 @@ msgstr ""
 msgid "You successfully left this shift."
 msgstr ""
 
-msgid "You have no permissions to send emails!"
+msgid "You have no permissions to send e-mails!"
 msgstr ""
 
-msgid "Email has been sent."
+msgid "E-mail has been sent."
 msgstr "تم إرسال البريد الإلكتروني"
 
 #, python-brace-format
@@ -1043,10 +1047,6 @@ msgid "shift templates"
 msgstr ""
 
 msgid "shift template"
-msgstr ""
-
-#, python-brace-format
-msgid "{task_name} - {workplace_name}"
 msgstr ""
 
 msgid "Home"
@@ -1208,13 +1208,6 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr "تم تفعيل حسابك الآن. يمكنك تسجيل الدخول باستخدام الرابط التالي"
 
-msgid "Email address"
-msgstr "البريد الإلكتروني "
-
-#, python-format
-msgid "%(email_trans)s / %(username_trans)s"
-msgstr ""
-
 msgid "Password"
 msgstr "كلمة المرور "
 
@@ -1232,9 +1225,6 @@ msgstr "تم تغيير كلمة المرور بنجاح "
 
 msgid "Change Password"
 msgstr "قم بتغيير كلمة المرور "
-
-msgid "Change password"
-msgstr "تغيير كلمة المرور"
 
 msgid "Password reset complete"
 msgstr "اعادة تعيين كلمة المرور تم بنجاح"
@@ -1257,15 +1247,15 @@ msgstr "ادخل كلمة المرور الجديدة لإعادة تعيين ك
 msgid "Password reset"
 msgstr "إعادة تعيين كلمة المرور"
 
-msgid "We sent you an email with a link to reset your password."
+msgid "We sent you an e-mail with a link to reset your password."
 msgstr "تم إرسال بريد إلكتروني يحتوي على رابط لإعادة تعيين كلمة المرور الخاصة بك"
 
-msgid "Please check your email and click the link to continue."
+msgid "Please check your e-mails and click the link to continue."
 msgstr "يرجى التحقق من بريدك الإلكتروني والنقر على الرابط للمتابعة"
 
 #, python-format
 msgid ""
-"You are receiving this email because you (or someone pretending to be you)\n"
+"You are receiving this e-mail because you (or someone pretending to be you)\n"
 "requested that your password be reset on the %(domain)s site.  If you do not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
@@ -1288,13 +1278,13 @@ msgstr "إعادة تعيين كلمة المرور"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr ""
 
-msgid "Activation email sent"
+msgid "Activation e-mail sent"
 msgstr "تم إرسال بريد التفعيل"
 
-msgid "An activation mail will be sent to you email address."
+msgid "An activation e-mail will be sent to your e-mail address."
 msgstr "سيتم إرسال بريد التفعيل إلى عنوان بريدك الإلكتروني"
 
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the e-mail. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "الرجاء تأكيد تسجيلك بواسطة الضغط على الرابط في البريد الإلكتروني. في حال عدم تلقي البريد الإلكتروني خلال 10 دقائق يرجى البحث في مجلد البريد العشوائي"
 
 msgid "Register for an account"
@@ -1308,13 +1298,16 @@ msgstr ""
 msgid "Create a new account"
 msgstr "إنشاء حساب جديد"
 
-msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr ""
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr ""
 "اسم المستخدم الخاص بك سيكون مرئيا للآخرين.\n"
 "يجب عدم استخدام مسافات أو أحرفا خاصة."
+
+msgid "Volunteer Planner and event organizers might send you e-mails concerning your volunteer work."
+msgstr ""
+
+msgid "Please repeat your e-mail address."
+msgstr ""
 
 msgid "Repeat password"
 msgstr "يرجى إعادة إدخال كلمة المرور"

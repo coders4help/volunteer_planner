@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 from django.utils.translation import gettext_lazy as _
 
+import version
 from .email import *  # noqa: F401
 
 DEBUG = False
@@ -23,6 +24,7 @@ SITE_NAME = os.path.basename(PROJECT_ROOT)
 ROOT_URLCONF = "%s.urls" % SITE_NAME
 # END PROJECT DIRECTORY AND GENERAL SETTINGS
 
+VERSION = version.__version__
 
 # SECURITY
 ACCOUNT_ACTIVATION_DAYS = 3

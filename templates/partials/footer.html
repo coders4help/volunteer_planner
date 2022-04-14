@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n site %}
 <footer class="footer">
     <div class="container">
         <p class="text-muted text-center">
@@ -9,10 +9,11 @@
             <a href="/unterstuetzer/">{% translate "Supporter" %}</a> &bullet;
             <a href="/presse/">{% translate "Press" %}</a> &bullet;
             <a href="/kontakt/">{% translate "Contact" %}</a> &bullet;
-            {% include "partials/faq_link.html" %} &bullet;
-            &copy; 2015 volunteer-planner.org &bullet;
+            {% include "partials/faq_link.html" %}
+            <br>
+            &copy; 2015-2016, 2022 volunteer-planner.org &bullet;
+            v{% get_version %} &bullet;
             <a href="https://github.com/coders4help/volunteer_planner">GitHub</a> &bullet;
-
 
             {% blocktranslate trimmed with mailto_link='<a href="mailto:kontakt@volunteer-planner.org">kontakt@volunteer-planner.org</a>' %}
                 Questions? Get in touch: {{ mailto_link }}

@@ -113,11 +113,8 @@ class ShiftTemplate(models.Model):
         )
 
     def __unicode__(self):
-
         if self.workplace:
-            return _("{task_name} - {workplace_name}").format(
-                task_name=self.task.name, workplace_name=self.workplace.name
-            )
+            return f"{self.task.name} - {self.workplace.name}"
         else:
             return f"{self.task.name}"
 

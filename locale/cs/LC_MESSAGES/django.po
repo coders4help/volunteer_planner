@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"POT-Creation-Date: 2022-04-14 15:05+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (http://www.transifex.com/coders4help/volunteer-planner/language/cs/)\n"
@@ -23,8 +23,8 @@ msgstr "křestní jméno"
 msgid "last name"
 msgstr "Příjmení"
 
-msgid "email"
-msgstr "e-mail"
+msgid "e-mail address"
+msgstr "Emailová adresa"
 
 msgid "date joined"
 msgstr "datum připojení"
@@ -47,8 +47,14 @@ msgstr "Uživatelské jméno musí končit písmenem, číslicí nebo znakem \"_
 msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr "Uživatelské jméno nesmí obsahovat po sobě jdoucí znaky \".\" nebo \"_\"."
 
+msgid "repeat e-mail address"
+msgstr "Emailová adresa"
+
 msgid "Accept privacy policy"
 msgstr "Přijmout zásady ochrany osobních údajů"
+
+msgid "The two e-mail addresses didn’t match."
+msgstr "Obě e-mailové adresy se neshodovaly."
 
 msgid "user account"
 msgstr "uživatelský účet"
@@ -95,7 +101,7 @@ msgstr "Poslední dny nebyly žádné pracovní směny."
 msgid "Show my work shifts in the future"
 msgstr "Zobrazit moje budoucí pracovní směny"
 
-msgid "Username"
+msgid "username"
 msgstr "Uživatelské jméno"
 
 msgid "First name"
@@ -103,9 +109,6 @@ msgstr "Křestní jméno"
 
 msgid "Last name"
 msgstr "Příjmení"
-
-msgid "Email"
-msgstr "E-mail"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "Pokud účet zrušíte, budou tyto informace anonymizovány a nebudete se již moci přihlásit do programu Volunteer-Planner."
@@ -478,8 +481,8 @@ msgstr "zdarma, bez reklam"
 
 msgid ""
 "\n"
-"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
-"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"        <p>  The platform was built by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (e-mail addresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
 "\n"
@@ -838,6 +841,22 @@ msgid ""
 "Thank you for volunteering and have a great time,\n"
 "your volunteer-planner.org team"
 msgstr ""
+"Dobrý den, %(recipient)s\n"
+"\n"
+"Děkujeme, že jste se přihlásili na následující nadcházející směnu:\n"
+"%(shift_title)s od %(starting_time)s do %(ending_time)s na %(location)s.\n"
+"\n"
+"Vedoucí směny Vám chce dát vědět:\n"
+"----------------------\n"
+"\n"
+"%(message)s\n"
+"\n"
+"----------------------\n"
+"V případě jakýchkoli dotazů týkajících se této zprávy nebo potřeby reagovat na ni se prosím obraťte přímo na vedoucího směny %(sender_email)s , .\n"
+"\n"
+"\n"
+"Děkujeme vám za dobrovolnictví a přejeme příjemné chvíle,\n"
+"váš tým volunteer-planner.org"
 
 msgctxt "helpdesk shifts heading"
 msgid "shifts"
@@ -913,7 +932,7 @@ msgstr "%(slots_left)s víc"
 msgid "Covered"
 msgstr "Pokryto"
 
-msgid "Send email to all volunteers"
+msgid "Send e-mail to all volunteers"
 msgstr "Odeslat e-mail všem dobrovolníkům"
 
 msgid "Drop out"
@@ -1028,10 +1047,10 @@ msgstr "Již jste se zaregistrovali na tuto směnu v {date_time}."
 msgid "You successfully left this shift."
 msgstr "Úspěšně jste opustili tuto směnu."
 
-msgid "You have no permissions to send emails!"
+msgid "You have no permissions to send e-mails!"
 msgstr "Nemáte oprávnění k odesílání e-mailů!"
 
-msgid "Email has been sent."
+msgid "E-mail has been sent."
 msgstr "E-mail byl odeslán."
 
 #, python-brace-format
@@ -1073,10 +1092,6 @@ msgstr "šablony směn"
 
 msgid "shift template"
 msgstr "šablona směny"
-
-#, python-brace-format
-msgid "{task_name} - {workplace_name}"
-msgstr "{task_name} - {workplace_name}"
 
 msgid "Home"
 msgstr "Hlavní strana"
@@ -1255,13 +1270,6 @@ msgstr "Váš účet je nyní schválen. Nyní se můžete <a href=\"https://%(s
 msgid "Your account is now approved. You can log in using the following link"
 msgstr "Váš účet je nyní schválen. Přihlásit se můžete pomocí následujícího odkazu"
 
-msgid "Email address"
-msgstr "Emailová adresa"
-
-#, python-format
-msgid "%(email_trans)s / %(username_trans)s"
-msgstr "%(email_trans)s / %(username_trans)s"
-
 msgid "Password"
 msgstr "Heslo"
 
@@ -1278,9 +1286,6 @@ msgid "Password successfully changed!"
 msgstr "Heslo úspěšně změněno!"
 
 msgid "Change Password"
-msgstr "Změnit heslo"
-
-msgid "Change password"
 msgstr "Změnit heslo"
 
 msgid "Password reset complete"
@@ -1304,15 +1309,15 @@ msgstr "Zadejte nové heslo pro resetování hesla"
 msgid "Password reset"
 msgstr "Resetovat heslo"
 
-msgid "We sent you an email with a link to reset your password."
+msgid "We sent you an e-mail with a link to reset your password."
 msgstr "Poslali jsme vám e-mail s odkazem na obnovení hesla."
 
-msgid "Please check your email and click the link to continue."
+msgid "Please check your e-mails and click the link to continue."
 msgstr "Zkontrolujte e-mail a pokračujte kliknutím na odkaz."
 
 #, python-format
 msgid ""
-"You are receiving this email because you (or someone pretending to be you)\n"
+"You are receiving this e-mail because you (or someone pretending to be you)\n"
 "requested that your password be reset on the %(domain)s site.  If you do not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
@@ -1343,13 +1348,13 @@ msgstr "Obnovit heslo"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Žádný problém! Pošleme vám pokyny, jak obnovit heslo."
 
-msgid "Activation email sent"
+msgid "Activation e-mail sent"
 msgstr "Aktivační e-mail odeslán"
 
-msgid "An activation mail will be sent to you email address."
+msgid "An activation e-mail will be sent to your e-mail address."
 msgstr "Aktivační e-mail vám bude zaslán na e-mailovou adresu."
 
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the e-mail. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Potvrďte prosím registraci s odkazem v e-mailu. Pokud jste jej neobdrželi do 10 minut, podívejte se do složky spam."
 
 msgid "Register for an account"
@@ -1361,11 +1366,14 @@ msgstr "Zde můžete vytvořit nový uživatelský účet. Pokud již máte uži
 msgid "Create a new account"
 msgstr "Vytvořit nový účet"
 
-msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr "Plánovač dobrovolníků a úkrytů vám pošlou e-maily týkající se vašich směn."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Vaše uživatelské jméno bude viditelné ostatním uživatelům. Nepoužívejte mezery nebo speciální znaky."
+
+msgid "Volunteer Planner and event organizers might send you e-mails concerning your volunteer work."
+msgstr "Plánovač dobrovolníků a úkrytů vám pošlou e-maily týkající se vašich směn."
+
+msgid "Please repeat your e-mail address."
+msgstr "Zopakujte prosím svou e-mailovou adresu."
 
 msgid "Repeat password"
 msgstr "Zopakovat heslo"

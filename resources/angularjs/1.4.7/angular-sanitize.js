@@ -536,7 +536,7 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
  *
  * @description
  * Finds links in text input and turns them into html links. Supports http/https/ftp/mailto and
- * plain email address links.
+ * plain e-mail address links.
  *
  * Requires the {@link ngSanitize `ngSanitize`} module to be installed.
  *

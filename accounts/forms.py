@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.utils.text import gettext_lazy as _
 
@@ -36,6 +37,19 @@ class RegistrationForm(RegistrationFormUniqueEmail):
         ],
     )
 
+    email = forms.EmailField(label=_("e-mail address"))
+    email2 = forms.EmailField(label=_("repeat e-mail address"))
+
     accept_privacy_policy = forms.BooleanField(
         required=True, initial=False, label=_("Accept privacy policy")
     )
+
+    def clean_email2(self):
+        email = self.cleaned_data.get("email")
+        email2 = self.cleaned_data.get("email2")
+        if email and email2 and email != email2:
+            raise ValidationError(
+                _("The two e-mail addresses didn’t match."),
+                code="email_mismatch",
+            )
+        return email2

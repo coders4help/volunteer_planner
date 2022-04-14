@@ -14,8 +14,9 @@ environment variables need to be present/set:
 """
 import logging
 import os
-
 from distutils.util import strtobool
+
+from .base import VERSION
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +44,7 @@ try:
         #  implementation and replace 'traces_sample_rate'
         send_default_pii=strtobool(os.environ.get("SENTRY_SEND_PII", "False")),
         before_send=before_send,
+        release=VERSION,
     )
 except (ModuleNotFoundError, ImportError):
     logger.warning("sentry not installed - skipping", exc_info=True)

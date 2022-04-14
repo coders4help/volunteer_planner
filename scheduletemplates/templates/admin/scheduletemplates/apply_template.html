@@ -110,7 +110,8 @@
                                     <td>{{ shift.slots }}</td>
                                     <td>{{ shift.task.name }}</td>
                                     <td>
-                                        {{ shift.workplace.name|default:"" }}</td>
+                                        {% if shift.workplace %}{{ shift.workplace.name }}{% else %}-{% endif %}
+                                    </td>
                                     <td>{{ shift.starting_time }}</td>
                                     <td>{{ shift.localized_display_ending_time }}</td>
                                 </tr>

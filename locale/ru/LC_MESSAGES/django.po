@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"POT-Creation-Date: 2022-04-14 15:05+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Anna Dunn, 2022\n"
 "Language-Team: Russian (http://www.transifex.com/coders4help/volunteer-planner/language/ru/)\n"
@@ -22,8 +22,8 @@ msgstr "имя"
 msgid "last name"
 msgstr "Фамилия"
 
-msgid "email"
-msgstr "электронная почта"
+msgid "e-mail address"
+msgstr "Адрес электронной почты"
 
 msgid "date joined"
 msgstr ""
@@ -46,7 +46,13 @@ msgstr ""
 msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr ""
 
+msgid "repeat e-mail address"
+msgstr "Адрес электронной почты"
+
 msgid "Accept privacy policy"
+msgstr ""
+
+msgid "The two e-mail addresses didn’t match."
 msgstr ""
 
 msgid "user account"
@@ -94,7 +100,7 @@ msgstr "В последние дни еще нет рабочих смен."
 msgid "Show my work shifts in the future"
 msgstr "Показать мои рабочие смены в будущем"
 
-msgid "Username"
+msgid "username"
 msgstr "Имя пользователя"
 
 msgid "First name"
@@ -102,9 +108,6 @@ msgstr "Имя"
 
 msgid "Last name"
 msgstr "Фамилия"
-
-msgid "Email"
-msgstr "Электронная почта"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "Если вы удалите свой аккаунт, эта информация будет анонимизирована, и вы больше не сможете войти в Volunteer-Planner."
@@ -479,8 +482,8 @@ msgstr "бесплатно, без рекламы"
 
 msgid ""
 "\n"
-"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
-"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"        <p>  The platform was built by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (e-mail addresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
 "\n"
@@ -913,7 +916,7 @@ msgstr "%(slots_left)s еще"
 msgid "Covered"
 msgstr "Покрытый"
 
-msgid "Send email to all volunteers"
+msgid "Send e-mail to all volunteers"
 msgstr ""
 
 msgid "Drop out"
@@ -1040,10 +1043,10 @@ msgstr "Вы уже записались на эту смену в {date_time}."
 msgid "You successfully left this shift."
 msgstr "Вы успешно покинули эту смену."
 
-msgid "You have no permissions to send emails!"
+msgid "You have no permissions to send e-mails!"
 msgstr ""
 
-msgid "Email has been sent."
+msgid "E-mail has been sent."
 msgstr ""
 
 #, python-brace-format
@@ -1085,10 +1088,6 @@ msgstr "шаблоны смены"
 
 msgid "shift template"
 msgstr "шаблон смены"
-
-#, python-brace-format
-msgid "{task_name} - {workplace_name}"
-msgstr "{task_name} - {workplace_name}"
 
 msgid "Home"
 msgstr "Домашняя страница"
@@ -1263,13 +1262,6 @@ msgstr ""
 msgid "Your account is now approved. You can log in using the following link"
 msgstr ""
 
-msgid "Email address"
-msgstr "Адрес электронной почты"
-
-#, python-format
-msgid "%(email_trans)s / %(username_trans)s"
-msgstr ""
-
 msgid "Password"
 msgstr "Пароль"
 
@@ -1286,9 +1278,6 @@ msgid "Password successfully changed!"
 msgstr "Пароль успешно изменен!"
 
 msgid "Change Password"
-msgstr "Изменить пароль"
-
-msgid "Change password"
 msgstr "Изменить пароль"
 
 msgid "Password reset complete"
@@ -1312,15 +1301,15 @@ msgstr "Введите новый пароль ниже, чтобы сброси
 msgid "Password reset"
 msgstr "Сброс пароля"
 
-msgid "We sent you an email with a link to reset your password."
+msgid "We sent you an e-mail with a link to reset your password."
 msgstr "Мы отправили вам электронное письмо со ссылкой для сброса пароля."
 
-msgid "Please check your email and click the link to continue."
+msgid "Please check your e-mails and click the link to continue."
 msgstr "Пожалуйста, проверьте свою электронную почту и нажмите на ссылку, чтобы продолжить."
 
 #, python-format
 msgid ""
-"You are receiving this email because you (or someone pretending to be you)\n"
+"You are receiving this e-mail because you (or someone pretending to be you)\n"
 "requested that your password be reset on the %(domain)s site.  If you do not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
@@ -1354,13 +1343,13 @@ msgstr "Сброс пароля"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Нет проблем! Мы вышлем вам инструкции по сбросу пароля."
 
-msgid "Activation email sent"
+msgid "Activation e-mail sent"
 msgstr "Электронное письмо с активацией отправлено"
 
-msgid "An activation mail will be sent to you email address."
+msgid "An activation e-mail will be sent to your e-mail address."
 msgstr "На ваш адрес электронной почты будет отправлено письмо с активацией."
 
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the e-mail. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Пожалуйста, подтвердите регистрацию по ссылке в письме. Если вы не получили его в течение 10 минут, поищите его в папке со спамом."
 
 msgid "Register for an account"
@@ -1372,11 +1361,14 @@ msgstr "Здесь вы можете создать новую учетную з
 msgid "Create a new account"
 msgstr "Создать новый аккаунт"
 
-msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr "Volunteer-Planner и приюты будут отправлять вам электронные письма о ваших сменах."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Ваше имя пользователя будет видно другим пользователям. Не используйте пробелы или специальные символы."
+
+msgid "Volunteer Planner and event organizers might send you e-mails concerning your volunteer work."
+msgstr "Volunteer-Planner и приюты будут отправлять вам электронные письма о ваших сменах."
+
+msgid "Please repeat your e-mail address."
+msgstr ""
 
 msgid "Repeat password"
 msgstr "Повторите пароль"
