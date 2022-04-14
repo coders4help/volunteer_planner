@@ -49,7 +49,7 @@ class RegistrationProfileAdmin(RegistrationAdmin):
     def user_email(self, obj):
         return obj.user.email
 
-    user_email.short_description = _("email")
+    user_email.short_description = _("e-mail address")
     user_email.admin_order_field = "user__email"
 
     def user_date_joined(self, obj):

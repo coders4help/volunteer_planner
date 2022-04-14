@@ -25,10 +25,10 @@
                         <strong>{{ error|escape }}</strong>
                     </div>
                 {% endfor %}
-                {% translate "Email address" as email_trans %}
-                {% translate "Username" as username_trans %}
+                {% translate "e-mail address" as email_trans %}
+                {% translate "username" as username_trans %}
                 <input class="form-control"
-                       placeholder="{% blocktranslate %}{{ email_trans }} / {{ username_trans }}{% endblocktranslate %}"
+                       placeholder="{{ email_trans|title }} / {{ username_trans|title }}"
                        name="username" autofocus>
             </div>
             <div class="form-group">

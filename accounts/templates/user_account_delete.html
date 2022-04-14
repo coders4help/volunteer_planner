@@ -7,10 +7,13 @@
 {% block content %}
     <div class="col-md-8 col-md-offset-2">
          <ul class="list-group">
-             <li class="list-group-item list-group-item-info">{% translate 'Username' %}: {{ user.username }}</li>
+             {% translate 'username' as username_label %}
+             {% translate 'e-mail address' as email_address_label %}
+
+             <li class="list-group-item list-group-item-info">{{ username_label|title }}: {{ user.username }}</li>
              <li class="list-group-item list-group-item-info">{% translate 'First name' %}: {{ user.first_name }}</li>
              <li class="list-group-item list-group-item-info">{% translate 'Last name' %}: {{ user.last_name }}</li>
-             <li class="list-group-item list-group-item-info">{% translate 'Email' %}: {{ user.email }}</li>
+             <li class="list-group-item list-group-item-info">{{ email_address_label|title }}: {{ user.email }}</li>
          </ul>
         {% translate 'If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore.' %}
         {% translate 'Its not possible to recover this information. If you want to work as volunteer again, you will have to create a new account.' %}

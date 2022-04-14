@@ -1,11 +1,12 @@
 #
 # Translators:
 # Anna Dunn, 2022
+# Anna Dunn, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 23:55+0200\n"
+"POT-Creation-Date: 2022-04-14 12:36+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Anna Dunn, 2022\n"
 "Language-Team: Ukrainian (http://www.transifex.com/coders4help/volunteer-planner/language/uk/)\n"
@@ -21,8 +22,8 @@ msgstr "Ім'я"
 msgid "last name"
 msgstr ""
 
-msgid "email"
-msgstr "Електронна пошта"
+msgid "e-mail address"
+msgstr "Адреса електронної пошти"
 
 msgid "date joined"
 msgstr "Дата приєднання"
@@ -45,8 +46,14 @@ msgstr ""
 msgid "Username must not contain consecutive \".\" or \"_\" characters."
 msgstr ""
 
+msgid "repeat e-mail address"
+msgstr "Адреса електронної пошти"
+
 msgid "Accept privacy policy"
 msgstr "Прийміть політику конфіденційності"
+
+msgid "The two e-mail addresses didn’t match."
+msgstr ""
 
 msgid "user account"
 msgstr "Обліковий запис користувача"
@@ -93,7 +100,7 @@ msgstr "Протягом останніх днів робочих змін не 
 msgid "Show my work shifts in the future"
 msgstr "Показати мої робочі зміни на майбутнє"
 
-msgid "Username"
+msgid "username"
 msgstr "Ім'я користувача"
 
 msgid "First name"
@@ -101,9 +108,6 @@ msgstr "Ім'я"
 
 msgid "Last name"
 msgstr "Прізвище"
-
-msgid "Email"
-msgstr "Електронна пошта"
 
 msgid "If you delete your account, this information will be anonymized, and its not possible for you to log into Volunteer-Planner anymore."
 msgstr "Якщо ви видалите свій обліковий запис, ця інформація буде анонімізована, і ви більше не зможете ввійти в Volunteer-Planner."
@@ -478,8 +482,8 @@ msgstr "Безкоштовно, без реклами"
 
 msgid ""
 "\n"
-"        <p>  The platform was build by a group of volunteering professionals in the area of software development, project management, design,\n"
-"        and marketing. The code is open sourced for non-commercial use. Private data (emailaddresses, profile data etc.) will be not given to any third party.</p>\n"
+"        <p>  The platform was built by a group of volunteering professionals in the area of software development, project management, design,\n"
+"        and marketing. The code is open sourced for non-commercial use. Private data (e-mail addresses, profile data etc.) will be not given to any third party.</p>\n"
 "            "
 msgstr ""
 "\n"
@@ -911,7 +915,7 @@ msgstr "%(slots_left)s більше"
 msgid "Covered"
 msgstr "Охоплені"
 
-msgid "Send email to all volunteers"
+msgid "Send e-mail to all volunteers"
 msgstr ""
 
 msgid "Drop out"
@@ -1023,10 +1027,10 @@ msgstr "Ви вже зареєструвалися на цю зміну о {date
 msgid "You successfully left this shift."
 msgstr "Ви успішно залишили цю зміну."
 
-msgid "You have no permissions to send emails!"
+msgid "You have no permissions to send e-mails!"
 msgstr ""
 
-msgid "Email has been sent."
+msgid "E-mail has been sent."
 msgstr ""
 
 #, python-brace-format
@@ -1250,13 +1254,6 @@ msgstr "Ваш обліковий запис схвалено. Ви можете
 msgid "Your account is now approved. You can log in using the following link"
 msgstr "Ваш обліковий запис схвалено. Ви можете увійти, використовуючи наступне посилання"
 
-msgid "Email address"
-msgstr "Адреса електронної пошти"
-
-#, python-format
-msgid "%(email_trans)s / %(username_trans)s"
-msgstr "%(email_trans)s / %(username_trans)s"
-
 msgid "Password"
 msgstr "Пароль"
 
@@ -1273,9 +1270,6 @@ msgid "Password successfully changed!"
 msgstr "Пароль успішно змінено!"
 
 msgid "Change Password"
-msgstr "Змінити пароль"
-
-msgid "Change password"
 msgstr "Змінити пароль"
 
 msgid "Password reset complete"
@@ -1299,15 +1293,15 @@ msgstr "Введіть свій новий пароль нижче, щоб ск�
 msgid "Password reset"
 msgstr "Відновлення пароля"
 
-msgid "We sent you an email with a link to reset your password."
+msgid "We sent you an e-mail with a link to reset your password."
 msgstr "Ми надіслали вам електронного листа з посиланням для відновлення пароля."
 
-msgid "Please check your email and click the link to continue."
+msgid "Please check your e-mails and click the link to continue."
 msgstr "Перевірте свою електронну пошту та натисніть посилання, щоб продовжити."
 
 #, python-format
 msgid ""
-"You are receiving this email because you (or someone pretending to be you)\n"
+"You are receiving this e-mail because you (or someone pretending to be you)\n"
 "requested that your password be reset on the %(domain)s site.  If you do not\n"
 "wish to reset your password, please ignore this message.\n"
 "\n"
@@ -1339,13 +1333,13 @@ msgstr "Скинути пароль"
 msgid "No Problem! We'll send you instructions on how to reset your password."
 msgstr "Без проблем! Ми надішлемо вам інструкції щодо відновлення пароля."
 
-msgid "Activation email sent"
+msgid "Activation e-mail sent"
 msgstr "Електронний лист для активації надіслано"
 
-msgid "An activation mail will be sent to you email address."
+msgid "An activation e-mail will be sent to your e-mail address."
 msgstr "На вашу адресу електронної пошти буде надіслано лист з активацією."
 
-msgid "Please confirm registration with the link in the email. If you haven't received it in 10 minutes, look for it in your spam folder."
+msgid "Please confirm registration with the link in the e-mail. If you haven't received it in 10 minutes, look for it in your spam folder."
 msgstr "Будь ласка, підтвердьте реєстрацію за посиланням в електронному листі. Якщо ви не отримали його протягом 10 хвилин, перевірте папку зі спамом."
 
 msgid "Register for an account"
@@ -1357,11 +1351,14 @@ msgstr "Ви можете створити новий обліковий зап�
 msgid "Create a new account"
 msgstr "Створити новий обліковий запис"
 
-msgid "Volunteer-Planner and shelters will send you emails concerning your shifts."
-msgstr "Volunteer-Planner і притулки надсилатимуть вам електронні листи щодо ваших змін."
-
 msgid "Your username will be visible to other users. Don't use spaces or special characters."
 msgstr "Ваше ім’я користувача буде видно іншим користувачам. Не використовуйте пробіли або спеціальні символи."
+
+msgid "Volunteer Planner and event organizers might send you e-mails concerning your volunteer work."
+msgstr "Volunteer-Planner і притулки надсилатимуть вам електронні листи щодо ваших змін."
+
+msgid "Please repeat your e-mail address."
+msgstr ""
 
 msgid "Repeat password"
 msgstr "Повторіть пароль"
