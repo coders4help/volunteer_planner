@@ -14,7 +14,7 @@ ADMINS = (("VP Admin", os.environ.get("ADMIN_EMAIL")),)
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("DATABASE_ENGINE", "django.db.backends.mysql"),
+        "ENGINE": os.environ.get("DATABASE_ENGINE", "django.db.backends.postgresql"),
         "HOST": os.environ.get("DATABASE_HOST", "localhost"),
         "NAME": os.environ.get("DATABASE_NAME"),
         "PASSWORD": os.environ.get("DATABASE_PW"),
