@@ -25,6 +25,7 @@ def test_submit_valid_username(username):
     formdata = {
         "username": username,
         "email": "somename@example.com",
+        "email2": "somename@example.com",
         "password1": "somepassword",
         "password2": "somepassword",
         "accept_privacy_policy": True,
@@ -42,6 +43,7 @@ class RegistrationTestCase(TestCase):
         self.valid_user_data = {
             "username": "Some.name123_",
             "email": "somename@example.com",
+            "email2": "somename@example.com",
             "password1": "somepassword",
             "password2": "somepassword",
             "accept_privacy_policy": True,
@@ -75,6 +77,7 @@ class RegistrationTestCase(TestCase):
         user_data = {
             "username": "somename",
             "email": "invalid-address",
+            "email2": "invalid-address-2",
             "password1": "somepassword",
             "password2": "differentpassword",
             "accept_privacy_policy": True,
@@ -87,8 +90,74 @@ class RegistrationTestCase(TestCase):
             form is not None
         ), "We expect the form to be displayed again if the submission failed"
 
-        # TODO: implement form error and then assertFormError
-        # see for example test_username_exists_already
+        self.assertFormError(
+            response,
+            "form",
+            "email",
+            "Enter a valid email address.",
+        )
+
+        self.assertFormError(
+            response,
+            "form",
+            "email2",
+            "Enter a valid email address.",
+        )
+
+        assert RegistrationProfile.objects.count() == 0
+
+    def test_missing_email(self):
+        user_data = {
+            "username": "somename",
+            "password1": "somepassword",
+            "password2": "differentpassword",
+            "accept_privacy_policy": True,
+        }
+
+        response = self.client.post(self.registration_url, user_data)
+
+        form = response.context["form"]
+        assert (
+            form is not None
+        ), "We expect the form to be displayed again if the submission failed"
+
+        self.assertFormError(
+            response,
+            "form",
+            "email",
+            "This field is required.",
+        )
+
+        self.assertFormError(
+            response,
+            "form",
+            "email2",
+            "This field is required.",
+        )
+
+        assert RegistrationProfile.objects.count() == 0
+
+    def test_emails_dont_match(self):
+        user_data = {
+            "username": "somename",
+            "email": "user@example.con",
+            "email2": "user@example.com",
+            "password1": "somepassword",
+            "password2": "differentpassword",
+            "accept_privacy_policy": True,
+        }
+
+        response = self.client.post(self.registration_url, user_data)
+
+        form = response.context["form"]
+        assert form is not None, "Form not displayed again after submission failed"
+
+        self.assertFormError(
+            response,
+            "form",
+            "email2",
+            "The two e-mail addresses didn’t match.",
+        )
 
         assert RegistrationProfile.objects.count() == 0
 
@@ -99,6 +168,7 @@ class RegistrationTestCase(TestCase):
         user_data = {
             "username": invalid_username,
             "email": "somename@example.com",
+            "email2": "somename@example.com",
             "password1": "somepassword",
             "password2": "somepassword",
             "accept_privacy_policy": True,
