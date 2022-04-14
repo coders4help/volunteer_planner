@@ -34,7 +34,7 @@
         </li>
 
         <li class="active">
-            {{ shift.task }}{{ shift.workplace|yes:' - '|add:shift.workplace.name }}
+            {{ shift.task }}{% if shift.workplace %} - {{ shift.workplace.name }}{% endif %}
         </li>
     </ul>
 
@@ -49,9 +49,10 @@
         <h1>
             {% if shift.members_only %}
                 <span class="fa fa-lock">&nbsp;
-                    {{ shift.task }}{{ shift.workplace|yes:' - '|add:shift.workplace.name }}</span>
+                    {{ shift.task }}{% if shift.workplace %} - {{ shift.workplace.name }}{% endif %}
+                </span>
             {% else %}
-                {{ shift.task }}{{ shift.workplace|yes:' - '|add:shift.workplace.name }}
+                {{ shift.task }}{% if shift.workplace %} - {{ shift.workplace.name }}{% endif %}
             {% endif %}
         </h1>
 
