@@ -1,4 +1,4 @@
-FROM postgres:9-alpine
+FROM postgres:14-alpine
 ARG DATABASE_NAME=volunteer_planner
 ARG DATABASE_USER=vp
 ARG DATABASE_PW=volunteer_planner
@@ -15,3 +15,4 @@ RUN chown postgres /pg_backup && \
     printf "${DATABASE_NAME}" > ${POSTGRES_DB_FILE} && \
     printf "${DATABASE_USER}" > ${POSTGRES_USER_FILE} && \
     printf "${DATABASE_PW}" > ${POSTGRES_PASSWORD_FILE}
+

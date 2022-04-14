@@ -3,7 +3,7 @@
 from .base import *  # noqa: F401
 from .sentry import *  # noqa: F401
 
-DEBUG = os.environ.get("BETA", False)
+DEBUG = os.environ.get("DEV", False)
 
 STATIC_ROOT = os.environ["STATIC_ROOT"]
 

@@ -1,0 +1,169 @@
+version: '3.7'
+
+x-network: &default-network
+  vp:
+
+x-logging: &default-logging
+  driver: local
+  options:
+    max-size: 10m
+    max-file: 3
+
+x-restart: &default-restart-policy
+  condition: on-failure
+  delay: 5s
+  max_attempts: 3
+  window: 30s
+
+x-healthcheck: &default-healthcheck
+  interval: 30s
+  timeout: 5s
+  retries: 2
+  start_period: 10s
+
+services:
+  db:
+    image: vp_pg:${STAGE:-prod}
+    build:
+      context: db/
+      args:
+        - DATABASE_NAME
+        - DATABASE_USER
+        - DATABASE_PW
+    volumes:
+      - data_volume_pg:/var/lib/postgresql/data
+      - backup_volume_pg:/pg_backup
+    networks:
+      <<: *default-network
+    logging:
+      <<: *default-logging
+    hostname: db
+    stop_grace_period: 30s
+    deploy:
+      restart_policy:
+        <<: *default-restart-policy
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 1G
+    healthcheck:
+      <<: *default-healthcheck
+      test: ["CMD", "psql", "-1wXnqx", "-U", "vp", "-d", "postgres", "-c", "SELECT 1 AS check"]
+
+
+  django:
+    image: vp_django:${STAGE:-prod}
+    build:
+      context: ../
+      args:
+        - VP_BASE_DIR=${VP_BASE_DIR:-/opt/vp}
+    networks:
+      <<: *default-network
+    logging:
+      <<: *default-logging
+    hostname: django
+    links:
+      - db
+    stop_grace_period: 10s
+    deploy:
+      restart_policy:
+        <<: *default-restart-policy
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 1G
+    environment:
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.production}
+      DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
+      DATABASE_HOST: db
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PW: ${DATABASE_PW}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS-localhost}
+      SECRET_KEY: ${SECRET_KEY:?Please set djangos SECRET_KEY in .env or build environment}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
+      DJANGO_FROM_EMAIL: ${DJANGO_FROM_EMAIL:-admin@localhost}
+      DJANGO_SERVER_EMAIL: ${DJANGO_SERVER_EMAIL:-admin@localhost}
+      DJANGO_EMAIL_BACKEND: ${EMAIL_BACKEND:-post_office.EmailBackend}
+      POST_OFFICE_EMAIL_BACKEND: ${POST_OFFICE_EMAIL_BACKEND:-django.core.mail.backends.smtp.EmailBackend}
+      DJANGO_EMAIL_HOST: ${DJANGO_EMAIL_HOST:-localhost}
+      DJANGO_EMAIL_PORT: ${DJANGO_EMAIL_PORT:-25}
+    healthcheck:
+      <<: *default-healthcheck
+      test: ["CMD-SHELL", "uwsgi --connect-and-read /run/vp/stats 2>&1 | jq -cMe '[.workers[] | select(.accepting > 0)] | select(length > 0) | .[] | {id, pid}'"]
+      interval: 10s
+
+
+  web:
+    image: vp_web:${STAGE:-prod}
+    build:
+      context: web/
+      args:
+        - VP_BASE_DIR=${VP_BASE_DIR:-/opt/vp}
+        - STAGE=${STAGE:-prod}
+    networks:
+      <<: *default-network
+    logging:
+      <<: *default-logging
+    hostname: web
+    links:
+      - django
+    deploy:
+      restart_policy:
+        <<: *default-restart-policy
+      resources:
+        limits:
+          memory: 32M
+        reservations:
+          memory: 64M
+    healthcheck:
+      <<: *default-healthcheck
+      test: ["CMD", "curl", "--fail-early", "--silent", "-I", "-o", "/dev/null", "-w",  "{\"http_status\":%{http_code},\"duration\":%{time_total}}", "http://localhost:8181/status"]
+      interval: 15s
+      start_period: 5s
+
+
+  mail:
+    image: boky/postfix:latest
+    volumes:
+      - spool_volume_mail:/var/spool/postfix
+    networks:
+      <<: *default-network
+    logging:
+      <<: *default-logging
+    hostname: mail
+    deploy:
+      restart_policy:
+        <<: *default-restart-policy
+      resources:
+        limits:
+          memory: 32M
+        reservations:
+          memory: 64M
+    environment:
+      - HOSTNAME=${MAIL_HOSTNAME:-localhost.localdomain}
+      - RELAYHOST=${RELAYHOST:-}
+      - RELAYHOST_USERNAME=${RELAYHOST_USERNAME:-}
+      - RELAYHOST_PASSWORD=${RELAYHOST_PASSWORD:-}
+      - ALLOWED_SENDER_DOMAINS=${ALLOWED_SENDER_DOMAINS:-localhost}
+      - POSTFIX_smtp_tls_wrappermode=${POSTFIX_TLS_WRAPPERMODE:-yes}
+      - POSTFIX_smtp_tls_security_level=${POSTFIX_TLS_SECURITY:-encrypt}
+      - POSTFIX_message_size_limit=1048576
+    healthcheck:
+      <<: *default-healthcheck
+      test: ["CMD-SHELL", "postfix status 2>/dev/null"]
+
+
+volumes:
+  data_volume_pg:
+  backup_volume_pg:
+  spool_volume_mail:
+
+
+networks:
+  <<: *default-network
+
+
+# vim: ts=2:sts=2:sw=2:ai:et
