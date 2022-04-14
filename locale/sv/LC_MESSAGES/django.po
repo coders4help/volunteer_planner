@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-14 12:36+0200\n"
+"POT-Creation-Date: 2022-04-14 15:05+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Linnéa Deurell <linnea.deurell@gmail.com>, 2015\n"
 "Language-Team: Swedish (http://www.transifex.com/coders4help/volunteer-planner/language/sv/)\n"
@@ -1053,10 +1053,6 @@ msgstr "byt utkast"
 
 msgid "shift template"
 msgstr "byt utkast"
-
-#, python-brace-format
-msgid "{task_name} - {workplace_name}"
-msgstr "{task_name} - {workplace_name}"
 
 msgid "Home"
 msgstr "Hem"

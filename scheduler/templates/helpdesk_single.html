@@ -57,7 +57,7 @@
                                         id: {{ shift.id }},
                                         group: {{ task.id }},
                                         subgroup: '{{ workplace.id|default:"no workplace" }}',
-                                        content: '<a href="#{{ shift.id }}">{{ shift.workplace.name|default:shift.task.name }} ({{ shift.volunteer_count }}/{{ shift.slots }})<br>{% blocktranslate trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }}{% endblocktranslate %}</a>',
+                                        content: '<a href="#{{ shift.id }}">{{ shift.task.name }}{% if shift.workplace %} - {{ shift.workplace.name }}{% endif %} ({{ shift.volunteer_count }}/{{ shift.slots }})<br>{% blocktranslate trimmed with starting_time=shift.starting_time|date:"H:i" ending_time=shift.ending_time|date:"H:i" %}{{ starting_time }} - {{ ending_time }}{% endblocktranslate %}</a>',
                                         subgroupOrder: '{{ workplace.name }}',
                                         start: "{{ shift.starting_time|date:"c" }}",
                                         end: "{{ shift.ending_time|date:"c" }}"

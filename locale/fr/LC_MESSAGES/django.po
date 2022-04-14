@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-14 12:36+0200\n"
+"POT-Creation-Date: 2022-04-14 15:05+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Maxi Krause <maxi.krause@wanadoo.fr>, 2017\n"
 "Language-Team: French (http://www.transifex.com/coders4help/volunteer-planner/language/fr/)\n"
@@ -1081,10 +1081,6 @@ msgstr "modèles de créneaux"
 
 msgid "shift template"
 msgstr "modèle de créneau"
-
-#, python-brace-format
-msgid "{task_name} - {workplace_name}"
-msgstr "{task_name} - {workplace_name}"
 
 msgid "Home"
 msgstr "Accueil"

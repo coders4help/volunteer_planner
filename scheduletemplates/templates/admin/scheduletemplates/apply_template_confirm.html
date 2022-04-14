@@ -94,7 +94,7 @@
                                     {{ shift.slots }}</td>
                                 <td>{{ shift.task.name }}</td>
                                 <td>
-                                    {{ shift.workplace.name|default:"-" }}</td>
+                                    {% if shift.workplace %}{{ shift.workplace.name }}{% else %}-{% endif %}</td>
                                 <td>
                                     {% if is_template %}
                                         {{ shift.starting_time }}

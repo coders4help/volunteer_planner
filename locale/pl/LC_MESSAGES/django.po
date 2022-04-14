@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-14 12:36+0200\n"
+"POT-Creation-Date: 2022-04-14 15:05+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Magdalena Rother <magdalena.rother@orderbird.com>, 2015\n"
 "Language-Team: Polish (http://www.transifex.com/coders4help/volunteer-planner/language/pl/)\n"
@@ -1034,10 +1034,6 @@ msgid "shift templates"
 msgstr ""
 
 msgid "shift template"
-msgstr ""
-
-#, python-brace-format
-msgid "{task_name} - {workplace_name}"
 msgstr ""
 
 msgid "Home"
