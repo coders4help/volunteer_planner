@@ -3,7 +3,7 @@
 from .base import *  # noqa: F401
 from .sentry import *  # noqa: F401
 
-DEBUG = os.environ.get("BETA", False)
+DEBUG = os.environ.get("DEV", False)
 
 STATIC_ROOT = os.environ["STATIC_ROOT"]
 
@@ -14,7 +14,7 @@ ADMINS = (("VP Admin", os.environ.get("ADMIN_EMAIL")),)
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("DATABASE_ENGINE", "django.db.backends.mysql"),
+        "ENGINE": os.environ.get("DATABASE_ENGINE", "django.db.backends.postgresql"),
         "HOST": os.environ.get("DATABASE_HOST", "localhost"),
         "NAME": os.environ.get("DATABASE_NAME"),
         "PASSWORD": os.environ.get("DATABASE_PW"),

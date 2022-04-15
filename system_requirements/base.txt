@@ -1,4 +1,0 @@
-python-dev
-python-pip
-git
-npm

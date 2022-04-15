@@ -1,136 +1,167 @@
 # volunteer-planner.org Docker
-An easy setup for using the Volunteer-Planner in a development or test environment is to user Docker.
-The Docker configuration files are included in the git package of volunteer-planner.
 
-**Do not use this setup for production environments**.
-The web container is not secure. If you want to use docker for production you have to exchange the webserver in the web
-container.
+An easy setup for using the Volunteer-Planner in a development or test environment is to use Docker. The Docker
+configuration files are included in the git configuration of Volunteer Planner.
+
+**Using this setup for production environments requires some further knowledge**.
+
+This is still work-in-progress and in no way intended to be feature-complete. Suggestions are welcome, preferably by
+opening an issue, describing your idea/wish/requirement.
+
+If anyhow possible, detailed "requirement description" is more valuable to us, than pure "ready to use" solutions. We
+welcome solution suggestions and are even more excited, if we can see and follow the intendment behind it.
 
 ## Project setup for development
 
 ### 1. Install docker
 
+#### 1.1 Install docker engine
+
 Follow [the instructions](https://docs.docker.com/engine/installation/) relevant to your operating system.
+
+#### 1.2 Install docker-compose
+
+Install `compose` CLI command according to
+[the instruction](https://docs.docker.com/compose/cli-command/#installing-compose-v2)
+relevant to your operating system.
+
+In this readme we'll use `docker compose`. If you prefer version 1 (`docker-compose`), most probably you'll get along,
+using instructions here, by substituting
+`docker compose` with `docker-compose`.
 
 ### 2. Prepare the docker files
 
-#### 2.1 Prepare the DB
+#### 2.1 Build images
 
-By default, the application will be using MySQL. If you prefer PostgreSQL, edit
-the `Dockerfile` and `docker-compose.yml` files, uncommenting the PostgreSQL
-related parts, and commenting out the MySQL related ones.
+Execute
 
-#### 2.1 Initialize docker network, volumes and the DB container
+```shell
+docker compose build
+```
 
-Execute `docker-compose up --no-start db`.
+This is currently necessary, because sometimes docker compose build does not reflect depedency between django image and
+web image.
 
-#### 2.3 Initalize the web container and run migrate management command to setup non-existing tables
+#### 2.1 Initialize docker network, volumes and containers
 
-    $ docker-compose run --rm django migrate
+Execute
+
+```shell
+docker compose up --no-start
+```
+
+#### 2.3 Initalize by running migrations to set up non-existing tables
+
+Execute
+
+```shell
+docker compose run -T --rm django migrate
+```
 
 #### 2.4 Add a superuser
 
-    $ docker-compose run --entrypoint=python --rm django manage.py createsuperuser --username admin --email admin@localhost
+```shell
+docker compose run -T --rm django createsuperuser --username admin --email admin@localhost --no-input
+docker compose run --rm changepassword admin
+```
 
-You will be asked for password twice. Remember that password.
-(Sorry for the lengthy command line, but our work to make the Django app shut down properly removes it's TTY access when using the default entrypoint.)
+**_You will be asked for admin password twice. Remember that password._**
 
-### 3. Run the server
+If you want to, feel free to change username `admin` to something you like better. Changing the e-mail address is
+possible too, although it should not make a difference.
 
-    $ docker-compose up
+### 3. The server
 
-Try opening http://localhost:8000/ in your browser. If you want to shutdown you can start the shutdown of the containers with `CTRL-c`.
+To start / run the server
 
-### 4. Switch database
+```shell
+docker compose up
+```
+
+Try opening http://localhost:8000/ in your browser. If you want to shut down, you can initiate container shutdown
+with `CTRL-c`.
+
+URL is identical to the one of `manage.py runserver`. So please stop any possibly running `runserver` process, before
+using docker.
+
+#### 3.1 If you don't want containers block your terminal
+
+Run
+
+```shell
+docker compose up -d
+```
+
+instead. This backgrounds containers (`detaches`), e. g. for longer period of testing UI. If you change sources, file
+watch should notice it, as project directory is mounted into the running container.
+
+#### 4. Rebuilding
+
+Repeat steps from step 2. and 3.
+
+To clean up everything and start from scratch:
+
+```shell
+docker compose down --volumes --remove-orphans
+```
+
+This will stop and remove any containers, connected to this `docker compose`
+project, any unnamed volumes and the project docker network.
+
+If you want or need to recreate containers because `pip` dependencies changed, you don't necessarily need to remove old
+containers and volumes.
+
+Simply
+
+```shell
+docker compose build
+docker compose up --force-recreate -d
+```
+
+(or spare `-d` if you want containers in foreground), it will recreate containers, keeping anonymous volumes.
+
+If you added a migration, you can run
+
+```shell
+docker compose run -T --rm django migrate
+```
+
+at any time - still running containers are no problem and usually don't need to be stopped or retarted
+
+### 4. Anything else
 
 #### 4.1 Stop all running services
 
 To stop all eventually running servics, please execute the command
 
-    $ docker-compose stop
+```shell
+docker compose stop
+```
 
 #### 4.2 Modify configuration
 
-Adjust the configuration in ```docker-compose.yml``` to reflect your desired
-database type. Look for all "MySQL" or "PostgreSQL" comments to find all locations you need to switch.
+Please don't ddjust the configuration in `docker-compose.yml` to reflect your desired docker changes.
 
-#### 4.3 Recreate containers
+Please use `docker-compose.override.yml` instead. It's untracked by git, so neither your modifications will be
+accidentally committed, not will any change in repository overwrite your configuration.⌃
 
-To switch the database one needs to recreate used containers.
-The DB container needs to be started from a different image, using different configuration and volume.
-The Web container needs to use different Django settings, while startup.
+Those, unaware with `docker compose`: Override is meant literally. You don't have to copy everything.
+Create a service entry for "about to be overriden" service(s). Set "about to be changed" values (e. g. `ports`).
+Leave everything as it is, this keeps you updated with probable changes in `docker-compose.yml`.
 
-One has to forcibly remove the current containers and create new ones.
-The final step is to update-initialize the database.
+#### 4.3 Create dummy data
 
-    $ docker-compose rm -a -v -f
-    $ docker-compose create --force-recreate
-    $ docker-compose start db
-    $ docker-compose run --rm django migrate
-
-If you haven't created the superuser in the new database environment, you need to execute the command from above to create it.
-
-## Create dummy data
 If you want to create dummy data you can run:
 
-    $ docker-compose run --rm django create_dummy_data 5 --flush True
-
+```shell
+docker compose run --rm -T django create_dummy_data 5 --flush True
+```
 to get 5 days of dummy data and delete tables in advance.
 
-The number (5 in the above example) creates 5 days dummy data count from today.
-If you just use `create_dummy_data 5` without `--flush True` it is NOT deleting data before putting new data in.
+The number (5 in the above example) creates 5 days dummy data count from today. If you just use `create_dummy_data 5`
+without `--flush True` it is NOT deleting data before putting new data in.
 
 ## Additional information
-
-### Running with docker container from within PyCharm (2016)
-
-- Make sure, docker plugin is installed and activated
-  - Preferences / Plugins / Docker integration
-- Configure docker
-  - Preferences / Build, Execution, Deployments / Docker
-  - Create new configuration using ```+``` (or modify existing)
-  - Choose a reasonable name
-  - Add (or modify) ```API URL```
-    - see ```docker-machine env``` and it's ```DOCKER_HOST``` value, replace ```tcp://``` with ```http://```
-  - Add (or modify) ```Certificated folder```
-    - see ```DOCKER_CERT_PATH```
-  - Fill ```Docker Compose executable```
-  - Check ```Import credentials from Docker Machine```
-  - Fill ```Docker Machine executable```
-  - Use ```Detect```
-  - Choose ```Machine```
-- Set up remote python interpreter
-  - Preferences / Project: ... / Project Interpreter
-  - Create ```Project Interpreter``` by using ```[...]``` and choose ```Àdd Remote```
-    - ```Configure Remote Python Interpreter``` by choosing ```Docker```
-    - Choose ```Server```
-    - Use ```volunteer_web:latest``` as ```Image name```
-    - Use ```/usr/local/bin/python``` as ```Python interpreter path```
-- Create run configuration
-  - Open run configurations, by choosing ```Edit Configurations...```
-  - Create new ```Python``` run configuration
-  - Choose a reasonable name
-  - Choose ```manage.py``` within project as Script
-  - Use ```runserver 0.0.0.0:8000``` as Script parameter
-  - Configure ```Environment variables```
-    - ```PYTHONUNBUFFERED=1```
-    - ```DJANGO_SETTINGS_MODULE=volunteer_planner.settings.docker_mysql``` (if using PostgreSQL modify appropriately)
-  - Choose created remote python interpreter as ```Python interpreter```
-  - Set project directory as ```Working directory```
-  - Set ```Path mappings```
-    - ```<project directory>=/opt/vpcode```
-  - Check ```Add content roots to PYTHONPATH```
-  - Uncheck ```Add source roots to PYTHONPATH```
-  - Configure ```Docker container settings```
-    - ```Network mode```: volunteer_default
-    - ```Container port```: ```8000/tcp``` = ```0.0.0.0:8000```
-    - ```Link name```: ```volunteer_db_1``` aliased to ```db```
-    - ```Volume bindings```: ```Container path /opt/vpcode``` = ```Host path <project path>```
-    - ```Environment variables```: ```DJANGO_SETTINGS_MODULE=volunteer_planner.settings.docker_mysql``` (or ```_postgres```)
-- Eventually add IP address used by ```pydevd``` to connect to PyCharm as alias
-  - IP seems to be 'more or less fixed'
-  - ```sudo ifconfig lo0 alias 10.0.2.2```
-  - ```pydevd``` can now connect from within docker container to PyCharm listener
 
 ### Speeding up debugging
 
@@ -145,4 +176,5 @@ To enable debugger speedups using Cython within the docker container we need som
         /usr/local/bin/python /opt/.pycharm_helpers/pydev/setup_cython.py build_ext --inplace' | \
          docker run --rm -i -u root --volumes-from=${PYCHARM_VERSION} --entrypoint=/bin/sh volunteer_web:latest
 
-This needs to be repeated after PyCharm updates
+This needs to be repeated after PyCharm updates.
+It might change, over time - please file a PR or get in contact, to get this description updated.

@@ -1,5 +1,0 @@
--r base.txt
-
-psycopg2==2.9.3
-
-sentry-sdk==1.5.9
