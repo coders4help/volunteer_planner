@@ -1,4 +1,3 @@
-# coding=utf-8
 from common import brace_format_logging
 
 from django.conf import settings

@@ -1,4 +1,3 @@
-# coding=utf-8
 from django.urls import re_path
 from django.views.defaults import page_not_found, server_error
 

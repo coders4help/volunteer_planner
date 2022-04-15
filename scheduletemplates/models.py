@@ -1,4 +1,3 @@
-# coding: utf-8
 from datetime import datetime, time, timedelta
 
 from django.core.validators import MinValueValidator

@@ -1,4 +1,3 @@
-# coding=utf-8
 import pytest
 from django.test import override_settings, TestCase
 from django.urls import reverse

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.contrib import admin

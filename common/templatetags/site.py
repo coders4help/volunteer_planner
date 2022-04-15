@@ -1,6 +1,3 @@
-# coding: utf-8
-
-# coding: utf-8
 from django import conf, template
 
 from django.contrib.sites.shortcuts import get_current_site

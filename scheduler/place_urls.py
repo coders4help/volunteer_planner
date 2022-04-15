@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django.urls import re_path
 
 from places.models import Area, Country, Place, Region

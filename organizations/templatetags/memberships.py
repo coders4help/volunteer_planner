@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django import template
 from django.db.models import Count
 
