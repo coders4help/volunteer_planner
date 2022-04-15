@@ -101,8 +101,24 @@ jobs:
     steps:
       - name: Check out source repository
         uses: actions/checkout@v2
-      - name: flake8 Lint
-        uses: py-actions/flake8@v2
+
+      # Install Python 3.9.6
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.6"
+          cache: "pip"
+          cache-dependency-path: 'requirements/base.txt'
+
+      # Pip install project dependencies
+      - name: Install python packages with pip
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/flake8.txt
+
+      # Run flake8
+      - name: Run flake8
+        run: flake8
 
   pytest:
     name: Unit Tests

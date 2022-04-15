@@ -1,5 +1,4 @@
-# coding=utf-8
-import logging
+from common import brace_format_logging
 
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -13,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 
 from scheduler.models import Shift, ShiftMessageToHelpers
 
-logger = logging.getLogger(__name__)
+logger = brace_format_logging.getLogger(__name__)
 
 
 @receiver(pre_delete, sender=Shift)
@@ -36,7 +35,7 @@ def send_email_notifications(sender, instance, **kwargs):
             )
 
             message = render_to_string(
-                "shift_cancellation_notification.html", dict(shift=shift)
+                "shift_cancellation_notification.html", {"shift": shift}
             )
 
             from_email = settings.DEFAULT_FROM_EMAIL
@@ -55,10 +54,14 @@ def send_email_notifications(sender, instance, **kwargs):
                 )
                 mail.send()
     except Exception:
-        logger.exception("Error sending notification email (Shift: %s)" % instance)
+        logger.exception(
+            "Error sending notification email (Shift: {shift})",
+            shift=instance,
+        )
 
 
-def times_changed(shift, old_shift, grace=timedelta(minutes=5)):
+def times_changed(shift, old_shift, grace=None):
+    grace = grace if grace is not None else timedelta(minutes=5)
     starting_time = min(shift.starting_time, shift.ending_time)
     ending_time = max(shift.starting_time, shift.ending_time)
 
@@ -87,7 +90,11 @@ def notify_users_shift_change(sender, instance, **kwargs):
             )
 
             message = render_to_string(
-                "shift_modification_notification.html", dict(old=old_shift, shift=shift)
+                "shift_modification_notification.html",
+                {
+                    "old": old_shift,
+                    "shift": shift,
+                },
             )
 
             from_email = settings.DEFAULT_FROM_EMAIL
@@ -102,8 +109,8 @@ def notify_users_shift_change(sender, instance, **kwargs):
                     bcc=addresses,
                 )
                 logger.info(
-                    "Shift %s at %s changed: (%s-%s -> %s->%s). Sending email "
-                    "notification to %d affected user(s).",
+                    "Shift {} at {} changed: ({}-{} -> {}->{}). Sending email "
+                    "notification to {} affected user(s).",
                     shift.task.name,
                     shift.facility.name,
                     old_shift.starting_time,
@@ -123,12 +130,12 @@ def send_shift_message_to_helpers(sender, instance, created, **kwargs):
                 try:
                     message = render_to_string(
                         "emails/shift_message_to_helpers.txt",
-                        dict(
-                            message=instance.message,
-                            recipient=recipient,
-                            shift=instance.shift,
-                            sender_email=instance.sender.user.email,
-                        ),
+                        {
+                            "message": instance.message,
+                            "recipient": recipient,
+                            "shift": instance.shift,
+                            "sender_email": instance.sender.user.email,
+                        },
                     ).strip()
                     subject = _(
                         "Volunteer-Planner: A Message from shift "
@@ -144,7 +151,7 @@ def send_shift_message_to_helpers(sender, instance, created, **kwargs):
                             headers={"Reply-to": instance.sender.user.email},
                         )
                         mail.send()
-                except Exception as e:
-                    logger.error(
-                        "send_shift_message_to_helpers: message not successful", e
+                except Exception:
+                    logger.exception(
+                        "send_shift_message_to_helpers: message not successful",
                     )

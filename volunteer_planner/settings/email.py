@@ -12,7 +12,7 @@ EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "post_office.EmailBackend
 # Default e-mail address to use for various automated correspondence from the site
 # manager(s). This doesn’t include error messages sent to ADMINS and MANAGERS; for that,
 # see SERVER_EMAIL.
-# Default: 'webmaster@localhost'
+# defaults to 'webmaster@localhost'
 if "FROM_EMAIL" in os.environ or "DJANGO_FROM_EMAIL" in os.environ:
     DEFAULT_FROM_EMAIL = os.environ.get(
         "DJANGO_FROM_EMAIL", os.environ.get("FROM_EMAIL", "hallo@volunteer-planner.org")
@@ -21,7 +21,7 @@ if "FROM_EMAIL" in os.environ or "DJANGO_FROM_EMAIL" in os.environ:
 
 # The e-mail address that error messages come from, such as those sent to ADMINS and
 # MANAGERS.
-# Default: 'root@localhost'
+# defaults to 'root@localhost'
 if "SERVER_EMAIL" in os.environ or "DJANGO_SERVER_EMAIL" in os.environ:
     SERVER_EMAIL = os.environ.get(
         "DJANGO_SERVER_EMAIL",
@@ -30,20 +30,20 @@ if "SERVER_EMAIL" in os.environ or "DJANGO_SERVER_EMAIL" in os.environ:
 
 
 # The host to use for sending email.
-# Default: "localhost"
+# defaults to "localhost"
 if "SMTP_HOST" in os.environ or "DJANGO_EMAIL_HOST" in os.environ:
     EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST", os.environ.get("SMTP_HOST"))
 
 
 # Port to use for the SMTP server defined in EMAIL_HOST.
-# Default: 25
+# defaults to 25
 if "SMTP_PORT" in os.environ or "DJANGO_EMAIL_PORT" in os.environ:
     EMAIL_PORT = int(os.environ.get("DJANGO_EMAIL_PORT", os.environ.get("SMTP_PORT")))
 
 
 # Username to use for the SMTP server defined in EMAIL_HOST. If empty, Django won’t
 # attempt authentication.
-# Default: "" (Empty string)
+# defaults to "" (Empty string)
 if "SMTP_USER" in os.environ or "DJANGO_EMAIL_HOST_USER" in os.environ:
     EMAIL_HOST_USER = os.environ.get(
         "DJANGO_EMAIL_HOST_USER", os.environ.get("SMTP_USER")
@@ -53,7 +53,7 @@ if "SMTP_USER" in os.environ or "DJANGO_EMAIL_HOST_USER" in os.environ:
 # Password to use for the SMTP server defined in EMAIL_HOST. This setting is used in
 # conjunction with EMAIL_HOST_USER when authenticating to the SMTP server. If either of
 # these settings is empty, Django won’t attempt authentication.
-# Default: "" (Empty string)
+# defaults to "" (Empty string)
 if "SMTP_PASS" in os.environ or "DJANGO_EMAIL_HOST_PASSWORD" in os.environ:
     EMAIL_HOST_PASSWORD = os.environ.get(
         "DJANGO_EMAIL_HOST_PASSWORD", os.environ.get("SMTP_PASS")
@@ -63,13 +63,13 @@ if "SMTP_PASS" in os.environ or "DJANGO_EMAIL_HOST_PASSWORD" in os.environ:
 # Whether to use a TLS (secure) connection when talking to the SMTP server. This is
 # used for explicit TLS connections, generally on port 587. If you are experiencing
 # hanging connections, see the implicit TLS setting EMAIL_USE_SSL.
-# Default: False
+# defaults to False
 if "DJANGO_EMAIL_USE_TLS" in os.environ:
     EMAIL_USE_TLS = strtobool(str(os.environ.get("DJANGO_EMAIL_USE_TLS")))
 
 
 # The directory used by the file email backend to store output files.
-# Default: Not defined
+# defaults to Not defined
 if "DJANGO_EMAIL_FILE_PATH" in os.environ:
     EMAIL_FILE_PATH = os.environ.get("DJANGO_EMAIL_FILE_PATH")
 

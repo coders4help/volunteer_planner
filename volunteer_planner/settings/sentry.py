@@ -46,7 +46,7 @@ try:
         before_send=before_send,
         release=VERSION,
     )
-except (ModuleNotFoundError, ImportError):
+except (ImportError):
     logger.warning("sentry not installed - skipping", exc_info=True)
 except (KeyError, NameError, ValueError):
     logger.debug("sentry not initialized", exc_info=True)

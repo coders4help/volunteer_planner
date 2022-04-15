@@ -1,13 +1,10 @@
-# coding: utf-8
-
-
 import pytest
 
 from scheduletemplates.admin import translate_date_format
 
 
 @pytest.mark.parametrize(
-    "input,expected",
+    "date_format,expected",
     [
         ("%Y-%m-%d", "yy-mm-dd"),
         ("%m/%d/%Y", "mm/dd/yy"),
@@ -22,5 +19,5 @@ from scheduletemplates.admin import translate_date_format
         ("%d %B, %Y", "dd MM, yy"),
     ],
 )
-def test_translate_date_format(input, expected):
-    assert translate_date_format(input) == expected
+def test_translate_date_format(date_format, expected):
+    assert translate_date_format(date_format) == expected

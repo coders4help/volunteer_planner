@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from numbers import Number
 
 from django import template

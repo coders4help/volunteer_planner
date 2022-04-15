@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import migrations, models
@@ -30,7 +29,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name="shifthelper",
-            unique_together=set([("user_account", "shift")]),
+            unique_together={
+                ("user_account", "shift"),
+            },
         ),
         migrations.AlterField(
             model_name="shift",

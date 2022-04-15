@@ -4,7 +4,6 @@ from django.contrib.auth.models import Group
 from django.db import transaction
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from django.utils.translation import gettext_lazy as _
 
 from .models import FacilityMembership, Membership, OrganizationMembership
 from .settings import FACILITY_MANAGER_GROUPNAME, ORGANIZATION_MANAGER_GROUPNAME
@@ -32,18 +31,22 @@ def update_group_for_user(user_account, membership_set, group_name):
         group = Group.objects.get(name=group_name)
     except Group.DoesNotExist:
         logger.error(
-            _(
-                f"User '{user}' manager status of a facility/organization was changed. "
-                f"We tried to automatically update facility/organization manager "
-                f"group '{group_name}' for them, but no such group exists. "
-                f"In order to auto-assign permission groups to de-/resignated facility "
-                f"managers or organization managers, please make sure, to configure "
-                f"the permission group names in your VP installation settings module "
-                f"ORGANIZATION_MANAGER_GROUPNAME (default: "
-                f'"{ORGANIZATION_MANAGER_GROUPNAME}") and FACILITY_MANAGER_GROUPNAME '
-                f'(default: "{FACILITY_MANAGER_GROUPNAME}") exactly as they are '
-                f"named in the database."
-            )
+            "User '{user}' manager status of a facility/organization was changed. "
+            "We tried to automatically update facility/organization manager "
+            "group '{group_name}' for them, but no such group exists. "
+            "In order to auto-assign permission groups to de-/resignated facility "
+            "managers or organization managers, please make sure, to configure "
+            "the permission group names in your VP installation settings module "
+            "ORGANIZATION_MANAGER_GROUPNAME (default: "
+            '"{ORGANIZATION_MANAGER_GROUPNAME}") and FACILITY_MANAGER_GROUPNAME '
+            '(default: "{FACILITY_MANAGER_GROUPNAME}") exactly as they are '
+            "named in the database.",
+            extra={
+                "user": user,
+                "group_name": group_name,
+                "ORGANIZATION_MANAGER_GROUPNAME": ORGANIZATION_MANAGER_GROUPNAME,
+                "FACILITY_MANAGER_GROUPNAME": FACILITY_MANAGER_GROUPNAME,
+            },
         )
         return
 

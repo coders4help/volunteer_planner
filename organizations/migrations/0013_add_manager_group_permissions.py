@@ -4,6 +4,8 @@ from django.db import migrations
 from organizations.models import Membership
 from ..settings import FACILITY_MANAGER_GROUPNAME, ORGANIZATION_MANAGER_GROUPNAME
 
+from common import brace_format_logging
+
 VIEW, ADD, CHANGE, DELETE = "view", "add", "change", "delete"
 ALL = (VIEW, ADD, CHANGE, DELETE)
 
@@ -40,6 +42,8 @@ MANAGER_GROUPS = {
     ORGANIZATION_MANAGER_GROUPNAME: ORGANIZATION_MANAGER_PERMISSIONS,
 }
 
+logger = brace_format_logging.getLogger(__name__)
+
 
 def forwards(apps, schema_editor):
     ContentTypeModel = apps.get_model("contenttypes", "ContentType")
@@ -48,7 +52,8 @@ def forwards(apps, schema_editor):
 
     for group_name, permissions in MANAGER_GROUPS.items():
         group, created = GroupModel.objects.get_or_create(name=group_name)
-        print(f"  - {group.name}: created group object")
+
+        logger.info("  - {group.name}: created group object", group=group)
         for app_label, model, actions in permissions:
             content_type, _ = ContentTypeModel.objects.get_or_create(
                 app_label=app_label.lower(), model=model.lower()
@@ -58,9 +63,12 @@ def forwards(apps, schema_editor):
                     content_type=content_type, codename=f"{action}_{model}".lower()
                 )
                 group.permissions.add(permission)
-                print(
-                    f'    - {group.name}: added permission "{permission.name}" '
-                    f"({permission.codename})"
+                logger.info(
+                    "    - {group_name}: added permission "
+                    '"{permission_name}" ({permission_codename})',
+                    group_name=group.name,
+                    permission_name=permission.name,
+                    permission_codename=permission.codename,
                 )
 
     OrganizationMembershipModel = apps.get_model(
@@ -72,7 +80,12 @@ def forwards(apps, schema_editor):
         user = organization_member.user_account.user
         group = GroupModel.objects.get(name=ORGANIZATION_MANAGER_GROUPNAME)
         user.groups.add(group)
-        print(f'  - {group.name}: added user "{user.username}" (id: {user.id})')
+        logger.info(
+            '  - {group_name}: added user "{username}" (id: {user_id})',
+            group_name=group.name,
+            username=user.username,
+            user_id=user.id,
+        )
 
     FacilityMembershipModel = apps.get_model("organizations", "FacilityMembership")
     for facility_member in FacilityMembershipModel.objects.filter(
@@ -81,7 +94,12 @@ def forwards(apps, schema_editor):
         user = facility_member.user_account.user
         group = GroupModel.objects.get(name=FACILITY_MANAGER_GROUPNAME)
         user.groups.add(group)
-        print(f'  - {group.name}: added user "{user.username}" (id: {user.id})')
+        logger.info(
+            '  - {group_name}: added user "{username}" (id: {user_id})',
+            group_name=group.name,
+            username=user.username,
+            user_id=user.id,
+        )
 
 
 def backwards(apps, schema_editor):

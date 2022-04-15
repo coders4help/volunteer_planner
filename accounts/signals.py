@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django.dispatch import receiver
 from registration.signals import user_activated
 

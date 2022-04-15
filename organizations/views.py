@@ -1,5 +1,3 @@
-# coding=utf-8
-
 import itertools
 
 from django.conf import settings
@@ -89,13 +87,10 @@ def managing_members_view(request, **kwargs):
         if action == "reject":
             membership.status = membership.Status.REJECTED
             membership.save()
-        elif membership.status == membership.Status.PENDING:
-            if action == "accept":
-                membership.status = membership.Status.APPROVED
-                membership.save()
-                send_membership_approved_notification(
-                    membership, approved_by=request.user
-                )
+        elif membership.status == membership.Status.PENDING and action == "accept":
+            membership.status = membership.Status.APPROVED
+            membership.save()
+            send_membership_approved_notification(membership, approved_by=request.user)
 
     except Exception:
         if settings.DEBUG:

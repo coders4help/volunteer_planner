@@ -1,4 +1,3 @@
-# coding: utf-8
 import logging
 
 from django.contrib import admin
@@ -98,7 +97,7 @@ class SessionAdmin(admin.ModelAdmin):
         decoded = obj.get_decoded()
         for key in sorted(decoded):
             _session_data += "<b>" + key + "</b>: " + decoded.get(key)
-            if "_auth_user_id" == key:
+            if key == "_auth_user_id":
                 try:
                     user = User.objects.get(id=decoded.get(key))
                     _session_data += " (" + user.username + ")"

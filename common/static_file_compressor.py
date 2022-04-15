@@ -1,4 +1,4 @@
-# coding: utf-8
+import contextlib
 import gzip
 import io
 import re
@@ -65,9 +65,9 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
         try:
             f = getattr(import_module(module), func)
             with open(path) as f_in:
-                input = f_in.read()
+                file_content = f_in.read()
             with open(path, "w") as f_out:
-                f_out.write(f(input))
+                f_out.write(f(file_content))
             __class__._gzip(path)
 
             return True
@@ -76,9 +76,7 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
 
     @staticmethod
     def _gzip(path):
-        try:
-            with open(path, "rb") as f_in:
-                with gzip.open("{}.gz".format(path), "wb") as f_out:
+        with contextlib.suppress(Exception):  # noqa: SIM117
+            with open(path, "rb") as f_in:  # noqa: SIM117
+                with gzip.open(f"{path}.gz", "wb") as f_out:  # noqa: SIM117
                     shutil.copyfileobj(f_in, f_out)
-        except Exception:
-            pass

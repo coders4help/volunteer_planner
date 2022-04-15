@@ -6,6 +6,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 
+from common import brace_format_logging
 from content.models import FlatPageTranslation
 
 DEFAULT_TEMPLATE = "flatpages/default.html"
@@ -53,9 +54,10 @@ def render_translated_flatpage(request, f):
         f.title = translation.title
         f.content = translation.content
     except FlatPageTranslation.DoesNotExist:
-        print(
-            'no translation for page "{flatpage}" for language {lang}'.format(
-                flatpage=f.url, lang=request.LANGUAGE_CODE
-            )
+        logger = brace_format_logging.getLogger(__name__)
+        logger.debug(
+            'No translation for page "{flatpage}" for language {lang}',
+            flatpage=f.url,
+            lang=request.LANGUAGE_CODE,
         )
     return render_flatpage(request, f)

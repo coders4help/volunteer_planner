@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django import template
 from django.db.models import Count
 
@@ -61,7 +59,10 @@ def get_pending_membership_approvals(user):
         .annotate(count=Count("facility"))
     )
 
-    result = dict(facilities=dict(), total=0)
+    result = {
+        "facilities": {},
+        "total": 0,
+    }
     for counter in counters:
         result["facilities"][counter["facility"]] = counter["count"]
         result["total"] += counter["count"]

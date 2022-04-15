@@ -1,6 +1,5 @@
-# coding: utf-8
-
 import datetime
+import logging
 import random
 import string
 
@@ -53,6 +52,8 @@ LOREM = (
     "mattis we gonna chung, eleifend vitae, nunc. "
 )
 
+logger = logging.getLogger(__name__)
+
 
 def gen_date(hour, day):
     date_today = datetime.date.today() + datetime.timedelta(days=day)
@@ -72,7 +73,7 @@ def random_string(length=10):
 
 
 class Command(BaseCommand):
-    help = (
+    help = (  # noqa: A003
         "This command creates dummy data for the entire application.\n"
         'Execute "python manage.py create_dummy_data 30 --flush True" to first '
         "delete all data in the database and then add random shifts for 30 days. "
@@ -89,7 +90,7 @@ class Command(BaseCommand):
     @transaction.atomic()
     def handle(self, *args, **options):
         if options["flush"]:
-            print("delete all data in app tables")
+            logger.info("delete all data in app tables")
             for model in (
                 RegistrationProfile,
                 ShiftHelper,
@@ -107,7 +108,7 @@ class Command(BaseCommand):
                 model.objects.all().delete()
             User.objects.filter().exclude(is_superuser=True).delete()
 
-        print("creating new dummy data")
+        logger.info("creating new dummy data")
         # use or create regional data
         countries = Country.objects.all() or [
             CountryFactory.create() for _ in range(0, 3)
@@ -136,10 +137,9 @@ class Command(BaseCommand):
         ]
 
         # create tasks and workplaces
-        i = 0
-        tasks = list()
-        workplaces = list()
-        for fac in facilities:
+        tasks = []
+        workplaces = []
+        for i, fac in enumerate(facilities):
             today = timezone.now()
             for d in range(random.randint(1, 15)):
                 NewsEntry.objects.create(
@@ -167,7 +167,6 @@ class Command(BaseCommand):
                     for j in range(0, random.randint(1, 5))
                 ]
             )
-            i += 1
 
         # create shifts for number of days
         for day in range(0, options["days"][0]):

@@ -1,4 +1,3 @@
-# coding: utf-8
 import logging
 from datetime import time
 
@@ -120,13 +119,13 @@ class Shift(models.Model):
         local_starting_time = localtime(self.starting_time, get_current_timezone())
         return reverse(
             "shift_details",
-            kwargs=dict(
-                facility_slug=self.facility.slug,
-                year=local_starting_time.year,
-                month=local_starting_time.month,
-                day=local_starting_time.day,
-                shift_id=self.id,
-            ),
+            kwargs={
+                "facility_slug": self.facility.slug,
+                "year": local_starting_time.year,
+                "month": local_starting_time.month,
+                "day": local_starting_time.day,
+                "shift_id": self.id,
+            },
         )
 
 

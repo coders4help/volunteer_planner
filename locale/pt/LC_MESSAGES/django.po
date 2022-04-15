@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: volunteer-planner.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-14 15:05+0200\n"
+"POT-Creation-Date: 2022-04-15 18:14+0200\n"
 "PO-Revision-Date: 2015-09-24 12:23+0000\n"
 "Last-Translator: Ricardo Leonardo, 2016\n"
 "Language-Team: Portuguese (http://www.transifex.com/coders4help/volunteer-planner/language/pt/)\n"
@@ -624,10 +624,6 @@ msgstr "tarefa"
 msgid "tasks"
 msgstr "tarefas"
 
-#, python-brace-format
-msgid "User '{user}' manager status of a facility/organization was changed. "
-msgstr ""
-
 #, python-format
 msgid "Hello %(username)s,"
 msgstr ""
@@ -714,7 +710,7 @@ msgid "Facilities do not match."
 msgstr ""
 
 #, python-brace-format
-msgid "\"{object.name}\" belongs to facility \"{object.facility.name}\", but shift takes place at \"{facility.name}\"."
+msgid "\"{obj.name}\" belongs to facility \"{obj.facility.name}\", but shift takes place at \"{facility.name}\"."
 msgstr ""
 
 msgid "No start time given."

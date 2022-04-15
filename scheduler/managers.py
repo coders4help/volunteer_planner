@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from datetime import datetime, time, timedelta
 
 from django.db import models
@@ -58,7 +56,7 @@ class ShiftQuerySet(models.QuerySet):
         elif isinstance(geo_affiliation, place_models.Country):
             return self.in_country(geo_affiliation)
 
-    def open(self):
+    def open(self):  # noqa: A003
         return self.filter(ending_time__gte=timezone.now())
 
 

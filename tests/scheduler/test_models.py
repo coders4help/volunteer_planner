@@ -20,10 +20,11 @@ def create_shift(start_hour, end_hour, facility=None):
     Tiny helper because setting time periods is awkward till we remove the FK
     relationship.
     """
-    create_args = dict(
-        starting_time=datetime(2015, 1, 1, start_hour, tzinfo=get_current_timezone()),
-        ending_time=datetime(2015, 1, 1, end_hour, tzinfo=get_current_timezone()),
-    )
+    tz = get_current_timezone()
+    create_args = {
+        "starting_time": datetime(2015, 1, 1, start_hour, tzinfo=tz),
+        "ending_time": datetime(2015, 1, 1, end_hour, tzinfo=tz),
+    }
     if facility:
         create_args["facility"] = facility
     return ShiftFactory.create(**create_args)
@@ -33,8 +34,9 @@ def assert_shift_conflict_count(
     shift,
     hard_conflict_count,
     soft_conflict_count,
-    grace=timedelta(hours=1),
+    *args,
 ):
+    grace = args[0] if args else timedelta(hours=1)
     hard_conflicting_shifts, soft_conflicting_shifts = ShiftHelper.objects.conflicting(
         shift=shift, grace=grace
     )

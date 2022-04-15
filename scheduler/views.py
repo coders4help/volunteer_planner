@@ -1,5 +1,3 @@
-# coding: utf-8
-
 import json
 import logging
 from abc import ABC
@@ -84,10 +82,10 @@ class JoinLeaveFormView(ABC, FormView):
                     mbs, created = FacilityMembership.objects.get_or_create(
                         user_account=user_account,
                         facility=shift_to_join.facility,
-                        defaults=dict(
-                            status=FacilityMembership.Status.PENDING,
-                            role=FacilityMembership.Roles.MEMBER,
-                        ),
+                        defaults={
+                            "status": FacilityMembership.Status.PENDING,
+                            "role": FacilityMembership.Roles.MEMBER,
+                        },
                     )
                     if created:
                         messages.success(
@@ -253,12 +251,12 @@ class GeographicHelpdeskView(DetailView):
     @staticmethod
     def make_breadcrumps_dict(country, region=None, area=None, place=None):
 
-        result = dict(
-            country=country,
-            flattened=[
+        result = {
+            "country": country,
+            "flattened": [
                 country,
             ],
-        )
+        }
 
         for k, v in zip(("region", "area", "place"), (region, area, place)):
             if v:

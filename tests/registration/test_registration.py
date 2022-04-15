@@ -1,4 +1,3 @@
-# coding=utf-8
 import pytest
 from django.test import override_settings, TestCase
 from django.urls import reverse
@@ -312,7 +311,6 @@ class RegistrationTestCase(TestCase):
             "email": "somename@example.com",
             "password1": "somepassword",
             "password2": "somepassword",
-            # "accept_privacy_policy": True,
         }
 
         response = self.client.post(self.registration_url, user_data, follow=True)
