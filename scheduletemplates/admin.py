@@ -59,14 +59,14 @@ class ShiftTemplateForm(forms.ModelForm):
             facility = schedule_template.facility
 
             task = self.cleaned_data.get("task")
-            if task and not task.facility == facility:
+            if task and task.facility != facility:
                 self.add_error(
                     "task",
                     ValidationError(facility_mismatch_error_message(task, facility)),
                 )
 
             workplace = self.cleaned_data.get("workplace")
-            if workplace and not workplace.facility == facility:
+            if workplace and workplace.facility != facility:
                 self.add_error(
                     "workplace",
                     ValidationError(
@@ -234,8 +234,8 @@ class ScheduleTemplateAdmin(MembershipFilteredAdmin):
 
                     combined_shifts = list(selected_shift_templates) + existing_shifts
 
-                    # returns (task, workplace, start_time and is_template)
-                    # to make combined list sortable
+                    # This returns (task, workplace, start_time and
+                    # is_template) to make combined list sortable
                     def __shift_key(shift):
                         is_template = isinstance(shift, ShiftTemplate)
                         task = shift.task.id if shift.task else 0

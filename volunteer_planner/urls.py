@@ -7,7 +7,6 @@ from django.views.generic import RedirectView
 from content.views import translated_flatpage
 
 urlpatterns = [
-    # url(r'^auth/', include('registration.backends.admin_approval.urls')),
     re_path(r"^auth/", include("registration.backends.default.urls")),
     re_path(r"^account/", include("accounts.urls")),
     re_path(r"^helpdesk/", include("scheduler.urls")),

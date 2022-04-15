@@ -85,6 +85,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name="flatpagetranslation",
-            unique_together=set([("flatpage", "language")]),
+            unique_together={("flatpage", "language")},
         ),
     ]

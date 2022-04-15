@@ -12,20 +12,35 @@ def add_places(apps, schema_editor):
     location_model = apps.get_model("scheduler", "Location")
 
     germany, _ = country_model.objects.get_or_create(
-        name="Deutschland", defaults=dict(slug=slugify("Deutschland"))
+        name="Deutschland",
+        defaults={
+            "slug": slugify("Deutschland"),
+        },
     )
 
     for location in location_model.objects.all():
 
         city = location.city
         region, _ = region_model.objects.get_or_create(
-            name=city, defaults=dict(slug=slugify(city), country=germany)
+            name=city,
+            defaults={
+                "slug": slugify(city),
+                "country": germany,
+            },
         )
         area, _ = area_model.objects.get_or_create(
-            name=city, defaults=dict(slug=slugify(city), region=region)
+            name=city,
+            defaults={
+                "slug": slugify(city),
+                "region": region,
+            },
         )
         place, _ = place_model.objects.get_or_create(
-            name=city, defaults=dict(slug=slugify(city), area=area)
+            name=city,
+            defaults={
+                "slug": slugify(city),
+                "area": area,
+            },
         )
 
         location.place = place

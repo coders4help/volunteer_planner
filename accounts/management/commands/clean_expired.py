@@ -6,7 +6,7 @@ from registration.models import RegistrationProfile
 
 
 class Command(BaseCommand):
-    help = "Cleanup expired registrations"
+    help = "Cleanup expired registrations"  # noqa: A003
 
     def handle(self, *args, **options):
         profiles = (

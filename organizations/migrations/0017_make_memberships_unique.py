@@ -12,17 +12,17 @@ def check_is_staff(apps, user_account):
 
     logger.info("Checking is_staff for %s", user_account.user.username)
 
-    if not FacilityMembership.objects.filter(
-        user_account=user_account, role__lt=2
-    ).exists():
-        if not OrganizationMembership.objects.filter(
+    if (
+        not FacilityMembership.objects.filter(
             user_account=user_account, role__lt=2
-        ).exists():
-            logger.info(
-                "Revoking is_staff flag for user %s", user_account.user.username
-            )
-            user_account.user.is_staff = False
-            user_account.user.save()
+        ).exists()
+        and not OrganizationMembership.objects.filter(
+            user_account=user_account, role__lt=2
+        ).exists()
+    ):
+        logger.info("Revoking is_staff flag for user %s", user_account.user.username)
+        user_account.user.is_staff = False
+        user_account.user.save()
 
 
 def squash_duplicate_organization_memberships(apps, schema_editor):

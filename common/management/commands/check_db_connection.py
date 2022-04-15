@@ -6,7 +6,7 @@ from django.db.utils import OperationalError
 
 
 class Command(BaseCommand):
-    help = "This command checks availability of configured database."
+    help = "This command checks availability of configured database."  # noqa: A003
 
     requires_system_checks = False
 
@@ -37,7 +37,7 @@ class Command(BaseCommand):
 
         success = False
         db_conn = connections["default"]
-        for i in range(0, options["count"]):
+        for _ in range(0, options["count"]):
             try:
                 db_conn.cursor()
                 success = True

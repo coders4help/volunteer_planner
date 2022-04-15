@@ -55,11 +55,16 @@ def getLogger(name=None, extra=None):
 
 
 if __name__ == "__main__":
+
+    class SomeObj:
+        some_property = "SomeObj.some_property"
+
     logger = getLogger(__name__, {"logger-extra": "something"})
     logger.error(
-        "something {} {extra[extra_key]} {kwargs_key} {extra_key}",
+        "something {} {extra[extra_key]} {kwargs_key} {extra_key} {obj.some_property}",
         "postional",
         kwargs_key=123,
+        obj=SomeObj,
         extra={"extra_key": "keyword"},
         stack_info=True,
     )

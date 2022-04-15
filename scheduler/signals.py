@@ -35,7 +35,7 @@ def send_email_notifications(sender, instance, **kwargs):
             )
 
             message = render_to_string(
-                "shift_cancellation_notification.html", dict(shift=shift)
+                "shift_cancellation_notification.html", {"shift": shift}
             )
 
             from_email = settings.DEFAULT_FROM_EMAIL
@@ -60,7 +60,8 @@ def send_email_notifications(sender, instance, **kwargs):
         )
 
 
-def times_changed(shift, old_shift, grace=timedelta(minutes=5)):
+def times_changed(shift, old_shift, grace=None):
+    grace = grace if grace is not None else timedelta(minutes=5)
     starting_time = min(shift.starting_time, shift.ending_time)
     ending_time = max(shift.starting_time, shift.ending_time)
 
@@ -89,7 +90,11 @@ def notify_users_shift_change(sender, instance, **kwargs):
             )
 
             message = render_to_string(
-                "shift_modification_notification.html", dict(old=old_shift, shift=shift)
+                "shift_modification_notification.html",
+                {
+                    "old": old_shift,
+                    "shift": shift,
+                },
             )
 
             from_email = settings.DEFAULT_FROM_EMAIL
@@ -125,12 +130,12 @@ def send_shift_message_to_helpers(sender, instance, created, **kwargs):
                 try:
                     message = render_to_string(
                         "emails/shift_message_to_helpers.txt",
-                        dict(
-                            message=instance.message,
-                            recipient=recipient,
-                            shift=instance.shift,
-                            sender_email=instance.sender.user.email,
-                        ),
+                        {
+                            "message": instance.message,
+                            "recipient": recipient,
+                            "shift": instance.shift,
+                            "sender_email": instance.sender.user.email,
+                        },
                     ).strip()
                     subject = _(
                         "Volunteer-Planner: A Message from shift "
@@ -146,7 +151,7 @@ def send_shift_message_to_helpers(sender, instance, created, **kwargs):
                             headers={"Reply-to": instance.sender.user.email},
                         )
                         mail.send()
-                except Exception as e:
+                except Exception:
                     logger.exception(
                         "send_shift_message_to_helpers: message not successful",
                     )

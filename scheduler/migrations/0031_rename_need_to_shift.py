@@ -29,7 +29,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name="shifthelper",
-            unique_together=set([("user_account", "shift")]),
+            unique_together={
+                ("user_account", "shift"),
+            },
         ),
         migrations.AlterField(
             model_name="shift",

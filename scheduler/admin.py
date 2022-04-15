@@ -15,10 +15,10 @@ from .fields import FormattedModelChoiceIteratorFactory
 logger = logging.getLogger(__name__)
 
 
-def facility_mismatch_error_message(object, facility):
+def facility_mismatch_error_message(obj, facility):
     title = _("Facilities do not match.")
     text = _(
-        f'"{object.name}" belongs to facility "{object.facility.name}", but shift \
+        f'"{obj.name}" belongs to facility "{obj.facility.name}", but shift \
 takes place at "{facility.name}".'
     )
     return f"{title} {text}"
@@ -30,7 +30,7 @@ class FormattedModelChoiceFieldAdminMixin:
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         field = super().formfield_for_foreignkey(db_field, request, **kwargs)
-        if self.fk_label_formats and db_field.name in self.fk_label_formats.keys():
+        if self.fk_label_formats and db_field.name in self.fk_label_formats:
             field.iterator = FormattedModelChoiceIteratorFactory(
                 label_format=self.fk_label_formats[db_field.name]
             )
@@ -71,14 +71,14 @@ class ShiftAdminForm(forms.ModelForm):
         if facility:
 
             task = self.cleaned_data.get("task")
-            if task and not task.facility == facility:
+            if task and task.facility != facility:
                 self.add_error(
                     "task",
                     ValidationError(facility_mismatch_error_message(task, facility)),
                 )
 
             workplace = self.cleaned_data.get("workplace")
-            if workplace and not workplace.facility == facility:
+            if workplace and workplace.facility != facility:
                 self.add_error(
                     "workplace",
                     ValidationError(

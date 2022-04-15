@@ -11,6 +11,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterUniqueTogether(
             name="shifthelper",
-            unique_together=set([("user_account", "need")]),
+            unique_together={
+                ("user_account", "need"),
+            },
         ),
     ]

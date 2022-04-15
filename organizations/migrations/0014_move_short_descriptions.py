@@ -18,14 +18,14 @@ def combine_descriptions(apps, schema_editor):
     )
 
     for Model in models:
-        for object in Model.objects.exclude(short_description="").exclude(
+        for obj in Model.objects.exclude(short_description="").exclude(
             short_description=None
         ):
-            short_description = (object.short_description or "").strip()
+            short_description = (obj.short_description or "").strip()
             if short_description:
-                description = (object.description or "").strip()
-                object.description = f"{short_description}\n\n\n{description}\n".strip()
-                object.save()
+                description = (obj.description or "").strip()
+                obj.description = f"{short_description}\n\n\n{description}\n".strip()
+                obj.save()
 
 
 class Migration(migrations.Migration):

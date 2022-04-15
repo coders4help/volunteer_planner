@@ -18,7 +18,7 @@ def migrate_topics(apps, schema_editor):
             )
             shift.workplace = workplace
 
-        defaults = dict(description=topic.description)
+        defaults = {"description": topic.description}
         task, _ = task_model.objects.get_or_create(
             facility=facility, name=topic.title, defaults=defaults
         )
