@@ -78,5 +78,5 @@ class CompressedStaticFilesStorage(StaticFilesStorage):
     def _gzip(path):
         with contextlib.suppress(Exception):  # noqa: SIM117
             with open(path, "rb") as f_in:  # noqa: SIM117
-                with gzip.open("{}.gz".format(path), "wb") as f_out:  # noqa: SIM117
+                with gzip.open(f"{path}.gz", "wb") as f_out:  # noqa: SIM117
                     shutil.copyfileobj(f_in, f_out)
