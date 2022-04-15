@@ -58,6 +58,7 @@ if __name__ == "__main__":
     """
     This is for demonstration purpose and to run quick tests.
     """
+
     class SomeObj:
         some_property = "SomeObj.some_property"
 
