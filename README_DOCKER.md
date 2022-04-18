@@ -13,6 +13,16 @@ welcome solution suggestions and are even more excited, if we can see and follow
 
 ## Project setup for development
 
+TL&DR:
+
+    copy .env.template .env
+    docker compose build
+    docker compose up --no-start
+    docker compose run -T --rm django migrate
+    docker compose run -T --rm django set_default_site --name "Volunteer Planner (local)" --domain "localhost"
+    docker compose run -T --rm -e DJANGO_SUPERUSER_PASSWORD=admin django createsuperuser --username admin --email admin@localhost --no-input
+    docker compose run -T --rm django create_dummy_data 5 --flush True
+
 ### 1. Install docker
 
 #### 1.1 Install docker engine
@@ -29,15 +39,15 @@ In this readme we'll use `docker compose`. If you prefer version 1 (`docker-comp
 using instructions here, by substituting
 `docker compose` with `docker-compose`.
 
-### 2. Prepare environment
+### 2. Prepare the docker files and settings
 
 #### 2.1 Create `.env` file
 
-Copy the `.env.template` file as `.env` and edit all values between `<>` to match your environment.
+If you already have `.env` file, compare it to `.env.template` and add or remove new or old values.
 
-### 3. Prepare the docker files
+If you don't have `.env` yet, copy `.env.template` as `.env` and edit values to match your environment.
 
-#### 3.1 Build images
+#### 2.2 Build images
 
 Execute
 
@@ -48,7 +58,7 @@ docker compose build
 This is currently necessary, because sometimes docker compose build does not reflect depedency between django image and
 web image.
 
-#### 3.1 Initialize docker network, volumes and containers
+#### 2.3 Initialize docker network, volumes and containers
 
 Execute
 
@@ -56,7 +66,7 @@ Execute
 docker compose up --no-start
 ```
 
-#### 3.3 Initalize by running migrations to set up non-existing tables
+#### 2.4 Initalize by running migrations to set up non-existing tables
 
 Execute
 
@@ -64,8 +74,25 @@ Execute
 docker compose run -T --rm django migrate
 ```
 
-#### 3.4 Add a superuser
+#### 2.5 Change default site
 
+For absolute links in emails and other locations to be generated correctly, it's advisable, to modify default site.
+If you don't, there's no known "it doesn't work" situation, but at least if you register new accounts for testing,
+emails will contain "wrong" links you'd have to fix manually ('example.com' vs. 'localhost').
+
+```shell
+docker compose run -T --rm django set_default_site --name "Volunteer Planner (local)" --domain "localhost"
+```
+
+#### 2.6 Add a superuser
+
+Fast track:
+```shell
+docker compose run -T --rm -e DJANGO_SUPERUSER_PASSWORD=vpadmin django createsuperuser --username vpadmin --email admin@localhost --no-input
+```
+
+If you're not a fan of (temporarily) having your local, developement, admin password in environment variables, removed after the
+command finished:
 ```shell
 docker compose run -T --rm django createsuperuser --username admin --email admin@localhost --no-input
 docker compose run --rm changepassword admin
@@ -76,7 +103,7 @@ docker compose run --rm changepassword admin
 If you want to, feel free to change username `admin` to something you like better. Changing the e-mail address is
 possible too, although it should not make a difference.
 
-### 4. The server
+### 3. The server
 
 To start / run the server
 
@@ -90,7 +117,7 @@ with `CTRL-c`.
 URL is identical to the one of `manage.py runserver`. So please stop any possibly running `runserver` process, before
 using docker.
 
-#### 4.1 If you don't want containers block your terminal
+#### 3.1 If you don't want containers block your terminal
 
 Run
 
@@ -101,9 +128,9 @@ docker compose up -d
 instead. This backgrounds containers (`detaches`), e. g. for longer period of testing UI. If you change sources, file
 watch should notice it, as project directory is mounted into the running container.
 
-#### 5. Rebuilding
+### 4. Rebuilding
 
-Repeat steps from step 2. and 3.
+TL&DR: Repeat actions from step 2. and 3.
 
 To clean up everything and start from scratch:
 
@@ -134,9 +161,9 @@ docker compose run -T --rm django migrate
 
 at any time - still running containers are no problem and usually don't need to be stopped or retarted
 
-### 6. Anything else
+### 5. Anything else
 
-#### 6.1 Stop all running services
+#### 5.1 Stop all running services
 
 To stop all eventually running servics, please execute the command
 
@@ -144,7 +171,7 @@ To stop all eventually running servics, please execute the command
 docker compose stop
 ```
 
-#### 6.2 Modify configuration
+#### 5.2 Modify configuration
 
 Please don't adjust the configuration in `docker-compose.yml` to reflect your desired docker changes.
 
@@ -155,12 +182,12 @@ Those, unaware with `docker compose`: Override is meant literally. You don't hav
 Create a service entry for "about to be overriden" service(s). Set "about to be changed" values (e. g. `ports`).
 Leave everything as it is, this keeps you updated with probable changes in `docker-compose.yml`.
 
-#### 6.3 Create dummy data
+#### 5.3 Create dummy data
 
 If you want to create dummy data you can run:
 
 ```shell
-docker compose run --rm -T django create_dummy_data 5 --flush True
+docker compose run -T --rm django create_dummy_data 5 --flush True
 ```
 to get 5 days of dummy data and delete tables in advance.
 
@@ -168,6 +195,8 @@ The number (5 in the above example) creates 5 days dummy data count from today. 
 without `--flush True` it is NOT deleting data before putting new data in.
 
 ## Additional information
+
+(FIXME ... someone needs to verify the following information, as time passed and PyCharm ain't the same version anymore)
 
 ### Speeding up debugging
 
