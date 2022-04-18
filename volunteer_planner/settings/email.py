@@ -84,7 +84,7 @@ POST_OFFICE = {
         )
     },
     "BATCH_SIZE": int(os.environ.get("POST_OFFICE_BATCH_SIZE", 100)),
-    "CELERY_ENABLED": False,
+    "CELERY_ENABLED": True,
     "DEFAULT_PRIORITY": "medium",
     "LOG_LEVEL": int(os.environ.get("POST_OFFICE_LOG_LEVEL", 2)),
     "MAX_RETRIES": int(os.environ.get("POST_OFFICE_MAX_RETRIES", 0)),

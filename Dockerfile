@@ -24,21 +24,18 @@ ADD ./requirements ${VP_BASE_DIR}/requirements
 RUN apk update && \
     apk add --virtual .build-deps \
         gcc \
-        jpeg-dev \
         musl-dev \
-        postgresql-dev \
         python3-dev \
-        zlib-dev \
+        libffi-dev \
         && \
     apk add \
         gettext \
         gettext-lang \
-        jpeg \
         jq \
         git \
         postgresql \
-        libffi-dev \
         py3-pip \
+        py3-wheel \
         uwsgi \
         uwsgi-cache \
         uwsgi-http \
@@ -49,8 +46,8 @@ RUN apk update && \
     apk del --purge .build-deps && \
     /bin/rm -rf /var/cache/apk/* /root/.cache
 
-ADD django-entrypoint.sh /
-RUN chmod 0755 /django-entrypoint.sh
+ADD django-entrypoint.sh celery-entrypoint.sh /
+RUN chmod 0755 /django-entrypoint.sh /celery-entrypoint.sh
 
 USER ${VP_USER}
 ADD --chown=${VP_USER}:${VP_USER} ./ ${VP_BASE_DIR}

@@ -7,8 +7,13 @@ django-logentry-admin==1.1.0
 django-post-office==3.6.0
 bleach<=4.1.0
 django-registration-redux==2.10
-git+https://github.com/Doca/django-ajax.git#egg=djangoajax
+git+https://github.com/Doca/django-ajax.git@a38e813cd576142aad2bf3cc8883a3af8f3140fb#egg=djangoajax
 
 python3-memcached==1.51
 
 ipython==8.2.0
+
+celery==5.2.6
+Redis==4.2.2
+django-celery-results==2.3.0
+git+https://github.com/celery/django-celery-beat.git@10123d357567ae31f241f89d98561220887799ae#egg=django-celery-beat
