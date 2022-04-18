@@ -29,9 +29,15 @@ In this readme we'll use `docker compose`. If you prefer version 1 (`docker-comp
 using instructions here, by substituting
 `docker compose` with `docker-compose`.
 
-### 2. Prepare the docker files
+### 2. Prepare environment
 
-#### 2.1 Build images
+#### 2.1 Create `.env` file
+
+Copy the `.env.template` file as `.env` and edit all values between `<>` to match your environment.
+
+### 3. Prepare the docker files
+
+#### 3.1 Build images
 
 Execute
 
@@ -42,7 +48,7 @@ docker compose build
 This is currently necessary, because sometimes docker compose build does not reflect depedency between django image and
 web image.
 
-#### 2.1 Initialize docker network, volumes and containers
+#### 3.1 Initialize docker network, volumes and containers
 
 Execute
 
@@ -50,7 +56,7 @@ Execute
 docker compose up --no-start
 ```
 
-#### 2.3 Initalize by running migrations to set up non-existing tables
+#### 3.3 Initalize by running migrations to set up non-existing tables
 
 Execute
 
@@ -58,7 +64,7 @@ Execute
 docker compose run -T --rm django migrate
 ```
 
-#### 2.4 Add a superuser
+#### 3.4 Add a superuser
 
 ```shell
 docker compose run -T --rm django createsuperuser --username admin --email admin@localhost --no-input
@@ -70,7 +76,7 @@ docker compose run --rm changepassword admin
 If you want to, feel free to change username `admin` to something you like better. Changing the e-mail address is
 possible too, although it should not make a difference.
 
-### 3. The server
+### 4. The server
 
 To start / run the server
 
@@ -84,7 +90,7 @@ with `CTRL-c`.
 URL is identical to the one of `manage.py runserver`. So please stop any possibly running `runserver` process, before
 using docker.
 
-#### 3.1 If you don't want containers block your terminal
+#### 4.1 If you don't want containers block your terminal
 
 Run
 
@@ -95,7 +101,7 @@ docker compose up -d
 instead. This backgrounds containers (`detaches`), e. g. for longer period of testing UI. If you change sources, file
 watch should notice it, as project directory is mounted into the running container.
 
-#### 4. Rebuilding
+#### 5. Rebuilding
 
 Repeat steps from step 2. and 3.
 
@@ -128,9 +134,9 @@ docker compose run -T --rm django migrate
 
 at any time - still running containers are no problem and usually don't need to be stopped or retarted
 
-### 4. Anything else
+### 6. Anything else
 
-#### 4.1 Stop all running services
+#### 6.1 Stop all running services
 
 To stop all eventually running servics, please execute the command
 
@@ -138,9 +144,9 @@ To stop all eventually running servics, please execute the command
 docker compose stop
 ```
 
-#### 4.2 Modify configuration
+#### 6.2 Modify configuration
 
-Please don't ddjust the configuration in `docker-compose.yml` to reflect your desired docker changes.
+Please don't adjust the configuration in `docker-compose.yml` to reflect your desired docker changes.
 
 Please use `docker-compose.override.yml` instead. It's untracked by git, so neither your modifications will be
 accidentally committed, not will any change in repository overwrite your configuration.⌃
@@ -149,7 +155,7 @@ Those, unaware with `docker compose`: Override is meant literally. You don't hav
 Create a service entry for "about to be overriden" service(s). Set "about to be changed" values (e. g. `ports`).
 Leave everything as it is, this keeps you updated with probable changes in `docker-compose.yml`.
 
-#### 4.3 Create dummy data
+#### 6.3 Create dummy data
 
 If you want to create dummy data you can run:
 
