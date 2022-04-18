@@ -19,3 +19,6 @@ db.sqlite3
 .python_history
 .venv
 .python-version
+.ipython/
+static/
+docker-compose.override.yml

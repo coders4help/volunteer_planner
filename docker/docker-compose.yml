@@ -78,14 +78,14 @@ services:
       DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.production}
       DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
       DATABASE_HOST: db
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USER: ${DATABASE_USER}
-      DATABASE_PW: ${DATABASE_PW}
+      DATABASE_NAME: ${DATABASE_NAME?Please set DATABASE_NAME in .env or container creation environment}
+      DATABASE_USER: ${DATABASE_USER?Please set DATABASE_USER in .env or container creation environment}
+      DATABASE_PW: ${DATABASE_PW?Please set DATABASE_PW in .env or container creation environment}
       ALLOWED_HOSTS: ${ALLOWED_HOSTS-localhost}
-      SECRET_KEY: ${SECRET_KEY:?Please set djangos SECRET_KEY in .env or build environment}
-      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
-      DJANGO_FROM_EMAIL: ${DJANGO_FROM_EMAIL:-admin@localhost}
-      DJANGO_SERVER_EMAIL: ${DJANGO_SERVER_EMAIL:-admin@localhost}
+      SECRET_KEY: ${SECRET_KEY?Please set djangos SECRET_KEY in .env or container creation environment}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?Please set djangos ADMIN_EMAIL in .env or container creation environment}
+      DJANGO_FROM_EMAIL: ${DJANGO_FROM_EMAIL:?Please set DJANGO_FROM_EMAIL in .env or container creation environment}
+      DJANGO_SERVER_EMAIL: ${DJANGO_SERVER_EMAIL:?Please set DJANGO_SERVER_EMAIL in .env or container creation environment}
       DJANGO_EMAIL_BACKEND: ${EMAIL_BACKEND:-post_office.EmailBackend}
       POST_OFFICE_EMAIL_BACKEND: ${POST_OFFICE_EMAIL_BACKEND:-django.core.mail.backends.smtp.EmailBackend}
       DJANGO_EMAIL_HOST: ${DJANGO_EMAIL_HOST:-localhost}

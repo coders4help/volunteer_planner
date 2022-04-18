@@ -52,11 +52,11 @@ services:
       DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.local_postgres}
       DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
       DATABASE_HOST: db
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USER: ${DATABASE_USER}
-      DATABASE_PW: ${DATABASE_PW}
+      DATABASE_NAME: ${DATABASE_NAME-volunteer_planner}
+      DATABASE_USER: ${DATABASE_USER-vp}
+      DATABASE_PW: ${DATABASE_PW-volunteer_planner}
       ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost}
-      SECRET_KEY: ${SECRET_KEY:?Please set djangos SECRET_KEY in .env or build environment}
+      SECRET_KEY: ${SECRET_KEY?Please set djangos SECRET_KEY in .env or container creation environment}
       ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
       DJANGO_FROM_EMAIL: ${DJANGO_FROM_EMAIL:-admin@localhost}
       DJANGO_SERVER_EMAIL: ${DJANGO_SERVER_EMAIL:-admin@localhost}
