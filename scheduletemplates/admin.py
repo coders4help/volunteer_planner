@@ -55,7 +55,7 @@ class ShiftTemplateForm(forms.ModelForm):
     def clean(self):
         """Validation of shift data, to prevent non-sense values to be entered"""
         schedule_template = self.cleaned_data.get("schedule_template")
-        if schedule_template:
+        if schedule_template and hasattr(schedule_template, "facility"):
             facility = schedule_template.facility
 
             task = self.cleaned_data.get("task")
