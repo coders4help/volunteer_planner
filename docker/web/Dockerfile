@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 ARG STAGE
 FROM vp_django:${STAGE} as django
 FROM nginx:1.21-alpine

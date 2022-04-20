@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM python:3.9-alpine3.14
 ARG VP_BASE_DIR=/opt/vp/
 ARG DJANGO_SETTINGS_MODULE=volunteer_planner.settings.production
