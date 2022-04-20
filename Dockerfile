@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM python:3.9-alpine3.14
 ARG VP_BASE_DIR=/opt/vp/
 ARG DJANGO_SETTINGS_MODULE=volunteer_planner.settings.production
 ARG SECRET_KEY=local
@@ -24,20 +24,14 @@ ADD ./requirements ${VP_BASE_DIR}/requirements
 RUN apk update && \
     apk add --virtual .build-deps \
         gcc \
-        jpeg-dev \
+        git \
+        libffi-dev \
         musl-dev \
-        postgresql-dev \
-        python3-dev \
-        zlib-dev \
         && \
     apk add \
         gettext \
-        gettext-lang \
-        jpeg \
         jq \
-        git \
-        postgresql \
-        libffi-dev \
+        postgresql-client \
         py3-pip \
         uwsgi \
         uwsgi-cache \
@@ -45,7 +39,7 @@ RUN apk update && \
         uwsgi-python3 \
         && \
     pip3 install --upgrade --quiet pip setuptools uwsgitop && \
-    pip3 install -r requirements/production.txt ${DEV:+-r requirements/dev.txt} && \
+    pip3 install -r requirements/production.txt && \
     apk del --purge .build-deps && \
     /bin/rm -rf /var/cache/apk/* /root/.cache
 

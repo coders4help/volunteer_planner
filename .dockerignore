@@ -1,9 +1,4 @@
-.git
-.idea
-.tx
-.env
+.*
 *.yml
-.*ignore
 *.log
-
-**/*.pyc
+__pycache__/
