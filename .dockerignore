@@ -2,8 +2,11 @@
 *.yml
 *.yaml
 *.log
-__pycache__/
+*.sqlite3
+*.md
+**/__pycache__/
 static/
+tmp/
 
 # inspiration from (some are already excluded by above rules):
 # https://github.com/github/safe-settings/blob/main-enterprise/.dockerignore
@@ -12,5 +15,3 @@ static/
 **/Dockerfile*
 **/node_modules
 **/obj
-README.md
-README_DOCKER.md
