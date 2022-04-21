@@ -1,4 +1,16 @@
 .*
 *.yml
+*.yaml
 *.log
 __pycache__/
+static/
+
+# inspiration from (some are already excluded by above rules):
+# https://github.com/github/safe-settings/blob/main-enterprise/.dockerignore
+**/charts
+**/docker-compose*
+**/Dockerfile*
+**/node_modules
+**/obj
+README.md
+README_DOCKER.md

@@ -17,4 +17,3 @@ RUN mkdir -p /pg_backup && \
     printf "${DATABASE_NAME}" > ${POSTGRES_DB_FILE} && \
     printf "${DATABASE_USER}" > ${POSTGRES_USER_FILE} && \
     printf "${DATABASE_PW}" > ${POSTGRES_PASSWORD_FILE}
-
