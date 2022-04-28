@@ -21,6 +21,16 @@ x-healthcheck: &default-healthcheck
   retries: 2
   start_period: 10s
 
+x-django-env: &default-django-environment
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.production}
+      DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
+      DATABASE_HOST: db
+      DATABASE_NAME: ${DATABASE_NAME?Please set DATABASE_NAME in .env or container creation environment}
+      DATABASE_USER: ${DATABASE_USER?Please set DATABASE_USER in .env or container creation environment}
+      DATABASE_PW: ${DATABASE_PW?Please set DATABASE_PW in .env or container creation environment}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+
+
 services:
   db:
     image: vp_pg:${STAGE:-prod}
@@ -65,6 +75,7 @@ services:
     hostname: django
     links:
       - db
+      - redis
     stop_grace_period: 10s
     deploy:
       restart_policy:
@@ -75,12 +86,7 @@ services:
         reservations:
           memory: 1G
     environment:
-      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.production}
-      DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
-      DATABASE_HOST: db
-      DATABASE_NAME: ${DATABASE_NAME?Please set DATABASE_NAME in .env or container creation environment}
-      DATABASE_USER: ${DATABASE_USER?Please set DATABASE_USER in .env or container creation environment}
-      DATABASE_PW: ${DATABASE_PW?Please set DATABASE_PW in .env or container creation environment}
+      <<: *default-django-environment
       ALLOWED_HOSTS: ${ALLOWED_HOSTS-localhost}
       SECRET_KEY: ${SECRET_KEY?Please set djangos SECRET_KEY in .env or container creation environment}
       ADMIN_EMAIL: ${ADMIN_EMAIL:?Please set djangos ADMIN_EMAIL in .env or container creation environment}
@@ -154,6 +160,27 @@ services:
     healthcheck:
       <<: *default-healthcheck
       test: ["CMD-SHELL", "postfix status 2>/dev/null"]
+
+
+  redis:
+    image: redis:6-alpine
+    networks:
+      <<: *default-network
+    logging: *default-logging
+
+
+  celery:
+    image: vp_django:local
+    entrypoint:
+      - /celery-entrypoint.sh
+    links:
+      - redis
+    networks:
+      <<: *default-network
+    logging: *default-logging
+    environment:
+      <<: *default-django-environment
+      CELERY_BEAT_SCHEDULER:
 
 
 volumes:

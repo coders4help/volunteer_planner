@@ -72,9 +72,9 @@ RUN pip3 --no-input --no-cache-dir --disable-pip-version-check \
 # That's all, we're interesed in, python installation is part of our base image.
 COPY --from=build /usr/lib/uwsgi /usr/lib/uwsgi
 
-# Ddd entrypoint.
-ADD django-entrypoint.sh /
-RUN chmod 0755 /django-entrypoint.sh
+# Add entrypoints.
+ADD django-entrypoint.sh celery-entrypoint.sh /
+RUN chmod 0755 /django-entrypoint.sh /celery-entrypoint.sh
 
 # chdir to our working directory
 WORKDIR ${VP_BASE_DIR}

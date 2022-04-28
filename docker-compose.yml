@@ -9,6 +9,16 @@ x-logging: &default-logging
     max-size: 10m
     max-file: 3
 
+x-django-env: &default-django-environment
+  DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.local_postgres}
+  DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
+  DATABASE_HOST: db
+  DATABASE_NAME: ${DATABASE_NAME-volunteer_planner}
+  DATABASE_USER: ${DATABASE_USER-vp}
+  DATABASE_PW: ${DATABASE_PW-volunteer_planner}
+  REDIS_HOST: ${REDIS_HOST:-redis}
+
+
 services:
   db:
     image: vp_pg:local
@@ -25,6 +35,7 @@ services:
     hostname: db
     logging: *default-logging
     stop_grace_period: 30s
+
 
   django:
     image: vp_django:local
@@ -45,16 +56,11 @@ services:
     hostname: django
     links:
       - db
+      - redis
     logging: *default-logging
     stop_grace_period: 10s
-
     environment:
-      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE-volunteer_planner.settings.local_postgres}
-      DATABASE_ENGINE: ${DATABASE_ENGINE:-django.db.backends.postgresql}
-      DATABASE_HOST: db
-      DATABASE_NAME: ${DATABASE_NAME-volunteer_planner}
-      DATABASE_USER: ${DATABASE_USER-vp}
-      DATABASE_PW: ${DATABASE_PW-volunteer_planner}
+      <<: *default-django-environment
       ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost}
       SECRET_KEY: ${SECRET_KEY?Please set djangos SECRET_KEY in .env or container creation environment}
       ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
@@ -63,6 +69,28 @@ services:
       DJANGO_EMAIL_BACKEND: ${DJANGO_EMAIL_BACKEND:-django.core.mail.backends.console.EmailBackend}
       DJANGO_EMAIL_HOST:
       DJANGO_EMAIL_PORT:
+
+
+  redis:
+    image: redis:6-alpine
+    networks:
+      <<: *default-network
+    logging: *default-logging
+
+
+  celery:
+    image: vp_django:local
+    entrypoint:
+      - /celery-entrypoint.sh
+    links:
+      - redis
+    networks:
+      <<: *default-network
+    logging: *default-logging
+
+    environment:
+      <<: *default-django-environment
+      CELERY_BEAT_SCHEDULER:
 
 volumes:
   data_volume_pg:

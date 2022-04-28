@@ -47,6 +47,8 @@ THIRD_PARTY_APPS = (
     "django_extensions",
     "logentry_admin",
     "post_office",
+    "django_celery_results",
+    "django_celery_beat",
 )
 
 LOCAL_APPS = (
@@ -177,3 +179,14 @@ FACILITY_MANAGER_GROUPNAME = "Facility Manager"
 ORGANIZATION_MANAGER_GROUPNAME = "Organization Manager"
 
 DEFAULT_SHIFT_CONFLICT_GRACE = timedelta(hours=1)
+
+CELERY_BROKER_URL = f"redis://{os.environ.get('REDIS_HOST', 'localhost')}/"
+CELERY_RESULT_BACKEND = "django-db"
+CELERY_BEAT_SCHEDULER = os.environ.get(
+    "CELERY_BEAT_SCHEDULER", "django_celery_beat.schedulers:DatabaseScheduler"
+)
+# TODO
+# Hopefully, with 2.3.0 django-celery-beat will be TZ aware and working, but now
+# it's TzAwareCrontab uses pytz and does not handle ZoneInfo well
+# (https://github.com/celery/django-celery-beat/issues/518)
+DJANGO_CELERY_BEAT_TZ_AWARE = False
