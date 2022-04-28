@@ -1,6 +1,6 @@
 django==4.0.4
 django-ckeditor==6.4.0
-django-compressor==3.1
+django-compressor==4.0
 django-debug-toolbar==3.2.4
 django-extensions==3.1.5
 django-logentry-admin==1.1.0
