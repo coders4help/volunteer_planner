@@ -6,27 +6,28 @@ _exit=0
 shutdown() {
     echo "Got signal ${*}" >&2
     _exit=1
+
     if [ 0 -ne ${pid} ]
     then
         kill "-${1:-INT}" ${pid}
-	case "${1:-INT}" in
-	"HUP"|"FPE"|"SEGV"|"USR1"|"USR2")
-	    echo "Non terminal signal received." >&2
-	    _exit=0
-	    ;;
-	*)
-	    echo "Waiting for child process ${pid} to exit." >&2
-	    wait ${pid}
-	    echo "Child exited. Bye." >&2
-	    exit 0
-	    ;;
-	esac
+        case "${1:-INT}" in
+        "HUP"|"FPE"|"SEGV"|"USR1"|"USR2")
+            echo "Non terminal signal received." >&2
+            _exit=0
+            ;;
+        *)
+            echo "Waiting for child process ${pid} to exit." >&2
+            wait ${pid}
+            echo "Child exited. Bye." >&2
+            exit 0
+            ;;
+	    esac
     else
-	echo "No specific child PID known. Terminating all." >&2
-	killall -INT
-	echo "Waiting for all children to exit." >&2
-	wait
-	exit 1
+        echo "No specific child PID known. Terminating all." >&2
+        killall -INT
+        echo "Waiting for all children to exit." >&2
+        wait
+        exit 1
     fi
 }
 

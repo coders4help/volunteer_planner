@@ -5,5 +5,8 @@
 *.yml
 .*ignore
 *.log
-
+.ipython/
+.venv/
 **/*.pyc
+docker-compose.override.yml
+static/
