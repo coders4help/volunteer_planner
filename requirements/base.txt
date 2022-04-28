@@ -7,7 +7,7 @@ django-logentry-admin==1.1.0
 django-post-office==3.6.0
 bleach<=4.1.0
 django-registration-redux==2.10
-git+https://github.com/Doca/django-ajax.git@a38e813cd576142aad2bf3cc8883a3af8f3140fb#egg=djangoajax
+djangoajax==3.3.0
 
 python3-memcached==1.51
 
