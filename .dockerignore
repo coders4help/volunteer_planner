@@ -1,12 +1,17 @@
-.git
-.idea
-.tx
-.env
+.*
 *.yml
-.*ignore
+*.yaml
 *.log
-.ipython/
-.venv/
-**/*.pyc
-docker-compose.override.yml
+*.sqlite3
+*.md
+**/__pycache__/
 static/
+tmp/
+
+# inspiration from (some are already excluded by above rules):
+# https://github.com/github/safe-settings/blob/main-enterprise/.dockerignore
+**/charts
+**/docker-compose*
+**/Dockerfile*
+**/node_modules
+**/obj
