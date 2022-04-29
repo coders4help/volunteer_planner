@@ -15,5 +15,5 @@ ipython==8.3.0
 
 celery==5.2.6
 Redis==4.2.2
-django-celery-results==2.3.0
+django-celery-results==2.3.1
 git+https://github.com/celery/django-celery-beat.git@10123d357567ae31f241f89d98561220887799ae#egg=django-celery-beat
