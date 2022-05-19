@@ -205,9 +205,7 @@ class Facility(models.Model):
 
     @property
     def address_line(self):
-        return ", ".join(
-            filter(None, map(lambda s: s.strip(), self.address.splitlines()))
-        )
+        return ", ".join((s.strip() for s in self.address.splitlines()))
 
     def __unicode__(self):
         return f"{self.name}"
