@@ -6,11 +6,11 @@
 ipdb==0.13.9
 
 # code formatting and linting
-black==22.3.0
+black==22.8.0
 
 # translations
 transifex-client==0.14.4
 
 # package management tools
 pip-chill==1.0.1
-pipdeptree==2.2.1
+pipdeptree==2.3.1

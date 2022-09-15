@@ -2,4 +2,4 @@
 
 psycopg2-binary==2.9.3
 
-sentry-sdk==1.5.12
+sentry-sdk==1.9.8
