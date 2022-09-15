@@ -255,36 +255,43 @@ class RegistrationTestCase(TestCase):
         self.try_invalid_username(
             "username ",
             [
-                'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
+                'Username must end with a letter, a number or "_".',
             ],
         )
         self.try_invalid_username(
             " username ",
             [
-                'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
+                'Username must end with a letter, a number or "_".',
             ],
         )
         self.try_invalid_username(
             " user name ",
             [
-                'Username must end with a letter, a number or "_".',
                 "Invalid username. "
                 'Allowed characters are letters, numbers, "." and "_".',
+                'Username must end with a letter, a number or "_".',
             ],
         )
 
     def test_username_with_special_chars(self):
         self.try_invalid_username(
             "invalidname$",
-            'Invalid username. Allowed characters are letters, numbers, "." and "_".',
+            [
+                "Invalid username. "
+                'Allowed characters are letters, numbers, "." and "_".',
+                'Username must end with a letter, a number or "_".',
+            ],
         )
         self.try_invalid_username(
             "emoji_😀name",
-            'Invalid username. Allowed characters are letters, numbers, "." and "_".',
+            [
+                "Invalid username. "
+                'Allowed characters are letters, numbers, "." and "_".',
+            ],
         )
 
     def test_username_exists_already(self):
