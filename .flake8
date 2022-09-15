@@ -1,6 +1,8 @@
 [flake8]
 per-file-ignores =
    volunteer_planner/settings/*.py: F401, F403, F405,
+   scheduler/views.py: B024
+   scheduler/management/commands/create_dummy_data.py: B023
 
 max-line-length = 88
 exclude = .*, __pycache__
