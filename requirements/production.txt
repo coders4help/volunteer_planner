@@ -1,5 +1,5 @@
 -r base.txt
 
-psycopg2-binary==2.9.4
+psycopg2-binary==2.9.5
 
 sentry-sdk==1.10.1
