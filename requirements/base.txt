@@ -4,7 +4,7 @@ django-compressor==4.1
 django-debug-toolbar==3.7.0
 django-extensions==3.2.1
 django-logentry-admin==1.1.0
-django-post-office==3.6.2
+django-post-office==3.6.3
 bleach<=4.1.0
 django-registration-redux==2.11
 djangoajax==3.3.0
