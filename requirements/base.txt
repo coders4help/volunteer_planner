@@ -14,6 +14,6 @@ python3-memcached==1.51
 ipython==8.7.0
 
 celery==5.2.7
-Redis==4.3.5
+Redis==4.4.0
 django-celery-results==2.4.0
 django-celery-beat
