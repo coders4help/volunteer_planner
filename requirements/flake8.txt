@@ -1,8 +1,8 @@
-flake8==5.0.4
+flake8==6.0.0
 flake8-bugbear==22.12.6
 flake8-builtins==2.1.0
 flake8-comprehensions==3.10.1
-flake8-eradicate==1.4.0
+
 flake8-logging-format==0.9.0
 flake8-mutable==1.2.0
 flake8-print==5.0.0
@@ -11,3 +11,4 @@ flake8-simplify==0.19.3
 # removed because of dependency incompatibility. See https://github.com/coders4help/volunteer_planner/pull/704
 # once, this gets merged we may consider using it again: https://github.com/wemake-services/flake8-broken-line/pull/280
 # flake8-broken-line==0.6.0 
+# flake8-eradicate==1.4.0
