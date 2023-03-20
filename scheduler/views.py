@@ -73,11 +73,9 @@ class JoinLeaveFormView(ABC, FormView):
         shift_to_leave = form.cleaned_data.get("leave_shift")
 
         if shift_to_join:
-
             if shift_to_join.members_only and not is_facility_member(
                 self.request.user, shift_to_join.facility
             ):
-
                 if not is_membership_pending(user, shift_to_join.facility):
                     mbs, created = FacilityMembership.objects.get_or_create(
                         user_account=user_account,
@@ -250,7 +248,6 @@ class GeographicHelpdeskView(DetailView):
 
     @staticmethod
     def make_breadcrumps_dict(country, region=None, area=None, place=None):
-
         result = {
             "country": country,
             "flattened": [
@@ -331,7 +328,6 @@ class PlannerView(LoginRequiredMixin, JoinLeaveFormView):
     form_class = RegisterForShiftForm
 
     def get_context_data(self, **kwargs):
-
         context = super(PlannerView, self).get_context_data(**kwargs)
         try:
             schedule_date = date(

@@ -24,7 +24,6 @@ no_consequtive = RegexValidator(
 
 
 class RegistrationForm(RegistrationFormUniqueEmail):
-
     username = forms.CharField(
         max_length=32,
         min_length=3,

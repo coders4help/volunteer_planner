@@ -27,7 +27,6 @@ def migrate_locations(apps, schema_editor):
         return org
 
     for location in location_model.objects.all():
-
         org = make_org_from_location(location)
         facility = facility_model()
         facility.id = location.id
@@ -45,7 +44,6 @@ def migrate_locations(apps, schema_editor):
         facility.save()
 
     for need in need_model.objects.all():
-
         need.facility_id = need.location_id
         need.save()
 

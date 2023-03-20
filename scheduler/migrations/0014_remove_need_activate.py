@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("scheduler", "0013_auto_20150912_1334"),
     ]

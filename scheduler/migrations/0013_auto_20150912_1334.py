@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("scheduler", "0012_rename_location_model_field_altitude_to_latitude"),
     ]

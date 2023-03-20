@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("organizations", "0004_add_tasks"),
         ("scheduler", "0031_rename_need_to_shift"),

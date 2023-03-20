@@ -26,7 +26,6 @@ def check_is_staff(apps, user_account):
 
 
 def squash_duplicate_organization_memberships(apps, schema_editor):
-
     OrganizationMembership = apps.get_model("organizations", "OrganizationMembership")
 
     members_with_duplicates = (
@@ -67,7 +66,6 @@ def squash_duplicate_organization_memberships(apps, schema_editor):
 
 
 def squash_duplicate_facility_memberships(apps, schema_editor):
-
     FacilityMembership = apps.get_model("organizations", "FacilityMembership")
 
     members_with_duplicates = (
@@ -108,7 +106,6 @@ def squash_duplicate_facility_memberships(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("accounts", "0001_initial"),
         ("organizations", "0016_add_priority_help_text"),

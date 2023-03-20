@@ -13,7 +13,6 @@ def _restore_time_periods(apps, schema_editor):
     for shift in shift_model.objects.select_related(
         "time_period_from", "time_period_to"
     ):
-
         from_tp = tp_model.objects.create(date_time=shift.starting_time)
         to_tp = tp_model.objects.create(date_time=shift.ending_time)
 
@@ -28,7 +27,6 @@ def _set_starting_and_ending_times(apps, schema_editor):
     for shift in shift_model.objects.select_related(
         "time_period_from", "time_period_to"
     ):
-
         shift.starting_time = shift.time_period_from.date_time
         shift.ending_time = shift.time_period_to.date_time
 

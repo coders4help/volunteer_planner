@@ -25,7 +25,6 @@ takes place at "{facility.name}".'
 
 
 class FormattedModelChoiceFieldAdminMixin:
-
     fk_label_formats = None
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
@@ -69,7 +68,6 @@ class ShiftAdminForm(forms.ModelForm):
 
         facility = self.cleaned_data.get("facility") or self.instance.facility
         if facility:
-
             task = self.cleaned_data.get("task")
             if task and task.facility != facility:
                 self.add_error(
