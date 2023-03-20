@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("scheduler", "0041_add_shift_messages"),
         ("accounts", "0001_initial"),

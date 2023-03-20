@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("scheduler", "0029_remove_need_location"),
         ("shiftmailer", "0004_location_to_facility"),

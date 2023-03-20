@@ -19,7 +19,6 @@ def add_places(apps, schema_editor):
     )
 
     for location in location_model.objects.all():
-
         city = location.city
         region, _ = region_model.objects.get_or_create(
             name=city,

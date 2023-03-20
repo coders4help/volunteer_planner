@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     replaces = [
         ("shiftmailer", "0001_initial"),
         ("shiftmailer", "0002_auto_20150912_2049"),

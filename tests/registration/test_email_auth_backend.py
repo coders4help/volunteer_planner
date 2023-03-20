@@ -96,7 +96,6 @@ class LoginViewTestCase(EmailAsUsernameModelBackendTestCases):
         assert response.context["user"].is_authenticated is False
 
     def test_login_with_email_address_duplicate_users(self):
-
         UserFactory.create(
             email="duplicate@example.com",
             username="duplicate_email1",
@@ -116,7 +115,6 @@ class LoginViewTestCase(EmailAsUsernameModelBackendTestCases):
         assert response.context["user"].is_authenticated is False
 
     def test_login_with_email_address_with_disabled_account(self):
-
         self.user.is_active = False
         self.user.save()
 

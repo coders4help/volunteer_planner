@@ -11,7 +11,6 @@ from django.db import migrations
 
 
 def combine_descriptions(apps, schema_editor):
-
     models = (
         apps.get_model("organizations", "Organization"),
         apps.get_model("organizations", "Facility"),
@@ -29,7 +28,6 @@ def combine_descriptions(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("organizations", "0013_add_manager_group_permissions"),
     ]

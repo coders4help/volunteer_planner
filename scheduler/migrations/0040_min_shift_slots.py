@@ -3,13 +3,11 @@ from django.db import migrations, models
 
 
 def make_min_slots(apps, schema_editor):
-
     Shift = apps.get_model("schedule", "Shift")
     Shift.objects.filter(slots__lte=0).update(slots=1)
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("scheduler", "0039_delete_workdone"),
     ]

@@ -5,7 +5,6 @@ import django.db.models.expressions
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("organizations", "0017_make_memberships_unique"),
     ]
