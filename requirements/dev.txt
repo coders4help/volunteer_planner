@@ -3,7 +3,7 @@
 -r flake8.txt
 
 # debugging
-ipdb==0.13.9
+ipdb==0.13.13
 
 # code formatting and linting
 black==23.1.0
