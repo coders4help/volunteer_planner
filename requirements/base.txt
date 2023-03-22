@@ -6,7 +6,7 @@ django-extensions==3.2.1
 django-logentry-admin==1.1.0
 django-post-office==3.6.3
 bleach<=4.1.0
-django-registration-redux==2.11
+django-registration-redux==2.12
 djangoajax==3.3.0
 
 python3-memcached==1.51
