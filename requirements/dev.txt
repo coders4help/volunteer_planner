@@ -13,4 +13,4 @@ transifex-client==0.14.4
 
 # package management tools
 pip-chill==1.0.1
-pipdeptree==2.3.3
+pipdeptree==2.6.0
