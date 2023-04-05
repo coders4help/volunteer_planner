@@ -12,5 +12,5 @@ pytest==7.2.2
 # behavioural testing
 behave==1.2.6
 gunicorn==20.1.0
-selenium==4.8.2
+selenium==4.8.3
 whitenoise==6.4.0
