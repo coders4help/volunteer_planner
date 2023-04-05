@@ -6,7 +6,7 @@
 ipdb==0.13.13
 
 # code formatting and linting
-black==23.1.0
+black==23.3.0
 
 # translations
 transifex-client==0.14.4
