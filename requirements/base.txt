@@ -1,4 +1,4 @@
-django==4.1.7
+django==4.2
 django-ckeditor==6.5.1
 django-compressor==4.3.1
 django-debug-toolbar==4.0.0
