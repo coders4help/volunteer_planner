@@ -11,7 +11,7 @@ djangoajax==3.3.0
 
 python3-memcached==1.51
 
-ipython==8.11.0
+ipython==8.12.0
 
 celery==5.2.7
 Redis==4.5.4
