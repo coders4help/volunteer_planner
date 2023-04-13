@@ -7,7 +7,7 @@ pytest-cache==1.0
 pytest-cov==4.0.0
 pytest-django==4.5.2
 pytest-sugar==0.9.6
-pytest==7.2.2
+pytest==7.3.0
 
 # behavioural testing
 behave==1.2.6
