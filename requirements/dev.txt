@@ -12,5 +12,5 @@ black==23.3.0
 transifex-client==0.14.4
 
 # package management tools
-pip-chill==1.0.1
+pip-chill==1.0.3
 pipdeptree==2.7.0
